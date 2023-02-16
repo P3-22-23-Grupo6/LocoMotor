@@ -1,0 +1,8 @@
+[Tt]emp/
+[Bb]in/
+[Ll]ib/
+
+.vs/
+
+*.user
+[Dd]ependecies/Ogre/Build/
