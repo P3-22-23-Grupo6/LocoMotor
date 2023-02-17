@@ -4,6 +4,8 @@
 #include <iostream>
 #include "OgreManager.h"
 
+int exec();
+
 void prueba(const char* filename);
 int main()
 {
@@ -14,6 +16,7 @@ int main()
 
     OgreWrapper::Scene* x = man->getScene("Escenah");
     std::cout << (x == nullptr ? "null\n" : "jiji\n");
+    exec();
     man->render();
     
     std::cout << "Hello World!\n";

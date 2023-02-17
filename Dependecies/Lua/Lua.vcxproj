@@ -19,48 +19,98 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FMod_prj\FMod_prj.vcxproj">
-      <Project>{acf2d0e9-c1aa-4bd1-a053-68f16e0bf4c8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Lua_prj\Lua_prj.vcxproj">
-      <Project>{72d80436-2b2e-4873-8aec-6c8123e81bab}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Ogre_prj\Ogre_prj.vcxproj">
-      <Project>{e638967f-58fe-4585-bda8-a2d7a271406a}</Project>
-    </ProjectReference>
+    <ClCompile Include=".\src\lapi.c" />
+    <ClCompile Include=".\src\lauxlib.c" />
+    <ClCompile Include=".\src\lbaselib.c" />
+    <ClCompile Include=".\src\lcode.c" />
+    <ClCompile Include=".\src\lcorolib.c" />
+    <ClCompile Include=".\src\lctype.c" />
+    <ClCompile Include=".\src\ldblib.c" />
+    <ClCompile Include=".\src\ldebug.c" />
+    <ClCompile Include=".\src\ldo.c" />
+    <ClCompile Include=".\src\ldump.c" />
+    <ClCompile Include=".\src\lfunc.c" />
+    <ClCompile Include=".\src\lgc.c" />
+    <ClCompile Include=".\src\linit.c" />
+    <ClCompile Include=".\src\liolib.c" />
+    <ClCompile Include=".\src\llex.c" />
+    <ClCompile Include=".\src\lmathlib.c" />
+    <ClCompile Include=".\src\lmem.c" />
+    <ClCompile Include=".\src\loadlib.c" />
+    <ClCompile Include=".\src\lobject.c" />
+    <ClCompile Include=".\src\lopcodes.c" />
+    <ClCompile Include=".\src\loslib.c" />
+    <ClCompile Include=".\src\lparser.c" />
+    <ClCompile Include=".\src\lstate.c" />
+    <ClCompile Include=".\src\lstring.c" />
+    <ClCompile Include=".\src\lstrlib.c" />
+    <ClCompile Include=".\src\ltable.c" />
+    <ClCompile Include=".\src\ltablib.c" />
+    <ClCompile Include=".\src\ltm.c" />
+    <ClCompile Include=".\src\lundump.c" />
+    <ClCompile Include=".\src\lutf8lib.c" />
+    <ClCompile Include=".\src\lvm.c" />
+    <ClCompile Include=".\src\lzio.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\MiMotor\MiMotor.cpp" />
+    <ClInclude Include=".\src\lapi.h" />
+    <ClInclude Include=".\src\lauxlib.h" />
+    <ClInclude Include=".\src\lcode.h" />
+    <ClInclude Include=".\src\lctype.h" />
+    <ClInclude Include=".\src\ldebug.h" />
+    <ClInclude Include=".\src\ldo.h" />
+    <ClInclude Include=".\src\lfunc.h" />
+    <ClInclude Include=".\src\lgc.h" />
+    <ClInclude Include=".\src\ljumptab.h" />
+    <ClInclude Include=".\src\llex.h" />
+    <ClInclude Include=".\src\llimits.h" />
+    <ClInclude Include=".\src\lmem.h" />
+    <ClInclude Include=".\src\lobject.h" />
+    <ClInclude Include=".\src\lopcodes.h" />
+    <ClInclude Include=".\src\lopnames.h" />
+    <ClInclude Include=".\src\lparser.h" />
+    <ClInclude Include=".\src\lprefix.h" />
+    <ClInclude Include=".\src\lstate.h" />
+    <ClInclude Include=".\src\lstring.h" />
+    <ClInclude Include=".\src\ltable.h" />
+    <ClInclude Include=".\src\ltm.h" />
+    <ClInclude Include=".\src\lua.h" />
+    <ClInclude Include=".\src\lua.hpp" />
+    <ClInclude Include=".\src\luaconf.h" />
+    <ClInclude Include=".\src\lualib.h" />
+    <ClInclude Include=".\src\lundump.h" />
+    <ClInclude Include=".\src\lvm.h" />
+    <ClInclude Include=".\src\lzio.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b3a1c7d3-a022-4475-8517-eeb5873ebe89}</ProjectGuid>
-    <RootNamespace>MiMotor</RootNamespace>
+    <ProjectGuid>{7cad3efc-a036-4af8-84a2-3c851a76dd15}</ProjectGuid>
+    <RootNamespace>LuaBuildPrj</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -85,39 +135,31 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <OutDir>$(SolutionDir)Bin/</OutDir>
-    <TargetName>$(ProjectName)32_d</TargetName>
+    <OutDir>$(SolutionDir)build/</OutDir>
+    <IntDir>$(SolutionDir)Temp/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <OutDir>$(SolutionDir)Bin/</OutDir>
-    <TargetName>$(ProjectName)32</TargetName>
+    <OutDir>$(SolutionDir)build/</OutDir>
+    <IntDir>$(SolutionDir)Temp/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <OutDir>$(SolutionDir)Bin/</OutDir>
-    <TargetName>$(ProjectName)_d</TargetName>
+    <OutDir>$(SolutionDir)build/</OutDir>
+    <IntDir>$(SolutionDir)Temp/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <OutDir>$(SolutionDir)Bin/</OutDir>
+    <OutDir>$(SolutionDir)build/</OutDir>
+    <IntDir>$(SolutionDir)Temp/</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\Ogre_prj\include</AdditionalIncludeDirectories>
-      <AdditionalModuleDependencies>
-      </AdditionalModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug\OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -126,36 +168,26 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\Ogre_prj\include</AdditionalIncludeDirectories>
-      <AdditionalModuleDependencies>
-      </AdditionalModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug\OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\Ogre_prj\include</AdditionalIncludeDirectories>
-      <AdditionalModuleDependencies>
-      </AdditionalModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug\OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -164,19 +196,14 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LUA_BUILD_AS_DLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\Ogre_prj\include</AdditionalIncludeDirectories>
-      <AdditionalModuleDependencies>
-      </AdditionalModuleDependencies>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug\OgreMain_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

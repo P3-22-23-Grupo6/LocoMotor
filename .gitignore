@@ -5,4 +5,5 @@
 .vs/
 
 *.user
-[Dd]ependecies/Ogre/Build/
+[Dd]ependecies/Ogre/[Bb]uild/
+[Dd]ependecies/Lua/[Bb]uild/
