@@ -14,8 +14,6 @@ class AudioManager {
 
 	std::unordered_map<const char*, Sound*> _soundLib = std::unordered_map<const char*, Sound*>();
 
-	uint16_t _error = 0;
-
 	AudioManager();
 	~AudioManager();
 
@@ -26,6 +24,8 @@ public:
 	uint16_t AddSound(const char* name, const char* fileName);
 
 	uint16_t PlaySound(const char* name);
+
+	const char* GetError(uint16_t& errorCode);
 };
 
 
