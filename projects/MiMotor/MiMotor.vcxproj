@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bullet_prj\Bullet_prj.vcxproj">
+      <Project>{e74ca361-1016-4c4c-b533-6c2ca7399d5a}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\FMod_prj\FMod_prj.vcxproj">
       <Project>{acf2d0e9-c1aa-4bd1-a053-68f16e0bf4c8}</Project>
     </ProjectReference>
