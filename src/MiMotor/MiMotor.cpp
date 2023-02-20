@@ -3,12 +3,16 @@
 
 #include <iostream>
 #include "OgreManager.h"
+#include "AudioManager.h"
 
-int exec();
+// int exec();
 
 void prueba(const char* filename);
 int main()
 {
+    AudioManager::Get()->AddSound("si", "si.wav");
+    AudioManager::Get()->PlaySound("si");
+
     OgreWrapper::OgreManager::init("Prueba");
     OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::getInstance();
     man->createScene("Escena");
@@ -16,10 +20,9 @@ int main()
 
     OgreWrapper::Scene* x = man->getScene("Escenah");
     std::cout << (x == nullptr ? "null\n" : "jiji\n");
-    exec();
+    // exec();
     man->render();
-    
-    std::cout << "Hello World!\n";
+
     char basura;
     std::cin >> basura;
     return 0;
