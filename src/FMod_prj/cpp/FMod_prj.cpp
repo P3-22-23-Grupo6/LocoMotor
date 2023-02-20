@@ -16,6 +16,13 @@ void prueba(const char* filename) {
 
     std::cout << a->playSound(test, nullptr, false, &ch) << std::endl;    //31 == FMOD_ERR_INVALID_PARAM
 
+    FMOD_VECTOR pos = FMOD_VECTOR();
+    pos.x = 10; pos.y = 0; pos.z = 0;
+    FMOD_VECTOR vel = FMOD_VECTOR();
+    vel.x = 99; vel.y = 0; vel.z = 0;
+
+    ch->set3DAttributes(&pos, &vel);
+
     bool isPlaying;
     ch->isPlaying(&isPlaying);
     std::cout << isPlaying<< std::endl;
