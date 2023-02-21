@@ -1,0 +1,1 @@
+"Se ejecuta abrindo la solución, en la pestaña herramientas \ lineas de comando \ simbolo del sistema para desarrolladores"
