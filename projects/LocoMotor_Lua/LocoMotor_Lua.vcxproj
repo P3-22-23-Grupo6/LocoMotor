@@ -144,7 +144,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Lua.lib</AdditionalDependencies>
+      <AdditionalDependencies>Lua_d.lib</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Lua\build\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
