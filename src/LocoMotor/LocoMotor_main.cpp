@@ -21,7 +21,6 @@ int main () {
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	//exec();
 	initBullet ();
-	// exec();
 	man->render ();
 
 	char basura;
