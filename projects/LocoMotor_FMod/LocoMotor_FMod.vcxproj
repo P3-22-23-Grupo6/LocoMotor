@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_FMod\FMod_main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\FMod_prj\include\AudioManager.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -107,7 +110,7 @@
     <Lib>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\FMod\core\lib\x64\*.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)Dependecies\FMod\lib\$(PlatformTarget)\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -129,7 +132,7 @@
     <Lib>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\FMod\core\lib\x64\*.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)Dependecies\FMod\lib\$(PlatformTarget)\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -147,7 +150,7 @@
     <Lib>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\FMod\core\lib\x64\*.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)Dependecies\FMod\lib\$(PlatformTarget)\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -169,7 +172,7 @@
     <Lib>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\FMod\core\lib\x64\*.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)Dependecies\FMod\lib\$(PlatformTarget)\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

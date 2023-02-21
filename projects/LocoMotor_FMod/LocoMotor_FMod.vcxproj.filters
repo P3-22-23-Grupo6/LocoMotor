@@ -18,5 +18,13 @@
     <ClCompile Include="..\..\src\LocoMotor_FMod\cpp\FMod_main.cpp">
       <Filter>Archivos de recursos</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\FMod_prj\cpp\AudioManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\FMod_prj\include\AudioManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
