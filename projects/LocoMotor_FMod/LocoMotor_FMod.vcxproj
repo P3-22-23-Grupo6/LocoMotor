@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\FMod_prj\include\AudioManager.h" />
+    <ClCompile Include="..\..\src\LocoMotor_FMod\cpp\AudioManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\LocoMotor_FMod\cpp\AudioManager.cpp" />
+    <ClInclude Include="..\..\src\LocoMotor_FMod\include\AudioManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
