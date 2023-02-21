@@ -1,5 +1,8 @@
 [Tt]emp/
-[Bb]in/
+[Bb]in/*.exe
+[Bb]in/*.pdb
+[Bb]in/*.dll
+[Bb]in/*.log
 [Ll]ib/
 
 .vs/
