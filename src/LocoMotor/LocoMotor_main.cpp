@@ -8,7 +8,6 @@
 int exec();
 int initBullet();
 
-void prueba(const char* filename);
 int main()
 {
     AudioManager::Get()->AddSound("si", "si.wav");
@@ -23,6 +22,7 @@ int main()
     std::cout << (x == nullptr ? "null\n" : "jiji\n");
     //exec();
     initBullet();
+    // exec();
     man->render();
 
     char basura;
