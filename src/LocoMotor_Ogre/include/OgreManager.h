@@ -12,7 +12,6 @@ namespace Ogre {
 namespace OgreWrapper {
 	class RenderScene;
 	class OgreManager {
-
 	public:
 		/// <summary>
 		/// A method to get the <c>OgreManager</c> singleton instance.
@@ -47,8 +46,19 @@ namespace OgreWrapper {
 		/// If the name doesn't exist, getScene returns nullptr.</returns>
 		OgreWrapper::RenderScene* GetScene (const char* name);
 
-		/// @brief Renders a frame for the active render scene.
+		/// <summary>
+		/// Renderiza un frame.
+		///</summary> 
 		void Render ();
+
+		/// @brief 
+		/// Devuelve la RenderWindow
+		/// @return Ventana de renderizado de Ogre
+		Ogre::RenderWindow* GetRenderWindow ();
+
+		void SetActiveScene (OgreWrapper::RenderScene* s) {
+			_activeScene = s;
+		}
 
 	protected:
 		static OgreManager* _instance;

@@ -14,3 +14,4 @@
 *.tlog
 [Dd]ependecies/Ogre/[Bb]uild/
 [Dd]ependecies/Lua/[Bb]uild/
+[Dd]ependecies/Bullet/[Bb]uild/

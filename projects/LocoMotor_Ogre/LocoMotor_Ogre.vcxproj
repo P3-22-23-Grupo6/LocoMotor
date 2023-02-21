@@ -21,12 +21,14 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Camera.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\OgreManager.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Scene.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\RenderScene.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Node.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\OgreManager.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Scene.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Node.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

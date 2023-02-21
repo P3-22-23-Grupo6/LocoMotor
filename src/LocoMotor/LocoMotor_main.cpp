@@ -3,7 +3,9 @@
 
 #include <iostream>
 #include "OgreManager.h"
+#include "RenderScene.h"
 #include "AudioManager.h"
+#include <OgreRenderWindow.h>
 
 int exec ();
 int initBullet ();
@@ -12,19 +14,21 @@ int main () {
 	AudioManager::Get ()->AddSound ("si", "si.wav");
 	AudioManager::Get ()->PlaySound ("si");
 
-	OgreWrapper::OgreManager::init ("Prueba");
-	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::getInstance ();
-	man->createScene ("Escena");
-	man->createScene ("Escena2");
+	OgreWrapper::OgreManager::Init ("Prueba");
+	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance ();
+	OgreWrapper::RenderScene* x = man->CreateScene ("Escena");
 
-	OgreWrapper::Scene* x = man->getScene ("Escenah");
-	std::cout << (x == nullptr ? "null\n" : "jiji\n");
+	x->Prueba ();
+	man->SetActiveScene (x);
+	//std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	//exec();
-	initBullet ();
+	//initBullet ();
 	// exec();
-	man->render ();
-
 	char basura;
-	std::cin >> basura;
+	do {
+		man->Render ();
+		std::cin >> basura;
+	}
+	while (basura != 'e');
 	return 0;
 }

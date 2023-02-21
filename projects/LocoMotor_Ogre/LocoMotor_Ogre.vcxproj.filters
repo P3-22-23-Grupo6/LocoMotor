@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Scene.cpp">
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\RenderScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Camera.cpp">
@@ -24,15 +24,21 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\OgreManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Node.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Scene.h">
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\OgreManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
