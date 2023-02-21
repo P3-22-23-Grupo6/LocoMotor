@@ -1,15 +1,16 @@
 #include "Scene.h"
-#include <iostream>
+#include <OgreSceneManager.h>
+#include <OgreSceneNode.h>
 
-OgreWrapper::Scene::Scene(Ogre::SceneManager* scene)
-{
-	mSM = scene;
+OgreWrapper::RenderScene::RenderScene (Ogre::SceneManager* scene) {
+	_manager = scene;
 }
 
-OgreWrapper::Scene::~Scene()
-{
-	mSM->clearScene();
-	
-	
+OgreWrapper::RenderScene::~RenderScene () {
+	_manager->clearScene ();
+}
+
+void OgreWrapper::RenderScene::Render () {
+
 }
 

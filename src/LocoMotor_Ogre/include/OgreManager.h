@@ -1,30 +1,18 @@
 #ifndef _OGRE_MANAGER_H
 #define _OGRE_MANAGER_H
 
-
-#include <OgreRoot.h>
-#include <OgreViewport.h>
-#include <OgreRenderWindow.h>
-#include <OgreSceneManager.h>
 #include <map>
 
+namespace Ogre {
+	class Root;
+	class RenderWindow;
+}
 
-#include "Scene.h"
 
-namespace OgreWrapper
-{
-	class OgreManager
-	{
-	protected:
-		static OgreManager* instance;
+namespace OgreWrapper {
+	class RenderScene;
+	class OgreManager {
 
-		Ogre::Root* mRoot;
-		Ogre::RenderWindow* mWindow;
-
-		std::map<const char*, Scene*> scenes;
-
-		OgreManager();
-		~OgreManager();
 	public:
 		/// <summary>
 		/// A method to get the <c>OgreManager</c> singleton instance.
@@ -32,7 +20,7 @@ namespace OgreWrapper
 		/// else it will return nullptr.
 		/// </summary>
 		/// <returns>The <c>OgreManager</c> singleton instance if init has been called beforehand. Returns <c>nullptr</c> if not</returns>
-		static OgreManager* getInstance();
+		static OgreWrapper::OgreManager* GetInstance ();
 
 		/// <summary>
 		/// Initializes the <c>OgreManager</c> singleton instance.
@@ -40,7 +28,7 @@ namespace OgreWrapper
 		/// </summary>
 		/// <param name="appName"> The name that will appear as the Window title </param>
 		/// <returns><value>true</value> if the Instance was initialized correctly, <value>false</value> otherwise</returns>
-		static bool init(const char* appName);
+		static bool Init (const char* appName);
 
 		/// <summary>
 		/// Creates a scene.
@@ -49,16 +37,31 @@ namespace OgreWrapper
 		/// <param name="name">Name for the new scene.</param>
 		/// <returns>The newly created scene.<para/>
 		/// If the name is already taken, the scene with that name will be returned instead.</returns>
-		OgreWrapper::Scene* createScene(const char* name);
+		OgreWrapper::RenderScene* CreateScene (const char* name);
 
 		/// <summary>
-		/// 
+		/// Returns a created scene, searched by name in the list of scenes
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns>A pointer to the scene with the indicated name<para/>
 		/// If the name doesn't exist, getScene returns nullptr.</returns>
-		OgreWrapper::Scene* getScene(const char* name);
-		void render() { mRoot->startRendering(); };
+		OgreWrapper::RenderScene* GetScene (const char* name);
+
+		/// @brief Renders a frame for the active render scene.
+		void Render ();
+
+	protected:
+		static OgreManager* _instance;
+
+		Ogre::Root* _root;
+		Ogre::RenderWindow* _window;
+
+		std::map<const char*, OgreWrapper::RenderScene*> _scenes;
+
+		OgreWrapper::RenderScene* _activeScene;
+
+		OgreManager ();
+		~OgreManager ();
 	};
 }
 #endif
