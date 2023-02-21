@@ -4,9 +4,12 @@
 [Bb]in/*.dll
 [Bb]in/*.log
 [Ll]ib/
+[Oo]bj/
 
 .vs/
 
 *.user
+*.obj
+*.tlog
 [Dd]ependecies/Ogre/[Bb]uild/
 [Dd]ependecies/Lua/[Bb]uild/

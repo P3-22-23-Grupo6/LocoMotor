@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MiMotor", "projects\MiMotor\MiMotor.vcxproj", "{B3A1C7D3-A022-4475-8517-EEB5873EBE89}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocoMotor", "projects\LocoMotor\LocoMotor.vcxproj", "{B3A1C7D3-A022-4475-8517-EEB5873EBE89}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FMod_prj", "projects\FMod_prj\FMod_prj.vcxproj", "{ACF2D0E9-C1AA-4BD1-A053-68F16E0BF4C8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocoMotor_FMod", "projects\LocoMotor_FMod\LocoMotor_FMod.vcxproj", "{ACF2D0E9-C1AA-4BD1-A053-68F16E0BF4C8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lua_prj", "projects\Lua_prj\Lua_prj.vcxproj", "{72D80436-2B2E-4873-8AEC-6C8123E81BAB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocoMotor_Lua", "projects\LocoMotor_Lua\LocoMotor_Lua.vcxproj", "{72D80436-2B2E-4873-8AEC-6C8123E81BAB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Ogre_prj", "projects\Ogre_prj\Ogre_prj.vcxproj", "{E638967F-58FE-4585-BDA8-A2D7A271406A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocoMotor_Ogre", "projects\LocoMotor_Ogre\LocoMotor_Ogre.vcxproj", "{E638967F-58FE-4585-BDA8-A2D7A271406A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocoMotor_Bullet", "projects\LocoMotor_Bullet\LocoMotor_Bullet.vcxproj", "{E74CA361-1016-4C4C-B533-6C2CA7399D5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{E638967F-58FE-4585-BDA8-A2D7A271406A}.Release|x64.Build.0 = Release|x64
 		{E638967F-58FE-4585-BDA8-A2D7A271406A}.Release|x86.ActiveCfg = Release|Win32
 		{E638967F-58FE-4585-BDA8-A2D7A271406A}.Release|x86.Build.0 = Release|Win32
+		{E74CA361-1016-4C4C-B533-6C2CA7399D5A}.Debug|x64.ActiveCfg = Debug|x64
+		{E74CA361-1016-4C4C-B533-6C2CA7399D5A}.Debug|x64.Build.0 = Debug|x64
+		{E74CA361-1016-4C4C-B533-6C2CA7399D5A}.Debug|x86.ActiveCfg = Debug|Win32
+		{E74CA361-1016-4C4C-B533-6C2CA7399D5A}.Debug|x86.Build.0 = Debug|Win32
+		{E74CA361-1016-4C4C-B533-6C2CA7399D5A}.Release|x64.ActiveCfg = Release|x64
+		{E74CA361-1016-4C4C-B533-6C2CA7399D5A}.Release|x64.Build.0 = Release|x64
+		{E74CA361-1016-4C4C-B533-6C2CA7399D5A}.Release|x86.ActiveCfg = Release|Win32
+		{E74CA361-1016-4C4C-B533-6C2CA7399D5A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
