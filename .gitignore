@@ -4,6 +4,7 @@
 [Bb]in/*.dll
 [Bb]in/*.log
 [Ll]ib/
+!Dependecies/FMod/core/lib/
 [Oo]bj/
 
 .vs/
