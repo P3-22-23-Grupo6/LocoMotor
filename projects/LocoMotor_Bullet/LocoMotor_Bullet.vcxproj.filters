@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\Bullet_prj\bullet_main.cpp">
+    <ClCompile Include="..\..\src\LocoMotor_Bullet\bullet_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
