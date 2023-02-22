@@ -60,6 +60,8 @@ namespace OgreWrapper {
 			_activeScene = s;
 		}
 
+		void loadResources ();
+
 	protected:
 		static OgreManager* _instance;
 

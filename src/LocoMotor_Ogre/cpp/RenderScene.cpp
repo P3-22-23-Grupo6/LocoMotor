@@ -5,6 +5,7 @@
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
 #include <OgreViewport.h>
+#include <OgreEntity.h>
 #include <iostream>
 
 OgreWrapper::RenderScene::RenderScene (Ogre::SceneManager* scene) {
@@ -43,7 +44,12 @@ void OgreWrapper::RenderScene::Prueba () {
 	mCamNode->Translate (0, 0, 1000);
 	//mCamNode->lookAt (Ogre::Vector3 (0, 0, 0), Ogre::Node::TS_WORLD);
 	//mCamNode->setDirection(Ogre::Vector3(0, 0, -1)); 
-	
-	
+
+	//OgreWrapper::Node* mCubeNode = new OgreWrapper::Node (_manager->getRootSceneNode ()->createChildSceneNode ());
+	//
+	//
+	//Ogre::Entity* cube = _manager->createEntity ("cube.mesh");
+	//cube->setMaterialName ("LocoMotor/default");
+	//mCubeNode->Attach (cube);
 }
 
