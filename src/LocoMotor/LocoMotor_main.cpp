@@ -9,8 +9,8 @@ int exec ();
 int initBullet ();
 
 int main () {
-	AudioManager::Get ()->AddSound ("si", "si.wav");
-	AudioManager::Get ()->PlaySound ("si");
+	AudioManager::Get ()->AddSound (0, "si.wav");
+	AudioManager::Get ()->PlaySound (0);
 
 	OgreWrapper::OgreManager::init ("Prueba");
 	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::getInstance ();
