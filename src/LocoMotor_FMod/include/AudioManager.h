@@ -45,7 +45,7 @@ private:
 	FMOD::System* _sys = nullptr;
 	FMOD::ChannelGroup* _main = nullptr;
 
-	std::unordered_map<const uint32_t, FMOD::Sound*> _soundLib;
+	std::unordered_map<uint32_t, FMOD::Sound*> _soundLib;
 
 	/// @brief Constructor is set to private, use the 'Get' method for access to the instance of this object
 	AudioManager ();

@@ -15,7 +15,7 @@ AudioManager::AudioManager () {
 	_sys->set3DNumListeners (0);
 	_sys->set3DSettings (1.f, 1.f, 1.f);
 
-	_soundLib = std::unordered_map<const uint32_t, FMOD::Sound*> ();
+	_soundLib = std::unordered_map<uint32_t, FMOD::Sound*> ();
 }
 
 AudioManager::~AudioManager () {
