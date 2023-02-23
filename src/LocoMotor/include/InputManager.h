@@ -2,7 +2,7 @@
 #ifndef INPUTMANAGER
 #define INPUTMANAGER
 
-//#include "SDL_keyboard.h"
+#include "SDL_keyboard.h"
 #include <vector>
 #include <array>
 
@@ -15,7 +15,6 @@ private:
 
 	static InputManager* instance_;
 
-	//pendiente de agregar mandos
 
 	struct KeyState {
 		bool down_ = false;

@@ -1,6 +1,6 @@
 #include "InputManager.h"
-//#include "SDL_keyboard.h"
-//#include <SDL_events.h>
+#include "SDL_keyboard.h"
+#include <SDL_events.h>
 
 
 InputManager* InputManager::instance_ = 0;
