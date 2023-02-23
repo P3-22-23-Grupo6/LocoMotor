@@ -6,6 +6,9 @@
 namespace Ogre {
 	class Root;
 	class RenderWindow;
+	namespace RTShader {
+		class ShaderGenerator;
+	}
 }
 
 
@@ -61,6 +64,8 @@ namespace OgreWrapper {
 		}
 
 		void loadResources ();
+
+		Ogre::RTShader::ShaderGenerator* mShaderGenerator;
 
 	protected:
 		static OgreManager* _instance;
