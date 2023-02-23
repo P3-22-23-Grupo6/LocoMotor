@@ -38,6 +38,8 @@ public:
 	/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
 	uint16_t AddListener (int& index);
 
+	/// @brief Gets the FMOD::System object from this manager
+	/// @return The System in question
 	FMOD::System* GetSystem ();
 
 	/// @brief Get the fmod error corresponding to the param passed

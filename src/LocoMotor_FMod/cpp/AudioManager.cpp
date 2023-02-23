@@ -90,8 +90,16 @@ uint16_t AudioManager::PlaySound (const uint32_t name) {
 }
 
 uint16_t AudioManager::AddListener (int& index) {
-	_sys->get3DNumListeners (&index);
-	return _sys->set3DNumListeners (index);
+	static bool first = true;
+	if (first) {
+		first = false;
+		index = 0;
+		return 0;
+	}
+	else {
+		_sys->get3DNumListeners (&index);
+		return _sys->set3DNumListeners (index + 1);
+	}
 }
 
 FMOD::System* AudioManager::GetSystem () {

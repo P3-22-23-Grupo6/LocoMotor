@@ -13,15 +13,16 @@ AudioListener::AudioListener (AudioManager* manager) : man (manager) {
 	_posRemember->y = 0;
 	_posRemember->z = 0;
 	_elapsedTime = 0;
+
 }
 
 AudioListener::~AudioListener () {
 }
 
-void AudioListener::update (const float& deltaTime) {
+void AudioListener::Update (const float& deltaTime) {
 }
 
-void AudioListener::updateFunni (const float& deltaTime) {
+void AudioListener::UpdateFunni (const float& deltaTime) {
 
 	_elapsedTime += deltaTime;
 
@@ -31,9 +32,14 @@ void AudioListener::updateFunni (const float& deltaTime) {
 	pos.z = 0;
 
 	FMOD_VECTOR vel = FMOD_VECTOR ();
-	vel.x = (pos.x - _posRemember->x) / deltaTime;
-	vel.y = (pos.y - _posRemember->y) / deltaTime;
-	vel.z = (pos.z - _posRemember->z) / deltaTime;
+
+	//vel.x = (pos.x - _posRemember->x) / deltaTime;
+	//vel.y = (pos.y - _posRemember->y) / deltaTime;
+	//vel.z = (pos.z - _posRemember->z) / deltaTime;
+
+	vel.x = 0;
+	vel.y = 0;
+	vel.z = 0;
 
 	FMOD_VECTOR frw = FMOD_VECTOR ();
 	frw.x = cos (_elapsedTime);
@@ -45,10 +51,17 @@ void AudioListener::updateFunni (const float& deltaTime) {
 	upw.y = 1;
 	upw.z = 0;
 
-	std::cout << man->GetError (man->GetSystem ()->set3DListenerAttributes (0, &pos, &vel, &frw, &upw)) << std::endl;
-
 	_posRemember->x = pos.x;
 	_posRemember->y = pos.y;
 	_posRemember->z = pos.z;
+
+#ifdef _DEBUG
+	auto err = man->GetSystem ()->set3DListenerAttributes (_fIndex, &pos, &vel, &frw, &upw);
+	if (err != FMOD_OK) {
+		std::cout << "Listener error: " << man->GetError (err) << std::endl;
+	}
+#else
+	man->GetSystem ()->set3DListenerAttributes (_fIndex, &pos, &vel, &frw, &upw);
+#endif // _DEBUG
 
 }

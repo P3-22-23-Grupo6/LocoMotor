@@ -4,7 +4,7 @@
 #include <iostream>
 #include "OgreManager.h"
 #include "AudioManager.h"
-#include "AudioListener.h"
+#include "AudioListener.h"		//No se que tan legal seria hacer esto supongo el manager deberia incluir ya el listener pero habra que consultarlo nose me tengo que ir
 
 int exec ();
 int initBullet ();
@@ -12,7 +12,7 @@ int initBullet ();
 int main () {
 	AudioManager::Get ()->AddSound (0, "si.wav");
 	auto list = AudioListener (AudioManager::Get ());
-	list.updateFunni (5.f);
+	list.UpdateFunni (5.f);
 	AudioManager::Get ()->Update (0.0f);
 	AudioManager::Get ()->PlaySound (0);
 
