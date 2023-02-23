@@ -17,6 +17,11 @@ public:
 	/// @return The reference to the instance of the AudioManager
 	static AudioManager* Get ();
 
+	/// @brief Updates the Fmod API to change channel output depending on positions and velocity
+	/// @param deltaTime Bruh
+	/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
+	uint16_t Update (float deltaTime);
+
 	/// @brief Adds a sound to the system, for later use
 	/// @param Name that will be used to refer to this sound upon being created
 	/// @param File to get the sound from
@@ -38,7 +43,7 @@ public:
 	/// @brief Get the fmod error corresponding to the param passed
 	/// @param errorCode Param to get the Fmod error corresponding to it
 	/// @return The Fmod error message
-	const char* GetError (uint16_t& errorCode);
+	const char* GetError (const uint16_t& errorCode);
 
 private:
 

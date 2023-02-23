@@ -14,6 +14,8 @@ class AudioListener {
 
 	int _fIndex;
 
+	float _elapsedTime;
+
 	AudioManager* man;
 
 	FMOD_VECTOR* _posRemember;
