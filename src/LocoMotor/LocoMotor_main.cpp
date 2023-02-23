@@ -4,6 +4,7 @@
 #include <iostream>
 #include "OgreManager.h"
 #include "AudioManager.h"
+#include "InputManager.h"
 
 int exec ();
 int initBullet ();
