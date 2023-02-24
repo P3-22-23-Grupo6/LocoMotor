@@ -44,6 +44,4 @@ public:
 	const char* GetError (uint16_t& errorCode);
 };
 
-
 #endif // !AUDIOMANAGER
-
