@@ -152,7 +152,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\Ogre\Build\lib\$(Configuration)\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Codec_STBI_d.lib;OgreMain_d.lib;RenderSystem_Direct3D11_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -173,7 +174,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\Ogre\Build\lib\$(Configuration)\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Codec_STBI.lib;OgreMain.lib;RenderSystem_Direct3D11.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
