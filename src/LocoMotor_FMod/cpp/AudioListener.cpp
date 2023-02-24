@@ -65,3 +65,13 @@ void AudioListener::UpdateFunni (const float& deltaTime) {
 #endif // _DEBUG
 
 }
+//
+//void AudioListener::Update (const uint32_t& deltaTime) {
+//	float dT = (float) deltaTime / 1000.f;
+//	Update (dT);
+//}
+//
+//void AudioListener::UpdateFunni (const uint32_t& deltaTime) {
+//	float dT = (float) deltaTime / 1000.f;
+//	UpdateFunni (dT);
+//}

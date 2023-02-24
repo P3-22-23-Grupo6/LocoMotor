@@ -22,6 +22,14 @@ public:
 	/// @param deltaTime Bruh
 	void UpdateFunni (const float& deltaTime);
 
+	///// @brief Actualizara los datos del listener dependiendo del gameobject asociado
+	///// @param deltaTime En este caso, se utiliza para calcular la velocidad del gameobject
+	//void Update (const uint32_t& deltaTime);
+
+	///// @brief Lo unico que hace es rotar (deltaTime / 1000) radianes el listener de fmod asociado
+	///// @param deltaTime Bruh
+	//void UpdateFunni (const uint32_t& deltaTime);
+
 private:
 
 	// + lo tipico de gameobject y tal
