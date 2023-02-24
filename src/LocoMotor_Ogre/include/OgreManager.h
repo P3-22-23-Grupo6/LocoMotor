@@ -58,7 +58,7 @@ namespace OgreWrapper
 		/// <returns>A pointer to the scene with the indicated name<para/>
 		/// If the name doesn't exist, getScene returns nullptr.</returns>
 		OgreWrapper::Scene* getScene(const char* name);
-		void render() { mRoot->startRendering(); };
+		void render() { mRoot->renderOneFrame(); };
 	};
 }
 #endif
