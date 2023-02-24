@@ -11,11 +11,8 @@ int exec ();
 int initBullet ();
 
 int main () {
-	AudioManager::Get ()->AddSound (0, "si.wav");
+	AudioManager::Get ()->AddSound (0, "A.wav");
 	auto list = AudioListener (AudioManager::Get ());
-	list.UpdateFunni (5.f);
-	AudioManager::Get ()->Update (0.0f);
-	AudioManager::Get ()->PlaySound (0);
 
 
 	OgreWrapper::OgreManager::init ("Prueba");
@@ -27,9 +24,14 @@ int main () {
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	//exec();
 	initBullet ();
-	man->render ();
+	// man->render ();
 
-	char basura;
-	std::cin >> basura;
+	AudioManager::Get ()->PlaySound (0);
+	while (true) {
+		list.UpdateFunni (.000003f);
+		AudioManager::Get ()->Update (0.0f);
+		
+	}
+
 	return 0;
 }
