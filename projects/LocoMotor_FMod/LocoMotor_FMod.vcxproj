@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\LocoMotor_FMod\cpp\AudioListener.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_FMod\cpp\AudioManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\LocoMotor_FMod\include\AudioListener.h" />
     <ClInclude Include="..\..\src\LocoMotor_FMod\include\AudioManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
