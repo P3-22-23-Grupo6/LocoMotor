@@ -3,15 +3,17 @@
 [Bb]in/*.pdb
 [Bb]in/*.dll
 [Bb]in/*.log
+[Bb]in/*.lib
 [Ll]ib/
 !Dependecies/FMod/core/lib/
 [Oo]bj/
 
 .vs/
 
-
+*.user
 *.obj
 *.tlog
 [Dd]ependecies/Ogre/[Bb]uild/
 [Dd]ependecies/Lua/[Bb]uild/
-[Dd]ependecies/Bullet/[Bb]uild/
+Dependecies/Bullet/Src/examples/ThirdPartyLibs/openvr/bin
+Dependecies/Bullet/Build/
