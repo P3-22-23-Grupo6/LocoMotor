@@ -6,6 +6,7 @@
 #include "RenderScene.h"
 #include "AudioManager.h"
 #include <OgreRenderWindow.h>
+#include <SDL_events.h>
 
 int exec ();
 int initBullet ();
@@ -25,10 +26,16 @@ int main () {
 	//initBullet ();
 	// exec();
 	char basura;
-	do {
+	while(true){
 		man->Render ();
-		std::cin >> basura;
+
+		SDL_Event evt;
+		
+		SDL_PollEvent (&evt);
+		if (evt.type == SDL_QUIT) {
+			break;
+		}
 	}
-	while (basura != 'e');
+	
 	return 0;
 }

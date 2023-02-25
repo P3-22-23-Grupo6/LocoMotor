@@ -7,6 +7,10 @@
 #include <OgreShaderGenerator.h>
 #include <OgreSGTechniqueResolverListener.h>
 #include "RenderScene.h"
+#include <SDL.h>
+#include <SDL_video.h>
+#include <SDL_syswm.h>
+
 #include <iostream>
 
 
@@ -32,7 +36,8 @@ bool OgreWrapper::OgreManager::Init (const char* name) {
 	if (_instance == nullptr) _instance = new OgreWrapper::OgreManager ();
 	_instance->_root = new Ogre::Root ();
 	_instance->_root->showConfigDialog (nullptr);
-	_instance->_window = _instance->_root->initialise (true, name);
+	_instance->_root->initialise (false);
+	_instance->InitWindow (name);
 	_instance->loadResources ();
 	return _instance->_root->isInitialised ();
 }
@@ -68,7 +73,7 @@ void OgreWrapper::OgreManager::Render () {
 }
 
 Ogre::RenderWindow* OgreWrapper::OgreManager::GetRenderWindow () {
-	return _window;
+	return mWindow.render;
 }
 
 void OgreWrapper::OgreManager::loadResources () {
@@ -129,4 +134,39 @@ void OgreWrapper::OgreManager::loadResources () {
 	}
 
 	Ogre::ResourceGroupManager::getSingleton ().initialiseAllResourceGroups ();
+}
+
+OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (const char* name) {
+	uint32_t w, h;
+	Ogre::NameValuePairList miscParams;
+
+	Ogre::ConfigOptionMap ropts = _root->getRenderSystem ()->getConfigOptions ();
+
+	std::istringstream mode (ropts["Video Mode"].currentValue);
+	Ogre::String token;
+	mode >> w; // width
+	mode >> token; // 'x' as seperator between width and height
+	mode >> h; // height
+
+	miscParams["FSAA"] = ropts["FSAA"].currentValue;
+	miscParams["vsync"] = ropts["VSync"].currentValue;
+	miscParams["gamma"] = ropts["sRGB Gamma Conversion"].currentValue;
+
+	if (!SDL_WasInit (SDL_INIT_VIDEO)) SDL_InitSubSystem (SDL_INIT_VIDEO);
+
+	Uint32 flags = SDL_WINDOW_RESIZABLE;
+
+	if (ropts["Full Screen"].currentValue == "Yes")  flags = SDL_WINDOW_FULLSCREEN;
+	//else  flags = SDL_WINDOW_RESIZABLE;
+
+	mWindow.native = SDL_CreateWindow (name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
+
+	SDL_SysWMinfo wmInfo;
+	SDL_VERSION (&wmInfo.version);
+	SDL_GetWindowWMInfo (mWindow.native, &wmInfo);
+
+	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString (size_t (wmInfo.info.win.window));
+
+	mWindow.render = _root->createRenderWindow (name, w, h, false, &miscParams);
+	return mWindow;
 }

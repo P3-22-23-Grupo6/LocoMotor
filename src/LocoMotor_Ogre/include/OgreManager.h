@@ -11,9 +11,14 @@ namespace Ogre {
 	}
 }
 
-
+class SDL_Window;
 namespace OgreWrapper {
 	class RenderScene;
+
+	struct NativeWindowPair {
+		Ogre::RenderWindow* render = nullptr;
+		SDL_Window* native = nullptr;
+	};
 	class OgreManager {
 	public:
 		/// <summary>
@@ -67,10 +72,13 @@ namespace OgreWrapper {
 
 		Ogre::RTShader::ShaderGenerator* mShaderGenerator;
 
+		NativeWindowPair InitWindow (const char* name);
+
 	protected:
 		static OgreManager* _instance;
 
 		Ogre::Root* _root;
+		NativeWindowPair mWindow;
 		Ogre::RenderWindow* _window;
 
 		std::map<const char*, OgreWrapper::RenderScene*> _scenes;

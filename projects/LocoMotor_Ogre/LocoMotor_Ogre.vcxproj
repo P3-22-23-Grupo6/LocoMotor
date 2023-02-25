@@ -146,7 +146,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Bites\include;$(SolutionDir)Dependecies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Ogre\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\chema\Documents\3_Carrera\P3\Motor\Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Bites\include;$(SolutionDir)Dependecies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Ogre\include</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -154,7 +154,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)Dependecies\Ogre\Build\lib\Debug\*.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-build\RelWithDebInfo;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
