@@ -30,7 +30,7 @@ int main () {
 
 	uint32_t i = 0;
 
-	AudioManager::Get ()->PlaySound (0);
+	//AudioManager::Get ()->PlaySound (0);
 	while (true) {
 
 		// AUDIO
@@ -43,9 +43,11 @@ int main () {
 		// INPUT
 		if (InputManager::Get ()->PollEvents ())
 			break;
+
+
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
-		std::cout << buttonPressed;
+		std::cout << buttonPressed << "\n";
 
 
 		i++;
