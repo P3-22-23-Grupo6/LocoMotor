@@ -4,14 +4,14 @@
 #include <SDL_events.h>
 
 
-InputManager* InputManager::instance_ = 0;
+InputManager* InputManager::instance_ = nullptr;
 
 InputManager::InputManager () {
 }
 
 InputManager* InputManager::Get () {
-	static InputManager* inst = new InputManager ();
-	return inst;
+	if(InputManager::instance_==nullptr)  instance_ = new InputManager ();
+	return instance_;
 }
 
 

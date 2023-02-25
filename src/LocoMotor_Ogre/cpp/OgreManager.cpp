@@ -3,7 +3,7 @@
 #include <OgreConfigFile.h>
 #include <OgreRenderWindow.h>
 #include <OgreGpuProgramManager.h>
-#include <OgreMaterialManager.h>
+
 #include <OgreShaderGenerator.h>
 #include <OgreSGTechniqueResolverListener.h>
 #include "RenderScene.h"
@@ -18,12 +18,10 @@ OgreWrapper::OgreManager* OgreWrapper::OgreManager::_instance = nullptr;
 
 OgreWrapper::OgreManager::OgreManager () {
 	_root = nullptr;
-	_window = nullptr;
+
 }
 
 OgreWrapper::OgreManager::~OgreManager () {
-	delete _window;
-	delete _root;
 }
 
 OgreWrapper::OgreManager* OgreWrapper::OgreManager::GetInstance () {
@@ -111,7 +109,7 @@ void OgreWrapper::OgreManager::loadResources () {
 		Ogre::ResourceGroupManager::getSingleton ().addResourceLocation (mRTShaderLibPath + "/GLSLES", type_name, sec_name);
 	}
 	else if (Ogre::GpuProgramManager::getSingleton ().isSyntaxSupported ("glsl")) {
-		
+
 	}
 	else if (Ogre::GpuProgramManager::getSingleton ().isSyntaxSupported ("hlsl")) {
 		Ogre::ResourceGroupManager::getSingleton ().addResourceLocation (mRTShaderLibPath + "/HLSL", type_name, sec_name);
@@ -125,7 +123,7 @@ void OgreWrapper::OgreManager::loadResources () {
 		/*if (mRTShaderLibPath.empty ())
 			return;*/
 
-		Ogre::MaterialManager::Listener* mMaterialMgrListener = nullptr;
+
 		// Create and register the material manager listener if it doesn't exist yet.
 		if (!mMaterialMgrListener) {
 			mMaterialMgrListener = new OgreBites::SGTechniqueResolverListener (mShaderGenerator);
@@ -169,4 +167,51 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (const char* 
 
 	mWindow.render = _root->createRenderWindow (name, w, h, false, &miscParams);
 	return mWindow;
+}
+
+
+void OgreWrapper::OgreManager::Shutdown () {	
+	// Restore default scheme.
+	Ogre::MaterialManager::getSingleton ().setActiveScheme (Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
+
+	// Unregister the material manager listener.
+	if (mMaterialMgrListener != nullptr) {
+		Ogre::MaterialManager::getSingleton ().removeListener (mMaterialMgrListener);
+		delete mMaterialMgrListener;
+		mMaterialMgrListener = nullptr;
+	}
+
+	// Destroy RTShader system.
+	if (mShaderGenerator != nullptr) {
+		Ogre::RTShader::ShaderGenerator::destroy ();
+		mShaderGenerator = nullptr;
+	}
+
+	if (mWindow.render != nullptr) {
+		mWindow.render->removeAllViewports ();
+		_root->destroyRenderTarget (mWindow.render);
+		
+		mWindow.render = nullptr;
+	}
+
+	if (mWindow.native != nullptr) {
+		SDL_DestroyWindow (mWindow.native);
+		SDL_QuitSubSystem (SDL_INIT_VIDEO);
+		mWindow.native = nullptr;
+	}
+
+	for (auto it = _scenes.begin (); it != _scenes.end (); it = _scenes.erase (it)) {
+		if (it->second = _activeScene) {
+			_activeScene = nullptr;
+		}
+		_root->destroySceneManager (it->second->GetMan ());
+		delete it->second;
+	}
+
+
+	delete _root;
+	_root = nullptr;
+
+	delete OgreManager::_instance;
+	OgreManager::_instance = nullptr;
 }

@@ -2,7 +2,7 @@
 #define _OGRE_MANAGER_H
 
 #include <map>
-
+#include <OgreMaterialManager.h>
 namespace Ogre {
 	class Root;
 	class RenderWindow;
@@ -74,14 +74,17 @@ namespace OgreWrapper {
 
 		NativeWindowPair InitWindow (const char* name);
 
+		void Shutdown ();
+
 	protected:
 		static OgreManager* _instance;
 
 		Ogre::Root* _root;
 		NativeWindowPair mWindow;
-		Ogre::RenderWindow* _window;
 
 		std::map<const char*, OgreWrapper::RenderScene*> _scenes;
+
+		Ogre::MaterialManager::Listener* mMaterialMgrListener = nullptr;
 
 		OgreWrapper::RenderScene* _activeScene;
 

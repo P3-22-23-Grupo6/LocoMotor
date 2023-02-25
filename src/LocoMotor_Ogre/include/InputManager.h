@@ -45,7 +45,9 @@ public:
 
 	bool PollEvents ();
 
-
+	static void Destroy () {
+		delete InputManager::instance_;
+	}
 };
 
 #endif // !INPUTMANAGER

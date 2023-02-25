@@ -11,11 +11,11 @@
 
 OgreWrapper::RenderScene::RenderScene (Ogre::SceneManager* scene) {
 	_manager = scene;
+	vp = nullptr;
 	OgreManager::GetInstance ()->mShaderGenerator->addSceneManager (_manager);
 }
 
 OgreWrapper::RenderScene::~RenderScene () {
-	_manager->clearScene ();
 }
 
 void OgreWrapper::RenderScene::Render () {

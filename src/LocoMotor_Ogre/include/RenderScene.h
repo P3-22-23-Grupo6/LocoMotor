@@ -23,6 +23,10 @@ namespace OgreWrapper {
 		/// <param name="scene">Ogre::SceneManager to wrap</param>
 		RenderScene (Ogre::SceneManager* scene);
 
+		Ogre::SceneManager* GetMan () {
+			return _manager;
+		};
+
 		/// <summary>
 		/// Destructor
 		/// </summary>
