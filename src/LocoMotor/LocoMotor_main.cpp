@@ -33,8 +33,22 @@ int main () {
 
 	AudioManager::Get ()->PlaySound (0);
 	while (i < 0x00300000) {
+
+		// AUDIO
 		list.UpdateFunni (.000003f);
 		AudioManager::Get ()->Update (0.0f);
+
+		// RENDER
+		man->render ();
+
+		// INPUT
+		if (InputManager::Get ()->PollEvents ())
+			break;
+		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
+
+		std::cout << buttonPressed;
+
+
 		i++;
 	}
 
