@@ -14,7 +14,6 @@ COPY /y %OgreBuild%\bin\debug\Codec_STBI_d.dll %BIN%
 COPY /y %OgreBuild%\bin\debug\OgreMain_d.dll %BIN%
 COPY /y %OgreBuild%\bin\debug\RenderSystem_Direct3D11_d.dll %BIN%
 COPY /y %OgreBuild%\bin\debug\zlib.dll %BIN%
-COPY /y %OgreBuild%\bin\debug\SDL2.dll %BIN%
 COPY /y %OgreBuild%\bin\debug\OgreRTShaderSystem_d.dll %BIN%
 
 
