@@ -26,6 +26,8 @@ private:
 
 	KeyState keys_[SDL_NUM_SCANCODES];
 
+	std::vector<int> keysToReset;
+
 
 	//void manageKeyDown (const SDL_Event& event);
 	//void manageKeyUp (const SDL_Event& event);
@@ -35,6 +37,7 @@ public:
 	static InputManager* Get ();
 
 	bool GetKeyDown (const SDL_Scancode& code);
+	bool GetKey (const SDL_Scancode& code);
 	bool GetKeyUp (const SDL_Scancode& code);
 
 
@@ -44,6 +47,8 @@ public:
 	void ManageKeys (const SDL_Event& event);
 
 	bool PollEvents ();
+
+	void ResetKeys ();
 
 	static void Destroy () {
 		delete InputManager::instance_;

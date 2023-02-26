@@ -19,18 +19,22 @@ bool InputManager::GetKeyDown (const SDL_Scancode& code) {
 	return keys_[code].down_;
 }
 
+bool InputManager::GetKey (const SDL_Scancode& code) {
+	return keys_[code].pressed_;
+}
+
 bool InputManager::GetKeyUp (const SDL_Scancode& code) {
 	return keys_[code].up_;
 }
 
-
+// Almacena el evento de teclado registrado en la variable referenciada "event" en el array keys
 void InputManager::ManageKeys (const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 		SDL_Scancode code = event.key.keysym.scancode;
 		if (!keys_[code].pressed_) {
 			keys_[code].down_ = true;
-			keys_[code].up_ = false;
 			keys_[code].pressed_ = true;
+			keys_[code].up_ = false;
 			//keysDownToFlush.push_back (code);
 		}
 	}
@@ -43,15 +47,19 @@ void InputManager::ManageKeys (const SDL_Event& event) {
 	}
 }
 
+// Registra todos los eventos relacionados con input en este frame, los recorre uno a uno
+// Almacenandolos en sus respectivas variables
 bool InputManager::PollEvents () {
+	
+	ResetKeys ();
 
 	SDL_Event event;
-	//InputManager::getInstance ()->flushInput ();
 	while (SDL_PollEvent (&event)) {
 		if (event.type == SDL_QUIT)
-			return true;
+			return false;
 
 		// Input managment, cambiar en caso de mando
+		// Almacenar eventos de teclado en el array keys
 		ManageKeys (event);
 
 		//switch (event.type)
@@ -69,4 +77,12 @@ bool InputManager::PollEvents () {
 		//}
 
 	}
+}
+
+void InputManager::ResetKeys () {
+	for (int c : keysToReset) {
+		keys_[c].up_ = false;
+		keys_[c].down_ = false;
+	}
+	keysToReset.clear ();
 }
