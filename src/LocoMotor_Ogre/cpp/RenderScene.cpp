@@ -19,7 +19,7 @@ OgreWrapper::RenderScene::~RenderScene () {
 }
 
 void OgreWrapper::RenderScene::Render () {
-	std::cout << "Render\n";
+	//std::cout << "Render\n";
 	vp->update();
 }
 

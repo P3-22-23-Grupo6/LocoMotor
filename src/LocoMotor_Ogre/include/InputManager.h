@@ -44,7 +44,7 @@ public:
 	//void manageButtonDown (const SDL_Event& event);
 	//void manageButtonUp (const SDL_Event& event);
 
-	void ManageKeys (const SDL_Event& event);
+	void ManageKey (const SDL_Event& event);
 
 	bool PollEvents ();
 

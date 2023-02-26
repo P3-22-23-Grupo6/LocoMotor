@@ -10,7 +10,7 @@ InputManager::InputManager () {
 }
 
 InputManager* InputManager::Get () {
-	if(InputManager::instance_==nullptr)  instance_ = new InputManager ();
+	if (InputManager::instance_ == nullptr)  instance_ = new InputManager ();
 	return instance_;
 }
 
@@ -28,14 +28,14 @@ bool InputManager::GetKeyUp (const SDL_Scancode& code) {
 }
 
 // Almacena el evento de teclado registrado en la variable referenciada "event" en el array keys
-void InputManager::ManageKeys (const SDL_Event& event) {
+void InputManager::ManageKey (const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 		SDL_Scancode code = event.key.keysym.scancode;
 		if (!keys_[code].pressed_) {
 			keys_[code].down_ = true;
 			keys_[code].pressed_ = true;
 			keys_[code].up_ = false;
-			//keysDownToFlush.push_back (code);
+			keysToReset.push_back (code);
 		}
 	}
 	else if (event.type == SDL_KEYUP) {
@@ -43,24 +43,26 @@ void InputManager::ManageKeys (const SDL_Event& event) {
 		keys_[code].down_ = false;
 		keys_[code].pressed_ = false;
 		keys_[code].up_ = true;
-		//keysUpsToFlush.push_back (code);
+		keysToReset.push_back (code);
 	}
 }
 
 // Registra todos los eventos relacionados con input en este frame, los recorre uno a uno
 // Almacenandolos en sus respectivas variables
 bool InputManager::PollEvents () {
-	
-	ResetKeys ();
+
+	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
+	if (keysToReset.size () != 0)
+		ResetKeys ();
 
 	SDL_Event event;
 	while (SDL_PollEvent (&event)) {
 		if (event.type == SDL_QUIT)
-			return false;
+			return true;
 
 		// Input managment, cambiar en caso de mando
 		// Almacenar eventos de teclado en el array keys
-		ManageKeys (event);
+		ManageKey (event);
 
 		//switch (event.type)
 		//{
@@ -80,9 +82,17 @@ bool InputManager::PollEvents () {
 }
 
 void InputManager::ResetKeys () {
-	for (int c : keysToReset) {
-		keys_[c].up_ = false;
-		keys_[c].down_ = false;
+	for (int i = 0; i < keysToReset.size (); i++) {
+		//KeyState thisKey = keys_[i];
+		//thisKey.up_ = false;
+		//thisKey.down_ = false;
+
+		int keyCode = keysToReset[i];
+
+		keys_[keyCode].up_ = false;
+		keys_[keyCode].down_ = false;
 	}
+
+	// Limpiar las teclas ya reseteadas
 	keysToReset.clear ();
 }
