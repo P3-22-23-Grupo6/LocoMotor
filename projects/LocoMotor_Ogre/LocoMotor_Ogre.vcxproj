@@ -154,8 +154,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Codec_STBI_d.lib;OgreMain_d.lib;RenderSystem_Direct3D11_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Codec_STBI_d.lib;OgreMain_d.lib;RenderSystem_Direct3D11_d.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-build\RelWithDebInfo;$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
