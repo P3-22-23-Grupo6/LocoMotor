@@ -21,9 +21,9 @@ int main () {
 
 	OgreWrapper::OgreManager::Init ("Prueba");
 	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance ();
-	/*OgreWrapper::RenderScene* x = man->CreateScene ("Escena");
+	OgreWrapper::RenderScene* x = man->CreateScene ("Escena");
 	man->SetActiveScene (x);
-	x ->Prueba ();*/
+	x->Prueba ();
 	//exec();
 	//initBullet ();
 	// man->render ();
@@ -36,7 +36,7 @@ int main () {
 		AudioManager::Get ()->Update (0.0f);*/
 
 		// RENDER
-		//man->Render ();
+		man->Render ();
 
 		// INPUT
 		if (InputManager::Get ()->PollEvents ())

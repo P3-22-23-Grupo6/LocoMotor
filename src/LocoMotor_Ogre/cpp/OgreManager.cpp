@@ -18,7 +18,8 @@ OgreWrapper::OgreManager* OgreWrapper::OgreManager::_instance = nullptr;
 
 OgreWrapper::OgreManager::OgreManager () {
 	_root = nullptr;
-
+	_activeScene = nullptr;
+	mShaderGenerator = nullptr;
 }
 
 OgreWrapper::OgreManager::~OgreManager () {
@@ -61,13 +62,10 @@ OgreWrapper::RenderScene* OgreWrapper::OgreManager::GetScene (const char* name) 
 }
 
 void OgreWrapper::OgreManager::Render () {
-	try {
-		_activeScene->Render ();
-		_root->renderOneFrame ();
-	}
-	catch (Ogre::FileNotFoundException& e) {
-		std::cout << e.getFullDescription () << "\n";
-	}
+	if (_activeScene == nullptr) return;
+	_activeScene->Render ();
+	_root->renderOneFrame ();
+	
 }
 
 Ogre::RenderWindow* OgreWrapper::OgreManager::GetRenderWindow () {
@@ -104,25 +102,13 @@ void OgreWrapper::OgreManager::loadResources () {
 	Ogre::ResourceGroupManager::getSingleton ().addResourceLocation (mRTShaderLibPath + "/materials", type_name, sec_name);
 
 	Ogre::ResourceGroupManager::getSingleton ().addResourceLocation (mRTShaderLibPath + "/GLSL", type_name, sec_name);
-	/*if (Ogre::GpuProgramManager::getSingleton ().isSyntaxSupported ("glsles")) {
-		Ogre::ResourceGroupManager::getSingleton ().addResourceLocation (mRTShaderLibPath + "/GLSL", type_name, sec_name);
-		Ogre::ResourceGroupManager::getSingleton ().addResourceLocation (mRTShaderLibPath + "/GLSLES", type_name, sec_name);
-	}
-	else if (Ogre::GpuProgramManager::getSingleton ().isSyntaxSupported ("glsl")) {
-
-	}
-	else if (Ogre::GpuProgramManager::getSingleton ().isSyntaxSupported ("hlsl")) {
-		Ogre::ResourceGroupManager::getSingleton ().addResourceLocation (mRTShaderLibPath + "/HLSL", type_name, sec_name);
-	}*/
-
 	Ogre::MaterialManager::getSingleton ().setActiveScheme (Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 
 	if (Ogre::RTShader::ShaderGenerator::initialize ()) {
 		mShaderGenerator = Ogre::RTShader::ShaderGenerator::getSingletonPtr ();
-		// Core shader libs not found -> shader generating will fail.
-		/*if (mRTShaderLibPath.empty ())
-			return;*/
 
+		if (mRTShaderLibPath.empty ())
+			return;
 
 		// Create and register the material manager listener if it doesn't exist yet.
 		if (!mMaterialMgrListener) {
@@ -155,7 +141,6 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (const char* 
 	Uint32 flags = SDL_WINDOW_RESIZABLE;
 
 	if (ropts["Full Screen"].currentValue == "Yes")  flags = SDL_WINDOW_FULLSCREEN;
-	//else  flags = SDL_WINDOW_RESIZABLE;
 
 	mWindow.native = SDL_CreateWindow (name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
 
@@ -170,7 +155,7 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (const char* 
 }
 
 
-void OgreWrapper::OgreManager::Shutdown () {	
+void OgreWrapper::OgreManager::Shutdown () {
 	// Restore default scheme.
 	Ogre::MaterialManager::getSingleton ().setActiveScheme (Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 
@@ -190,7 +175,7 @@ void OgreWrapper::OgreManager::Shutdown () {
 	if (mWindow.render != nullptr) {
 		mWindow.render->removeAllViewports ();
 		_root->destroyRenderTarget (mWindow.render);
-		
+
 		mWindow.render = nullptr;
 	}
 
