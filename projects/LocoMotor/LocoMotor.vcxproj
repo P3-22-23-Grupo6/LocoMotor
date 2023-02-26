@@ -36,6 +36,7 @@
     <ClCompile Include="..\..\src\LocoMotor\LocoMotor_main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\LocoMotor\lmVector.h" />
     <ClInclude Include="lmVector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
