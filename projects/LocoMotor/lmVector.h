@@ -145,6 +145,8 @@ private:
 
 //Quaternion class to be used with LocoMotor
 class lmQuaternion {
+
+    
 public:
     // Default constructor initializes quaternion to (0, 0, 0, 0)
     /// @brief Create a new Quaternion with everything set to 0
@@ -170,7 +172,7 @@ public:
         return _z;
     }
 
-/   / Setter functions
+//Setter functions
     void setW (double w) {
         this->_w = w;
     }
