@@ -14,42 +14,41 @@ InputManager* InputManager::Get () {
 	return instance_;
 }
 
-
-bool InputManager::GetKeyDown (const SDL_Scancode& code) {
-	return keys_[code].down_;
+bool InputManager::GetKeyDown (const SDL_Scancode& scanCode) {
+	return keyboard[scanCode].down;
 }
 
-bool InputManager::GetKey (const SDL_Scancode& code) {
-	return keys_[code].pressed_;
+bool InputManager::GetKey (const SDL_Scancode& scanCode) {
+	return keyboard[scanCode].isPressed;
 }
 
-bool InputManager::GetKeyUp (const SDL_Scancode& code) {
-	return keys_[code].up_;
+bool InputManager::GetKeyUp (const SDL_Scancode& scanCode) {
+	return keyboard[scanCode].up;
 }
 
-// Almacena el evento de teclado registrado en la variable referenciada "event" en el array keys
 void InputManager::ManageKey (const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
-		SDL_Scancode code = event.key.keysym.scancode;
-		if (!keys_[code].pressed_) {
-			keys_[code].down_ = true;
-			keys_[code].pressed_ = true;
-			keys_[code].up_ = false;
-			keysToReset.push_back (code);
+		SDL_Scancode scanCode = event.key.keysym.scancode;
+		KeyState& thisKey = keyboard[scanCode];
+
+		// Comprobar si la tecla no esta siendo presionada actualmente
+		if (!thisKey.isPressed) {
+			thisKey.down = true;
+			thisKey.isPressed = true;
+			keysToReset.push_back (scanCode);
 		}
 	}
 	else if (event.type == SDL_KEYUP) {
-		SDL_Scancode code = event.key.keysym.scancode;
-		keys_[code].down_ = false;
-		keys_[code].pressed_ = false;
-		keys_[code].up_ = true;
-		keysToReset.push_back (code);
+		SDL_Scancode scanCode = event.key.keysym.scancode;
+		KeyState& thisKey = keyboard[scanCode];
+
+		thisKey.isPressed = false;
+		thisKey.up = true;
+		keysToReset.push_back (scanCode);
 	}
 }
 
-// Registra todos los eventos relacionados con input en este frame, los recorre uno a uno
-// Almacenandolos en sus respectivas variables
-bool InputManager::PollEvents () {
+bool InputManager::RegisterEvents () {
 
 	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
 	if (keysToReset.size () != 0)
@@ -57,40 +56,23 @@ bool InputManager::PollEvents () {
 
 	SDL_Event event;
 	while (SDL_PollEvent (&event)) {
-		if (event.type == SDL_QUIT)
+		if (event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
 			return true;
 
 		// Input managment, cambiar en caso de mando
 		// Almacenar eventos de teclado en el array keys
 		ManageKey (event);
-
-		//switch (event.type)
-		//{
-		//case sdl_quit:
-			//root_->queueEndRendering();
-		//	return true;
-
-		//	break;
-		//default:
-		//	InputManager::getInstance()->generalInputManagement(event);
-
-		//	return false;
-		//	break;
-		//}
-
 	}
 }
 
 void InputManager::ResetKeys () {
 	for (int i = 0; i < keysToReset.size (); i++) {
-		//KeyState thisKey = keys_[i];
-		//thisKey.up_ = false;
-		//thisKey.down_ = false;
-
-		int keyCode = keysToReset[i];
-
-		keys_[keyCode].up_ = false;
-		keys_[keyCode].down_ = false;
+		// Saber el codigo de la tecla almacenado en el vector "keysToReset"
+		int scanCode = keysToReset[i];
+		// Crear una referencia a la tecla y resetear sus variables a false
+		KeyState &thisKey = keyboard[scanCode];
+		thisKey.up = false;
+		thisKey.down = false;
 	}
 
 	// Limpiar las teclas ya reseteadas

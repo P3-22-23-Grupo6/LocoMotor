@@ -42,12 +42,8 @@ int main () {
 		// Registrar y almacenar todos los eventos de teclado realizados este frame
 		// En el caso en el que uno de esos inputs sea el de Quit, la funcion devolvera false
 		// Resultando en la salida del bucle principal
-		if (InputManager::Get ()->PollEvents ())
+		if (InputManager::Get ()->RegisterEvents ())
 			break;
-
-		//std::cout << "GET KEY DOWN = " << InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A) << "\n";
-		//std::cout << "GET KEY = " << InputManager::Get ()->GetKey (SDL_SCANCODE_A) << "\n";
-		//std::cout << "GET KEY UP = " << InputManager::Get ()->GetKeyUp (SDL_SCANCODE_A) << "\n";
 
 		if (InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A))
 			std::cout << "KEY DOWN" << "\n";
