@@ -21,9 +21,15 @@
     <ClCompile Include="..\..\src\LocoMotor\LMVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Shared\Singleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\LMVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Shared\Singleton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

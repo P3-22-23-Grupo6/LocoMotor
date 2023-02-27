@@ -31,11 +31,11 @@ int main () {
 
 	uint32_t i = 0;
 
-	AudioManager::Get ()->PlaySound (0);
+	// AudioManager::Get ()->PlaySound (0);
 	while (i < 0x00300000) {
 
 		// AUDIO
-		list.UpdateFunni (.000003f);
+		list.UpdateFunni (.05f);
 		AudioManager::Get ()->Update (0.0f);
 
 		// RENDER

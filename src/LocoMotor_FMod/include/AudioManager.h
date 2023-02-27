@@ -10,7 +10,10 @@ namespace FMOD {
 	class Sound;
 }
 
-class AudioManager {
+class AudioManager /*: public Singleton<AudioManager>*/ {
+
+	// friend Singleton<AudioManager>;
+
 public:
 
 	/// @brief Static getter for access to the instance, when called for the first time, it will create the instance, and from then on it will return the previously created instance
