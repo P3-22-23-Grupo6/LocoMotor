@@ -2,10 +2,11 @@
 #define _CAMERA_H_
 
 #include "Node.h"
+#include <OgreVector3.h>
 namespace Ogre {
 	class Camera;
 	class Viewport;
-	struct Vector3;
+	//typedef Vector3;
 }
 
 namespace OgreWrapper {

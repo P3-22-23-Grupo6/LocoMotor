@@ -6,6 +6,7 @@
 #include <OgreSceneManager.h>
 #include "OgreManager.h"
 #include <OgreRenderWindow.h>
+#include <OgreVector3.h>
 
 OgreWrapper::Camera::Camera(Ogre::Camera* camera, Ogre::SceneNode* node):Node(node)
 {
