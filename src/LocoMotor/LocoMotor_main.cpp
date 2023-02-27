@@ -15,7 +15,7 @@ int main () {
 
 	_CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
-	AudioManager::Get ()->AddSound (0, "A.wav");
+	AudioManager::Get ()->AddSound (0, "Assets/A.wav");
 	auto list = AudioListener (AudioManager::Get ());
 
 	OgreWrapper::OgreManager::init ("Prueba");
