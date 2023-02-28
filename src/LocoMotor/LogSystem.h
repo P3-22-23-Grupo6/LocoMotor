@@ -13,22 +13,21 @@
 
 class LogSystem {
 public:
-	LogSystem();
+	LogSystem ();
 
-	~LogSystem();
+	~LogSystem ();
 
-	void init();
-	void fileclose();
+	void Init ();
+	void FileClose ();
 
-	void guarda(int type, std::string message);
+	void Save (int type, std::string message);
 
    //usar en caso de cambiar a oftream
-   //void creaEscribe(std::ofstream& file);
+   //void Create (std::ofstream& file);
 
 private:
 
-
-	FILE* file;
+	FILE* _file;
 	//ThingsToSave messages;
 	
 };

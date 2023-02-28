@@ -21,6 +21,11 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_Lua\Lua_main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
+      <Project>{e08d5061-8a9a-42e2-bfdd-d2a9dc3e1730}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,7 +143,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Lua\src\;$(SolutionDir)Dependecies\LuaBridge\Source\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Lua\src\;$(SolutionDir)Dependecies\LuaBridge\Source\;$(SolutionDir)src\LocoMotor_Utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,7 +164,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Lua\src\;$(SolutionDir)Dependecies\LuaBridge\Source\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Lua\src\;$(SolutionDir)Dependecies\LuaBridge\Source\;$(SolutionDir)src\LocoMotor_Utils;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

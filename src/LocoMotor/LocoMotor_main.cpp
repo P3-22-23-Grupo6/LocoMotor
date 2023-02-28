@@ -17,8 +17,9 @@ int main () {
 
 	_CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
-	AudioManager::Get ()->AddSound (0, "A.wav");
-	auto list = AudioListener (AudioManager::Get ());
+	auto audio = FmodWrapper::AudioManager::Init ();
+	audio->AddSound (0, "Assets/A.wav");
+	auto list = FmodWrapper::AudioListener (audio);
 
 	OgreWrapper::OgreManager::init ("Prueba");
 	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::getInstance ();
@@ -35,12 +36,12 @@ int main () {
 	BulletWrapper::BulletManager::CreateRigidBody ();
 	uint32_t i = 0;
 
-	AudioManager::Get ()->PlaySound (0);
-	while (i < 0x00300000) {
+	// AudioManager::Get ()->PlaySound (0);
+	while (i < 0x00000200) {
 
 		// AUDIO
-		list.UpdateFunni (.000003f);
-		AudioManager::Get ()->Update (0.0f);
+		list.UpdateFunni (.05f);
+		audio->Update (0.0f);
 
 		// RENDER
 		man->render ();
@@ -55,6 +56,7 @@ int main () {
 
 		i++;
 	}
+	audio->Clear ();
 
 	return 0;
 }

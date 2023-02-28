@@ -100,7 +100,7 @@ public:
 	double GetW () const;
 	double GetX () const;
 	double GetY () const;
-	double SetZ () const;
+	double GetZ () const;
 
 //Setter functions
 	void SetW (double w);

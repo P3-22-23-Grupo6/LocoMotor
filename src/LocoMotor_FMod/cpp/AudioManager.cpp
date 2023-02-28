@@ -7,7 +7,11 @@
 #include <fmod_errors.h>
 using namespace FMOD;
 
-AudioManager::AudioManager () {
+
+
+FmodWrapper::AudioManager* Singleton<FmodWrapper::AudioManager>::_instance = nullptr;
+
+FmodWrapper::AudioManager::AudioManager () {
 	System_Create (&_sys);
 	_sys->init (32, FMOD_INIT_NORMAL, 0);
 	_sys->createChannelGroup (0, &_main);
@@ -17,28 +21,28 @@ AudioManager::AudioManager () {
 	_soundLib = std::unordered_map<uint32_t, FMOD::Sound*> ();
 }
 
-AudioManager::~AudioManager () {
+FmodWrapper::AudioManager::~AudioManager () {
 	for (auto snd : _soundLib) {
 		snd.second->release ();
-		delete snd.second;
+		//delete snd.second;
 	}
 	_main->release ();
-	delete _main;
+	//delete _main;
 	_sys->close ();
 	_sys->release ();
-	delete _sys;
+	//delete _sys;
 }
+//
+//FmodWrapper::AudioManager* FmodWrapper::AudioManager::Get () {
+//	static AudioManager* inst = new AudioManager ();
+//	return inst;
+//}
 
-AudioManager* AudioManager::Get () {
-	static AudioManager* inst = new AudioManager ();
-	return inst;
-}
-
-uint16_t AudioManager::Update (float deltaTime) {
+uint16_t FmodWrapper::AudioManager::Update (float deltaTime) {
 	return _sys->update();
 }
 
-uint16_t AudioManager::AddSound (const uint32_t name, const char* fileName) {
+uint16_t FmodWrapper::AudioManager::AddSound (const uint32_t name, const char* fileName) {
 	if (_soundLib[name] != nullptr) {
 		_soundLib[name]->release ();
 		_soundLib[name] = nullptr;
@@ -58,7 +62,7 @@ uint16_t AudioManager::AddSound (const uint32_t name, const char* fileName) {
 #endif // _DEBUG
 }
 
-uint16_t AudioManager::PlaySound (const uint32_t name) {
+uint16_t FmodWrapper::AudioManager::PlaySound (const uint32_t name) {
 #ifndef _DEBUG
 	Channel* ch;
 	auto err = _sys->playSound (_soundLib[name], _main, true, &ch);
@@ -89,7 +93,7 @@ uint16_t AudioManager::PlaySound (const uint32_t name) {
 #endif // _DEBUG
 }
 
-uint16_t AudioManager::AddListener (int& index) {
+uint16_t FmodWrapper::AudioManager::AddListener (int& index) {
 	static bool first = true;
 	if (first) {
 		first = false;
@@ -102,10 +106,10 @@ uint16_t AudioManager::AddListener (int& index) {
 	}
 }
 
-FMOD::System* AudioManager::GetSystem () {
+FMOD::System* FmodWrapper::AudioManager::GetSystem () {
 	return _sys;
 }
 
-const char* AudioManager::GetError (const uint16_t& errorCode) {
+const char* FmodWrapper::AudioManager::GetError (const uint16_t& errorCode) {
 	return FMOD_ErrorString ((FMOD_RESULT) errorCode);
 }
