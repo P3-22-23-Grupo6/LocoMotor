@@ -17,21 +17,21 @@ InputManager* InputManager::Get () {
 }
 
 bool InputManager::GetKeyDown (const SDL_Scancode& scanCode) {
-	return keyboard[scanCode].down;
+	return keyboardButtons[scanCode].down;
 }
 
 bool InputManager::GetKey (const SDL_Scancode& scanCode) {
-	return keyboard[scanCode].isPressed;
+	return keyboardButtons[scanCode].isPressed;
 }
 
 bool InputManager::GetKeyUp (const SDL_Scancode& scanCode) {
-	return keyboard[scanCode].up;
+	return keyboardButtons[scanCode].up;
 }
 
 void InputManager::ManageKeyboardEvents (const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 		SDL_Scancode scanCode = event.key.keysym.scancode;
-		KeyState& thisKey = keyboard[scanCode];
+		KeyState& thisKey = keyboardButtons[scanCode];
 
 		// Comprobar si la tecla no esta siendo presionada actualmente
 		if (!thisKey.isPressed) {
@@ -42,7 +42,7 @@ void InputManager::ManageKeyboardEvents (const SDL_Event& event) {
 	}
 	else if (event.type == SDL_KEYUP) {
 		SDL_Scancode scanCode = event.key.keysym.scancode;
-		KeyState& thisKey = keyboard[scanCode];
+		KeyState& thisKey = keyboardButtons[scanCode];
 
 		thisKey.isPressed = false;
 		thisKey.up = true;
@@ -54,22 +54,46 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 	SDL_GameController* controller = SDL_GameControllerOpen (event.cdevice.which);
 
 	if (event.type == SDL_CONTROLLERDEVICEADDED) {
-		std::cout << "CONTROLLER ADDED" << "\n";
+
+		// Mando conectado que ha generado el evento
+		Sint32 connectedDevice = event.cdevice.which;
+
+		if (ControllerDeviceAdded (connectedDevice))
+			std::cout << "Controller connected" << "\n";
+		else
+			std::cout << "Controller could not connect: A controller is already in use" << "\n";
 	}
 
-	if (event.type == SDL_CONTROLLERBUTTONDOWN)
-		std::cout << "BUTTON DOWN" << "\n";
+	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
 
-	if (event.type == SDL_CONTROLLERBUTTONUP)
-		std::cout << "BUTTON UP" << "\n";
+		Uint8 thisButton = 0;
+	}
+
+	if (event.type == SDL_CONTROLLERBUTTONUP) {
+
+	}
+
+	//if (event.type == SDL_CONTROLLERBUTTONUP)
+	//	std::cout << "BUTTON UP" << "\n";
 }
 
-bool InputManager::RegisterEvents () {
+bool InputManager::ControllerDeviceAdded (const Sint32& controllerConnected) {
 
-	std::cout << "SDL_EventType (SDL_CONTROLLERBUTTONDOWN) = " << SDL_EventType (SDL_CONTROLLERBUTTONDOWN) << "\n";
-	std::cout << "SDL_EventType (SDL_CONTROLLERBUTTONDOWN) = " << SDL_EventType (SDL_CONTROLLERBUTTONUP) << "\n";
-	std::cout << "SDL_EventType (SDL_CONTROLLERBUTTONDOWN) = " << SDL_EventType (SDL_KEYDOWN) << "\n";
-	std::cout << "SDL_EventType (SDL_CONTROLLERBUTTONDOWN) = " << SDL_EventType (SDL_KEYUP) << "\n";
+	if (currentGameController != nullptr)
+		return false;
+
+	currentGameController = SDL_GameControllerOpen (controllerConnected);
+
+	//for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
+	//	controllerAxes_[i] = 0.0f;
+
+	//SDL_GameControllerEventState (SDL_ENABLE);
+}
+
+
+
+
+bool InputManager::RegisterEvents () {
 
 	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
 	if (keysToReset.size () != 0)
@@ -78,11 +102,18 @@ bool InputManager::RegisterEvents () {
 	SDL_Event event;
 	while (SDL_PollEvent (&event)) {
 
-
 		SDL_Scancode scanCode = event.key.keysym.scancode;
 
+		// Eventos para salir del bucle principal
 		if (event.type == SDL_QUIT || scanCode == SDL_SCANCODE_ESCAPE)
 			return true;
+
+
+		ManageControllerEvents (event);
+
+		// Input managment, cambiar en caso de mando
+		// Almacenar eventos de teclado en el array keys
+		ManageKeyboardEvents (event);
 
 		//std::cout << "CONTROLLER CONNECTED = " << SDL_IsGameController (0) << "\n";
 
@@ -119,12 +150,6 @@ bool InputManager::RegisterEvents () {
 			}
 			std::cout << "MOUSE " << "\n";
 		}
-
-		ManageControllerEvents (event);
-
-		// Input managment, cambiar en caso de mando
-		// Almacenar eventos de teclado en el array keys
-		ManageKeyboardEvents (event);
 	}
 }
 
@@ -133,25 +158,11 @@ void InputManager::ResetKeys () {
 		// Saber el codigo de la tecla almacenado en el vector "keysToReset"
 		int scanCode = keysToReset[i];
 		// Crear una referencia a la tecla y resetear sus variables a false
-		KeyState& thisKey = keyboard[scanCode];
+		KeyState& thisKey = keyboardButtons[scanCode];
 		thisKey.up = false;
 		thisKey.down = false;
 	}
 
 	// Limpiar las teclas ya reseteadas
 	keysToReset.clear ();
-}
-
-
-
-// MANDO
-
-void InputManager::manageControllerAdded (const SDL_Event& event) {
-	if (controller_ == nullptr) {
-		controller_ = SDL_GameControllerOpen (event.cdevice.which);
-		//for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
-		//	controllerAxes_[i] = 0.0f;
-
-		SDL_GameControllerEventState (SDL_ENABLE);
-	}
 }
