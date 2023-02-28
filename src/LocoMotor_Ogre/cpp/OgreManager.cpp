@@ -16,32 +16,24 @@
 
 OgreWrapper::OgreManager* OgreWrapper::OgreManager::_instance = nullptr;
 
-OgreWrapper::OgreManager::OgreManager () {
+OgreWrapper::OgreManager::OgreManager (std::string name) {
 	_root = nullptr;
 	_activeScene = nullptr;
 	mShaderGenerator = nullptr;
+
+	_root = new Ogre::Root ();
+	_root->showConfigDialog (nullptr);
+	_root->initialise (false);
+	InitWindow (name);
+	loadResources ();
 }
 
 OgreWrapper::OgreManager::~OgreManager () {
+	Shutdown ();
 }
 
-OgreWrapper::OgreManager* OgreWrapper::OgreManager::GetInstance () {
-	if (_instance != nullptr) return _instance;
-	std::cerr << "Debes inicializar con OgreManager::init() antes de llamar a OgreManager::getInstance()!!\n";
-	return nullptr;
-}
 
-bool OgreWrapper::OgreManager::Init (const char* name) {
-	if (_instance == nullptr) _instance = new OgreWrapper::OgreManager ();
-	_instance->_root = new Ogre::Root ();
-	_instance->_root->showConfigDialog (nullptr);
-	_instance->_root->initialise (false);
-	_instance->InitWindow (name);
-	_instance->loadResources ();
-	return _instance->_root->isInitialised ();
-}
-
-OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene (const char* name) {
+OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene (std::string name) {
 	if (_scenes.count (name) > 0) {
 		std::cerr << "ERROR: Ya hay una escena con el nombre \"" << name << "\". Elige otro nombre por favor\n";
 		return _scenes[name];
@@ -54,7 +46,7 @@ OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene (const char* nam
 
 }
 
-OgreWrapper::RenderScene* OgreWrapper::OgreManager::GetScene (const char* name) {
+OgreWrapper::RenderScene* OgreWrapper::OgreManager::GetScene (std::string name) {
 	if (_scenes.count (name) == 0)
 		return nullptr;
 
@@ -120,7 +112,7 @@ void OgreWrapper::OgreManager::loadResources () {
 	Ogre::ResourceGroupManager::getSingleton ().initialiseAllResourceGroups ();
 }
 
-OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (const char* name) {
+OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (std::string name) {
 	uint32_t w, h;
 	Ogre::NameValuePairList miscParams;
 
@@ -149,7 +141,7 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (const char* 
 
 	if (ropts["Full Screen"].currentValue == "Yes")  flags = SDL_WINDOW_FULLSCREEN;
 
-	mWindow.native = SDL_CreateWindow (name, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
+	mWindow.native = SDL_CreateWindow (name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
 
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION (&wmInfo.version);
@@ -203,7 +195,4 @@ void OgreWrapper::OgreManager::Shutdown () {
 
 	delete _root;
 	_root = nullptr;
-
-	delete OgreManager::_instance;
-	OgreManager::_instance = nullptr;
 }

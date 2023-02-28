@@ -56,7 +56,7 @@ int main () {
 		i++;
 	}
 	audio->Clear ();
-	man->Shutdown ();
+	OgreWrapper::OgreManager::Clear();
 	InputManager::Destroy ();
 	return 0;
 }
