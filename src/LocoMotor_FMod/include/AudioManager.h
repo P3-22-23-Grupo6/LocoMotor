@@ -3,6 +3,7 @@
 #define AUDIOMANAGER
 
 #include <unordered_map>
+#include "Singleton.h"
 
 namespace FMOD {
 	class System;
@@ -10,54 +11,60 @@ namespace FMOD {
 	class Sound;
 }
 
-class AudioManager {
-public:
+namespace FmodWrapper {
 
-	/// @brief Static getter for access to the instance, when called for the first time, it will create the instance, and from then on it will return the previously created instance
-	/// @return The reference to the instance of the AudioManager
-	static AudioManager* Get ();
+	class AudioManager : public Singleton<FmodWrapper::AudioManager> {
 
-	/// @brief Updates the Fmod API to change channel output depending on positions and velocity
-	/// @param deltaTime Bruh
-	/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
-	uint16_t Update (float deltaTime);
+		friend Singleton<FmodWrapper::AudioManager>;
 
-	/// @brief Adds a sound to the system, for later use
-	/// @param Name that will be used to refer to this sound upon being created
-	/// @param File to get the sound from
-	/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
-	uint16_t AddSound (const uint32_t id, const char* fileName);
+	public:
+		~AudioManager ();
 
-	/// @brief Plays an already added sound
-	/// @param Name of the sound to play
-	/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
-	uint16_t PlaySound (const uint32_t id);
+		/// @brief Static getter for access to the instance, when called for the first time, it will create the instance, and from then on it will return the previously created instance
+		/// @return The reference to the instance of the AudioManager
+		//static AudioManager* Init ();
 
-	/// @brief Adds a listener to Fmod
-	/// @param index The index of the newly created listener
-	/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
-	uint16_t AddListener (int& index);
+		/// @brief Updates the Fmod API to change channel output depending on positions and velocity
+		/// @param deltaTime Bruh
+		/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
+		uint16_t Update (float deltaTime);
 
-	/// @brief Gets the FMOD::System object from this manager
-	/// @return The System in question
-	FMOD::System* GetSystem ();
+		/// @brief Adds a sound to the system, for later use
+		/// @param Name that will be used to refer to this sound upon being created
+		/// @param File to get the sound from
+		/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
+		uint16_t AddSound (const uint32_t id, const char* fileName);
 
-	/// @brief Get the fmod error corresponding to the param passed
-	/// @param errorCode Param to get the Fmod error corresponding to it
-	/// @return The Fmod error message
-	const char* GetError (const uint16_t& errorCode);
+		/// @brief Plays an already added sound
+		/// @param Name of the sound to play
+		/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
+		uint16_t PlaySound (const uint32_t id);
 
-private:
+		/// @brief Adds a listener to Fmod
+		/// @param index The index of the newly created listener
+		/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
+		uint16_t AddListener (int& index);
 
-	FMOD::System* _sys = nullptr;
-	FMOD::ChannelGroup* _main = nullptr;
+		/// @brief Gets the FMOD::System object from this manager
+		/// @return The System in question
+		FMOD::System* GetSystem ();
 
-	std::unordered_map<uint32_t, FMOD::Sound*> _soundLib;
+		/// @brief Get the fmod error corresponding to the param passed
+		/// @param errorCode Param to get the Fmod error corresponding to it
+		/// @return The Fmod error message
+		const char* GetError (const uint16_t& errorCode);
 
-	/// @brief Constructor is set to private, use the 'Get' method for access to the instance of this object
-	AudioManager ();
-	~AudioManager ();
+	private:
 
-};
+		FMOD::System* _sys = nullptr;
+		FMOD::ChannelGroup* _main = nullptr;
+
+		std::unordered_map<uint32_t, FMOD::Sound*> _soundLib;
+
+		/// @brief Constructor is set to private, use the 'Get' method for access to the instance of this object
+		AudioManager ();
+
+	};
+}
 
 #endif // !AUDIOMANAGER

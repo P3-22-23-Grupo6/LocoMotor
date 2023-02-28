@@ -6,7 +6,7 @@
 #include <iostream>
 #endif // _DEBUG
 
-AudioListener::AudioListener (AudioManager* manager) : man (manager) {
+FmodWrapper::AudioListener::AudioListener (FmodWrapper::AudioManager* manager) : man (manager) {
 	man->AddListener (_fIndex);
 	_posRemember = new FMOD_VECTOR ();
 	_posRemember->x = 0;
@@ -16,13 +16,14 @@ AudioListener::AudioListener (AudioManager* manager) : man (manager) {
 
 }
 
-AudioListener::~AudioListener () {
+FmodWrapper::AudioListener::~AudioListener () {
+	delete _posRemember;
 }
 
-void AudioListener::Update (const float& deltaTime) {
+void FmodWrapper::AudioListener::Update (const float& deltaTime) {
 }
 
-void AudioListener::UpdateFunni (const float& deltaTime) {
+void FmodWrapper::AudioListener::UpdateFunni (const float& deltaTime) {
 
 	_elapsedTime += deltaTime;
 

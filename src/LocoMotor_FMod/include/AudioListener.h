@@ -3,45 +3,49 @@
 #define AUDIOLISTENER
 
 typedef struct FMOD_VECTOR;
-class AudioManager;
+namespace FmodWrapper {
+	class AudioManager;
+}
 namespace FMOD {
 	class System;
 }
 
-class AudioListener {
+namespace FmodWrapper {
 
-public:
-	AudioListener (AudioManager* manager/*gameobject, etc*/);
-	~AudioListener ();
+	class AudioListener {
 
-	/// @brief Actualizara los datos del listener dependiendo del gameobject asociado
-	/// @param deltaTime En este caso, se utiliza para calcular la velocidad del gameobject
-	void Update (const float& deltaTime);
+	public:
+		AudioListener (FmodWrapper::AudioManager* manager/*gameobject, etc*/);
+		~AudioListener ();
 
-	/// @brief Lo unico que hace es rotar deltaTime radianes el listener de fmod asociado
-	/// @param deltaTime Bruh
-	void UpdateFunni (const float& deltaTime);
+		/// @brief Actualizara los datos del listener dependiendo del gameobject asociado
+		/// @param deltaTime En este caso, se utiliza para calcular la velocidad del gameobject
+		void Update (const float& deltaTime);
 
-	///// @brief Actualizara los datos del listener dependiendo del gameobject asociado
-	///// @param deltaTime En este caso, se utiliza para calcular la velocidad del gameobject
-	//void Update (const uint32_t& deltaTime);
+		/// @brief Lo unico que hace es rotar deltaTime radianes el listener de fmod asociado
+		/// @param deltaTime Bruh
+		void UpdateFunni (const float& deltaTime);
 
-	///// @brief Lo unico que hace es rotar (deltaTime / 1000) radianes el listener de fmod asociado
-	///// @param deltaTime Bruh
-	//void UpdateFunni (const uint32_t& deltaTime);
+		///// @brief Actualizara los datos del listener dependiendo del gameobject asociado
+		///// @param deltaTime En este caso, se utiliza para calcular la velocidad del gameobject
+		//void Update (const uint32_t& deltaTime);
 
-private:
+		///// @brief Lo unico que hace es rotar (deltaTime / 1000) radianes el listener de fmod asociado
+		///// @param deltaTime Bruh
+		//void UpdateFunni (const uint32_t& deltaTime);
 
-	// + lo tipico de gameobject y tal
+	private:
 
-	int _fIndex;
+		// + lo tipico de gameobject y tal
 
-	float _elapsedTime;
+		int _fIndex;
 
-	AudioManager* man;
+		float _elapsedTime;
 
-	FMOD_VECTOR* _posRemember;
-};
+		FmodWrapper::AudioManager* man;
 
+		FMOD_VECTOR* _posRemember;
+	};
+}
 
 #endif

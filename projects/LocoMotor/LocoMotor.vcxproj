@@ -31,9 +31,16 @@
     <ProjectReference Include="..\LocoMotor_Ogre\LocoMotor_Ogre.vcxproj">
       <Project>{e638967f-58fe-4585-bda8-a2d7a271406a}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
+      <Project>{e08d5061-8a9a-42e2-bfdd-d2a9dc3e1730}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\LocoMotor\LMVector.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\LocoMotor_main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\LocoMotor\LMVector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -112,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Shared;$(SolutionDir)src\LocoMotor;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>
@@ -131,7 +138,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Shared;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>
@@ -150,7 +157,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)Dependecies\Bullet\Src\src</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>
@@ -169,7 +176,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)src\LocoMotor_Utils</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>
