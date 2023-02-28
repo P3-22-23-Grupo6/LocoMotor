@@ -15,6 +15,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocoMotor_Ogre", "projects\
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocoMotor_Bullet", "projects\LocoMotor_Bullet\LocoMotor_Bullet.vcxproj", "{E74CA361-1016-4C4C-B533-6C2CA7399D5A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E08D5061-8A9A-42E2-BFDD-D2A9DC3E1730} = {E08D5061-8A9A-42E2-BFDD-D2A9DC3E1730}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LocoMotor_Utils", "projects\LocoMotor_Utils\LocoMotor_Utils.vcxproj", "{E08D5061-8A9A-42E2-BFDD-D2A9DC3E1730}"
 EndProject
