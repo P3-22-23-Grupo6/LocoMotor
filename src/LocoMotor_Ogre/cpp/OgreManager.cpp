@@ -1,17 +1,19 @@
-#include <OgreManager.h>
+//Ogre includes
 #include <OgreRoot.h>
 #include <OgreConfigFile.h>
 #include <OgreRenderWindow.h>
 #include <OgreGpuProgramManager.h>
-
 #include <OgreShaderGenerator.h>
-#include <OgreSGTechniqueResolverListener.h>
-#include "RenderScene.h"
+//SDL includes
 #include <SDL.h>
 #include <SDL_video.h>
 #include <SDL_syswm.h>
-
+//Std include
 #include <iostream>
+//OgreWrapper includes
+#include "RenderScene.h"
+#include "SGTechniqueResolverListener.h"
+#include "OgreManager.h""
 
 
 OgreWrapper::OgreManager* OgreWrapper::OgreManager::_instance = nullptr;
@@ -104,7 +106,7 @@ void OgreWrapper::OgreManager::loadResources () {
 
 		// Create and register the material manager listener if it doesn't exist yet.
 		if (!mMaterialMgrListener) {
-			mMaterialMgrListener = new OgreBites::SGTechniqueResolverListener (mShaderGenerator);
+			mMaterialMgrListener = new OgreWrapper::SGTechniqueResolverListener (mShaderGenerator);
 			Ogre::MaterialManager::getSingleton ().addListener (mMaterialMgrListener);
 		}
 	}

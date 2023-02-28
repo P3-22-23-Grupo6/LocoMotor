@@ -24,6 +24,7 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Node.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\OgreManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\RenderScene.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\SGTechniqueResolverListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h" />
@@ -31,6 +32,7 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Node.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\OgreManager.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\SGTechniqueResolverListener.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
