@@ -154,7 +154,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;F:\Docs\0Uni\P3\Motor\Dependecies\FMod\core\inc;F:\Docs\0Uni\P3\Motor\Dependecies\Bullet\Src\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;F:\Docs\0Uni\P3\Motor\Dependecies\FMod\core\inc;F:\Docs\0Uni\P3\Motor\Dependecies\Bullet\Src\src</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>
@@ -173,7 +173,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>

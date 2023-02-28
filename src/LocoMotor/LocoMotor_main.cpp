@@ -7,6 +7,8 @@
 #include "AudioListener.h"		//No se que tan legal seria hacer esto supongo el manager deberia incluir ya el listener pero habra que consultarlo nose me tengo que ir
 #include "InputManager.h"
 #include "CheckML.h"
+#include "BulletManager.h"
+
 
 int exec ();
 int initBullet ();
@@ -26,9 +28,11 @@ int main () {
 	OgreWrapper::Scene* x = man->getScene ("Escenah");
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	//exec();
-	initBullet ();
+	//initBullet ();
 	// man->render ();
-
+	BulletWrapper::BulletManager::InitBullet ();
+	BulletWrapper::RigidBodyInfo bInfo;
+	BulletWrapper::BulletManager::CreateRigidBody ();
 	uint32_t i = 0;
 
 	AudioManager::Get ()->PlaySound (0);
@@ -46,7 +50,7 @@ int main () {
 			break;
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
-		std::cout << buttonPressed;
+		//std::cout << buttonPressed;
 
 
 		i++;
