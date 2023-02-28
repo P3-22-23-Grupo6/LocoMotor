@@ -74,7 +74,8 @@ public:
 	void ManageKeyboardEvents (const SDL_Event& event);
 	void ManageControllerEvents (const SDL_Event& event);
 
-	bool ControllerDeviceAdded (const Sint32& conttroller);
+	bool ControllerDeviceAdded (const Sint32& controller);
+	void ControllerDeviceRemoved (const Sint32& controller);
 
 	// Las teclas que hayan llamado a los eventos SDL_KEYDOWN y SDL_KEYUP en el frame anterior,
 	// Tienen las variables de Down/Up activas, solo queremos que esten activas un frame, por lo tanto

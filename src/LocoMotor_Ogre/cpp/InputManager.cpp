@@ -75,9 +75,18 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 		Sint32 connectedDevice = event.cdevice.which;
 
 		if (ControllerDeviceAdded (connectedDevice))
-			std::cout << "Controller connected" << "\n";
+			std::cout << "Controller added" << "\n";
 		else
-			std::cout << "Controller could not connect: A controller is already in use" << "\n";
+			std::cout << "Controller could not be added: A controller is already in use" << "\n";
+	}
+
+	if (event.type == SDL_CONTROLLERDEVICEREMOVED) {
+
+		// Mando conectado que ha generado el evento
+		Sint32 connectedDevice = event.cdevice.which;
+
+		ControllerDeviceRemoved (connectedDevice);
+		std::cout << "Controller removed" << "\n";
 	}
 
 	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
@@ -104,12 +113,28 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 	}
 }
 
-bool InputManager::ControllerDeviceAdded (const Sint32& controllerConnected) {
+bool InputManager::ControllerDeviceAdded (const Sint32& controllerAdded) {
 
 	if (currentGameController != nullptr)
 		return false;
 
-	currentGameController = SDL_GameControllerOpen (controllerConnected);
+	currentGameController = SDL_GameControllerOpen (controllerAdded);
+
+	//for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
+	//	controllerAxes_[i] = 0.0f;
+
+	//SDL_GameControllerEventState (SDL_ENABLE);
+}
+void InputManager::ControllerDeviceRemoved (const Sint32& controllerRemoved) {
+
+	currentGameController = nullptr;
+
+	// Eliminar inputs guardados actualmente
+	for (KeyState controllerButton : controllerButtons) {
+		controllerButton.down = false;
+		controllerButton.isPressed = false;
+		controllerButton.up = false;
+	}
 
 	//for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
 	//	controllerAxes_[i] = 0.0f;
@@ -185,6 +210,9 @@ bool InputManager::RegisterEvents () {
 	}
 }
 
+
+// RESET
+
 void InputManager::ResetKeyboardInputs () {
 	for (int i = 0; i < keyboardInputs_ToReset.size (); i++) {
 		// Saber el codigo de la tecla almacenado en el vector "keysToReset"
@@ -198,7 +226,6 @@ void InputManager::ResetKeyboardInputs () {
 	// Limpiar las teclas ya reseteadas
 	keyboardInputs_ToReset.clear ();
 }
-
 
 void InputManager::ResetControllerInputs () {
 
