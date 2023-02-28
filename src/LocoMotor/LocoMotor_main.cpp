@@ -48,10 +48,14 @@ int main () {
 		// INPUT
 		if (InputManager::Get ()->RegisterEvents ())
 			break;
-		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
-		std::cout << buttonPressed;
 
+		// JOYSTICK INPUT
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, 0) << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, 1) << "\n";
+
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, 0) << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, 1) << "\n";
 
 		i++;
 	}

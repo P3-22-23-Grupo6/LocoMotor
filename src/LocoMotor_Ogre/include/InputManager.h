@@ -69,6 +69,7 @@ public:
 
 	bool GetButtonUp (const int& buttonCode);
 
+	float GetJoystickAxis (const int& joystickIndex, const int& axisIndex);
 
 
 	// GESTION DE EVENTOS

@@ -42,7 +42,24 @@ bool InputManager::GetButton (const int& buttonCode) {
 bool InputManager::GetButtonUp (const int& buttonCode) {
 	return controllerButtons[buttonCode].up;
 }
+
+float InputManager::GetJoystickAxis (const int& joystickIndex, const int& axisIndex) {
 
+	if (joystickIndex == 0) {
+
+		if (axisIndex == 0)
+			return joystickAxis[0];
+		else 
+			return joystickAxis[1];
+	}
+	else if (joystickIndex == 1) {
+
+		if (axisIndex == 0)
+			return joystickAxis[2];
+		else
+			return joystickAxis[3];
+	}
+}
 
 // MANEJO DE EVENTOS
 
@@ -94,12 +111,10 @@ bool InputManager::RegisterEvents () {
 			std::cout << "MOUSE " << "\n";
 		}
 
-		std::cout << "joystickAxis_0 = " << joystickAxis[0] << "\n";
+		//std::cout << "joystickAxis_0 = " << joystickAxis[0] << "\n";
 		//std::cout << "joystickAxis_1 = " << joystickAxis[1] << "\n";
 		//std::cout << "joystickAxis_2 = " << joystickAxis[2] << "\n";
 		//std::cout << "joystickAxis_3 = " << joystickAxis[3] << "\n";
-
-		std::cout << "_______" "\n";
 	}
 }
 
@@ -184,6 +199,8 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 
 		//joystickValue = abs (joystickValue);
 
+		//joystickValue = -25000;
+
 		// Limitador maximo
 		if (joystickValue > JOYSTICKDEADZONE_MAX)
 			joystickValue = JOYSTICKDEADZONE_MAX;
@@ -200,14 +217,19 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 		if (joystickValue > JOYSTICKDEADZONE_MIN
 			|| joystickValue < -JOYSTICKDEADZONE_MIN) {
 
+			float absJoystickValue = abs (joystickValue);
+			int sign = joystickValue / absJoystickValue;
+
 			// Convertir el valor en un valor entre 0 y 1
-			float normalizedValue = ((float) (joystickValue - JOYSTICKDEADZONE_MIN)) / ((float) (JOYSTICKDEADZONE_MAX - JOYSTICKDEADZONE_MIN));
+			float normalizedValue = ((float) (absJoystickValue - JOYSTICKDEADZONE_MIN)) / ((float) (JOYSTICKDEADZONE_MAX - JOYSTICKDEADZONE_MIN));
+
+			normalizedValue *= sign;
 
 			joystickAxis[axis] = normalizedValue;
 		}
 
-		//else
-			//joystickAxis[axis] = 0;
+		else
+			joystickAxis[axis] = 0;
 
 
 		//if (joystickValue_ != 0) {
