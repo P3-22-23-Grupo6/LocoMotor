@@ -28,7 +28,7 @@ int main () {
 	//initBullet ();
 	// man->render ();
 
-	SDL_GameControllerAddMappingsFromFile ("gamecontrollerdb.txt");
+	//SDL_GameControllerAddMappingsFromFile ("gamecontrollerdb.txt");
 
 	//AudioManager::Get ()->PlaySound (0);
 	while (true) {
@@ -55,6 +55,7 @@ int main () {
 
 		if (InputManager::Get ()->GetKeyUp (SDL_SCANCODE_A))
 			std::cout << "KEY UP" << "\n";
+
 	}
 
 	man->Shutdown ();

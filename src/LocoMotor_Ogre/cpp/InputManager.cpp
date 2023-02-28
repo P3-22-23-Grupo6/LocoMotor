@@ -65,24 +65,33 @@ bool InputManager::RegisterEvents () {
 		if (event.type == SDL_QUIT || scanCode == SDL_SCANCODE_ESCAPE)
 			return true;
 
-		std::cout << SDL_IsGameController (0) << "\n";
-		std::cout << "NUM JOYSTICKS = " << SDL_NumJoysticks () << "\n";
+		//std::cout << "CONTROLLER CONNECTED = " << SDL_IsGameController (0) << "\n";
 
+		SDL_GameController* controller = SDL_GameControllerOpen (event.cdevice.which);
 
 		if (event.type == SDL_CONTROLLERDEVICEADDED) {
 			std::cout << "CONTROLLER ADDED" << "\n";
-			manageControllerAdded (event);
 		}
 
-		if (event.type == SDL_CONTROLLERBUTTONDOWN)
+		
+
+		if (SDL_GameControllerGetButton (controller, SDL_CONTROLLER_BUTTON_A))
 			std::cout << "BUTTON PRESSED" << "\n";
 
-		if (event.type == SDL_CONTROLLERAXISMOTION)
-			std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
+		//SDL_gamecontroller
+
+		//if (event.type == SDL_CONTROLLERBUTTONDOWN || 
+		//	event.type == SDL_CONTROLLERBUTTONUP || 
+		//	event.type == SDL_CONTROLLERTOUCHPADDOWN || 
+		//	event.type == SDL_CONTROLLER_BUTTON_A)
+		//	std::cout << "BUTTON PRESSED" << "\n";
+
+		//if (event.type == SDL_CONTROLLERAXISMOTION)
+		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
 
 
-		if (event.type == SDL_JOYAXISMOTION)
-			std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
+		//if (event.type == SDL_JOYAXISMOTION)
+		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
 
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			switch (event.button.button) {

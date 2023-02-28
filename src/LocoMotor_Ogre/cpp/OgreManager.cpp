@@ -136,7 +136,14 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (const char* 
 	miscParams["vsync"] = ropts["VSync"].currentValue;
 	miscParams["gamma"] = ropts["sRGB Gamma Conversion"].currentValue;
 
-	if (!SDL_WasInit (SDL_INIT_VIDEO)) SDL_InitSubSystem (SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
+	if (!SDL_WasInit (SDL_INIT_VIDEO)) {
+		if (SDL_GameControllerAddMappingsFromFile ("gamecontrollerdb.txt"))
+			std::cout << "Gamecontroller Mappings Loaded" << "\n";
+		else 
+			std::cout << "Gamecontroller Mappings NOT Loaded" << "\n";
+
+		SDL_InitSubSystem (SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER);
+	}
 
 	Uint32 flags = SDL_WINDOW_RESIZABLE;
 
