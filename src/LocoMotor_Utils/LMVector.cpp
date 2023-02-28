@@ -1,6 +1,5 @@
 #include "LMVector.h"
 
-
 //Vector class to be used with LocoMotor
 
 // Default constructor initializes vector to (0, 0, 0)
