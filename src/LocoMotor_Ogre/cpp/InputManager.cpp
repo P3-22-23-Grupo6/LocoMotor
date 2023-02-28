@@ -66,13 +66,13 @@ bool InputManager::RegisterEvents () {
 			return true;
 
 		std::cout << SDL_IsGameController (0) << "\n";
+		std::cout << "NUM JOYSTICKS = " << SDL_NumJoysticks () << "\n";
 
 
 		if (event.type == SDL_CONTROLLERDEVICEADDED) {
 			std::cout << "CONTROLLER ADDED" << "\n";
 			manageControllerAdded (event);
 		}
-
 
 		if (event.type == SDL_CONTROLLERBUTTONDOWN)
 			std::cout << "BUTTON PRESSED" << "\n";
@@ -83,6 +83,22 @@ bool InputManager::RegisterEvents () {
 
 		if (event.type == SDL_JOYAXISMOTION)
 			std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
+
+		if (event.type == SDL_MOUSEBUTTONDOWN) {
+			switch (event.button.button) {
+				case SDL_BUTTON_LEFT:
+					break;
+				case SDL_BUTTON_MIDDLE:
+					break;
+				case SDL_BUTTON_RIGHT:
+					break;
+				case SDL_BUTTON_X1:
+					break;
+				case SDL_BUTTON_X2:
+					break;
+			}
+			std::cout << "MOUSE " << "\n";
+		}
 
 		else
 

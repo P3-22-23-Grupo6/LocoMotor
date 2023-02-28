@@ -28,6 +28,8 @@ int main () {
 	//initBullet ();
 	// man->render ();
 
+	SDL_GameControllerAddMappingsFromFile ("gamecontrollerdb.txt");
+
 	//AudioManager::Get ()->PlaySound (0);
 	while (true) {
 
