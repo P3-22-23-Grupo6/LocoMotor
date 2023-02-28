@@ -1,32 +1,31 @@
-#include "Singleton.h"
-#include <memory>
+//#include "Singleton.h"
+//#include <memory>
 
 
-template<typename T>
-T* Singleton<T>::_instance = nullptr;
 
-template<typename T>
-template<typename ...Targs>
-T* Singleton<T>::Init (Targs && ...args) {
-	if (_instance != nullptr)
-		return _instance;
-	_instance = new T (std::forward<Targs> (args)...);
-	return _instance;
-}
 
-template<typename T>
-T* Singleton<T>::GetInstance () {
-	if (_instance == nullptr) {
-		return nullptr;
-	}
-	return _instance;
-}
-
-template<typename T>
-void Singleton<T>::Clear () {
-	delete _instance;
-	_instance = nullptr;
-}
+//template<typename T>
+//template<typename ...Targs>
+//T* Singleton<T>::Init (Targs && ...args) {
+//	if (_instance != nullptr)
+//		return _instance;
+//	_instance = new T (std::forward<Targs> (args)...);
+//	return _instance;
+//}
+//
+//template<typename T>
+//T* Singleton<T>::GetInstance () {
+//	if (_instance == nullptr) {
+//		return nullptr;
+//	}
+//	return _instance;
+//}
+//
+//template <typename T>
+//void Singleton<T>::Clear () {
+//	delete _instance;
+//	_instance = nullptr;
+//}
 
 /*
 template<typename T>

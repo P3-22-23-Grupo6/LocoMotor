@@ -7,6 +7,10 @@
 #include <fmod_errors.h>
 using namespace FMOD;
 
+
+
+FmodWrapper::AudioManager* Singleton<FmodWrapper::AudioManager>::_instance = nullptr;
+
 FmodWrapper::AudioManager::AudioManager () {
 	System_Create (&_sys);
 	_sys->init (32, FMOD_INIT_NORMAL, 0);
@@ -20,19 +24,19 @@ FmodWrapper::AudioManager::AudioManager () {
 FmodWrapper::AudioManager::~AudioManager () {
 	for (auto snd : _soundLib) {
 		snd.second->release ();
-		delete snd.second;
+		//delete snd.second;
 	}
 	_main->release ();
-	delete _main;
+	//delete _main;
 	_sys->close ();
 	_sys->release ();
-	delete _sys;
+	//delete _sys;
 }
-
-FmodWrapper::AudioManager* FmodWrapper::AudioManager::Get () {
-	static AudioManager* inst = new AudioManager ();
-	return inst;
-}
+//
+//FmodWrapper::AudioManager* FmodWrapper::AudioManager::Get () {
+//	static AudioManager* inst = new AudioManager ();
+//	return inst;
+//}
 
 uint16_t FmodWrapper::AudioManager::Update (float deltaTime) {
 	return _sys->update();

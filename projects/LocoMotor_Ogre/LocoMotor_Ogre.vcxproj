@@ -30,6 +30,11 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\OgreManager.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Scene.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
+      <Project>{e08d5061-8a9a-42e2-bfdd-d2a9dc3e1730}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

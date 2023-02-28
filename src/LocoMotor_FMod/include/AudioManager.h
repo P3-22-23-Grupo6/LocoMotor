@@ -3,6 +3,7 @@
 #define AUDIOMANAGER
 
 #include <unordered_map>
+#include "Singleton.h"
 
 namespace FMOD {
 	class System;
@@ -12,16 +13,16 @@ namespace FMOD {
 
 namespace FmodWrapper {
 
-	class AudioManager /*: public Singleton<AudioManager>*/ {
+	class AudioManager : public Singleton<FmodWrapper::AudioManager> {
 
-		// friend Singleton<AudioManager>;
+		friend Singleton<FmodWrapper::AudioManager>;
 
 	public:
 		~AudioManager ();
 
 		/// @brief Static getter for access to the instance, when called for the first time, it will create the instance, and from then on it will return the previously created instance
 		/// @return The reference to the instance of the AudioManager
-		static AudioManager* Get ();
+		//static AudioManager* Init ();
 
 		/// @brief Updates the Fmod API to change channel output depending on positions and velocity
 		/// @param deltaTime Bruh
