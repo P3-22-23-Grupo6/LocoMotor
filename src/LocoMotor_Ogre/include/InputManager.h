@@ -3,6 +3,7 @@
 #define INPUTMANAGER
 
 #include "SDL_keyboard.h"
+#include <SDL_gamecontroller.h>
 
 #include <vector>
 #include <array>
@@ -25,6 +26,11 @@ private:
 	};
 	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de las teclas
 	KeyState keyboard[SDL_NUM_SCANCODES];
+
+	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
+	KeyState buttons_[SDL_CONTROLLER_BUTTON_MAX];
+
+	SDL_GameController* controller_ = nullptr;
 
 	// Vector que almacena que teclas deben ser refrescadas despues de cada frame
 	std::vector<int> keysToReset;
@@ -55,6 +61,10 @@ public:
 	// Tienen las variables de Down/Up activas, solo queremos que esten activas un frame, por lo tanto
 	// la funcion de este metodo es resetear esas variables y ponerlas a False
 	void ResetKeys ();
+
+
+
+	void manageControllerAdded (const SDL_Event& event);
 
 	static void Destroy () {
 		delete InputManager::instance_;

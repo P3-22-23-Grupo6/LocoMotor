@@ -2,6 +2,8 @@
 #include "SDL_Scancode.h"
 //#include "SDL_keyboard.h"
 #include <SDL_events.h>
+#include <iostream>
+#include <SDL_gamecontroller.h>
 
 
 InputManager* InputManager::instance_ = nullptr;
@@ -56,12 +58,37 @@ bool InputManager::RegisterEvents () {
 
 	SDL_Event event;
 	while (SDL_PollEvent (&event)) {
-		if (event.type == SDL_QUIT || event.key.keysym.scancode == SDL_SCANCODE_ESCAPE)
+
+
+		SDL_Scancode scanCode = event.key.keysym.scancode;
+
+		if (event.type == SDL_QUIT || scanCode == SDL_SCANCODE_ESCAPE)
 			return true;
+
+		std::cout << SDL_IsGameController (0) << "\n";
+
+
+		if (event.type == SDL_CONTROLLERDEVICEADDED) {
+			std::cout << "CONTROLLER ADDED" << "\n";
+			manageControllerAdded (event);
+		}
+
+
+		if (event.type == SDL_CONTROLLERBUTTONDOWN)
+			std::cout << "BUTTON PRESSED" << "\n";
+
+		if (event.type == SDL_CONTROLLERAXISMOTION)
+			std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
+
+
+		if (event.type == SDL_JOYAXISMOTION)
+			std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
+
+		else
 
 		// Input managment, cambiar en caso de mando
 		// Almacenar eventos de teclado en el array keys
-		ManageKey (event);
+			ManageKey (event);
 	}
 }
 
@@ -70,11 +97,25 @@ void InputManager::ResetKeys () {
 		// Saber el codigo de la tecla almacenado en el vector "keysToReset"
 		int scanCode = keysToReset[i];
 		// Crear una referencia a la tecla y resetear sus variables a false
-		KeyState &thisKey = keyboard[scanCode];
+		KeyState& thisKey = keyboard[scanCode];
 		thisKey.up = false;
 		thisKey.down = false;
 	}
 
 	// Limpiar las teclas ya reseteadas
 	keysToReset.clear ();
+}
+
+
+
+// MANDO
+
+void InputManager::manageControllerAdded (const SDL_Event& event) {
+	if (controller_ == nullptr) {
+		controller_ = SDL_GameControllerOpen (event.cdevice.which);
+		//for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
+		//	controllerAxes_[i] = 0.0f;
+
+		SDL_GameControllerEventState (SDL_ENABLE);
+	}
 }
