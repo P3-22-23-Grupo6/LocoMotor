@@ -48,9 +48,9 @@ void OgreWrapper::RenderScene::Prueba () {
 	mCamNode->lookAt (Ogre::Vector3 (0, 0, 0), Ogre::Node::TS_WORLD);
 	//mCamNode->setDirection(Ogre::Vector3(0, 0, -1)); 
 
-	OgreWrapper::Node* mCubeNode = new OgreWrapper::Node (_manager->getRootSceneNode ()->createChildSceneNode ());
+	Ogre::SceneNode* mCubeNode = _manager->getRootSceneNode ()->createChildSceneNode ();
 	Ogre::Entity* cube = _manager->createEntity ("cube.mesh");
 	//cube->setMaterialName ("LocoMotor/blanco");
-	mCubeNode->Attach (cube);
+	mCubeNode->attachObject (cube);
 }
 

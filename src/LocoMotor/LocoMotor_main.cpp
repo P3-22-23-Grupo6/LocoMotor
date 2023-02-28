@@ -22,22 +22,12 @@ int main () {
 
 	OgreWrapper::OgreManager::Init ("Prueba");
 	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance ();
-	man->CreateScene ("Escena");
-	//man->CreateScene ("Escena2");
-
-	OgreWrapper::RenderScene* x = man->GetScene ("Escena");
+	OgreWrapper::RenderScene* x = man->CreateScene ("Escena");
 	x->Prueba ();
 	man->SetActiveScene (x);
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
-	//exec();
 	initBullet ();
-	// man->render ();
-
-	uint32_t i = 0;
-
-	// AudioManager::Get ()->PlaySound (0);
-	while (i < 0x00000200) {
-
+	while (true) {
 		// AUDIO
 		list.UpdateFunni (.05f);
 		audio->Update (0.0f);
@@ -51,11 +41,8 @@ int main () {
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
 		std::cout << buttonPressed;
-
-
-		i++;
 	}
-	audio->Clear ();
+	FmodWrapper::AudioManager::Clear ();
 	OgreWrapper::OgreManager::Clear();
 	InputManager::Destroy ();
 	return 0;
