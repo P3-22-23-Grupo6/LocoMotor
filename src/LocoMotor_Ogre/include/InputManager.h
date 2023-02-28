@@ -38,6 +38,13 @@ private:
 	// Vector que almacena que botones deben ser refrescadas despues de cada frame
 	std::vector<int> controllerInputs_ToReset;
 
+
+	// Joysticks
+	float joystickAxis[4];
+
+	const int JOYSTICKDEADZONE_MIN = 10000;
+	const int JOYSTICKDEADZONE_MAX = 32000;
+
 public:
 
 	// Referencia a la instancia de InputManager, en caso de no existir, crea una

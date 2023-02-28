@@ -43,6 +43,66 @@ bool InputManager::GetButtonUp (const int& buttonCode) {
 	return controllerButtons[buttonCode].up;
 }
 
+
+// MANEJO DE EVENTOS
+
+bool InputManager::RegisterEvents () {
+
+	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
+	if (keyboardInputs_ToReset.size () != 0)
+		ResetKeyboardInputs ();
+
+	if (controllerInputs_ToReset.size () != 0)
+		ResetControllerInputs ();
+
+
+	SDL_Event event;
+	while (SDL_PollEvent (&event)) {
+
+		SDL_Scancode scanCode = event.key.keysym.scancode;
+
+		// Eventos para salir del bucle principal
+		if (event.type == SDL_QUIT || scanCode == SDL_SCANCODE_ESCAPE)
+			return true;
+
+
+		// Manejar todos los tipos de eventos
+
+		// Almacenar eventos de teclado en el array "keyboardKeys"
+		ManageKeyboardEvents (event);
+
+		// Almacenar eventos de mando en el array "controllerButtons" (a parte de eventos Add/Remove del mando)
+		ManageControllerEvents (event);
+
+
+		//if (event.type == SDL_JOYAXISMOTION)
+		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
+
+		if (event.type == SDL_MOUSEBUTTONDOWN) {
+			switch (event.button.button) {
+				case SDL_BUTTON_LEFT:
+					break;
+				case SDL_BUTTON_MIDDLE:
+					break;
+				case SDL_BUTTON_RIGHT:
+					break;
+				case SDL_BUTTON_X1:
+					break;
+				case SDL_BUTTON_X2:
+					break;
+			}
+			std::cout << "MOUSE " << "\n";
+		}
+
+		std::cout << "joystickAxis_0 = " << joystickAxis[0] << "\n";
+		//std::cout << "joystickAxis_1 = " << joystickAxis[1] << "\n";
+		//std::cout << "joystickAxis_2 = " << joystickAxis[2] << "\n";
+		//std::cout << "joystickAxis_3 = " << joystickAxis[3] << "\n";
+
+		std::cout << "_______" "\n";
+	}
+}
+
 void InputManager::ManageKeyboardEvents (const SDL_Event& event) {
 
 	if (event.type == SDL_KEYDOWN) {
@@ -111,6 +171,53 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 		thisButton.up = true;
 		controllerInputs_ToReset.push_back (buttonCode);
 	}
+
+	if (event.type == SDL_CONTROLLERAXISMOTION) {
+
+		Sint16 joystickValue = event.caxis.value;
+
+		//if (joystickValue_ < JOYSTICKDEADZONE_MIN)
+		//	joystickValue_ = 0;
+		//else if (joystickValue_ > JOYSTICKDEADZONE_MAX)
+		//	joystickValue_ = JOYSTICKDEADZONE_MAX;
+
+
+		//joystickValue = abs (joystickValue);
+
+		// Limitador maximo
+		if (joystickValue > JOYSTICKDEADZONE_MAX)
+			joystickValue = JOYSTICKDEADZONE_MAX;
+		else if (joystickValue < -JOYSTICKDEADZONE_MAX)
+			joystickValue = -JOYSTICKDEADZONE_MAX;
+
+		//joystickValue = 13000;
+
+
+		int axis = event.caxis.axis;
+		//std::cout << "axis = " << axis << "\n";
+
+		// Si se inclina el joystick lo suficiente, guardar su valor
+		if (joystickValue > JOYSTICKDEADZONE_MIN
+			|| joystickValue < -JOYSTICKDEADZONE_MIN) {
+
+			// Convertir el valor en un valor entre 0 y 1
+			float normalizedValue = ((float) (joystickValue - JOYSTICKDEADZONE_MIN)) / ((float) (JOYSTICKDEADZONE_MAX - JOYSTICKDEADZONE_MIN));
+
+			joystickAxis[axis] = normalizedValue;
+		}
+
+		//else
+			//joystickAxis[axis] = 0;
+
+
+		//if (joystickValue_ != 0) {
+
+		//	int axis = event.caxis.axis;
+		//	std::cout << "joistickValue = " << joistickValue << "\n";
+		//}
+
+	}
+
 }
 
 bool InputManager::ControllerDeviceAdded (const Sint32& controllerAdded) {
@@ -125,6 +232,7 @@ bool InputManager::ControllerDeviceAdded (const Sint32& controllerAdded) {
 
 	//SDL_GameControllerEventState (SDL_ENABLE);
 }
+
 void InputManager::ControllerDeviceRemoved (const Sint32& controllerRemoved) {
 
 	currentGameController = nullptr;
@@ -140,74 +248,6 @@ void InputManager::ControllerDeviceRemoved (const Sint32& controllerRemoved) {
 	//	controllerAxes_[i] = 0.0f;
 
 	//SDL_GameControllerEventState (SDL_ENABLE);
-}
-
-bool InputManager::RegisterEvents () {
-
-	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
-	if (keyboardInputs_ToReset.size () != 0)
-		ResetKeyboardInputs ();
-
-	if (controllerInputs_ToReset.size () != 0)
-		ResetControllerInputs ();
-
-
-	SDL_Event event;
-	while (SDL_PollEvent (&event)) {
-
-		SDL_Scancode scanCode = event.key.keysym.scancode;
-
-		// Eventos para salir del bucle principal
-		if (event.type == SDL_QUIT || scanCode == SDL_SCANCODE_ESCAPE)
-			return true;
-
-
-		// Manejar todos los tipos de eventos
-
-		// Almacenar eventos de teclado en el array "keyboardKeys"
-		ManageKeyboardEvents (event);
-
-		// Almacenar eventos de teclado en el array "controllerButtons"
-		ManageControllerEvents (event);
-
-
-
-		//std::cout << "CONTROLLER CONNECTED = " << SDL_IsGameController (0) << "\n";
-
-		//SDL_GameController* controller = SDL_GameControllerOpen (event.cdevice.which);
-
-		//if (event.type == SDL_CONTROLLERDEVICEADDED) {
-		//	std::cout << "CONTROLLER ADDED" << "\n";
-		//}
-
-		//if (event.type == SDL_CONTROLLERBUTTONDOWN)
-		//	std::cout << "BUTTON DOWN" << "\n";
-
-		//if (event.type == SDL_CONTROLLERBUTTONUP)
-		//	std::cout << "BUTTON UP" << "\n";
-
-		//if (event.type == SDL_CONTROLLERAXISMOTION)
-		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
-
-		//if (event.type == SDL_JOYAXISMOTION)
-		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
-
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-			switch (event.button.button) {
-				case SDL_BUTTON_LEFT:
-					break;
-				case SDL_BUTTON_MIDDLE:
-					break;
-				case SDL_BUTTON_RIGHT:
-					break;
-				case SDL_BUTTON_X1:
-					break;
-				case SDL_BUTTON_X2:
-					break;
-			}
-			std::cout << "MOUSE " << "\n";
-		}
-	}
 }
 
 
