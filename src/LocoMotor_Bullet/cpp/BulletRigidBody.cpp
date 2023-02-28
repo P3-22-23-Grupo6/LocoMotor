@@ -1,17 +1,17 @@
 #include "BulletRigidBody.h"
 #include "BulletManager.h"
+#include <btBulletDynamicsCommon.h>
 using namespace BulletWrapper;
 
-
 BulletWrapper::BulletRigidBody::BulletRigidBody (RigidBodyInfo info) {
-	if (info.Type == info.Box)
-		_shape = new btBoxShape (info.boxSize);
+	if (info.size<=0.0)
+		_shape = new btBoxShape (LMVector3::LmToBullet (info.boxSize));
 	else
 		_shape = new btSphereShape (info.size);
 
 	btTransform groundTransform;
 	groundTransform.setIdentity ();
-	groundTransform.setOrigin (info.origin);
+	groundTransform.setOrigin (LMVector3::LmToBullet (info.origin));
 
 	btScalar mass (info.mass);
 

@@ -5,6 +5,7 @@
 class btRigidBody;
 class btCollisionShape;
 class btVector3;
+
 namespace BulletWrapper {
 	struct RigidBodyInfo;
 	//class BulletManager;

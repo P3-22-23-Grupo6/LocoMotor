@@ -1,7 +1,7 @@
 #include "BulletManager.h"
 #include <iostream>
-#include <btBulletDynamicsCommon.h>
 #include "BulletRigidBody.h"
+#include <btBulletDynamicsCommon.h>
 using namespace BulletWrapper;
 BulletWrapper::BulletManager::BulletManager () {
 

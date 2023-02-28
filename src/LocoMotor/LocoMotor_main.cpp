@@ -11,8 +11,7 @@
 
 
 int exec ();
-int initBullet ();
-
+using namespace BulletWrapper;
 int main () {
 
 	_CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
@@ -28,14 +27,22 @@ int main () {
 
 	OgreWrapper::Scene* x = man->getScene ("Escenah");
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
+	BulletManager::InitBullet ();
+	auto btmngr = BulletManager::GetInstance ();
+	RigidBodyInfo info1;
+	info1.boxSize = LMVector3 (50, 50, 50);
+	info1.mass = 0.0f;
+	info1.origin = LMVector3 (0, -50, 0);
+	btmngr->CreateRigidBody (info1);
+	RigidBodyInfo info2;
+	info2.size = 1.0;
+	info2.mass = 1.0f;
+	info2.origin = LMVector3 (2, 10, 0);
+	btmngr->CreateRigidBody (info2);
 	//exec();
 	//initBullet ();
 	// man->render ();
-	BulletWrapper::BulletManager::InitBullet ();
-	BulletWrapper::RigidBodyInfo bInfo;
-	BulletWrapper::BulletManager::CreateRigidBody ();
 	uint32_t i = 0;
-
 	// AudioManager::Get ()->PlaySound (0);
 	while (i < 0x00000200) {
 
@@ -52,7 +59,7 @@ int main () {
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
 		//std::cout << buttonPressed;
-
+		btmngr->Update ();
 
 		i++;
 	}

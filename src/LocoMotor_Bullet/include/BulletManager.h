@@ -1,19 +1,19 @@
 #ifndef _BULLETMANAGER_H_
 #define _BULLETMANAGER_H_
 #pragma once
-#include <btBulletDynamicsCommon.h>
 #include <vector>
-//class btVector3;
-//class btCollisionDispatcher;
-//class btBroadphaseInterface;
-//class btSequentialImpulseConstraintSolver;
-//class btDynamicsWorld;
-//class btDefaultCollisionConfiguration;
+//#include <btBulletDynamicsCommon.h>
+#include "lmVector.h"
+class btCollisionDispatcher;
+class btBroadphaseInterface;
+class btSequentialImpulseConstraintSolver;
+class btDynamicsWorld;
+class btDefaultCollisionConfiguration;
+class btRigidBody;
 namespace BulletWrapper {
 
 	/// <summary>
-	/// Initializes the <c>BulletManager</c> singleton instance.
-	/// This method must be called before any calls to <c>BulletManager::getInstance</c>.
+	/// Info to create a RigidBody
 	/// </summary>
 	/// <param name="Type"> The type of the rigidbody, could be box or sphere </param>
 	/// <param name="boxSize"> The size of the box if Type is Box </param>
@@ -21,14 +21,10 @@ namespace BulletWrapper {
 	/// <param name="Origin"> The origin point of transform </param>
 	/// <param name="mass"> The mass of rigidbody, if mass !=0 , it is dynamic </param>
 	struct RigidBodyInfo {
-		enum {
-			Box, Sphere
-		}Type;
-		btVector3 boxSize;
+		LMVector3 boxSize;
 		float size;
-		btVector3 origin;
+		LMVector3 origin;
 		float mass;
-
 	};
 	class BulletRigidBody;
 	class BulletManager {
