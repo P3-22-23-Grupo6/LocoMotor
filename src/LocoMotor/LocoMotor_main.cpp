@@ -51,11 +51,10 @@ int main () {
 
 
 		// JOYSTICK INPUT
-		//std::cout << InputManager::Get ()->GetJoystickAxis (0, 0) << "\n";
-		//std::cout << InputManager::Get ()->GetJoystickAxis (0, 1) << "\n";
-
-		//std::cout << InputManager::Get ()->GetJoystickAxis (1, 0) << "\n";
-		//std::cout << InputManager::Get ()->GetJoystickAxis (1, 1) << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Horizontal") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Vertical") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Horizontal") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Vertical") << "\n";
 
 		i++;
 	}

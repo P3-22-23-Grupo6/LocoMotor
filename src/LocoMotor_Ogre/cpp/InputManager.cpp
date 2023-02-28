@@ -43,20 +43,20 @@ bool InputManager::GetButtonUp (const int& buttonCode) {
 	return controllerButtons[buttonCode].up;
 }
 
-float InputManager::GetJoystickAxis (const int& joystickIndex, const int& axisIndex) {
+float InputManager::GetJoystickAxis (const int& joystickIndex, const char* axis) {
 
 	if (joystickIndex == 0) {
 
-		if (axisIndex == 0)
+		if (axis == "Horizontal")
 			return joystickAxis[0];
-		else 
+		else if (axis == "Vertical")
 			return joystickAxis[1];
 	}
 	else if (joystickIndex == 1) {
 
-		if (axisIndex == 0)
+		if (axis == "Horizontal")
 			return joystickAxis[2];
-		else
+		else if (axis == "Vertical")
 			return joystickAxis[3];
 	}
 }
