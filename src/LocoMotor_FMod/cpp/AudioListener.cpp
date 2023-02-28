@@ -17,6 +17,7 @@ FmodWrapper::AudioListener::AudioListener (FmodWrapper::AudioManager* manager) :
 }
 
 FmodWrapper::AudioListener::~AudioListener () {
+	delete _posRemember;
 }
 
 void FmodWrapper::AudioListener::Update (const float& deltaTime) {
