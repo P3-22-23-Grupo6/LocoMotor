@@ -7,6 +7,7 @@
 #include "AudioListener.h"		//No se que tan legal seria hacer esto supongo el manager deberia incluir ya el listener pero habra que consultarlo nose me tengo que ir
 #include "InputManager.h"
 #include "CheckML.h"
+#include "RenderScene.h"
 
 int exec ();
 int initBullet ();
@@ -19,12 +20,14 @@ int main () {
 	audio->AddSound (0, "Assets/A.wav");
 	auto list = FmodWrapper::AudioListener (audio);
 
-	OgreWrapper::OgreManager::init ("Prueba");
-	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::getInstance ();
-	man->createScene ("Escena");
-	man->createScene ("Escena2");
+	OgreWrapper::OgreManager::Init ("Prueba");
+	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance ();
+	man->CreateScene ("Escena");
+	//man->CreateScene ("Escena2");
 
-	OgreWrapper::Scene* x = man->getScene ("Escenah");
+	OgreWrapper::RenderScene* x = man->GetScene ("Escena");
+	x->Prueba ();
+	man->SetActiveScene (x);
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	//exec();
 	initBullet ();
@@ -40,10 +43,10 @@ int main () {
 		audio->Update (0.0f);
 
 		// RENDER
-		man->render ();
+		man->Render ();
 
 		// INPUT
-		if (InputManager::Get ()->PollEvents ())
+		if (InputManager::Get ()->RegisterEvents ())
 			break;
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
@@ -53,6 +56,7 @@ int main () {
 		i++;
 	}
 	audio->Clear ();
-
+	man->Shutdown ();
+	InputManager::Destroy ();
 	return 0;
 }
