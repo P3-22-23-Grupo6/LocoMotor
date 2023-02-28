@@ -38,9 +38,15 @@ int main () {
 		// INPUT
 		if (InputManager::Get ()->RegisterEvents ())
 			break;
-		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
-		std::cout << buttonPressed;
+
+		// JOYSTICK INPUT
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Horizontal") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Vertical") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Horizontal") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Vertical") << "\n";
+
+		i++;
 	}
 	FmodWrapper::AudioManager::Clear ();
 	OgreWrapper::OgreManager::Clear();
