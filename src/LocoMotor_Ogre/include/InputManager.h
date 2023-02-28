@@ -25,15 +25,18 @@ private:
 		bool up = false;
 	};
 	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de las teclas
-	KeyState keyboardButtons[SDL_NUM_SCANCODES];
+	KeyState keyboardKeys[SDL_NUM_SCANCODES];
 
 	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
-	KeyState gameControllerButtons[SDL_CONTROLLER_BUTTON_MAX];
+	KeyState controllerButtons[SDL_CONTROLLER_BUTTON_MAX];
 
 	SDL_GameController* currentGameController = nullptr;
 
 	// Vector que almacena que teclas deben ser refrescadas despues de cada frame
-	std::vector<int> keysToReset;
+	std::vector<int> keyboardInputs_ToReset;
+
+	// Vector que almacena que botones deben ser refrescadas despues de cada frame
+	std::vector<int> controllerInputs_ToReset;
 
 public:
 
@@ -52,6 +55,13 @@ public:
 
 	// MANDO
 
+	// Devuelve true siempre que la tecla este presionada
+	bool GetButtonDown (const int& buttonCode);
+
+	bool GetButton (const int& buttonCode);
+
+	bool GetButtonUp (const int& buttonCode);
+
 
 
 	// GESTION DE EVENTOS
@@ -69,7 +79,9 @@ public:
 	// Las teclas que hayan llamado a los eventos SDL_KEYDOWN y SDL_KEYUP en el frame anterior,
 	// Tienen las variables de Down/Up activas, solo queremos que esten activas un frame, por lo tanto
 	// la funcion de este metodo es resetear esas variables y ponerlas a False
-	void ResetKeys ();
+	void ResetKeyboardInputs ();
+
+	void ResetControllerInputs ();
 
 	static void Destroy () {
 		delete InputManager::instance_;

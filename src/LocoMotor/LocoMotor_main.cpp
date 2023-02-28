@@ -56,6 +56,17 @@ int main () {
 		if (InputManager::Get ()->GetKeyUp (SDL_SCANCODE_A))
 			std::cout << "KEY UP" << "\n";
 
+
+
+		if (InputManager::Get ()->GetButtonDown (SDL_CONTROLLER_BUTTON_A))
+			std::cout << "CONTROLLER BUTTON DOWN" << "\n";
+
+		if (InputManager::Get ()->GetButton (SDL_CONTROLLER_BUTTON_A))
+			std::cout << "CONTROLLER BUTTON PRESSED" << "\n";
+
+		if (InputManager::Get ()->GetButtonUp (SDL_CONTROLLER_BUTTON_A))
+			std::cout << "CONTROLLER BUTTON UP" << "\n";
+
 	}
 
 	man->Shutdown ();
