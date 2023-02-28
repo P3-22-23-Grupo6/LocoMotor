@@ -54,7 +54,8 @@ public:
 	bool RegisterEvents ();
 
 	// Almacena el evento de teclado registrado en la variable referenciada "event" en el array keys
-	void ManageKey (const SDL_Event& event);
+	void ManageKeyboardEvents (const SDL_Event& event);
+	void ManageControllerEvents (const SDL_Event& event);
 
 
 	// Las teclas que hayan llamado a los eventos SDL_KEYDOWN y SDL_KEYUP en el frame anterior,

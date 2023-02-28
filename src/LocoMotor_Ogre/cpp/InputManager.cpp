@@ -28,7 +28,7 @@ bool InputManager::GetKeyUp (const SDL_Scancode& scanCode) {
 	return keyboard[scanCode].up;
 }
 
-void InputManager::ManageKey (const SDL_Event& event) {
+void InputManager::ManageKeyboardEvents (const SDL_Event& event) {
 	if (event.type == SDL_KEYDOWN) {
 		SDL_Scancode scanCode = event.key.keysym.scancode;
 		KeyState& thisKey = keyboard[scanCode];
@@ -50,7 +50,26 @@ void InputManager::ManageKey (const SDL_Event& event) {
 	}
 }
 
+void InputManager::ManageControllerEvents (const SDL_Event& event) {
+	SDL_GameController* controller = SDL_GameControllerOpen (event.cdevice.which);
+
+	if (event.type == SDL_CONTROLLERDEVICEADDED) {
+		std::cout << "CONTROLLER ADDED" << "\n";
+	}
+
+	if (event.type == SDL_CONTROLLERBUTTONDOWN)
+		std::cout << "BUTTON DOWN" << "\n";
+
+	if (event.type == SDL_CONTROLLERBUTTONUP)
+		std::cout << "BUTTON UP" << "\n";
+}
+
 bool InputManager::RegisterEvents () {
+
+	std::cout << "SDL_EventType (SDL_CONTROLLERBUTTONDOWN) = " << SDL_EventType (SDL_CONTROLLERBUTTONDOWN) << "\n";
+	std::cout << "SDL_EventType (SDL_CONTROLLERBUTTONDOWN) = " << SDL_EventType (SDL_CONTROLLERBUTTONUP) << "\n";
+	std::cout << "SDL_EventType (SDL_CONTROLLERBUTTONDOWN) = " << SDL_EventType (SDL_KEYDOWN) << "\n";
+	std::cout << "SDL_EventType (SDL_CONTROLLERBUTTONDOWN) = " << SDL_EventType (SDL_KEYUP) << "\n";
 
 	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
 	if (keysToReset.size () != 0)
@@ -67,28 +86,20 @@ bool InputManager::RegisterEvents () {
 
 		//std::cout << "CONTROLLER CONNECTED = " << SDL_IsGameController (0) << "\n";
 
-		SDL_GameController* controller = SDL_GameControllerOpen (event.cdevice.which);
+		//SDL_GameController* controller = SDL_GameControllerOpen (event.cdevice.which);
 
-		if (event.type == SDL_CONTROLLERDEVICEADDED) {
-			std::cout << "CONTROLLER ADDED" << "\n";
-		}
+		//if (event.type == SDL_CONTROLLERDEVICEADDED) {
+		//	std::cout << "CONTROLLER ADDED" << "\n";
+		//}
 
-		
+		//if (event.type == SDL_CONTROLLERBUTTONDOWN)
+		//	std::cout << "BUTTON DOWN" << "\n";
 
-		if (SDL_GameControllerGetButton (controller, SDL_CONTROLLER_BUTTON_A))
-			std::cout << "BUTTON PRESSED" << "\n";
-
-		//SDL_gamecontroller
-
-		//if (event.type == SDL_CONTROLLERBUTTONDOWN || 
-		//	event.type == SDL_CONTROLLERBUTTONUP || 
-		//	event.type == SDL_CONTROLLERTOUCHPADDOWN || 
-		//	event.type == SDL_CONTROLLER_BUTTON_A)
-		//	std::cout << "BUTTON PRESSED" << "\n";
+		//if (event.type == SDL_CONTROLLERBUTTONUP)
+		//	std::cout << "BUTTON UP" << "\n";
 
 		//if (event.type == SDL_CONTROLLERAXISMOTION)
 		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
-
 
 		//if (event.type == SDL_JOYAXISMOTION)
 		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
@@ -109,11 +120,11 @@ bool InputManager::RegisterEvents () {
 			std::cout << "MOUSE " << "\n";
 		}
 
-		else
+		ManageControllerEvents (event);
 
 		// Input managment, cambiar en caso de mando
 		// Almacenar eventos de teclado en el array keys
-			ManageKey (event);
+		ManageKeyboardEvents (event);
 	}
 }
 
