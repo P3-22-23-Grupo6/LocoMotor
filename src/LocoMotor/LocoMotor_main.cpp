@@ -7,10 +7,11 @@
 #include "AudioListener.h"		//No se que tan legal seria hacer esto supongo el manager deberia incluir ya el listener pero habra que consultarlo nose me tengo que ir
 #include "InputManager.h"
 #include "CheckML.h"
+#include "BulletManager.h"
+
 
 int exec ();
-int initBullet ();
-
+using namespace BulletWrapper;
 int main () {
 
 	_CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
@@ -26,12 +27,22 @@ int main () {
 
 	OgreWrapper::Scene* x = man->getScene ("Escenah");
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
+	BulletManager::Init ();
+	auto btmngr = BulletManager::GetInstance ();
+	RigidBodyInfo info1;
+	info1.boxSize = btVector3 (50, 10, 50);
+	info1.mass = 0.0f;
+	info1.origin = btVector3 (0, -50, 0);
+	btmngr->CreateRigidBody (info1);
+	RigidBodyInfo info2;
+	info2.size = 1.0;
+	info2.mass = 1.0f;
+	info2.origin = btVector3 (2, 10, 0);
+	btmngr->CreateRigidBody (info2);
 	//exec();
-	initBullet ();
+	//initBullet ();
 	// man->render ();
-
 	uint32_t i = 0;
-
 	// AudioManager::Get ()->PlaySound (0);
 	while (i < 0x00000200) {
 
@@ -47,11 +58,12 @@ int main () {
 			break;
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
-		std::cout << buttonPressed;
-
+		//std::cout << buttonPressed;
+		btmngr->Update ();
 
 		i++;
 	}
+	btmngr->Clear ();
 	audio->Clear ();
 
 	return 0;

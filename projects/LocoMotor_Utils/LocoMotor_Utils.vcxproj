@@ -142,6 +142,7 @@
     <ClCompile Include="..\..\src\LocoMotor_Utils\Singleton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\LocoMotor_Utils\CheckML.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\lmVector.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\Singleton.h" />
   </ItemGroup>
