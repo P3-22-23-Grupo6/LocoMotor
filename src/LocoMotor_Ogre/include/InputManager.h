@@ -45,6 +45,10 @@ private:
 	const int JOYSTICKDEADZONE_MIN = 10000;
 	const int JOYSTICKDEADZONE_MAX = 32000;
 
+
+	// Giroscopio del mando
+	float gyroscopeValue = 0;
+
 public:
 
 	// Referencia a la instancia de InputManager, en caso de no existir, crea una

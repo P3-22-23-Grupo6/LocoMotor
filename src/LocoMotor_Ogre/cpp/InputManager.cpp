@@ -42,7 +42,8 @@ bool InputManager::GetButton (const int& buttonCode) {
 bool InputManager::GetButtonUp (const int& buttonCode) {
 	return controllerButtons[buttonCode].up;
 }
-
+
+
 float InputManager::GetJoystickAxis (const int& joystickIndex, const char* axis) {
 
 	if (joystickIndex == 0) {
@@ -80,12 +81,45 @@ bool InputManager::RegisterEvents () {
 
 	//SDL_GameControllerRumble (currentController, 0, 65000, 1000);
 
+	if (currentController != NULL) {
 
-	float data_[2];
-	SDL_GameControllerGetSensorData (currentController, SDL_SENSOR_GYRO, data_, 2);
+		const int gyroAxis = 2;
+		float data_[gyroAxis];
+		SDL_GameControllerGetSensorData (currentController, SDL_SENSOR_GYRO, data_, gyroAxis);
 
-	std::cout << "data_ = " << data_[1] << "\n";
-	std::cout << "data_ = " << data_[1] << "\n";
+		float dataValue = data_[1];
+
+		// DEADZONE
+		if (dataValue < 0.01 && dataValue > -0.01)
+			dataValue = 0;
+
+		// tener en cuenta solo el primer decimal
+		dataValue *= 1000000;
+		dataValue = (int) dataValue;
+
+		gyroscopeValue += dataValue;
+
+		//float maxValue = 5000000;
+		//if (gyroscopeValue > maxValue)
+		//	gyroscopeValue = maxValue;
+		//else if (gyroscopeValue < -maxValue)
+		//	gyroscopeValue = -maxValue;
+
+
+		float prettyValue = int (gyroscopeValue / 1000000);
+
+		//gyroscopeValue = (int) gyroscopeValue;
+
+		//std::cout << "DATA_0 = " << data_[0] << "   ///   " << "DATA_1 = " << data_[1] << "\n";
+		std::cout << "GyroscopeValue = " << prettyValue << "\n";
+	}
+
+
+
+	//if (data_[0] > 0)
+	//	std::cout << "gyroscopeValue = " << 1 << "\n";
+	//else
+	//	std::cout << "gyroscopeValue = " << -1 << "\n";
 
 	auto f = SDL_GetError ();
 
