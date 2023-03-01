@@ -40,13 +40,16 @@ int main () {
 			break;
 
 
+		SDL_SensorType sensor = SDL_SensorGetDeviceType (0);
+
 		// JOYSTICK INPUT
 		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Horizontal") << "\n";
 		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Vertical") << "\n";
 		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Horizontal") << "\n";
 		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Vertical") << "\n";
 
-		i++;
+	
+		//i++;
 	}
 	FmodWrapper::AudioManager::Clear ();
 	OgreWrapper::OgreManager::Clear();

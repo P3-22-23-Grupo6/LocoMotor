@@ -72,6 +72,29 @@ bool InputManager::RegisterEvents () {
 	if (controllerInputs_ToReset.size () != 0)
 		ResetControllerInputs ();
 
+	//SDL_GameControllerSetLED (currentController, 255, 0, 0);
+
+	auto s = SDL_GameControllerSetSensorEnabled (currentController, SDL_SENSOR_GYRO, SDL_TRUE);
+
+	auto d = SDL_GameControllerIsSensorEnabled (currentController, SDL_SENSOR_GYRO);
+
+	//SDL_GameControllerRumble (currentController, 0, 65000, 1000);
+
+
+	float data_[2];
+	SDL_GameControllerGetSensorData (currentController, SDL_SENSOR_GYRO, data_, 2);
+
+	std::cout << "data_ = " << data_[1] << "\n";
+	std::cout << "data_ = " << data_[1] << "\n";
+
+	auto f = SDL_GetError ();
+
+	auto a = SDL_GameControllerHasSensor (currentController, SDL_SENSOR_GYRO);
+	auto b = SDL_GameControllerHasSensor (currentController, SDL_SENSOR_ACCEL);
+
+	//auto h = SDL_GameControllerGetSensorData (currentController, SDL_SENSOR_GYRO, nullptr, 1);
+	//auto d = SDL_GetError ();
+	//SDL_JoystickRumbleTriggers (joystickAxis, Uint16 left_rumble, Uint16 right_rumble, Uint32 duration_ms);
 
 	SDL_Event event;
 	while (SDL_PollEvent (&event)) {
@@ -244,10 +267,10 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 
 bool InputManager::ControllerDeviceAdded (const Sint32& controllerAdded) {
 
-	if (currentGameController != nullptr)
+	if (currentController != nullptr)
 		return false;
 
-	currentGameController = SDL_GameControllerOpen (controllerAdded);
+	currentController = SDL_GameControllerOpen (controllerAdded);
 
 	//for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
 	//	controllerAxes_[i] = 0.0f;
@@ -257,7 +280,7 @@ bool InputManager::ControllerDeviceAdded (const Sint32& controllerAdded) {
 
 void InputManager::ControllerDeviceRemoved (const Sint32& controllerRemoved) {
 
-	currentGameController = nullptr;
+	currentController = nullptr;
 
 	// Eliminar inputs guardados actualmente
 	for (KeyState controllerButton : controllerButtons) {

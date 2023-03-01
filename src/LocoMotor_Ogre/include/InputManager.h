@@ -30,7 +30,7 @@ private:
 	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
 	KeyState controllerButtons[SDL_CONTROLLER_BUTTON_MAX];
 
-	SDL_GameController* currentGameController = nullptr;
+	SDL_GameController* currentController = nullptr;
 
 	// Vector que almacena que teclas deben ser refrescadas despues de cada frame
 	std::vector<int> keyboardInputs_ToReset;
