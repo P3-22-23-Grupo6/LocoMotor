@@ -6,7 +6,7 @@
 #include <iostream>
 #endif // _DEBUG
 
-FmodWrapper::AudioListener::AudioListener (FmodWrapper::AudioManager* manager) : man (manager) {
+FmodWrapper::AudioListener::AudioListener () : man (AudioManager::GetInstance()) {
 	man->AddListener (_fIndex);
 	_posRemember = new FMOD_VECTOR ();
 	_posRemember->x = 0;

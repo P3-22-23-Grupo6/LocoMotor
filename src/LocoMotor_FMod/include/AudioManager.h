@@ -14,9 +14,14 @@ namespace FMOD {
 
 namespace FmodWrapper {
 
+	class AudioSource;
+	class AudioListener;
+
 	class AudioManager : public Singleton<FmodWrapper::AudioManager> {
 
 		friend Singleton<FmodWrapper::AudioManager>;
+		friend AudioSource;
+		friend AudioListener;
 
 	public:
 		~AudioManager ();
@@ -44,7 +49,7 @@ namespace FmodWrapper {
 
 		/// @brief Gets the FMOD::System object from this manager
 		/// @return The System in question
-		FMOD::System* GetSystem ();
+		FMOD::System* GetSystem () const;
 
 		/// @brief Get the fmod error corresponding to the param passed
 		/// @param errorCode Param to get the Fmod error corresponding to it
@@ -61,10 +66,12 @@ namespace FmodWrapper {
 		/// @brief Constructor is set to private, use the 'Get' method for access to the instance of this object
 		AudioManager ();
 
-		/// @brief Plays an already added sound
+		/// @brief Plays an already added sound, but gives access to the channel its being played
 		/// @param Name of the sound to play
 		/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
 		uint16_t PlaySoundwChannel (const uint32_t name, FMOD::Channel** channel);
+
+		FMOD::Sound* GetSound (const uint32_t id);
 
 	};
 }

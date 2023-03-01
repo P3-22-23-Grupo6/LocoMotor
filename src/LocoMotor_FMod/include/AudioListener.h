@@ -2,7 +2,7 @@
 #ifndef AUDIOLISTENER
 #define AUDIOLISTENER
 
-typedef struct FMOD_VECTOR;
+struct FMOD_VECTOR;
 namespace FmodWrapper {
 	class AudioManager;
 }
@@ -15,7 +15,7 @@ namespace FmodWrapper {
 	class AudioListener {
 
 	public:
-		AudioListener (FmodWrapper::AudioManager* manager/*gameobject, etc*/);
+		AudioListener ();
 		~AudioListener ();
 
 		/// @brief Actualizara los datos del listener dependiendo del gameobject asociado

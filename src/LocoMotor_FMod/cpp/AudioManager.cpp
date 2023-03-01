@@ -89,6 +89,10 @@ uint16_t AudioManager::PlaySoundwChannel (const uint32_t name, Channel** channel
 #endif // _DEBUG
 }
 
+Sound* AudioManager::GetSound (const uint32_t id) {
+	return _soundLib[id];
+}
+
 uint16_t AudioManager::AddListener (int& index) {
 	static bool first = true;
 	if (first) {
@@ -102,7 +106,7 @@ uint16_t AudioManager::AddListener (int& index) {
 	}
 }
 
-System* AudioManager::GetSystem () {
+System* AudioManager::GetSystem () const {
 	return _sys;
 }
 
