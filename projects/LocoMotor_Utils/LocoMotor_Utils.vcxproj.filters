@@ -29,5 +29,8 @@
     <ClInclude Include="..\..\src\LocoMotor_Utils\lmVector.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Utils\CheckML.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

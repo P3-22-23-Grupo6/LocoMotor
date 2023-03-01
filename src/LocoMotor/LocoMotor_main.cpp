@@ -27,7 +27,7 @@ int main () {
 
 	OgreWrapper::Scene* x = man->getScene ("Escenah");
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
-	//BulletManager::InitBullet ();
+	BulletManager::Init ();
 	//auto btmngr = BulletManager::GetInstance ();
 	//RigidBodyInfo info1;
 	//info1.boxSize = LMVector3 (50, 50, 50);

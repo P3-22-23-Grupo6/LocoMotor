@@ -142,10 +142,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib;LocoMotor_Utils_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Bullet\Build\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Lib;$(SolutionDir)Dependecies\Bullet\Build\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

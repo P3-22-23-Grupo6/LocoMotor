@@ -24,15 +24,15 @@ BulletWrapper::BulletManager::~BulletManager () {
 	delete _dynamicWorld;
 }
 
-void BulletWrapper::BulletManager::InitBullet () {
-	if (_instance == nullptr) _instance = new BulletManager ();
-}
+//void BulletWrapper::BulletManager::InitBullet () {
+//	if (_instance == nullptr) _instance = new BulletManager ();
+//}
 
-BulletWrapper::BulletManager* BulletWrapper::BulletManager::GetInstance () {
-	if (_instance != nullptr) return _instance;
-	std::cerr << "Debes inicializar con BulletManager::InitBullet() antes de llamar a BulletManager::getInstance()!!\n";
-	return nullptr;
-}
+//BulletWrapper::BulletManager* BulletWrapper::BulletManager::GetInstance () {
+//	if (_instance != nullptr) return _instance;
+//	std::cerr << "Debes inicializar con BulletManager::InitBullet() antes de llamar a BulletManager::getInstance()!!\n";
+//	return nullptr;
+//}
 void BulletWrapper::BulletManager::CreateRigidBody (RigidBodyInfo info) {
 	BulletRigidBody* brg = new BulletRigidBody (info);
 	_vRigidBody.push_back (brg);

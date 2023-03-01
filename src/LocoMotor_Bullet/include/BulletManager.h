@@ -3,6 +3,7 @@
 #pragma once
 #include <vector>
 #include <btBulletDynamicsCommon.h>
+#include "Singleton.h"
 //#include "lmVector.h"
 //class btCollisionDispatcher;
 //class btBroadphaseInterface;
@@ -27,7 +28,8 @@ namespace BulletWrapper {
 		float mass;
 	};
 	class BulletRigidBody;
-	class BulletManager {
+	class BulletManager : public Singleton<BulletWrapper::BulletManager> {
+		friend Singleton<BulletWrapper::BulletManager>;
 	public:
 
 		/// <summary>
@@ -40,7 +42,7 @@ namespace BulletWrapper {
 		/// else it will return nullptr.
 		/// </summary>
 		/// <returns>The <c>BulletManager</c> singleton instance if init has been called beforehand. Returns <c>nullptr</c> if not</returns>
-		static BulletManager* GetInstance ();
+		//static BulletManager* GetInstance ();
 		/// <summary>
 		/// Create the rigidBody with the info given
 		/// </summary>
@@ -61,7 +63,7 @@ namespace BulletWrapper {
 		/// This method must be called before any calls to <c>BulletManager::getInstance</c>.
 		/// </summary>
 		/// <returns>void</returns>
-		static void InitBullet ();
+		//static void InitBullet ();
 		/// <summary>
 		/// Sets the worlds gravity
 		/// </summary>
