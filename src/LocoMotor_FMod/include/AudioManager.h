@@ -8,6 +8,7 @@
 namespace FMOD {
 	class System;
 	class ChannelGroup;
+	class Channel;
 	class Sound;
 }
 
@@ -33,7 +34,7 @@ namespace FmodWrapper {
 		/// @param Name that will be used to refer to this sound upon being created
 		/// @param File to get the sound from
 		/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
-		uint16_t AddSound (const uint32_t id, const char* fileName);
+		uint16_t AddSound (const uint32_t id, const char* fileName, bool ui = false);
 
 		/// @brief Plays an already added sound
 		/// @param Name of the sound to play
@@ -63,6 +64,11 @@ namespace FmodWrapper {
 
 		/// @brief Constructor is set to private, use the 'Get' method for access to the instance of this object
 		AudioManager ();
+
+		/// @brief Plays an already added sound
+		/// @param Name of the sound to play
+		/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error
+		uint16_t PlaySoundwChannel (const uint32_t name, FMOD::Channel** channel);
 
 	};
 }

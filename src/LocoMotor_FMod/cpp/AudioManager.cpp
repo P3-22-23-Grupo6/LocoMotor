@@ -32,28 +32,30 @@ FmodWrapper::AudioManager::~AudioManager () {
 	_sys->release ();
 	//delete _sys;
 }
-//
-//FmodWrapper::AudioManager* FmodWrapper::AudioManager::Get () {
-//	static AudioManager* inst = new AudioManager ();
-//	return inst;
-//}
 
 uint16_t FmodWrapper::AudioManager::Update (float deltaTime) {
-	return _sys->update();
+	return _sys->update ();
 }
 
-uint16_t FmodWrapper::AudioManager::AddSound (const uint32_t name, const char* fileName) {
+uint16_t FmodWrapper::AudioManager::AddSound (const uint32_t name, const char* fileName, bool ui) {
 	if (_soundLib[name] != nullptr) {
 		_soundLib[name]->release ();
 		_soundLib[name] = nullptr;
 	}
 
 #ifndef _DEBUG
-	return _sys->createSound (fileName, FMOD_3D_WORLDRELATIVE, nullptr, &_soundLib[name]);
+	if (ui)
+		return _sys->createSound (fileName, FMOD_DEFAULT, nullptr, &_soundLib[name]);
+	else
+		return _sys->createSound (fileName, FMOD_3D_WORLDRELATIVE, nullptr, &_soundLib[name]);
 #endif // _DEBUG
 
 #ifdef _DEBUG
-	auto err = _sys->createSound (fileName, FMOD_3D_WORLDRELATIVE, nullptr, &_soundLib[name]);
+	FMOD_RESULT err;
+	if (ui)
+		err = _sys->createSound (fileName, FMOD_DEFAULT, nullptr, &_soundLib[name]);
+	else
+		err = _sys->createSound (fileName, FMOD_3D_WORLDRELATIVE, nullptr, &_soundLib[name]);
 
 	if (err != 0) {
 		std::cout << "AUDIO: File '" << fileName << "' caused fmod exception: " << FMOD_ErrorString (err) << std::endl;
@@ -63,28 +65,22 @@ uint16_t FmodWrapper::AudioManager::AddSound (const uint32_t name, const char* f
 }
 
 uint16_t FmodWrapper::AudioManager::PlaySound (const uint32_t name) {
-#ifndef _DEBUG
+
 	Channel* ch;
-	auto err = _sys->playSound (_soundLib[name], _main, true, &ch);
-
-	FMOD_VECTOR pos = FMOD_VECTOR (); FMOD_VECTOR vel = FMOD_VECTOR ();
-	pos.x = -4; pos.y = 0; pos.z = 0; vel.x = 0; vel.y = 0; vel.z = 0;
-	ch->set3DAttributes (&pos, &vel);
-
+	auto err = PlaySoundwChannel (name, &ch);
 	ch->setPaused (false);
+	return err;
+}
+
+uint16_t FmodWrapper::AudioManager::PlaySoundwChannel (const uint32_t name, FMOD::Channel** channel) {
+#ifndef _DEBUG
+	auto err = _sys->playSound (_soundLib[name], _main, true, channel);
 
 	return err;
 #endif // _DEBUG
 
 #ifdef _DEBUG
-	Channel* ch;
-	auto err = _sys->playSound (_soundLib[name], _main, true, &ch);
-
-	FMOD_VECTOR pos = FMOD_VECTOR(); FMOD_VECTOR vel = FMOD_VECTOR ();
-	pos.x = -4; pos.y = 0; pos.z = 0; vel.x = 0; vel.y = 0; vel.z = 0;
-	ch->set3DAttributes (&pos, &vel);
-
-	ch->setPaused (false);
+	auto err = _sys->playSound (_soundLib[name], _main, true, channel);
 
 	if (err != 0) {
 		std::cout << "AUDIO: Trying to play sound '" << name << "' caused fmod exception: " << FMOD_ErrorString (err) << std::endl;
