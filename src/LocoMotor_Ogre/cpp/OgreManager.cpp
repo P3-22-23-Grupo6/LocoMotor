@@ -21,17 +21,17 @@ OgreWrapper::OgreManager* OgreWrapper::OgreManager::_instance = nullptr;
 OgreWrapper::OgreManager::OgreManager (std::string name) {
 	_root = nullptr;
 	_activeScene = nullptr;
-	mShaderGenerator = nullptr;
+	_mShaderGenerator = nullptr;
 
 	_root = new Ogre::Root ();
 	_root->showConfigDialog (nullptr);
 	_root->initialise (false);
-	InitWindow (name);
-	loadResources ();
+	_InitWindow (name);
+	_LoadResources ();
 }
 
 OgreWrapper::OgreManager::~OgreManager () {
-	Shutdown ();
+	_Shutdown ();
 }
 
 
@@ -42,8 +42,11 @@ OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene (std::string nam
 	}
 
 	OgreWrapper::RenderScene* sc;
-	sc = new OgreWrapper::RenderScene (_root->createSceneManager ());
+	Ogre::SceneManager* sM = _root->createSceneManager ();
+	sc = new OgreWrapper::RenderScene (sM);
 	_scenes.insert ({ name, sc });
+	if (_activeScene == nullptr) _activeScene = sc;
+	_mShaderGenerator->addSceneManager (sc->GetMan());
 	return sc;
 
 }
@@ -66,7 +69,11 @@ Ogre::RenderWindow* OgreWrapper::OgreManager::GetRenderWindow () {
 	return mWindow.render;
 }
 
-void OgreWrapper::OgreManager::loadResources () {
+void OgreWrapper::OgreManager::SetActiveScene (OgreWrapper::RenderScene* s) {
+	_activeScene = s;
+}
+
+void OgreWrapper::OgreManager::_LoadResources () {
 	Ogre::ConfigFile cf;
 	cf.load ("resources.cfg");
 
@@ -99,14 +106,14 @@ void OgreWrapper::OgreManager::loadResources () {
 	Ogre::MaterialManager::getSingleton ().setActiveScheme (Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 
 	if (Ogre::RTShader::ShaderGenerator::initialize ()) {
-		mShaderGenerator = Ogre::RTShader::ShaderGenerator::getSingletonPtr ();
+		_mShaderGenerator = Ogre::RTShader::ShaderGenerator::getSingletonPtr ();
 
 		if (mRTShaderLibPath.empty ())
 			return;
 
 		// Create and register the material manager listener if it doesn't exist yet.
 		if (!mMaterialMgrListener) {
-			mMaterialMgrListener = new OgreWrapper::SGTechniqueResolverListener (mShaderGenerator);
+			mMaterialMgrListener = new OgreWrapper::SGTechniqueResolverListener (_mShaderGenerator);
 			Ogre::MaterialManager::getSingleton ().addListener (mMaterialMgrListener);
 		}
 	}
@@ -114,7 +121,7 @@ void OgreWrapper::OgreManager::loadResources () {
 	Ogre::ResourceGroupManager::getSingleton ().initialiseAllResourceGroups ();
 }
 
-OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (std::string name) {
+OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::_InitWindow (std::string name) {
 	uint32_t w, h;
 	Ogre::NameValuePairList miscParams;
 
@@ -156,7 +163,7 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow (std::string 
 }
 
 
-void OgreWrapper::OgreManager::Shutdown () {
+void OgreWrapper::OgreManager::_Shutdown () {
 	// Restore default scheme.
 	Ogre::MaterialManager::getSingleton ().setActiveScheme (Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 
@@ -168,9 +175,9 @@ void OgreWrapper::OgreManager::Shutdown () {
 	}
 
 	// Destroy RTShader system.
-	if (mShaderGenerator != nullptr) {
+	if (_mShaderGenerator != nullptr) {
 		Ogre::RTShader::ShaderGenerator::destroy ();
-		mShaderGenerator = nullptr;
+		_mShaderGenerator = nullptr;
 	}
 
 	if (mWindow.render != nullptr) {
@@ -194,7 +201,8 @@ void OgreWrapper::OgreManager::Shutdown () {
 		delete it->second;
 	}
 
-
 	delete _root;
 	_root = nullptr;
 }
+
+

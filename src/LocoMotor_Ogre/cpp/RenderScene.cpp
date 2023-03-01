@@ -12,15 +12,52 @@
 OgreWrapper::RenderScene::RenderScene (Ogre::SceneManager* scene) {
 	_manager = scene;
 	vp = nullptr;
-	OgreManager::GetInstance ()->mShaderGenerator->addSceneManager (_manager);
+	_root = new OgreWrapper::Node (scene->getRootSceneNode ());
 }
 
 OgreWrapper::RenderScene::~RenderScene () {
 }
 
 void OgreWrapper::RenderScene::Render () {
-	//std::cout << "Render\n";
 	vp->update();
+}
+
+OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode (std::string name) {
+	if (_sceneStructure.count (name) > 0 || name == "Root") {
+		std::cerr << "A node with the name " << name << " is already created\n";
+		return nullptr;
+	}
+	Node* node = _root->CreateChild();
+	_sceneStructure.insert ({ name,node });
+	return node;
+}
+
+OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode (std::string name, std::string parent) {
+	if (_sceneStructure.count (name) > 0  || name == "Root") {
+		std::cerr << "A node with the name " << name << " is already created\n";
+		return nullptr;
+	}
+	else if (_sceneStructure.count (parent) == 0) {
+		std::cerr << "No node with name " << name << " found. Could not create child\n";
+		return nullptr;
+	}
+	else if(parent == "Root"){
+		return CreateNode (name);
+	}
+	Node* node = GetNode (name)->CreateChild ();
+	return node;
+}
+
+OgreWrapper::Node* OgreWrapper::RenderScene::GetNode (std::string name) {
+	if (_sceneStructure.count (name) > 0) {
+		std::cerr << "No node with the name " << name << " found\n";
+		return nullptr;
+	}
+	if(name == "Root") {
+		return _root;
+	}
+
+	return _sceneStructure.at(name);
 }
 
 void OgreWrapper::RenderScene::Prueba () {

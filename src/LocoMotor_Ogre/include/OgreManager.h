@@ -24,10 +24,6 @@ namespace OgreWrapper{
 	class OgreManager : public Singleton<OgreManager> {
 		friend Singleton<OgreManager>;
 	public:
-		
-
-		
-
 		/// <summary>
 		/// Creates a scene.
 		/// If you try to create a scene with an already used name, the method will return that scene instead.
@@ -55,18 +51,11 @@ namespace OgreWrapper{
 		/// @return Ventana de renderizado de Ogre
 		Ogre::RenderWindow* GetRenderWindow ();
 
-		void SetActiveScene (OgreWrapper::RenderScene* s) {
-			_activeScene = s;
-		}
-
-		void loadResources ();
-
-		Ogre::RTShader::ShaderGenerator* mShaderGenerator;
-
-		NativeWindowPair InitWindow (std::string name);
-
-		void Shutdown ();
-
+		/// <summary>
+		/// Sets the active scene for the manager
+		/// </summary>
+		/// <param name="s">The scene to become active</param>
+		void SetActiveScene (OgreWrapper::RenderScene* s);
 	protected:
 		Ogre::Root* _root;
 		NativeWindowPair mWindow;
@@ -77,8 +66,32 @@ namespace OgreWrapper{
 
 		OgreWrapper::RenderScene* _activeScene;
 
+		Ogre::RTShader::ShaderGenerator* _mShaderGenerator;
+
+		/// <summary>
+		/// Creates a new OgreManager.
+		/// </summary>
+		/// <param name="name">The name for the window</param>
 		OgreManager (std::string name);
 		~OgreManager ();
+
+		/// <summary>
+		/// Loads the resouces and initializes the RTShaderSytem
+		/// </summary>
+		void _LoadResources ();
+
+		/// <summary>
+		/// Initializes the window
+		/// </summary>
+		/// <param name="name">The Window title</param>
+		/// <returns></returns>
+		NativeWindowPair _InitWindow (std::string name);
+
+		/// <summary>
+		/// Shuts down Ogre and releases all the memory related to it
+		/// </summary>
+		void _Shutdown ();
+
 	};
 }
 #endif
