@@ -3,6 +3,8 @@
 #include "BulletRigidBody.h"
 #include <btBulletDynamicsCommon.h>
 using namespace BulletWrapper;
+BulletWrapper::BulletManager* Singleton<BulletWrapper::BulletManager>::_instance = nullptr;
+
 BulletWrapper::BulletManager::BulletManager () {
 
 	//Set default configuration

@@ -72,7 +72,7 @@ namespace BulletWrapper {
 
 	private:
 		//La instacia del Manager
-		static BulletManager* _instance;
+		//static BulletManager* _instance;
 		//Configuraciones para crear el mundo físico
 		btDefaultCollisionConfiguration* _collisionConfiguration = nullptr;
 		btCollisionDispatcher* _dispatcher = nullptr;
