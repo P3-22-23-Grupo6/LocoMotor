@@ -19,6 +19,8 @@ BulletWrapper::BulletManager::BulletManager () {
 }
 
 BulletWrapper::BulletManager::~BulletManager () {
+	for (auto rb : _vRigidBody)delete rb;
+	_vRigidBody.clear ();
 	delete _collisionConfiguration;
 	delete _dispatcher;
 	delete _overlappingPairCache;

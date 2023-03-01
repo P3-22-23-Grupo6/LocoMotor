@@ -30,15 +30,15 @@ int main () {
 	BulletManager::Init ();
 	auto btmngr = BulletManager::GetInstance ();
 	RigidBodyInfo info1;
-	info1.boxSize = btVector3 (50, 50, 50);
+	info1.boxSize = btVector3 (50, 10, 50);
 	info1.mass = 0.0f;
 	info1.origin = btVector3 (0, -50, 0);
 	btmngr->CreateRigidBody (info1);
-	//RigidBodyInfo info2;
-	//info2.size = 1.0;
-	//info2.mass = 1.0f;
-	//info2.origin = LMVector3 (2, 10, 0);
-	//btmngr->CreateRigidBody (info2);
+	RigidBodyInfo info2;
+	info2.size = 1.0;
+	info2.mass = 1.0f;
+	info2.origin = btVector3 (2, 10, 0);
+	btmngr->CreateRigidBody (info2);
 	//exec();
 	//initBullet ();
 	// man->render ();
@@ -63,6 +63,7 @@ int main () {
 
 		i++;
 	}
+	btmngr->Clear ();
 	audio->Clear ();
 
 	return 0;
