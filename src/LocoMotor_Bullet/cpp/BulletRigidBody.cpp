@@ -4,14 +4,14 @@
 using namespace BulletWrapper;
 
 BulletWrapper::BulletRigidBody::BulletRigidBody (RigidBodyInfo info) {
-	if (info.size<=0.0)
-		_shape = new btBoxShape (LMVector3::LmToBullet (info.boxSize));
+	if (info.size <= 0.0)
+		_shape = new btBoxShape (info.boxSize);
 	else
 		_shape = new btSphereShape (info.size);
 
 	btTransform groundTransform;
 	groundTransform.setIdentity ();
-	groundTransform.setOrigin (LMVector3::LmToBullet (info.origin));
+	groundTransform.setOrigin (info.origin);
 
 	btScalar mass (info.mass);
 

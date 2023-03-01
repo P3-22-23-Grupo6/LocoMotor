@@ -2,14 +2,14 @@
 #define _BULLETMANAGER_H_
 #pragma once
 #include <vector>
-//#include <btBulletDynamicsCommon.h>
-#include "lmVector.h"
-class btCollisionDispatcher;
-class btBroadphaseInterface;
-class btSequentialImpulseConstraintSolver;
-class btDynamicsWorld;
-class btDefaultCollisionConfiguration;
-class btRigidBody;
+#include <btBulletDynamicsCommon.h>
+//#include "lmVector.h"
+//class btCollisionDispatcher;
+//class btBroadphaseInterface;
+//class btSequentialImpulseConstraintSolver;
+//class btDynamicsWorld;
+//class btDefaultCollisionConfiguration;
+//class btRigidBody;
 namespace BulletWrapper {
 
 	/// <summary>
@@ -21,9 +21,9 @@ namespace BulletWrapper {
 	/// <param name="Origin"> The origin point of transform </param>
 	/// <param name="mass"> The mass of rigidbody, if mass !=0 , it is dynamic </param>
 	struct RigidBodyInfo {
-		LMVector3 boxSize;
+		btVector3 boxSize;
 		float size;
-		LMVector3 origin;
+		btVector3 origin;
 		float mass;
 	};
 	class BulletRigidBody;

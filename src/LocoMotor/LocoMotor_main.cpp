@@ -27,18 +27,18 @@ int main () {
 
 	OgreWrapper::Scene* x = man->getScene ("Escenah");
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
-	BulletManager::InitBullet ();
-	auto btmngr = BulletManager::GetInstance ();
-	RigidBodyInfo info1;
-	info1.boxSize = LMVector3 (50, 50, 50);
-	info1.mass = 0.0f;
-	info1.origin = LMVector3 (0, -50, 0);
-	btmngr->CreateRigidBody (info1);
-	RigidBodyInfo info2;
-	info2.size = 1.0;
-	info2.mass = 1.0f;
-	info2.origin = LMVector3 (2, 10, 0);
-	btmngr->CreateRigidBody (info2);
+	//BulletManager::InitBullet ();
+	//auto btmngr = BulletManager::GetInstance ();
+	//RigidBodyInfo info1;
+	//info1.boxSize = LMVector3 (50, 50, 50);
+	//info1.mass = 0.0f;
+	//info1.origin = LMVector3 (0, -50, 0);
+	//btmngr->CreateRigidBody (info1);
+	//RigidBodyInfo info2;
+	//info2.size = 1.0;
+	//info2.mass = 1.0f;
+	//info2.origin = LMVector3 (2, 10, 0);
+	//btmngr->CreateRigidBody (info2);
 	//exec();
 	//initBullet ();
 	// man->render ();
@@ -59,7 +59,7 @@ int main () {
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
 		//std::cout << buttonPressed;
-		btmngr->Update ();
+		//btmngr->Update ();
 
 		i++;
 	}
