@@ -1,6 +1,9 @@
 #ifndef _SCENE_H_
 #define _SCENE_H_
 
+#include <map>
+#include <string>
+
 namespace Ogre {
 	class SceneManager;
 	class SceneNode;
@@ -10,9 +13,12 @@ namespace Ogre {
 
 
 namespace OgreWrapper {
+
 	class Light;
 	class Camera;
 	class Renderer3D;
+	class Node;
+
 
 	class RenderScene {
 	public:
@@ -42,9 +48,16 @@ namespace OgreWrapper {
 		/// </summary>
 		void Render ();
 
+		Node* CreateNode (std::string name);
+
+		Node* CreateNode (std::string name, std::string parent);
+		Node* GetNode (std::string name);
+
 	private:
 		Ogre::SceneManager* _manager;
 		Ogre::Viewport* vp;
+		Node* _root;
+		std::map<std::string, Node*> _sceneStructure;
 	};
 }
 #endif

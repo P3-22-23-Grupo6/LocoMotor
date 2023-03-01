@@ -31,6 +31,7 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\InputManager.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Node.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\OgreManager.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderEntity.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\SGTechniqueResolverListener.h" />
   </ItemGroup>

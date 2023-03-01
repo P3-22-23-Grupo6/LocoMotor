@@ -1,7 +1,7 @@
 #ifndef _CAMERA_H_
 #define _CAMERA_H_
 
-#include "Node.h"
+#include "RenderEntity.h"
 #include <OgreVector3.h>
 namespace Ogre {
 	class Camera;
@@ -11,16 +11,20 @@ namespace Ogre {
 
 namespace OgreWrapper {
 	
-	class Camera:public Node {
+	class Camera : public RenderEntity {
 	public:
 
-		Camera(Ogre::Camera* camera, Ogre::SceneNode* node);
+		Camera(Ogre::Camera* camera);
 		~Camera();
 
-		void LookAt(const Ogre::Vector3& targetPoint);
+		Ogre::Viewport* GetViewport ();
+		Ogre::MovableObject* GetMovObj () override;
+
 		void Render ();
 	
 	private:
+		static int _zOrder;
+		int _mZOrder;
 		Ogre::Camera* mCamera;
 		Ogre::Viewport* vp;
 	};
