@@ -32,6 +32,11 @@ void OgreWrapper::Node::LookAt (float x, float y, float z) {
 	_node->lookAt (Ogre::Vector3 (x, y, z), Ogre::Node::TS_WORLD);
 }
 
+void OgreWrapper::Node::SetDirection(float x, float y, float z)
+{
+	_node->setDirection(x, y, z);
+}
+
 void OgreWrapper::Node::Attach (OgreWrapper::RenderEntity* obj) {
 	if (_ent != nullptr) {
 		_node->detachObject (_ent->GetMovObj ());

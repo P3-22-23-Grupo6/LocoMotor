@@ -14,4 +14,4 @@ namespace OgreWrapper {
 	};
 }
 
-#endif // !_RENDERENTITY_H_
+#endif //_RENDERENTITY_H_

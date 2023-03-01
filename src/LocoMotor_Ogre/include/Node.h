@@ -68,6 +68,15 @@ namespace OgreWrapper {
 		/// <param name="z"></param>
 		void LookAt (float x, float y, float z);
 
+
+		/// <summary>
+		/// Sets the point to wich the node looks.
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="z"></param>
+		void SetDirection (float x, float y, float z);
+
 		/// <summary>
 		/// Attaches an object to the node.
 		/// </summary>

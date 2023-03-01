@@ -53,9 +53,15 @@ namespace OgreWrapper {
 		Node* CreateNode (std::string name, std::string parent);
 		Node* GetNode (std::string name);
 
+		Light* CreateLight ();
+		Renderer3D* CreateRenderer (std::string mesh);
+		Camera* CreateCamera (std::string mesh);
+		void SetActiveCamera ();
+		void GetMainCamera ();
+
 	private:
 		Ogre::SceneManager* _manager;
-		Ogre::Viewport* vp;
+		Camera* _mainCam;
 		Node* _root;
 		std::map<std::string, Node*> _sceneStructure;
 	};

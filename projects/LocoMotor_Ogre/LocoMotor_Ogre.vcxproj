@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Camera.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\InputManager.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Light.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Node.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\OgreManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Renderer3D.cpp" />
@@ -30,6 +31,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\InputManager.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Light.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Node.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\OgreManager.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderEntity.h" />

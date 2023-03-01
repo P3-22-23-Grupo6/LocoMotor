@@ -2,6 +2,7 @@
 #include "OgreManager.h"
 #include "Node.h"
 #include "Renderer3D.h"
+#include "Light.h"
 #include "Camera.h"
 #include <OgreRenderWindow.h>
 #include <OgreSceneManager.h>
@@ -13,7 +14,7 @@
 
 OgreWrapper::RenderScene::RenderScene (Ogre::SceneManager* scene) {
 	_manager = scene;
-	vp = nullptr;
+	_mainCam = nullptr;
 	_root = new OgreWrapper::Node (scene->getRootSceneNode ());
 }
 
@@ -26,7 +27,7 @@ OgreWrapper::RenderScene::~RenderScene () {
 }
 
 void OgreWrapper::RenderScene::Render () {
-	vp->update();
+	_mainCam->GetViewport()->update();
 }
 
 OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode (std::string name) {
@@ -67,46 +68,39 @@ OgreWrapper::Node* OgreWrapper::RenderScene::GetNode (std::string name) {
 	return _sceneStructure.at(name);
 }
 
+OgreWrapper::Light* OgreWrapper::RenderScene::CreateLight () {
+	return nullptr;
+}
+
+OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer (std::string mesh) {
+	return new Renderer3D(_manager->createEntity(mesh));
+}
+
+OgreWrapper::Camera* OgreWrapper::RenderScene::CreateCamera () {
+	return nullptr;
+}
+
+void OgreWrapper::RenderScene::SetActiveCamera () {
+}
+
+void OgreWrapper::RenderScene::GetMainCamera () {
+}
+
 void OgreWrapper::RenderScene::Prueba () {
-	Ogre::SceneNode* mLightNode = _manager->getRootSceneNode ()->createChildSceneNode ();
-	Ogre::Light* mLight = _manager->createLight ();
-	mLightNode->attachObject (mLight);
-
-	mLight->setType (Ogre::Light::LT_DIRECTIONAL);
-	mLight->setDiffuseColour (1, 1, 1);
-	mLightNode->setDirection (-1, -1, -1);
-
-	/*Ogre::Camera* cam = _manager->createCamera ("Cam");
-	cam->setNearClipDistance (1);
-	cam->setFarClipDistance (10000);
-	cam->setAutoAspectRatio (true);*/
-	//cam->setPolygonMode(Ogre::PM_WIREFRAME); 
-
-	/*Ogre::SceneNode* mCamNode = _manager->getRootSceneNode()->createChildSceneNode("nCam");
-	mCamNode->attachObject (cam);
-
-	vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(cam);
-	vp->setBackgroundColour(Ogre::ColourValue(0.6, 0.7, 0.8));
-
-	mCamNode->translate (0, 0, 1000);
-	mCamNode->lookAt (Ogre::Vector3 (0, 0, 0), Ogre::Node::TS_WORLD);*/
-	//mCamNode->setDirection(Ogre::Vector3(0, 0, -1)); 
-
+	OgreWrapper::Node* mLightNode = CreateNode("Luz");
+	OgreWrapper::Light* mLight = new Light (_manager->createLight (), Ogre::Light::LT_DIRECTIONAL);
+	mLightNode->Attach (mLight);
+	mLight->SetDiffuse (1, 1, 1);
+	mLightNode->SetDirection (-1, -1, -1);
 	Node* mCamNode = CreateNode ("CamNode");
 	Camera* cam = new Camera (_manager->createCamera ("cam"));
-	//Camera* cam2 = new Camera (_manager->createCamera ("cam2"));
-
 	mCamNode->Attach (cam);
 	//mCamNode->Attach (cam2);
 	mCamNode->Translate (0, 0, 1000);
 	mCamNode->LookAt (0, 0, 0);
 	vp = cam->GetViewport();
-
 	OgreWrapper::Node* mCubeNode = CreateNode("Cubo");
 	OgreWrapper::Renderer3D* cube = new Renderer3D (_manager->createEntity ("cube.mesh"));
-	//cube->setMaterialName ("LocoMotor/blanco");
 	mCubeNode->Attach (cube);
-
-	//CreateNode ("HolaMundo");
 }
 

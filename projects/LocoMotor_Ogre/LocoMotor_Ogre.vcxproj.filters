@@ -36,6 +36,9 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Renderer3D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Renderer3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
