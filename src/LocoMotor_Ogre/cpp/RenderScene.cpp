@@ -1,6 +1,7 @@
 #include "RenderScene.h"
 #include "OgreManager.h"
 #include "Node.h"
+#include "Renderer3D.h"
 #include "Camera.h"
 #include <OgreRenderWindow.h>
 #include <OgreSceneManager.h>
@@ -93,18 +94,18 @@ void OgreWrapper::RenderScene::Prueba () {
 
 	Node* mCamNode = CreateNode ("CamNode");
 	Camera* cam = new Camera (_manager->createCamera ("cam"));
-	Camera* cam2 = new Camera (_manager->createCamera ("cam2"));
+	//Camera* cam2 = new Camera (_manager->createCamera ("cam2"));
 
 	mCamNode->Attach (cam);
-	mCamNode->Attach (cam2);
+	//mCamNode->Attach (cam2);
 	mCamNode->Translate (0, 0, 1000);
 	mCamNode->LookAt (0, 0, 0);
-	vp = cam2->GetViewport();
+	vp = cam->GetViewport();
 
-	Ogre::SceneNode* mCubeNode = _manager->getRootSceneNode ()->createChildSceneNode ();
-	Ogre::Entity* cube = _manager->createEntity ("cube.mesh");
+	OgreWrapper::Node* mCubeNode = CreateNode("Cubo");
+	OgreWrapper::Renderer3D* cube = new Renderer3D (_manager->createEntity ("cube.mesh"));
 	//cube->setMaterialName ("LocoMotor/blanco");
-	mCubeNode->attachObject (cube);
+	mCubeNode->Attach (cube);
 
 	//CreateNode ("HolaMundo");
 }
