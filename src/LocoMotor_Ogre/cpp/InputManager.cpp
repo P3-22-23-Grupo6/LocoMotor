@@ -79,7 +79,7 @@ bool InputManager::RegisterEvents () {
 
 	auto d = SDL_GameControllerIsSensorEnabled (currentController, SDL_SENSOR_GYRO);
 
-	//SDL_GameControllerRumble (currentController, 0, 65000, 1000);
+	SDL_GameControllerRumble (currentController, 0, UINT16_MAX, 1000);
 
 	if (currentController != NULL) {
 
@@ -90,21 +90,14 @@ bool InputManager::RegisterEvents () {
 		float dataValue = data_[1];
 
 		// DEADZONE
-		if (dataValue < 0.01 && dataValue > -0.01)
+		if (dataValue < 0.01 && dataValue > -0.01) 
 			dataValue = 0;
 
-		// tener en cuenta solo el primer decimal
+		// tener en cuenta los 6 primeros decimales
 		dataValue *= 1000000;
 		dataValue = (int) dataValue;
 
 		gyroscopeValue += dataValue;
-
-		//float maxValue = 5000000;
-		//if (gyroscopeValue > maxValue)
-		//	gyroscopeValue = maxValue;
-		//else if (gyroscopeValue < -maxValue)
-		//	gyroscopeValue = -maxValue;
-
 
 		float prettyValue = int (gyroscopeValue / 1000000);
 
