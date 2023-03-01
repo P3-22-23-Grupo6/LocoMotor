@@ -16,6 +16,11 @@ OgreWrapper::RenderScene::RenderScene (Ogre::SceneManager* scene) {
 }
 
 OgreWrapper::RenderScene::~RenderScene () {
+	delete _root;
+	using iterador = std::map<std::string, Node*>::iterator ;
+	for (iterador it = _sceneStructure.begin (); it != _sceneStructure.end (); _sceneStructure.erase (it)) {
+		delete it->second;
+	}
 }
 
 void OgreWrapper::RenderScene::Render () {

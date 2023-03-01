@@ -13,10 +13,13 @@ namespace Ogre {
 
 
 namespace OgreWrapper {
+
 	class Light;
 	class Camera;
 	class Renderer3D;
 	class Node;
+
+
 	class RenderScene {
 	public:
 		/// <summary>
