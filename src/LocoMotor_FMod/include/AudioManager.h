@@ -21,10 +21,6 @@ namespace FmodWrapper {
 	public:
 		~AudioManager ();
 
-		/// @brief Static getter for access to the instance, when called for the first time, it will create the instance, and from then on it will return the previously created instance
-		/// @return The reference to the instance of the AudioManager
-		//static AudioManager* Init ();
-
 		/// @brief Updates the Fmod API to change channel output depending on positions and velocity
 		/// @param deltaTime Bruh
 		/// @return A number that by passing it to GetError(uint16_t) you can get more info if there was an error

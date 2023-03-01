@@ -5,13 +5,13 @@
 #endif // _DEBUG
 #include <fmod.hpp>
 #include <fmod_errors.h>
+
 using namespace FMOD;
+using namespace FmodWrapper;
 
+AudioManager* Singleton<AudioManager>::_instance = nullptr;
 
-
-FmodWrapper::AudioManager* Singleton<FmodWrapper::AudioManager>::_instance = nullptr;
-
-FmodWrapper::AudioManager::AudioManager () {
+AudioManager::AudioManager () {
 	System_Create (&_sys);
 	_sys->init (32, FMOD_INIT_NORMAL, 0);
 	_sys->createChannelGroup (0, &_main);
@@ -21,7 +21,7 @@ FmodWrapper::AudioManager::AudioManager () {
 	_soundLib = std::unordered_map<uint32_t, FMOD::Sound*> ();
 }
 
-FmodWrapper::AudioManager::~AudioManager () {
+AudioManager::~AudioManager () {
 	for (auto snd : _soundLib) {
 		snd.second->release ();
 		//delete snd.second;
@@ -33,11 +33,11 @@ FmodWrapper::AudioManager::~AudioManager () {
 	//delete _sys;
 }
 
-uint16_t FmodWrapper::AudioManager::Update (float deltaTime) {
+uint16_t AudioManager::Update (float deltaTime) {
 	return _sys->update ();
 }
 
-uint16_t FmodWrapper::AudioManager::AddSound (const uint32_t name, const char* fileName, bool ui) {
+uint16_t AudioManager::AddSound (const uint32_t name, const char* fileName, bool ui) {
 	if (_soundLib[name] != nullptr) {
 		_soundLib[name]->release ();
 		_soundLib[name] = nullptr;
@@ -64,7 +64,7 @@ uint16_t FmodWrapper::AudioManager::AddSound (const uint32_t name, const char* f
 #endif // _DEBUG
 }
 
-uint16_t FmodWrapper::AudioManager::PlaySound (const uint32_t name) {
+uint16_t AudioManager::PlaySound (const uint32_t name) {
 
 	Channel* ch;
 	auto err = PlaySoundwChannel (name, &ch);
@@ -72,7 +72,7 @@ uint16_t FmodWrapper::AudioManager::PlaySound (const uint32_t name) {
 	return err;
 }
 
-uint16_t FmodWrapper::AudioManager::PlaySoundwChannel (const uint32_t name, FMOD::Channel** channel) {
+uint16_t AudioManager::PlaySoundwChannel (const uint32_t name, Channel** channel) {
 #ifndef _DEBUG
 	auto err = _sys->playSound (_soundLib[name], _main, true, channel);
 
@@ -89,7 +89,7 @@ uint16_t FmodWrapper::AudioManager::PlaySoundwChannel (const uint32_t name, FMOD
 #endif // _DEBUG
 }
 
-uint16_t FmodWrapper::AudioManager::AddListener (int& index) {
+uint16_t AudioManager::AddListener (int& index) {
 	static bool first = true;
 	if (first) {
 		first = false;
@@ -102,10 +102,10 @@ uint16_t FmodWrapper::AudioManager::AddListener (int& index) {
 	}
 }
 
-FMOD::System* FmodWrapper::AudioManager::GetSystem () {
+System* AudioManager::GetSystem () {
 	return _sys;
 }
 
-const char* FmodWrapper::AudioManager::GetError (const uint16_t& errorCode) {
+const char* AudioManager::GetError (const uint16_t& errorCode) {
 	return FMOD_ErrorString ((FMOD_RESULT) errorCode);
 }
