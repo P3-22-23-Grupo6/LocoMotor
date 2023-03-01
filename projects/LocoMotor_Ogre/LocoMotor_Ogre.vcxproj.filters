@@ -53,5 +53,8 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\SGTechniqueResolverListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

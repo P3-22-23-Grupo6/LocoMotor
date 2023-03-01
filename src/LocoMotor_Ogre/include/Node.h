@@ -10,6 +10,8 @@ namespace Ogre {
 }
 
 namespace OgreWrapper {
+	class RenderEntity;
+
 	class Node {
 	public:
 		Node (Ogre::SceneNode* node);
@@ -59,14 +61,23 @@ namespace OgreWrapper {
 		void SetScale (float x, float y, float z);
 
 		/// <summary>
+		/// Sets the point to wich the node looks.
+		/// </summary>
+		/// <param name="x"></param>
+		/// <param name="y"></param>
+		/// <param name="z"></param>
+		void LookAt (float x, float y, float z);
+
+		/// <summary>
 		/// Attaches an object to the node.
 		/// </summary>
 		/// <param name="obj"></param>
-		void Attach (Ogre::MovableObject* obj);
+		void Attach (RenderEntity* ent);
 
 		Node* CreateChild ();
 	protected:
 		Ogre::SceneNode* _node;
+		RenderEntity* _ent;
 	};
 }
 #endif

@@ -8,7 +8,7 @@
 #include <OgreRenderWindow.h>
 #include <OgreVector3.h>
 
-OgreWrapper::Camera::Camera(Ogre::Camera* camera, Ogre::SceneNode* node):Node(node)
+OgreWrapper::Camera::Camera(Ogre::Camera* camera)
 {
 	mCamera = camera;
 	mCamera->setNearClipDistance (1);
@@ -24,9 +24,12 @@ OgreWrapper::Camera::~Camera()
 {
 }
 
-void OgreWrapper::Camera::LookAt(const Ogre::Vector3& targetPoint)
-{
-	_node->lookAt(targetPoint, Ogre::Node::TS_WORLD);
+Ogre::Viewport* OgreWrapper::Camera::GetViewport () {
+	return vp;
+}
+
+Ogre::MovableObject* OgreWrapper::Camera::GetMovObj () {
+	return mCamera;
 }
 
 void OgreWrapper::Camera::Render () {
