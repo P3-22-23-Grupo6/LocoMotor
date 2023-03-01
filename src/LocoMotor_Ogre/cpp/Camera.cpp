@@ -8,6 +8,8 @@
 #include <OgreRenderWindow.h>
 #include <OgreVector3.h>
 
+int OgreWrapper::Camera::_zOrder = 0;
+
 OgreWrapper::Camera::Camera(Ogre::Camera* camera)
 {
 	mCamera = camera;
@@ -15,13 +17,15 @@ OgreWrapper::Camera::Camera(Ogre::Camera* camera)
 	mCamera->setFarClipDistance (10000);
 	mCamera->setAutoAspectRatio (true);
 	//mCamera->setPolygonMode(Ogre::PM_WIREFRAME);
-
-	vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(mCamera);
+	_mZOrder = Camera::_zOrder;
+	vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(mCamera, Camera::_zOrder);
+	Camera::_zOrder++;
 	vp->setBackgroundColour (Ogre::ColourValue (0.6, 0.7, 0.8));
 }
 
 OgreWrapper::Camera::~Camera()
 {
+	int _zOrder;
 }
 
 Ogre::Viewport* OgreWrapper::Camera::GetViewport () {

@@ -35,6 +35,7 @@ void OgreWrapper::Node::LookAt (float x, float y, float z) {
 void OgreWrapper::Node::Attach (OgreWrapper::RenderEntity* obj) {
 	if (_ent != nullptr) {
 		_node->detachObject (_ent->GetMovObj ());
+		delete _ent;
 	}
 	_node->attachObject (obj->GetMovObj());
 	_ent = obj;

@@ -93,12 +93,13 @@ void OgreWrapper::RenderScene::Prueba () {
 
 	Node* mCamNode = CreateNode ("CamNode");
 	Camera* cam = new Camera (_manager->createCamera ("cam"));
+	Camera* cam2 = new Camera (_manager->createCamera ("cam2"));
 
 	mCamNode->Attach (cam);
-
+	mCamNode->Attach (cam2);
 	mCamNode->Translate (0, 0, 1000);
 	mCamNode->LookAt (0, 0, 0);
-	vp = cam->GetViewport();
+	vp = cam2->GetViewport();
 
 	Ogre::SceneNode* mCubeNode = _manager->getRootSceneNode ()->createChildSceneNode ();
 	Ogre::Entity* cube = _manager->createEntity ("cube.mesh");

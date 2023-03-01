@@ -180,10 +180,16 @@ void OgreWrapper::OgreManager::_Shutdown () {
 		_mShaderGenerator = nullptr;
 	}
 
-	if (mWindow.render != nullptr) {
-		mWindow.render->removeAllViewports ();
-		_root->destroyRenderTarget (mWindow.render);
+	for (auto it = _scenes.begin (); it != _scenes.end (); it = _scenes.erase (it)) {
+		if (it->second = _activeScene) {
+			_activeScene = nullptr;
+		}
+		_root->destroySceneManager (it->second->GetMan ());
+		delete it->second;
+	}
 
+	if (mWindow.render != nullptr) {
+		_root->destroyRenderTarget (mWindow.render);
 		mWindow.render = nullptr;
 	}
 
@@ -193,13 +199,7 @@ void OgreWrapper::OgreManager::_Shutdown () {
 		mWindow.native = nullptr;
 	}
 
-	for (auto it = _scenes.begin (); it != _scenes.end (); it = _scenes.erase (it)) {
-		if (it->second = _activeScene) {
-			_activeScene = nullptr;
-		}
-		_root->destroySceneManager (it->second->GetMan ());
-		delete it->second;
-	}
+	
 
 	delete _root;
 	_root = nullptr;
