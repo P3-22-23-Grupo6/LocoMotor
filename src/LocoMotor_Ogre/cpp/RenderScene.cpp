@@ -69,7 +69,7 @@ OgreWrapper::Node* OgreWrapper::RenderScene::GetNode (std::string name) {
 }
 
 OgreWrapper::Light* OgreWrapper::RenderScene::CreateLight () {
-	return new Light(_manager->createLight(Ogre::Light::LT_DIRECTIONAL));
+	return new Light(_manager->createLight(), Ogre::Light::LT_DIRECTIONAL);
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer (std::string mesh) {
@@ -80,10 +80,12 @@ OgreWrapper::Camera* OgreWrapper::RenderScene::CreateCamera (std::string name) {
 	return new Camera(_manager->createCamera(name));
 }
 
-void OgreWrapper::RenderScene::SetActiveCamera () {
+void OgreWrapper::RenderScene::SetActiveCamera (OgreWrapper::Camera* cam) {
+	_mainCam = cam;
 }
 
-void OgreWrapper::RenderScene::GetMainCamera () {
+OgreWrapper::Camera* OgreWrapper::RenderScene::GetMainCamera () {
+	return _mainCam;
 }
 
 void OgreWrapper::RenderScene::Prueba () {
@@ -98,7 +100,7 @@ void OgreWrapper::RenderScene::Prueba () {
 	//mCamNode->Attach (cam2);
 	mCamNode->Translate (0, 0, 1000);
 	mCamNode->LookAt (0, 0, 0);
-	vp = cam->GetViewport();
+	SetActiveCamera (cam);
 	OgreWrapper::Node* mCubeNode = CreateNode("Cubo");
 	OgreWrapper::Renderer3D* cube = new Renderer3D (_manager->createEntity ("cube.mesh"));
 	mCubeNode->Attach (cube);

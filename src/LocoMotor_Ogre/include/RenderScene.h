@@ -56,8 +56,8 @@ namespace OgreWrapper {
 		Light* CreateLight ();
 		Renderer3D* CreateRenderer (std::string mesh);
 		Camera* CreateCamera (std::string mesh);
-		void SetActiveCamera ();
-		void GetMainCamera ();
+		void SetActiveCamera (Camera* cam);
+		Camera* GetMainCamera ();
 
 	private:
 		Ogre::SceneManager* _manager;
