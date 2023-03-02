@@ -20,10 +20,20 @@ FmodWrapper::AudioListener::~AudioListener () {
 	delete _posRemember;
 }
 
-void FmodWrapper::AudioListener::Update (const float& deltaTime) {
+uint16_t FmodWrapper::AudioListener::SetTransform (const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up) {
+
+#ifdef _DEBUG
+	auto err = man->GetSystem ()->set3DListenerAttributes (_fIndex, &newPos, &newVel, &forward, &up);
+	if (err != FMOD_OK) {
+		std::cout << "Listener error: " << man->GetError (err) << std::endl;
+	}
+	return err;
+#else
+	return man->GetSystem ()->set3DListenerAttributes (_fIndex, &pos, &vel, &frw, &upw);
+#endif // _DEBUG
 }
 
-void FmodWrapper::AudioListener::UpdateFunni (const float& deltaTime) {
+void FmodWrapper::AudioListener::Prueba (const float& deltaTime) {
 
 	_elapsedTime += deltaTime;
 

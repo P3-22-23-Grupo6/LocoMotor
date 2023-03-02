@@ -38,7 +38,7 @@ int main () {
 	while (i < 0x00000200) {
 
 		// AUDIO
-		list.UpdateFunni (.05f);
+		list.Prueba (.05f);
 		audioSrc.Prueba ();
 		audio->Update (0.0f);
 

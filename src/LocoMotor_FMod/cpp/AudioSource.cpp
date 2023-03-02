@@ -2,6 +2,9 @@
 #include "AudioManager.h"
 #include <fmod.hpp>
 #include <fmod_errors.h>
+#ifdef _DEBUG
+#include <iostream>
+#endif // _DEBUG
 
 using namespace FmodWrapper;
 using namespace FMOD;
@@ -28,25 +31,54 @@ uint16_t AudioSource::AddSound (const uint32_t id, const char* fileName) {
 
 uint16_t AudioSource::PlaySound (const uint32_t id, int loops, uint32_t loopBegin, uint32_t loopEnd) {
 	auto snd = _man->GetSound (id);
+	if (snd == nullptr) {
+	#ifdef _DEBUG
+		std::cout << "Sound " << id << " is not currently added to the manager";
+	#endif // _DEBUG
+		return FMOD_ERR_INVALID_PARAM;
+	}
+
+	uint32_t len;
+	snd->getLength (&len, FMOD_TIMEUNIT_MS);
+
+	if (loopBegin >= len)
+		loops = 0;
+	else if (loopEnd > len)
+		loopEnd = len;
+
 	if (!loops)
 		snd->setMode (FMOD_3D | FMOD_3D_WORLDRELATIVE);
 	else {
 		snd->setMode (FMOD_3D | FMOD_3D_WORLDRELATIVE | FMOD_LOOP_NORMAL);
-		snd->setLoopPoints (loopBegin, FMOD_TIMEUNIT_MS, loopEnd, FMOD_TIMEUNIT_MS);
-		snd->setLoopCount (loops);
+		auto err = snd->setLoopPoints (std::min(loopBegin, loopEnd), FMOD_TIMEUNIT_MS, std::max (loopBegin, loopEnd), FMOD_TIMEUNIT_MS);
+	#ifdef _DEBUG
+		if (err != FMOD_OK) {
+			std::cout << "Source error: Trying to play a loop: " << _man->GetError (err) << std::endl;
+		}
+	#endif
+		snd->setLoopCount (std::max (-1, loops));
 	}
 	Channel* channel;
-	_man->PlaySoundwChannel (id, &channel);
+	auto fail = _man->PlaySoundwChannel (id, &channel);
 
 	FMOD_VECTOR vel = FMOD_VECTOR (); vel.x = 0; vel.y = 0; vel.z = 0;
-	channel->set3DAttributes (_posRemember, &vel);
+	if (fail != FMOD_OK)
+		channel->set3DAttributes (_posRemember, &vel);
+	else
+		fail = channel->set3DAttributes (_posRemember, &vel);
 	_chMap[id] = channel;
 
 	channel->setPaused (false);
-	return 0;
+	return fail;
 }
 
 uint16_t AudioSource::SetSoundFreq (const uint32_t id, const float freqMult) {
+	if (!_chMap[id]) {
+	#ifdef _DEBUG
+		std::cout << "Sound " << id << " is not currently playing on this AudioSource";
+	#endif // _DEBUG
+		return FMOD_ERR_INVALID_PARAM;
+	}
 	return _chMap[id]->setFrequency (freqMult);
 }
 
