@@ -69,15 +69,15 @@ OgreWrapper::Node* OgreWrapper::RenderScene::GetNode (std::string name) {
 }
 
 OgreWrapper::Light* OgreWrapper::RenderScene::CreateLight () {
-	return nullptr;
+	return new Light(_manager->createLight(Ogre::Light::LT_DIRECTIONAL));
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer (std::string mesh) {
 	return new Renderer3D(_manager->createEntity(mesh));
 }
 
-OgreWrapper::Camera* OgreWrapper::RenderScene::CreateCamera () {
-	return nullptr;
+OgreWrapper::Camera* OgreWrapper::RenderScene::CreateCamera (std::string name) {
+	return new Camera(_manager->createCamera(name));
 }
 
 void OgreWrapper::RenderScene::SetActiveCamera () {
