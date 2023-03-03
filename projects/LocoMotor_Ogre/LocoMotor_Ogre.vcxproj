@@ -21,14 +21,23 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Camera.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\InputManager.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Light.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Node.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\OgreManager.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Scene.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Renderer3D.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\RenderScene.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\SGTechniqueResolverListener.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\InputManager.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Light.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Node.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\OgreManager.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Scene.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderEntity.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Renderer3D.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\SGTechniqueResolverListener.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
@@ -151,7 +160,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)\src\LocoMotor_Utils</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Src\Components\Bites\include;$(SolutionDir)Dependecies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)\src\LocoMotor_Utils</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
@@ -159,7 +168,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Codec_STBI_d.lib;OgreMain_d.lib;RenderSystem_Direct3D11_d.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Codec_STBI_d.lib;OgreMain_d.lib;RenderSystem_Direct3D11_d.lib;OgreRTShaderSystem_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-build\RelWithDebInfo;$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -181,7 +190,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>Codec_STBI.lib;OgreMain.lib;RenderSystem_Direct3D11.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Codec_STBI.lib;OgreMain.lib;RenderSystem_Direct3D11.lib;OgreRTShaderSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-build\RelWithDebInfo;$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>

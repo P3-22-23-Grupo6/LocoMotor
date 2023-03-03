@@ -1,0 +1,27 @@
+17:41:18: Creating resource group General
+17:41:18: Creating resource group OgreInternal
+17:41:18: Creating resource group OgreAutodetect
+17:41:18: SceneManagerFactory for type 'DefaultSceneManager' registered.
+17:41:18: Registering ResourceManager for type Material
+17:41:18: Registering ResourceManager for type Mesh
+17:41:18: Registering ResourceManager for type Skeleton
+17:41:18: MovableObjectFactory for type 'ParticleSystem' registered.
+17:41:18: ArchiveFactory for type 'FileSystem' registered
+17:41:18: ArchiveFactory for type 'Zip' registered
+17:41:18: ArchiveFactory for type 'EmbeddedZip' registered
+17:41:18: DDS codec registering
+17:41:18: ETC codec registering
+17:41:18: ASTC codec registering
+17:41:18: Registering ResourceManager for type GpuProgram
+17:41:18: Registering ResourceManager for type Compositor
+17:41:18: MovableObjectFactory for type 'Entity' registered.
+17:41:18: MovableObjectFactory for type 'Light' registered.
+17:41:18: MovableObjectFactory for type 'BillboardSet' registered.
+17:41:18: MovableObjectFactory for type 'ManualObject' registered.
+17:41:18: MovableObjectFactory for type 'BillboardChain' registered.
+17:41:18: MovableObjectFactory for type 'RibbonTrail' registered.
+17:41:18: MovableObjectFactory for type 'StaticGeometry' registered.
+17:41:18: MovableObjectFactory for type 'Rectangle2D' registered.
+17:41:18: Error: Cannot open file: plugins.cfg - skipping automatic plugin loading
+17:41:18: *-*-* OGRE Initialising
+17:41:18: *-*-* Version 13.6.1 (Tsathoggua)

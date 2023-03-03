@@ -8,7 +8,7 @@
 #include "InputManager.h"
 #include "CheckML.h"
 #include "BulletManager.h"
-
+#include "RenderScene.h"
 
 int exec ();
 using namespace BulletWrapper;
@@ -20,12 +20,11 @@ int main () {
 	audio->AddSound (0, "Assets/A.wav");
 	auto list = FmodWrapper::AudioListener (audio);
 
-	OgreWrapper::OgreManager::init ("Prueba");
-	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::getInstance ();
-	man->createScene ("Escena");
-	man->createScene ("Escena2");
-
-	OgreWrapper::Scene* x = man->getScene ("Escenah");
+	OgreWrapper::OgreManager::Init ("Prueba");
+	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance ();
+	OgreWrapper::RenderScene* x = man->CreateScene ("Escena");
+	x->Prueba ();
+	man->SetActiveScene (x);
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	BulletManager::Init ();
 	auto btmngr = BulletManager::GetInstance ();
@@ -39,32 +38,34 @@ int main () {
 	info2.mass = 1.0f;
 	info2.origin = btVector3 (2, 10, 0);
 	btmngr->CreateRigidBody (info2);
-	//exec();
-	//initBullet ();
-	// man->render ();
-	uint32_t i = 0;
-	// AudioManager::Get ()->PlaySound (0);
-	while (i < 0x00000200) {
-
+	initBullet ();
+	while (true) {
 		// AUDIO
 		list.UpdateFunni (.05f);
 		audio->Update (0.0f);
 
 		// RENDER
-		man->render ();
+		man->Render ();
 
 		// INPUT
-		if (InputManager::Get ()->PollEvents ())
+		if (InputManager::Get ()->RegisterEvents ())
 			break;
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
 		//std::cout << buttonPressed;
 		btmngr->Update ();
 
-		i++;
-	}
-	btmngr->Clear ();
-	audio->Clear ();
+		// JOYSTICK INPUT
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Horizontal") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Vertical") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Horizontal") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Vertical") << "\n";
 
+	
+		//i++;
+	}
+	FmodWrapper::AudioManager::Clear ();
+	OgreWrapper::OgreManager::Clear();
+	InputManager::Destroy ();
 	return 0;
 }
