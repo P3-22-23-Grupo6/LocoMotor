@@ -106,5 +106,6 @@ void OgreWrapper::RenderScene::Prueba() {
 	mCubeNode->Attach (cube);
 	mCubeNode->Rotate(45, -90, 0);
 	cube->SetMaterial("Racers/Falcon");
+	_manager->setSkyBox(true, "Racers/SpaceSkyBox", 5000, false);
 }
 
