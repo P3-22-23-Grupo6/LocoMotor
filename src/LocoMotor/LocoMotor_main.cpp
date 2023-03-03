@@ -17,7 +17,7 @@ int main () {
 	_CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
 	auto audio = FmodWrapper::AudioManager::Init ();
-	audio->AddSound (0, "Assets/si.wav");
+	audio->AddSound (0, "Assets/A.wav");
 	auto list = FmodWrapper::AudioListener ();
 	auto audioSrc = FmodWrapper::AudioSource ();
 
