@@ -8,43 +8,43 @@
 
 InputManager* InputManager::instance_ = nullptr;
 
-InputManager::InputManager () {
+InputManager::InputManager() {
 }
 
-InputManager* InputManager::Get () {
-	if (InputManager::instance_ == nullptr)  instance_ = new InputManager ();
+InputManager* InputManager::Get() {
+	if (InputManager::instance_ == nullptr)  instance_ = new InputManager();
 	return instance_;
 }
 
 
 // TECLADO
-bool InputManager::GetKeyDown (const SDL_Scancode& scanCode) {
+bool InputManager::GetKeyDown(const SDL_Scancode& scanCode) {
 	return keyboardKeys[scanCode].down;
 }
 
-bool InputManager::GetKey (const SDL_Scancode& scanCode) {
+bool InputManager::GetKey(const SDL_Scancode& scanCode) {
 	return keyboardKeys[scanCode].isPressed;
 }
 
-bool InputManager::GetKeyUp (const SDL_Scancode& scanCode) {
+bool InputManager::GetKeyUp(const SDL_Scancode& scanCode) {
 	return keyboardKeys[scanCode].up;
 }
 
 // MANDO
-bool InputManager::GetButtonDown (const int& buttonCode) {
+bool InputManager::GetButtonDown(const int& buttonCode) {
 	return controllerButtons[buttonCode].down;
 }
 
-bool InputManager::GetButton (const int& buttonCode) {
+bool InputManager::GetButton(const int& buttonCode) {
 	return controllerButtons[buttonCode].isPressed;
 }
 
-bool InputManager::GetButtonUp (const int& buttonCode) {
+bool InputManager::GetButtonUp(const int& buttonCode) {
 	return controllerButtons[buttonCode].up;
 }
 
 
-float InputManager::GetJoystickAxis (const int& joystickIndex, const char* axis) {
+float InputManager::GetJoystickAxis(const int& joystickIndex, const char* axis) {
 
 	if (joystickIndex == 0) {
 
@@ -64,33 +64,33 @@ float InputManager::GetJoystickAxis (const int& joystickIndex, const char* axis)
 
 // MANEJO DE EVENTOS
 
-bool InputManager::RegisterEvents () {
+bool InputManager::RegisterEvents() {
 
 	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
-	if (keyboardInputs_ToReset.size () != 0)
-		ResetKeyboardInputs ();
+	if (keyboardInputs_ToReset.size() != 0)
+		ResetKeyboardInputs();
 
-	if (controllerInputs_ToReset.size () != 0)
-		ResetControllerInputs ();
+	if (controllerInputs_ToReset.size() != 0)
+		ResetControllerInputs();
 
 	//SDL_GameControllerSetLED (currentController, 255, 0, 0);
 
-	auto s = SDL_GameControllerSetSensorEnabled (currentController, SDL_SENSOR_GYRO, SDL_TRUE);
+	auto s = SDL_GameControllerSetSensorEnabled(currentController, SDL_SENSOR_GYRO, SDL_TRUE);
 
-	auto d = SDL_GameControllerIsSensorEnabled (currentController, SDL_SENSOR_GYRO);
+	auto d = SDL_GameControllerIsSensorEnabled(currentController, SDL_SENSOR_GYRO);
 
-	SDL_GameControllerRumble (currentController, 0, UINT16_MAX, 1000);
+	SDL_GameControllerRumble(currentController, 0, UINT16_MAX, 1000);
 
 	if (currentController != NULL) {
 
 		const int gyroAxis = 2;
 		float data_[gyroAxis];
-		SDL_GameControllerGetSensorData (currentController, SDL_SENSOR_GYRO, data_, gyroAxis);
+		SDL_GameControllerGetSensorData(currentController, SDL_SENSOR_GYRO, data_, gyroAxis);
 
 		float dataValue = data_[1];
 
 		// DEADZONE
-		if (dataValue < 0.01 && dataValue > -0.01) 
+		if (dataValue < 0.01 && dataValue > -0.01)
 			dataValue = 0;
 
 		// tener en cuenta los 6 primeros decimales
@@ -99,7 +99,7 @@ bool InputManager::RegisterEvents () {
 
 		gyroscopeValue += dataValue;
 
-		float prettyValue = int (gyroscopeValue / 1000000);
+		float prettyValue = int(gyroscopeValue / 1000000);
 
 		//gyroscopeValue = (int) gyroscopeValue;
 
@@ -114,17 +114,17 @@ bool InputManager::RegisterEvents () {
 	//else
 	//	std::cout << "gyroscopeValue = " << -1 << "\n";
 
-	auto f = SDL_GetError ();
+	auto f = SDL_GetError();
 
-	auto a = SDL_GameControllerHasSensor (currentController, SDL_SENSOR_GYRO);
-	auto b = SDL_GameControllerHasSensor (currentController, SDL_SENSOR_ACCEL);
+	auto a = SDL_GameControllerHasSensor(currentController, SDL_SENSOR_GYRO);
+	auto b = SDL_GameControllerHasSensor(currentController, SDL_SENSOR_ACCEL);
 
 	//auto h = SDL_GameControllerGetSensorData (currentController, SDL_SENSOR_GYRO, nullptr, 1);
 	//auto d = SDL_GetError ();
 	//SDL_JoystickRumbleTriggers (joystickAxis, Uint16 left_rumble, Uint16 right_rumble, Uint32 duration_ms);
 
 	SDL_Event event;
-	while (SDL_PollEvent (&event)) {
+	while (SDL_PollEvent(&event)) {
 
 		SDL_Scancode scanCode = event.key.keysym.scancode;
 
@@ -136,10 +136,10 @@ bool InputManager::RegisterEvents () {
 		// Manejar todos los tipos de eventos
 
 		// Almacenar eventos de teclado en el array "keyboardKeys"
-		ManageKeyboardEvents (event);
+		ManageKeyboardEvents(event);
 
 		// Almacenar eventos de mando en el array "controllerButtons" (a parte de eventos Add/Remove del mando)
-		ManageControllerEvents (event);
+		ManageControllerEvents(event);
 
 
 		//if (event.type == SDL_JOYAXISMOTION)
@@ -168,7 +168,7 @@ bool InputManager::RegisterEvents () {
 	}
 }
 
-void InputManager::ManageKeyboardEvents (const SDL_Event& event) {
+void InputManager::ManageKeyboardEvents(const SDL_Event& event) {
 
 	if (event.type == SDL_KEYDOWN) {
 		SDL_Scancode scanCode = event.key.keysym.scancode;
@@ -178,7 +178,7 @@ void InputManager::ManageKeyboardEvents (const SDL_Event& event) {
 		if (!thisKey.isPressed) {
 			thisKey.down = true;
 			thisKey.isPressed = true;
-			keyboardInputs_ToReset.push_back (scanCode);
+			keyboardInputs_ToReset.push_back(scanCode);
 		}
 	}
 
@@ -188,18 +188,18 @@ void InputManager::ManageKeyboardEvents (const SDL_Event& event) {
 
 		thisKey.isPressed = false;
 		thisKey.up = true;
-		keyboardInputs_ToReset.push_back (scanCode);
+		keyboardInputs_ToReset.push_back(scanCode);
 	}
 }
 
-void InputManager::ManageControllerEvents (const SDL_Event& event) {
+void InputManager::ManageControllerEvents(const SDL_Event& event) {
 
 	if (event.type == SDL_CONTROLLERDEVICEADDED) {
 
 		// Mando conectado que ha generado el evento
 		Sint32 connectedDevice = event.cdevice.which;
 
-		if (ControllerDeviceAdded (connectedDevice))
+		if (ControllerDeviceAdded(connectedDevice))
 			std::cout << "Controller added" << "\n";
 		else
 			std::cout << "Controller could not be added: A controller is already in use" << "\n";
@@ -210,7 +210,7 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 		// Mando conectado que ha generado el evento
 		Sint32 connectedDevice = event.cdevice.which;
 
-		ControllerDeviceRemoved (connectedDevice);
+		ControllerDeviceRemoved(connectedDevice);
 		std::cout << "Controller removed" << "\n";
 	}
 
@@ -223,7 +223,7 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 		if (!thisButton.isPressed) {
 			thisButton.down = true;
 			thisButton.isPressed = true;
-			controllerInputs_ToReset.push_back (buttonCode);
+			controllerInputs_ToReset.push_back(buttonCode);
 		}
 	}
 
@@ -234,7 +234,7 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 
 		thisButton.isPressed = false;
 		thisButton.up = true;
-		controllerInputs_ToReset.push_back (buttonCode);
+		controllerInputs_ToReset.push_back(buttonCode);
 	}
 
 	if (event.type == SDL_CONTROLLERAXISMOTION) {
@@ -267,7 +267,7 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 		if (joystickValue > JOYSTICKDEADZONE_MIN
 			|| joystickValue < -JOYSTICKDEADZONE_MIN) {
 
-			float absJoystickValue = abs (joystickValue);
+			float absJoystickValue = abs(joystickValue);
 			int sign = joystickValue / absJoystickValue;
 
 			// Convertir el valor en un valor entre 0 y 1
@@ -292,12 +292,12 @@ void InputManager::ManageControllerEvents (const SDL_Event& event) {
 
 }
 
-bool InputManager::ControllerDeviceAdded (const Sint32& controllerAdded) {
+bool InputManager::ControllerDeviceAdded(const Sint32& controllerAdded) {
 
 	if (currentController != nullptr)
 		return false;
 
-	currentController = SDL_GameControllerOpen (controllerAdded);
+	currentController = SDL_GameControllerOpen(controllerAdded);
 
 	//for (int i = 0; i < SDL_CONTROLLER_AXIS_MAX; ++i)
 	//	controllerAxes_[i] = 0.0f;
@@ -305,7 +305,7 @@ bool InputManager::ControllerDeviceAdded (const Sint32& controllerAdded) {
 	//SDL_GameControllerEventState (SDL_ENABLE);
 }
 
-void InputManager::ControllerDeviceRemoved (const Sint32& controllerRemoved) {
+void InputManager::ControllerDeviceRemoved(const Sint32& controllerRemoved) {
 
 	currentController = nullptr;
 
@@ -325,8 +325,8 @@ void InputManager::ControllerDeviceRemoved (const Sint32& controllerRemoved) {
 
 // RESET
 
-void InputManager::ResetKeyboardInputs () {
-	for (int i = 0; i < keyboardInputs_ToReset.size (); i++) {
+void InputManager::ResetKeyboardInputs() {
+	for (int i = 0; i < keyboardInputs_ToReset.size(); i++) {
 		// Saber el codigo de la tecla almacenado en el vector "keysToReset"
 		int scanCode = keyboardInputs_ToReset[i];
 		// Crear una referencia a la tecla y resetear sus variables a false
@@ -336,12 +336,12 @@ void InputManager::ResetKeyboardInputs () {
 	}
 
 	// Limpiar las teclas ya reseteadas
-	keyboardInputs_ToReset.clear ();
+	keyboardInputs_ToReset.clear();
 }
 
-void InputManager::ResetControllerInputs () {
+void InputManager::ResetControllerInputs() {
 
-	for (int i = 0; i < controllerInputs_ToReset.size (); i++) {
+	for (int i = 0; i < controllerInputs_ToReset.size(); i++) {
 		// Saber el codigo del boton del mando
 		int buttonCode = controllerInputs_ToReset[i];
 		// Crear una referencia a la tecla y resetear sus variables a false
@@ -351,5 +351,5 @@ void InputManager::ResetControllerInputs () {
 	}
 
 	// Limpiar las teclas ya reseteadas
-	keyboardInputs_ToReset.clear ();
+	keyboardInputs_ToReset.clear();
 }

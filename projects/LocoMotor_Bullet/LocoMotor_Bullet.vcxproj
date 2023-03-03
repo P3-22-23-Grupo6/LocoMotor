@@ -178,7 +178,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_Bullet\cpp\BulletManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Bullet\cpp\BulletRigidBody.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Bullet\cpp\bullet_main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">

@@ -17,11 +17,11 @@ int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
-	auto audio = FmodWrapper::AudioManager::Init ();
-	audio->AddSound (0, "Assets/A.wav");
-	auto list = FmodWrapper::AudioListener ();
-	auto audioSrc = FmodWrapper::AudioSource ();
-
+	auto audio = FmodWrapper::AudioManager::Init();
+	audio->AddSound(0, "Assets/A.wav");
+	auto list = FmodWrapper::AudioListener();
+	auto audioSrc = FmodWrapper::AudioSource();
+	//new int();
 	OgreWrapper::OgreManager::Init("Prueba");
 	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance();
 	OgreWrapper::RenderScene* x = man->CreateScene("Escena");
@@ -38,16 +38,16 @@ int main() {
 	RigidBodyInfo info2;
 	info2.size = 1.0;
 	info2.mass = 1.0f;
-	info2.origin = btVector3 (2, 10, 0);
-	btmngr->CreateRigidBody (info2);
+	info2.origin = btVector3(2, 10, 0);
+	btmngr->CreateRigidBody(info2);
 
-	audioSrc.PlaySound (0, -1, 1600, 1900);
+	audioSrc.PlaySound(0, -1, 1600, 1900);
 
 	while (true) {
 		// AUDIO
-		list.Prueba (.05f);
-		audioSrc.Prueba ();
-		audio->Update (0.0f);
+		list.Prueba(.05f);
+		audioSrc.Prueba();
+		audio->Update(0.0f);
 
 		// RENDER
 		man->Render();

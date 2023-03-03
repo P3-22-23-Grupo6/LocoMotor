@@ -6,9 +6,9 @@
 #include <iostream>
 #endif // _DEBUG
 
-FmodWrapper::AudioListener::AudioListener () : man (AudioManager::GetInstance()) {
-	man->AddListener (_fIndex);
-	_posRemember = new FMOD_VECTOR ();
+FmodWrapper::AudioListener::AudioListener() : man(AudioManager::GetInstance()) {
+	man->AddListener(_fIndex);
+	_posRemember = new FMOD_VECTOR();
 	_posRemember->x = 0;
 	_posRemember->y = 0;
 	_posRemember->z = 0;
@@ -20,20 +20,20 @@ FmodWrapper::AudioListener::~AudioListener() {
 	delete _posRemember;
 }
 
-uint16_t FmodWrapper::AudioListener::SetTransform (const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up) {
+uint16_t FmodWrapper::AudioListener::SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up) {
 
 #ifdef _DEBUG
-	auto err = man->GetSystem ()->set3DListenerAttributes (_fIndex, &newPos, &newVel, &forward, &up);
+	auto err = man->GetSystem()->set3DListenerAttributes(_fIndex, &newPos, &newVel, &forward, &up);
 	if (err != FMOD_OK) {
-		std::cout << "Listener error: " << man->GetError (err) << std::endl;
+		std::cout << "Listener error: " << man->GetError(err) << std::endl;
 	}
 	return err;
 #else
-	return man->GetSystem ()->set3DListenerAttributes (_fIndex, &pos, &vel, &frw, &upw);
+	return man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
 #endif // _DEBUG
 }
 
-void FmodWrapper::AudioListener::Prueba (const float& deltaTime) {
+void FmodWrapper::AudioListener::Prueba(const float& deltaTime) {
 
 	_elapsedTime += deltaTime;
 

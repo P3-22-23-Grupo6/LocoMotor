@@ -23,9 +23,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\LocoMotor_Bullet\cpp\bullet_main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor_Bullet\cpp\BulletManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

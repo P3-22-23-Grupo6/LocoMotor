@@ -27,37 +27,37 @@ namespace OgreWrapper {
 		/// Do not call this, use OgreManager::createScene instead
 		/// </summary>
 		/// <param name="scene">Ogre::SceneManager to wrap</param>
-		RenderScene (Ogre::SceneManager* scene);
+		RenderScene(Ogre::SceneManager* scene);
 
-		Ogre::SceneManager* GetMan () {
+		Ogre::SceneManager* GetMan() {
 			return _manager;
 		};
 
 		/// <summary>
 		/// Destructor
 		/// </summary>
-		~RenderScene ();
+		~RenderScene();
 
 		/// <summary>
 		/// Genera una escena de prueba
 		/// </summary>
-		void Prueba ();
+		void Prueba();
 
 		/// <summary>
 		/// Renders a frame from the active camera
 		/// </summary>
-		void Render ();
+		void Render();
 
-		Node* CreateNode (std::string name);
+		Node* CreateNode(std::string name);
 
-		Node* CreateNode (std::string name, std::string parent);
-		Node* GetNode (std::string name);
+		Node* CreateNode(std::string name, std::string parent);
+		Node* GetNode(std::string name);
 
-		Light* CreateLight ();
-		Renderer3D* CreateRenderer (std::string mesh);
-		Camera* CreateCamera (std::string mesh);
-		void SetActiveCamera (Camera* cam);
-		Camera* GetMainCamera ();
+		Light* CreateLight();
+		Renderer3D* CreateRenderer(std::string mesh);
+		Camera* CreateCamera(std::string mesh);
+		void SetActiveCamera(Camera* cam);
+		Camera* GetMainCamera();
 
 	private:
 		Ogre::SceneManager* _manager;

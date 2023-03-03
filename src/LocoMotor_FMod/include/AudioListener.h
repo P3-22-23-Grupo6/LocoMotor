@@ -17,8 +17,8 @@ namespace FmodWrapper {
 	class AudioListener {
 
 	public:
-		AudioListener ();
-		~AudioListener ();
+		AudioListener();
+		~AudioListener();
 
 		/// @brief Set the world attributes of the listener
 		/// @param newPos The new position of the listener (pass NULL or 0 to not update position)
@@ -26,11 +26,11 @@ namespace FmodWrapper {
 		/// @param forward The direction the listener is facing MUST BE NORMALIZED (pass NULL or 0 to not update)
 		/// @param up The new upwards direction of the listener MUST ALSO BE NORMALIZED (pass NULL or 0 to not update position)
 		/// @return A number that by passing it to AudioManager::GetError(uint16_t) you can get more info if there was an error
-		uint16_t SetTransform (const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
+		uint16_t SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
 
 		/// @brief Lo unico que hace es rotar deltaTime radianes el listener de fmod asociado
 		/// @param deltaTime Bruh
-		void Prueba (const float& deltaTime);
+		void Prueba(const float& deltaTime);
 
 	private:
 

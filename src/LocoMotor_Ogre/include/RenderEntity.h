@@ -9,8 +9,8 @@
 namespace OgreWrapper {
 	class RenderEntity {
 	public:
-		virtual ~RenderEntity () = default;
-		virtual Ogre::MovableObject* GetMovObj () = 0;
+		virtual ~RenderEntity() = default;
+		virtual Ogre::MovableObject* GetMovObj() = 0;
 	};
 }
 

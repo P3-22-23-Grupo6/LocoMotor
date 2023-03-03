@@ -14,7 +14,7 @@ namespace Ogre {
 }
 
 class SDL_Window;
-namespace OgreWrapper{
+namespace OgreWrapper {
 	class RenderScene;
 
 	struct NativeWindowPair {
@@ -31,7 +31,7 @@ namespace OgreWrapper{
 		/// <param name="name">Name for the new scene.</param>
 		/// <returns>The newly created scene.<para/>
 		/// If the name is already taken, the scene with that name will be returned instead.</returns>
-		OgreWrapper::RenderScene* CreateScene (std::string name);
+		OgreWrapper::RenderScene* CreateScene(std::string name);
 
 		/// <summary>
 		/// Returns a created scene, searched by name in the list of scenes
@@ -39,23 +39,23 @@ namespace OgreWrapper{
 		/// <param name="name"></param>
 		/// <returns>A pointer to the scene with the indicated name<para/>
 		/// If the name doesn't exist, getScene returns nullptr.</returns>
-		OgreWrapper::RenderScene* GetScene (std::string name);
+		OgreWrapper::RenderScene* GetScene(std::string name);
 
 		/// <summary>
 		/// Renderiza un frame.
 		///</summary> 
-		void Render ();
+		void Render();
 
 		/// @brief 
 		/// Devuelve la RenderWindow
 		/// @return Ventana de renderizado de Ogre
-		Ogre::RenderWindow* GetRenderWindow ();
+		Ogre::RenderWindow* GetRenderWindow();
 
 		/// <summary>
 		/// Sets the active scene for the manager
 		/// </summary>
 		/// <param name="s">The scene to become active</param>
-		void SetActiveScene (OgreWrapper::RenderScene* s);
+		void SetActiveScene(OgreWrapper::RenderScene* s);
 	protected:
 		Ogre::Root* _root;
 		NativeWindowPair mWindow;
@@ -72,25 +72,25 @@ namespace OgreWrapper{
 		/// Creates a new OgreManager.
 		/// </summary>
 		/// <param name="name">The name for the window</param>
-		OgreManager (std::string name);
-		~OgreManager ();
+		OgreManager(std::string name);
+		~OgreManager();
 
 		/// <summary>
 		/// Loads the resouces and initializes the RTShaderSytem
 		/// </summary>
-		void _LoadResources ();
+		void _LoadResources();
 
 		/// <summary>
 		/// Initializes the window
 		/// </summary>
 		/// <param name="name">The Window title</param>
 		/// <returns></returns>
-		NativeWindowPair _InitWindow (std::string name);
+		NativeWindowPair _InitWindow(std::string name);
 
 		/// <summary>
 		/// Shuts down Ogre and releases all the memory related to it
 		/// </summary>
-		void _Shutdown ();
+		void _Shutdown();
 
 	};
 }
