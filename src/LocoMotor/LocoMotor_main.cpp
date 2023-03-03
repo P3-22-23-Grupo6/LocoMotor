@@ -18,7 +18,7 @@ int main() {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
 	auto audio = FmodWrapper::AudioManager::Init();
-	audio->AddSound(0, "Assets/A.wav");
+	audio->AddSound(0, "Assets/engine.wav");
 	auto list = FmodWrapper::AudioListener();
 	auto audioSrc = FmodWrapper::AudioSource();
 	//new int();
@@ -41,24 +41,38 @@ int main() {
 	info2.origin = btVector3(2, 10, 0);
 	btmngr->CreateRigidBody(info2);
 
-	audioSrc.PlaySound(0, -1, 1600, 1900);
+	audioSrc.PlaySound(0, -1);
+
+	float frc = 1;
 
 	while (true) {
-		// AUDIO
-		list.Prueba(.05f);
-		audioSrc.Prueba();
-		audio->Update(0.0f);
-
-		// RENDER
-		man->Render();
 
 		// INPUT
 		if (InputManager::Get()->RegisterEvents())
 			break;
 		bool buttonPressed = InputManager::Get()->GetKeyDown(SDL_SCANCODE_A);
 
+		if (InputManager::Get()->GetKey(SDL_SCANCODE_W)) {
+			frc += 0.005f;
+		}
+		else if (InputManager::Get()->GetKey(SDL_SCANCODE_S)){
+			frc -= 0.005f;
+		}
+		float variation = frc + ((float(std::rand() % 11) - 5) / 300.f);
+		audioSrc.SetSoundFreq(0, frc);
+		// std::cout << frc << std::endl;
+
+		// AUDIO
+		// list.Prueba(.05f);
+		audio->Update(0.0f);
+
+
+		// RENDER
+		man->Render();
+
+
 		//std::cout << buttonPressed;
-		btmngr->Update();
+		// btmngr->Update();
 
 		// JOYSTICK INPUT
 		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Horizontal") << "\n";

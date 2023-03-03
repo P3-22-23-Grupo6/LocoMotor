@@ -20,7 +20,7 @@ FmodWrapper::AudioListener::~AudioListener() {
 	delete _posRemember;
 }
 
-uint16_t FmodWrapper::AudioListener::SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up) {
+unsigned short FmodWrapper::AudioListener::SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up) {
 
 #ifdef _DEBUG
 	auto err = man->GetSystem()->set3DListenerAttributes(_fIndex, &newPos, &newVel, &forward, &up);
@@ -77,12 +77,12 @@ void FmodWrapper::AudioListener::Prueba(const float& deltaTime) {
 
 }
 //
-//void AudioListener::Update (const uint32_t& deltaTime) {
+//void AudioListener::Update (const unsigned int& deltaTime) {
 //	float dT = (float) deltaTime / 1000.f;
 //	Update (dT);
 //}
 //
-//void AudioListener::UpdateFunni (const uint32_t& deltaTime) {
+//void AudioListener::UpdateFunni (const unsigned int& deltaTime) {
 //	float dT = (float) deltaTime / 1000.f;
 //	UpdateFunni (dT);
 //}
