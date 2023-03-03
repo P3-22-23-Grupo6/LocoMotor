@@ -1,6 +1,6 @@
 #include "InputManager.h"
 #include "SDL_Scancode.h"
-//#include "SDL_keyboard.h"
+#include "SDL_keyboard.h"
 #include <SDL_events.h>
 #include <iostream>
 #include <SDL_gamecontroller.h>
@@ -44,20 +44,20 @@ bool InputManager::GetButtonUp(const int& buttonCode) {
 }
 
 
-float InputManager::GetJoystickAxis(const int& joystickIndex, const char* axis) {
+float InputManager::GetJoystickValue(const int& joystickIndex, const Axis& axis) {
 
 	if (joystickIndex == 0) {
 
-		if (axis == "Horizontal")
+		if (axis == Horizontal)
 			return joystickAxis[0];
-		else if (axis == "Vertical")
+		else if (axis == Vertical)
 			return joystickAxis[1];
 	}
 	else if (joystickIndex == 1) {
 
-		if (axis == "Horizontal")
+		if (axis == Horizontal)
 			return joystickAxis[2];
-		else if (axis == "Vertical")
+		else if (axis == Vertical)
 			return joystickAxis[3];
 	}
 }
@@ -73,46 +73,21 @@ bool InputManager::RegisterEvents() {
 	if (controllerInputs_ToReset.size() != 0)
 		ResetControllerInputs();
 
-	//SDL_GameControllerSetLED (currentController, 255, 0, 0);
-
-	auto s = SDL_GameControllerSetSensorEnabled(currentController, SDL_SENSOR_GYRO, SDL_TRUE);
-
-	auto d = SDL_GameControllerIsSensorEnabled(currentController, SDL_SENSOR_GYRO);
-
-	SDL_GameControllerRumble(currentController, 0, UINT16_MAX, 1000);
-
-	if (currentController != NULL) {
-
-		const int gyroAxis = 2;
-		float data_[gyroAxis];
-		SDL_GameControllerGetSensorData(currentController, SDL_SENSOR_GYRO, data_, gyroAxis);
-
-		float dataValue = data_[1];
-
-		// DEADZONE
-		if (dataValue < 0.01 && dataValue > -0.01)
-			dataValue = 0;
-
-		// tener en cuenta los 6 primeros decimales
-		dataValue *= 1000000;
-		dataValue = (int) dataValue;
-
-		gyroscopeValue += dataValue;
-
-		float prettyValue = int(gyroscopeValue / 1000000);
-
-		//gyroscopeValue = (int) gyroscopeValue;
-
-		//std::cout << "DATA_0 = " << data_[0] << "   ///   " << "DATA_1 = " << data_[1] << "\n";
-		std::cout << "GyroscopeValue = " << prettyValue << "\n";
-	}
-
 
 
 	//if (data_[0] > 0)
 	//	std::cout << "gyroscopeValue = " << 1 << "\n";
 	//else
 	//	std::cout << "gyroscopeValue = " << -1 << "\n";
+
+
+
+	GetGyroscopeAngle(Horizontal);
+
+
+
+
+
 
 	auto f = SDL_GetError();
 
@@ -147,16 +122,16 @@ bool InputManager::RegisterEvents() {
 
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			switch (event.button.button) {
-				case SDL_BUTTON_LEFT:
-					break;
-				case SDL_BUTTON_MIDDLE:
-					break;
-				case SDL_BUTTON_RIGHT:
-					break;
-				case SDL_BUTTON_X1:
-					break;
-				case SDL_BUTTON_X2:
-					break;
+			case SDL_BUTTON_LEFT:
+				break;
+			case SDL_BUTTON_MIDDLE:
+				break;
+			case SDL_BUTTON_RIGHT:
+				break;
+			case SDL_BUTTON_X1:
+				break;
+			case SDL_BUTTON_X2:
+				break;
 			}
 			std::cout << "MOUSE " << "\n";
 		}
@@ -271,7 +246,7 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 			int sign = joystickValue / absJoystickValue;
 
 			// Convertir el valor en un valor entre 0 y 1
-			float normalizedValue = ((float) (absJoystickValue - JOYSTICKDEADZONE_MIN)) / ((float) (JOYSTICKDEADZONE_MAX - JOYSTICKDEADZONE_MIN));
+			float normalizedValue = ((float)(absJoystickValue - JOYSTICKDEADZONE_MIN)) / ((float)(JOYSTICKDEADZONE_MAX - JOYSTICKDEADZONE_MIN));
 
 			normalizedValue *= sign;
 
@@ -352,4 +327,100 @@ void InputManager::ResetControllerInputs() {
 
 	// Limpiar las teclas ya reseteadas
 	keyboardInputs_ToReset.clear();
+}
+
+
+// FUNCIONALIDADES DE MANDO EXTRA
+
+void InputManager::SetControllerLedColor(int r, int g, int b) {
+	if (currentController != nullptr)
+		SDL_GameControllerSetLED(currentController, r, g, b);
+	else std::cout << "[ERROR] Could not change LED color: currentController not assigned";
+}
+
+// Giroscopio
+
+void InputManager::EnableControllerGyroscope() {
+	if (currentController != nullptr) {
+
+		if (SDL_GameControllerHasSensor(currentController, SDL_SENSOR_GYRO) == SDL_TRUE)
+			SDL_GameControllerSetSensorEnabled(currentController, SDL_SENSOR_GYRO, SDL_TRUE);
+		else
+			std::cout << "[ERROR] Could not enable controller gyroscope: currentController has not Gyroscope support";
+	}
+	else
+		std::cout << "[ERROR] Could not enable controller gyroscope: currentController not assigned";
+}
+
+void InputManager::DisableControllerGyroscope() {
+	if (currentController != nullptr) {
+		if (SDL_GameControllerHasSensor(currentController, SDL_SENSOR_GYRO) == SDL_TRUE)
+			SDL_GameControllerSetSensorEnabled(currentController, SDL_SENSOR_GYRO, SDL_FALSE);
+		else
+			std::cout << "[ERROR] Could not disable controller gyroscope: currentController has not Gyroscope support";
+	}
+	else std::cout << "[ERROR] Could not disable controller gyroscope: currentController not assigned";
+}
+
+// Devuelve un valor desde -1 a 1 dependiendo de la velocidad del giroscopio seleccionado
+float InputManager::GetGyroscopeAngularVelocity(const Axis& axis) {
+	//if (axis == Horizontal)
+	//else if (axis == Vertical)
+	return gyroscopeAngularVelocity[0];
+}
+
+float InputManager::GetGyroscopeAngle(const Axis& axis) {
+	//if (axis == Horizontal)
+	//else if (axis == Vertical)
+
+
+	SDL_GameControllerSetSensorEnabled(currentController, SDL_SENSOR_GYRO, SDL_TRUE);
+
+	// Manejar el giroscopio en caso de querer utilizarlo y tener uno disponible
+	if (useGyroscope && currentController != nullptr) {
+
+		std::cout << "currentController = " << currentController << "\n";
+
+		const int gyroAxis = 2;
+		float data_[gyroAxis];
+		SDL_GameControllerGetSensorData(currentController, SDL_SENSOR_GYRO, data_, gyroAxis);
+
+		float dataValue = data_[1];
+
+		// DEADZONE
+		if (dataValue < 0.01 && dataValue > -0.01)
+			dataValue = 0;
+
+
+		// Redondear un determinado numero de digitos
+		// Numero de digitos = Numero de ceros
+		const int roundNumber = 1000000;
+
+		// tener en cuenta los 6 primeros decimales
+		dataValue *= roundNumber;
+		dataValue = (int)dataValue;
+
+		gyroscopeValue_ += dataValue;
+
+		float prettyValue = int(gyroscopeValue_ / roundNumber);
+
+
+		// Convertir el valor output a un valor entre -1 y 1
+		const int MAXGYROSCOPEVALUE = 350;
+		float outputValue = (gyroscopeValue_ / roundNumber);
+		// Limitar el valor maximo
+		if (outputValue > MAXGYROSCOPEVALUE)
+			outputValue = MAXGYROSCOPEVALUE;
+		else if (outputValue < -MAXGYROSCOPEVALUE)
+			outputValue = -MAXGYROSCOPEVALUE;
+
+		outputValue = outputValue / MAXGYROSCOPEVALUE;
+
+		//gyroscopeValue = (int) gyroscopeValue;
+
+		//std::cout << "DATA_0 = " << data_[0] << "   ///   " << "DATA_1 = " << data_[1] << "\n";
+		std::cout << "GyroscopeValue = " << outputValue << "\n";
+	}
+
+	return gyroscopeValue_;
 }
