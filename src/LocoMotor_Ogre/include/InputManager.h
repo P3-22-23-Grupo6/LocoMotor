@@ -10,6 +10,9 @@
 
 union SDL_Event;
 
+//class SDL_GameController;
+//class SDL_Scancode;
+
 
 class InputManager {
 
@@ -45,9 +48,18 @@ private:
 	const int JOYSTICKDEADZONE_MIN = 10000;
 	const int JOYSTICKDEADZONE_MAX = 32000;
 
+	enum Axis {
+		Horizontal, Vertical
+	};
 
 	// Giroscopio del mando
-	float gyroscopeValue = 0;
+	float gyroscopeValue_ = 0;
+	float gyroscopeValue[2];
+	float gyroscopeAngularVelocity[2];
+
+	const int MAXGYROSCOPEANGULARVELOCITY = 10000;
+
+	bool useGyroscope = true;
 
 public:
 
@@ -73,7 +85,7 @@ public:
 
 	bool GetButtonUp(const int& buttonCode);
 
-	float GetJoystickAxis(const int& joystickIndex, const char* axis);
+	float GetJoystickValue(const int& joystickIndex, const Axis& axis);
 
 
 	// GESTION DE EVENTOS
@@ -95,6 +107,16 @@ public:
 	void ResetKeyboardInputs();
 
 	void ResetControllerInputs();
+
+	void SetControllerLedColor(int r, int g, int b);
+
+	void EnableControllerGyroscope();
+
+	void DisableControllerGyroscope();
+
+	float GetGyroscopeAngularVelocity(const Axis& axis);
+
+	float GetGyroscopeAngle(const Axis& axis = Horizontal);
 
 	static void Destroy() {
 		delete InputManager::instance_;
