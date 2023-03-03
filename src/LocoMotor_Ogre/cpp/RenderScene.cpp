@@ -98,11 +98,13 @@ void OgreWrapper::RenderScene::Prueba () {
 	Camera* cam = new Camera (_manager->createCamera ("cam"));
 	mCamNode->Attach (cam);
 	//mCamNode->Attach (cam2);
-	mCamNode->Translate (0, 0, 1000);
+	mCamNode->Translate (0, 0, 5);
 	mCamNode->LookAt (0, 0, 0);
 	SetActiveCamera (cam);
 	OgreWrapper::Node* mCubeNode = CreateNode("Cubo");
-	OgreWrapper::Renderer3D* cube = new Renderer3D (_manager->createEntity ("cube.mesh"));
+	OgreWrapper::Renderer3D* cube = new Renderer3D (_manager->createEntity ("Feisar.mesh"));
 	mCubeNode->Attach (cube);
+	mCubeNode->Rotate(45, -90, 0);
+	cube->SetMaterial("Racers/Falcon");
 }
 
