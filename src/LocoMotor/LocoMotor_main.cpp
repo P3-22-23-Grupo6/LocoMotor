@@ -5,6 +5,7 @@
 #include "OgreManager.h"
 #include "AudioManager.h"
 #include "AudioListener.h"		//No se que tan legal seria hacer esto supongo el manager deberia incluir ya el listener pero habra que consultarlo nose me tengo que ir
+#include "AudioSource.h"
 #include "InputManager.h"
 #include "CheckML.h"
 #include "BulletManager.h"
@@ -16,9 +17,10 @@ int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
-	auto audio = FmodWrapper::AudioManager::Init();
-	audio->AddSound(0, "Assets/A.wav");
-	auto list = FmodWrapper::AudioListener(audio);
+	auto audio = FmodWrapper::AudioManager::Init ();
+	audio->AddSound (0, "Assets/A.wav");
+	auto list = FmodWrapper::AudioListener ();
+	auto audioSrc = FmodWrapper::AudioSource ();
 
 	OgreWrapper::OgreManager::Init("Prueba");
 	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance();
@@ -36,13 +38,16 @@ int main() {
 	RigidBodyInfo info2;
 	info2.size = 1.0;
 	info2.mass = 1.0f;
-	info2.origin = btVector3(2, 10, 0);
-	btmngr->CreateRigidBody(info2);
-	//initBullet ();
+	info2.origin = btVector3 (2, 10, 0);
+	btmngr->CreateRigidBody (info2);
+
+	audioSrc.PlaySound (0, -1, 1600, 1900);
+
 	while (true) {
 		// AUDIO
-		list.UpdateFunni(.05f);
-		audio->Update(0.0f);
+		list.Prueba (.05f);
+		audioSrc.Prueba ();
+		audio->Update (0.0f);
 
 		// RENDER
 		man->Render();

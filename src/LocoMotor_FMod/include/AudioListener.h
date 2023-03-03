@@ -2,7 +2,9 @@
 #ifndef AUDIOLISTENER
 #define AUDIOLISTENER
 
-typedef struct FMOD_VECTOR;
+typedef unsigned short uint16_t;
+typedef unsigned int uint32_t;
+struct FMOD_VECTOR;
 namespace FmodWrapper {
 	class AudioManager;
 }
@@ -15,28 +17,22 @@ namespace FmodWrapper {
 	class AudioListener {
 
 	public:
-		AudioListener(FmodWrapper::AudioManager* manager/*gameobject, etc*/);
-		~AudioListener();
+		AudioListener ();
+		~AudioListener ();
 
-		/// @brief Actualizara los datos del listener dependiendo del gameobject asociado
-		/// @param deltaTime En este caso, se utiliza para calcular la velocidad del gameobject
-		void Update(const float& deltaTime);
+		/// @brief Set the world attributes of the listener
+		/// @param newPos The new position of the listener (pass NULL or 0 to not update position)
+		/// @param newVel The new velocity of the listener (pass NULL or 0 to not update velocity)
+		/// @param forward The direction the listener is facing MUST BE NORMALIZED (pass NULL or 0 to not update)
+		/// @param up The new upwards direction of the listener MUST ALSO BE NORMALIZED (pass NULL or 0 to not update position)
+		/// @return A number that by passing it to AudioManager::GetError(uint16_t) you can get more info if there was an error
+		uint16_t SetTransform (const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
 
 		/// @brief Lo unico que hace es rotar deltaTime radianes el listener de fmod asociado
 		/// @param deltaTime Bruh
-		void UpdateFunni(const float& deltaTime);
-
-		///// @brief Actualizara los datos del listener dependiendo del gameobject asociado
-		///// @param deltaTime En este caso, se utiliza para calcular la velocidad del gameobject
-		//void Update (const uint32_t& deltaTime);
-
-		///// @brief Lo unico que hace es rotar (deltaTime / 1000) radianes el listener de fmod asociado
-		///// @param deltaTime Bruh
-		//void UpdateFunni (const uint32_t& deltaTime);
+		void Prueba (const float& deltaTime);
 
 	private:
-
-		// + lo tipico de gameobject y tal
 
 		int _fIndex;
 

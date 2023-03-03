@@ -21,10 +21,12 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_FMod\cpp\AudioListener.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_FMod\cpp\AudioManager.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_FMod\cpp\AudioSource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_FMod\include\AudioListener.h" />
     <ClInclude Include="..\..\src\LocoMotor_FMod\include\AudioManager.h" />
+    <ClInclude Include="..\..\src\LocoMotor_FMod\include\AudioSource.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
