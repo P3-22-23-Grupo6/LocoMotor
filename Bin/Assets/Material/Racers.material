@@ -8,7 +8,7 @@ material Racers/Falcon
 
             texture_unit
             {
-                texture falcon_t.png
+                texture FeisarAlbedo.png
                 colour_op modulate
             }
         }
