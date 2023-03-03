@@ -134,7 +134,7 @@ btTransform LMVector3::LmToBullTransform (const LMVector3& lmVector) {
 
 // Default constructor initializes quaternion to (0, 0, 0, 0)
 /// @brief Create a new Quaternion with everything Set to 0
-LMQuaternion::LMQuaternion () : _w (0), _x (0), _y (0), _z (0) {
+LMQuaternion::LMQuaternion () : _w (1), _x (0), _y (0), _z (0) {
 }
 
 // Constructor initializes quaternion to specified values
