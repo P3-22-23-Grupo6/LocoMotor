@@ -11,6 +11,11 @@ namespace FMOD {
 namespace FmodWrapper {
 	class AudioManager;
 
+	struct ChannelData {
+		FMOD::Channel* channel;
+		float ogFrec;
+	};
+
 	class AudioSource {
 	public:
 
@@ -50,7 +55,7 @@ namespace FmodWrapper {
 
 		FMOD_VECTOR* _posRemember;
 
-		std::unordered_map<unsigned int, FMOD::Channel*> _chMap;
+		std::unordered_map<unsigned int, ChannelData> _chMap;
 
 
 	};
