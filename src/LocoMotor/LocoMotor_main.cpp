@@ -38,7 +38,7 @@ int main () {
 	info2.mass = 1.0f;
 	info2.origin = btVector3 (2, 10, 0);
 	btmngr->CreateRigidBody (info2);
-	initBullet ();
+	//initBullet ();
 	while (true) {
 		// AUDIO
 		list.UpdateFunni (.05f);
