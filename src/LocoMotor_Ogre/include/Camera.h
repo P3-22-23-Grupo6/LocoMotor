@@ -1,21 +1,32 @@
 #ifndef _CAMERA_H_
 #define _CAMERA_H_
 
-#include <OgreCamera.h>
-#include <OgreSceneNode.h>
+#include "RenderEntity.h"
+#include <OgreVector3.h>
+namespace Ogre {
+	class Camera;
+	class Viewport;
+	//typedef Vector3;
+}
 
 namespace OgreWrapper {
-
-	class Camera {
+	
+	class Camera : public RenderEntity {
 	public:
 
-		Camera(Ogre::Camera* camera, Ogre::SceneNode* node);
+		Camera(Ogre::Camera* camera);
 		~Camera();
+
+		Ogre::Viewport* GetViewport ();
+		Ogre::MovableObject* GetMovObj () override;
+
+		void Render ();
 	
 	private:
-		Ogre::SceneNode* mNode;
+		static int _zOrder;
+		int _mZOrder;
 		Ogre::Camera* mCamera;
-
+		Ogre::Viewport* vp;
 	};
 }
 #endif

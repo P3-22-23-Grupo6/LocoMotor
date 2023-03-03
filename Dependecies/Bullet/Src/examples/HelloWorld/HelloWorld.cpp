@@ -130,7 +130,7 @@ int main(int argc, char** argv)
 			{
 				trans = obj->getWorldTransform();
 			}
-			printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
+			//printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
 		}
 	}
 
@@ -152,7 +152,6 @@ int main(int argc, char** argv)
 		dynamicsWorld->removeCollisionObject(obj);
 		delete obj;
 	}
-
 	//delete collision shapes
 	for (int j = 0; j < collisionShapes.size(); j++)
 	{

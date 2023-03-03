@@ -8,10 +8,11 @@
 #include "AudioSource.h"
 #include "InputManager.h"
 #include "CheckML.h"
+#include "BulletManager.h"
+#include "RenderScene.h"
 
 int exec ();
-int initBullet ();
-
+using namespace BulletWrapper;
 int main () {
 
 	_CrtSetDbgFlag (_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
@@ -21,41 +22,57 @@ int main () {
 	auto list = FmodWrapper::AudioListener ();
 	auto audioSrc = FmodWrapper::AudioSource ();
 
-	OgreWrapper::OgreManager::init ("Prueba");
-	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::getInstance ();
-	man->createScene ("Escena");
-	man->createScene ("Escena2");
-
-	OgreWrapper::Scene* x = man->getScene ("Escenah");
+	OgreWrapper::OgreManager::Init ("Prueba");
+	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance ();
+	OgreWrapper::RenderScene* x = man->CreateScene ("Escena");
+	x->Prueba ();
+	man->SetActiveScene (x);
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
-	//exec();
+	BulletManager::Init ();
+	auto btmngr = BulletManager::GetInstance ();
+	RigidBodyInfo info1;
+	info1.boxSize = btVector3 (50, 10, 50);
+	info1.mass = 0.0f;
+	info1.origin = btVector3 (0, -50, 0);
+	btmngr->CreateRigidBody (info1);
+	RigidBodyInfo info2;
+	info2.size = 1.0;
+	info2.mass = 1.0f;
+	info2.origin = btVector3 (2, 10, 0);
+	btmngr->CreateRigidBody (info2);
 	initBullet ();
 	// man->render ();
 
-	uint32_t i = 0;
-
 	audioSrc.PlaySound (0, -1, 1600, 1900);
-	while (i < 0x00000200) {
 
+	while (true) {
 		// AUDIO
 		list.Prueba (.05f);
 		audioSrc.Prueba ();
 		audio->Update (0.0f);
 
 		// RENDER
-		man->render ();
+		man->Render ();
 
 		// INPUT
-		if (InputManager::Get ()->PollEvents ())
+		if (InputManager::Get ()->RegisterEvents ())
 			break;
 		bool buttonPressed = InputManager::Get ()->GetKeyDown (SDL_SCANCODE_A);
 
-		std::cout << buttonPressed;
+		//std::cout << buttonPressed;
+		btmngr->Update ();
 
+		// JOYSTICK INPUT
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Horizontal") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Vertical") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Horizontal") << "\n";
+		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Vertical") << "\n";
 
-		i++;
+	
+		//i++;
 	}
-	audio->Clear ();
-
+	FmodWrapper::AudioManager::Clear ();
+	OgreWrapper::OgreManager::Clear();
+	InputManager::Destroy ();
 	return 0;
 }

@@ -1,7 +1,7 @@
 #pragma once
 #ifndef LM_SINGLETON
 #define LM_SINGLETON
-#include "CheckML.h"
+//#include "CheckML.h"
 
 template<typename T>
 class Singleton {

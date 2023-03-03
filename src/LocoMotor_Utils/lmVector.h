@@ -2,10 +2,13 @@
 
 #include "OgreVector3.h"
 #include "OgreQuaternion.h"
-#include "btBulletDynamicsCommon.h"
+//#include "btBulletDynamicsCommon.h"
 #include "fmod_common.h"
-
+class btVector3;
+class btTransform;
+class btQuaternion;
 //Vector class to be used with LocoMotor
+
 class LMVector3 {
 
 
