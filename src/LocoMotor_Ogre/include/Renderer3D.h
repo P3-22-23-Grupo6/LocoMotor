@@ -8,14 +8,13 @@
 namespace Ogre {
 	class Entity;
 }
-namespace OgreWrapper
-{
+namespace OgreWrapper {
 	class Renderer3D : public RenderEntity {
 	public:
-		Renderer3D (Ogre::Entity* rend);
-		~Renderer3D ();
-		Ogre::MovableObject* GetMovObj () override;
-		void SetMaterial (std::string mat);
+		Renderer3D(Ogre::Entity* rend);
+		~Renderer3D();
+		Ogre::MovableObject* GetMovObj() override;
+		void SetMaterial(std::string mat);
 	private:
 		Ogre::Entity* _mesh;
 

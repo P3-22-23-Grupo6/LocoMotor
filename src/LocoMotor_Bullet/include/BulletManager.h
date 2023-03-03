@@ -35,7 +35,7 @@ namespace BulletWrapper {
 		/// <summary>
 		/// Update the physics world , steps the physic simulation
 		/// </summary>
-		void Update ();
+		void Update();
 		/// <summary>
 		/// A method to get the <c>BulletManager</c> singleton instance.
 		/// <c>BulletManager::InitBullet</c> must be called before any calls to <c>BulletManager::getInstance</c> or
@@ -47,17 +47,17 @@ namespace BulletWrapper {
 		/// Create the rigidBody with the info given
 		/// </summary>
 		/// <param name="info"> The information to build the rigidBody </param>
-		void CreateRigidBody (RigidBodyInfo info);
+		void CreateRigidBody(RigidBodyInfo info);
 		/// <summary>
 		/// Add the RigidBody to the physics world
 		/// </summary>
 		/// <param name="rb"> The pointer of the rigidbody </param>
-		void AddRigidBodyToWorld (btRigidBody* rb);
+		void AddRigidBodyToWorld(btRigidBody* rb);
 		/// <summary>
 		/// Add the RigidBody to the physics world
 		/// </summary>
 		/// <param name="rb"> The pointer of the rigidbody </param>
-		void RemoveRigidBodyFromWorld (btRigidBody* rb);
+		void RemoveRigidBodyFromWorld(btRigidBody* rb);
 		/// <summary>
 		/// Initializes the <c>BulletManager</c> singleton instance.
 		/// This method must be called before any calls to <c>BulletManager::getInstance</c>.
@@ -68,7 +68,7 @@ namespace BulletWrapper {
 		/// Sets the worlds gravity
 		/// </summary>
 		/// <param name="gravity"> The Vector3 gravity you want to set </param>
-		void SetWorldGravity (btVector3 gravity);
+		void SetWorldGravity(btVector3 gravity);
 
 	private:
 		//La instacia del Manager
@@ -81,8 +81,8 @@ namespace BulletWrapper {
 		btDynamicsWorld* _dynamicWorld = nullptr;
 		//Constructora y destructora de la clase
 		std::vector<BulletRigidBody*> _vRigidBody;
-		BulletManager ();
-		~BulletManager ();
+		BulletManager();
+		~BulletManager();
 
 	};
 }

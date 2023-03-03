@@ -1,0 +1,34 @@
+material Racers/Falcon
+{
+    technique
+    {
+        pass
+        {
+            diffuse 0.9 0.9 0.9
+
+            texture_unit
+            {
+                texture FeisarAlbedo.png
+                colour_op modulate
+            }
+        }
+    }
+}
+material Racers/SpaceSkyBox
+{
+    technique
+        {
+        pass
+        {
+            lighting off
+            depth_write off
+            texture_unit
+                {
+                    cubic_texture catFace.png separateUV
+                    tex_address_mode clamp
+                     env_map spherical
+                    rotate_anim 0.25
+                }
+        }
+    }
+}

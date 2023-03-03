@@ -11,12 +11,12 @@ namespace BulletWrapper {
 	//class BulletManager;
 	class BulletRigidBody {
 	public:
-		BulletRigidBody (RigidBodyInfo info);
-		~BulletRigidBody ();
-		void AddForce (btVector3 force);
+		BulletRigidBody(RigidBodyInfo info);
+		~BulletRigidBody();
+		void AddForce(btVector3 force);
 	private:
 		btRigidBody* _rigidBody = nullptr;
-		btCollisionShape* _shape =nullptr;
+		btCollisionShape* _shape = nullptr;
 	};
 }
 

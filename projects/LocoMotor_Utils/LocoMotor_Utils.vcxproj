@@ -140,6 +140,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_Utils\LMVector.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Utils\Singleton.cpp" />
+    <ClCompile Include="GameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Utils\CheckML.h" />

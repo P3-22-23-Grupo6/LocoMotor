@@ -10,18 +10,18 @@ namespace Ogre {
 }
 
 namespace OgreWrapper {
-	
+
 	class Camera : public RenderEntity {
 	public:
 
 		Camera(Ogre::Camera* camera);
 		~Camera();
 
-		Ogre::Viewport* GetViewport ();
-		Ogre::MovableObject* GetMovObj () override;
+		Ogre::Viewport* GetViewport();
+		Ogre::MovableObject* GetMovObj() override;
 
-		void Render ();
-	
+		void Render();
+
 	private:
 		static int _zOrder;
 		int _mZOrder;
