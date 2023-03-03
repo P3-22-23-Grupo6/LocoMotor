@@ -5,6 +5,7 @@
 #include "OgreManager.h"
 #include "AudioManager.h"
 #include "AudioListener.h"		//No se que tan legal seria hacer esto supongo el manager deberia incluir ya el listener pero habra que consultarlo nose me tengo que ir
+#include "AudioSource.h"
 #include "InputManager.h"
 #include "CheckML.h"
 #include "BulletManager.h"
@@ -18,7 +19,8 @@ int main () {
 
 	auto audio = FmodWrapper::AudioManager::Init ();
 	audio->AddSound (0, "Assets/A.wav");
-	auto list = FmodWrapper::AudioListener (audio);
+	auto list = FmodWrapper::AudioListener ();
+	auto audioSrc = FmodWrapper::AudioSource ();
 
 	OgreWrapper::OgreManager::Init ("Prueba");
 	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance ();
@@ -38,10 +40,13 @@ int main () {
 	info2.mass = 1.0f;
 	info2.origin = btVector3 (2, 10, 0);
 	btmngr->CreateRigidBody (info2);
-	//initBullet ();
+
+	audioSrc.PlaySound (0, -1, 1600, 1900);
+
 	while (true) {
 		// AUDIO
-		list.UpdateFunni (.05f);
+		list.Prueba (.05f);
+		audioSrc.Prueba ();
 		audio->Update (0.0f);
 
 		// RENDER
