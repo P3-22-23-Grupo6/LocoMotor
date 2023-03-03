@@ -18,7 +18,7 @@ AudioManager::AudioManager() {
 
 	_sys->set3DSettings(1.f, 1.f, 1.f);
 
-	_soundLib = std::unordered_map<uint32_t, FMOD::Sound*>();
+	_soundLib = std::unordered_map<unsigned int, FMOD::Sound*>();
 }
 
 AudioManager::~AudioManager() {
@@ -33,11 +33,11 @@ AudioManager::~AudioManager() {
 	//delete _sys;
 }
 
-uint16_t AudioManager::Update(float deltaTime) {
+unsigned short AudioManager::Update(float deltaTime) {
 	return _sys->update();
 }
 
-uint16_t AudioManager::AddSound(const uint32_t name, const char* fileName, bool ui) {
+unsigned short AudioManager::AddSound(const unsigned int name, const char* fileName, bool ui) {
 	if (_soundLib[name] != nullptr) {
 		_soundLib[name]->release();
 		_soundLib[name] = nullptr;
@@ -64,7 +64,7 @@ uint16_t AudioManager::AddSound(const uint32_t name, const char* fileName, bool 
 #endif // _DEBUG
 }
 
-uint16_t AudioManager::PlaySound(const uint32_t name) {
+unsigned short AudioManager::PlaySound(const unsigned int name) {
 
 	Channel* ch;
 	auto err = PlaySoundwChannel(name, &ch);
@@ -72,7 +72,7 @@ uint16_t AudioManager::PlaySound(const uint32_t name) {
 	return err;
 }
 
-uint16_t AudioManager::PlaySoundwChannel(const uint32_t name, Channel** channel) {
+unsigned short AudioManager::PlaySoundwChannel(const unsigned int name, Channel** channel) {
 #ifndef _DEBUG
 	auto err = _sys->playSound(_soundLib[name], _main, true, channel);
 
@@ -89,11 +89,11 @@ uint16_t AudioManager::PlaySoundwChannel(const uint32_t name, Channel** channel)
 #endif // _DEBUG
 }
 
-Sound* AudioManager::GetSound(const uint32_t id) {
+Sound* AudioManager::GetSound(const unsigned int id) {
 	return _soundLib[id];
 }
 
-uint16_t AudioManager::AddListener(int& index) {
+unsigned short AudioManager::AddListener(int& index) {
 	static bool first = true;
 	if (first) {
 		first = false;
@@ -110,6 +110,6 @@ System* AudioManager::GetSystem() const {
 	return _sys;
 }
 
-const char* AudioManager::GetError(const uint16_t& errorCode) {
+const char* AudioManager::GetError(const unsigned short& errorCode) {
 	return FMOD_ErrorString((FMOD_RESULT) errorCode);
 }

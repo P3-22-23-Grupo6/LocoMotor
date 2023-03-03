@@ -10,7 +10,7 @@ using namespace FmodWrapper;
 using namespace FMOD;
 
 AudioSource::AudioSource() : _man(AudioManager::GetInstance()) {
-	_chMap = std::unordered_map<uint32_t, FMOD::Channel*>();
+	_chMap = std::unordered_map<unsigned int, FMOD::Channel*>();
 	_posRemember = new FMOD_VECTOR();
 	_posRemember->x = 0;
 	_posRemember->y = 0;
@@ -25,11 +25,11 @@ AudioSource::~AudioSource() {
 	}
 }
 
-uint16_t AudioSource::AddSound(const uint32_t id, const char* fileName) {
+unsigned short AudioSource::AddSound(const unsigned int id, const char* fileName) {
 	return _man->AddSound(id, fileName);
 }
 
-uint16_t AudioSource::PlaySound(const uint32_t id, int loops, uint32_t loopBegin, uint32_t loopEnd) {
+unsigned short AudioSource::PlaySound(const unsigned int id, int loops, unsigned int loopBegin, unsigned int loopEnd) {
 	auto snd = _man->GetSound(id);
 	if (snd == nullptr) {
 	#ifdef _DEBUG
@@ -38,7 +38,7 @@ uint16_t AudioSource::PlaySound(const uint32_t id, int loops, uint32_t loopBegin
 		return FMOD_ERR_INVALID_PARAM;
 	}
 
-	uint32_t len;
+	unsigned int len;
 	snd->getLength(&len, FMOD_TIMEUNIT_MS);
 
 	if (loopBegin >= len)
@@ -72,7 +72,7 @@ uint16_t AudioSource::PlaySound(const uint32_t id, int loops, uint32_t loopBegin
 	return fail;
 }
 
-uint16_t AudioSource::SetSoundFreq(const uint32_t id, const float freqMult) {
+unsigned short AudioSource::SetSoundFreq(const unsigned int id, const float freqMult) {
 	if (!_chMap[id]) {
 	#ifdef _DEBUG
 		std::cout << "Sound " << id << " is not currently playing on this AudioSource";
