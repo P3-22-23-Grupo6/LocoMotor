@@ -54,16 +54,16 @@ int main() {
 
 		if (InputManager::Get()->GetKey(SDL_SCANCODE_W)) {
 			frc += 0.005f;
-			audioSrc.SetSoundFreq(0, frc);
 		}
 		else if (InputManager::Get()->GetKey(SDL_SCANCODE_S)){
 			frc -= 0.005f;
-			audioSrc.SetSoundFreq(0, frc);
 		}
+		float variation = frc + ((float(std::rand() % 11) - 5) / 300.f);
+		audioSrc.SetSoundFreq(0, frc);
 		// std::cout << frc << std::endl;
 
 		// AUDIO
-		list.Prueba(.05f);
+		// list.Prueba(.05f);
 		audio->Update(0.0f);
 
 
