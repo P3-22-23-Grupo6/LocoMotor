@@ -6,9 +6,9 @@
 #include <iostream>
 #endif // _DEBUG
 
-FmodWrapper::AudioListener::AudioListener (FmodWrapper::AudioManager* manager) : man (manager) {
-	man->AddListener (_fIndex);
-	_posRemember = new FMOD_VECTOR ();
+FmodWrapper::AudioListener::AudioListener(FmodWrapper::AudioManager* manager) : man(manager) {
+	man->AddListener(_fIndex);
+	_posRemember = new FMOD_VECTOR();
 	_posRemember->x = 0;
 	_posRemember->y = 0;
 	_posRemember->z = 0;
@@ -16,23 +16,23 @@ FmodWrapper::AudioListener::AudioListener (FmodWrapper::AudioManager* manager) :
 
 }
 
-FmodWrapper::AudioListener::~AudioListener () {
+FmodWrapper::AudioListener::~AudioListener() {
 	delete _posRemember;
 }
 
-void FmodWrapper::AudioListener::Update (const float& deltaTime) {
+void FmodWrapper::AudioListener::Update(const float& deltaTime) {
 }
 
-void FmodWrapper::AudioListener::UpdateFunni (const float& deltaTime) {
+void FmodWrapper::AudioListener::UpdateFunni(const float& deltaTime) {
 
 	_elapsedTime += deltaTime;
 
-	FMOD_VECTOR pos = FMOD_VECTOR ();
+	FMOD_VECTOR pos = FMOD_VECTOR();
 	pos.x = 0;
 	pos.y = 0;
 	pos.z = 0;
 
-	FMOD_VECTOR vel = FMOD_VECTOR ();
+	FMOD_VECTOR vel = FMOD_VECTOR();
 
 	//vel.x = (pos.x - _posRemember->x) / deltaTime;
 	//vel.y = (pos.y - _posRemember->y) / deltaTime;
@@ -42,12 +42,12 @@ void FmodWrapper::AudioListener::UpdateFunni (const float& deltaTime) {
 	vel.y = 0;
 	vel.z = 0;
 
-	FMOD_VECTOR frw = FMOD_VECTOR ();
-	frw.x = cos (_elapsedTime);
+	FMOD_VECTOR frw = FMOD_VECTOR();
+	frw.x = cos(_elapsedTime);
 	frw.y = 0;
-	frw.z = sin (_elapsedTime);
+	frw.z = sin(_elapsedTime);
 
-	FMOD_VECTOR upw = FMOD_VECTOR ();
+	FMOD_VECTOR upw = FMOD_VECTOR();
 	upw.x = 0;
 	upw.y = 1;
 	upw.z = 0;
@@ -57,12 +57,12 @@ void FmodWrapper::AudioListener::UpdateFunni (const float& deltaTime) {
 	_posRemember->z = pos.z;
 
 #ifdef _DEBUG
-	auto err = man->GetSystem ()->set3DListenerAttributes (_fIndex, &pos, &vel, &frw, &upw);
+	auto err = man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
 	if (err != FMOD_OK) {
-		std::cout << "Listener error: " << man->GetError (err) << std::endl;
+		std::cout << "Listener error: " << man->GetError(err) << std::endl;
 	}
 #else
-	man->GetSystem ()->set3DListenerAttributes (_fIndex, &pos, &vel, &frw, &upw);
+	man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
 #endif // _DEBUG
 
 }

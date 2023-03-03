@@ -4,62 +4,74 @@
 
 extern "C"
 {
-    #include "lua.h"
-    #include "lauxlib.h"
-    #include "lualib.h"
+#include "lua.h"
+#include "lauxlib.h"
+#include "lualib.h"
 }
 
 #include <LuaBridge\LuaBridge.h>
 
 class Vector3 {
 protected:
-    float x;
-    float y;
-    float z;
+	float x;
+	float y;
+	float z;
 public:
-    Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
-    void SetX(float newX) { x = newX; }
-    void SetY(float newY) { y = newY; }
-    void SetZ(float newZ) { z = newZ; }
+	Vector3(float x, float y, float z) : x(x), y(y), z(z) {
+	}
+	void SetX(float newX) {
+		x = newX;
+	}
+	void SetY(float newY) {
+		y = newY;
+	}
+	void SetZ(float newZ) {
+		z = newZ;
+	}
 
-    float GetX() { return x; }
-    float GetY() { return y; }
-    float GetZ() { return z; }
+	float GetX() {
+		return x;
+	}
+	float GetY() {
+		return y;
+	}
+	float GetZ() {
+		return z;
+	}
 };
 
 void report_errors(lua_State* luaState, int status) {
-    if (status == 0) {
-        return;
-    }
+	if (status == 0) {
+		return;
+	}
 
-    std::cerr << "[LUA ERROR] " << lua_tostring(luaState, -1) << std::endl;
+	std::cerr << "[LUA ERROR] " << lua_tostring(luaState, -1) << std::endl;
 
-    // remove error message from Lua state
-    lua_pop(luaState, 1);
+	// remove error message from Lua state
+	lua_pop(luaState, 1);
 }
 
-int exec()
-{
-    // create a Lua state
-    lua_State* luaState = luaL_newstate();
+int exec() {
+	// create a Lua state
+	lua_State* luaState = luaL_newstate();
 
-    // load standard libs
-    luaL_openlibs(luaState);
+	// load standard libs
+	luaL_openlibs(luaState);
 
-    // load some code from Lua file
-    int scriptLoadStatus = luaL_dofile(luaState, "Assets/luaScript.lua");
+	// load some code from Lua file
+	int scriptLoadStatus = luaL_dofile(luaState, "Assets/luaScript.lua");
 
-    // define error reporter for any Lua error
-    report_errors(luaState, scriptLoadStatus);
+	// define error reporter for any Lua error
+	report_errors(luaState, scriptLoadStatus);
 
-    // call function defined in Lua script
-    luabridge::LuaRef add = luabridge::getGlobal(luaState, "add");
+	// call function defined in Lua script
+	luabridge::LuaRef add = luabridge::getGlobal(luaState, "add");
 
-    int x = add(15, 12);
+	int x = add(15, 12);
 
-    std::cout << "[EVALUATE LUA] 15 + 12 = " << x << std::endl;
+	std::cout << "[EVALUATE LUA] 15 + 12 = " << x << std::endl;
 
-    return 0;
+	return 0;
 }
 
 // Ejecutar programa: Ctrl + F5 o menú Depurar > Iniciar sin depurar
