@@ -352,12 +352,20 @@ void InputManager::SetControllerLedColor(int r, int g, int b) {
 void InputManager::RumbleController(const float& intensity, const float& durationInSec) {
 
 	if (intensity > 1 || intensity < 0) {
-		std::cout << "[ERROR] Rumble intensity out of range";
+		std::cout << "[ERROR] Could not Rumble controller: Rumble intensity out of range";
 		return;
 	}
 
-	Uint16 rumbleIntensity = intensity * UINT16_MAX;
-	SDL_GameControllerRumble(currentController, rumbleIntensity, rumbleIntensity, durationInSec * 1000);
+	if (currentController != nullptr) {
+
+		if (SDL_GameControllerHasRumble(currentController)) {
+			Uint16 rumbleIntensity = intensity * UINT16_MAX;
+			SDL_GameControllerRumble(currentController, rumbleIntensity, rumbleIntensity, durationInSec * 1000);
+		}
+		else
+			std::cout << "[ERROR] Could not Rumble controller: currentController has not Rumble support";
+	}
+	else std::cout << "[ERROR] Could not Rumble controller: currentController not assigned";
 }
 
 // Giroscopio
@@ -405,13 +413,6 @@ bool InputManager::DisableControllerGyroscope() {
 	}
 }
 
-// Devuelve un valor desde -1 a 1 dependiendo de la velocidad del giroscopio seleccionado
-float InputManager::GetGyroscopeAngularVelocity(const Axis& axis) {
-	//if (axis == Horizontal)
-	//else if (axis == Vertical)
-	return gyroscopeAngularVelocity[0];
-}
-
 // Devuelve el angulo actual normalizado significando
 // 1 : 90 grados // -1 : -90 grados
 float InputManager::GetGyroscopeAngle(const Axis& axis) {
@@ -423,10 +424,9 @@ float InputManager::GetGyroscopeAngle(const Axis& axis) {
 		gyroscopeIndex = 1;
 
 	// Convertir el valor output a un valor entre -1 y 1
-	const int MAXGYROSCOPEVALUE = 200;
-	float outputValue = (gyroscopeValue[gyroscopeIndex] / roundNumber);
+	float outputValue = gyroscopeValue[gyroscopeIndex] / roundNumber;
 
-	// Limitar el valor maximo
+	// Limitar el valor maximo a 1
 	//if (outputValue > MAXGYROSCOPEVALUE)
 	//	outputValue = MAXGYROSCOPEVALUE;
 	//else if (outputValue < -MAXGYROSCOPEVALUE)

@@ -43,20 +43,14 @@ private:
 
 
 	// Joysticks
-	float joystickAxis[4];
-
+	float joystickAxis[4]; // cuatro espacios : dos ejes en cada uno de los dos joysticks
 	const int JOYSTICKDEADZONE_MIN = 10000;
 	const int JOYSTICKDEADZONE_MAX = 32000;
 
 	// Giroscopio del mando
-	float gyroscopeValue_ = 0;
-	float gyroscopeValue[2];
-	float gyroscopeAngularVelocity[2];
-
-	const int MAXGYROSCOPEANGULARVELOCITY = 10000;
-
 	bool useGyroscope = false;
-
+	float gyroscopeValue[2];
+	const int MAXGYROSCOPEVALUE = 200;
 	// Redondear los datos del giroscopio un determinado numero de digitos
 	// (Numero de digitos = Numero de ceros)
 	const int roundNumber = 1000000;
@@ -128,8 +122,6 @@ public:
 
 	bool EnableControllerGyroscope();
 	bool DisableControllerGyroscope();
-
-	float GetGyroscopeAngularVelocity(const Axis& axis);
 
 	float GetGyroscopeAngle(const Axis& axis = Horizontal);
 
