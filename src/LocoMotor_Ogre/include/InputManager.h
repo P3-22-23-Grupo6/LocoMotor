@@ -48,10 +48,6 @@ private:
 	const int JOYSTICKDEADZONE_MIN = 10000;
 	const int JOYSTICKDEADZONE_MAX = 32000;
 
-	enum Axis {
-		Horizontal, Vertical
-	};
-
 	// Giroscopio del mando
 	float gyroscopeValue_ = 0;
 	float gyroscopeValue[2];
@@ -59,12 +55,21 @@ private:
 
 	const int MAXGYROSCOPEANGULARVELOCITY = 10000;
 
-	bool useGyroscope = true;
+	bool useGyroscope = false;
+
+	// Redondear los datos del giroscopio un determinado numero de digitos
+	// (Numero de digitos = Numero de ceros)
+	const int roundNumber = 1000000;
 
 public:
 
 	// Referencia a la instancia de InputManager, en caso de no existir, crea una
 	static InputManager* Get();
+
+
+	enum Axis {
+		Horizontal, Vertical
+	};
 
 	// METODOS PRINCIPALES PARA EL USO DE INPUT
 
@@ -108,15 +113,27 @@ public:
 
 	void ResetControllerInputs();
 
+
+
+	// FUNCIONALIDADES DE MANDO EXTRA
+
+	// Luz LED
 	void SetControllerLedColor(int r, int g, int b);
 
-	void EnableControllerGyroscope();
+	// Vibracion
+	void RumbleController(const float& intensity, const float& durationInSec);
 
-	void DisableControllerGyroscope();
+	// Giroscopio
+	void ActivateGyroscopeWhenConnected();
+
+	bool EnableControllerGyroscope();
+	bool DisableControllerGyroscope();
 
 	float GetGyroscopeAngularVelocity(const Axis& axis);
 
 	float GetGyroscopeAngle(const Axis& axis = Horizontal);
+
+
 
 	static void Destroy() {
 		delete InputManager::instance_;
