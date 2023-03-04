@@ -16,6 +16,13 @@ AudioManager::AudioManager() {
 	_sys->init(32, FMOD_INIT_NORMAL, 0);
 	_sys->createChannelGroup(0, &_main);
 
+	float vol;
+	_main->getVolume(&vol);
+#ifdef _DEBUG
+	_main->setVolume(vol * 0.9f);
+#else
+	_main->setVolume(vol * 0.1f);
+#endif
 	_sys->set3DSettings(1.f, 1.f, 1.f);
 
 	_soundLib = std::unordered_map<unsigned int, FMOD::Sound*>();

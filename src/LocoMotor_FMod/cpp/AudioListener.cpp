@@ -29,7 +29,7 @@ unsigned short FmodWrapper::AudioListener::SetTransform(const FMOD_VECTOR& newPo
 	}
 	return err;
 #else
-	return man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
+	return man->GetSystem()->set3DListenerAttributes(_fIndex, &newPos, &newVel, &forward, &up);
 #endif // _DEBUG
 }
 
