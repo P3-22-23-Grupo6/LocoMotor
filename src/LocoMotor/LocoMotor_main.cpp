@@ -45,6 +45,11 @@ int main() {
 
 	float frc = 1;
 
+
+	// Activa la variable de uso del giroscopio, en el momento en el que detecte el mando, 
+	// intentara activar el giroscopio automaticamente si el mando conectado tiene giroscopio
+	InputManager::Get()->ActivateGyroscopeWhenConnected();
+
 	while (true) {
 
 		// INPUT
@@ -71,8 +76,26 @@ int main() {
 		man->Render();
 
 
-		//std::cout << buttonPressed;
-		// btmngr->Update();
+
+
+
+
+		// DEMO TECNICA
+
+		// Giroscopio
+		float currentGyroscope = InputManager::Get()->GetGyroscopeAngle(InputManager::Horizontal);
+		std::cout << "GIROSCOPIO = " << currentGyroscope << "\n";
+
+		// Clampear valor
+		float intensity = abs(currentGyroscope);
+		if (intensity > 1) intensity = 1;
+
+		// Vibrar mando
+		if (currentGyroscope > .3 || currentGyroscope < -.3)
+			InputManager::Get()->RumbleController(intensity, .01);
+
+		// Color LED
+		InputManager::Get()->SetControllerLedColor(intensity * 255, 0, (1 - intensity) * 255);
 
 		// JOYSTICK INPUT
 		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Horizontal") << "\n";
