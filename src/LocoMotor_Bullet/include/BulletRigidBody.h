@@ -5,7 +5,7 @@
 class btRigidBody;
 class btCollisionShape;
 class btVector3;
-
+class LMQuaternion;
 namespace BulletWrapper {
 	struct RigidBodyInfo;
 	//class BulletManager;
@@ -14,6 +14,8 @@ namespace BulletWrapper {
 		BulletRigidBody(RigidBodyInfo info);
 		~BulletRigidBody();
 		void AddForce(btVector3 force);
+		void setRotation(LMQuaternion rot);
+		LMQuaternion getRotation();
 	private:
 		btRigidBody* _rigidBody = nullptr;
 		btCollisionShape* _shape = nullptr;
