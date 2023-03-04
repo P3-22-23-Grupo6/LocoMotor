@@ -15,7 +15,7 @@ BulletWrapper::BulletManager::BulletManager() {
 	//Create Dynamic world
 	_dynamicWorld = new btDiscreteDynamicsWorld(_dispatcher, _overlappingPairCache, _solver, _collisionConfiguration);
 	//Set default gravity
-	_dynamicWorld->setGravity(btVector3(0, -10, 0));
+	_dynamicWorld->setGravity(btVector3(0, 0, 0));
 }
 
 BulletWrapper::BulletManager::~BulletManager() {
@@ -37,9 +37,10 @@ BulletWrapper::BulletManager::~BulletManager() {
 //	std::cerr << "Debes inicializar con BulletManager::InitBullet() antes de llamar a BulletManager::getInstance()!!\n";
 //	return nullptr;
 //}
-void BulletWrapper::BulletManager::CreateRigidBody(RigidBodyInfo info) {
+BulletRigidBody* BulletWrapper::BulletManager::CreateRigidBody(RigidBodyInfo info) {
 	BulletRigidBody* brg = new BulletRigidBody(info);
 	_vRigidBody.push_back(brg);
+	return brg;
 
 }
 void BulletWrapper::BulletManager::SetWorldGravity(btVector3 gravity) {
@@ -68,6 +69,9 @@ void BulletWrapper::BulletManager::Update() {
 		else {
 			trans = obj->getWorldTransform();
 		}
+		//trans.setRotation(btQuaternion(1, 1, 1, 1));
 		printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
+		printf("world rot object %d = %f,%f,%f,%f\n", j, float(trans.getRotation().x()), float(trans.getRotation().y()), float(trans.getRotation().z()), float(trans.getRotation().w()));
+		
 	}
 }

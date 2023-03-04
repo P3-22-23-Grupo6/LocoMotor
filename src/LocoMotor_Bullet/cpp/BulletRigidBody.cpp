@@ -1,6 +1,7 @@
 #include "BulletRigidBody.h"
 #include "BulletManager.h"
 #include <btBulletDynamicsCommon.h>
+#include "lmVector.h"
 using namespace BulletWrapper;
 
 BulletWrapper::BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
@@ -12,7 +13,7 @@ BulletWrapper::BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 	btTransform groundTransform;
 	groundTransform.setIdentity();
 	groundTransform.setOrigin(info.origin);
-
+	
 	btScalar mass(info.mass);
 
 	//rigidbody is dynamic if and only if mass is non zero, otherwise static
@@ -44,4 +45,14 @@ BulletWrapper::BulletRigidBody::~BulletRigidBody() {
 
 void BulletWrapper::BulletRigidBody::AddForce(btVector3 force) {
 	_rigidBody->applyCentralForce(force);
+}
+
+void BulletWrapper::BulletRigidBody::setRotation(LMQuaternion rot)
+{
+	_rigidBody->getWorldTransform().setRotation(LMQuaternion::LmToBullet(rot));
+}
+
+LMQuaternion BulletWrapper::BulletRigidBody::getRotation()
+{
+	return LMQuaternion::BulletToLm(_rigidBody->getWorldTransform().getRotation());
 }

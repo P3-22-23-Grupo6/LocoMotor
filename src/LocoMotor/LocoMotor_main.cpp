@@ -9,6 +9,8 @@
 #include "InputManager.h"
 #include "CheckML.h"
 #include "BulletManager.h"
+#include "BulletRigidBody.h"
+#include "lmVector.h"
 #include "RenderScene.h"
 
 int exec();
@@ -31,7 +33,7 @@ int main() {
 	BulletManager::Init();
 	auto btmngr = BulletManager::GetInstance();
 	RigidBodyInfo info1;
-	info1.boxSize = btVector3(50, 10, 50);
+	info1.boxSize = btVector3(50, 50, 50);
 	info1.mass = 0.0f;
 	info1.origin = btVector3(0, -50, 0);
 	btmngr->CreateRigidBody(info1);
@@ -39,9 +41,10 @@ int main() {
 	info2.size = 1.0;
 	info2.mass = 1.0f;
 	info2.origin = btVector3(2, 10, 0);
-	btmngr->CreateRigidBody(info2);
+	BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
+	
 
-	audioSrc.PlaySound(0, -1);
+	//audioSrc.PlaySound(0, -1);
 
 	float frc = 1;
 
@@ -70,13 +73,12 @@ int main() {
 		// AUDIO
 		// list.Prueba(.05f);
 		audio->Update(0.0f);
-
+		bola->setRotation(bola->getRotation() + LMQuaternion(0,0.1,0,0));
 
 		// RENDER
 		man->Render();
-
-
-
+		btmngr->Update();
+	
 
 
 
@@ -84,7 +86,7 @@ int main() {
 
 		// Giroscopio
 		float currentGyroscope = InputManager::Get()->GetGyroscopeAngle(InputManager::Horizontal);
-		std::cout << "GIROSCOPIO = " << currentGyroscope << "\n";
+		//std::cout << "GIROSCOPIO = " << currentGyroscope << "\n";
 
 		// Clampear valor
 		float intensity = abs(currentGyroscope);
@@ -108,6 +110,7 @@ int main() {
 	}
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
+	BulletManager::Clear();
 	InputManager::Destroy();
 	return 0;
 }
