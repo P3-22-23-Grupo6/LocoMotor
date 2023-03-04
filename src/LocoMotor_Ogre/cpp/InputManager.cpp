@@ -423,7 +423,7 @@ float InputManager::GetGyroscopeAngle(const Axis& axis) {
 		gyroscopeIndex = 1;
 
 	// Convertir el valor output a un valor entre -1 y 1
-	const int MAXGYROSCOPEVALUE = 350;
+	const int MAXGYROSCOPEVALUE = 200;
 	float outputValue = (gyroscopeValue[gyroscopeIndex] / roundNumber);
 
 	// Limitar el valor maximo
