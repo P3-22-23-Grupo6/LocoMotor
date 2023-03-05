@@ -3,9 +3,15 @@
 #include <string>
 #include <vector>
 
+namespace OgreWrapper {
+	class Camera;
+	class RenderScene;
+	class Node;
+}
+
 class Scene {
 public:
-	
+
 	Scene(std::string nombre);
 	~Scene();
 	void Start();
@@ -24,18 +30,26 @@ public:
 
 	std::string GetSceneName();
 
+	void SetSceneCam(OgreWrapper::Camera* cam);
+
 
 	//void addGameObject();
 
 private:
 	//camera
-	//Camera* _cam 
+
+
+	OgreWrapper::Camera* _cam;
 
 	//nombre de la escena
 	std::string _name;
 
-	bool _isActiveScene=false;
+	bool _isActiveScene = false;
+
+	OgreWrapper::RenderScene* _renderScn;
 
 	//std::vector<Gameobject> _gameObjList
+
+	OgreWrapper::Node* _nod;
 
 };
