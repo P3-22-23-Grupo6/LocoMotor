@@ -26,12 +26,12 @@ OgreWrapper::OgreManager::OgreManager(std::string name) {
 	_root = new Ogre::Root();
 	_root->showConfigDialog(nullptr);
 	_root->initialise(false);
-	_InitWindow(name);
-	_LoadResources();
+	InitWindow(name);
+	LoadResources();
 }
 
 OgreWrapper::OgreManager::~OgreManager() {
-	_Shutdown();
+	Shutdown();
 }
 
 
@@ -66,14 +66,14 @@ void OgreWrapper::OgreManager::Render() {
 }
 
 Ogre::RenderWindow* OgreWrapper::OgreManager::GetRenderWindow() {
-	return mWindow.render;
+	return _mWindow.render;
 }
 
 void OgreWrapper::OgreManager::SetActiveScene(OgreWrapper::RenderScene* s) {
 	_activeScene = s;
 }
 
-void OgreWrapper::OgreManager::_LoadResources() {
+void OgreWrapper::OgreManager::LoadResources() {
 	Ogre::ConfigFile cf;
 	cf.load("resources.cfg");
 
@@ -112,16 +112,16 @@ void OgreWrapper::OgreManager::_LoadResources() {
 			return;
 
 		// Create and register the material manager listener if it doesn't exist yet.
-		if (!mMaterialMgrListener) {
-			mMaterialMgrListener = new OgreWrapper::SGTechniqueResolverListener(_mShaderGenerator);
-			Ogre::MaterialManager::getSingleton().addListener(mMaterialMgrListener);
+		if (!_mMaterialMgrListener) {
+			_mMaterialMgrListener = new OgreWrapper::SGTechniqueResolverListener(_mShaderGenerator);
+			Ogre::MaterialManager::getSingleton().addListener(_mMaterialMgrListener);
 		}
 	}
 
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 
-OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::_InitWindow(std::string name) {
+OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow(std::string name) {
 	uint32_t w, h;
 	Ogre::NameValuePairList miscParams;
 
@@ -150,28 +150,28 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::_InitWindow(std::string 
 
 	if (ropts["Full Screen"].currentValue == "Yes")  flags = SDL_WINDOW_FULLSCREEN;
 
-	mWindow.native = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
+	_mWindow.native = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, w, h, flags);
 
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);
-	SDL_GetWindowWMInfo(mWindow.native, &wmInfo);
+	SDL_GetWindowWMInfo(_mWindow.native, &wmInfo);
 
 	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
-	mWindow.render = _root->createRenderWindow(name, w, h, false, &miscParams);
-	return mWindow;
+	_mWindow.render = _root->createRenderWindow(name, w, h, false, &miscParams);
+	return _mWindow;
 }
 
 
-void OgreWrapper::OgreManager::_Shutdown() {
+void OgreWrapper::OgreManager::Shutdown() {
 	// Restore default scheme.
 	Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 
 	// Unregister the material manager listener.
-	if (mMaterialMgrListener != nullptr) {
-		Ogre::MaterialManager::getSingleton().removeListener(mMaterialMgrListener);
-		delete mMaterialMgrListener;
-		mMaterialMgrListener = nullptr;
+	if (_mMaterialMgrListener != nullptr) {
+		Ogre::MaterialManager::getSingleton().removeListener(_mMaterialMgrListener);
+		delete _mMaterialMgrListener;
+		_mMaterialMgrListener = nullptr;
 	}
 
 	// Destroy RTShader system.
@@ -188,15 +188,15 @@ void OgreWrapper::OgreManager::_Shutdown() {
 		delete it->second;
 	}
 
-	if (mWindow.render != nullptr) {
-		_root->destroyRenderTarget(mWindow.render);
-		mWindow.render = nullptr;
+	if (_mWindow.render != nullptr) {
+		_root->destroyRenderTarget(_mWindow.render);
+		_mWindow.render = nullptr;
 	}
 
-	if (mWindow.native != nullptr) {
-		SDL_DestroyWindow(mWindow.native);
+	if (_mWindow.native != nullptr) {
+		SDL_DestroyWindow(_mWindow.native);
 		SDL_QuitSubSystem(SDL_INIT_VIDEO);
-		mWindow.native = nullptr;
+		_mWindow.native = nullptr;
 	}
 
 

@@ -36,7 +36,7 @@ namespace FmodWrapper {
 
 		float _elapsedTime;
 
-		FmodWrapper::AudioManager* man;
+		FmodWrapper::AudioManager* _man;
 
 		FMOD_VECTOR* _posRemember;
 	};

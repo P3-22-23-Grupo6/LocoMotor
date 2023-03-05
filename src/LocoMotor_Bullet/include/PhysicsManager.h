@@ -4,13 +4,6 @@
 #include <vector>
 #include <btBulletDynamicsCommon.h>
 #include "Singleton.h"
-//#include "lmVector.h"
-//class btCollisionDispatcher;
-//class btBroadphaseInterface;
-//class btSequentialImpulseConstraintSolver;
-//class btDynamicsWorld;
-//class btDefaultCollisionConfiguration;
-//class btRigidBody;
 namespace PhysicsWrapper {
 	/// <summary>
 	/// Info to create a RigidBody

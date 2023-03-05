@@ -6,41 +6,41 @@
 #include <SDL_gamecontroller.h>
 
 
-InputManager* InputManager::instance_ = nullptr;
+InputManager* InputManager::_instance = nullptr;
 
 InputManager::InputManager() {
 }
 
 InputManager* InputManager::Get() {
-	if (InputManager::instance_ == nullptr)  instance_ = new InputManager();
-	return instance_;
+	if (InputManager::_instance == nullptr)  _instance = new InputManager();
+	return _instance;
 }
 
 
 // TECLADO
 bool InputManager::GetKeyDown(const SDL_Scancode& scanCode) {
-	return keyboardKeys[scanCode].down;
+	return _keyboardKeys[scanCode].down;
 }
 
 bool InputManager::GetKey(const SDL_Scancode& scanCode) {
-	return keyboardKeys[scanCode].isPressed;
+	return _keyboardKeys[scanCode].isPressed;
 }
 
 bool InputManager::GetKeyUp(const SDL_Scancode& scanCode) {
-	return keyboardKeys[scanCode].up;
+	return _keyboardKeys[scanCode].up;
 }
 
 // MANDO
 bool InputManager::GetButtonDown(const int& buttonCode) {
-	return controllerButtons[buttonCode].down;
+	return _controllerButtons[buttonCode].down;
 }
 
 bool InputManager::GetButton(const int& buttonCode) {
-	return controllerButtons[buttonCode].isPressed;
+	return _controllerButtons[buttonCode].isPressed;
 }
 
 bool InputManager::GetButtonUp(const int& buttonCode) {
-	return controllerButtons[buttonCode].up;
+	return _controllerButtons[buttonCode].up;
 }
 
 
@@ -49,16 +49,16 @@ float InputManager::GetJoystickValue(const int& joystickIndex, const Axis& axis)
 	if (joystickIndex == 0) {
 
 		if (axis == Horizontal)
-			return joystickAxis[0];
+			return _joystickAxis[0];
 		else if (axis == Vertical)
-			return joystickAxis[1];
+			return _joystickAxis[1];
 	}
 	else if (joystickIndex == 1) {
 
 		if (axis == Horizontal)
-			return joystickAxis[2];
+			return _joystickAxis[2];
 		else if (axis == Vertical)
-			return joystickAxis[3];
+			return _joystickAxis[3];
 	}
 }
 
@@ -69,21 +69,21 @@ bool InputManager::RegisterEvents() {
 	// RESETEAR TECLAS Y BOTONES
 
 	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
-	if (keyboardInputs_ToReset.size() != 0)
+	if (_keyboardInputs_ToReset.size() != 0)
 		ResetKeyboardInputs();
 
-	if (controllerInputs_ToReset.size() != 0)
+	if (_controllerInputs_ToReset.size() != 0)
 		ResetControllerInputs();
 
 
 	// ACTUALIZAR GIROSCOPIO EN CASO DE USARSE (variable "useGyroscope")
 	// Manejar el giroscopio en caso de querer utilizarlo y tener uno disponible
-	if (useGyroscope && currentController != nullptr) {
+	if (_useGyroscope && _currentController != nullptr) {
 
 		for (int i = 0; i < 2; i++) {
 			const int nAxis = 2;
 			float data_[nAxis];
-			SDL_GameControllerGetSensorData(currentController, SDL_SENSOR_GYRO, data_, nAxis);
+			SDL_GameControllerGetSensorData(_currentController, SDL_SENSOR_GYRO, data_, nAxis);
 
 			float dataValue = data_[i];
 
@@ -92,10 +92,10 @@ bool InputManager::RegisterEvents() {
 				dataValue = 0;
 
 			// tener en cuenta los 6 primeros decimales
-			dataValue *= roundNumber;
+			dataValue *= _roundNumber;
 			dataValue = (int) dataValue;
 
-			gyroscopeValue[i] += dataValue;
+			_gyroscopeValue[i] += dataValue;
 		}
 	}
 
@@ -149,23 +149,23 @@ void InputManager::ManageKeyboardEvents(const SDL_Event& event) {
 
 	if (event.type == SDL_KEYDOWN) {
 		SDL_Scancode scanCode = event.key.keysym.scancode;
-		KeyState& thisKey = keyboardKeys[scanCode];
+		KeyState& thisKey = _keyboardKeys[scanCode];
 
 		// Comprobar si la tecla no esta siendo presionada actualmente
 		if (!thisKey.isPressed) {
 			thisKey.down = true;
 			thisKey.isPressed = true;
-			keyboardInputs_ToReset.push_back(scanCode);
+			_keyboardInputs_ToReset.push_back(scanCode);
 		}
 	}
 
 	else if (event.type == SDL_KEYUP) {
 		SDL_Scancode scanCode = event.key.keysym.scancode;
-		KeyState& thisKey = keyboardKeys[scanCode];
+		KeyState& thisKey = _keyboardKeys[scanCode];
 
 		thisKey.isPressed = false;
 		thisKey.up = true;
-		keyboardInputs_ToReset.push_back(scanCode);
+		_keyboardInputs_ToReset.push_back(scanCode);
 	}
 }
 
@@ -194,24 +194,24 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 	if (event.type == SDL_CONTROLLERBUTTONDOWN) {
 
 		int buttonCode = event.cbutton.button;
-		KeyState& thisButton = controllerButtons[buttonCode];
+		KeyState& thisButton = _controllerButtons[buttonCode];
 
 		// Comprobar si la tecla no esta siendo presionada actualmente
 		if (!thisButton.isPressed) {
 			thisButton.down = true;
 			thisButton.isPressed = true;
-			controllerInputs_ToReset.push_back(buttonCode);
+			_controllerInputs_ToReset.push_back(buttonCode);
 		}
 	}
 
 	if (event.type == SDL_CONTROLLERBUTTONUP) {
 
 		int buttonCode = event.cbutton.button;
-		KeyState& thisButton = controllerButtons[buttonCode];
+		KeyState& thisButton = _controllerButtons[buttonCode];
 
 		thisButton.isPressed = false;
 		thisButton.up = true;
-		controllerInputs_ToReset.push_back(buttonCode);
+		_controllerInputs_ToReset.push_back(buttonCode);
 	}
 
 	if (event.type == SDL_CONTROLLERAXISMOTION) {
@@ -229,10 +229,10 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 		//joystickValue = -25000;
 
 		// Limitador maximo
-		if (joystickValue > JOYSTICKDEADZONE_MAX)
-			joystickValue = JOYSTICKDEADZONE_MAX;
-		else if (joystickValue < -JOYSTICKDEADZONE_MAX)
-			joystickValue = -JOYSTICKDEADZONE_MAX;
+		if (joystickValue > _JOYSTICKDEADZONE_MAX)
+			joystickValue = _JOYSTICKDEADZONE_MAX;
+		else if (joystickValue < -_JOYSTICKDEADZONE_MAX)
+			joystickValue = -_JOYSTICKDEADZONE_MAX;
 
 		//joystickValue = 13000;
 
@@ -241,22 +241,22 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 		//std::cout << "axis = " << axis << "\n";
 
 		// Si se inclina el joystick lo suficiente, guardar su valor
-		if (joystickValue > JOYSTICKDEADZONE_MIN
-			|| joystickValue < -JOYSTICKDEADZONE_MIN) {
+		if (joystickValue > _JOYSTICKDEADZONE_MIN
+			|| joystickValue < -_JOYSTICKDEADZONE_MIN) {
 
 			float absJoystickValue = abs(joystickValue);
 			int sign = joystickValue / absJoystickValue;
 
 			// Convertir el valor en un valor entre 0 y 1
-			float normalizedValue = ((float) (absJoystickValue - JOYSTICKDEADZONE_MIN)) / ((float) (JOYSTICKDEADZONE_MAX - JOYSTICKDEADZONE_MIN));
+			float normalizedValue = ((float) (absJoystickValue - _JOYSTICKDEADZONE_MIN)) / ((float) (_JOYSTICKDEADZONE_MAX - _JOYSTICKDEADZONE_MIN));
 
 			normalizedValue *= sign;
 
-			joystickAxis[axis] = normalizedValue;
+			_joystickAxis[axis] = normalizedValue;
 		}
 
 		else
-			joystickAxis[axis] = 0;
+			_joystickAxis[axis] = 0;
 
 
 		//if (joystickValue_ != 0) {
@@ -272,25 +272,25 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 bool InputManager::ControllerDeviceAdded(const Sint32& controllerAdded) {
 
 	// Si ya hay un mando conectado, ignorar este
-	if (currentController != nullptr)
+	if (_currentController != nullptr)
 		return false;
 
-	currentController = SDL_GameControllerOpen(controllerAdded);
+	_currentController = SDL_GameControllerOpen(controllerAdded);
 
 	// Si se quiere usar el giroscopio, intentar activarlo, 
 	// en caso de Error, cambiar la variable de uso del giroscopio a false
-	if (useGyroscope)
-		useGyroscope = EnableControllerGyroscope();
+	if (_useGyroscope)
+		_useGyroscope = EnableControllerGyroscope();
 
 	//SDL_GameControllerEventState (SDL_ENABLE);
 }
 
 void InputManager::ControllerDeviceRemoved(const Sint32& controllerRemoved) {
 
-	currentController = nullptr;
+	_currentController = nullptr;
 
 	// Eliminar inputs guardados actualmente
-	for (KeyState controllerButton : controllerButtons) {
+	for (KeyState controllerButton : _controllerButtons) {
 		controllerButton.down = false;
 		controllerButton.isPressed = false;
 		controllerButton.up = false;
@@ -303,32 +303,32 @@ void InputManager::ControllerDeviceRemoved(const Sint32& controllerRemoved) {
 // RESET
 
 void InputManager::ResetKeyboardInputs() {
-	for (int i = 0; i < keyboardInputs_ToReset.size(); i++) {
+	for (int i = 0; i < _keyboardInputs_ToReset.size(); i++) {
 		// Saber el codigo de la tecla almacenado en el vector "keysToReset"
-		int scanCode = keyboardInputs_ToReset[i];
+		int scanCode = _keyboardInputs_ToReset[i];
 		// Crear una referencia a la tecla y resetear sus variables a false
-		KeyState& thisKey = keyboardKeys[scanCode];
+		KeyState& thisKey = _keyboardKeys[scanCode];
 		thisKey.up = false;
 		thisKey.down = false;
 	}
 
 	// Limpiar las teclas ya reseteadas
-	keyboardInputs_ToReset.clear();
+	_keyboardInputs_ToReset.clear();
 }
 
 void InputManager::ResetControllerInputs() {
 
-	for (int i = 0; i < controllerInputs_ToReset.size(); i++) {
+	for (int i = 0; i < _controllerInputs_ToReset.size(); i++) {
 		// Saber el codigo del boton del mando
-		int buttonCode = controllerInputs_ToReset[i];
+		int buttonCode = _controllerInputs_ToReset[i];
 		// Crear una referencia a la tecla y resetear sus variables a false
-		KeyState& thisButton = controllerButtons[buttonCode];
+		KeyState& thisButton = _controllerButtons[buttonCode];
 		thisButton.up = false;
 		thisButton.down = false;
 	}
 
 	// Limpiar las teclas ya reseteadas
-	keyboardInputs_ToReset.clear();
+	_keyboardInputs_ToReset.clear();
 }
 
 
@@ -338,10 +338,10 @@ void InputManager::ResetControllerInputs() {
 // Luz LED
 void InputManager::SetControllerLedColor(int r, int g, int b) {
 
-	if (currentController != nullptr) {
+	if (_currentController != nullptr) {
 
-		if (SDL_GameControllerHasLED(currentController))
-			SDL_GameControllerSetLED(currentController, r, g, b);
+		if (SDL_GameControllerHasLED(_currentController))
+			SDL_GameControllerSetLED(_currentController, r, g, b);
 		else
 			std::cout << "[ERROR] Could not change LED color: currentController has not LED support";
 	}
@@ -356,11 +356,11 @@ void InputManager::RumbleController(const float& intensity, const float& duratio
 		return;
 	}
 
-	if (currentController != nullptr) {
+	if (_currentController != nullptr) {
 
-		if (SDL_GameControllerHasRumble(currentController)) {
+		if (SDL_GameControllerHasRumble(_currentController)) {
 			Uint16 rumbleIntensity = intensity * UINT16_MAX;
-			SDL_GameControllerRumble(currentController, rumbleIntensity, rumbleIntensity, durationInSec * 1000);
+			SDL_GameControllerRumble(_currentController, rumbleIntensity, rumbleIntensity, durationInSec * 1000);
 		}
 		else
 			std::cout << "[ERROR] Could not Rumble controller: currentController has not Rumble support";
@@ -372,16 +372,16 @@ void InputManager::RumbleController(const float& intensity, const float& duratio
 
 // Esta funcion comunica al manager que se quiere hacer uso del giroscopio cuando se conecte un mando
 void InputManager::ActivateGyroscopeWhenConnected() {
-	useGyroscope = true;
+	_useGyroscope = true;
 }
 
 // Esta funcion se encarga de comprobar si el mando conectado tiene giroscopio implementado y lo activa en caso de tenerlo
 bool InputManager::EnableControllerGyroscope() {
 
-	if (currentController != nullptr) {
+	if (_currentController != nullptr) {
 
-		if (SDL_GameControllerHasSensor(currentController, SDL_SENSOR_GYRO) == SDL_TRUE) {
-			SDL_GameControllerSetSensorEnabled(currentController, SDL_SENSOR_GYRO, SDL_TRUE);
+		if (SDL_GameControllerHasSensor(_currentController, SDL_SENSOR_GYRO) == SDL_TRUE) {
+			SDL_GameControllerSetSensorEnabled(_currentController, SDL_SENSOR_GYRO, SDL_TRUE);
 			std::cout << "Gyroscope enabled in currentController" << "\n";
 		}
 		else {
@@ -397,9 +397,9 @@ bool InputManager::EnableControllerGyroscope() {
 
 // Esta funcion se encarga de desactivar la funcionalidad del giroscopio
 bool InputManager::DisableControllerGyroscope() {
-	if (currentController != nullptr) {
-		if (SDL_GameControllerHasSensor(currentController, SDL_SENSOR_GYRO) == SDL_TRUE) {
-			SDL_GameControllerSetSensorEnabled(currentController, SDL_SENSOR_GYRO, SDL_FALSE);
+	if (_currentController != nullptr) {
+		if (SDL_GameControllerHasSensor(_currentController, SDL_SENSOR_GYRO) == SDL_TRUE) {
+			SDL_GameControllerSetSensorEnabled(_currentController, SDL_SENSOR_GYRO, SDL_FALSE);
 			std::cout << "Gyroscope disabled in currentController" << "\n";
 		}
 		else {
@@ -424,7 +424,7 @@ float InputManager::GetGyroscopeAngle(const Axis& axis) {
 		gyroscopeIndex = 1;
 
 	// Convertir el valor output a un valor entre -1 y 1
-	float outputValue = gyroscopeValue[gyroscopeIndex] / roundNumber;
+	float outputValue = _gyroscopeValue[gyroscopeIndex] / _roundNumber;
 
 	// Limitar el valor maximo a 1
 	//if (outputValue > MAXGYROSCOPEVALUE)
@@ -432,5 +432,5 @@ float InputManager::GetGyroscopeAngle(const Axis& axis) {
 	//else if (outputValue < -MAXGYROSCOPEVALUE)
 	//	outputValue = -MAXGYROSCOPEVALUE;
 
-	return outputValue / MAXGYROSCOPEVALUE;
+	return outputValue / _MAXGYROSCOPEVALUE;
 }
