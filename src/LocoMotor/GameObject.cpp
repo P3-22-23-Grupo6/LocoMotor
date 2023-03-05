@@ -22,7 +22,7 @@ void GameObject::update(float dt) {
 	}
 
 	if (InputManager::Get()->GetKey(SDL_SCANCODE_A)) {
-		_rigidBody->AddForce(LMVector3::LmToBullet(LMVector3(1, 0, 0)));
+		_rigidBody->AddForce(LMVector3(1, 0, 0));
 	}
 	else if (InputManager::Get()->GetKey(SDL_SCANCODE_S)) {
 		_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
