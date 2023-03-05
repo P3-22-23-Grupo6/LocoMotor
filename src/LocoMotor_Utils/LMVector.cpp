@@ -54,12 +54,12 @@ LMVector3 LMVector3::operator/(double scalar) const {
 	return LMVector3(_x / scalar, _y / scalar, _z / scalar);
 }
 
-LMVector3 LMVector3::operator= (btVector3 bulletVector) {
-	return BulletToLm(bulletVector);
-}
-
 btVector3 LMVector3::operator= (LMVector3 lmVector) {
 	return LmToBullet(lmVector);
+}
+
+LMVector3 LMVector3::operator= (btVector3 bulletVector) {
+	return BulletToLm(bulletVector);
 }
 
 LMVector3 LMVector3::operator= (Ogre::Vector3 ogreVector) {

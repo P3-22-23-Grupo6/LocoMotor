@@ -5,6 +5,12 @@
 #include "LMVector.h"
 #include "Component.h"
 #include <map>
+
+//HITO 1 POC
+#include "Renderer3D.h"
+#include "BulletRigidBody.h"
+
+
 namespace LocoMotor {
 	struct Transform {
 		LMVector3 position;
@@ -12,12 +18,16 @@ namespace LocoMotor {
 		LMVector3 scale;
 		LMQuaternion direction;
 	};
+
 	class GameObject {
 	public:
 		GameObject ();
 		virtual ~GameObject ();
 
+		void update(float dt);
 		
+		//ogre renderer using ogremanager
+
 		
 		template<typename T, typename ...Ts>
 		T* AddComponent (Ts&& ...params){
@@ -34,6 +44,7 @@ namespace LocoMotor {
 			
 			//bool comps[Camera::id] == true -> error
 		};
+
 		template <typename T> 
 		void RemoveComponent () {
 			if (_componentsByName.count (T::name) == 0) {
@@ -45,19 +56,35 @@ namespace LocoMotor {
 
 		}
 
-		Transform GetTransform () {
-			return _tr;
+		template <typename T>
+		T* GetComponent() {
+			if (_componentsByName.count(T::name) == 0) {
+				//Error: no component exists with that name
+			}
+			return _componentsByName.at (T::name);
 		}
+
+		Transform GetTransform();
 
 		void SetPosition (LMVector3 pos);
 		void SetRotation (LMVector3 rot);
 		void SetScale (LMVector3 sc);
 		void SetDirection (LMQuaternion dir);
 
+		//HITO 1 POC
+
+		void SetRigidBody(BulletWrapper::BulletRigidBody* rb);
+
+		void SetRenderer(OgreWrapper::Renderer3D* renderer);
+
 	private:
 		Transform _tr;
-		//std::vector<Component*> _components;
 		std::map<std::string, Component*> _componentsByName;
+
+		//HITO 1 POC
+		BulletWrapper::BulletRigidBody* _rigidBody;
+		OgreWrapper::Renderer3D* _renderer;
+
 	};
 }
 
