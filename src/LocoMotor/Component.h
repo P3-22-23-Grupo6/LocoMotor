@@ -4,7 +4,7 @@
 
 #define SET_NAME(cName)\
 	constexpr static std::string name = cName;
-
+#include <iostream>
 namespace LocoMotor {
 	class GameObject;
 	class Component {
