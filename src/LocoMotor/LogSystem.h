@@ -22,13 +22,13 @@ public:
 
 	void Save(int type, std::string message);
 
-   
+
 
 private:
 
 	FILE* _file;
 
 	//ThingsToSave messages;
-	
+
 };
 

@@ -9,28 +9,28 @@ class SceneManager {
 
 
 public:
-    SceneManager();
-    ~SceneManager();
+	SceneManager();
+	~SceneManager();
 	//Crear escenas
-   
-    Scene* CreateScene(std::string nombre); 
-    
+
+	Scene* CreateScene(std::string nombre);
+
 
 	//Cambiar entre escenas
 
-    Scene* ChangeScene(std::string name);
-    
-
-    void StartScene(Scene* scn);
+	Scene* ChangeScene(std::string name);
 
 
-    Scene* GetSceneByName(std::string name);
+	void StartScene(Scene* scn);
 
-    
+
+	Scene* GetSceneByName(std::string name);
+
+
 
 private:
-	std::map<std::string,Scene*> _sceneInfo;
+	std::map<std::string, Scene*> _sceneInfo;
 
-    std::string _currScn;
-   
+	std::string _currScn;
+
 };

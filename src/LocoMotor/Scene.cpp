@@ -11,10 +11,11 @@ Scene::Scene(std::string nombre) {
 
 }
 
-Scene::~Scene() {}
+Scene::~Scene() {
+}
 
 
-void Scene:: Start() {
+void Scene::Start() {
 	_isActiveScene = true;
 
 }
@@ -23,7 +24,7 @@ void Scene::Update() {
 	//si no esta activa que no haga nada
 	if (!_isActiveScene) {
 		return;
-		
+
 	}
 	//for(auto obj : _gameObjList){
 		// 
@@ -57,7 +58,7 @@ std::string Scene::GetSceneName() {
 void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 	_cam = camera;
 	_nod = _renderScn->CreateNode("ScnNode");
-	
+
 	_nod->Attach(_cam);
 	//mCamNode->Attach (cam2);
 	_nod->Translate(0, 10, 20);
@@ -67,8 +68,8 @@ void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 }
 
 /*void Scene::addObject(GameObject* obj){
- 
-    _gameObjList.push_back(obj);
+
+	_gameObjList.push_back(obj);
 
 }
 */

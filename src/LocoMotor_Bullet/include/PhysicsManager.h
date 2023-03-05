@@ -27,7 +27,7 @@ namespace PhysicsWrapper {
 		/// <summary>
 		/// Update the physics world , steps the physic simulation
 		/// </summary>
-		void Update();		
+		void Update();
 		/// <summary>
 		/// Create the rigidBody with the info given
 		/// </summary>

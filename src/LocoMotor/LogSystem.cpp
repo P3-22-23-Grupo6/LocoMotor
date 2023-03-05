@@ -2,18 +2,19 @@
 
 
 LogSystem::LogSystem() {
-	Init ();
+	Init();
 	//Create ();
 }
 
-LogSystem::~LogSystem() {}
+LogSystem::~LogSystem() {
+}
 
 void LogSystem::Init() {
 
 	fopen_s(&_file, "log.txt", "w+");
 }
 
-void LogSystem::FileClose () {
+void LogSystem::FileClose() {
 	fclose(_file);
 }
 
@@ -25,16 +26,16 @@ void LogSystem::Save(int type, std::string message) {
 
 	if (type == 0) {
 		std::string errorStr = "Error: " + message + "\n";
-		fprintf (_file, errorStr.c_str());
+		fprintf(_file, errorStr.c_str());
 	}
-	else if (type == 1 ) {
+	else if (type == 1) {
 		std::string warnStr = "Warning: " + message + "\n";
-		fprintf (_file, warnStr.c_str());
+		fprintf(_file, warnStr.c_str());
 	}
-	
-	else if (type > 1 ) {
+
+	else if (type > 1) {
 		std::string warnStr = message + "\n";
-		fprintf (_file, warnStr.c_str());
+		fprintf(_file, warnStr.c_str());
 	}
 
 }

@@ -12,7 +12,7 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 	btTransform groundTransform;
 	groundTransform.setIdentity();
 	groundTransform.setOrigin(info.origin);
-	
+
 	btScalar mass(info.mass);
 
 	//rigidbody is dynamic if and only if mass is non zero, otherwise static
@@ -46,12 +46,10 @@ void BulletRigidBody::AddForce(btVector3 force) {
 	_rigidBody->applyCentralForce(force);
 }
 
-void BulletRigidBody::setRotation(LMQuaternion rot)
-{
+void BulletRigidBody::setRotation(LMQuaternion rot) {
 	_rigidBody->getWorldTransform().setRotation(LMQuaternion::LmToBullet(rot));
 }
 
-LMQuaternion BulletRigidBody::getRotation()
-{
+LMQuaternion BulletRigidBody::getRotation() {
 	return LMQuaternion::BulletToLm(_rigidBody->getWorldTransform().getRotation());
 }
