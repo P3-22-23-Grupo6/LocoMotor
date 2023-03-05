@@ -2,7 +2,7 @@
 
 #include "OgreVector3.h"
 #include "OgreQuaternion.h"
-//#include "btBulletDynamicsCommon.h"
+#include "btBulletDynamicsCommon.h"
 #include "fmod_common.h"
 class btVector3;
 class btTransform;
@@ -22,13 +22,19 @@ public:
 	LMVector3(double x, double y, double z);
 
 	// Getter functions
+	/// @brief Get the X value of the Vector
 	double GetX() const;
+	/// @brief Get the Y value of the Vector
 	double GetY() const;
+	/// @brief Get the Z value of the Vector
 	double GetZ() const;
 
 	// Setter functions
+	/// @brief Set the X value of the Vector
 	void SetX(double x);
+	/// @brief Set the Y value of the Vector
 	void SetY(double y);
+	/// @brief Set the Z value of the Vector
 	void SetZ(double z);
 
 	// Vector addition
@@ -50,15 +56,19 @@ public:
 	LMVector3 operator= (Ogre::Vector3 ogreVector);
 
 	// Dot product
+	///	@brief Get the Dot Product of two Vectors
 	double Dot(const LMVector3& other) const;
 
 	// Cross product
+	///	@brief Get the Cross Product of two Vectors
 	LMVector3 Cross(const LMVector3& other) const;
 
 	// Magnitude
+	///	@brief Get the Magnitude of a Vector
 	double Magnitude() const;
 
 	// Normalize
+	///	@brief Normalize a Vector
 	void Normalize();
 
 // VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
@@ -91,8 +101,8 @@ class LMQuaternion {
 
 
 public:
-	// Default constructor initializes quaternion to (0, 0, 0, 0)
-	/// @brief Create a new Quaternion with everything Set to 0
+	// Default constructor initializes quaternion to (1, 0, 0, 0)
+	/// @brief Create a new Quaternion with everything Set to default
 	LMQuaternion();
 
 	// Constructor initializes quaternion to specified values
@@ -100,15 +110,23 @@ public:
 	LMQuaternion(double w, double x, double y, double z);
 
 	// Getter functions
+	/// @brief Get the W value of the Quaternion
 	double GetW() const;
+	/// @brief Get the X value of the Quaternion
 	double GetX() const;
+	/// @brief Get the Y value of the Quaternion
 	double GetY() const;
+	/// @brief Get the Z value of the Quaternion
 	double GetZ() const;
 
 //Setter functions
+	/// @brief Set the W value of the Quaternion
 	void SetW(double w);
+	/// @brief Set the X value of the Quaternion
 	void SetX(double x);
+	/// @brief Set the Y value of the Quaternion
 	void SetY(double y);
+	/// @brief Set the Z value of the Quaternion
 	void SetZ(double z);
 
 	// Quaternion addition
@@ -127,12 +145,15 @@ public:
 	LMQuaternion operator/(double scalar) const;
 
 	// Conjugate
+	/// @brief Get the Conjugate of a Quaternion
 	LMQuaternion Conjugate() const;
 
 	// Magnitude
+	/// @brief Get the Magnitude of a Quaternion
 	double Magnitude() const;
 
 	// Normalize
+	/// @brief Normalize a Quaternion
 	void Normalize();
 
 

@@ -21,60 +21,77 @@ namespace LocoMotor {
 
 	class GameObject {
 	public:
-		GameObject ();
-		virtual ~GameObject ();
+		/// @brief Constructor
+		GameObject();
+		/// @brief Destructor
+		virtual ~GameObject();
 
+		/// @brief Update the GameObject and all its components
 		void update(float dt);
-		
+
 		//ogre renderer using ogremanager
 
-		
+		/// @brief Add a component to the GameObject
+		/// @param T The type of the component to add
 		template<typename T, typename ...Ts>
-		T* AddComponent (Ts&& ...params){
-			if (_componentsByName.count (T::name) > 0) {
-				return _componentsByName.at (T::name);
+		T* AddComponent(Ts&& ...params) {
+			if (_componentsByName.count(T::name) > 0) {
+				return _componentsByName.at(T::name);
 			}
 			else {
-				Component* comp = new T (std::forward<Ts> (params)...);
-				component->SetContext (this);
-				_componentsByName.insert ({ T::name, comp });
+				Component* comp = new T(std::forward<Ts>(params)...);
+				comp->SetContext(this);
+				_componentsByName.insert({ T::name, comp });
 			}
 			//EJ.:
 			//ent->AddComponent<Camera>(10,0,0);
-			
+
 			//bool comps[Camera::id] == true -> error
 		};
 
-		template <typename T> 
-		void RemoveComponent () {
-			if (_componentsByName.count (T::name) == 0) {
+		/// @brief Remove a Component
+		/// @param T The type of the component to remove
+		template <typename T>
+		void RemoveComponent() {
+			if (_componentsByName.count(T::name) == 0) {
 				//Error: no component exists with that name
 			}
 			auto comp = _componentsByName.find(T::name);
 			delete comp.second;
-			_componentsByName.erase (comp);
+			_componentsByName.erase(comp);
 
 		}
 
+		/// @brief Get a Component
+		/// @param T The type of the component to get
 		template <typename T>
 		T* GetComponent() {
 			if (_componentsByName.count(T::name) == 0) {
 				//Error: no component exists with that name
 			}
-			return _componentsByName.at (T::name);
+			return _componentsByName.at(T::name);
 		}
 
+		/// @brief Get the transform of the GameObject
 		Transform GetTransform();
 
-		void SetPosition (LMVector3 pos);
-		void SetRotation (LMVector3 rot);
-		void SetScale (LMVector3 sc);
-		void SetDirection (LMQuaternion dir);
+		/// @brief Set the position of the GameObject
+		void SetPosition(LMVector3 pos);
+		/// @brief Set the rotation of the GameObject
+		void SetRotation(LMVector3 rot);
+		/// @brief Set the scale of the GameObject
+		void SetScale(LMVector3 sc);
+		/// @brief Set the transform direction of the GameObject
+		void SetDirection(LMQuaternion dir);
 
 		//HITO 1 POC
 
-		void SetRigidBody(BulletWrapper::BulletRigidBody* rb);
+		/// @brief Set the rigid body of the GameObject+
+		/// @param rb The rigid body to set
+		void SetRigidBody(PhysicsWrapper::BulletRigidBody* rb);
 
+		/// @brief Set the renderer of the GameObject
+		/// @param renderer The renderer to set
 		void SetRenderer(OgreWrapper::Renderer3D* renderer);
 
 	private:
@@ -82,7 +99,7 @@ namespace LocoMotor {
 		std::map<std::string, Component*> _componentsByName;
 
 		//HITO 1 POC
-		BulletWrapper::BulletRigidBody* _rigidBody;
+		PhysicsWrapper::BulletRigidBody* _rigidBody;
 		OgreWrapper::Renderer3D* _renderer;
 
 	};

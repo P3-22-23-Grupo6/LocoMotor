@@ -1,35 +1,39 @@
 #include "LMVector.h"
-#include "btBulletDynamicsCommon.h"
+//#include "btBulletDynamicsCommon.h"
 //Vector class to be used with LocoMotor
 
 // Default constructor initializes vector to (0, 0, 0)
-/// @brief Create a new Vector3 with everything Set to 0
 LMVector3::LMVector3() : _x(0), _y(0), _z(0) {
 }
 
 // Constructor initializes vector to specified values
-/// @brief Create a new Vector3
 LMVector3::LMVector3(double x, double y, double z) : _x(x), _y(y), _z(z) {
 }
 
 // Getter functions
+// Get the X value of the Vector
 double LMVector3::GetX() const {
 	return _x;
 }
+// Get the Y value of the Vector
 double LMVector3::GetY() const {
 	return _y;
 }
+// Get the Z value of the Vector
 double LMVector3::GetZ() const {
 	return _z;
 }
 
 // Setter functions
+// Set the X value of the Vector
 void LMVector3::SetX(double x) {
 	this->_x = x;
 }
+// Set the Y value of the Vector
 void LMVector3::SetY(double y) {
 	this->_y = y;
 }
+// Set the Z value of the Vector
 void LMVector3::SetZ(double z) {
 	this->_z = z;
 }
@@ -92,35 +96,35 @@ void LMVector3::Normalize() {
 }
 
 // VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
-/// @brief Converts a Bullet vector to lmVector
+// Converts a Bullet vector to lmVector
 LMVector3 LMVector3::BulletToLm(const btVector3& bulletVector) {
 	return LMVector3(bulletVector.x(), bulletVector.y(), bulletVector.z());
 }
-/// @brief Converts an lmVector to Bullet vector
+// Converts an lmVector to Bullet vector
 btVector3 LMVector3::LmToBullet(const LMVector3& lmVector) {
 	return btVector3(lmVector.GetX(), lmVector.GetY(), lmVector.GetZ());
 }
-/// @brief Converts an Ogre vector to lmVector
+// Converts an Ogre vector to lmVector
 LMVector3 LMVector3::OgreToLm(const Ogre::Vector3& ogreVector) {
 	return LMVector3(ogreVector.x, ogreVector.y, ogreVector.z);
 }
-/// @brief Converts an lmVector to an Ogre vector
+// Converts an lmVector to an Ogre vector
 Ogre::Vector3 LMVector3::LmToOgre(const LMVector3& lmVector) {
 	return Ogre::Vector3(lmVector.GetX(), lmVector.GetY(), lmVector.GetZ());
 }
-/// @brief Converts an FMod vector to an lmVector
+// Converts an FMod vector to an lmVector
 LMVector3 LMVector3::FModToLm(const FMOD_VECTOR& fmVector) {
 	return LMVector3(fmVector.x, fmVector.y, fmVector.z);
 }
-/// @brief Converts an lmVector to an FMod vector
+// Converts an lmVector to an FMod vector
 FMOD_VECTOR LMVector3::LmToFMod(const LMVector3& lmVector) {
 	return FMOD_VECTOR{ (float) lmVector.GetX(), (float) lmVector.GetY(), (float) lmVector.GetZ() };
 }
-/// @brief Converts a Bullet transform to lmVector
+// Converts a Bullet transform to lmVector
 LMVector3 LMVector3::BullTransformToLm(const btTransform& bulletTransform) {
 	return LMVector3(bulletTransform.getOrigin().x(), bulletTransform.getOrigin().y(), bulletTransform.getOrigin().z());
 }
-/// @brief Converts an lmVector to a Bullet Transform
+// Converts an lmVector to a Bullet Transform
 btTransform LMVector3::LmToBullTransform(const LMVector3& lmVector) {
 	btTransform bulletTransform;
 	bulletTransform.setIdentity();
@@ -132,13 +136,11 @@ btTransform LMVector3::LmToBullTransform(const LMVector3& lmVector) {
 
 //Quaternion class to be used with LocoMotor
 
-// Default constructor initializes quaternion to (0, 0, 0, 0)
-/// @brief Create a new Quaternion with everything Set to 0
-LMQuaternion::LMQuaternion () : _w (1), _x (0), _y (0), _z (0) {
+// Default constructor initializes quaternion to (1, 0, 0, 0)
+LMQuaternion::LMQuaternion() : _w(1), _x(0), _y(0), _z(0) {
 }
 
 // Constructor initializes quaternion to specified values
-/// @brief Create a new Quaternion
 LMQuaternion::LMQuaternion(double w, double x, double y, double z) : _w(w), _x(x), _y(y), _z(z) {
 }
 
@@ -222,34 +224,34 @@ void LMQuaternion::Normalize() {
 
 
 // QUATERNION TRANSFORMATIONS BETWEEN LANGUAGES
-/// @brief Converts a Bullet quaternion to LMQuaternion
+// Converts a Bullet quaternion to LMQuaternion
 LMQuaternion LMQuaternion::BulletToLm(const btQuaternion& bulletQuaternion) {
 	return LMQuaternion(bulletQuaternion.w(), bulletQuaternion.x(), bulletQuaternion.y(), bulletQuaternion.z());
 }
-/// @brief Converts an LMQuaternion to Bullet vector
+// Converts an LMQuaternion to Bullet vector
 btQuaternion LMQuaternion::LmToBullet(const LMQuaternion& LMQuaternion) {
 	return btQuaternion(LMQuaternion.GetX(), LMQuaternion.GetY(), LMQuaternion.GetZ(), LMQuaternion.GetW());
 }
-/// @brief Converts an Ogre quaternion to LMQuaternion
+// Converts an Ogre quaternion to LMQuaternion
 LMQuaternion LMQuaternion::OgreToLm(const Ogre::Quaternion& ogreQuaternion) {
 	return LMQuaternion(ogreQuaternion.w, ogreQuaternion.x, ogreQuaternion.y, ogreQuaternion.z);
 }
-/// @brief Converts an LMQuaternion to an Ogre quaternion
+// Converts an LMQuaternion to an Ogre quaternion
 Ogre::Quaternion LMQuaternion::LmToOgre(const LMQuaternion& LMQuaternion) {
 	return Ogre::Quaternion(LMQuaternion.GetW(), LMQuaternion.GetX(), LMQuaternion.GetY(), LMQuaternion.GetZ());
 }
-/// @brief Converts a Bullet transform to LMQuaternion
+// Converts a Bullet transform to LMQuaternion
 LMQuaternion LMQuaternion::BullTransformToLm(btTransform bulletTransform) {
 	return LMQuaternion(bulletTransform.getRotation().w(), bulletTransform.getRotation().x(), bulletTransform.getRotation().y(), bulletTransform.getRotation().z());
 }
-/// @brief Converts an LMQuaternion to a Bullet Transform
+// Converts an LMQuaternion to a Bullet Transform
 btTransform LMQuaternion::LmToBullTransform(LMQuaternion LMQuaternion) {
 	btTransform bulletTransform;
 	bulletTransform.setIdentity();
 	bulletTransform.setRotation(LmToBullet(LMQuaternion));
 	return bulletTransform;
 }
-/// @brief Converts an lmVector and LMQuaternion to a Bullet Transform
+// Converts an lmVector and LMQuaternion to a Bullet Transform
 btTransform LMQuaternion::LmToBullTransform(LMVector3 lmVector, LMQuaternion LMQuaternion) {
 	btTransform bulletTransform;
 	bulletTransform.setIdentity();
