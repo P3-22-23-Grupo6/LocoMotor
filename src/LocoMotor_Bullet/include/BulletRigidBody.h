@@ -6,7 +6,7 @@ class btRigidBody;
 class btCollisionShape;
 class btVector3;
 class LMQuaternion;
-namespace BulletWrapper {
+namespace PhysicsWrapper {
 	struct RigidBodyInfo;
 	//class BulletManager;
 	class BulletRigidBody {

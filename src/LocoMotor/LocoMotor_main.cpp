@@ -8,13 +8,13 @@
 #include "AudioSource.h"
 #include "InputManager.h"
 #include "CheckML.h"
-#include "BulletManager.h"
+#include "PhysicsManager.h"
 #include "BulletRigidBody.h"
 #include "lmVector.h"
 #include "RenderScene.h"
 
 int exec();
-using namespace BulletWrapper;
+using namespace PhysicsWrapper;
 int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
@@ -30,8 +30,8 @@ int main() {
 	x->Prueba();
 	man->SetActiveScene(x);
 	std::cout << (x == nullptr ? "null\n" : "jiji\n");
-	BulletManager::Init();
-	auto btmngr = BulletManager::GetInstance();
+	PhysicsManager::Init();
+	auto btmngr = PhysicsManager::GetInstance();
 	RigidBodyInfo info1;
 	info1.boxSize = btVector3(50, 50, 50);
 	info1.mass = 0.0f;
@@ -42,17 +42,14 @@ int main() {
 	info2.mass = 1.0f;
 	info2.origin = btVector3(2, 10, 0);
 	BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
-	
+
 
 	//audioSrc.PlaySound(0, -1);
 
 	float frc = 1;
-
-
 	// Activa la variable de uso del giroscopio, en el momento en el que detecte el mando, 
 	// intentara activar el giroscopio automaticamente si el mando conectado tiene giroscopio
 	InputManager::Get()->ActivateGyroscopeWhenConnected();
-
 	while (true) {
 
 		// INPUT
@@ -63,7 +60,7 @@ int main() {
 		if (InputManager::Get()->GetKey(SDL_SCANCODE_W)) {
 			frc += 0.005f;
 		}
-		else if (InputManager::Get()->GetKey(SDL_SCANCODE_S)){
+		else if (InputManager::Get()->GetKey(SDL_SCANCODE_S)) {
 			frc -= 0.005f;
 		}
 		float variation = frc + ((float(std::rand() % 11) - 5) / 300.f);
@@ -73,12 +70,12 @@ int main() {
 		// AUDIO
 		// list.Prueba(.05f);
 		audio->Update(0.0f);
-		bola->setRotation(bola->getRotation() + LMQuaternion(0,0.1,0,0));
+		bola->setRotation(bola->getRotation() + LMQuaternion(0, 0.1, 0, 0));
 
 		// RENDER
 		man->Render();
 		btmngr->Update();
-	
+
 
 
 
@@ -110,7 +107,7 @@ int main() {
 	}
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
-	BulletManager::Clear();
+	PhysicsManager::Clear();
 	InputManager::Destroy();
 	return 0;
 }

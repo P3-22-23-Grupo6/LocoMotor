@@ -11,8 +11,7 @@
 //class btDynamicsWorld;
 //class btDefaultCollisionConfiguration;
 //class btRigidBody;
-namespace BulletWrapper {
-
+namespace PhysicsWrapper {
 	/// <summary>
 	/// Info to create a RigidBody
 	/// </summary>
@@ -28,8 +27,8 @@ namespace BulletWrapper {
 		float mass;
 	};
 	class BulletRigidBody;
-	class BulletManager : public Singleton<BulletWrapper::BulletManager> {
-		friend Singleton<BulletWrapper::BulletManager>;
+	class PhysicsManager : public Singleton<PhysicsWrapper::PhysicsManager> {
+		friend Singleton<PhysicsWrapper::PhysicsManager>;
 	public:
 
 		/// <summary>
@@ -66,8 +65,8 @@ namespace BulletWrapper {
 		btSequentialImpulseConstraintSolver* _solver = nullptr;
 		btDynamicsWorld* _dynamicWorld = nullptr;
 		//Constructora y destructora de la clase
-		BulletManager();
-		~BulletManager();
+		PhysicsManager();
+		~PhysicsManager();
 		//Vector para guardar los rigidbodys creados
 		std::vector<BulletRigidBody*> _vRigidBody;
 

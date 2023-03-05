@@ -1,10 +1,9 @@
 #include "BulletRigidBody.h"
-#include "BulletManager.h"
+#include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 #include "lmVector.h"
-using namespace BulletWrapper;
-
-BulletWrapper::BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
+using namespace PhysicsWrapper;
+BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 	if (info.size <= 0.0)
 		_shape = new btBoxShape(info.boxSize);
 	else
@@ -29,11 +28,11 @@ BulletWrapper::BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 	_rigidBody = new btRigidBody(rbInfo);
 
 	//add the body to the dynamics world;
-	BulletManager::GetInstance()->AddRigidBodyToWorld(_rigidBody);
+	PhysicsManager::GetInstance()->AddRigidBodyToWorld(_rigidBody);
 }
 
-BulletWrapper::BulletRigidBody::~BulletRigidBody() {
-	BulletManager::GetInstance()->RemoveRigidBodyFromWorld(_rigidBody);
+BulletRigidBody::~BulletRigidBody() {
+	PhysicsManager::GetInstance()->RemoveRigidBodyFromWorld(_rigidBody);
 	if (_rigidBody && _rigidBody->getMotionState()) {
 		delete _rigidBody->getMotionState();
 	}
@@ -43,16 +42,16 @@ BulletWrapper::BulletRigidBody::~BulletRigidBody() {
 	_shape = nullptr;
 }
 
-void BulletWrapper::BulletRigidBody::AddForce(btVector3 force) {
+void BulletRigidBody::AddForce(btVector3 force) {
 	_rigidBody->applyCentralForce(force);
 }
 
-void BulletWrapper::BulletRigidBody::setRotation(LMQuaternion rot)
+void BulletRigidBody::setRotation(LMQuaternion rot)
 {
 	_rigidBody->getWorldTransform().setRotation(LMQuaternion::LmToBullet(rot));
 }
 
-LMQuaternion BulletWrapper::BulletRigidBody::getRotation()
+LMQuaternion BulletRigidBody::getRotation()
 {
 	return LMQuaternion::BulletToLm(_rigidBody->getWorldTransform().getRotation());
 }

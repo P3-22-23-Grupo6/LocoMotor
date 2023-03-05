@@ -172,11 +172,11 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\LocoMotor_Bullet\include\BulletManager.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Bullet\include\PhysicsManager.h" />
     <ClInclude Include="..\..\src\LocoMotor_Bullet\include\BulletRigidBody.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\LocoMotor_Bullet\cpp\BulletManager.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Bullet\cpp\PhysicsManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Bullet\cpp\BulletRigidBody.cpp" />
   </ItemGroup>
   <ItemGroup>
