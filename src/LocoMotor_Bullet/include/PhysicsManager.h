@@ -4,15 +4,7 @@
 #include <vector>
 #include <btBulletDynamicsCommon.h>
 #include "Singleton.h"
-//#include "lmVector.h"
-//class btCollisionDispatcher;
-//class btBroadphaseInterface;
-//class btSequentialImpulseConstraintSolver;
-//class btDynamicsWorld;
-//class btDefaultCollisionConfiguration;
-//class btRigidBody;
-namespace BulletWrapper {
-
+namespace PhysicsWrapper {
 	/// <summary>
 	/// Info to create a RigidBody
 	/// </summary>
@@ -28,8 +20,8 @@ namespace BulletWrapper {
 		float mass;
 	};
 	class BulletRigidBody;
-	class BulletManager : public Singleton<BulletWrapper::BulletManager> {
-		friend Singleton<BulletWrapper::BulletManager>;
+	class PhysicsManager : public Singleton<PhysicsWrapper::PhysicsManager> {
+		friend Singleton<PhysicsWrapper::PhysicsManager>;
 	public:
 
 		/// <summary>
@@ -37,17 +29,11 @@ namespace BulletWrapper {
 		/// </summary>
 		void Update();
 		/// <summary>
-		/// A method to get the <c>BulletManager</c> singleton instance.
-		/// <c>BulletManager::InitBullet</c> must be called before any calls to <c>BulletManager::getInstance</c> or
-		/// else it will return nullptr.
-		/// </summary>
-		/// <returns>The <c>BulletManager</c> singleton instance if init has been called beforehand. Returns <c>nullptr</c> if not</returns>
-		//static BulletManager* GetInstance ();
-		/// <summary>
 		/// Create the rigidBody with the info given
 		/// </summary>
 		/// <param name="info"> The information to build the rigidBody </param>
-		void CreateRigidBody(RigidBodyInfo info);
+		/// <returns>The BulletRigidBody pointer created</returns>
+		BulletRigidBody* CreateRigidBody(RigidBodyInfo info);
 		/// <summary>
 		/// Add the RigidBody to the physics world
 		/// </summary>
@@ -59,20 +45,12 @@ namespace BulletWrapper {
 		/// <param name="rb"> The pointer of the rigidbody </param>
 		void RemoveRigidBodyFromWorld(btRigidBody* rb);
 		/// <summary>
-		/// Initializes the <c>BulletManager</c> singleton instance.
-		/// This method must be called before any calls to <c>BulletManager::getInstance</c>.
-		/// </summary>
-		/// <returns>void</returns>
-		//static void InitBullet ();
-		/// <summary>
 		/// Sets the worlds gravity
 		/// </summary>
 		/// <param name="gravity"> The Vector3 gravity you want to set </param>
 		void SetWorldGravity(btVector3 gravity);
 
 	private:
-		//La instacia del Manager
-		//static BulletManager* _instance;
 		//Configuraciones para crear el mundo físico
 		btDefaultCollisionConfiguration* _collisionConfiguration = nullptr;
 		btCollisionDispatcher* _dispatcher = nullptr;
@@ -80,9 +58,10 @@ namespace BulletWrapper {
 		btSequentialImpulseConstraintSolver* _solver = nullptr;
 		btDynamicsWorld* _dynamicWorld = nullptr;
 		//Constructora y destructora de la clase
+		PhysicsManager();
+		~PhysicsManager();
+		//Vector para guardar los rigidbodys creados
 		std::vector<BulletRigidBody*> _vRigidBody;
-		BulletManager();
-		~BulletManager();
 
 	};
 }

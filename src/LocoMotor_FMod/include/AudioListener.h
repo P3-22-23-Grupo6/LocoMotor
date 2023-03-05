@@ -2,8 +2,6 @@
 #ifndef AUDIOLISTENER
 #define AUDIOLISTENER
 
-typedef unsigned short uint16_t;
-typedef unsigned int uint32_t;
 struct FMOD_VECTOR;
 namespace FmodWrapper {
 	class AudioManager;
@@ -25,8 +23,8 @@ namespace FmodWrapper {
 		/// @param newVel The new velocity of the listener (pass NULL or 0 to not update velocity)
 		/// @param forward The direction the listener is facing MUST BE NORMALIZED (pass NULL or 0 to not update)
 		/// @param up The new upwards direction of the listener MUST ALSO BE NORMALIZED (pass NULL or 0 to not update position)
-		/// @return A number that by passing it to AudioManager::GetError(uint16_t) you can get more info if there was an error
-		uint16_t SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
+		/// @return A number that by passing it to AudioManager::GetError(unsigned short) you can get more info if there was an error
+		unsigned short SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
 
 		/// @brief Lo unico que hace es rotar deltaTime radianes el listener de fmod asociado
 		/// @param deltaTime Bruh
@@ -38,7 +36,7 @@ namespace FmodWrapper {
 
 		float _elapsedTime;
 
-		FmodWrapper::AudioManager* man;
+		FmodWrapper::AudioManager* _man;
 
 		FMOD_VECTOR* _posRemember;
 	};

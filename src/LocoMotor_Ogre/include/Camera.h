@@ -25,7 +25,7 @@ namespace OgreWrapper {
 	private:
 		static int _zOrder;
 		int _mZOrder;
-		Ogre::Camera* mCamera;
+		Ogre::Camera* _mCamera;
 		Ogre::Viewport* vp;
 	};
 }

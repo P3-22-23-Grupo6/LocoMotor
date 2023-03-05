@@ -15,56 +15,15 @@ union SDL_Event;
 
 
 class InputManager {
+public:
 
-private:
-	InputManager();
+// Referencia a la instancia de InputManager, en caso de no existir, crea una
+	static InputManager* Get();
 
-	static InputManager* instance_;
-
-
-	struct KeyState {
-		bool down = false;
-		bool isPressed = false;
-		bool up = false;
-	};
-	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de las teclas
-	KeyState keyboardKeys[SDL_NUM_SCANCODES];
-
-	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
-	KeyState controllerButtons[SDL_CONTROLLER_BUTTON_MAX];
-
-	SDL_GameController* currentController = nullptr;
-
-	// Vector que almacena que teclas deben ser refrescadas despues de cada frame
-	std::vector<int> keyboardInputs_ToReset;
-
-	// Vector que almacena que botones deben ser refrescadas despues de cada frame
-	std::vector<int> controllerInputs_ToReset;
-
-
-	// Joysticks
-	float joystickAxis[4];
-
-	const int JOYSTICKDEADZONE_MIN = 10000;
-	const int JOYSTICKDEADZONE_MAX = 32000;
 
 	enum Axis {
 		Horizontal, Vertical
 	};
-
-	// Giroscopio del mando
-	float gyroscopeValue_ = 0;
-	float gyroscopeValue[2];
-	float gyroscopeAngularVelocity[2];
-
-	const int MAXGYROSCOPEANGULARVELOCITY = 10000;
-
-	bool useGyroscope = true;
-
-public:
-
-	// Referencia a la instancia de InputManager, en caso de no existir, crea una
-	static InputManager* Get();
 
 	// METODOS PRINCIPALES PARA EL USO DE INPUT
 
@@ -108,19 +67,70 @@ public:
 
 	void ResetControllerInputs();
 
+
+
+	// FUNCIONALIDADES DE MANDO EXTRA
+
+	// Luz LED
 	void SetControllerLedColor(int r, int g, int b);
 
-	void EnableControllerGyroscope();
+	// Vibracion
+	void RumbleController(const float& intensity, const float& durationInSec);
 
-	void DisableControllerGyroscope();
+	// Giroscopio
+	void ActivateGyroscopeWhenConnected();
 
-	float GetGyroscopeAngularVelocity(const Axis& axis);
+	bool EnableControllerGyroscope();
+	bool DisableControllerGyroscope();
 
 	float GetGyroscopeAngle(const Axis& axis = Horizontal);
 
+
+
 	static void Destroy() {
-		delete InputManager::instance_;
+		delete InputManager::_instance;
 	}
+
+private:
+	InputManager();
+
+	static InputManager* _instance;
+
+
+	struct KeyState {
+		bool down = false;
+		bool isPressed = false;
+		bool up = false;
+	};
+	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de las teclas
+	KeyState _keyboardKeys[SDL_NUM_SCANCODES];
+
+	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
+	KeyState _controllerButtons[SDL_CONTROLLER_BUTTON_MAX];
+
+	SDL_GameController* _currentController = nullptr;
+
+	// Vector que almacena que teclas deben ser refrescadas despues de cada frame
+	std::vector<int> _keyboardInputs_ToReset;
+
+	// Vector que almacena que botones deben ser refrescadas despues de cada frame
+	std::vector<int> _controllerInputs_ToReset;
+
+
+	// Joysticks
+	float _joystickAxis[4]; // cuatro espacios : dos ejes en cada uno de los dos joysticks
+	const int _JOYSTICKDEADZONE_MIN = 10000;
+	const int _JOYSTICKDEADZONE_MAX = 32000;
+
+	// Giroscopio del mando
+	bool _useGyroscope = false;
+	float _gyroscopeValue[2];
+	const int _MAXGYROSCOPEVALUE = 200;
+	// Redondear los datos del giroscopio un determinado numero de digitos
+	// (Numero de digitos = Numero de ceros)
+	const int _roundNumber = 1000000;
+
+
 };
 
 #endif // !INPUTMANAGER

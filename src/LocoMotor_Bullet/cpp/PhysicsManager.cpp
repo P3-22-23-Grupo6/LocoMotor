@@ -1,11 +1,11 @@
-#include "BulletManager.h"
+#include "PhysicsManager.h"
 #include <iostream>
 #include "BulletRigidBody.h"
 #include <btBulletDynamicsCommon.h>
-using namespace BulletWrapper;
-BulletWrapper::BulletManager* Singleton<BulletWrapper::BulletManager>::_instance = nullptr;
+using namespace PhysicsWrapper;
+PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
 
-BulletWrapper::BulletManager::BulletManager() {
+PhysicsManager::PhysicsManager() {
 
 	//Set default configuration
 	_collisionConfiguration = new btDefaultCollisionConfiguration();
@@ -15,10 +15,10 @@ BulletWrapper::BulletManager::BulletManager() {
 	//Create Dynamic world
 	_dynamicWorld = new btDiscreteDynamicsWorld(_dispatcher, _overlappingPairCache, _solver, _collisionConfiguration);
 	//Set default gravity
-	_dynamicWorld->setGravity(btVector3(0, -10, 0));
+	_dynamicWorld->setGravity(btVector3(0, 0, 0));
 }
 
-BulletWrapper::BulletManager::~BulletManager() {
+PhysicsManager::~PhysicsManager() {
 	for (auto rb : _vRigidBody)delete rb;
 	_vRigidBody.clear();
 	delete _collisionConfiguration;
@@ -28,33 +28,25 @@ BulletWrapper::BulletManager::~BulletManager() {
 	delete _dynamicWorld;
 }
 
-//void BulletWrapper::BulletManager::InitBullet () {
-//	if (_instance == nullptr) _instance = new BulletManager ();
-//}
-
-//BulletWrapper::BulletManager* BulletWrapper::BulletManager::GetInstance () {
-//	if (_instance != nullptr) return _instance;
-//	std::cerr << "Debes inicializar con BulletManager::InitBullet() antes de llamar a BulletManager::getInstance()!!\n";
-//	return nullptr;
-//}
-void BulletWrapper::BulletManager::CreateRigidBody(RigidBodyInfo info) {
+BulletRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info) {
 	BulletRigidBody* brg = new BulletRigidBody(info);
 	_vRigidBody.push_back(brg);
+	return brg;
 
 }
-void BulletWrapper::BulletManager::SetWorldGravity(btVector3 gravity) {
+void PhysicsManager::SetWorldGravity(btVector3 gravity) {
 	_dynamicWorld->setGravity(gravity);
 }
 
-void BulletWrapper::BulletManager::AddRigidBodyToWorld(btRigidBody* rb) {
+void PhysicsManager::AddRigidBodyToWorld(btRigidBody* rb) {
 	_dynamicWorld->addRigidBody(rb);
 }
 
-void BulletWrapper::BulletManager::RemoveRigidBodyFromWorld(btRigidBody* rb) {
+void PhysicsManager::RemoveRigidBodyFromWorld(btRigidBody* rb) {
 	_dynamicWorld->removeRigidBody(rb);
 }
 
-void BulletWrapper::BulletManager::Update() {
+void PhysicsManager::Update() {
 	_dynamicWorld->stepSimulation(1.0 / 60.0);
 
 	//print positions of all objects
@@ -68,6 +60,9 @@ void BulletWrapper::BulletManager::Update() {
 		else {
 			trans = obj->getWorldTransform();
 		}
+		//trans.setRotation(btQuaternion(1, 1, 1, 1));
 		printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
+		printf("world rot object %d = %f,%f,%f,%f\n", j, float(trans.getRotation().x()), float(trans.getRotation().y()), float(trans.getRotation().z()), float(trans.getRotation().w()));
+
 	}
 }

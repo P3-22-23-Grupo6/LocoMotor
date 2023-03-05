@@ -6,8 +6,8 @@
 #include <iostream>
 #endif // _DEBUG
 
-FmodWrapper::AudioListener::AudioListener() : man(AudioManager::GetInstance()) {
-	man->AddListener(_fIndex);
+FmodWrapper::AudioListener::AudioListener() : _man(AudioManager::GetInstance()) {
+	_man->AddListener(_fIndex);
 	_posRemember = new FMOD_VECTOR();
 	_posRemember->x = 0;
 	_posRemember->y = 0;
@@ -20,16 +20,16 @@ FmodWrapper::AudioListener::~AudioListener() {
 	delete _posRemember;
 }
 
-uint16_t FmodWrapper::AudioListener::SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up) {
+unsigned short FmodWrapper::AudioListener::SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up) {
 
 #ifdef _DEBUG
-	auto err = man->GetSystem()->set3DListenerAttributes(_fIndex, &newPos, &newVel, &forward, &up);
+	auto err = _man->GetSystem()->set3DListenerAttributes(_fIndex, &newPos, &newVel, &forward, &up);
 	if (err != FMOD_OK) {
-		std::cout << "Listener error: " << man->GetError(err) << std::endl;
+		std::cout << "Listener error: " << _man->GetError(err) << std::endl;
 	}
 	return err;
 #else
-	return man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
+	return _man->GetSystem()->set3DListenerAttributes(_fIndex, &newPos, &newVel, &forward, &up);
 #endif // _DEBUG
 }
 
@@ -67,22 +67,22 @@ void FmodWrapper::AudioListener::Prueba(const float& deltaTime) {
 	_posRemember->z = pos.z;
 
 #ifdef _DEBUG
-	auto err = man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
+	auto err = _man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
 	if (err != FMOD_OK) {
-		std::cout << "Listener error: " << man->GetError(err) << std::endl;
+		std::cout << "Listener error: " << _man->GetError(err) << std::endl;
 	}
 #else
-	man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
+	_man->GetSystem()->set3DListenerAttributes(_fIndex, &pos, &vel, &frw, &upw);
 #endif // _DEBUG
 
 }
 //
-//void AudioListener::Update (const uint32_t& deltaTime) {
+//void AudioListener::Update (const unsigned int& deltaTime) {
 //	float dT = (float) deltaTime / 1000.f;
 //	Update (dT);
 //}
 //
-//void AudioListener::UpdateFunni (const uint32_t& deltaTime) {
+//void AudioListener::UpdateFunni (const unsigned int& deltaTime) {
 //	float dT = (float) deltaTime / 1000.f;
 //	UpdateFunni (dT);
 //}

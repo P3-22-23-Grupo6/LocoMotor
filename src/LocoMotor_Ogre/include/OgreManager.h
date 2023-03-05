@@ -58,11 +58,11 @@ namespace OgreWrapper {
 		void SetActiveScene(OgreWrapper::RenderScene* s);
 	protected:
 		Ogre::Root* _root;
-		NativeWindowPair mWindow;
+		NativeWindowPair _mWindow;
 
 		std::map<std::string, OgreWrapper::RenderScene*> _scenes;
 
-		Ogre::MaterialManager::Listener* mMaterialMgrListener = nullptr;
+		Ogre::MaterialManager::Listener* _mMaterialMgrListener = nullptr;
 
 		OgreWrapper::RenderScene* _activeScene;
 
@@ -78,19 +78,19 @@ namespace OgreWrapper {
 		/// <summary>
 		/// Loads the resouces and initializes the RTShaderSytem
 		/// </summary>
-		void _LoadResources();
+		void LoadResources();
 
 		/// <summary>
 		/// Initializes the window
 		/// </summary>
 		/// <param name="name">The Window title</param>
 		/// <returns></returns>
-		NativeWindowPair _InitWindow(std::string name);
+		NativeWindowPair InitWindow(std::string name);
 
 		/// <summary>
 		/// Shuts down Ogre and releases all the memory related to it
 		/// </summary>
-		void _Shutdown();
+		void Shutdown();
 
 	};
 }

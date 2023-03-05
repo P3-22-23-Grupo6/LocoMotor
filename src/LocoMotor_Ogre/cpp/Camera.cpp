@@ -11,13 +11,13 @@
 int OgreWrapper::Camera::_zOrder = 0;
 
 OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
-	mCamera = camera;
-	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(10000);
-	mCamera->setAutoAspectRatio(true);
+	_mCamera = camera;
+	_mCamera->setNearClipDistance(1);
+	_mCamera->setFarClipDistance(10000);
+	_mCamera->setAutoAspectRatio(true);
 	//mCamera->setPolygonMode(Ogre::PM_WIREFRAME);
 	_mZOrder = Camera::_zOrder;
-	vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(mCamera, Camera::_zOrder);
+	vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
 	Camera::_zOrder++;
 	vp->setBackgroundColour(Ogre::ColourValue(0.6, 0.7, 0.8));
 }
@@ -31,7 +31,7 @@ Ogre::Viewport* OgreWrapper::Camera::GetViewport() {
 }
 
 Ogre::MovableObject* OgreWrapper::Camera::GetMovObj() {
-	return mCamera;
+	return _mCamera;
 }
 
 void OgreWrapper::Camera::Render() {
