@@ -42,8 +42,10 @@ BulletRigidBody::~BulletRigidBody() {
 	_shape = nullptr;
 }
 
-void BulletRigidBody::AddForce(btVector3 force) {
-	_rigidBody->applyCentralForce(force);
+
+
+void BulletRigidBody::AddForce(LMVector3 force) {
+	_rigidBody->applyCentralForce(LMVector3::LmToBullet(force));
 }
 
 void BulletRigidBody::setRotation(LMQuaternion rot) {

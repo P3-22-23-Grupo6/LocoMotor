@@ -4,17 +4,26 @@
 
 class btRigidBody;
 class btCollisionShape;
-class btVector3;
 class LMQuaternion;
+class LMVector3;
 namespace PhysicsWrapper {
 	struct RigidBodyInfo;
 	//class BulletManager;
 	class BulletRigidBody {
 	public:
+		/// @brief Constructor by rigidBodyInfo to create BulletRigidBody
+		/// @param info RigidBodyInfo The info of the rigidBody 
 		BulletRigidBody(RigidBodyInfo info);
+		/// @brief Destructor of BulletRigidBody
 		~BulletRigidBody();
-		void AddForce(btVector3 force);
+		/// @brief Add central force to the rigidBody
+		/// @param force LMVector3 The force that is applied
+		void AddForce(LMVector3 force);
+		/// @brief Set the rotation of rigidBody
+		/// @param rot LMQuaternion Rotation to apply
 		void setRotation(LMQuaternion rot);
+		/// @brief Get the rotation of rigidBody
+		/// @return LMQuaternion Actual rotation of rigidBody
 		LMQuaternion getRotation();
 	private:
 		btRigidBody* _rigidBody = nullptr;

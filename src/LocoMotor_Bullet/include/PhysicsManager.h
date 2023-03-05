@@ -5,14 +5,11 @@
 #include <btBulletDynamicsCommon.h>
 #include "Singleton.h"
 namespace PhysicsWrapper {
-	/// <summary>
-	/// Info to create a RigidBody
-	/// </summary>
-	/// <param name="Type"> The type of the rigidbody, could be box or sphere </param>
-	/// <param name="boxSize"> The size of the box if Type is Box </param>
-	/// <param name="size"> The size of the sphere if Type is Sphere </param>
-	/// <param name="Origin"> The origin point of transform </param>
-	/// <param name="mass"> The mass of rigidbody, if mass !=0 , it is dynamic </param>
+	/// @brief Info to create a RigidBody
+	/// @param btVector3 boxSize The size of the box if is Box
+	/// @param float size The size of the sphere if is Sphere
+	/// @param btVector3 origin The origin point of transform
+	/// @param float mass The mass of rigidbody, if mass !=0 , it is dynamic
 	struct RigidBodyInfo {
 		btVector3 boxSize;
 		float size;
@@ -23,31 +20,20 @@ namespace PhysicsWrapper {
 	class PhysicsManager : public Singleton<PhysicsWrapper::PhysicsManager> {
 		friend Singleton<PhysicsWrapper::PhysicsManager>;
 	public:
-
-		/// <summary>
-		/// Update the physics world , steps the physic simulation
-		/// </summary>
+		/// @brief Update the physics world , steps the physic simulation
 		void Update();
-		/// <summary>
-		/// Create the rigidBody with the info given
-		/// </summary>
-		/// <param name="info"> The information to build the rigidBody </param>
-		/// <returns>The BulletRigidBody pointer created</returns>
+		/// @brief Create the rigidBody with the info given
+		/// @param info The information to build the rigidBody
+		/// @return The BulletRigidBody pointer created
 		BulletRigidBody* CreateRigidBody(RigidBodyInfo info);
-		/// <summary>
-		/// Add the RigidBody to the physics world
-		/// </summary>
-		/// <param name="rb"> The pointer of the rigidbody </param>
+		/// @brief Add the RigidBody to the physics world
+		/// @param rb The pointer of the rigidbody
 		void AddRigidBodyToWorld(btRigidBody* rb);
-		/// <summary>
-		/// Add the RigidBody to the physics world
-		/// </summary>
-		/// <param name="rb"> The pointer of the rigidbody </param>
+		/// @brief Add the RigidBody to the physics world
+		/// @param rb The pointer of the rigidbody
 		void RemoveRigidBodyFromWorld(btRigidBody* rb);
-		/// <summary>
-		/// Sets the worlds gravity
-		/// </summary>
-		/// <param name="gravity"> The Vector3 gravity you want to set </param>
+		/// @brief Sets the worlds gravity
+		/// @param gravity The Vector3 gravity you want to set
 		void SetWorldGravity(btVector3 gravity);
 
 	private:
