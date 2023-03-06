@@ -960,7 +960,6 @@ namespace Ogre
         {
             _writeRawConstants(physicalIndex, m[0], elementCount > 16 ? 16 : elementCount);
         }
-
     }
     //-----------------------------------------------------------------------------
     void GpuProgramParameters::_writeRawConstant(size_t physicalIndex, const Matrix3& m, size_t elementCount)

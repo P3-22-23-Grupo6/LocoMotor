@@ -15,7 +15,7 @@ OgreWrapper::Node::~Node() {
 }
 
 void OgreWrapper::Node::Translate(float x, float y, float z) {
-	_node->translate(x, y, z, Ogre::Node::TS_PARENT);
+	_node->translate(x, y, z, Ogre::Node::TS_LOCAL);
 }
 
 void OgreWrapper::Node::Rotate(float x, float y, float z) {

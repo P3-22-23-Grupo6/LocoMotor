@@ -49,6 +49,8 @@ public:
 
 	// GESTION DE EVENTOS
 
+	bool controllerConnected();
+
 	// Registra todos los eventos relacionados con input en este frame, los recorre uno a uno
 	// Almacenandolos en sus respectivas variables
 	bool RegisterEvents();
@@ -85,7 +87,7 @@ public:
 
 	float GetGyroscopeAngle(const Axis& axis = Horizontal);
 
-
+	float GetGyroscopeAngularSpeed(const Axis& axis = Horizontal);
 
 	static void Destroy() {
 		delete InputManager::_instance;
@@ -125,6 +127,7 @@ private:
 	// Giroscopio del mando
 	bool _useGyroscope = false;
 	float _gyroscopeValue[2];
+	float _gyroscopeVelocityValue[2];
 	const int _MAXGYROSCOPEVALUE = 200;
 	// Redondear los datos del giroscopio un determinado numero de digitos
 	// (Numero de digitos = Numero de ceros)

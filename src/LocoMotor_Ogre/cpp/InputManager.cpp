@@ -64,6 +64,10 @@ float InputManager::GetJoystickValue(const int& joystickIndex, const Axis& axis)
 
 // MANEJO DE EVENTOS
 
+bool InputManager::controllerConnected() {
+	return _currentController != nullptr;
+}
+
 bool InputManager::RegisterEvents() {
 
 	// RESETEAR TECLAS Y BOTONES
@@ -78,24 +82,31 @@ bool InputManager::RegisterEvents() {
 
 	// ACTUALIZAR GIROSCOPIO EN CASO DE USARSE (variable "useGyroscope")
 	// Manejar el giroscopio en caso de querer utilizarlo y tener uno disponible
-	if (_useGyroscope && _currentController != nullptr) {
+	if (controllerConnected() && _useGyroscope) {
 
 		for (int i = 0; i < 2; i++) {
 			const int nAxis = 2;
 			float data_[nAxis];
 			SDL_GameControllerGetSensorData(_currentController, SDL_SENSOR_GYRO, data_, nAxis);
 
-			float dataValue = data_[i];
+			_gyroscopeVelocityValue[i] = data_[i];
+
+			float& thisData = _gyroscopeVelocityValue[i];
 
 			// DEADZONE
-			if (dataValue < 0.01 && dataValue > -0.01)
-				dataValue = 0;
+			if (thisData < 0.01 && thisData > -0.01)
+				thisData = 0;
 
 			// tener en cuenta los 6 primeros decimales
-			dataValue *= _roundNumber;
-			dataValue = (int) dataValue;
+			thisData *= _roundNumber;
+			thisData = (int) thisData;
 
-			_gyroscopeValue[i] += dataValue;
+
+
+			_gyroscopeValue[i] += thisData;
+
+			std::cout << "_gyroscopeVelocityValue = " << _gyroscopeVelocityValue[i] << "\n";
+			std::cout << "_gyroscopeValue = " << _gyroscopeValue[i] << "\n";
 		}
 	}
 
@@ -434,3 +445,17 @@ float InputManager::GetGyroscopeAngle(const Axis& axis) {
 
 	return outputValue / _MAXGYROSCOPEVALUE;
 }
+
+float InputManager::GetGyroscopeAngularSpeed(const Axis& axis) {
+
+	int gyroscopeIndex = -1;
+	if (axis == Vertical)
+		gyroscopeIndex = 0;
+	else if (axis == Horizontal)
+		gyroscopeIndex = 1;
+
+	float outputValue = _gyroscopeVelocityValue[gyroscopeIndex] / _roundNumber;
+
+	return outputValue / _MAXGYROSCOPEVALUE;
+}
+

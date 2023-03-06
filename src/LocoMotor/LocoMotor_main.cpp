@@ -21,7 +21,7 @@ int main() {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
 	auto audio = FmodWrapper::AudioManager::Init(8);
-	audio->AddSound(0, "Assets/engine.wav");
+	audio->AddSound(0, "Assets/si.wav");
 	auto list = FmodWrapper::AudioListener();
 	auto audioSrc = FmodWrapper::AudioSource();
 	////new int();
@@ -49,23 +49,25 @@ int main() {
 	mSM->ChangeScene("Escena");
 
 
-	audioSrc.PlaySound(0, -1);
+	//audioSrc.PlaySound(0, -1);
+
+	InputManager* input = InputManager::Get();
 
 	float frc = 1;
 	// Activa la variable de uso del giroscopio, en el momento en el que detecte el mando, 
 	// intentara activar el giroscopio automaticamente si el mando conectado tiene giroscopio
-	InputManager::Get()->ActivateGyroscopeWhenConnected();
+	input->ActivateGyroscopeWhenConnected();
 	while (true) {
 
 		// INPUT
-		if (InputManager::Get()->RegisterEvents())
+		if (input->RegisterEvents())
 			break;
-		bool buttonPressed = InputManager::Get()->GetKeyDown(SDL_SCANCODE_A);
+		bool buttonPressed = input->GetKeyDown(SDL_SCANCODE_A);
 
-		if (InputManager::Get()->GetKey(SDL_SCANCODE_W)) {
+		if (input->GetKey(SDL_SCANCODE_A) || input->GetButtonDown(SDL_CONTROLLER_BUTTON_LEFTSHOULDER)) {
 			frc += 0.005f;
 		}
-		else if (InputManager::Get()->GetKey(SDL_SCANCODE_S)) {
+		else if (input->GetKey(SDL_SCANCODE_S) || input->GetButtonDown(SDL_CONTROLLER_BUTTON_RIGHTSHOULDER)) {
 			frc -= 0.005f;
 		}
 		float variation = frc + ((float(std::rand() % 11) - 5) / 300.f);
@@ -84,21 +86,23 @@ int main() {
 		// DEMO TECNICA
 
 		// Giroscopio
-		float currentGyroscope = InputManager::Get()->GetGyroscopeAngle(InputManager::Horizontal);
-		//std::cout << "GIROSCOPIO = " << currentGyroscope << "\n";
+		float currentGyroscope = input->GetGyroscopeAngle(InputManager::Horizontal);
+		//std::cout << "GIROSCOPIOSSS = " << currentGyroscope << "\n";
 
 		// Clampear valor
 		float intensity = abs(currentGyroscope);
 		if (intensity > 1) intensity = 1;
 
 		// Vibrar mando
-		if (currentGyroscope > .3 || currentGyroscope < -.3)
-			InputManager::Get()->RumbleController(intensity, .01);
+		//if (currentGyroscope > .3 || currentGyroscope < -.3)
+		//	InputManager::Get()->RumbleController(intensity, .01);
 
 		// Color LED
-		InputManager::Get()->SetControllerLedColor(intensity * 255, 0, (1 - intensity) * 255);
+		input->SetControllerLedColor(intensity * 255, 0, (1 - intensity) * 255);
 
-		
+		if (input->controllerConnected() && input->GetButtonDown(SDL_CONTROLLER_BUTTON_X)) {
+			audioSrc.PlaySound(0);
+		}
 	}
 	delete mSM;
 	FmodWrapper::AudioManager::Clear();
