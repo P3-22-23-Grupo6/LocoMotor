@@ -12,6 +12,7 @@
 #include "BulletRigidBody.h"
 #include "lmVector.h"
 #include "RenderScene.h"
+#include "SceneManager.h"
 
 int exec();
 using namespace PhysicsWrapper;
@@ -23,13 +24,13 @@ int main() {
 	audio->AddSound(0, "Assets/engine.wav");
 	auto list = FmodWrapper::AudioListener();
 	auto audioSrc = FmodWrapper::AudioSource();
-	//new int();
+	////new int();
 	OgreWrapper::OgreManager::Init("Prueba");
-	OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance();
-	OgreWrapper::RenderScene* x = man->CreateScene("Escena");
-	x->Prueba();
-	man->SetActiveScene(x);
-	std::cout << (x == nullptr ? "null\n" : "jiji\n");
+	//OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance();
+	//OgreWrapper::RenderScene* x = man->CreateScene("Escena");
+	//x->Prueba();
+	//man->SetActiveScene(x);
+	//std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	PhysicsManager::Init();
 	auto btmngr = PhysicsManager::GetInstance();
 	RigidBodyInfo info1;
@@ -43,8 +44,12 @@ int main() {
 	info2.origin = btVector3(2, 10, 0);
 	BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
+	LocoMotor::SceneManager* mSM = new LocoMotor::SceneManager();
+	mSM->CreateScene("Escena");
+	mSM->ChangeScene("Escena");
 
-	//audioSrc.PlaySound(0, -1);
+
+	audioSrc.PlaySound(0, -1);
 
 	float frc = 1;
 	// Activa la variable de uso del giroscopio, en el momento en el que detecte el mando, 
@@ -70,15 +75,12 @@ int main() {
 		// AUDIO
 		// list.Prueba(.05f);
 		audio->Update(0.0f);
-		bola->setRotation(bola->getRotation() + LMQuaternion(0, 0.1, 0, 0));
+		//bola->setRotation(bola->getRotation() + LMQuaternion(0, 0.1, 0, 0));
 
 		// RENDER
-		man->Render();
+		//man->Render();
 		btmngr->Update();
-
-
-
-
+		mSM->Update();
 		// DEMO TECNICA
 
 		// Giroscopio
@@ -96,18 +98,14 @@ int main() {
 		// Color LED
 		InputManager::Get()->SetControllerLedColor(intensity * 255, 0, (1 - intensity) * 255);
 
-		// JOYSTICK INPUT
-		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Horizontal") << "\n";
-		//std::cout << InputManager::Get ()->GetJoystickAxis (0, "Vertical") << "\n";
-		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Horizontal") << "\n";
-		//std::cout << InputManager::Get ()->GetJoystickAxis (1, "Vertical") << "\n";
-
-
-		//i++;
+		
 	}
+	delete mSM;
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();
 	InputManager::Destroy();
+
+	
 	return 0;
 }

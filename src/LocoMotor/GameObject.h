@@ -9,6 +9,7 @@
 //HITO 1 POC
 #include "Renderer3D.h"
 #include "BulletRigidBody.h"
+#include "Node.h"
 
 
 namespace LocoMotor {
@@ -27,7 +28,7 @@ namespace LocoMotor {
 		virtual ~GameObject();
 
 		/// @brief Update the GameObject and all its components
-		void update(float dt);
+		void Update(float dt);
 
 		//ogre renderer using ogremanager
 
@@ -92,7 +93,7 @@ namespace LocoMotor {
 
 		/// @brief Set the renderer of the GameObject
 		/// @param renderer The renderer to set
-		void SetRenderer(OgreWrapper::Renderer3D* renderer);
+		void SetRenderer(OgreWrapper::Renderer3D* renderer, OgreWrapper::Node* node);
 
 	private:
 		Transform _tr;
@@ -101,7 +102,7 @@ namespace LocoMotor {
 		//HITO 1 POC
 		PhysicsWrapper::BulletRigidBody* _rigidBody;
 		OgreWrapper::Renderer3D* _renderer;
-
+		OgreWrapper::Node* _node;
 	};
 }
 

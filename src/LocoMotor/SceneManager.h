@@ -5,32 +5,39 @@
 
 //Unordered map de string(nombre de escena) y Scene(datos de esta)
 
-class SceneManager {
+namespace LocoMotor {
+	class SceneManager {
 
 
-public:
-	SceneManager();
-	~SceneManager();
-	//Crear escenas
+	public:
+		SceneManager();
+		~SceneManager();
+		//Crear escenas
 
-	Scene* CreateScene(std::string nombre);
-
-
-	//Cambiar entre escenas
-
-	Scene* ChangeScene(std::string name);
+		Scene* CreateScene(std::string nombre);
 
 
-	void StartScene(Scene* scn);
+		//Cambiar entre escenas
+
+		Scene* ChangeScene(std::string name);
 
 
-	Scene* GetSceneByName(std::string name);
+		void StartScene(Scene* scn);
 
 
+		Scene* GetSceneByName(std::string name);
 
-private:
-	std::map<std::string, Scene*> _sceneInfo;
+		void Update();
 
-	std::string _currScn;
+	private:
+		std::map<std::string, Scene*> _sceneInfo;
 
-};
+		//std::string _currScn;
+		Scene* _activeScene;
+
+		float _lastTime;
+		float _actTime;
+		float _deltaTime;
+
+	};
+}

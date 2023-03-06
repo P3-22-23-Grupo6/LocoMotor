@@ -94,20 +94,6 @@ void OgreWrapper::RenderScene::Prueba() {
 	mLightNode->Attach(mLight);
 	mLight->SetDiffuse(1, 1, 1);
 	mLightNode->SetDirection(-1, -1, -1);
-	Node* mCamNode = CreateNode("CamNode");
-	Camera* cam = new Camera(_manager->createCamera("cam"));
-	mCamNode->Attach(cam);
-	//mCamNode->Attach (cam2);
-	mCamNode->Translate (0, 10, 20);
-	mCamNode->LookAt (0, 0, -5);
-	SetActiveCamera (cam);
-	//Racer
-	OgreWrapper::Node* mCubeNode = CreateNode("Cubo");
-	OgreWrapper::Renderer3D* cube = new Renderer3D (_manager->createEntity ("Feisar.mesh"));
-	mCubeNode->Attach (cube);
-	//mCubeNode->Rotate(45, -90, 0);
-	cube->SetMaterial("Racers/Falcon");
-	mCubeNode->SetScale(2.0f, 2.0f, 2.0f);
 	//Road
 	OgreWrapper::Node* mTrackNode = CreateNode("Track");
 	OgreWrapper::Renderer3D* track = new Renderer3D(_manager->createEntity("Track.mesh"));

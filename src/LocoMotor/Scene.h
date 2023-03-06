@@ -9,47 +9,50 @@ namespace OgreWrapper {
 	class Node;
 }
 
-class Scene {
-public:
+namespace LocoMotor {
+	class GameObject;
+	class Scene {
+	public:
 
-	Scene(std::string nombre);
-	~Scene();
-	void Start();
+		Scene(std::string nombre);
+		~Scene();
+		void Start();
 
-	void Update();
-	void Render();
+		void Update(float dt);
+		void Render();
 
-	//?
-	void Deactivate();
+		//?
+		void Deactivate();
 
-	//Activate
-
-
-
-	bool GetActiveStatus();
-
-	std::string GetSceneName();
-
-	void SetSceneCam(OgreWrapper::Camera* cam);
+		//Activate
 
 
-	//void addGameObject();
 
-private:
-	//camera
+		bool GetActiveStatus();
+
+		std::string GetSceneName();
+
+		void SetSceneCam(OgreWrapper::Camera* cam);
 
 
-	OgreWrapper::Camera* _cam;
+		void AddObject(GameObject* obj);
 
-	//nombre de la escena
-	std::string _name;
+	private:
+		//camera
 
-	bool _isActiveScene = false;
 
-	OgreWrapper::RenderScene* _renderScn;
+		OgreWrapper::Camera* _cam;
 
-	//std::vector<Gameobject> _gameObjList
+		//nombre de la escena
+		std::string _name;
 
-	OgreWrapper::Node* _nod;
+		bool _isActiveScene = false;
 
-};
+		OgreWrapper::RenderScene* _renderScn;
+
+		std::vector<GameObject*> _gameObjList;
+
+		OgreWrapper::Node* _nod;
+
+	};
+}

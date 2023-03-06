@@ -15,17 +15,22 @@ GameObject::GameObject() {
 }
 
 // Update the GameObject
-void GameObject::update(float dt) {
+void GameObject::Update(float dt) {
 	std::map<std::string, Component*>::iterator it;
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
 		it->second->Update(dt);
 	}
-
-	if (InputManager::Get()->GetKey(SDL_SCANCODE_A)) {
-		_rigidBody->AddForce(LMVector3(1, 0, 0));
+	if (_rigidBody == nullptr) return;
+	InputManager* man = InputManager::Get();
+	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
+	if (rotateRight) {
+		_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
+		_node->Rotate(0, -1, 0);
 	}
-	else if (InputManager::Get()->GetKey(SDL_SCANCODE_S)) {
+	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
+	if (rotateLeft) {
 		_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
+		_node->Rotate(0, 1, 0);
 	}
 }
 
@@ -58,8 +63,10 @@ void LocoMotor::GameObject::SetRigidBody(PhysicsWrapper::BulletRigidBody* rb) {
 	_rigidBody = rb;
 }
 // Set the renderer of the GameObject
-void LocoMotor::GameObject::SetRenderer(OgreWrapper::Renderer3D* renderer) {
+void LocoMotor::GameObject::SetRenderer(OgreWrapper::Renderer3D* renderer, OgreWrapper::Node* node) {
 	_renderer = renderer;
+	_node = node;
+	_node->Attach(_renderer);
 }
 
 
