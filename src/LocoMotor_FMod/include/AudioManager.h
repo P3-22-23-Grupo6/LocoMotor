@@ -63,8 +63,10 @@ namespace FmodWrapper {
 
 		std::unordered_map<unsigned int, FMOD::Sound*> _soundLib;
 
+
 		/// @brief Constructor is set to private, use the 'Get' method for access to the instance of this object
 		AudioManager();
+		AudioManager(int numChannels);
 
 		/// @brief Plays an already added sound, but gives access to the channel its being played
 		/// @param Name of the sound to play
