@@ -53,6 +53,16 @@ namespace OgreWrapper {
 		void SetPosition(float x, float y, float z);
 
 		/// <summary>
+		/// Sets the position.
+		/// </summary>
+		/// <param name="x">X position</param>
+		/// <param name="y">Y position</param>
+		/// <param name="z">Z positiontion</param>
+		float GetPosition_X();
+		float GetPosition_Y();
+		float GetPosition_Z();
+
+		/// <summary>
 		/// Sets the scale of the node.
 		/// </summary>
 		/// <param name="x">X scale factor</param>

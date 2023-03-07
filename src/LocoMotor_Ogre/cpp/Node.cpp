@@ -55,6 +55,18 @@ void OgreWrapper::Node::SetPosition(float x, float y, float z) {
 	_node->setPosition(x, y, z);
 }
 
+float OgreWrapper::Node::GetPosition_X() {
+	return _node->getPosition().x;
+}
+
+float OgreWrapper::Node::GetPosition_Y() {
+	return _node->getPosition().y;
+}
+
+float OgreWrapper::Node::GetPosition_Z() {
+	return _node->getPosition().z;
+}
+
 void OgreWrapper::Node::SetScale(float x, float y, float z) {
 	_node->setScale(x, y, z);
 }

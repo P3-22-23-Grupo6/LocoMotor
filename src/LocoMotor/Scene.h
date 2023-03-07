@@ -54,5 +54,8 @@ namespace LocoMotor {
 
 		OgreWrapper::Node* _nod;
 
+
+
+		OgreWrapper::Node* node;
 	};
 }

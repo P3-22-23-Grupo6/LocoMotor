@@ -30,7 +30,7 @@ Scene::~Scene() {
 void Scene::Start() {
 	_isActiveScene = true;
 	GameObject* g = new GameObject();
-	OgreWrapper::Node* node = _renderScn->CreateNode("Coche");
+	node = _renderScn->CreateNode("Coche");
 	OgreWrapper::Renderer3D* rend = _renderScn->CreateRenderer("Feisar.mesh");
 	g->SetRenderer(rend, node);
 	PhysicsWrapper::RigidBodyInfo rb;
@@ -42,7 +42,6 @@ void Scene::Start() {
 	node->SetScale(2.0f, 2.0f, 2.0f);
 	AddObject(g);
 	_renderScn->Prueba();
-
 }
 
 void Scene::Update(float dt) {
@@ -54,9 +53,9 @@ void Scene::Update(float dt) {
 	for (auto obj : _gameObjList) {
 
 		obj->Update(dt);
+
+		_nod->SetPosition(node->GetPosition_X(), node->GetPosition_Y() + 10, node->GetPosition_Z() + 15);
 	}
-
-
 }
 void Scene::Render() {
 	_renderScn->Render();
