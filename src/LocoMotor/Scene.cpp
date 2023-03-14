@@ -28,6 +28,12 @@ Scene::~Scene() {
 
 
 void Scene::Start() {
+
+	GameObject* camera = new GameObject();
+
+	camera->AddComponent();
+
+
 	_isActiveScene = true;
 	GameObject* g = new GameObject();
 	node = _renderScn->CreateNode("Coche");
