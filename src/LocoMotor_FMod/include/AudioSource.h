@@ -47,6 +47,8 @@ namespace FmodWrapper {
 		/// @param newVel The new velocity of the source
 		void SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel);
 
+		void SetPositionAndVelocity(const FMOD_VECTOR& newPos, float delta);
+
 		void Prueba();
 
 	private:

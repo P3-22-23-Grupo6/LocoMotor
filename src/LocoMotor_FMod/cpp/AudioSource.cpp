@@ -107,6 +107,15 @@ void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_V
 	_posRemember->z = newPos.z;
 }
 
+void FmodWrapper::AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, float delta) {
+	FMOD_VECTOR vel = FMOD_VECTOR(); 
+	vel.x = (newPos.x - _posRemember->x) / delta;
+	vel.y = (newPos.y - _posRemember->y) / delta;
+	vel.z = (newPos.z - _posRemember->z) / delta;
+
+	SetPositionAndVelocity(newPos, vel);
+}
+
 void FmodWrapper::AudioSource::Prueba() {
 	/*FMOD_VECTOR aux = FMOD_VECTOR(); aux.x = _posRemember->x - 0.0001f; aux.y = _posRemember->y; aux.z = _posRemember->z;
 	SetPositionAndVelocity(aux, FMOD_VECTOR());*/
