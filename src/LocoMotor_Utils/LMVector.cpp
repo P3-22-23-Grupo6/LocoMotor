@@ -110,7 +110,7 @@ LMVector3 LMVector3::OgreToLm(const Ogre::Vector3& ogreVector) {
 }
 // Converts an lmVector to an Ogre vector
 Ogre::Vector3 LMVector3::LmToOgre(const LMVector3& lmVector) {
-	return Ogre::Vector3(lmVector.GetX(), lmVector.GetY(), lmVector.GetZ());
+	return Ogre::Vector3((double) lmVector.GetX(), (double) lmVector.GetY(), (double) lmVector.GetZ());
 }
 // Converts an FMod vector to an lmVector
 LMVector3 LMVector3::FModToLm(const FMOD_VECTOR& fmVector) {
