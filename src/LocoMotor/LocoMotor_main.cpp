@@ -23,7 +23,7 @@ int main() {
 	auto audio = FmodWrapper::AudioManager::Init(8);
 	audio->AddSound(0, "Assets/si.wav");
 	auto list = FmodWrapper::AudioListener();
-	auto audioSrc = FmodWrapper::AudioSource();
+	auto audioSrc = LocoMotor::LM_Component::AudioSource();
 	////new int();
 	OgreWrapper::OgreManager::Init("Prueba");
 	//OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance();
@@ -71,7 +71,7 @@ int main() {
 			frc -= 0.005f;
 		}
 		float variation = frc + ((float(std::rand() % 11) - 5) / 300.f);
-		audioSrc.SetSoundFreq(0, frc);
+		//audioSrc.SetSoundFreq(0, frc);
 		// std::cout << frc << std::endl;
 
 		// AUDIO
@@ -101,7 +101,7 @@ int main() {
 		input->SetControllerLedColor(intensity * 255, 0, (1 - intensity) * 255);
 
 		if (input->controllerConnected() && input->GetButtonDown(SDL_CONTROLLER_BUTTON_X)) {
-			audioSrc.PlaySound(0);
+			audioSrc.Play(0);
 		}
 	}
 	delete mSM;

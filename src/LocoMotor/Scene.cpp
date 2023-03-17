@@ -31,7 +31,7 @@ void Scene::Start() {
 
 	GameObject* camera = new GameObject();
 
-	camera->AddComponent();
+	// TODO: camera->AddComponent();
 
 
 	_isActiveScene = true;
@@ -89,7 +89,7 @@ void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 	_cam = camera;
 	_nod = _renderScn->CreateNode("ScnNode");
 
-	_nod->Attach(_cam);
+	// TODO: _nod->Attach(_cam);
 	//mCamNode->Attach (cam2);
 	_nod->Translate(0, 10, 20);
 	_nod->LookAt(0, 0, -5);
