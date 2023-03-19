@@ -31,8 +31,8 @@ namespace LocoMotor {
 			void SetFreq(float freqMult);
 			void SetFreq(const unsigned short id, float freqMult);
 		private:
-			FmodWrapper::AudioSource* src;
-			unsigned short lastError;
+			FmodWrapper::AudioSource* _src;
+			unsigned short _lastError;
 		};
 	}
 }

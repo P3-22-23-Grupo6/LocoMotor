@@ -22,7 +22,7 @@ int main() {
 
 	auto audio = FmodWrapper::AudioManager::Init(8);
 	audio->AddSound(0, "Assets/si.wav");
-	auto list = FmodWrapper::AudioListener();
+	auto list = LocoMotor::LM_Component::AudioListener();
 	auto audioSrc = LocoMotor::LM_Component::AudioSource();
 	////new int();
 	OgreWrapper::OgreManager::Init("Prueba");
