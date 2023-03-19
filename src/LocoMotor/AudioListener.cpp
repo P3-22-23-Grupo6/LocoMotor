@@ -26,8 +26,9 @@ void LocoMotor::LM_Component::AudioListener::Update(float dt) {
 									 std::sin(-rot.GetX()),
 									 std::cos(rot.GetX()) * std::cos(rot.GetY()));
 
-	LMVector3 upwardVec = LMVector3(std::sin(-rot.GetZ()), 
-									std::cos(rot.GetX()) * std::cos(rot.GetZ()), 
+	//No se si este esta bien calculado pero bueno xd
+	LMVector3 upwardVec = LMVector3(std::sin(-rot.GetZ()),
+									std::cos(rot.GetX()) * std::cos(rot.GetZ()),
 									std::sin(rot.GetZ()) * std::cos(rot.GetX()));
 
 	LMVector3 vel = (ent->GetTransform().position - *_lastPos) / dt;
@@ -35,7 +36,7 @@ void LocoMotor::LM_Component::AudioListener::Update(float dt) {
 #ifdef _DEBUG
 	std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(_list->SetTransform(LMVector3::LmToFMod(ent->GetTransform().position), LMVector3::LmToFMod(vel), LMVector3::LmToFMod(forwardVec), LMVector3::LmToFMod(upwardVec))) << std::endl;
 #else
-	_list->SetTransform(LMVector3::LmToFMod(ent->GetTransform().position), LMVector3::LmToFMod(vel), LMVector3::LmToFMod(forwardVec), LMVector3::LmToFMod(upwardVec))
+	_list->SetTransform(LMVector3::LmToFMod(ent->GetTransform().position), LMVector3::LmToFMod(vel), LMVector3::LmToFMod(forwardVec), LMVector3::LmToFMod(upwardVec));
 #endif // _DEBUG
 
 	*_lastPos = ent->GetTransform().position;

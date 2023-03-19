@@ -16,7 +16,12 @@ namespace LocoMotor {
 		public:
 			AudioListener();
 			~AudioListener();
+
+			/// @brief Sets the initial position of the listener to the gameobject's
 			void Start() override;
+
+			/// @brief Updates the listener's world attributes to be the same as the gameobject's
+			/// @param dt DeltaTime used to calculate the velocity
 			void Update(float dt) override;
 		private:
 			FmodWrapper::AudioListener* _list;
