@@ -17,7 +17,7 @@ Scene::Scene(std::string nombre) {
 	cam_Obj->AddComponent<LocoMotor::Camera>();
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();
 
-	//SetSceneCam(_renderScn->CreateCamera("ScnCam"));
+	SetSceneCam(_renderScn->CreateCamera("ScnCam"));
 }
 
 Scene::~Scene() {

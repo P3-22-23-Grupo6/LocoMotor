@@ -12,7 +12,7 @@ namespace LocoMotor {
 		class AudioSource : public Component {
 
 		public:
-
+			const static std::string name;
 
 			AudioSource();
 			~AudioSource();

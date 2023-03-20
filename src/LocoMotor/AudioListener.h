@@ -13,6 +13,8 @@ namespace LocoMotor {
 	class AudioListener : public Component {
 
 	public:
+		const static std::string name;
+
 		AudioListener();
 		~AudioListener();
 

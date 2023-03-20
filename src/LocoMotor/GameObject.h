@@ -22,6 +22,8 @@ namespace LocoMotor {
 		LMQuaternion direction;
 	};
 
+	class Scene;
+
 	class GameObject {
 	public:
 		/// @brief Constructor
@@ -97,9 +99,14 @@ namespace LocoMotor {
 		/// @param renderer The renderer to set
 		void SetRenderer(OgreWrapper::Renderer3D* renderer, OgreWrapper::Node* node);
 
+		void SetContext(Scene* scn);
+
+		Scene* GetScene();
+
 	private:
 		Transform _tr;
 		std::map<std::string, Component*> _componentsByName;
+		Scene* scene;
 
 		//HITO 1 POC
 		PhysicsWrapper::BulletRigidBody* _rigidBody;

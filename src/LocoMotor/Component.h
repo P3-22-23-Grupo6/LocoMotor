@@ -8,7 +8,6 @@ namespace LocoMotor {
 	class GameObject;
 	class Component {
 	public:
-		const static std::string name;
 
 		virtual ~Component () = default;
 		
@@ -22,7 +21,7 @@ namespace LocoMotor {
 	protected:
 		Component () = default;
 
-		GameObject* ent;
+		GameObject* gameObject;
 	};
 }
 

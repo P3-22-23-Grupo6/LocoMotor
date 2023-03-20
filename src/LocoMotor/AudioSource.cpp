@@ -25,7 +25,7 @@ void LocoMotor::AudioSource::Update(float dt) {
 #ifdef _DEBUG
 	std::cout << FmodWrapper::AudioManager::GetInstance()->GetError(_lastError) << std::endl;
 #endif // _DEBUG
-	_src->SetPositionAndVelocity(LMVector3::LmToFMod(ent->GetTransform().position), dt);
+	_src->SetPositionAndVelocity(LMVector3::LmToFMod(gameObject->GetTransform().position), dt);
 }
 
 void LocoMotor::AudioSource::Play(const unsigned short id, const int loop, const unsigned int loopStart, const unsigned int loopEnd) {

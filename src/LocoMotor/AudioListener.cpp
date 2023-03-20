@@ -19,30 +19,29 @@ AudioListener::~AudioListener() {
 }
 
 void LocoMotor::AudioListener::Update(float dt) {
-	// TODO: ver como calcular el upward a partir del transform
 	double degToRad = 0.0174533;
 
-	LMVector3 rot = ent->GetTransform().rotation * degToRad;
+	LMVector3 rot = gameObject->GetTransform().rotation * degToRad;
 	LMVector3 forwardVec = LMVector3(std::sin(rot.GetY()) * std::cos(rot.GetX()),
 									 std::sin(-rot.GetX()),
 									 std::cos(rot.GetX()) * std::cos(rot.GetY()));
 
-	//No se si este esta bien calculado pero bueno xd
+	// TODO: No se si este esta bien calculado pero bueno xd
 	LMVector3 upwardVec = LMVector3(std::sin(-rot.GetZ()),
 									std::cos(rot.GetX()) * std::cos(rot.GetZ()),
 									std::sin(rot.GetZ()) * std::cos(rot.GetX()));
 
-	LMVector3 vel = (ent->GetTransform().position - *_lastPos) / dt;
+	LMVector3 vel = (gameObject->GetTransform().position - *_lastPos) / dt;
 
 #ifdef _DEBUG
-	std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(_list->SetTransform(LMVector3::LmToFMod(ent->GetTransform().position), LMVector3::LmToFMod(vel), LMVector3::LmToFMod(forwardVec), LMVector3::LmToFMod(upwardVec))) << std::endl;
+	std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(_list->SetTransform(LMVector3::LmToFMod(gameObject->GetTransform().position), LMVector3::LmToFMod(vel), LMVector3::LmToFMod(forwardVec), LMVector3::LmToFMod(upwardVec))) << std::endl;
 #else
 	_list->SetTransform(LMVector3::LmToFMod(ent->GetTransform().position), LMVector3::LmToFMod(vel), LMVector3::LmToFMod(forwardVec), LMVector3::LmToFMod(upwardVec));
 #endif // _DEBUG
 
-	*_lastPos = ent->GetTransform().position;
+	*_lastPos = gameObject->GetTransform().position;
 }
 
 void LocoMotor::AudioListener::Start() {
-	*_lastPos = ent->GetTransform().position;
+	*_lastPos = gameObject->GetTransform().position;
 }
