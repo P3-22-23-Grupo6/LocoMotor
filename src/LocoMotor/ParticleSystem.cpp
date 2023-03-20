@@ -15,14 +15,14 @@ ParticleSystem::ParticleSystem() {
 ParticleSystem::~ParticleSystem() {
 }
 
-void ParticleSystem::Init() {
+void ParticleSystem::Init(std::string name) {
 	_sceneManager = _comp->GetContext()->GetSceneManager();
 	_entity = _comp->GetContext()->GetEntity();
 	_node = _comp->GetContext()->GetNode();
 	_position = _comp->GetContext()->GetPosition();
 	_scale = _comp->GetContext()->GetScale();
 	_rotation = _comp->GetContext()->GetRotation();
-	_particleSystem = _sceneManager->createParticleSystem(_entity->getName() + "ParticleSystem", "Examples/Smoke");
+	_particleSystem = _sceneManager->createParticleSystem(_entity->getName() + "ParticleSystem", ("Examples/" + name));
 	_node->attachObject(_particleSystem);
 }
 
@@ -30,6 +30,8 @@ void ParticleSystem::Update(float dt) {
 }
 
 void ParticleSystem::Render() {
+
+
 }
 
 void ParticleSystem::SetContext(GameObject* ent) {
