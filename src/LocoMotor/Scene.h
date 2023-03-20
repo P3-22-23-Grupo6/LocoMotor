@@ -9,6 +9,10 @@ namespace OgreWrapper {
 	class Node;
 }
 
+namespace LM_Component {
+	class Camera;
+}
+
 namespace LocoMotor {
 	class GameObject;
 	class Scene {
@@ -40,6 +44,8 @@ namespace LocoMotor {
 	private:
 		//camera
 
+
+		LM_Component::Camera* _currentCam;
 
 		OgreWrapper::Camera* _cam;
 

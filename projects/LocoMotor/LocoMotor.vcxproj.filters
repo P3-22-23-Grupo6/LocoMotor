@@ -24,6 +24,8 @@
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp">
       <Filter>Source Files</Filter>
+    <ClCompile Include="..\..\src\LocoMotor\Camera.cpp">
+      <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -47,6 +49,8 @@
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h">
       <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\src\LocoMotor\Camera.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +59,12 @@
     </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{fd6a435c-5f73-45e9-bc38-e8a883fa4ca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{ff512e1e-ed9e-47d1-a218-90718adbc760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{216936c4-7c73-4509-8442-52a94e1c311c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #define LM_COMPONENT
 
 #include <iostream>
+
 namespace LocoMotor {
 	class GameObject;
 	class Component {

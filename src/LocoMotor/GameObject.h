@@ -12,6 +12,8 @@
 #include "Node.h"
 
 
+
+
 namespace LocoMotor {
 	struct Transform {
 		LMVector3 position;
@@ -37,7 +39,7 @@ namespace LocoMotor {
 		template<typename T, typename ...Ts>
 		void AddComponent(Ts&& ...params) {
 			if (_componentsByName.count(T::name) > 0) {
-				// return _componentsByName.at(T::name);
+				return;
 			}
 			else {
 				Component* comp = new T(std::forward<Ts>(params)...);
