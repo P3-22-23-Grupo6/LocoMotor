@@ -24,6 +24,7 @@
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -49,6 +50,7 @@
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\Camera.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
