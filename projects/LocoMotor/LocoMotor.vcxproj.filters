@@ -19,6 +19,9 @@
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\RigidBodyComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\Component.h">
@@ -34,6 +37,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

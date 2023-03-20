@@ -29,6 +29,24 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 
 	//add the body to the dynamics world;
 	PhysicsManager::GetInstance()->AddRigidBodyToWorld(_rigidBody);
+	
+}
+
+void PhysicsWrapper::BulletRigidBody::setGravity(LMVector3 gravity) {
+	_rigidBody->setGravity(LMVector3::LmToBullet(gravity));
+}
+
+void PhysicsWrapper::BulletRigidBody::FreezePosition(LMVector3 axis) {
+	_rigidBody->setLinearFactor(LMVector3::LmToBullet(axis));
+}
+
+void PhysicsWrapper::BulletRigidBody::FreezeRotation(LMVector3 axis) {
+	_rigidBody->setAngularFactor(LMVector3::LmToBullet(axis));
+}
+
+
+void PhysicsWrapper::BulletRigidBody::setBodystate(int state) {
+	_rigidBody->setCollisionFlags(state);
 }
 
 BulletRigidBody::~BulletRigidBody() {
@@ -41,8 +59,6 @@ BulletRigidBody::~BulletRigidBody() {
 	delete _shape;
 	_shape = nullptr;
 }
-
-
 
 void BulletRigidBody::AddForce(LMVector3 force) {
 	_rigidBody->applyCentralForce(LMVector3::LmToBullet(force));
