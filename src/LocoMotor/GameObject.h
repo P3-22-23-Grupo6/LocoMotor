@@ -35,9 +35,9 @@ namespace LocoMotor {
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
 		template<typename T, typename ...Ts>
-		T* AddComponent(Ts&& ...params) {
+		void AddComponent(Ts&& ...params) {
 			if (_componentsByName.count(T::name) > 0) {
-				return _componentsByName.at(T::name);
+				// return _componentsByName.at(T::name);
 			}
 			else {
 				Component* comp = new T(std::forward<Ts>(params)...);
@@ -70,7 +70,7 @@ namespace LocoMotor {
 			if (_componentsByName.count(T::name) == 0) {
 				//Error: no component exists with that name
 			}
-			return _componentsByName.at(T::name);
+			return static_cast<T*>(_componentsByName.at(T::name));
 		}
 
 		/// @brief Get the transform of the GameObject

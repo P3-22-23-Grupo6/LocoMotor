@@ -10,6 +10,8 @@
 
 using namespace LocoMotor;
 
+const std::string AudioSource::name = "AudioSource";
+
 AudioSource::AudioSource() {
 	_src = new FmodWrapper::AudioSource();
 	_lastError = 0;

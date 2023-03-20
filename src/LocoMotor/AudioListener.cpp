@@ -6,6 +6,8 @@
 
 using namespace LocoMotor;
 
+const std::string AudioListener::name = "AudioListener";
+
 AudioListener::AudioListener() {
 	_list = new FmodWrapper::AudioListener();
 	_lastPos = new LMVector3();
