@@ -9,7 +9,6 @@ namespace FmodWrapper {
 }
 
 namespace LocoMotor {
-	namespace LM_Component {
 		class AudioSource : public Component {
 
 		public:
@@ -67,7 +66,6 @@ namespace LocoMotor {
 			FmodWrapper::AudioSource* _src;
 			unsigned short _lastError;
 		};
-	}
 }
 
 #endif // !LM_AUDIOSOURCE

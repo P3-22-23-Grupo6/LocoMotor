@@ -5,7 +5,6 @@
 #include "LocoMotor_FMod/include/AudioManager.h"
 
 using namespace LocoMotor;
-using namespace LM_Component;
 
 AudioListener::AudioListener() {
 	_list = new FmodWrapper::AudioListener();
@@ -17,7 +16,7 @@ AudioListener::~AudioListener() {
 	delete _lastPos;
 }
 
-void LocoMotor::LM_Component::AudioListener::Update(float dt) {
+void LocoMotor::AudioListener::Update(float dt) {
 	// TODO: ver como calcular el upward a partir del transform
 	double degToRad = 0.0174533;
 
@@ -42,6 +41,6 @@ void LocoMotor::LM_Component::AudioListener::Update(float dt) {
 	*_lastPos = ent->GetTransform().position;
 }
 
-void LocoMotor::LM_Component::AudioListener::Start() {
+void LocoMotor::AudioListener::Start() {
 	*_lastPos = ent->GetTransform().position;
 }
