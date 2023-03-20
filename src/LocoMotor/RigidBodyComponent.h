@@ -4,16 +4,18 @@
 #include "Component.h"
 class LMVector3;
 class BulletRigidBody;
-
-namespace LocoMotorComponent {
+namespace PhysicsWrapper {
+	class RigidBodyInfo;
+}
+namespace LocoMotor {
 	class RigidBodyComponent : public LocoMotor::Component {
 	public:
 		/// @brief Constructor
-		RigidBodyComponent();
+		RigidBodyComponent(PhysicsWrapper::RigidBodyInfo info);
 		/// @brief Destructor
 		virtual ~RigidBodyComponent();
 		/// @brief Set the bodys mass
-		void setMass();
+		void setMass(float m);
 		/// @brief Enable/Disable the gravity force affected to this body
 		/// @param gravity 
 		void useGravity(bool gravity);
@@ -31,7 +33,7 @@ namespace LocoMotorComponent {
 		void setStatic();
 	private:
 		float _mass;
-		BulletRigidBody* _body;
+		PhysicsWrapper::BulletRigidBody* _body;
 		float _damping;
 		float _angDamping;
 		bool _gravity;

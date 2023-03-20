@@ -31,6 +31,9 @@ namespace PhysicsWrapper {
 		/// @brief Freeze the rotation of the rigidbody , limit the motion of rotation in those axis
 		/// @param axis LMVector3 x,y,z axis , 0 means limit(stop motion) , 1 means no limit(allow motion)
 		void FreezeRotation(LMVector3 axis);
+		/// @brief Sets the rigidbodys mass
+		/// @param m The mass to set
+		void setMass(float m);
 		/// @brief set the rigidBodyState (dynamic,kinematic,static)
 		/// @param state int The state you want to set to the rigidBody, 0=Dynamic, 1=Static, 2=Kinematic
 		void setBodystate(int state);

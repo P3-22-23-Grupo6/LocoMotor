@@ -44,6 +44,10 @@ void PhysicsWrapper::BulletRigidBody::FreezeRotation(LMVector3 axis) {
 	_rigidBody->setAngularFactor(LMVector3::LmToBullet(axis));
 }
 
+void PhysicsWrapper::BulletRigidBody::setMass(float m) {
+	_rigidBody->setMassProps(m, _rigidBody->getLocalInertia());
+}
+
 
 void PhysicsWrapper::BulletRigidBody::setBodystate(int state) {
 	_rigidBody->setCollisionFlags(state);
