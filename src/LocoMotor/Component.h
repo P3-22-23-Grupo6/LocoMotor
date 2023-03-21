@@ -18,6 +18,7 @@ namespace LocoMotor {
 		virtual void Render () {
 		}
 		void SetContext (GameObject* ent);
+		GameObject* GetContext ();
 	protected:
 		Component () = default;
 
