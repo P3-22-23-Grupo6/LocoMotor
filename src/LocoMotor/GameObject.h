@@ -97,7 +97,7 @@ namespace LocoMotor {
 
 		/// @brief Set the renderer of the GameObject
 		/// @param renderer The renderer to set
-		void SetRenderer(OgreWrapper::Renderer3D* renderer, OgreWrapper::Node* node);
+		void SetRenderer(OgreWrapper::Renderer3D* rend, OgreWrapper::Node* node);
 
 		void SetContext(Scene* scn);
 

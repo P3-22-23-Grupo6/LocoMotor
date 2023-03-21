@@ -2,7 +2,7 @@
 
 //HITO 1 POC
 #include "InputManager.h"
-
+#include "Scene.h"
 
 using namespace LocoMotor;
 
@@ -12,6 +12,8 @@ GameObject::GameObject() {
 	_tr.position = LMVector3();
 	_tr.rotation = LMVector3();
 	_tr.scale = LMVector3();
+
+
 }
 
 // Update the GameObject
@@ -60,6 +62,7 @@ void GameObject::Update(float dt) {
 // Set the position of the GameObject
 void GameObject::SetPosition(LMVector3 pos) {
 	_tr.position = pos;
+	//_node->SetPosition(_tr.position.GetX(), _tr.position.GetY(), _tr.position.GetZ());
 }
 // Set the rotation of the GameObject
 void GameObject::SetRotation(LMVector3 rot) {
@@ -86,9 +89,9 @@ void LocoMotor::GameObject::SetRigidBody(PhysicsWrapper::BulletRigidBody* rb) {
 	_rigidBody = rb;
 }
 // Set the renderer of the GameObject
-void LocoMotor::GameObject::SetRenderer(OgreWrapper::Renderer3D* renderer, OgreWrapper::Node* node) {
-	_renderer = renderer;
+void LocoMotor::GameObject::SetRenderer(OgreWrapper::Renderer3D* rend, OgreWrapper::Node* node) {
 	_node = node;
+	_renderer = rend;
 	_node->Attach(_renderer);
 }
 
