@@ -17,6 +17,8 @@ namespace LocoMotor {
 
 		Camera(Scene* scene, OgreWrapper::RenderScene* _renderScn);
 
+
+
 		//GetCamera();
 	};
 }
