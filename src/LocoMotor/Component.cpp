@@ -1,5 +1,5 @@
 #include "Component.h"
 
-void LocoMotor::Component::SetContext (GameObject* ent) {
+void LocoMotor::Component::SetContext(GameObject* ent) {
 	this->ent = ent;
 }
