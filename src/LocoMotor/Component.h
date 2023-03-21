@@ -22,6 +22,9 @@ namespace LocoMotor {
 		}
 		/// @brief Set the component to a gameobject
 		void SetContext(GameObject* ent);
+
+		virtual void InitComponent();
+
 	protected:
 		/// @brief Constructor
 		Component() = default;

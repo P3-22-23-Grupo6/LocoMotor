@@ -12,13 +12,21 @@ namespace OgreWrapper {
 
 namespace LocoMotor {
 	class Scene;
+	class GameObject;
+
 	class Camera : public Component {
 	public:
 		const static std::string name;
 
-		Camera(Scene* scene, OgreWrapper::RenderScene* _renderScn);
+		Camera(Scene* _scene, OgreWrapper::RenderScene* _renderScn);
 
 		OgreWrapper::Node* _node;
+
+		void InitComponent() override;
+
+	private:
+		Scene* _scene;
+		OgreWrapper::RenderScene* _renderScn;
 
 		//GetCamera();
 	};

@@ -47,6 +47,7 @@ namespace LocoMotor {
 			else {
 				Component* comp = new T(std::forward<Ts>(params)...);
 				comp->SetContext(this);
+				comp->InitComponent();
 				_componentsByName.insert({ T::name, comp });
 			}
 			//EJ.:
@@ -103,6 +104,8 @@ namespace LocoMotor {
 		void SetContext(Scene* scn);
 
 		Scene* GetScene();
+
+		OgreWrapper::Node* GetNode();
 
 	private:
 		Transform _tr;

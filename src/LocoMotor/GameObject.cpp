@@ -45,7 +45,6 @@ void GameObject::Update(float dt) {
 
 		_rigidBody->AddForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
 		_node->Translate(-joystickValue_0_Hor, verticalMov, -joystickValue_0_Ver);
-
 	}
 
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
@@ -96,14 +95,16 @@ void LocoMotor::GameObject::SetRenderer(OgreWrapper::Renderer3D* rend, OgreWrapp
 	_node->Attach(_renderer);
 }
 
-void LocoMotor::GameObject::SetContext(Scene* scn)
-{
+void LocoMotor::GameObject::SetContext(Scene* scn) {
 	scene = scn;
 }
 
-Scene* LocoMotor::GameObject::GetScene()
-{
+Scene* LocoMotor::GameObject::GetScene() {
 	return scene;
+}
+
+OgreWrapper::Node* LocoMotor::GameObject::GetNode() {
+	return _node;
 }
 
 
