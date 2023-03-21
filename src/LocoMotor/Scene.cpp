@@ -13,11 +13,12 @@ Scene::Scene(std::string nombre) {
 	_name = nombre;
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->CreateScene(_name);
 
-	GameObject* cam_Obj = new GameObject();
-	cam_Obj->AddComponent<LocoMotor::Camera>();
+	// Crear camara
+	GameObject* cam_gameObject = new GameObject();
+	cam_gameObject->AddComponent<LocoMotor::Camera>(this, _renderScn);
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();
 
-	SetSceneCam(_renderScn->CreateCamera("ScnCam"));
+	/*SetSceneCam(_renderScn->CreateCamera("ScnCam"));*/
 }
 
 Scene::~Scene() {
