@@ -63,6 +63,7 @@ namespace LocoMotor {
 
 		OgreWrapper::Node* node;
 
-		GameObject* camera_gameObject;
+		GameObject* camera_gObj;
+		GameObject* ship_gObj;
 	};
 }

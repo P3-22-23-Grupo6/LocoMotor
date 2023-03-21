@@ -62,7 +62,7 @@ void GameObject::Update(float dt) {
 // Set the position of the GameObject
 void GameObject::SetPosition(LMVector3 pos) {
 	_tr.position = pos;
-	//_node->SetPosition(_tr.position.GetX(), _tr.position.GetY(), _tr.position.GetZ());
+	_node->SetPosition(_tr.position.GetX(), _tr.position.GetY(), _tr.position.GetZ());
 }
 // Set the rotation of the GameObject
 void GameObject::SetRotation(LMVector3 rot) {

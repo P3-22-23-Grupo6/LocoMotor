@@ -23,6 +23,7 @@ namespace LocoMotor {
 		OgreWrapper::Node* _node;
 
 		void InitComponent() override;
+		void Update(float dt) override;
 
 	private:
 		Scene* _scene;

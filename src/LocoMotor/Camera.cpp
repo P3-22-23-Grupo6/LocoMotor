@@ -20,21 +20,25 @@ LocoMotor::Camera::Camera(Scene* __scene, OgreWrapper::RenderScene* __renderScn)
 void LocoMotor::Camera::InitComponent() {
 
 	//Crear nodo
-	_node = _renderScn->CreateNode("ScnNode");
+	_node = _renderScn->CreateNode("CamNode");
 
 	//Crear camara
 	_scene->SetSceneCam(_renderScn->CreateCamera("ScnCam"));
 
 	//Attachear al nodo del gameObject
-	OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*) this;
-
-	_node->Attach(gameObject->GetNode());
+	//OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*) this;
 	//gameObject->GetNode()->Attach(renderObj);
-
-	//gameObject->GetNode()->Attach(renderObj);
-
-
-	//_nod->Attach(renderObj);
 
 	//SetNode al gameObject
+}
+
+void LocoMotor::Camera::Update(float dt) {
+
+	if (_node != nullptr) {
+		float x = gameObject->GetNode()->GetPosition_X();
+		float y = gameObject->GetNode()->GetPosition_Y();
+		float z = gameObject->GetNode()->GetPosition_Z();
+
+		_node->SetPosition(x, y, z);
+	}
 }

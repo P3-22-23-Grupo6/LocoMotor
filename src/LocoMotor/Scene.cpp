@@ -14,8 +14,8 @@ Scene::Scene(std::string nombre) {
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->CreateScene(_name);
 
 	// Crear camara
-	camera_gameObject = AddGameobject();
-	camera_gameObject->AddComponent<LocoMotor::Camera>(this, _renderScn);
+	camera_gObj = AddGameobject();
+	camera_gObj->AddComponent<LocoMotor::Camera>(this, _renderScn);
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();
 
 	/*SetSceneCam(_renderScn->CreateCamera("ScnCam"));*/
@@ -40,15 +40,15 @@ void Scene::Start() {
 
 
 	_isActiveScene = true;
-	GameObject* g = AddGameobject();
+	ship_gObj = AddGameobject();
 	node = _renderScn->CreateNode("Coche");
 	OgreWrapper::Renderer3D* rend = _renderScn->CreateRenderer("Feisar.mesh");
-	g->SetRenderer(rend, node);
+	ship_gObj->SetRenderer(rend, node);
 	PhysicsWrapper::RigidBodyInfo rb;
 	rb.boxSize = { 1,1,1 };
 	rb.origin = { 0,0,0 };
 	rb.mass = 1;
-	g->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
+	ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
 	rend->SetMaterial("Racers/Falcon");
 	node->SetScale(2.0f, 2.0f, 2.0f);
 	_renderScn->Prueba();
@@ -64,7 +64,10 @@ void Scene::Update(float dt) {
 
 		obj->Update(dt);
 
-		camera_gameObject->SetPosition(LMVector3(node->GetPosition_X(), node->GetPosition_Y() + 10, node->GetPosition_Z() + 15));
+		float x = ship_gObj->GetNode()->GetPosition_X();
+		float y = ship_gObj->GetNode()->GetPosition_Y();
+		float z = ship_gObj->GetNode()->GetPosition_Z();
+		camera_gObj->SetPosition(LMVector3(x, y + 10, z + 15));
 		//_nod->SetPosition(node->GetPosition_X(), node->GetPosition_Y() + 10, node->GetPosition_Z() + 15);
 	}
 }
@@ -96,7 +99,7 @@ void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 	_nod = _renderScn->CreateNode("ScnNode");
 
 	// Acceder al RenderEntity de la camara
-	OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*)_cam;
+	OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*) _cam;
 	//_nod->Attach(renderObj);
 	//mCamNode->Attach (cam2);
 	//_nod->Translate(0, 10, 20);
