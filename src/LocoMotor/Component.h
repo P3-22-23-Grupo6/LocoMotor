@@ -2,14 +2,12 @@
 #ifndef LM_COMPONENT
 #define LM_COMPONENT
 
-#define SET_NAME(cName)\
-	constexpr static std::string name = cName;
 #include <iostream>
+
 namespace LocoMotor {
 	class GameObject;
 	class Component {
 	public:
-		static std::string name;
 
 		virtual ~Component () = default;
 		
@@ -23,7 +21,7 @@ namespace LocoMotor {
 	protected:
 		Component () = default;
 
-		GameObject* ent;
+		GameObject* gameObject;
 	};
 }
 

@@ -92,6 +92,16 @@ void LocoMotor::GameObject::SetRenderer(OgreWrapper::Renderer3D* renderer, OgreW
 	_node->Attach(_renderer);
 }
 
+void LocoMotor::GameObject::SetContext(Scene* scn)
+{
+	scene = scn;
+}
+
+Scene* LocoMotor::GameObject::GetScene()
+{
+	return scene;
+}
+
 
 
 // Destructor

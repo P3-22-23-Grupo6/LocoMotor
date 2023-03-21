@@ -11,6 +11,7 @@ using namespace FMOD;
 
 AudioSource::AudioSource() : _man(AudioManager::GetInstance()) {
 	_chMap = std::unordered_map<unsigned int, ChannelData>();
+	_volumeMult = 1.f;
 	_posRemember = new FMOD_VECTOR();
 	_posRemember->x = 0;
 	_posRemember->y = 0;
@@ -20,7 +21,8 @@ AudioSource::AudioSource() : _man(AudioManager::GetInstance()) {
 AudioSource::~AudioSource() {
 	delete _posRemember;
 	for (auto& ch : _chMap) {
-		ch.second.channel->setFrequency(1);
+		ch.second.channel->setFrequency(1.f);
+		ch.second.channel->setVolume(1.f);
 		ch.second.channel->stop();
 	}
 }
@@ -70,19 +72,88 @@ unsigned short AudioSource::PlaySound(const unsigned int id, int loops, unsigned
 	float aux;
 	_chMap[id].channel->getFrequency(&aux);
 	_chMap[id].ogFrec = aux;
+	_chMap[id].channel->setVolume(_volumeMult);
 
 	channel->setPaused(false);
 	return fail;
 }
 
+unsigned short FmodWrapper::AudioSource::PauseS(const unsigned int id, bool pause) {
+	if (!_chMap[id].channel) {
+	#ifdef _DEBUG
+		std::cout << "Sound " << id << " is not currently playing on this AudioSource, from PauseSound()";
+	#endif // _DEBUG
+		return FMOD_ERR_INVALID_PARAM;
+	}
+	return _chMap[id].channel->setPaused(pause);
+}
+
+unsigned short FmodWrapper::AudioSource::PauseSource(bool pause) {
+	unsigned short res = 0;
+	for (auto& chan : _chMap) {
+		auto aux = chan.second.channel->setPaused(pause);
+		if (aux > res) {
+			res = aux;
+		}
+	}
+	return res;
+}
+
+unsigned short FmodWrapper::AudioSource::StopSound(const unsigned int id) {
+	if (!_chMap[id].channel) {
+	#ifdef _DEBUG
+		std::cout << "Sound " << id << " is not currently playing on this AudioSource, from Stop()";
+	#endif // _DEBUG
+		return FMOD_ERR_INVALID_PARAM;
+	}
+	return _chMap[id].channel->stop();
+}
+
+unsigned short FmodWrapper::AudioSource::StopSource() {
+	unsigned short res = 0;
+	for (auto& chan : _chMap) {
+		auto aux = chan.second.channel->stop();
+		if (aux > res) {
+			res = aux;
+		}
+	}
+	return res;
+}
+
+unsigned short FmodWrapper::AudioSource::SetSoundVolume(const unsigned int id, const float volume) {
+	if (!_chMap[id].channel) {
+	#ifdef _DEBUG
+		std::cout << "Sound " << id << " is not currently playing on this AudioSource, from SetVolume()";
+	#endif // _DEBUG
+		return FMOD_ERR_INVALID_PARAM;
+	}
+	return _chMap[id].channel->setVolume(volume);
+}
+
+unsigned short FmodWrapper::AudioSource::SetSourceVolume(const float volume) {
+	unsigned short res = 0;
+	for (auto& chan : _chMap) {
+		auto aux = chan.second.channel->setVolume(volume);
+		if (aux > res) {
+			res = aux;
+		}
+	}
+	_volumeMult = volume;
+	return res;
+}
+
 unsigned short AudioSource::SetSoundFreq(const unsigned int id, const float freqMult) {
 	if (!_chMap[id].channel) {
 	#ifdef _DEBUG
-		std::cout << "Sound " << id << " is not currently playing on this AudioSource";
+		std::cout << "Sound " << id << " is not currently playing on this AudioSource, from SetSoundFreq()";
 	#endif // _DEBUG
 		return FMOD_ERR_INVALID_PARAM;
 	}
 	return _chMap[id].channel->setFrequency(std::max(0.f, _chMap[id].ogFrec * freqMult));
+}
+
+unsigned short FmodWrapper::AudioSource::SetFrequency(const float freqMult) {
+	return 0;
 }
 
 void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel) {
@@ -93,9 +164,8 @@ void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_V
 			ch.second.channel->set3DAttributes(&newPos, &newVel);
 		}
 		else {
-			float aux;
-			ch.second.channel->getFrequency(&aux);
-			ch.second.ogFrec = aux;
+			ch.second.channel->setFrequency(ch.second.ogFrec);
+			ch.second.channel->setVolume(1.f);
 			ch.second.channel->stop();
 			ch.second.channel = nullptr;
 			_chMap.erase(ch.first);
@@ -107,7 +177,20 @@ void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_V
 	_posRemember->z = newPos.z;
 }
 
+void FmodWrapper::AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, float delta) {
+	FMOD_VECTOR vel = FMOD_VECTOR(); 
+	vel.x = (newPos.x - _posRemember->x) / delta;
+	vel.y = (newPos.y - _posRemember->y) / delta;
+	vel.z = (newPos.z - _posRemember->z) / delta;
+
+	SetPositionAndVelocity(newPos, vel);
+}
+
 void FmodWrapper::AudioSource::Prueba() {
 	/*FMOD_VECTOR aux = FMOD_VECTOR(); aux.x = _posRemember->x - 0.0001f; aux.y = _posRemember->y; aux.z = _posRemember->z;
 	SetPositionAndVelocity(aux, FMOD_VECTOR());*/
+}
+
+FmodWrapper::AudioManager* FmodWrapper::AudioSource::GetManager() {
+	return _man;
 }
