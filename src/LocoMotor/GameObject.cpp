@@ -3,17 +3,18 @@
 //HITO 1 POC
 #include "InputManager.h"
 #include "Scene.h"
+#include "Node.h"
 
 using namespace LocoMotor;
 
 // Constructor
-GameObject::GameObject() {
+GameObject::GameObject(OgreWrapper::Node* node) {
 	_tr.direction = LMQuaternion();
 	_tr.position = LMVector3();
 	_tr.rotation = LMVector3();
 	_tr.scale = LMVector3();
 
-
+	_node = node;
 }
 
 // Update the GameObject

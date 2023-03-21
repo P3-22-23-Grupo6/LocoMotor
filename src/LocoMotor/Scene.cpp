@@ -14,7 +14,7 @@ Scene::Scene(std::string nombre) {
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->CreateScene(_name);
 
 	// Crear camara
-	camera_gameObject = new GameObject();
+	camera_gameObject = AddGameobject();
 	camera_gameObject->AddComponent<LocoMotor::Camera>(this, _renderScn);
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();
 
@@ -40,7 +40,7 @@ void Scene::Start() {
 
 
 	_isActiveScene = true;
-	GameObject* g = new GameObject();
+	GameObject* g = AddGameobject();
 	node = _renderScn->CreateNode("Coche");
 	OgreWrapper::Renderer3D* rend = _renderScn->CreateRenderer("Feisar.mesh");
 	g->SetRenderer(rend, node);
@@ -51,7 +51,6 @@ void Scene::Start() {
 	g->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
 	rend->SetMaterial("Racers/Falcon");
 	node->SetScale(2.0f, 2.0f, 2.0f);
-	AddObject(g);
 	_renderScn->Prueba();
 }
 
@@ -98,17 +97,18 @@ void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 
 	// Acceder al RenderEntity de la camara
 	OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*)_cam;
-	_nod->Attach(renderObj);
+	//_nod->Attach(renderObj);
 	//mCamNode->Attach (cam2);
-	_nod->Translate(0, 10, 20);
-	_nod->LookAt(0, 0, -5);
+	//_nod->Translate(0, 10, 20);
+	//_nod->LookAt(0, 0, -5);
 	_renderScn->SetActiveCamera(_cam);
 }
 
 GameObject* LocoMotor::Scene::AddGameobject() {
-	GameObject* obj = new GameObject();
-	AddObject(obj);
-	return obj;
+	OgreWrapper::Node* newNode = _renderScn->CreateNode("ScnNode");
+	GameObject* newObj = new GameObject(newNode);
+	AddObject(newObj);
+	return newObj;
 }
 
 void Scene::AddObject(GameObject* obj) {

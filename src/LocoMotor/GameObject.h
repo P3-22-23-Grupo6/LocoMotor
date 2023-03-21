@@ -9,9 +9,10 @@
 //HITO 1 POC
 #include "Renderer3D.h"
 #include "BulletRigidBody.h"
-#include "Node.h"
 
-
+namespace OgreWrapper {
+	class Node;
+}
 
 
 namespace LocoMotor {
@@ -27,7 +28,7 @@ namespace LocoMotor {
 	class GameObject {
 	public:
 		/// @brief Constructor
-		GameObject();
+		GameObject(OgreWrapper::Node* node);
 		/// @brief Destructor
 		virtual ~GameObject();
 

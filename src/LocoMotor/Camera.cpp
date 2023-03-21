@@ -8,13 +8,14 @@ using namespace LocoMotor;
 const std::string Camera::name = "Camera";
 
 LocoMotor::Camera::Camera(Scene* scene, OgreWrapper::RenderScene* _renderScn) {
-	scene->SetSceneCam(_renderScn->CreateCamera("ScnCam"));
 	
 	//Crear nodo
+	_node = _renderScn->CreateNode("ScnNode");
 	
-	//Crear camar
+	//Crear camara
+	scene->SetSceneCam(_renderScn->CreateCamera("ScnCam"));
 	
-	//Attachear al nodo
+	//Attachear al nodo del gameObject
 	
 	//SetNode al gameObject
 

@@ -7,6 +7,7 @@
 
 namespace OgreWrapper {
 	class RenderScene;
+	class Node;
 }
 
 namespace LocoMotor {
@@ -17,7 +18,7 @@ namespace LocoMotor {
 
 		Camera(Scene* scene, OgreWrapper::RenderScene* _renderScn);
 
-
+		OgreWrapper::Node* _node;
 
 		//GetCamera();
 	};
