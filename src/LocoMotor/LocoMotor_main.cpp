@@ -13,6 +13,7 @@
 #include "lmVector.h"
 #include "RenderScene.h"
 #include "SceneManager.h"
+#include "GameObject.h"
 
 int exec();
 using namespace PhysicsWrapper;
@@ -22,8 +23,6 @@ int main() {
 
 	auto audio = FmodWrapper::AudioManager::Init(8);
 	audio->AddSound(0, "Assets/si.wav");
-	auto list = FmodWrapper::AudioListener();
-	auto audioSrc = FmodWrapper::AudioSource();
 	////new int();
 	OgreWrapper::OgreManager::Init("Prueba");
 	//OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance();
@@ -53,6 +52,11 @@ int main() {
 
 	InputManager* input = InputManager::Get();
 
+	LocoMotor::GameObject* gObj = new LocoMotor::GameObject();
+
+	gObj->AddComponent<LocoMotor::AudioListener>();
+	gObj->AddComponent<LocoMotor::AudioSource>();
+
 	float frc = 1;
 	// Activa la variable de uso del giroscopio, en el momento en el que detecte el mando, 
 	// intentara activar el giroscopio automaticamente si el mando conectado tiene giroscopio
@@ -71,7 +75,7 @@ int main() {
 			frc -= 0.005f;
 		}
 		float variation = frc + ((float(std::rand() % 11) - 5) / 300.f);
-		audioSrc.SetSoundFreq(0, frc);
+		//audioSrc.SetSoundFreq(0, frc);
 		// std::cout << frc << std::endl;
 
 		// AUDIO
@@ -101,7 +105,7 @@ int main() {
 		input->SetControllerLedColor(intensity * 255, 0, (1 - intensity) * 255);
 
 		if (input->controllerConnected() && input->GetButtonDown(SDL_CONTROLLER_BUTTON_X)) {
-			audioSrc.PlaySound(0);
+			gObj->GetComponent<LocoMotor::AudioSource>()->Play(0);
 		}
 	}
 	delete mSM;

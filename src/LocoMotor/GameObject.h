@@ -2,7 +2,7 @@
 #ifndef LM_GAMEOBJECT
 #define LM_GAMEOBJECT
 
-#include "LMVector.h"
+#include "LocoMotor_Utils/lmVector.h"
 #include "Component.h"
 #include <map>
 
@@ -12,6 +12,8 @@
 #include "Node.h"
 
 
+
+
 namespace LocoMotor {
 	struct Transform {
 		LMVector3 position;
@@ -19,6 +21,8 @@ namespace LocoMotor {
 		LMVector3 scale;
 		LMQuaternion direction;
 	};
+
+	class Scene;
 
 	class GameObject {
 	public:
@@ -35,9 +39,9 @@ namespace LocoMotor {
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
 		template<typename T, typename ...Ts>
-		T* AddComponent(Ts&& ...params) {
+		void AddComponent(Ts&& ...params) {
 			if (_componentsByName.count(T::name) > 0) {
-				return _componentsByName.at(T::name);
+				return;
 			}
 			else {
 				Component* comp = new T(std::forward<Ts>(params)...);
@@ -70,7 +74,7 @@ namespace LocoMotor {
 			if (_componentsByName.count(T::name) == 0) {
 				//Error: no component exists with that name
 			}
-			return _componentsByName.at(T::name);
+			return static_cast<T*>(_componentsByName.at(T::name));
 		}
 
 		/// @brief Get the transform of the GameObject
@@ -95,9 +99,14 @@ namespace LocoMotor {
 		/// @param renderer The renderer to set
 		void SetRenderer(OgreWrapper::Renderer3D* renderer, OgreWrapper::Node* node);
 
+		void SetContext(Scene* scn);
+
+		Scene* GetScene();
+
 	private:
 		Transform _tr;
 		std::map<std::string, Component*> _componentsByName;
+		Scene* scene;
 
 		//HITO 1 POC
 		PhysicsWrapper::BulletRigidBody* _rigidBody;

@@ -36,6 +36,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\AudioSource.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\Camera.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Component.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\FactoryComponent.cpp" />
@@ -48,6 +51,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h" />
     <ClInclude Include="..\..\src\LocoMotor\FactoryComponent.h" />
+    <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
+    <ClInclude Include="..\..\src\LocoMotor\AudioSource.h" />
+    <ClInclude Include="..\..\src\LocoMotor\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h" />
@@ -171,7 +177,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)src</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>
@@ -190,7 +196,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)src</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>
