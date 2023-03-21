@@ -11,6 +11,7 @@
 #include <OgreEntity.h>
 #include <OgreShaderGenerator.h>
 #include <iostream>
+#include <CEGUI/Cegui.h>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;

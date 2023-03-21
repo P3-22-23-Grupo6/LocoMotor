@@ -1,0 +1,12 @@
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):c:/software/programacion/MSVStudio2022/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_6bb6a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:m && MSBuild version 17.4.1+9a89d02ff for .NET Framework
+  Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+  CheckIncludeFile.c
+  (C) Microsoft Corporation. Todos los derechos reservados.
+  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6bb6a.dir\Debug\\" /Fd"cmTC_6bb6a.dir\Debug\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\Users\usuario_local\Documents\Motor\Dependecies\cegui-0.8.7\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c"
+C:\Users\usuario_local\Documents\Motor\Dependecies\cegui-0.8.7\build\CMakeFiles\CMakeTmp\CheckIncludeFile.c(1,10): fatal  error C1083: No se puede abrir el archivo incluir: 'pthread.h': No such file or directory [C:\Users\usuario_local\Documents\Motor\Dependecies\cegui-0.8.7\build\CMakeFiles\CMakeTmp\cmTC_6bb6a.vcxproj]
+
+
+
