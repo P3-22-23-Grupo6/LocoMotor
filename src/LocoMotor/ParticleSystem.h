@@ -17,6 +17,9 @@ namespace LocoMotor {
 		void Render();
 		void SetContext(GameObject* ent);
 
+		void AddEmitter(std::string name, LMVector3 position);
+		void AddEmitter(LMVector3 position);
+
 		void SetPosition(LMVector3 position);
 
 		void SetDirection(LMVector3 direction);
@@ -66,6 +69,7 @@ namespace LocoMotor {
 		Ogre::Vector3 _position;
 		Ogre::Vector3 _scale;
 		Ogre::Vector3 _rotation;
+		std::map <std::string, Ogre::ParticleEmitter*> _emitters;
 	};
 }
 

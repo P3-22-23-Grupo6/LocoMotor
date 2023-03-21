@@ -26,13 +26,97 @@ void ParticleSystem::Init(std::string name) {
 	_node->attachObject(_particleSystem);
 }
 
-void ParticleSystem::Update(float dt) {
+//void ParticleSystem::Update(float dt) {
+//}
+//
+//void ParticleSystem::Render() {
+//
+//
+//}
+
+void ParticleSystem::AddEmitter(std::string name, LMVector3 position) {
+	if (_emitters.find(name) == _emitters.end()) {
+		_emitters.insert({ name, _particleSystem->addEmitter(name) });
+		_emitters[name]->setPosition(LMVector3::LmToOgre(position));
+	}
+	else {
+		int num = 0;
+		bool found = false;
+		std::string newName = name + std::to_string(num);
+		while (!found) {
+			
+			if (_emitters.find(newName) == _emitters.end()) {
+				_emitters.insert({ newName, _particleSystem->addEmitter(newName)});
+				_emitters[newName]->setPosition(LMVector3::LmToOgre(position));
+
+				found = true;
+			}
+			else {
+				num++;
+				newName = name + std::to_string(num);
+			}
+		}
+	}
 }
 
-void ParticleSystem::Render() {
-
-
+void ParticleSystem::AddEmitter(LMVector3 position) {
+	std::string name = "unnamedEmitter";
+	AddEmitter(name, position);
 }
+
+void ParticleSystem::RemoveEmitter(std::string name) {
+	if (_emitters.find(name) != _emitters.end()) {
+		_particleSystem->removeEmitter(_emitters[name]);
+		_emitters.erase(name);
+	}
+	else {
+		int num = 0;
+		bool found = false;
+		std::string delName = name + std::to_string(num);
+		while (!found) {
+
+			if (_emitters.find(delName) == _emitters.end()) {
+				_particleSystem->removeEmitter(_emitters[delName]);
+				_emitters.erase(delName);
+
+				found = true;
+			}
+			else {
+				num++;
+				delName = name + std::to_string(num);
+			}
+		}
+	}
+}
+
+void ParticleSystem::RemoveEmitter() {
+	std::string name = "unnamedEmitter";
+	RemoveEmitter(name);
+}
+
+Ogre::ParticleEmitter* ParticleSystem::GetEmitter(std::string name) {
+	if (_emitters.find(name) != _emitters.end()) {
+		return _emitters[name];
+	}
+	else {
+		int num = 0;
+		bool found = false;
+		std::string newName = name + std::to_string(num);
+		while (!found) {
+
+			if (_emitters.find(newName) != _emitters.end()) {
+				found = true;
+				return _emitters[newName];
+			}
+			else {
+				num++;
+				newName = name + std::to_string(num);
+			}
+		}
+	}
+}
+
+
 
 void ParticleSystem::SetContext(GameObject* ent) {
 	_comp = ent->GetComponent<LocoMotor::ParticleSystem>();
