@@ -20,6 +20,11 @@ namespace LocoMotor {
 		void AddEmitter(std::string name, LMVector3 position);
 		void AddEmitter(LMVector3 position);
 
+		Ogre::ParticleEmitter* GetEmitter(std::string name);
+
+		void RemoveEmitter(std::string name);
+		void RemoveEmitter();
+		
 		void SetPosition(LMVector3 position);
 
 		void SetDirection(LMVector3 direction);
