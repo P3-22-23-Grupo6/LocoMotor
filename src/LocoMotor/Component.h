@@ -9,18 +9,26 @@ namespace LocoMotor {
 	class Component {
 	public:
 
-		virtual ~Component () = default;
-		
-		virtual void Start () {
+		/// @brief Destructor
+		virtual ~Component() = default;
+		/// @brief Initialize the component
+		virtual void Start() {
 		}
-		virtual void Update (float dt) {
+		/// @brief Update the component
+		virtual void Update(float dt) {
 		}
-		virtual void Render () {
+		/// @brief Render the component
+		virtual void Render() {
 		}
-		void SetContext (GameObject* ent);
 		GameObject* GetContext ();
+		/// @brief Set the component to a gameobject
+		void SetContext(GameObject* ent);
+
+		virtual void InitComponent();
+
 	protected:
-		Component () = default;
+		/// @brief Constructor
+		Component() = default;
 
 		GameObject* gameObject;
 	};

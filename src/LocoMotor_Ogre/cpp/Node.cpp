@@ -7,11 +7,13 @@
 
 OgreWrapper::Node::Node(Ogre::SceneNode* node) {
 	_node = node;
-	_ent = nullptr;
+	_ent = std::vector<OgreWrapper::RenderEntity*>();
 }
 
 OgreWrapper::Node::~Node() {
-	if (_ent != nullptr) delete _ent;
+	for (std::vector<OgreWrapper::RenderEntity*>::iterator it = _ent.begin(); it != _ent.end(); it = _ent.erase(it)) {
+		delete* it;
+	}
 }
 
 void OgreWrapper::Node::Translate(float x, float y, float z) {
@@ -37,12 +39,9 @@ void OgreWrapper::Node::SetDirection(float x, float y, float z) {
 }
 
 void OgreWrapper::Node::Attach(OgreWrapper::RenderEntity* obj) {
-	if (_ent != nullptr) {
-		_node->detachObject(_ent->GetMovObj());
-		delete _ent;
-	}
+	
 	_node->attachObject(obj->GetMovObj());
-	_ent = obj;
+	_ent.push_back (obj);
 }
 
 OgreWrapper::Node* OgreWrapper::Node::CreateChild() {

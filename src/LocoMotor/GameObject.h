@@ -9,9 +9,10 @@
 //HITO 1 POC
 #include "Renderer3D.h"
 #include "BulletRigidBody.h"
-#include "Node.h"
 
-
+namespace OgreWrapper {
+	class Node;
+}
 
 
 namespace LocoMotor {
@@ -27,7 +28,7 @@ namespace LocoMotor {
 	class GameObject {
 	public:
 		/// @brief Constructor
-		GameObject();
+		GameObject(OgreWrapper::Node* node);
 		/// @brief Destructor
 		virtual ~GameObject();
 
@@ -46,6 +47,7 @@ namespace LocoMotor {
 			else {
 				Component* comp = new T(std::forward<Ts>(params)...);
 				comp->SetContext(this);
+				comp->InitComponent();
 				_componentsByName.insert({ T::name, comp });
 			}
 			//EJ.:
@@ -97,11 +99,13 @@ namespace LocoMotor {
 
 		/// @brief Set the renderer of the GameObject
 		/// @param renderer The renderer to set
-		void SetRenderer(OgreWrapper::Renderer3D* renderer, OgreWrapper::Node* node);
+		void SetRenderer(OgreWrapper::Renderer3D* rend, OgreWrapper::Node* node);
 
 		void SetContext(Scene* scn);
 
 		Scene* GetScene();
+
+		OgreWrapper::Node* GetNode();
 
 	private:
 		Transform _tr;

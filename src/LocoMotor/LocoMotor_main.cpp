@@ -52,10 +52,11 @@ int main() {
 
 	InputManager* input = InputManager::Get();
 
-	LocoMotor::GameObject* gObj = new LocoMotor::GameObject();
 
-	gObj->AddComponent<LocoMotor::AudioListener>();
-	gObj->AddComponent<LocoMotor::AudioSource>();
+	//LocoMotor::GameObject* gObj = new LocoMotor::GameObject();
+
+	//gObj->AddComponent<LocoMotor::AudioListener>();
+	//gObj->AddComponent<LocoMotor::AudioSource>();
 
 	float frc = 1;
 	// Activa la variable de uso del giroscopio, en el momento en el que detecte el mando, 
@@ -105,7 +106,7 @@ int main() {
 		input->SetControllerLedColor(intensity * 255, 0, (1 - intensity) * 255);
 
 		if (input->controllerConnected() && input->GetButtonDown(SDL_CONTROLLER_BUTTON_X)) {
-			gObj->GetComponent<LocoMotor::AudioSource>()->Play(0);
+			//gObj->GetComponent<LocoMotor::AudioSource>()->Play(0);
 		}
 	}
 	delete mSM;
