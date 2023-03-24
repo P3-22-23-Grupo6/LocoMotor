@@ -3,7 +3,7 @@
 
 #include <map>
 #include <string>
-
+#include <vector>
 namespace Ogre {
 	class SceneNode;
 	class MovableObject;
@@ -96,7 +96,7 @@ namespace OgreWrapper {
 		Node* CreateChild();
 	protected:
 		Ogre::SceneNode* _node;
-		RenderEntity* _ent;
+		std::vector<RenderEntity*> _ent;
 	};
 }
 #endif

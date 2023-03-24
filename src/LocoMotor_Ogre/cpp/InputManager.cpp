@@ -105,8 +105,9 @@ bool InputManager::RegisterEvents() {
 
 			_gyroscopeValue[i] += thisData;
 
-			std::cout << "_gyroscopeVelocityValue = " << _gyroscopeVelocityValue[i] << "\n";
-			std::cout << "_gyroscopeValue = " << _gyroscopeValue[i] << "\n";
+			// DEBUG
+			//std::cout << "_gyroscopeVelocityValue = " << _gyroscopeVelocityValue[i] << "\n";
+			//std::cout << "_gyroscopeValue = " << _gyroscopeValue[i] << "\n";
 		}
 	}
 

@@ -49,11 +49,11 @@ public:
 	// Scalar division
 	LMVector3 operator/(double scalar) const;
 
-	LMVector3 operator= (btVector3 bulletVector);
+	LMVector3 operator= (btVector3& bulletVector);
 
-	btVector3 operator= (LMVector3 lmVector);
+	LMVector3 operator= (const LMVector3& lmVector);
 
-	LMVector3 operator= (Ogre::Vector3 ogreVector);
+	LMVector3 operator= (Ogre::Vector3& ogreVector);
 
 	// Dot product
 	///	@brief Get the Dot Product of two Vectors
