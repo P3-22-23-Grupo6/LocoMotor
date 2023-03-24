@@ -44,27 +44,7 @@ namespace LocoMotor {
 
 		void SetAcceleration(LMVector3 axis, float acceleration);
 		void SetAcceleration(LMVector3 axis, float minAcceleration, float maxAcceleration);
-
-		void SetRotationSpeed(LMVector3 axis, float rotationSpeed);
-		void SetRotationSpeed(LMVector3 axis, float minRotationSpeed, float maxRotationSpeed);
-
-		void SetDuration(float duration);
-		void SetDuration(float minDuration, float maxDuration);
-
-		void SetRepeatDelay(float repeatDelay);
-		void SetRepeatDelay(float minRepeatDelay, float maxRepeatDelay);
-
-		void SetAngle(float angle);
-		void SetAngle(float minAngle, float maxAngle);
-
-		void SetColour(LMVector3 colour);
-		void SetColour(LMVector3 minColour, LMVector3 maxColour);
-
-		void SetTimeToLive(float timeToLive);
-		void SetTimeToLive(float minTimeToLive, float maxTimeToLive);
-
-		void SetTextureAnimation(int textureAnimation);
-		void SetTextureAnimation(int minTextureAnimation, int maxTextureAnimation);
+		
 	private:
 		Component* _comp;
 		Ogre::ParticleSystem* _particleSystem;

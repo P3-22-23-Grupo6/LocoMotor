@@ -18,7 +18,7 @@ namespace OgreWrapper {
 	class Camera;
 	class Renderer3D;
 	class Node;
-
+	class ParticleHelper;
 
 	class RenderScene {
 	public:
@@ -61,6 +61,8 @@ namespace OgreWrapper {
 		Camera* CreateCamera(std::string mesh);
 		void SetActiveCamera(Camera* cam);
 		Camera* GetMainCamera();
+
+		ParticleHelper* CreateParticleHelper(std::string name, std::string filename);
 
 	private:
 		Ogre::SceneManager* _manager;

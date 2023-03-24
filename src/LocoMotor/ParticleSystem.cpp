@@ -165,26 +165,5 @@ void ParticleSystem::SetSpeed(float speed) {
 	_particleSystem->setSpeed(speed);
 }
 
-void ParticleSystem::SetAcceleration(LMVector3 axis, float acceleration) {
-	_particleSystem->setAcceleration(LMVector3::LmToOgre(axis), acceleration);
-	_particleSystem->
-}
-
-void ParticleSystem::SetAcceleration(LMVector3 axis, float minAcceleration, float maxAcceleration) {
-	_particleSystem->setAcceleration(LMVector3::LmToOgre(axis), minAcceleration, maxAcceleration);
-}
-
-void ParticleSystem::SetDuration(float duration) {
-	_particleSystem->setDuration(duration);
-}
-
-void ParticleSystem::SetRepeatDelay(float repeatDelay) {
-	_particleSystem->setRepeatDelay(repeatDelay);
-}
-
-void ParticleSystem::SetRepeatDelay(float minRepeatDelay, float maxRepeatDelay) {
-	_particleSystem->setRepeatDelay(minRepeatDelay, maxRepeatDelay);
-}
-
 
 

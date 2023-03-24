@@ -27,6 +27,7 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Renderer3D.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\RenderScene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\SGTechniqueResolverListener.cpp" />
+    <ClCompile Include="ParticleHelper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h" />
@@ -38,6 +39,7 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Renderer3D.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\SGTechniqueResolverListener.h" />
+    <ClInclude Include="ParticleHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
