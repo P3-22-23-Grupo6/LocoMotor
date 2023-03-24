@@ -44,7 +44,10 @@ void GameObject::Update(float dt) {
 			verticalMov = -.1f;
 
 		_rigidBody->AddForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
+		//SetPosition(LMVector3(100, 10, 10));
 		_node->Translate(-joystickValue_0_Hor, verticalMov, -joystickValue_0_Ver);
+
+		SetPosition(LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z()));
 	}
 
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
@@ -62,7 +65,7 @@ void GameObject::Update(float dt) {
 // Set the position of the GameObject
 void GameObject::SetPosition(LMVector3 pos) {
 	_tr.position = pos;
-	_node->SetPosition(_tr.position.GetX(), _tr.position.GetY(), _tr.position.GetZ());
+	//_node->SetPosition(_tr.position.GetX(), _tr.position.GetY(), _tr.position.GetZ());
 }
 // Set the rotation of the GameObject
 void GameObject::SetRotation(LMVector3 rot) {
