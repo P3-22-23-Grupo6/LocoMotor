@@ -7,6 +7,10 @@
 #include "GameObject.h"
 #include <string>
 
+namespace Particle {
+	class ParticleHelper;
+}
+
 namespace LocoMotor {
 	class ParticleSystem : public Component {
 	public:

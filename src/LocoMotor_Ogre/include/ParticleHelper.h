@@ -20,6 +20,17 @@ namespace OgreWrapper{
 		void RemoveEmitter(std::string name);
 		void RemoveEmitter();
 
+		void MoveEmitter(std::string name, LMVector3 position);
+
+		void RotateEmitter(std::string name, LMVector3 rotation);
+		
+		void SetEmitting(bool emitting);
+		void SetEmitting(std::string name, bool emitting);
+
+		void SetEmissionDuration(std::string name, float duration);
+		
+		void SetEmissionRate(std::string name, float rate);
+
 	private:
 		Ogre::ParticleSystem* _particleSystem;
 

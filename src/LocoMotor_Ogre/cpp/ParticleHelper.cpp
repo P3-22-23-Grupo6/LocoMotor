@@ -95,5 +95,34 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 		RemoveEmitter(name);
 	}
 
+	void OgreWrapper::ParticleHelper::MoveEmitter(std::string name, LMVector3 position) {
+		Ogre::ParticleEmitter* emitter = GetEmitter(name);
+		emitter->setPosition(LMVector3::LmToOgre(position));
+	}
+
+	void OgreWrapper::ParticleHelper::RotateEmitter(std::string name, LMVector3 rotation) {
+		Ogre::ParticleEmitter* emitter = GetEmitter(name);
+		emitter->setDirection(LMVector3::LmToOgre(rotation));
+	}
+
+	void OgreWrapper::ParticleHelper::SetEmitting(std::string name, bool emitting) {
+		Ogre::ParticleEmitter* emitter = GetEmitter(name);
+		emitter->setEnabled(emitting);
+	}
+
+	void OgreWrapper::ParticleHelper::SetEmitting(bool emitting) {
+		_particleSystem->setEmitting(emitting);
+	}
+
+	void OgreWrapper::ParticleHelper::SetEmissionDuration(std::string name, float duration) {
+		Ogre::ParticleEmitter* emitter = GetEmitter(name);
+		emitter->setDuration(duration);
+	}
+
+	void OgreWrapper::ParticleHelper::SetEmissionRate(std::string name, float rate) {
+		Ogre::ParticleEmitter* emitter = GetEmitter(name);
+		emitter->setEmissionRate(rate);
+	}
+
 	
 

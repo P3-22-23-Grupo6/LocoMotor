@@ -1,6 +1,7 @@
 #include "ParticleSystem.h"
 
 using namespace LocoMotor;
+
 ParticleSystem::ParticleSystem() {
 	_comp = nullptr;
 	_particleSystem = nullptr;
@@ -16,14 +17,8 @@ ParticleSystem::~ParticleSystem() {
 }
 
 void ParticleSystem::Init(std::string name) {
-	_sceneManager = _comp->GetContext()->GetSceneManager();
-	_entity = _comp->GetContext()->GetComponent<Ogre::Entity>();
-	_node = _comp->GetContext()->GetNode();
-	_position = LMVector3::LmToOgre(_comp->GetContext()->GetTransform().position);
-	_scale = LMVector3::LmToOgre(_comp->GetContext()->GetTransform().scale);
-	_rotation = LMVector3::LmToOgre(_comp->GetContext()->GetTransform().rotation);
+	_sceneManager = 
 	_particleSystem = _sceneManager->createParticleSystem(_entity->getName() + "ParticleSystem", ("Examples/" + name));
-	_node->attachObject(_particleSystem);
 }
 
 //void ParticleSystem::Update(float dt) {
