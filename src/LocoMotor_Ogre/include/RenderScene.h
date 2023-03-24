@@ -18,7 +18,7 @@ namespace OgreWrapper {
 	class Camera;
 	class Renderer3D;
 	class Node;
-
+	
 
 	class RenderScene {
 	public:
@@ -56,6 +56,7 @@ namespace OgreWrapper {
 		Light* CreateLight();
 		Renderer3D* CreateRenderer(std::string mesh);
 		Camera* CreateCamera(std::string mesh);
+
 		void SetActiveCamera(Camera* cam);
 		Camera* GetMainCamera();
 
