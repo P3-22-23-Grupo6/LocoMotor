@@ -124,5 +124,13 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 		emitter->setEmissionRate(rate);
 	}
 
+	void OgreWrapper::ParticleHelper::SetEmissionPower(std::string name, float power) {
+		Ogre::ParticleEmitter* emitter = GetEmitter(name);
+		emitter->setParticleVelocity(power);
+	}
 	
+	void OgreWrapper::ParticleHelper::SetEmissionPower(std::string name, float minPower, float maxPower) {
+		Ogre::ParticleEmitter* emitter = GetEmitter(name);
+		emitter->setParticleVelocity(minPower, maxPower);
+	}
 

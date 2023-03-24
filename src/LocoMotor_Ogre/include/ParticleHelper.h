@@ -31,6 +31,10 @@ namespace OgreWrapper{
 		
 		void SetEmissionRate(std::string name, float rate);
 
+		void SetEmissionPower(std::string name, float power);
+		void SetEmissionPower(std::string name, float minPower, float maxPower);
+		
+
 	private:
 		Ogre::ParticleSystem* _particleSystem;
 
