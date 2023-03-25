@@ -2,7 +2,9 @@
 
 //HITO 1 POC
 #include "InputManager.h"
-
+#include "Renderer3D.h"
+#include "BulletRigidBody.h"
+#include "Node.h"
 
 using namespace LocoMotor;
 

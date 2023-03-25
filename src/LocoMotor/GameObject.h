@@ -2,17 +2,22 @@
 #ifndef LM_GAMEOBJECT
 #define LM_GAMEOBJECT
 
-#include "LocoMotor_Utils/lmVector.h"
+#include "lmVector.h"
 #include "Component.h"
 #include <map>
 
 //HITO 1 POC
-#include "Renderer3D.h"
-#include "BulletRigidBody.h"
-#include "Node.h"
 
 
 
+namespace PhysicdWrapper {
+	class BulletRigidBody;
+}
+
+namespace OgreWrapper {
+	class Node;
+	class Renderer3D;
+}
 
 namespace LocoMotor {
 	struct Transform {
