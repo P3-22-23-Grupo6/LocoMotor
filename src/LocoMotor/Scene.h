@@ -42,6 +42,8 @@ namespace LocoMotor {
 		GameObject* AddGameobject(std::string name);
 		void AddObject(GameObject* obj);
 
+		
+
 	private:
 		//camera
 
@@ -61,7 +63,7 @@ namespace LocoMotor {
 
 		OgreWrapper::Node* _nod;
 
-		OgreWrapper::Node* node;
+		OgreWrapper::Node* _node;
 
 		GameObject* camera_gObj;
 		GameObject* ship_gObj;

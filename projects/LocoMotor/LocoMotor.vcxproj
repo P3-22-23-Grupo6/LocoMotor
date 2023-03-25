@@ -47,6 +47,7 @@
     <ClCompile Include="..\..\src\LocoMotor\GameObject.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\LocoMotor_main.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\LogSystem.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Scene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
   </ItemGroup>
@@ -59,6 +60,7 @@
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h" />
     <ClInclude Include="..\..\src\LocoMotor\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
+    <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h" />
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h" />
   </ItemGroup>
