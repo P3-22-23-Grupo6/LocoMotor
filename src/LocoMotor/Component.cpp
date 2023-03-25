@@ -2,7 +2,8 @@
 
 
 LocoMotor::GameObject* LocoMotor::Component::GetContext() {
-	return ent;
+	return gameObject;
+}
 void LocoMotor::Component::SetContext(GameObject* ent) {
 	this->gameObject = ent;
 }

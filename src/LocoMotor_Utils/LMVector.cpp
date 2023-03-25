@@ -38,80 +38,162 @@ void LMVector3::SetZ(double z) {
 	this->_z = z;
 }
 
-// Vector addition
-LMVector3 LMVector3::operator+(const LMVector3& other) {
-	this->_x += other._x;
-	this->_y += other._y;
-	this->_z += other._z;
+// Equal
+LMVector3 LMVector3::operator=(Ogre::Vector3 v) {
+	*this = OgreToLm(v);
 
-	return LMVector3(_x, _y, _z);
+	return *this;
+}
+LMVector3 LMVector3::operator=(FMOD_VECTOR v) {
+	*this = FModToLm(v);
+
+	return *this;
+}
+LMVector3 LMVector3::operator=(btVector3 v) {
+	*this = BulletToLm(v);
+	return *this;
+}
+LMVector3 LMVector3::operator=(btTransform v) {
+	*this = BullTransformToLm(v);
+	return *this;
 }
 
-// Vector subtraction
-LMVector3 LMVector3::operator-(const LMVector3& other) {
-	this->_x -= other._x;
-	this->_y -= other._y;
-	this->_z -= other._z;
+// Sum
+LMVector3 LMVector3::operator+(const LMVector3& other) const {
+	LMVector3 aux = LMVector3(
+		this->_x + other._x,
+		this->_y + other._y,
+		this->_z + other._z);
 
-	return LMVector3(_x, _y, _z);
+	return aux;
+}
+LMVector3 LMVector3::operator+(const btVector3& other) const {
+	return *this + BulletToLm(other);
+}
+LMVector3 LMVector3::operator+(const btTransform& other) const {
+	return *this + BullTransformToLm(other);
+}
+LMVector3 LMVector3::operator+(const Ogre::Vector3& other) const {
+	return *this + OgreToLm(other);
+}
+LMVector3 LMVector3::operator+(const FMOD_VECTOR& other) const {
+	return *this + FModToLm(other);
+}
+LMVector3 LMVector3::operator+(const double& other) const {
+	LMVector3 aux = LMVector3(
+		this->_x + other,
+		this->_y + other,
+		this->_z + other);
+
+	return aux;
 }
 
-// Scalar multiplication
-LMVector3 LMVector3::operator*(double scalar) {
-	this->_x *= scalar;
-	this->_y += scalar;
-	this->_z += scalar;
+// Sub
+LMVector3 LMVector3::operator-(const LMVector3& other) const {
+	LMVector3 aux = LMVector3(
+		this->_x - other._x,
+		this->_y - other._y,
+		this->_z - other._z);
 
-	return LMVector3(_x, _y, _z);
+	return aux;
+}
+LMVector3 LMVector3::operator-(const btVector3& other) const {
+	return *this - BulletToLm(other);
+}
+LMVector3 LMVector3::operator-(const btTransform& other) const {
+	return *this - BullTransformToLm(other);
+}
+LMVector3 LMVector3::operator-(const Ogre::Vector3& other) const {
+	return *this - OgreToLm(other);
+}
+LMVector3 LMVector3::operator-(const FMOD_VECTOR& other) const {
+	return *this - FModToLm(other);
+}
+LMVector3 LMVector3::operator-(const double& other) const {
+	LMVector3 aux = LMVector3(
+		this->_x - other,
+		this->_y - other,
+		this->_z - other);
+
+	return aux;
 }
 
-//Vector multiplication
-LMVector3 LMVector3::operator*(const LMVector3& other) {
-	this->_x *= other._x;
-	this->_y *= other._y;
-	this->_z *= other._z;
-	return LMVector3(_x, _y, _z);
+// Mul
+LMVector3 LMVector3::operator*(const LMVector3& other) const {
+	LMVector3 aux = LMVector3(
+		this->_x * other._x,
+		this->_y * other._y,
+		this->_z * other._z);
+
+	return aux;
+}
+LMVector3 LMVector3::operator*(const btVector3& other) const {
+	return *this * BulletToLm(other);
+}
+LMVector3 LMVector3::operator*(const btTransform& other) const {
+	return *this * BullTransformToLm(other);
+}
+LMVector3 LMVector3::operator*(const Ogre::Vector3& other) const {
+	return *this * OgreToLm(other);
+}
+LMVector3 LMVector3::operator*(const FMOD_VECTOR& other) const {
+	return *this * FModToLm(other);
+}
+LMVector3 LMVector3::operator*(const double& other) const {
+	LMVector3 aux = LMVector3(
+		this->_x * other,
+		this->_y * other,
+		this->_z * other);
+
+	return aux;
 }
 
-// Scalar division
-LMVector3 LMVector3::operator/(double scalar)  {
-	this->_x *= scalar;
-	this->_y += scalar;
-	this->_z += scalar;
+// Div
+LMVector3 LMVector3::operator/(const LMVector3& other) const {
+	LMVector3 aux = LMVector3(
+		this->_x / other._x,
+		this->_y / other._y,
+		this->_z / other._z);
 
-	return LMVector3(_x, _y, _z);
+	return aux;
+}
+LMVector3 LMVector3::operator/(const btVector3& other) const {
+	return *this / BulletToLm(other);
+}
+LMVector3 LMVector3::operator/(const btTransform& other) const {
+	return *this / BullTransformToLm(other);
+}
+LMVector3 LMVector3::operator/(const Ogre::Vector3& other) const {
+	return *this / OgreToLm(other);
+}
+LMVector3 LMVector3::operator/(const FMOD_VECTOR& other) const {
+	return *this / FModToLm(other);
+}
+LMVector3 LMVector3::operator/(const double& other) const {
+	LMVector3 aux = LMVector3(
+		this->_x / other,
+		this->_y / other,
+		this->_z / other);
+
+	return aux;
 }
 
-//Vector division
-LMVector3 LMVector3::operator/(const LMVector3& other) {
-	this->_x /= other._x;
-	this->_y /= other._y;
-	this->_z /= other._z;
-	return LMVector3(_x, _y, _z);
+// Type operators
+LMVector3::operator Ogre::Vector3() const {
+	return LmToOgre(*this);
 }
 
-LMVector3 LMVector3::operator= (const LMVector3& lmVector) {
-	this->_x = lmVector._x;
-	this->_y = lmVector._y;
-	this->_z = lmVector._z;
-	return lmVector;
+LMVector3::operator btVector3() const {
+	return LmToBullet(*this);
 }
 
-LMVector3 LMVector3::operator= (btVector3& bulletVector) {
-	this->_x = bulletVector.x();
-	this->_y = bulletVector.y();
-	this->_z = bulletVector.z();
-	return BulletToLm(bulletVector);
+LMVector3::operator btTransform() const {
+	return LmToBullTransform(*this);
 }
 
-LMVector3 LMVector3::operator= (Ogre::Vector3& ogreVector) {
-	this->_x = ogreVector.x;
-	this->_y = ogreVector.y;
-	this->_z = ogreVector.z;
-	return OgreToLm(ogreVector);
+LMVector3::operator FMOD_VECTOR() const {
+	return LmToFMod(*this);
 }
-
-
 
 // Dot product
 double LMVector3::Dot(const LMVector3& other) const {
@@ -188,7 +270,7 @@ LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) const {
 	LMVector3 cross = axis.Cross(*this);
 	LMVector3 dot = axis * axis.Dot(*this);
 	LMVector3 cross2 = axis.Cross(cross);
-	return dot + cross * sin(angle * M_PI / 180) + cross2 * (1 - cos(angle * M_PI / 180));
+	return dot + cross * sin(angle * M_PI / 180. ) + cross2 * (1 - cos(angle * M_PI / 180.));
 }
 
 
@@ -273,14 +355,63 @@ void LMQuaternion::SetZ(double z) {
 	this->_z = z;
 }
 
+// Quaternion equal
+LMQuaternion LMQuaternion::operator=(const LMQuaternion& other) {
+	_w = other._w;
+	_x = other._x;
+	_y = other._y;
+	_z = other._z;
+	return *this;
+}
+LMQuaternion LMQuaternion::operator=(const btQuaternion& other) {
+	_w = other.getW();
+	_x = other.getX();
+	_y = other.getY();
+	_z = other.getZ();
+	return *this;
+}
+LMQuaternion LMQuaternion::operator=(const btTransform& other) {
+	_w = other.getRotation().getW();
+	_x = other.getRotation().getX();
+	_y = other.getRotation().getY();
+	_z = other.getRotation().getZ();
+	return *this;
+}
+LMQuaternion LMQuaternion::operator=(const Ogre::Quaternion& other) {
+	_w = other.w;
+	_x = other.x;
+	_y = other.y;
+	_z = other.z;
+	return *this;
+}
+
+
 // Quaternion addition
 LMQuaternion LMQuaternion::operator+(const LMQuaternion& other) const {
 	return LMQuaternion(_w + other._w, _x + other._x, _y + other._y, _z + other._z);
+}
+LMQuaternion LMQuaternion::operator+(const btQuaternion& other) const {
+	return LMQuaternion(_w + other.getW(), _x + other.getX(), _y + other.getY(), _z + other.getZ());
+}
+LMQuaternion LMQuaternion::operator+(const btTransform& other) const {
+	return LMQuaternion(_w + other.getRotation().getW(), _x + other.getRotation().getX(), _y + other.getRotation().getY(), _z + other.getRotation().getZ());
+}
+LMQuaternion LMQuaternion::operator+(const Ogre::Quaternion& other) const {
+	return LMQuaternion(_w + other.w, _x + other.x, _y + other.y, _z + other.z);
 }
 
 // Quaternion subtraction
 LMQuaternion LMQuaternion::operator-(const LMQuaternion& other) const {
 	return LMQuaternion(_w - other._w, _x - other._x, _y - other._y, _z - other._z);
+}
+LMQuaternion LMQuaternion::operator-(const btQuaternion& other) const {
+	return LMQuaternion(_w - other.getW(), _x - other.getX(), _y - other.getY(), _z - other.getZ());
+}
+LMQuaternion LMQuaternion::operator-(const btTransform& other) const {
+	return LMQuaternion(_w - other.getRotation().getW(), _x - other.getRotation().getX(), _y - other.getRotation().getY(), _z - other.getRotation().getZ());
+}
+LMQuaternion LMQuaternion::operator-(const Ogre::Quaternion& other) const {
+	return LMQuaternion(_w - other.w, _x - other.x, _y - other.y, _z - other.z);
 }
 
 // Quaternion multiplication
@@ -291,7 +422,27 @@ LMQuaternion LMQuaternion::operator*(const LMQuaternion& other) const {
 	double newZ = _w * other._z + _x * other._y - _y * other._x + _z * other._w;
 	return LMQuaternion(newW, newX, newY, newZ);
 }
-
+LMQuaternion LMQuaternion::operator*(const btQuaternion& other) const {
+	double newW = _w * other.getW() - _x * other.getX() - _y * other.getY() - _z * other.getZ();
+	double newX = _w * other.getX() + _x * other.getW() + _y * other.getZ() - _z * other.getY();
+	double newY = _w * other.getY() - _x * other.getZ() + _y * other.getW() + _z * other.getX();
+	double newZ = _w * other.getZ() + _x * other.getY() - _y * other.getX() + _z * other.getW();
+	return LMQuaternion(newW, newX, newY, newZ);
+}
+LMQuaternion LMQuaternion::operator*(const btTransform& other) const {
+	double newW = _w * other.getRotation().getW() - _x * other.getRotation().getX() - _y * other.getRotation().getY() - _z * other.getRotation().getZ();
+	double newX = _w * other.getRotation().getX() + _x * other.getRotation().getW() + _y * other.getRotation().getZ() - _z * other.getRotation().getY();
+	double newY = _w * other.getRotation().getY() - _x * other.getRotation().getZ() + _y * other.getRotation().getW() + _z * other.getRotation().getX();
+	double newZ = _w * other.getRotation().getZ() + _x * other.getRotation().getY() - _y * other.getRotation().getX() + _z * other.getRotation().getW();
+	return LMQuaternion(newW, newX, newY, newZ);
+}
+LMQuaternion LMQuaternion::operator*(const Ogre::Quaternion& other) const {
+	double newW = _w * other.w - _x * other.x - _y * other.y - _z * other.z;
+	double newX = _w * other.x + _x * other.w + _y * other.z - _z * other.y;
+	double newY = _w * other.y - _x * other.z + _y * other.w + _z * other.x;
+	double newZ = _w * other.z + _x * other.y - _y * other.x + _z * other.w;
+	return LMQuaternion(newW, newX, newY, newZ);
+}
 // Scalar multiplication
 LMQuaternion LMQuaternion::operator*(double scalar) const {
 	return LMQuaternion(_w * scalar, _x * scalar, _y * scalar, _z * scalar);
@@ -323,6 +474,7 @@ void LMQuaternion::Normalize() {
 	}
 }
 
+//Rotate a quaternion
 LMQuaternion LMQuaternion::Rotate(const LMVector3& axis, double angle) const 	{
 	LMQuaternion q;
 	double halfAngle = (angle * (M_PI / 180.0)) / 2.0;
