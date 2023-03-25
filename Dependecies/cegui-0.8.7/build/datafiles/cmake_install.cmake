@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles
+# Install script for directory: C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -32,35 +32,35 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles/animations")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles/animations")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles/fonts")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles/fonts")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles/imagesets")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles/imagesets")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles/layouts")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles/layouts")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles/looknfeel")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles/looknfeel")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles/lua_scripts")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles/lua_scripts")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles/schemes")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles/schemes")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles/xml_schemas")
+if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles/xml_schemas")
 endif()
 

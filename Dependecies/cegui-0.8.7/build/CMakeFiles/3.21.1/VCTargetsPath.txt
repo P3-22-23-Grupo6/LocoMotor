@@ -1,1 +1,0 @@
-c:/software/programacion/MSVStudio2022/MSBuild/Microsoft/VC/v170

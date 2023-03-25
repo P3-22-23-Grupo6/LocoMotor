@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7
+# Install script for directory: C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,15 +34,15 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/cegui/src/cmake_install.cmake")
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/cegui/src/RendererModules/cmake_install.cmake")
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/cegui/src/XMLParserModules/cmake_install.cmake")
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/cegui/src/ImageCodecModules/cmake_install.cmake")
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/cegui/src/WindowRendererSets/cmake_install.cmake")
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/cegui/src/ScriptModules/cmake_install.cmake")
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/cegui/src/CommonDialogs/cmake_install.cmake")
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/application_templates/cmake_install.cmake")
-  include("C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/datafiles/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/cegui/src/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/cegui/src/RendererModules/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/cegui/src/XMLParserModules/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/cegui/src/ImageCodecModules/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/cegui/src/WindowRendererSets/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/cegui/src/ScriptModules/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/cegui/src/CommonDialogs/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/application_templates/cmake_install.cmake")
+  include("C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/datafiles/cmake_install.cmake")
 
 endif()
 
@@ -54,5 +54,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

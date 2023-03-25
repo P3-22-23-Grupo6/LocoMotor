@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\usuario_local\Documents\Motor\Dependecies\cegui-0.8.7\build\CMakeFiles\6345bd20469136a2c8442dc68f6050e5\generate.stamp.rule">
+    <CustomBuild Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\build\CMakeFiles\ca271ff521d9c17b49787927d0970353\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{0EDB3B9A-6CC2-3C2A-A0BA-DA20D935B125}</UniqueIdentifier>
+      <UniqueIdentifier>{44724F6B-268C-3C21-838A-301C15783C61}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

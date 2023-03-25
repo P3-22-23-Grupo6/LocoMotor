@@ -47,7 +47,15 @@
 #include <OgreViewport.h>
 #include <OgreCamera.h>
 
-
+#ifdef CEGUI_USE_OGRE_COMPOSITOR2
+#include <Compositor/OgreCompositorManager2.h>
+#include <Compositor/OgreCompositorCommon.h>
+#include <Compositor/OgreCompositorWorkspaceDef.h>
+#include <Compositor/OgreCompositorNodeDef.h>
+#include <Compositor/Pass/PassClear/OgreCompositorPassClear.h>
+#include <Compositor/Pass/PassScene/OgreCompositorPassScene.h>
+#include <OgreRenderQueueListener.h>
+#endif
 
 #ifdef CEGUI_USE_OGRE_HLMS
 #include <OgreHlmsManager.h>

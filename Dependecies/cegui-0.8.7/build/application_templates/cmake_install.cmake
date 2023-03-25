@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/application_templates
+# Install script for directory: C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/application_templates
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

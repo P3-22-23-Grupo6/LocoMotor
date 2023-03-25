@@ -46,7 +46,7 @@ Each item in here has a comment to describe what it's for.
 
 // Define the default place where samples will look for datafiles
 #if defined(_WIN32) || defined(__WIN32__)
-#   define CEGUI_SAMPLE_DATAPATH "C:/Users/usuario_local/Documents/Motor/Dependecies/cegui-0.8.7/datafiles"
+#   define CEGUI_SAMPLE_DATAPATH "C:/Users/jacob/OneDrive/Escritorio/Motor/Dependecies/cegui-0.8.7/datafiles"
 #else
 #   define CEGUI_SAMPLE_DATAPATH "C:/Program Files (x86)/cegui/share/cegui-0"
 #endif

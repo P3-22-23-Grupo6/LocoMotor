@@ -33,6 +33,7 @@
 #include <OgreRenderTexture.h>
 #include <OgreRenderSystem.h>
 #include <OgreViewport.h>
+#include <Ogre.h>
 
 
 // Start of CEGUI namespace section
