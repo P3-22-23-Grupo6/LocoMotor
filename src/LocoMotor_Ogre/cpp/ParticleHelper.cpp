@@ -3,6 +3,8 @@
 #include <OgreParticleSystem.h>
 #include <OgreParticleEmitter.h>
 
+#include <Ogre.h>
+
 using namespace OgreWrapper;
 
 ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
@@ -14,10 +16,10 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 
 	
 
-	void ParticleHelper::AddEmitter(std::string name, LMVector3 position) {
+	void ParticleHelper::AddEmitter(std::string name, const Ogre::Vector3&  position) {
 		if (_emitters.find(name) == _emitters.end()) {
 			_emitters.insert({ name, _particleSystem->addEmitter(name) });
-			_emitters[name]->setPosition(LMVector3::LmToOgre(position));
+			_emitters[name]->setPosition(position);
 		}
 		else {
 			int num = 0;
@@ -27,7 +29,7 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 
 				if (_emitters.find(newName) == _emitters.end()) {
 					_emitters.insert({ newName, _particleSystem->addEmitter(newName) });
-					_emitters[newName]->setPosition(LMVector3::LmToOgre(position));
+					_emitters[newName]->setPosition(position);
 
 					found = true;
 				}
@@ -39,7 +41,7 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 		}
 	}
 
-	void ParticleHelper::AddEmitter(LMVector3 position) {
+	void ParticleHelper::AddEmitter(const Ogre::Vector3&  position) {
 		std::string name = "unnamedEmitter";
 		AddEmitter(name, position);
 	}
@@ -95,14 +97,14 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 		RemoveEmitter(name);
 	}
 
-	void OgreWrapper::ParticleHelper::MoveEmitter(std::string name, LMVector3 position) {
+	void OgreWrapper::ParticleHelper::MoveEmitter(std::string name, const Ogre::Vector3&  position) {
 		Ogre::ParticleEmitter* emitter = GetEmitter(name);
-		emitter->setPosition(LMVector3::LmToOgre(position));
+		emitter->setPosition(position);
 	}
 
-	void OgreWrapper::ParticleHelper::RotateEmitter(std::string name, LMVector3 rotation) {
+	void OgreWrapper::ParticleHelper::RotateEmitter(std::string name, const Ogre::Vector3&  rotation) {
 		Ogre::ParticleEmitter* emitter = GetEmitter(name);
-		emitter->setDirection(LMVector3::LmToOgre(rotation));
+		emitter->setDirection(rotation);
 	}
 
 	void OgreWrapper::ParticleHelper::SetEmitting(std::string name, bool emitting) {

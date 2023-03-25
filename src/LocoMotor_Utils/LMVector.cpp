@@ -1,4 +1,8 @@
+#define _USE_MATH_DEFINES
+
 #include "LMVector.h"
+
+#include <cmath>
 //#include "btBulletDynamicsCommon.h"
 //Vector class to be used with LocoMotor
 
@@ -39,21 +43,21 @@ void LMVector3::SetZ(double z) {
 }
 
 // Equal
-LMVector3 LMVector3::operator=(Ogre::Vector3 v) {
+LMVector3 LMVector3::operator=(const Ogre::Vector3& v) {
 	*this = OgreToLm(v);
 
 	return *this;
 }
-LMVector3 LMVector3::operator=(FMOD_VECTOR v) {
+LMVector3 LMVector3::operator=(const FMOD_VECTOR& v) {
 	*this = FModToLm(v);
 
 	return *this;
 }
-LMVector3 LMVector3::operator=(btVector3 v) {
+LMVector3 LMVector3::operator=(const btVector3& v) {
 	*this = BulletToLm(v);
 	return *this;
 }
-LMVector3 LMVector3::operator=(btTransform v) {
+LMVector3 LMVector3::operator=(const btTransform& v) {
 	*this = BullTransformToLm(v);
 	return *this;
 }
@@ -183,9 +187,9 @@ LMVector3::operator Ogre::Vector3() const {
 	return LmToOgre(*this);
 }
 
-LMVector3::operator btVector3() const {
+/*LMVector3::operator btVector3() const {
 	return LmToBullet(*this);
-}
+}*/ //Refer to lmVector.h for explanations on why this doesn't work
 
 LMVector3::operator btTransform() const {
 	return LmToBullTransform(*this);

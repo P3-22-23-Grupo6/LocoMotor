@@ -2,8 +2,15 @@
 #ifndef _PARTICLEHELPER_H_
 #define _PARTICLEHELPER_H_
 
-#include "lmVector.h"
+#include <unordered_map>
+#include <string>
 
+namespace Ogre {
+	class ParticleSystem;
+	class ParticleEmitter;
+
+	typedef Vector<3, Real> Vector3;
+}
 
 namespace OgreWrapper{
 	class ParticleHelper {
@@ -12,17 +19,17 @@ namespace OgreWrapper{
 		ParticleHelper(Ogre::ParticleSystem* sys);
 		~ParticleHelper();
 
-		void AddEmitter(std::string name, LMVector3 position);
-		void AddEmitter(LMVector3 position);
+		void AddEmitter(std::string name, const Ogre::Vector3& position);
+		void AddEmitter(const Ogre::Vector3&  position);
 
 		Ogre::ParticleEmitter* GetEmitter(std::string name);
 
 		void RemoveEmitter(std::string name);
 		void RemoveEmitter();
 
-		void MoveEmitter(std::string name, LMVector3 position);
+		void MoveEmitter(std::string name, const Ogre::Vector3&  position);
 
-		void RotateEmitter(std::string name, LMVector3 rotation);
+		void RotateEmitter(std::string name, const Ogre::Vector3&  rotation);
 		
 		void SetEmitting(bool emitting);
 		void SetEmitting(std::string name, bool emitting);
@@ -38,7 +45,7 @@ namespace OgreWrapper{
 	private:
 		Ogre::ParticleSystem* _particleSystem;
 
-		std::map <std::string, Ogre::ParticleEmitter*> _emitters;
+		std::unordered_map <std::string, Ogre::ParticleEmitter*> _emitters;
 		
 		
 	};

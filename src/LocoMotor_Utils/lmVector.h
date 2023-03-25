@@ -1,15 +1,13 @@
 #pragma once
+#ifndef LM_VECTOR
+#define LM_VECTOR
 
-#define _USE_MATH_DEFINES
 
-#include "OgreVector3.h"
-#include "OgreQuaternion.h"
+
+
+#include "OgreVector.h"
 #include "btBulletDynamicsCommon.h"
 #include "fmod_common.h"
-#include <cmath>
-class btVector3;
-class btTransform;
-class btQuaternion;
 //Vector class to be used with LocoMotor
 
 class LMVector3 {
@@ -41,10 +39,10 @@ public:
 	void SetZ(double z);
 
 	// Equal operators of vectors
-	LMVector3 operator=(Ogre::Vector3 v);
-	LMVector3 operator=(FMOD_VECTOR v);
-	LMVector3 operator=(btVector3 v);
-	LMVector3 operator=(btTransform v);
+	LMVector3 operator=(const Ogre::Vector3& v);
+	LMVector3 operator=(const FMOD_VECTOR& v);
+	LMVector3 operator=(const btVector3& v);
+	LMVector3 operator=(const btTransform& v);
 
 	// Sum operators of vectors
 	LMVector3 operator+(const LMVector3& other) const;
@@ -80,7 +78,7 @@ public:
 
 	// Type operators between vectors
 	operator Ogre::Vector3() const;
-	operator btVector3() const;
+		// Due to lmBullet antics, this operator makes conflicts with the "/" operator beteen LMVector and btVector3.h //operator btVector3() const;
 	operator btTransform() const;
 	operator FMOD_VECTOR() const;
 
@@ -131,7 +129,7 @@ public:
 	/// @param axis The axis to rotate around
 	/// @param angle The angle to rotate (degrees)
 	LMVector3 Rotate(const LMVector3& axis, double angle) const;
-	
+
 
 
 
@@ -280,3 +278,4 @@ private:
 
 
 };
+#endif // !LM_VECTOR
