@@ -1,9 +1,12 @@
 #pragma once
 
+#define _USE_MATH_DEFINES
+
 #include "OgreVector3.h"
 #include "OgreQuaternion.h"
 #include "btBulletDynamicsCommon.h"
 #include "fmod_common.h"
+#include <cmath>
 class btVector3;
 class btTransform;
 class btQuaternion;
@@ -38,22 +41,30 @@ public:
 	void SetZ(double z);
 
 	// Vector addition
-	LMVector3 operator+(const LMVector3& other) const;
+	LMVector3 operator+(const LMVector3& other);
 
 // Vector subtraction
-	LMVector3 operator-(const LMVector3& other) const;
+	LMVector3 operator-(const LMVector3& other);
 
 	// Scalar multiplication
-	LMVector3 operator*(double scalar) const;
+	LMVector3 operator*(double scalar);
+
+	//Vector multiplication
+	LMVector3 operator*(const LMVector3& other);
 
 	// Scalar division
-	LMVector3 operator/(double scalar) const;
+	LMVector3 operator/(double scalar);
+
+	//Vector division
+	LMVector3 operator/(const LMVector3& other);
 
 	LMVector3 operator= (btVector3& bulletVector);
 
 	LMVector3 operator= (const LMVector3& lmVector);
 
 	LMVector3 operator= (Ogre::Vector3& ogreVector);
+
+	btVector3 operator= (const btVector3& bulletVector);
 
 	// Dot product
 	///	@brief Get the Dot Product of two Vectors
@@ -63,6 +74,10 @@ public:
 	///	@brief Get the Cross Product of two Vectors
 	LMVector3 Cross(const LMVector3& other) const;
 
+	// Cross product
+	///	@brief Get the Cross Product of two Vectors
+	LMVector3 Cross(const LMVector3& other, const LMVector3& normal) const;
+
 	// Magnitude
 	///	@brief Get the Magnitude of a Vector
 	double Magnitude() const;
@@ -70,6 +85,25 @@ public:
 	// Normalize
 	///	@brief Normalize a Vector
 	void Normalize();
+
+	// Angle
+	///	@brief Get the Angle between two Vectors
+	double Angle(const LMVector3& other) const;
+
+	// Angle
+	///	@brief Get the Angle between two Vectors
+	double Angle(const LMVector3& other, const LMVector3& normal) const;
+
+	// Angle
+	///	@brief Get the Angle between two Vectors
+	double Angle(const LMVector3& other, const LMVector3& normal, const LMVector3& axis) const;
+
+	// rotate
+	///	@brief Rotate a Vector
+	LMVector3 Rotate(const LMVector3& axis, double angle) const;
+	
+
+
 
 // VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
 	/// @brief Converts a Bullet vector to lmVector
@@ -155,6 +189,30 @@ public:
 	// Normalize
 	/// @brief Normalize a Quaternion
 	void Normalize();
+
+	// Rotate
+	/// @brief Rotate a Quaternion
+	LMQuaternion Rotate(const LMVector3& axis, double angle) const;
+
+	// Rotate a vector by this quaternion
+	/// @brief Rotate a Vector by a Quaternion
+	LMVector3 Rotate(const LMVector3& vector) const;
+
+	// Quaternion to Euler
+	/// @brief Convert a Quaternion to Euler
+	LMVector3 ToEuler() const;
+
+	// Up vector from Quaternion
+	/// @brief Get the Up Vector from a Quaternion
+	LMVector3 Up() const;
+
+	// Right vector from Quaternion
+	/// @brief Get the Right Vector from a Quaternion
+	LMVector3 Right() const;
+
+	// Forward vector from Quaternion
+	/// @brief Get the Forward Vector from a Quaternion
+	LMVector3 Forward() const;
 
 
 // QUATERNION TRANSFORMATIONS BETWEEN LANGUAGES

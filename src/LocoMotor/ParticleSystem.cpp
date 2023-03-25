@@ -9,9 +9,10 @@ using namespace LocoMotor;
 
 const std::string ParticleSystem::name = "ParticleSystem";
 
-ParticleSystem::ParticleSystem(Scene* scene, OgreWrapper::RenderScene* renderScn) {
+ParticleSystem::ParticleSystem(Scene* scene, OgreWrapper::RenderScene* renderScn, std::string filename) {
 	_scene = scene;
 	_renderScn = renderScn;
+	_filename = filename;
 }
 
 void ParticleSystem::InitComponent() {

@@ -15,7 +15,7 @@ namespace LocoMotor {
 	class ParticleSystem : public Component {
 	public:
 		const static std::string name;
-		ParticleSystem(Scene* scene, OgreWrapper::RenderScene* renderScn);
+		ParticleSystem(Scene* scene, OgreWrapper::RenderScene* renderScn, std::string filename);
 		OgreWrapper::Node* _node;
 
 		void InitComponent() override;

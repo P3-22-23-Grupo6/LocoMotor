@@ -39,23 +39,55 @@ void LMVector3::SetZ(double z) {
 }
 
 // Vector addition
-LMVector3 LMVector3::operator+(const LMVector3& other) const {
-	return LMVector3(_x + other._x, _y + other._y, _z + other._z);
+LMVector3 LMVector3::operator+(const LMVector3& other) {
+	this->_x += other._x;
+	this->_y += other._y;
+	this->_z += other._z;
+
+	return LMVector3(_x, _y, _z);
 }
 
 // Vector subtraction
-LMVector3 LMVector3::operator-(const LMVector3& other) const {
-	return LMVector3(_x - other._x, _y - other._y, _z - other._z);
+LMVector3 LMVector3::operator-(const LMVector3& other) {
+	this->_x -= other._x;
+	this->_y -= other._y;
+	this->_z -= other._z;
+
+	return LMVector3(_x, _y, _z);
 }
 
 // Scalar multiplication
-LMVector3 LMVector3::operator*(double scalar) const {
-	return LMVector3(_x * scalar, _y * scalar, _z * scalar);
+LMVector3 LMVector3::operator*(double scalar) {
+	this->_x *= scalar;
+	this->_y += scalar;
+	this->_z += scalar;
+
+	return LMVector3(_x, _y, _z);
+}
+
+//Vector multiplication
+LMVector3 LMVector3::operator*(const LMVector3& other) {
+	this->_x *= other._x;
+	this->_y *= other._y;
+	this->_z *= other._z;
+	return LMVector3(_x, _y, _z);
 }
 
 // Scalar division
-LMVector3 LMVector3::operator/(double scalar) const {
-	return LMVector3(_x / scalar, _y / scalar, _z / scalar);
+LMVector3 LMVector3::operator/(double scalar)  {
+	this->_x *= scalar;
+	this->_y += scalar;
+	this->_z += scalar;
+
+	return LMVector3(_x, _y, _z);
+}
+
+//Vector division
+LMVector3 LMVector3::operator/(const LMVector3& other) {
+	this->_x /= other._x;
+	this->_y /= other._y;
+	this->_z /= other._z;
+	return LMVector3(_x, _y, _z);
 }
 
 LMVector3 LMVector3::operator= (const LMVector3& lmVector) {
@@ -79,6 +111,8 @@ LMVector3 LMVector3::operator= (Ogre::Vector3& ogreVector) {
 	return OgreToLm(ogreVector);
 }
 
+
+
 // Dot product
 double LMVector3::Dot(const LMVector3& other) const {
 	return _x * other._x + _y * other._y + _z * other._z;
@@ -87,6 +121,14 @@ double LMVector3::Dot(const LMVector3& other) const {
 // Cross product
 LMVector3 LMVector3::Cross(const LMVector3& other) const {
 	return LMVector3(_y * other._z - _z * other._y, _z * other._x - _x * other._z, _x * other._y - _y * other._x);
+}
+// Cross product
+LMVector3 LMVector3::Cross(const LMVector3& other, const LMVector3& axis) const {
+	LMVector3 cross = Cross(other);
+	if (cross.Dot(axis) < 0) {
+		cross = cross * -1;
+	}
+	return cross;
 }
 
 // Magnitude
@@ -103,6 +145,56 @@ void LMVector3::Normalize() {
 		_z /= mag;
 	}
 }
+
+// Angle between two vectors
+double LMVector3::Angle(const LMVector3& other) const {
+	double dot = Dot(other);
+	double mag = Magnitude() * other.Magnitude();
+	if (mag > 0) {
+		return acos(dot / mag);
+	}
+	return 0;
+}
+
+//Angle between two vectors
+double LMVector3::Angle(const LMVector3& other, const LMVector3& axis) const {
+	double angle = Angle(other);
+	LMVector3 cross = Cross(other);
+	if (cross.Dot(axis) < 0) {
+		angle = -angle;
+	}
+
+	angle = angle * 180 / M_PI;
+
+	return angle;
+}
+
+
+//Angle between two vectors in degrees
+double LMVector3::Angle(const LMVector3& other, const LMVector3& normal, const LMVector3& axis) const {
+	double angle = Angle(other, normal);
+	LMVector3 cross = Cross(other, normal);
+	if (cross.Dot(axis) < 0) {
+		angle = -angle;
+	}
+
+	angle = angle * 180 / M_PI;
+
+	return angle;
+}
+
+// Rotate a vector around an axis in degrees
+LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) const {
+	LMVector3 cross = axis.Cross(*this);
+	LMVector3 dot = axis * axis.Dot(*this);
+	LMVector3 cross2 = axis.Cross(cross);
+	return dot + cross * sin(angle * M_PI / 180) + cross2 * (1 - cos(angle * M_PI / 180));
+}
+
+
+
+
+
 
 // VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
 // Converts a Bullet vector to lmVector
@@ -229,6 +321,39 @@ void LMQuaternion::Normalize() {
 		_y /= mag;
 		_z /= mag;
 	}
+}
+
+LMQuaternion LMQuaternion::Rotate(const LMVector3& axis, double angle) const 	{
+	LMQuaternion q;
+	double halfAngle = (angle * (M_PI / 180.0)) / 2.0;
+	double sinHalfAngle = sin(halfAngle);
+	q.SetW(cos(halfAngle));
+	q.SetX(axis.GetX() * sinHalfAngle);
+	q.SetY(axis.GetY() * sinHalfAngle);
+	q.SetZ(axis.GetZ() * sinHalfAngle);
+	return q;
+}
+
+// Rotate a vector by this quaternion
+LMVector3 LMQuaternion::Rotate(const LMVector3& vector) const {
+	LMQuaternion vectorQuat(0, vector.GetX(), vector.GetY(), vector.GetZ());
+	LMQuaternion result = (*this) * vectorQuat * Conjugate();
+	return LMVector3(result.GetX(), result.GetY(), result.GetZ());
+}
+
+// Up vector of this quaternion
+LMVector3 LMQuaternion::Up() const {
+	return Rotate(LMVector3(0, 1, 0));
+}
+
+// Right vector of this quaternion
+LMVector3 LMQuaternion::Right() const {
+	return Rotate(LMVector3(1, 0, 0));
+}
+
+// Forward vector of this quaternion
+LMVector3 LMQuaternion::Forward() const {
+	return Rotate(LMVector3(0, 0, -1));
 }
 
 
