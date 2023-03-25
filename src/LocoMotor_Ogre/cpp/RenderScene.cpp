@@ -58,7 +58,7 @@ OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name, std::s
 }
 
 OgreWrapper::Node* OgreWrapper::RenderScene::GetNode(std::string name) {
-	if (_sceneStructure.count(name) > 0) {
+	if (_sceneStructure.count(name) == 0) {
 		std::cerr << "No node with the name " << name << " found\n";
 		return nullptr;
 	}
