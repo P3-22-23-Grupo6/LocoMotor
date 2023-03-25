@@ -42,17 +42,17 @@ void Scene::Start() {
 
 	_isActiveScene = true;
 	ship_gObj = AddGameobject("ship");
-	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "general/base_material", _renderScn);
+	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "Racers/Falcon", _renderScn);
 	PhysicsWrapper::RigidBodyInfo rb;
 	rb.boxSize = { 1,1,1 };
 	rb.origin = { 0,0,0 };
 	rb.mass = 1;
 	ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
 	//rend->SetMaterial("Racers/Falcon");
-	ship_gObj->GetNode()->SetScale(100.0f, 100.0f, 100.0f);
+	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 
 	
-	//_renderScn->Prueba();
+	_renderScn->Prueba();
 
 	//llamar a gameobjectlist para iniciarlos
 
