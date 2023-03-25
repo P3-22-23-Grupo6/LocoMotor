@@ -58,15 +58,24 @@ LMVector3 LMVector3::operator/(double scalar) const {
 	return LMVector3(_x / scalar, _y / scalar, _z / scalar);
 }
 
-btVector3 LMVector3::operator= (LMVector3 lmVector) {
-	return LmToBullet(lmVector);
+LMVector3 LMVector3::operator= (const LMVector3& lmVector) {
+	this->_x = lmVector._x;
+	this->_y = lmVector._y;
+	this->_z = lmVector._z;
+	return lmVector;
 }
 
-LMVector3 LMVector3::operator= (btVector3 bulletVector) {
+LMVector3 LMVector3::operator= (btVector3& bulletVector) {
+	this->_x = bulletVector.x();
+	this->_y = bulletVector.y();
+	this->_z = bulletVector.z();
 	return BulletToLm(bulletVector);
 }
 
-LMVector3 LMVector3::operator= (Ogre::Vector3 ogreVector) {
+LMVector3 LMVector3::operator= (Ogre::Vector3& ogreVector) {
+	this->_x = ogreVector.x;
+	this->_y = ogreVector.y;
+	this->_z = ogreVector.z;
 	return OgreToLm(ogreVector);
 }
 

@@ -36,6 +36,11 @@
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\ParticleSystem.cpp">
       <Filter>Source Files\Components</Filter>
+    <ClCompile Include="..\..\src\LocoMotor\AudioListenerFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\AudioSourceFactory.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,11 +68,17 @@
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\Camera.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\AudioListenerFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\Camera.h">
-      <Filter>Header Files\Components</Filter>
+    <ClInclude Include="..\..\src\LocoMotor\AudioSourceFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h">
       <Filter>Header Files\Components</Filter>

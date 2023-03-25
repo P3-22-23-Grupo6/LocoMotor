@@ -14,7 +14,7 @@ Scene::Scene(std::string nombre) {
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->CreateScene(_name);
 
 	// Crear camara
-	camera_gObj = AddGameobject();
+	camera_gObj = AddGameobject("cam");
 	camera_gObj->AddComponent<LocoMotor::Camera>(this, _renderScn);
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();
 
@@ -40,7 +40,7 @@ void Scene::Start() {
 
 
 	_isActiveScene = true;
-	ship_gObj = AddGameobject();
+	ship_gObj = AddGameobject("ship");
 	node = _renderScn->CreateNode("Coche");
 	OgreWrapper::Renderer3D* rend = _renderScn->CreateRenderer("Feisar.mesh");
 	ship_gObj->SetRenderer(rend, node);
@@ -68,7 +68,14 @@ void Scene::Update(float dt) {
 		float y = ship_gObj->GetNode()->GetPosition_Y();
 		float z = ship_gObj->GetNode()->GetPosition_Z();
 		camera_gObj->SetPosition(LMVector3(x, y + 10, z + 15));
+
 		//_nod->SetPosition(node->GetPosition_X(), node->GetPosition_Y() + 10, node->GetPosition_Z() + 15);
+
+		LMVector3 pos = camera_gObj->GetTransform().position;
+
+		std::cout << "CAMERAPOSITION_GAMEOBJ = " << pos.GetX() << ", " << pos.GetY() << ", " << pos.GetZ() << "\n";
+
+		//std::cout << "CARPOSITION_NODE = " << x << ", " << y << ", " << z << "\n";
 	}
 }
 void Scene::Render() {
@@ -79,7 +86,6 @@ void Scene::Render() {
 //?
 void Scene::Deactivate() {
 	_isActiveScene = false;
-
 }
 
 
@@ -96,10 +102,10 @@ std::string Scene::GetSceneName() {
 void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 	_cam = camera;
 	//OgreWrapper::RenderEntity* camObj = _cam;
-	_nod = _renderScn->CreateNode("ScnNode");
+	//_nod = _renderScn->CreateNode("ScnNode");
 
 	// Acceder al RenderEntity de la camara
-	OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*) _cam;
+	//OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*) _cam;
 	//_nod->Attach(renderObj);
 	//mCamNode->Attach (cam2);
 	//_nod->Translate(0, 10, 20);
@@ -107,8 +113,8 @@ void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 	_renderScn->SetActiveCamera(_cam);
 }
 
-GameObject* LocoMotor::Scene::AddGameobject() {
-	OgreWrapper::Node* newNode = _renderScn->CreateNode("ScnNode");
+GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
+	OgreWrapper::Node* newNode = _renderScn->CreateNode(name);
 	GameObject* newObj = new GameObject(newNode);
 	AddObject(newObj);
 	return newObj;

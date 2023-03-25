@@ -39,7 +39,7 @@ namespace LocoMotor {
 		void SetSceneCam(OgreWrapper::Camera* cam);
 
 
-		GameObject* AddGameobject();
+		GameObject* AddGameobject(std::string name);
 		void AddObject(GameObject* obj);
 
 	private:
