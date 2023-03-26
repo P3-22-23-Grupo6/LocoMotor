@@ -25,12 +25,6 @@
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\AudioSource.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -41,6 +35,11 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\RigidBodyComponent.cpp">
+    <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\AudioSource.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -66,22 +65,21 @@
     <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\AudioSource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\Camera.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioListenerFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\AudioListener.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioSourceFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h">
+    <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h" />
+    <ClInclude Include="..\..\src\LocoMotor\AudioListener.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\AudioSource.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>

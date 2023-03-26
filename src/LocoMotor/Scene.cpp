@@ -7,6 +7,7 @@
 #include "Renderer3D.h"
 #include "BulletRigidBody.h"
 #include "PhysicsManager.h"
+#include "MeshRederer.h"
 
 using namespace LocoMotor;
 Scene::Scene(std::string nombre) {
@@ -41,17 +42,24 @@ void Scene::Start() {
 
 	_isActiveScene = true;
 	ship_gObj = AddGameobject("ship");
-	node = _renderScn->CreateNode("Coche");
-	OgreWrapper::Renderer3D* rend = _renderScn->CreateRenderer("Feisar.mesh");
-	ship_gObj->SetRenderer(rend, node);
+	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "Racers/Falcon", _renderScn);
 	PhysicsWrapper::RigidBodyInfo rb;
 	rb.boxSize = { 1,1,1 };
 	rb.origin = { 0,0,0 };
 	rb.mass = 1;
 	ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
-	rend->SetMaterial("Racers/Falcon");
-	node->SetScale(2.0f, 2.0f, 2.0f);
+	//rend->SetMaterial("Racers/Falcon");
+	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+
+	
 	_renderScn->Prueba();
+
+	//llamar a gameobjectlist para iniciarlos
+
+	for (auto obj : _gameObjList) {
+		obj->StartComp();
+	}
+
 }
 
 void Scene::Update(float dt) {
@@ -67,8 +75,7 @@ void Scene::Update(float dt) {
 		float x = ship_gObj->GetNode()->GetPosition_X();
 		float y = ship_gObj->GetNode()->GetPosition_Y();
 		float z = ship_gObj->GetNode()->GetPosition_Z();
-		camera_gObj->SetPosition(LMVector3(x, y + 10, z + 15));
-
+		camera_gObj->SetPosition(LMVector3(x, y + 10, z+50));
 		//_nod->SetPosition(node->GetPosition_X(), node->GetPosition_Y() + 10, node->GetPosition_Z() + 15);
 
 		LMVector3 pos = camera_gObj->GetTransform().position;
@@ -123,4 +130,6 @@ GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
 void Scene::AddObject(GameObject* obj) {
 	_gameObjList.push_back(obj);
 }
+
+
 

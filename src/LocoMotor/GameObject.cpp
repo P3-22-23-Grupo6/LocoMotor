@@ -92,10 +92,8 @@ void LocoMotor::GameObject::SetRigidBody(PhysicsWrapper::BulletRigidBody* rb) {
 	_rigidBody = rb;
 }
 // Set the renderer of the GameObject
-void LocoMotor::GameObject::SetRenderer(OgreWrapper::Renderer3D* rend, OgreWrapper::Node* node) {
+void LocoMotor::GameObject::SetRenderer(OgreWrapper::Node* node) {
 	_node = node;
-	_renderer = rend;
-	_node->Attach(_renderer);
 }
 
 void LocoMotor::GameObject::SetContext(Scene* scn) {
@@ -110,6 +108,13 @@ OgreWrapper::Node* LocoMotor::GameObject::GetNode() {
 	return _node;
 }
 
+
+
+void GameObject::StartComp(){
+	for (auto comp : _componentsByName) {
+		comp.second->Start();
+	}
+}
 
 
 // Destructor
