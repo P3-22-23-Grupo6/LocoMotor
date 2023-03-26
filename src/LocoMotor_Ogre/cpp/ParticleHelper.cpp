@@ -136,3 +136,7 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 		emitter->setParticleVelocity(minPower, maxPower);
 	}
 
+	Ogre::MovableObject* OgreWrapper::ParticleHelper::GetMovObj() {
+		return _particleSystem;
+	}
+

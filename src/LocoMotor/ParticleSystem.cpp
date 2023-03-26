@@ -21,8 +21,7 @@ void ParticleSystem::InitComponent() {
 	//Crear particulas
 	_particleHelper = _renderScn->CreateParticleHelper("ParticleHelper", _filename);
 	//Attachear al nodo del gameObject
-	OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*) this;
-	gameObject->GetNode()->Attach(renderObj);
+	gameObject->GetNode()->Attach(_particleHelper);
 	//SetNode al gameObject
 }
 

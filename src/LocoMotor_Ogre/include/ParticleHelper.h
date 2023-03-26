@@ -4,16 +4,11 @@
 
 #include <unordered_map>
 #include <string>
-
-namespace Ogre {
-	class ParticleSystem;
-	class ParticleEmitter;
-
-	typedef Vector<3, Real> Vector3;
-}
+#include <Ogre.h>
+#include "RenderEntity.h"
 
 namespace OgreWrapper{
-	class ParticleHelper {
+	class ParticleHelper : public RenderEntity {
 		
 	public:
 		ParticleHelper(Ogre::ParticleSystem* sys);
@@ -40,6 +35,8 @@ namespace OgreWrapper{
 
 		void SetEmissionPower(std::string name, float power);
 		void SetEmissionPower(std::string name, float minPower, float maxPower);
+
+		Ogre::MovableObject* GetMovObj() override;
 		
 
 	private:

@@ -8,6 +8,7 @@
 #include "BulletRigidBody.h"
 #include "PhysicsManager.h"
 #include "MeshRederer.h"
+#include "ParticleSystem.h"
 
 using namespace LocoMotor;
 Scene::Scene(std::string nombre) {
@@ -43,6 +44,7 @@ void Scene::Start() {
 	_isActiveScene = true;
 	ship_gObj = AddGameobject("ship");
 	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "Racers/Falcon", _renderScn);
+	ship_gObj->AddComponent<ParticleSystem>(this, _renderScn, "Racers/Smoke");
 	PhysicsWrapper::RigidBodyInfo rb;
 	rb.boxSize = { 1,1,1 };
 	rb.origin = { 0,0,0 };
