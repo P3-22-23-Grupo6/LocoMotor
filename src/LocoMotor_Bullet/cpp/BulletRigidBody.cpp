@@ -8,7 +8,6 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 		_shape = new btBoxShape(info.boxSize);
 	else
 		_shape = new btSphereShape(info.size);
-
 	btTransform groundTransform;
 	groundTransform.setIdentity();
 	groundTransform.setOrigin(info.origin);
@@ -29,6 +28,56 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 
 	//add the body to the dynamics world;
 	PhysicsManager::GetInstance()->AddRigidBodyToWorld(_rigidBody);
+	
+}
+
+LMVector3 PhysicsWrapper::BulletRigidBody::getPosition() {
+	return LMVector3::BulletToLm(_rigidBody->getWorldTransform().getOrigin());
+}
+
+void PhysicsWrapper::BulletRigidBody::setGravity(LMVector3 gravity) {
+	_rigidBody->setGravity(LMVector3::LmToBullet(gravity));
+}
+
+void PhysicsWrapper::BulletRigidBody::FreezePosition(LMVector3 axis) {
+	_rigidBody->setLinearFactor(LMVector3::LmToBullet(axis));
+}
+
+void PhysicsWrapper::BulletRigidBody::FreezeRotation(LMVector3 axis) {
+	_rigidBody->setAngularFactor(LMVector3::LmToBullet(axis));
+}
+
+void PhysicsWrapper::BulletRigidBody::setMass(float m) {
+	_rigidBody->setMassProps(m, _rigidBody->getLocalInertia());
+}
+
+void PhysicsWrapper::BulletRigidBody::resetBoxShapeSize(LMVector3 size) {
+	if (_rigidBody->getCollisionShape()->getShapeType() == BOX_SHAPE_PROXYTYPE) {
+		btCollisionShape* newshape = new btBoxShape(LMVector3::LmToBullet(size));
+		float mass = _rigidBody->getMass();
+		btVector3 localInertia(0, 0, 0);
+		if (mass != 0.f)
+			_shape->calculateLocalInertia(mass, localInertia);
+		_rigidBody->setCollisionShape(newshape);
+		_shape = newshape;
+		
+	}
+}
+
+void PhysicsWrapper::BulletRigidBody::resetSphereShapeSize(float size) {
+	if (_rigidBody->getCollisionShape()->getShapeType() == SPHERE_SHAPE_PROXYTYPE) {
+		btCollisionShape* newshape = new btSphereShape(size);
+		float mass = _rigidBody->getMass();
+		btVector3 localInertia(0, 0, 0);
+		if (mass != 0.f)
+			_shape->calculateLocalInertia(mass, localInertia);
+		_rigidBody->setCollisionShape(newshape);
+		_shape = newshape;
+	}
+}
+
+void PhysicsWrapper::BulletRigidBody::setBodystate(int state) {
+	_rigidBody->setCollisionFlags(state);
 }
 
 BulletRigidBody::~BulletRigidBody() {
@@ -41,8 +90,6 @@ BulletRigidBody::~BulletRigidBody() {
 	delete _shape;
 	_shape = nullptr;
 }
-
-
 
 void BulletRigidBody::AddForce(LMVector3 force) {
 	_rigidBody->applyCentralForce(LMVector3::LmToBullet(force));
