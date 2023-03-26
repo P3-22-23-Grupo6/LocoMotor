@@ -1,4 +1,3 @@
-#include "ParticleSystem.h"
 /*
 -----------------------------------------------------------------------------
 This source file is part of OGRE

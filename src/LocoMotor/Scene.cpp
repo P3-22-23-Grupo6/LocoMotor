@@ -44,7 +44,8 @@ void Scene::Start() {
 	_isActiveScene = true;
 	ship_gObj = AddGameobject("ship");
 	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "Racers/Falcon", _renderScn);
-	ship_gObj->AddComponent<ParticleSystem>(this, _renderScn, "Racers/Smoke");
+	ship_gObj->AddComponent<ParticleSystem>("smoke", _renderScn, "Racers/Smoke");
+	ship_gObj->AddComponent<ParticleSystem>("fire", _renderScn, "Racers/Fire");	
 	PhysicsWrapper::RigidBodyInfo rb;
 	rb.boxSize = { 1,1,1 };
 	rb.origin = { 0,0,0 };

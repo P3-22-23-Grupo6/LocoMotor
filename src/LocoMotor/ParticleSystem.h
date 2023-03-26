@@ -14,19 +14,22 @@ namespace LocoMotor {
 	class GameObject;
 	class ParticleSystem : public Component {
 	public:
-		const static std::string name;
-		ParticleSystem(Scene* scene, OgreWrapper::RenderScene* renderScn, std::string filename);
+		static std::string name;
+		ParticleSystem(std::string sysName, OgreWrapper::RenderScene* renderScn, std::string filename);
 		OgreWrapper::Node* _node;
 
 		void InitComponent() override;
 
 		void Update(float dt) override;
+
+		bool allowMultiple = true;
+
 	private:
-		Scene* _scene;
 		OgreWrapper::RenderScene* _renderScn;
 		OgreWrapper::ParticleHelper* _particleHelper;
 
 		std::string _filename;
+		std::string _name;
 	};
 }
 

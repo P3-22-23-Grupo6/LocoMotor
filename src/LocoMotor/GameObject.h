@@ -56,6 +56,8 @@ namespace LocoMotor {
 			//bool comps[Camera::id] == true -> error
 		};
 
+
+
 		/// @brief Remove a Component
 		/// @param T The type of the component to remove
 		template <typename T>

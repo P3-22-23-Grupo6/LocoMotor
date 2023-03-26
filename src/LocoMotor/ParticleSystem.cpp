@@ -7,10 +7,10 @@
 
 using namespace LocoMotor;
 
-const std::string ParticleSystem::name = "ParticleSystem";
+std::string ParticleSystem::name = "ParticleSystem";
 
-ParticleSystem::ParticleSystem(Scene* scene, OgreWrapper::RenderScene* renderScn, std::string filename) {
-	_scene = scene;
+ParticleSystem::ParticleSystem(std::string sysName, OgreWrapper::RenderScene* renderScn, std::string filename) {
+	_name = sysName;
 	_renderScn = renderScn;
 	_filename = filename;
 }
@@ -19,7 +19,7 @@ void ParticleSystem::InitComponent() {
 	//Crear nodo
 	_node = _renderScn->CreateNode("ParticleNode");
 	//Crear particulas
-	_particleHelper = _renderScn->CreateParticleHelper("ParticleHelper", _filename);
+	_particleHelper = _renderScn->CreateParticleHelper(_name + "ParticleHelper", _filename);
 	//Attachear al nodo del gameObject
 	gameObject->GetNode()->Attach(_particleHelper);
 	//SetNode al gameObject
@@ -33,3 +33,6 @@ void ParticleSystem::Update(float dt) {
 		_node->SetPosition(x, y, z);
 	}
 }
+
+
+
