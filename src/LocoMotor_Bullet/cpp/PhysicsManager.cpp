@@ -15,7 +15,7 @@ PhysicsManager::PhysicsManager() {
 	//Create Dynamic world
 	_dynamicWorld = new btDiscreteDynamicsWorld(_dispatcher, _overlappingPairCache, _solver, _collisionConfiguration);
 	//Set default gravity
-	_dynamicWorld->setGravity(btVector3(0, 0, 0));
+	_dynamicWorld->setGravity(btVector3(0, -9.8, 0));
 }
 
 PhysicsManager::~PhysicsManager() {
@@ -62,7 +62,7 @@ void PhysicsManager::Update() {
 		}
 		//trans.setRotation(btQuaternion(1, 1, 1, 1));
 		printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
-		printf("world rot object %d = %f,%f,%f,%f\n", j, float(trans.getRotation().x()), float(trans.getRotation().y()), float(trans.getRotation().z()), float(trans.getRotation().w()));
-
+		//printf("world rot object %d = %f,%f,%f,%f\n", j, float(trans.getRotation().x()), float(trans.getRotation().y()), float(trans.getRotation().z()), float(trans.getRotation().w()));
+		//std::cout<<body->getCollisionFlags();
 	}
 }

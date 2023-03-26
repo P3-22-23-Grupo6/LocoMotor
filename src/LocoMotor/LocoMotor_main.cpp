@@ -77,16 +77,16 @@ int main() {
 	//std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	PhysicsManager::Init();
 	auto btmngr = PhysicsManager::GetInstance();
-	RigidBodyInfo info1;
-	info1.boxSize = btVector3(50, 50, 50);
-	info1.mass = 0.0f;
-	info1.origin = btVector3(0, -50, 0);
-	btmngr->CreateRigidBody(info1);
-	RigidBodyInfo info2;
-	info2.size = 1.0;
-	info2.mass = 1.0f;
-	info2.origin = btVector3(2, 10, 0);
-	BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
+	//RigidBodyInfo info1;
+	//info1.boxSize = btVector3(50, 50, 50);
+	//info1.mass = 0.0f;
+	//info1.origin = btVector3(0, -50, 0);
+	//btmngr->CreateRigidBody(info1);
+	//RigidBodyInfo info2;
+	//info2.size = 1.0;
+	//info2.mass = 1.0f;
+	//info2.origin = btVector3(2, 10, 0);
+	//BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
 	LocoMotor::SceneManager* mSM = new LocoMotor::SceneManager();
 	mSM->CreateScene("Escena");
