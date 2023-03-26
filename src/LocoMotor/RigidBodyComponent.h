@@ -9,7 +9,7 @@ namespace PhysicsWrapper {
 	class BulletRigidBody;
 }
 namespace LocoMotor {
-	class RigidBodyComponent : public LocoMotor::Component {
+	class RigidBodyComponent : public Component {
 	public:
 		/// @brief Constructor
 		RigidBodyComponent(PhysicsWrapper::RigidBodyInfo info);

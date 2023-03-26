@@ -35,11 +35,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\RigidBodyComponent.cpp">
-    <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp" />
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\AudioSource.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,11 +79,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h">
-    <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h" />
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
