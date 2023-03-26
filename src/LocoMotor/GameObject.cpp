@@ -56,10 +56,10 @@ void GameObject::Update(float dt) {
 
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
-		GetComponent<RigidBodyComponent>()->addForce(LMVector3(0, 0, 10));
+		GetComponent<RigidBodyComponent>()->addForce(LMVector3(0, 0, -100));
 		//_rigidBody->AddForce(LMVector3(0, 0, 1));
 		//SetPosition(LMVector3(100, 10, 10));
-		_node->Translate(0, 0, 1);
+		//_node->Translate(0, 0, 1);
 	}
 
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);

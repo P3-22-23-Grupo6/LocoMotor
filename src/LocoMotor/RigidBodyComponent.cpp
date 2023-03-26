@@ -9,8 +9,8 @@ const std::string RigidBodyComponent::name = "RigidBodyComponent";
 
 LocoMotor::RigidBodyComponent::RigidBodyComponent(float mass) {
 	_mass = mass;
-	_damping = 0;
-	_angDamping = 0;
+	_damping = 0.9;
+	_angDamping = 0.7;
 	_gravity = true;
 	_body = nullptr;
 }
@@ -33,6 +33,7 @@ void LocoMotor::RigidBodyComponent::Start() {
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
 	gameObject->SetPosition(_body->getPosition());
+	//gameObject->SetRotation(_body->getRotation());
 }
 
 
