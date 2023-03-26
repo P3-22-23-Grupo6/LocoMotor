@@ -2,6 +2,7 @@
 #ifndef LM_SINGLETON
 #define LM_SINGLETON
 //#include "CheckML.h"
+#include <utility>
 
 template<typename T>
 class Singleton {

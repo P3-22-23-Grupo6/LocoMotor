@@ -1,23 +1,18 @@
 #include "ScriptManager.h"
 #include "Scene.h"
 #include "SceneManager.h"
-extern "C" {
-#include "lua.h";
-#include <lauxlib.h>
-#include <lualib.h>
-}
+
 
 #include <LuaBridge/LuaBridge.h>
 #include "GameObject.h"
 
 using namespace LocoMotor;
 
-bool LocoMotor::ScriptManager::Init() {
-	luaState = luaL_newstate();
-	luaL_openlibs(luaState);
-	return true;
-}
-
+//bool LocoMotor::ScriptManager::Init() {
+//	
+//	return true;
+//}
+ScriptManager* ScriptManager::_instance = nullptr;
 
 luabridge::LuaRef ScriptManager::getFromLua(std::string name) {
     return luabridge::getGlobal(luaState, name.c_str());
@@ -45,40 +40,45 @@ void ScriptManager::readLuaScript(const std::string path) {
 }
 void ScriptManager::LoadSceneFromFile(std::string path) {
    // Scene* s = SceneManager::GetInstance()->getCurrentScene();
-    readLuaScript("Assets/Scripts/Mapa.lua");
+    readLuaScript(path);
 
     luabridge::LuaRef allEnts = getFromLua("entities");
-    luabridge::LuaRef layers = getFromLua("layers");
+    //luabridge::LuaRef layers = getFromLua("layers");
     int numEnts = allEnts.length();
 
     for (int i = 1; i <= numEnts; i++) {
         luabridge::LuaRef entity = getFromLua(allEnts[i]);
-        std::string layer;
-        if (!layers.isNil()) {
+        //std::string layer;
+        /*f (!layers.isNil()) {
             luabridge::LuaRef l = getFromLua(allEnts[i]);
             layer = l.tostring();
         }
         else
-            layer = "prueba";
+            layer = "prueba";*/
 
-        GameObject* ent;
-        if (ent == nullptr) {
-            //ent = s->AddE;
-            //std::cout << "Loading entity: " << ent->getName() << "\n";
-            ent->AddComponent<Transform>("transform");
-        }
-       // setParams(entity, ent, s, layer);
+        GameObject* ent = nullptr;
+        //if (ent == nullptr) {
+        //    //ent = s->AddE;
+        //    //std::cout << "Loading entity: " << ent->getName() << "\n";
+        //    
+        //}
+        std::cout << "Loading entity: " << allEnts[i] << " Components: \n";
+        setParams(entity, ent, nullptr, "layer");
+        
+
     }
 
 }
 
 ScriptManager::ScriptManager() {
-	
+    luaState = luaL_newstate();
+    luaL_openlibs(luaState);
 }
 
 LocoMotor::ScriptManager::~ScriptManager()
 {
-	delete luaState;
+    lua_close(luaState);
+	//delete luaState;
 }
 
 void ScriptManager::setParams(luabridge::LuaRef entity, GameObject* ent, Scene* s, std::string layer)
@@ -90,8 +90,8 @@ void ScriptManager::setParams(luabridge::LuaRef entity, GameObject* ent, Scene* 
         std::cout << "       Loading component: " << compName << "\n";
         std::string key;
 
-        luabridge::LuaRef component = entity[compName];
-        lua_pushnil(component);
+       luabridge::LuaRef component = entity[compName];
+       lua_pushnil(component);
 
        
 
@@ -107,8 +107,10 @@ void ScriptManager::setParams(luabridge::LuaRef entity, GameObject* ent, Scene* 
         }
 
         
-        ent->AddComponent<Component>(compName, parameters);
-        
+        //ent->AddComponent<Component>(compName, parameters);
+        for (auto p : parameters) {
+            std::cout << "\t" << p.first << ": " << p.second << "\n";
+        }
         lua_pop(entity, 1);
     }
 

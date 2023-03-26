@@ -10,7 +10,7 @@
 
 
 
-namespace PhysicdWrapper {
+namespace PhysicsWrapper {
 	class BulletRigidBody;
 }
 

@@ -3,17 +3,25 @@
 #pragma once
 #include "Singleton.h"
 #include <string>
-
+extern "C"
+{
+#include <lua.h>
+#include <lauxlib.h>
+#include <lualib.h>
+}
 namespace luabridge {
 	class LuaRef;
 }
 
+
 namespace LocoMotor {
 	class SceneManager;
-
+	class GameObject;
+	class Scene;
 	class ScriptManager : public Singleton<ScriptManager> {
+		friend Singleton<ScriptManager>;
 	public:
-		bool Init();
+		/*bool Init();*/
 		void LoadSceneFromFile(std::string path);
 		
 	private:
