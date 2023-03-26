@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include "GUI.h"
 
 namespace Ogre {
 	class SceneManager;
@@ -14,11 +15,11 @@ namespace Ogre {
 
 namespace OgreWrapper {
 
+	class GUI;
 	class Light;
 	class Camera;
 	class Renderer3D;
 	class Node;
-	class GUI;
 
 
 	class RenderScene {
@@ -64,11 +65,11 @@ namespace OgreWrapper {
 		Camera* GetMainCamera();
 
 	private:
+		GUI m_gui;
 		Ogre::SceneManager* _manager;
 		Camera* _mainCam;
 		Node* _root;
 		std::map<std::string, Node*> _sceneStructure;
-		GUI m_gui;
 	};
 }
 #endif

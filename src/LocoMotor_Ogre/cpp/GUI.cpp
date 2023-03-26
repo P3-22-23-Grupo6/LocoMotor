@@ -13,7 +13,7 @@ void OgreWrapper::GUI::init(const std::string& resourceDirectory) {
 		rp->setResourceGroupDirectory("schemes", resourceDirectory + "/schemes");
 		rp->setResourceGroupDirectory("fonts", resourceDirectory + "/fonts");
 		rp->setResourceGroupDirectory("layouts", resourceDirectory + "/layouts");
-		rp->setResourceGroupDirectory("looknfeels", resourceDirectory + "/looknfeels");
+		rp->setResourceGroupDirectory("looknfeels", resourceDirectory + "/looknfeel");
 		rp->setResourceGroupDirectory("lua_scripts", resourceDirectory + "/lua_scripts");
 
 		CEGUI::ImageManager::setImagesetDefaultResourceGroup("imagesets");
@@ -30,13 +30,22 @@ void OgreWrapper::GUI::init(const std::string& resourceDirectory) {
 }
 
 void OgreWrapper::GUI::destroy() {
+	CEGUI::System::getSingleton().destroyGUIContext(*m_context);
 }
 void OgreWrapper::GUI::draw() {
-	
+	myRenderer->beginRendering();
+	m_context->draw();
+	myRenderer->endRendering();
+	//Disable Scissors test (?), solo en GL se supone?
 }
 
 CEGUI::Window* OgreWrapper::GUI::createWidget(const std::string& type, const std::string& name) {
-	return CEGUI::WindowManager::getSingleton().createWindow(type, name);
+	CEGUI::Window* newWindow = CEGUI::WindowManager::getSingleton().createWindow(type, name);
+	m_root->addChild(newWindow);
+
+	newWindow->setPosition(CEGUI::UVector2(CEGUI::UDim(0.5f, 0.5f), CEGUI::UDim(0.5f, 0.5f)));
+	newWindow->setSize(CEGUI::USize(CEGUI::UDim(1,1), CEGUI::UDim(1, 1)));
+	return newWindow;
 }
 
 void OgreWrapper::GUI::loadScheme(const std::string& schemeFile) {
@@ -44,5 +53,6 @@ void OgreWrapper::GUI::loadScheme(const std::string& schemeFile) {
 }
 
 void OgreWrapper::GUI::setFont(const std::string& fontFile) {
+	CEGUI::FontManager::getSingleton().createFromFile(fontFile + ".font");
 	m_context->setDefaultFont(fontFile);
 }

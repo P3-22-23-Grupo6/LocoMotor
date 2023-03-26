@@ -1,3 +1,4 @@
+#include <GUI.h>
 #include "RenderScene.h"
 #include "OgreManager.h"
 #include "Node.h"
@@ -11,14 +12,13 @@
 #include <OgreEntity.h>
 #include <OgreShaderGenerator.h>
 #include <iostream>
-#include <GUI.h>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;
 	_mainCam = nullptr;
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
 	//Init UI(despues de init todo lo correspondiente a render de Ogre)
-	m_gui.init("Assets/GUI");
+	
 }
 
 OgreWrapper::RenderScene::~RenderScene() {
@@ -31,6 +31,8 @@ OgreWrapper::RenderScene::~RenderScene() {
 
 void OgreWrapper::RenderScene::Render() {
 	_mainCam->GetViewport()->update();
+	//m_gui->draw();
+
 }
 
 OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name) {
@@ -104,6 +106,18 @@ void OgreWrapper::RenderScene::Prueba() {
 	mTrackNode->Attach(track);
 	mTrackNode->SetScale(0.7f, 0.7f, 0.7f);
 	//Skybox
-	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000, false);
+	//_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000, false);
+	
+	//UI
+	
+	//Init the UI
+	m_gui.init("Assets/GUI");
+	////Set UI Defaults
+	//m_gui.loadScheme("TaharezLook.scheme");
+	//m_gui.setFont("DejavuSans-10");
+	////Create Button
+	//m_gui.createWidget("TaharezLook/FrameWindow", "TestButton");
+
+
 }
 
