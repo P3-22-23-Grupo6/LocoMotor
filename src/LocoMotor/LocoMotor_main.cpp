@@ -4,7 +4,7 @@
 #include <iostream>
 #include "OgreManager.h"
 #include "AudioManager.h"
-#include "AudioListener.h"		//No se que tan legal seria hacer esto supongo el manager deberia incluir ya el listener pero habra que consultarlo nose me tengo que ir
+#include "AudioListener.h"
 #include "AudioSource.h"
 #include "InputManager.h"
 #include "CheckML.h"
