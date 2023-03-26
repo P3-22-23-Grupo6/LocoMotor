@@ -2,8 +2,8 @@ particle_system Racers/Smoke
 { // p.s. attributes
     renderer billboard
     billboard_type point // indica como se orientan los billboards
-    particle_width 300
-    particle_height 300
+    particle_width 10
+    particle_height 10
     quota 1000 // maximo numero de particulas mostradas a la vez
     material Racers/Smoke
 
