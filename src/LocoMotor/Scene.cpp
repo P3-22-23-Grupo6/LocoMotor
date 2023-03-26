@@ -53,12 +53,12 @@ void Scene::Start() {
 
 	
 	_renderScn->Prueba();
-
-	//llamar a gameobjectlist para iniciarlos
-
-	for (auto obj : _gameObjList) {
+	
+		for (auto obj : _gameObjList) {
 		obj->StartComp();
-	}
+		}
+
+		camera_gObj->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 5, 15));
 
 }
 

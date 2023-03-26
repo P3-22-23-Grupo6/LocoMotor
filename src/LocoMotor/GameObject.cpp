@@ -50,22 +50,30 @@ void GameObject::Update(float dt) {
 		SetPosition(LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z()));
 	}
 
+
+	bool acelerate = man->GetKey(SDL_SCANCODE_W);
+	if (acelerate) {
+		_rigidBody->AddForce(LMVector3(0, 0, 1));
+		//SetPosition(LMVector3(100, 10, 10));
+		_node->Translate(0, 0, 1);
+	}
+
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
 	if (rotateRight) {
-		_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
-		_node->Rotate(0, -1, 0);
+		_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
+		_node->Rotate(0, 3, 0);
 	}
 	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
 	if (rotateLeft) {
-		_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
-		_node->Rotate(0, 1, 0);
+		_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
+		_node->Rotate(0, -3, 0);
 	}
 }
 
 // Set the position of the GameObject
 void GameObject::SetPosition(LMVector3 pos) {
 	_tr.position = pos;
-	//_node->SetPosition(_tr.position.GetX(), _tr.position.GetY(), _tr.position.GetZ());
+	_node->SetPosition(_tr.position.GetX(), _tr.position.GetY(), _tr.position.GetZ()); // Todo: Revisar
 }
 // Set the rotation of the GameObject
 void GameObject::SetRotation(LMVector3 rot) {
