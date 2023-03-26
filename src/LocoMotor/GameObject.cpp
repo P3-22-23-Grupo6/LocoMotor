@@ -12,7 +12,7 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 	_tr.direction = LMQuaternion();
 	_tr.position = LMVector3();
 	_tr.rotation = LMVector3();
-	_tr.scale = LMVector3();
+	_tr.scale = LMVector3(1,1,1);
 
 	_node = node;
 }
@@ -23,7 +23,7 @@ void GameObject::Update(float dt) {
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
 		it->second->Update(dt);
 	}
-	if (_rigidBody == nullptr) return;
+	//if (_rigidBody == nullptr) return;
 	InputManager* man = InputManager::Get();
 
 	if (man->controllerConnected()) {
@@ -43,7 +43,7 @@ void GameObject::Update(float dt) {
 		else if (man->GetButton(SDL_CONTROLLER_BUTTON_B))
 			verticalMov = -.1f;
 
-		_rigidBody->AddForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
+		//_rigidBody->AddForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
 		//SetPosition(LMVector3(100, 10, 10));
 		_node->Translate(-joystickValue_0_Hor, verticalMov, -joystickValue_0_Ver);
 
@@ -53,19 +53,19 @@ void GameObject::Update(float dt) {
 
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
-		_rigidBody->AddForce(LMVector3(0, 0, 1));
+		//_rigidBody->AddForce(LMVector3(0, 0, 1));
 		//SetPosition(LMVector3(100, 10, 10));
 		_node->Translate(0, 0, 1);
 	}
 
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
 	if (rotateRight) {
-		_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
+		//_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
 		_node->Rotate(0, 3, 0);
 	}
 	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
 	if (rotateLeft) {
-		_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
+		//_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
 		_node->Rotate(0, -3, 0);
 	}
 }
@@ -96,9 +96,10 @@ Transform GameObject::GetTransform() {
 
 //HITO 1 POC
 // Set the rigid body of the GameObject
-void LocoMotor::GameObject::SetRigidBody(PhysicsWrapper::BulletRigidBody* rb) {
-	_rigidBody = rb;
-}
+//void LocoMotor::GameObject::SetRigidBody(PhysicsWrapper::BulletRigidBody* rb) {
+//	_rigidBody = rb;
+//}
+
 // Set the renderer of the GameObject
 void LocoMotor::GameObject::SetRenderer(OgreWrapper::Node* node) {
 	_node = node;

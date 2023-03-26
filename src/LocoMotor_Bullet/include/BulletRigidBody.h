@@ -13,6 +13,9 @@ namespace PhysicsWrapper {
 		/// @brief Constructor by rigidBodyInfo to create BulletRigidBody
 		/// @param info RigidBodyInfo The info of the rigidBody 
 		BulletRigidBody(RigidBodyInfo info);
+		/// @brief Gets the rigidBodyPosition
+		/// @return 
+		LMVector3 getPosition();
 		/// @brief Add central force to the rigidBody
 		/// @param force LMVector3 The force that is applied
 		void AddForce(LMVector3 force);

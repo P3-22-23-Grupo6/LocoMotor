@@ -31,6 +31,10 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 	
 }
 
+LMVector3 PhysicsWrapper::BulletRigidBody::getPosition() {
+	return LMVector3::BulletToLm(_rigidBody->getWorldTransform().getOrigin());
+}
+
 void PhysicsWrapper::BulletRigidBody::setGravity(LMVector3 gravity) {
 	_rigidBody->setGravity(LMVector3::LmToBullet(gravity));
 }

@@ -11,13 +11,19 @@ namespace PhysicsWrapper {
 namespace LocoMotor {
 	class RigidBodyComponent : public Component {
 	public:
+		const static std::string name;
 		/// @brief Constructor
-		RigidBodyComponent(PhysicsWrapper::RigidBodyInfo info);
+		RigidBodyComponent(float mass);
 		/// @brief Destructor
 		virtual ~RigidBodyComponent();
 		/// @brief Add force
 		/// @param force 
 		void addForce(LMVector3 force);
+		/// @brief 
+		void Start() override;
+		/// @brief Updates the listener's world attributes to be the same as the gameobject's
+		/// @param dt DeltaTime used to calculate the velocity
+		void Update(float dt) override;
 		/// @brief Set the bodys mass
 		void setMass(float m);
 		/// @brief Enable/Disable the gravity force affected to this body
