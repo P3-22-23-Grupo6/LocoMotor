@@ -8,7 +8,6 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 		_shape = new btBoxShape(info.boxSize);
 	else
 		_shape = new btSphereShape(info.size);
-
 	btTransform groundTransform;
 	groundTransform.setIdentity();
 	groundTransform.setOrigin(info.origin);
@@ -48,6 +47,30 @@ void PhysicsWrapper::BulletRigidBody::setMass(float m) {
 	_rigidBody->setMassProps(m, _rigidBody->getLocalInertia());
 }
 
+void PhysicsWrapper::BulletRigidBody::resetBoxShapeSize(LMVector3 size) {
+	if (_rigidBody->getCollisionShape()->getShapeType() == BOX_SHAPE_PROXYTYPE) {
+		btCollisionShape* newshape = new btBoxShape(LMVector3::LmToBullet(size));
+		float mass = _rigidBody->getMass();
+		btVector3 localInertia(0, 0, 0);
+		if (mass != 0.f)
+			_shape->calculateLocalInertia(mass, localInertia);
+		_rigidBody->setCollisionShape(newshape);
+		_shape = newshape;
+		
+	}
+}
+
+void PhysicsWrapper::BulletRigidBody::resetSphereShapeSize(float size) {
+	if (_rigidBody->getCollisionShape()->getShapeType() == SPHERE_SHAPE_PROXYTYPE) {
+		btCollisionShape* newshape = new btSphereShape(size);
+		float mass = _rigidBody->getMass();
+		btVector3 localInertia(0, 0, 0);
+		if (mass != 0.f)
+			_shape->calculateLocalInertia(mass, localInertia);
+		_rigidBody->setCollisionShape(newshape);
+		_shape = newshape;
+	}
+}
 
 void PhysicsWrapper::BulletRigidBody::setBodystate(int state) {
 	_rigidBody->setCollisionFlags(state);

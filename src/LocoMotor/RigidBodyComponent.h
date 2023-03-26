@@ -6,6 +6,7 @@ class LMVector3;
 class BulletRigidBody;
 namespace PhysicsWrapper {
 	class RigidBodyInfo;
+	class BulletRigidBody;
 }
 namespace LocoMotor {
 	class RigidBodyComponent : public LocoMotor::Component {
@@ -31,6 +32,8 @@ namespace LocoMotor {
 		void setKinematic();
 		/// @brief Set the body to Static state
 		void setStatic();
+		/// @brief Set the body to no contact response state / trigger
+		void setNoContactResponse();
 	private:
 		float _mass;
 		PhysicsWrapper::BulletRigidBody* _body;

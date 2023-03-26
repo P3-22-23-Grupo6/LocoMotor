@@ -34,6 +34,12 @@ namespace PhysicsWrapper {
 		/// @brief Sets the rigidbodys mass
 		/// @param m The mass to set
 		void setMass(float m);
+		/// @brief Reset the box shape size
+		/// @param size Vector3 size to reset
+		void resetBoxShapeSize(LMVector3 size);
+		/// @brief Reset the sphere shape size
+		/// @param size float size to reset
+		void resetSphereShapeSize(float size);
 		/// @brief set the rigidBodyState (dynamic,kinematic,static)
 		/// @param state int The state you want to set to the rigidBody, 0=Dynamic, 1=Static, 2=Kinematic
 		void setBodystate(int state);

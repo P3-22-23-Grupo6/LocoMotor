@@ -2,12 +2,13 @@
 #include "lmVector.h"
 #include "BulletRigidBody.h"
 #include "PhysicsManager.h"
-LocoMotor::RigidBodyComponent::RigidBodyComponent(PhysicsWrapper::RigidBodyInfo info) {
+using namespace PhysicsWrapper;
+LocoMotor::RigidBodyComponent::RigidBodyComponent(RigidBodyInfo info) {
 	_mass = info.mass;
 	_damping = 0;
 	_angDamping = 0;
 	_gravity = true;
-	_body = PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(info);
+	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
 }
 
 LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
@@ -44,4 +45,8 @@ void LocoMotor::RigidBodyComponent::setKinematic() {
 
 void LocoMotor::RigidBodyComponent::setStatic() {
 	_body->setBodystate(1);
+}
+
+void LocoMotor::RigidBodyComponent::setNoContactResponse() {
+	_body->setBodystate(4);
 }
