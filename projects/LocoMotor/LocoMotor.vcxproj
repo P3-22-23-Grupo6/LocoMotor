@@ -47,7 +47,6 @@
     <ClCompile Include="..\..\src\LocoMotor\LogSystem.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Scene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
-    <ClCompile Include="GUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h" />
@@ -58,7 +57,6 @@
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h" />
-    <ClInclude Include="GUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\Component.h" />

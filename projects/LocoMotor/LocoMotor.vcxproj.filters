@@ -34,7 +34,6 @@
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="GUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\Component.h">
@@ -67,7 +66,6 @@
     <ClInclude Include="..\..\src\LocoMotor\Camera.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="GUI.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

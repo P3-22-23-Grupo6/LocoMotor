@@ -18,6 +18,7 @@ namespace OgreWrapper {
 	class Camera;
 	class Renderer3D;
 	class Node;
+	class GUI;
 
 
 	class RenderScene {
@@ -67,6 +68,7 @@ namespace OgreWrapper {
 		Camera* _mainCam;
 		Node* _root;
 		std::map<std::string, Node*> _sceneStructure;
+		GUI m_gui;
 	};
 }
 #endif

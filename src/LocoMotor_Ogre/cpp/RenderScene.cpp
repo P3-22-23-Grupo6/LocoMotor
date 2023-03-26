@@ -11,14 +11,14 @@
 #include <OgreEntity.h>
 #include <OgreShaderGenerator.h>
 #include <iostream>
-#include <CEGUI/Cegui.h>
-
-using namespace CEGUI;
+#include <GUI.h>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;
 	_mainCam = nullptr;
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
+	//Init UI(despues de init todo lo correspondiente a render de Ogre)
+	m_gui.init("Assets/GUI");
 }
 
 OgreWrapper::RenderScene::~RenderScene() {
@@ -92,10 +92,6 @@ OgreWrapper::Camera* OgreWrapper::RenderScene::GetMainCamera() {
 }
 
 void OgreWrapper::RenderScene::Prueba() {
-	//Create Basic Root CEGUI Window
-	//WindowManager& wmgr = WindowManager::getSingleton();
-	//Window* myRoot = wmgr.createWindow("DefaultWindow", "root");
-	//System::getSingleton().getDefaultGUIContext().setRootWindow(myRoot);
 
 	OgreWrapper::Node* mLightNode = CreateNode("Luz");
 	OgreWrapper::Light* mLight = new Light(_manager->createLight(), Ogre::Light::LT_DIRECTIONAL);
