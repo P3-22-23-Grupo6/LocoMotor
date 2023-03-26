@@ -5,7 +5,7 @@
 #include "Node.h"
 #include "GameObject.h"
 #include "Renderer3D.h"
-#include "BulletRigidBody.h"
+#include "RigidBodyComponent.h"
 #include "PhysicsManager.h"
 #include "MeshRederer.h"
 
@@ -43,23 +43,21 @@ void Scene::Start() {
 	_isActiveScene = true;
 	ship_gObj = AddGameobject("ship");
 	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "Racers/Falcon", _renderScn);
-	PhysicsWrapper::RigidBodyInfo rb;
-	rb.boxSize = { 1,1,1 };
-	rb.origin = { 0,0,0 };
-	rb.mass = 1;
-	ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
+	ship_gObj->AddComponent<RigidBodyComponent>(1);
+	//_gameObjList.push_back(ship_gObj);
+
+	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
 	//rend->SetMaterial("Racers/Falcon");
 	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 
-	
 	_renderScn->Prueba();
-	
-		for (auto obj : _gameObjList) {
+
+	for (auto obj : _gameObjList) {
 		obj->StartComp();
-		}
+	}
 
-		camera_gObj->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 5, 15));
-
+	camera_gObj->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 5, 15));
+	ship_gObj->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 }
 
 void Scene::Update(float dt) {
@@ -75,7 +73,7 @@ void Scene::Update(float dt) {
 		float x = ship_gObj->GetNode()->GetPosition_X();
 		float y = ship_gObj->GetNode()->GetPosition_Y();
 		float z = ship_gObj->GetNode()->GetPosition_Z();
-		camera_gObj->SetPosition(LMVector3(x, y + 10, z+50));
+		camera_gObj->SetPosition(LMVector3(x, y + 10, z + 50));
 		//_nod->SetPosition(node->GetPosition_X(), node->GetPosition_Y() + 10, node->GetPosition_Z() + 15);
 
 		LMVector3 pos = camera_gObj->GetTransform().position;

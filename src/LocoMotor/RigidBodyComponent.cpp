@@ -2,13 +2,16 @@
 #include "lmVector.h"
 #include "BulletRigidBody.h"
 #include "PhysicsManager.h"
+#include "GameObject.h"
 using namespace PhysicsWrapper;
-LocoMotor::RigidBodyComponent::RigidBodyComponent(RigidBodyInfo info) {
-	_mass = info.mass;
+using namespace LocoMotor;
+const std::string RigidBodyComponent::name = "RigidBodyComponent";
+LocoMotor::RigidBodyComponent::RigidBodyComponent(float mass) {
+	_mass = mass;
 	_damping = 0;
 	_angDamping = 0;
 	_gravity = true;
-	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
+	_body = nullptr;
 }
 
 LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
@@ -17,6 +20,18 @@ LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
 void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
 {
 	_body->AddForce(force);
+}
+void LocoMotor::RigidBodyComponent::Start() {
+	RigidBodyInfo info;
+	info.mass = _mass;
+	info.boxSize = LMVector3::LmToBullet(gameObject->GetTransform().scale);
+	info.origin = LMVector3::LmToBullet(gameObject->GetTransform().position);
+	info.size = -1;
+	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
+}
+
+void LocoMotor::RigidBodyComponent::Update(float dt) {
+	gameObject->SetPosition(_body->getPosition());
 }
 
 void LocoMotor::RigidBodyComponent::setMass(float m) {
