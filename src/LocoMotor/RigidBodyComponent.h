@@ -3,6 +3,7 @@
 #define _RIGIDBODY_COMPONENT_H_
 #include "Component.h"
 class LMVector3;
+class LMQuaternion;
 class BulletRigidBody;
 namespace PhysicsWrapper {
 	class RigidBodyInfo;
@@ -16,14 +17,17 @@ namespace LocoMotor {
 		RigidBodyComponent(float mass);
 		/// @brief Destructor
 		virtual ~RigidBodyComponent();
-		/// @brief Add force
-		/// @param force 
+		/// @brief Add force to the body
+		/// @param force to add
 		void addForce(LMVector3 force);
 		/// @brief 
 		void Start() override;
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's
 		/// @param dt DeltaTime used to calculate the velocity
 		void Update(float dt) override;
+		/// @brief Sets the body rotation
+		/// @param rot Rotation to set
+		void setRotation(LMQuaternion rot);
 		/// @brief Set the bodys mass
 		void setMass(float m);
 		/// @brief Enable/Disable the gravity force affected to this body

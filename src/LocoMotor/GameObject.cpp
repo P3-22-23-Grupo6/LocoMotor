@@ -4,6 +4,8 @@
 #include "InputManager.h"
 #include "Scene.h"
 #include "Node.h"
+//Borrar luego
+#include "RigidBodyComponent.h"
 
 using namespace LocoMotor;
 
@@ -23,7 +25,7 @@ void GameObject::Update(float dt) {
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
 		it->second->Update(dt);
 	}
-	//if (_rigidBody == nullptr) return;
+	if (GetComponent<RigidBodyComponent>() == nullptr) return;
 	InputManager* man = InputManager::Get();
 
 	if (man->controllerConnected()) {
@@ -43,6 +45,7 @@ void GameObject::Update(float dt) {
 		else if (man->GetButton(SDL_CONTROLLER_BUTTON_B))
 			verticalMov = -.1f;
 
+		GetComponent<RigidBodyComponent>()->addForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
 		//_rigidBody->AddForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
 		//SetPosition(LMVector3(100, 10, 10));
 		_node->Translate(-joystickValue_0_Hor, verticalMov, -joystickValue_0_Ver);
@@ -53,6 +56,7 @@ void GameObject::Update(float dt) {
 
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
+		GetComponent<RigidBodyComponent>()->addForce(LMVector3(0, 0, 10));
 		//_rigidBody->AddForce(LMVector3(0, 0, 1));
 		//SetPosition(LMVector3(100, 10, 10));
 		_node->Translate(0, 0, 1);
@@ -60,11 +64,13 @@ void GameObject::Update(float dt) {
 
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
 	if (rotateRight) {
+		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, 1, 0, 0));
 		//_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
 		_node->Rotate(0, 3, 0);
 	}
 	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
 	if (rotateLeft) {
+		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, -1, 0, 0));
 		//_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
 		_node->Rotate(0, -3, 0);
 	}

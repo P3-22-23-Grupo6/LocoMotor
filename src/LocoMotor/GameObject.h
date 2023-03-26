@@ -75,6 +75,7 @@ namespace LocoMotor {
 		T* GetComponent() {
 			if (_componentsByName.count(T::name) == 0) {
 				//Error: no component exists with that name
+				return nullptr;
 			}
 			return static_cast<T*>(_componentsByName.at(T::name));
 		}

@@ -6,6 +6,7 @@
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
 const std::string RigidBodyComponent::name = "RigidBodyComponent";
+
 LocoMotor::RigidBodyComponent::RigidBodyComponent(float mass) {
 	_mass = mass;
 	_damping = 0;
@@ -32,6 +33,12 @@ void LocoMotor::RigidBodyComponent::Start() {
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
 	gameObject->SetPosition(_body->getPosition());
+}
+
+
+void LocoMotor::RigidBodyComponent::setRotation(LMQuaternion rot)
+{
+	_body->setRotation(rot);
 }
 
 void LocoMotor::RigidBodyComponent::setMass(float m) {
