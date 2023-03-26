@@ -15,6 +15,9 @@ namespace LocoMotor {
 		RigidBodyComponent(PhysicsWrapper::RigidBodyInfo info);
 		/// @brief Destructor
 		virtual ~RigidBodyComponent();
+		/// @brief Add force
+		/// @param force 
+		void addForce(LMVector3 force);
 		/// @brief Set the bodys mass
 		void setMass(float m);
 		/// @brief Enable/Disable the gravity force affected to this body

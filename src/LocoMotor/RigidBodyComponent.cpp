@@ -14,6 +14,11 @@ LocoMotor::RigidBodyComponent::RigidBodyComponent(RigidBodyInfo info) {
 LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
 }
 
+void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
+{
+	_body->AddForce(force);
+}
+
 void LocoMotor::RigidBodyComponent::setMass(float m) {
 	_mass = m;
 	_body->setMass(m);
