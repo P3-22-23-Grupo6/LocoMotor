@@ -4,7 +4,7 @@
 #include <iostream>
 #include "OgreManager.h"
 #include "AudioManager.h"
-#include "AudioListener.h"		//No se que tan legal seria hacer esto supongo el manager deberia incluir ya el listener pero habra que consultarlo nose me tengo que ir
+#include "AudioListener.h"
 #include "AudioSource.h"
 #include "InputManager.h"
 #include "CheckML.h"
@@ -15,11 +15,56 @@
 #include "SceneManager.h"
 #include "GameObject.h"
 
+#include "windows.h"
+
+// typedef de los metodos que vamos a encontrar en la dll del Juego
+typedef const char* (CALLBACK* InitJuegoFunc)();
+typedef int(CALLBACK* NoSeQuePeroSigueSiendoDelJuego)(const char* name);
+
 int exec();
 using namespace PhysicsWrapper;
 int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
+
+#pragma region Explicit dll loading
+
+	HINSTANCE juegoDeAutosDLL;
+	InitJuegoFunc initJuego;
+
+	LPCWSTR dllName;
+
+	// Esa 'L' antes del string es un prefijo que permite pasar los caracteres de una string a "long char" o "wide char"
+	// (chars que utilizan 2 bytes para guardarse en vez de 1), que es lo que usa LPCWSTR (long pointer to constant WIDE string)
+#ifdef _DEBUG
+	dllName = L"Juego_de_autos_d";
+#else
+	dllName = L"Juego_de_autos";
+#endif // _DEBUG
+
+	// Cargamos la libreria
+	juegoDeAutosDLL = LoadLibraryW(dllName);
+	if (juegoDeAutosDLL != NULL) {
+
+		// Buscamos la funcion, notese que no hace falta hacer lo de Wide Char
+		LPCSTR functionName = LPCSTR("InitJuego");
+		initJuego = (InitJuegoFunc) GetProcAddress(juegoDeAutosDLL, functionName);
+
+		if (initJuego != NULL) {
+			// La ejecutamos
+			auto result = initJuego();
+			std::cout << result << std::endl;
+		}
+		else {
+			std::cerr << "DLL EXPLICIT LOADING ERROR: " << functionName << " function couldn't be executed" << std::endl;
+		}
+		FreeLibrary(juegoDeAutosDLL);
+	}
+	else {
+		std::cerr << "DLL EXPLICIT LOADING ERROR: " << dllName << " wasn't found" << std::endl;
+	}
+
+#pragma endregion
 
 	auto audio = FmodWrapper::AudioManager::Init(8);
 	audio->AddSound(0, "Assets/si.wav");
@@ -32,16 +77,16 @@ int main() {
 	//std::cout << (x == nullptr ? "null\n" : "jiji\n");
 	PhysicsManager::Init();
 	auto btmngr = PhysicsManager::GetInstance();
-	RigidBodyInfo info1;
-	info1.boxSize = btVector3(50, 50, 50);
-	info1.mass = 0.0f;
-	info1.origin = btVector3(0, -50, 0);
-	btmngr->CreateRigidBody(info1);
-	RigidBodyInfo info2;
-	info2.size = 1.0;
-	info2.mass = 1.0f;
-	info2.origin = btVector3(2, 10, 0);
-	BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
+	//RigidBodyInfo info1;
+	//info1.boxSize = btVector3(50, 50, 50);
+	//info1.mass = 0.0f;
+	//info1.origin = btVector3(0, -50, 0);
+	//btmngr->CreateRigidBody(info1);
+	//RigidBodyInfo info2;
+	//info2.size = 1.0;
+	//info2.mass = 1.0f;
+	//info2.origin = btVector3(2, 10, 0);
+	//BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
 	LocoMotor::SceneManager* mSM = new LocoMotor::SceneManager();
 	mSM->CreateScene("Escena");
@@ -115,6 +160,6 @@ int main() {
 	PhysicsManager::Clear();
 	InputManager::Destroy();
 
-	
+
 	return 0;
 }

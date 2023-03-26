@@ -77,6 +77,7 @@ namespace LocoMotor {
 		T* GetComponent() {
 			if (_componentsByName.count(T::name) == 0) {
 				//Error: no component exists with that name
+				return nullptr;
 			}
 			return static_cast<T*>(_componentsByName.at(T::name));
 		}
@@ -97,7 +98,7 @@ namespace LocoMotor {
 
 		/// @brief Set the rigid body of the GameObject+
 		/// @param rb The rigid body to set
-		void SetRigidBody(PhysicsWrapper::BulletRigidBody* rb);
+		//void SetRigidBody(PhysicsWrapper::BulletRigidBody* rb);
 
 		/// @brief Set the renderer of the GameObject
 		/// @param renderer The renderer to set
@@ -117,7 +118,7 @@ namespace LocoMotor {
 		Scene* scene;
 
 		//HITO 1 POC
-		PhysicsWrapper::BulletRigidBody* _rigidBody;
+		//PhysicsWrapper::BulletRigidBody* _rigidBody;
 		OgreWrapper::Renderer3D* _renderer;
 		OgreWrapper::Node* _node;
 	};

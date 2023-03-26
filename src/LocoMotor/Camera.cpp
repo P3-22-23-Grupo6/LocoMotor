@@ -9,23 +9,24 @@ using namespace LocoMotor;
 
 const std::string Camera::name = "Camera";
 
-LocoMotor::Camera::Camera(Scene* __scene, OgreWrapper::RenderScene* __renderScn) {
+LocoMotor::Camera::Camera(Scene* scene, OgreWrapper::RenderScene* renderScn, GameObject* target, LMVector3 offset) {
 
 	// Guardar variables para usarlas en el inicializador del componente
 
-	_scene = __scene;
-	_renderScn = __renderScn;
+	_scene = scene;
+	_renderScn = renderScn;
+	_target = target;
+	_offset = offset;
 }
 
 void LocoMotor::Camera::InitComponent() {
 
-	//Crear nodo
+	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject
 	_node = gameObject->GetNode();
 
 	//Crear camara
 	OgreWrapper::Camera* cam = _renderScn->CreateCamera("ScnCam");
 	_scene->SetSceneCam(cam);
-
 
 	//Attachear al nodo del gameObject
 	//OgreWrapper::RenderEntity* renderObj = cam;
@@ -36,9 +37,17 @@ void LocoMotor::Camera::InitComponent() {
 
 void LocoMotor::Camera::Update(float dt) {
 
-	if (_node != nullptr) {
-		Transform transform = gameObject->GetTransform();
-
-		_node->SetPosition(transform.position.GetX() + 10, transform.position.GetY(), transform.position.GetZ());
+	// Comprobar si hay asignado un target
+	if (_target != nullptr) {
+		// Actualizar posicion para que siga al target
+		float x = _target->GetNode()->GetPosition_X();
+		float y = _target->GetNode()->GetPosition_Y();
+		float z = _target->GetNode()->GetPosition_Z();
+		gameObject->SetPosition(LMVector3(x + _offset.GetX(), y + _offset.GetY(), z + _offset.GetZ()));
 	}
+}
+
+void LocoMotor::Camera::SetTarget(GameObject* target, LMVector3 offset) {
+	_target = target;
+	_offset = offset;
 }
