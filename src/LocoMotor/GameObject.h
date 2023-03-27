@@ -83,7 +83,7 @@ namespace LocoMotor {
 		}
 
 		/// @brief Get the transform of the GameObject
-		Transform GetTransform();
+		Transform* GetTransform();
 
 		/// @brief Set the position of the GameObject
 		void SetPosition(LMVector3 pos);

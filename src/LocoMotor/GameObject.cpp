@@ -103,8 +103,8 @@ void GameObject::SetScale(LMVector3 sc) {
 	_tr.scale = sc;
 }
 // Get the transform of the GameObject
-Transform GameObject::GetTransform() {
-	return _tr;
+Transform* GameObject::GetTransform() {
+	return &_tr;
 }
 
 //HITO 1 POC
