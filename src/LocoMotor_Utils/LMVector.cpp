@@ -270,11 +270,15 @@ double LMVector3::Angle(const LMVector3& other, const LMVector3& normal, const L
 }
 
 // Rotate a vector around an axis in degrees
-LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) const {
+LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) {
 	LMVector3 cross = axis.Cross(*this);
 	LMVector3 dot = axis * axis.Dot(*this);
 	LMVector3 cross2 = axis.Cross(cross);
-	return dot + cross * sin(angle * M_PI / 180. ) + cross2 * (1 - cos(angle * M_PI / 180.));
+	auto a = dot + cross * sin(angle * M_PI / 180. ) + cross2 * (1 - cos(angle * M_PI / 180.));
+
+	this->_x = a.GetX();
+	this->_y = a.GetY();
+	this->_z = a.GetZ();
 }
 
 

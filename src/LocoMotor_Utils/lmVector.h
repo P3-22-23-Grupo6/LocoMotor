@@ -128,7 +128,7 @@ public:
 	///	@brief Rotate a Vector
 	/// @param axis The axis to rotate around
 	/// @param angle The angle to rotate (degrees)
-	LMVector3 Rotate(const LMVector3& axis, double angle) const;
+	LMVector3 Rotate(const LMVector3& axis, double angle);
 
 
 
