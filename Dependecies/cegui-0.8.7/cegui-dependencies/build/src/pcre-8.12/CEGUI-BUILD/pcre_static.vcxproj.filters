@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_compile.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_config.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_dfa_exec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_exec.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_fullinfo.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_get.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_globals.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_info.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_maketables.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_newline.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_ord2utf8.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_refcount.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_study.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_tables.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_try_flipped.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_ucd.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_valid_utf8.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_version.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\pcre_xclass.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\build\src\pcre-8.12\pcre_chartables.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\build\CMakeFiles\8ddbd028c6b18bdd318da9f3240bf267\pcre_chartables.c.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\jacob\OneDrive\Escritorio\Motor\Dependecies\cegui-0.8.7\cegui-dependencies\src\pcre-8.12\CEGUI-BUILD\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{491590D6-42FF-3A50-A251-4585CEBAED62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C99289D1-5DB0-3420-ADCE-B63D46D632CC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
