@@ -107,12 +107,6 @@ Transform GameObject::GetTransform() {
 	return _tr;
 }
 
-//HITO 1 POC
-// Set the rigid body of the GameObject
-//void LocoMotor::GameObject::SetRigidBody(PhysicsWrapper::BulletRigidBody* rb) {
-//	_rigidBody = rb;
-//}
-
 // Set the renderer of the GameObject
 void LocoMotor::GameObject::SetRenderer(OgreWrapper::Node* node) {
 	_node = node;
