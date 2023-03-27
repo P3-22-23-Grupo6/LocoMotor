@@ -73,6 +73,10 @@ void OgreWrapper::OgreManager::SetActiveScene(OgreWrapper::RenderScene* s) {
 	_activeScene = s;
 }
 
+Ogre::RenderTarget* OgreWrapper::OgreManager::GetRenderTarget() {
+	return _root->getRenderTarget("Prueba");
+}
+
 void OgreWrapper::OgreManager::LoadResources() {
 	Ogre::ConfigFile cf;
 	cf.load("resources.cfg");

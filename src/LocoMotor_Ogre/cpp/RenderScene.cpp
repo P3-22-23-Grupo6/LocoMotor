@@ -14,6 +14,8 @@
 #include <iostream>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
+
+	//m_gui.init("Assets/GUI");
 	_manager = scene;
 	_mainCam = nullptr;
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
@@ -23,7 +25,7 @@ OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 
 OgreWrapper::RenderScene::~RenderScene() {
 	delete _root;
-	using iterador = std::map<std::string, Node*>::iterator;
+	using	 iterador = std::map<std::string, Node*>::iterator;
 	for (iterador it = _sceneStructure.begin(); it != _sceneStructure.end(); it = _sceneStructure.erase(it)) {
 		delete it->second;
 	}

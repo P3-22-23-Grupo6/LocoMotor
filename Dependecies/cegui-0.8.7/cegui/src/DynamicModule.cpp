@@ -195,8 +195,8 @@ DynamicModule::DynamicModule(const String& name) :
 	if (name.empty())
 		return;
 
-    if (!hasDynamicLibraryExtension(d_pimpl->d_moduleName))
-        addLibraryNameSuffixes(d_pimpl->d_moduleName);
+    /*if (!hasDynamicLibraryExtension(d_pimpl->d_moduleName))
+        addLibraryNameSuffixes(d_pimpl->d_moduleName);*/
 
     d_pimpl->d_handle = DynLibLoad(d_pimpl->d_moduleName);
 

@@ -1,11 +1,13 @@
 #include "GUI.h"
+#include "OgreManager.h"
 
 CEGUI::OgreRenderer* OgreWrapper::GUI::myRenderer = nullptr;
 
 void OgreWrapper::GUI::init(const std::string& resourceDirectory) {
 	//Check si el renderer y el sistema han sido inicializados
 	if (myRenderer == nullptr) {
-		myRenderer = &CEGUI::OgreRenderer::bootstrapSystem();
+		//myRenderer = &CEGUI::OgreRenderer::bootstrapSystem();
+		myRenderer = &CEGUI::OgreRenderer::bootstrapSystem(*OgreWrapper::OgreManager::GetInstance()->GetRenderTarget());
 
 		//Asignar los recursos de la UI a Assets/GUI
 		CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*> (CEGUI::System::getSingleton().getResourceProvider());
