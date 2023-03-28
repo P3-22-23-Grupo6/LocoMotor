@@ -33,8 +33,8 @@ namespace OgreWrapper {
 			return _manager;
 		};
 
-		RenderScene(RenderScene&& r) {
-		};
+		/*RenderScene(RenderScene&& r) {
+		};*/
 
 		/// <summary>
 		/// Destructor

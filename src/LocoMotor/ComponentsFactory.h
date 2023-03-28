@@ -16,7 +16,7 @@ namespace LocoMotor {
 		/// @brief Register a FactoryComponent by a name
 		void RegisterFactoryComponent(std::string name, FactoryComponent* factComp);
 		/// @brief Create a Component
-		Component* CreateComponent(std::string name);
+		Component* CreateComponent(std::string name, std::string params);
 	protected:
 		std::map<std::string, FactoryComponent*> _factories;
 	};

@@ -13,10 +13,10 @@
 //OgreWrapper includes
 #include "RenderScene.h"
 #include "SGTechniqueResolverListener.h"
-#include "OgreManager.h""
+#include "OgreManager.h"
 
 
-OgreWrapper::OgreManager* OgreWrapper::OgreManager::_instance = nullptr;
+OgreWrapper::OgreManager* Singleton<OgreWrapper::OgreManager>::_instance = nullptr;
 
 OgreWrapper::OgreManager::OgreManager(std::string name) {
 	_root = nullptr;

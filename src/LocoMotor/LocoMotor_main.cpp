@@ -97,7 +97,7 @@ int main() {
 	//info2.origin = btVector3(2, 10, 0);
 	//BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
-	//LocoMotor::SceneManager* mSM = new LocoMotor::SceneManager();
+	//LocoMotor::SceneManager* mSM = LocoMotor::SceneManager::Init();
 	//mSM->CreateScene("Escena");
 	//mSM->ChangeScene("Escena");
 

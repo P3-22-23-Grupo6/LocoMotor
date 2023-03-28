@@ -1,12 +1,17 @@
 #include "SceneManager.h"
 #include <SDL.h>
 
+#include "ComponentsFactory.h"
+
 using namespace LocoMotor;
+
+SceneManager* Singleton<SceneManager>::_instance = nullptr;
 SceneManager::SceneManager() {
 	_activeScene = nullptr;
 	_actTime = 0;
 	_lastTime = 0;
-	_deltaTime = 0.1;
+	_deltaTime = 0.1f;
+	factory = new ComponentsFactory();
 }
 
 SceneManager::~SceneManager() {
@@ -78,10 +83,10 @@ Scene* SceneManager::GetSceneByName(std::string name) {
 void LocoMotor::SceneManager::Update() {
 
 	_actTime = SDL_GetTicks();
-	_deltaTime = _actTime - _lastTime;
+	_deltaTime = _actTime - (float)_lastTime;
 	_lastTime = _actTime;
 
-	if (_deltaTime <= 0) _deltaTime = 0.001;
+	if (_deltaTime <= 0) _deltaTime = 0.001f;
 
 	if (_activeScene != nullptr) {
 		_activeScene->Update(_deltaTime);

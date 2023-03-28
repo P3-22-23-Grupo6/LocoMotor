@@ -6,13 +6,15 @@
 #include <LuaBridge/LuaBridge.h>
 #include "GameObject.h"
 
+
+#include "SceneManager.h"
 using namespace LocoMotor;
 
 //bool LocoMotor::ScriptManager::Init() {
 //	
 //	return true;
 //}
-ScriptManager* ScriptManager::_instance = nullptr;
+ScriptManager* Singleton<ScriptManager>::_instance = nullptr;
 
 luabridge::LuaRef ScriptManager::getFromLua(std::string name) {
     return luabridge::getGlobal(luaState, name.c_str());
@@ -72,6 +74,7 @@ void ScriptManager::LoadSceneFromFile(std::string path) {
 
 ScriptManager::ScriptManager() {
     luaState = luaL_newstate();
+    scMan = SceneManager::GetInstance();
     luaL_openlibs(luaState);
 }
 
