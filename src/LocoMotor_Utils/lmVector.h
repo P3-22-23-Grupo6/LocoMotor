@@ -1,12 +1,13 @@
 #pragma once
+#ifndef LM_VECTOR
+#define LM_VECTOR
 
-#include "OgreVector3.h"
-#include "OgreQuaternion.h"
+
+
+
+#include "OgreVector.h"
 #include "btBulletDynamicsCommon.h"
 #include "fmod_common.h"
-class btVector3;
-class btTransform;
-class btQuaternion;
 //Vector class to be used with LocoMotor
 
 class LMVector3 {
@@ -37,31 +38,65 @@ public:
 	/// @brief Set the Z value of the Vector
 	void SetZ(double z);
 
-	// Vector addition
+	// Equal operators of vectors
+	LMVector3 operator=(const Ogre::Vector3& v);
+	LMVector3 operator=(const FMOD_VECTOR& v);
+	LMVector3 operator=(const btVector3& v);
+	LMVector3 operator=(const btTransform& v);
+
+	// Sum operators of vectors
 	LMVector3 operator+(const LMVector3& other) const;
+	LMVector3 operator+(const btVector3& other) const;
+	LMVector3 operator+(const btTransform& other) const;
+	LMVector3 operator+(const Ogre::Vector3& other) const;
+	LMVector3 operator+(const FMOD_VECTOR& other) const;
+	LMVector3 operator+(const double& other) const;
 
-// Vector subtraction
+	// Sub operators of vectors
 	LMVector3 operator-(const LMVector3& other) const;
+	LMVector3 operator-(const btVector3& other) const;
+	LMVector3 operator-(const btTransform& other) const;
+	LMVector3 operator-(const Ogre::Vector3& other) const;
+	LMVector3 operator-(const FMOD_VECTOR& other) const;
+	LMVector3 operator-(const double& other) const;
 
-	// Scalar multiplication
-	LMVector3 operator*(double scalar) const;
+	// Mul operators of vectors
+	LMVector3 operator*(const LMVector3& other) const;
+	LMVector3 operator*(const btVector3& other) const;
+	LMVector3 operator*(const btTransform& other) const;
+	LMVector3 operator*(const Ogre::Vector3& other) const;
+	LMVector3 operator*(const FMOD_VECTOR& other) const;
+	LMVector3 operator*(const double& other) const;
 
-	// Scalar division
-	LMVector3 operator/(double scalar) const;
+	// Div operators of vectors
+	LMVector3 operator/(const LMVector3& other) const;
+	LMVector3 operator/(const btVector3& other) const;
+	LMVector3 operator/(const btTransform& other) const;
+	LMVector3 operator/(const Ogre::Vector3& other) const;
+	LMVector3 operator/(const FMOD_VECTOR& other) const;
+	LMVector3 operator/(const double& other) const;
 
-	LMVector3 operator= (btVector3& bulletVector);
-
-	LMVector3 operator= (const LMVector3& lmVector);
-
-	LMVector3 operator= (Ogre::Vector3& ogreVector);
+	// Type operators between vectors
+	operator Ogre::Vector3() const;
+		// Due to lmBullet antics, this operator makes conflicts with the "/" operator beteen LMVector and btVector3.h //operator btVector3() const;
+	operator btTransform() const;
+	operator FMOD_VECTOR() const;
 
 	// Dot product
 	///	@brief Get the Dot Product of two Vectors
+	/// @param other The other Vector
 	double Dot(const LMVector3& other) const;
 
 	// Cross product
 	///	@brief Get the Cross Product of two Vectors
+	/// @param other The other Vector
 	LMVector3 Cross(const LMVector3& other) const;
+
+	// Cross product
+	///	@brief Get the Cross Product of two Vectors
+	/// @param normal The normal Vector
+	/// @param other The other Vector
+	LMVector3 Cross(const LMVector3& other, const LMVector3& normal) const;
 
 	// Magnitude
 	///	@brief Get the Magnitude of a Vector
@@ -70,6 +105,33 @@ public:
 	// Normalize
 	///	@brief Normalize a Vector
 	void Normalize();
+
+	// Angle
+	///	@brief Get the Angle between two Vectors
+	/// @param other The other Vector to measure from
+	double Angle(const LMVector3& other) const;
+
+	// Angle
+	///	@brief Get the Angle between two Vectors
+	/// @param other The other Vector to measure from
+	/// @param normal The normal Vector
+	double Angle(const LMVector3& other, const LMVector3& normal) const;
+
+	// Angle
+	///	@brief Get the Angle between two Vectors in degrees
+	/// @param other The other Vector to measure from
+	/// @param normal The normal Vector
+	/// @param axis The axis to measure by
+	double Angle(const LMVector3& other, const LMVector3& normal, const LMVector3& axis) const;
+
+	// rotate
+	///	@brief Rotate a Vector
+	/// @param axis The axis to rotate around
+	/// @param angle The angle to rotate (degrees)
+	LMVector3 Rotate(const LMVector3& axis, double angle);
+
+
+
 
 // VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
 	/// @brief Converts a Bullet vector to lmVector
@@ -129,20 +191,33 @@ public:
 	/// @brief Set the Z value of the Quaternion
 	void SetZ(double z);
 
-	// Quaternion addition
+	//Equal operators of quaternions
+	LMQuaternion operator=(const LMQuaternion& other);
+	LMQuaternion operator=(const btQuaternion& other);
+	LMQuaternion operator=(const btTransform& other);
+	LMQuaternion operator=(const Ogre::Quaternion& other);
+
+	// Add operators of quaternions
 	LMQuaternion operator+(const LMQuaternion& other) const;
+	LMQuaternion operator+(const btQuaternion& other) const;
+	LMQuaternion operator+(const btTransform& other) const;
+	LMQuaternion operator+(const Ogre::Quaternion& other) const;
 
-	// Quaternion subtraction
+	// Sub operators of quaternions
 	LMQuaternion operator-(const LMQuaternion& other) const;
-
-	// Quaternion multiplication
+	LMQuaternion operator-(const btQuaternion& other) const;
+	LMQuaternion operator-(const btTransform& other) const;
+	LMQuaternion operator-(const Ogre::Quaternion& other) const;
+	// Mul operators of quaternions
 	LMQuaternion operator*(const LMQuaternion& other) const;
-
-	// Scalar multiplication
+	LMQuaternion operator*(const btQuaternion& other) const;
+	LMQuaternion operator*(const btTransform& other) const;
+	LMQuaternion operator*(const Ogre::Quaternion& other) const;
 	LMQuaternion operator*(double scalar) const;
 
-	// Scalar division
+	// Div operators of quaternions
 	LMQuaternion operator/(double scalar) const;
+
 
 	// Conjugate
 	/// @brief Get the Conjugate of a Quaternion
@@ -155,6 +230,29 @@ public:
 	// Normalize
 	/// @brief Normalize a Quaternion
 	void Normalize();
+
+	// Rotate
+	/// @brief Rotate a Quaternion
+	/// @param axis The Axis to rotate around
+	/// @param angle The Angle to rotate by (degrees)
+	LMQuaternion Rotate(const LMVector3& axis, double angle) const;
+
+	// Rotate a vector by this quaternion
+	/// @brief Rotate a Vector by this Quaternion
+	/// @param vector The Vector to be rotated
+	LMVector3 Rotate(const LMVector3& vector) const;
+
+	// Up vector from Quaternion
+	/// @brief Get the Up Vector from a Quaternion
+	LMVector3 Up() const;
+
+	// Right vector from Quaternion
+	/// @brief Get the Right Vector from a Quaternion
+	LMVector3 Right() const;
+
+	// Forward vector from Quaternion
+	/// @brief Get the Forward Vector from a Quaternion
+	LMVector3 Forward() const;
 
 
 // QUATERNION TRANSFORMATIONS BETWEEN LANGUAGES
@@ -180,3 +278,4 @@ private:
 
 
 };
+#endif // !LM_VECTOR

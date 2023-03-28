@@ -28,6 +28,7 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 
 	//add the body to the dynamics world;
 	PhysicsManager::GetInstance()->AddRigidBodyToWorld(_rigidBody);
+	_rigidBody->setDamping(0.7, 0.7);
 	
 }
 

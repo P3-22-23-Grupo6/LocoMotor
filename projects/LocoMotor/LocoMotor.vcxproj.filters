@@ -28,6 +28,8 @@
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\ParticleSystem.cpp">
+      <Filter>Source Files\Components</Filter>
     <ClCompile Include="..\..\src\LocoMotor\AudioListenerFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,6 +80,7 @@
     <ClInclude Include="..\..\src\LocoMotor\AudioSourceFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h">
     <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>

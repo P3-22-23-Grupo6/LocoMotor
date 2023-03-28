@@ -24,6 +24,7 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Light.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Node.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\OgreManager.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\ParticleHelper.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Renderer3D.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\RenderScene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\SGTechniqueResolverListener.cpp" />
@@ -34,6 +35,7 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Light.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Node.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\OgreManager.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\ParticleHelper.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderEntity.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Renderer3D.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h" />

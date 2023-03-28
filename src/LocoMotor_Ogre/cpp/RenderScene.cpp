@@ -4,6 +4,7 @@
 #include "Renderer3D.h"
 #include "Light.h"
 #include "Camera.h"
+#include "ParticleHelper.h"
 #include <OgreRenderWindow.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
@@ -86,6 +87,10 @@ void OgreWrapper::RenderScene::SetActiveCamera(OgreWrapper::Camera* cam) {
 
 OgreWrapper::Camera* OgreWrapper::RenderScene::GetMainCamera() {
 	return _mainCam;
+}
+
+OgreWrapper::ParticleHelper* OgreWrapper::RenderScene::CreateParticleHelper(std::string name, std::string filename) {
+	return new ParticleHelper(_manager->createParticleSystem(name, filename));
 }
 
 void OgreWrapper::RenderScene::Prueba() {

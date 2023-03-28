@@ -56,10 +56,13 @@ void GameObject::Update(float dt) {
 
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
-		GetComponent<RigidBodyComponent>()->addForce(LMVector3(0, 0, 10));
+
+		double degToRad = 0.0174533;
+
+		GetComponent<RigidBodyComponent>()->addForce(LMVector3(20 * std::sin(_tr.rotation.GetY() * degToRad), 0, 20 * std::cos(_tr.rotation.GetY() * degToRad)) * dt);
 		//_rigidBody->AddForce(LMVector3(0, 0, 1));
 		//SetPosition(LMVector3(100, 10, 10));
-		_node->Translate(0, 0, 1);
+		//_node->Translate(0, 0, 1);
 	}
 
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
@@ -67,13 +70,17 @@ void GameObject::Update(float dt) {
 		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, 1, 0, 0));
 		//_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
 		_node->Rotate(0, 3, 0);
+		_tr.rotation.SetY(_tr.rotation.GetY() + 3.);
 	}
 	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
 	if (rotateLeft) {
 		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, -1, 0, 0));
 		//_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
 		_node->Rotate(0, -3, 0);
+		_tr.rotation.SetY(_tr.rotation.GetY() - 3.);
 	}
+
+	std::cout << _tr.rotation.GetY() << std::endl;
 }
 
 // Set the position of the GameObject
@@ -99,12 +106,6 @@ void GameObject::SetScale(LMVector3 sc) {
 Transform GameObject::GetTransform() {
 	return _tr;
 }
-
-//HITO 1 POC
-// Set the rigid body of the GameObject
-//void LocoMotor::GameObject::SetRigidBody(PhysicsWrapper::BulletRigidBody* rb) {
-//	_rigidBody = rb;
-//}
 
 // Set the renderer of the GameObject
 void LocoMotor::GameObject::SetRenderer(OgreWrapper::Node* node) {

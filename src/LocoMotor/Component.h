@@ -20,6 +20,7 @@ namespace LocoMotor {
 		/// @brief Render the component
 		virtual void Render() {
 		}
+		GameObject* GetContext ();
 		/// @brief Set the component to a gameobject
 		void SetContext(GameObject* ent);
 

@@ -1,0 +1,107 @@
+particle_system Racers/Smoke
+{ // p.s. attributes
+    renderer billboard
+    billboard_type point // indica como se orientan los billboards
+    particle_width 3
+    particle_height 3
+    quota 1000 // maximo numero de particulas mostradas a la vez
+    material Racers/Smoke
+
+    emitter Point
+    { // e.attributes
+        direction 0 0 -1
+        angle 10
+        emission_rate 70
+        time_to_live 6
+        velocity_min 150
+        velocity_max 200
+        colour 0.9 0.9 0.9 0.5
+    }
+
+    // affector ColourImage
+    // { // a.attributes
+    //     image smoke.png
+    //     colour 0.5 0.5 0.5 0.5
+    // }
+
+    // the texture
+    affector Rotator
+    { // a.attributes
+        rotation_range_start 0
+        rotation_range_end 360
+        rotation_speed_range_start -60
+        rotation_speed_range_end 200
+    }
+
+    affector Scaler
+    { // a.attributes
+        rate 5
+    }
+
+    affector DirectionRandomiser
+    { // a.attributes
+        randomness 5
+    }
+
+    affector ColourFader
+    { // a.attributes
+        alpha -0.1
+        red -0.5
+        green -0.5
+        blue -0.5
+    }
+}
+
+particle_system Racers/Fire
+{ // p.s. attributes
+    renderer billboard
+    billboard_type point // indica como se orientan los billboards
+    particle_width 2
+    particle_height 3
+    quota 1000 // maximo numero de particulas mostradas a la vez
+    material Racers/Smoke
+
+    emitter Point
+    { // e.attributes
+        direction 0 1 -0.5
+        angle 10
+        emission_rate 100
+        time_to_live 0.5
+        velocity_min 10
+        velocity_max 20
+        colour 0.9 0.9 0.0 1.0
+    }
+
+    // affector ColourImage
+    // { // a.attributes
+    //     image smoke.png
+    //     colour 0.5 0.5 0.5 0.5
+    // }
+
+    // the texture
+    affector Rotator
+    { // a.attributes
+        rotation_range_start 0
+        rotation_range_end 360
+        rotation_speed_range_start -60
+        rotation_speed_range_end 200
+    }
+
+    affector Scaler
+    { // a.attributes
+        rate 3
+    }
+
+    affector DirectionRandomiser
+    { // a.attributes
+        randomness 5
+    }
+
+    affector ColourFader
+    { // a.attributes
+        alpha -1.0
+        red -1.0
+        green -2
+        //blue -0.5
+    }
+}

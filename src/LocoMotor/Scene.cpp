@@ -8,6 +8,7 @@
 #include "RigidBodyComponent.h"
 #include "PhysicsManager.h"
 #include "MeshRederer.h"
+#include "ParticleSystem.h"
 
 using namespace LocoMotor;
 Scene::Scene(std::string nombre) {
@@ -43,6 +44,9 @@ void Scene::Start() {
 	_isActiveScene = true;
 	ship_gObj = AddGameobject("ship");
 	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "Racers/Falcon", _renderScn);
+	ship_gObj->AddComponent<ParticleSystem>("smoke", _renderScn, "Racers/Smoke");
+	ship_gObj->AddComponent<ParticleSystem>("fire", _renderScn, "Racers/Fire");	
+
 	ship_gObj->AddComponent<RigidBodyComponent>(1);
 	//_gameObjList.push_back(ship_gObj);
 
