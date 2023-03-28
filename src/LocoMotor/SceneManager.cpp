@@ -80,6 +80,11 @@ Scene* SceneManager::GetSceneByName(std::string name) {
 
 }
 
+Component* LocoMotor::SceneManager::CreateComponent(std::string name, std::string params)
+{
+	return factory->CreateComponent(name, params);
+}
+
 void LocoMotor::SceneManager::Update() {
 
 	_actTime = SDL_GetTicks();

@@ -46,21 +46,25 @@ namespace LocoMotor {
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
 		template<typename T, typename ...Ts>
-		void AddComponent(Ts&& ...params) {
+		T* AddComponent(Ts&& ...params) {
 			if (_componentsByName.count(T::name) > 0) {
-				return;
+				
+				return static_cast<T*>(_componentsByName[T::name]);
 			}
 			else {
-				Component* comp = new T(std::forward<Ts>(params)...);
+				T* comp = new T(std::forward<Ts>(params)...);
 				comp->SetContext(this);
 				comp->InitComponent();
 				_componentsByName.insert({ T::name, comp });
+				return comp;
 			}
 			//EJ.:
 			//ent->AddComponent<Camera>(10,0,0);
 
 			//bool comps[Camera::id] == true -> error
 		};
+
+		void AddComponent(std::string name, std::string params);
 
 
 

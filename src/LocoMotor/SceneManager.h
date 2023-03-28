@@ -9,6 +9,7 @@ typedef uint32_t Uint32;
 
 namespace LocoMotor {
 	class ComponentsFactory;
+	class Component;
 	class SceneManager : public Singleton<SceneManager> {
 		friend Singleton<SceneManager>;
 
@@ -28,6 +29,7 @@ namespace LocoMotor {
 
 
 		Scene* GetSceneByName(std::string name);
+		Component* CreateComponent(std::string name, std::string params);
 
 		void Update();
 

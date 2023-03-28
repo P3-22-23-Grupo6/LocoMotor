@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "Node.h"
 //Borrar luego
+#include "SceneManager.h"
 #include "RigidBodyComponent.h"
 
 using namespace LocoMotor;
@@ -82,6 +83,16 @@ void GameObject::Update(float dt) {
 
 	std::cout << _tr.rotation.GetY() << std::endl;
 }
+
+
+void LocoMotor::GameObject::AddComponent(std::string name, std::string params) {
+	if (_componentsByName.count(name) > 0) {
+		return;
+	}
+	Component* comp = SceneManager::GetInstance()->CreateComponent(name, params);
+	_componentsByName.insert({ name, comp });
+}
+
 
 // Set the position of the GameObject
 void GameObject::SetPosition(LMVector3 pos) {

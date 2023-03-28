@@ -31,10 +31,13 @@ int main() {
 	//auto audio = FmodWrapper::AudioManager::Init(8);
 	////audio->AddSound(0, "Assets/si.wav");
 	//////new int();
-	//OgreWrapper::OgreManager::Init("Prueba");
+	OgreWrapper::OgreManager::Init("Prueba");
+	LocoMotor::SceneManager* mSM = LocoMotor::SceneManager::Init();
 	LocoMotor::ScriptManager* sMan = LocoMotor::ScriptManager::Init();
 	sMan->LoadSceneFromFile("Assets/scene.lua");
 	LocoMotor::ScriptManager::Clear();
+	OgreWrapper::OgreManager::Clear();
+	LocoMotor::SceneManager::Clear();
 	return 0;
 #pragma region Explicit dll loading
 
