@@ -46,6 +46,7 @@
     <ClCompile Include="..\..\src\LocoMotor\FactoryComponent.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\GameObject.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\LogSystem.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ParticleSystem.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\RigidBodyComponent.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp" />
@@ -53,7 +54,6 @@
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
-    <ClCompile Include="MotorApi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
@@ -66,12 +66,12 @@
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h" />
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
+    <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h" />
     <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h" />
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h" />
-    <ClInclude Include="MotorApi.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\Component.h" />
