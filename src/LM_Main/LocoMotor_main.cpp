@@ -43,7 +43,8 @@ int main() {
 #endif // _DEBUG
 
 	// Cargamos la libreria
-	juegoDeAutosDLL = LoadLibraryW(dllName);
+	juegoDeAutosDLL = LoadLibrary(dllName);
+
 	if (juegoDeAutosDLL != NULL) {
 
 		// Buscamos la funcion, notese que no hace falta hacer lo de Wide Char
@@ -52,16 +53,16 @@ int main() {
 
 		if (initJuego != NULL) {
 			// La ejecutamos
-			auto result = initJuego();
+			const char* result = initJuego();
 			std::cout << result << std::endl;
 		}
 		else {
-			std::cerr << "DLL EXPLICIT LOADING ERROR: " << functionName << " function couldn't be executed" << std::endl;
+			std::cerr << "DLL EXPLICIT LOADING ERROR: '" << functionName << "' function couldn't be executed" << std::endl;
 		}
 		FreeLibrary(juegoDeAutosDLL);
 	}
 	else {
-		std::cerr << "DLL EXPLICIT LOADING ERROR: " << dllName << " wasn't found" << std::endl;
+		std::cerr << "DLL EXPLICIT LOADING ERROR: '" << dllName << "' wasn't found" << std::endl;
 	}
 
 #pragma endregion
