@@ -52,6 +52,7 @@
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MotorApi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\GameObject.h">
@@ -105,6 +106,7 @@
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MotorApi.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
