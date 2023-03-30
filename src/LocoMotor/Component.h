@@ -3,6 +3,8 @@
 #define LM_COMPONENT
 
 #include <iostream>
+#include <vector>
+#include <string>
 
 namespace LocoMotor {
 	class GameObject;
@@ -11,6 +13,8 @@ namespace LocoMotor {
 
 		/// @brief Destructor
 		virtual ~Component() = default;
+
+		virtual void Init(std::vector<std::pair<std::string, std::string>>& params) {};
 		/// @brief Initialize the component
 		virtual void Start() {
 		}
