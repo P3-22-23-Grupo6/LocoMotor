@@ -34,6 +34,12 @@ void LocoMotor::RigidBodyComponent::Start() {
 void LocoMotor::RigidBodyComponent::Update(float dt) {
 	gameObject->SetPosition(_body->getPosition());
 	//gameObject->SetRotation(_body->getRotation());
+	
+	//LMVector3 rayFrom = LMVector3(_body->getPosition());
+	//LMVector3 rayTo = LMVector3(_body->getPosition());
+	////btVector3 btTo(camPos.x, -5000.0f, camPos.z);
+	//btCollisionWorld::ClosestRayResultCallback res(rayFrom, rayTo);
+	//Base::getSingletonPtr()->m_btWorld->rayTest(btFrom, btTo, res); // m_btWorld is btDiscreteDynamicsWorld
 }
 
 

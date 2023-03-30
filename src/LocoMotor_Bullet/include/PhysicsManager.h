@@ -16,6 +16,16 @@ namespace PhysicsWrapper {
 		btVector3 origin;
 		float mass;
 	};
+	/// @brief Info to retreieve from a Raycast
+	/// @param hasHit tells if there was a Collision
+	/// @param hitPos The position of the surface hit
+	/// @param hitVNormal The normal vector of the surface hit
+	struct RaycastInfo {
+		bool hasHit;
+		btVector3 hitPos;
+		btVector3 hitVNormal;
+	};
+
 	class BulletRigidBody;
 	class PhysicsManager : public Singleton<PhysicsWrapper::PhysicsManager> {
 		friend Singleton<PhysicsWrapper::PhysicsManager>;
@@ -35,6 +45,8 @@ namespace PhysicsWrapper {
 		/// @brief Sets the worlds gravity
 		/// @param gravity The Vector3 gravity you want to set
 		void SetWorldGravity(btVector3 gravity);
+		/// @brief Gets dynamic World
+		btDynamicsWorld* GetDynamicWorld();
 
 	private:
 		//Configuraciones para crear el mundo físico

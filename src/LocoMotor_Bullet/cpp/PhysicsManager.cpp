@@ -14,6 +14,7 @@ PhysicsManager::PhysicsManager() {
 	_solver = new btSequentialImpulseConstraintSolver;
 	//Create Dynamic world
 	_dynamicWorld = new btDiscreteDynamicsWorld(_dispatcher, _overlappingPairCache, _solver, _collisionConfiguration);
+	
 	//Set default gravity
 	_dynamicWorld->setGravity(btVector3(0, -9.8, 0));
 }
@@ -36,6 +37,10 @@ BulletRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info) {
 }
 void PhysicsManager::SetWorldGravity(btVector3 gravity) {
 	_dynamicWorld->setGravity(gravity);
+}
+
+btDynamicsWorld* PhysicsWrapper::PhysicsManager::GetDynamicWorld() {
+	return _dynamicWorld;
 }
 
 void PhysicsManager::AddRigidBodyToWorld(btRigidBody* rb) {

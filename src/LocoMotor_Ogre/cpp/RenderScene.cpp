@@ -94,6 +94,10 @@ OgreWrapper::ParticleHelper* OgreWrapper::RenderScene::CreateParticleHelper(std:
 }
 
 void OgreWrapper::RenderScene::Prueba() {
+	//SET TEXTURE FILTERING A NONE
+	Ogre::MaterialManager& matMan = Ogre::MaterialManager::getSingleton();
+	matMan.setDefaultTextureFiltering(Ogre::TextureFilterOptions::TFO_BILINEAR);
+
 	OgreWrapper::Node* mLightNode = CreateNode("Luz");
 	OgreWrapper::Light* mLight = new Light(_manager->createLight(), Ogre::Light::LT_DIRECTIONAL);
 	mLightNode->Attach(mLight);
@@ -107,4 +111,3 @@ void OgreWrapper::RenderScene::Prueba() {
 	//Skybox
 	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000, false);
 }
-
