@@ -109,7 +109,8 @@ void OgreWrapper::RenderScene::Prueba() {
 	mLightNode->SetDirection(-1, -1, -1);
 	//Road
 	OgreWrapper::Node* mTrackNode = CreateNode("Track");
-	OgreWrapper::Renderer3D* track = new Renderer3D(_manager->createEntity("Track.mesh"));
+	OgreWrapper::Renderer3D* track = new Renderer3D(_manager->createEntity("map.mesh"));
 	mTrackNode->Attach(track);
 	mTrackNode->SetScale(0.7f, 0.7f, 0.7f);
+	mTrackNode->Rotate(-90, 0, 25);
 }
