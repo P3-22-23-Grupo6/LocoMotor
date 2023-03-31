@@ -13,6 +13,9 @@
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>

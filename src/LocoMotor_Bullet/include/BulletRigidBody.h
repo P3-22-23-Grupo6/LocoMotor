@@ -8,6 +8,7 @@ class LMQuaternion;
 class LMVector3;
 namespace PhysicsWrapper {
 	struct RigidBodyInfo;
+	struct RaycastInfo;
 	class BulletRigidBody {
 	public:
 		/// @brief Constructor by rigidBodyInfo to create BulletRigidBody
@@ -46,6 +47,9 @@ namespace PhysicsWrapper {
 		/// @brief set the rigidBodyState (dynamic,kinematic,static)
 		/// @param state int The state you want to set to the rigidBody, 0=Dynamic, 1=Static, 2=Kinematic
 		void setBodystate(int state);
+		/// @brief Creates a Raycast
+		/// @param the vector from where the raycast is created, and its direction
+		RaycastInfo createRaycast(LMVector3 from, LMVector3 direction);
 		/// @brief Destructor of BulletRigidBody
 		~BulletRigidBody();
 	private:

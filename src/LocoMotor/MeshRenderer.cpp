@@ -21,7 +21,7 @@ void MeshRenderer::Start() {
 	_nod = _rndScn->GetNode(_name);
 	_rend3D = _rndScn->CreateRenderer(_src);
 	_nod->Attach(_rend3D);
-	_rend3D->SetMaterial(_mat);
+	//_rend3D->SetMaterial(_mat); TEMPORAL!
 }
 
 

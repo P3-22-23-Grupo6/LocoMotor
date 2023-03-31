@@ -43,7 +43,7 @@ void Scene::Start() {
 
 	_isActiveScene = true;
 	ship_gObj = AddGameobject("ship");
-	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "Racers/Falcon", _renderScn);
+	ship_gObj->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
 	ship_gObj->AddComponent<ParticleSystem>("smoke", _renderScn, "Racers/Smoke");
 	ship_gObj->AddComponent<ParticleSystem>("fire", _renderScn, "Racers/Fire");	
 
@@ -55,6 +55,8 @@ void Scene::Start() {
 	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 
 	_renderScn->Prueba();
+	//Skybox
+	_renderScn->SetSkybox();
 
 	for (auto obj : _gameObjList) {
 		obj->StartComp();
