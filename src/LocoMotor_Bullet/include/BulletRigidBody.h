@@ -6,6 +6,7 @@ class btRigidBody;
 class btCollisionShape;
 class LMQuaternion;
 class LMVector3;
+class MeshStrider;
 namespace PhysicsWrapper {
 	struct RigidBodyInfo;
 	struct RaycastInfo;
@@ -13,7 +14,7 @@ namespace PhysicsWrapper {
 	public:
 		/// @brief Constructor by rigidBodyInfo to create BulletRigidBody
 		/// @param info RigidBodyInfo The info of the rigidBody 
-		BulletRigidBody(RigidBodyInfo info);
+		BulletRigidBody(RigidBodyInfo info,MeshStrider *mesh=nullptr);
 		/// @brief Gets the rigidBodyPosition
 		/// @return 
 		LMVector3 getPosition();

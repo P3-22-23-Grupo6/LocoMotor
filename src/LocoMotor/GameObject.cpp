@@ -27,7 +27,7 @@ void GameObject::Update(float dt) {
 	}
 	if (GetComponent<RigidBodyComponent>() == nullptr) return;
 	InputManager* man = InputManager::Get();
-
+	if (!movable)return;
 	if (man->controllerConnected()) {
 
 		float gyroRotate = man->GetGyroscopeAngularSpeed(InputManager::Axis::Horizontal);

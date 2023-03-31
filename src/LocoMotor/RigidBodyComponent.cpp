@@ -3,6 +3,9 @@
 #include "BulletRigidBody.h"
 #include "PhysicsManager.h"
 #include "GameObject.h"
+#include "Renderer3D.h"
+#include "MeshRederer.h"
+#include "MeshStrider.h"
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
 const std::string RigidBodyComponent::name = "RigidBodyComponent";
@@ -16,6 +19,7 @@ LocoMotor::RigidBodyComponent::RigidBodyComponent(float mass) {
 }
 
 LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
+	delete _ms;
 }
 
 void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
@@ -23,12 +27,24 @@ void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
 	_body->AddForce(force);
 }
 void LocoMotor::RigidBodyComponent::Start() {
+	
 	RigidBodyInfo info;
 	info.mass = _mass;
 	info.boxSize = LMVector3::LmToBullet(gameObject->GetTransform().scale);
 	info.origin = LMVector3::LmToBullet(gameObject->GetTransform().position);
 	info.size = -1;
+	if (_mass == 0) {
+		OgreWrapper::Renderer3D* mesh = gameObject->GetComponent<MeshRenderer>()->GetRenderer();
+		if (mesh != nullptr) {
+			_ms = new MeshStrider(mesh->GetMesh());
+			_body = PhysicsManager::GetInstance()->CreateRigidBody(info, _ms);
+			//delete ms;
+			return;
+		}	
+	}
 	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
+
+	
 }
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
@@ -55,7 +71,7 @@ void LocoMotor::RigidBodyComponent::setMass(float m) {
 
 void LocoMotor::RigidBodyComponent::useGravity(bool gravity) {
 	if (gravity)
-		_body->setGravity(LMVector3(0, -9.8, 0));
+		_body->setGravity(LMVector3(0, -99, 0));
 	else
 		_body->setGravity(LMVector3(0, 0, 0));
 

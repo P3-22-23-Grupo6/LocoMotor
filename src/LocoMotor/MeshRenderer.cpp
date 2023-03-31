@@ -22,6 +22,11 @@ void MeshRenderer::Start() {
 	_rend3D = _rndScn->CreateRenderer(_src);
 	_nod->Attach(_rend3D);
 	//_rend3D->SetMaterial(_mat); TEMPORAL!
+	//gameObject->SetRenderer(_rend3D);
+}
+
+OgreWrapper::Renderer3D* LocoMotor::MeshRenderer::GetRenderer() {
+	return _rend3D;
 }
 
 

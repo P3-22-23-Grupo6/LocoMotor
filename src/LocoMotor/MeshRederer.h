@@ -28,9 +28,8 @@ namespace LocoMotor {
 			gameObject->SetRenderer(_nod);
 		};
 
-		
-
 		//OgreWrapper::Node* GetNode();
+		OgreWrapper::Renderer3D* GetRenderer();
 
 	private:
 

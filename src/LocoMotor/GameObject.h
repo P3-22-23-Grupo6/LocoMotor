@@ -112,6 +112,11 @@ namespace LocoMotor {
 
 		void StartComp();
 
+		//Prueba
+		void setMovable(bool b) {
+			movable = b;
+		}
+
 	private:
 		Transform _tr;
 		std::map<std::string, Component*> _componentsByName;
@@ -121,6 +126,9 @@ namespace LocoMotor {
 		//PhysicsWrapper::BulletRigidBody* _rigidBody;
 		OgreWrapper::Renderer3D* _renderer;
 		OgreWrapper::Node* _node;
+
+		//Prueba
+		bool movable=false;
 	};
 }
 

@@ -29,8 +29,8 @@ PhysicsManager::~PhysicsManager() {
 	delete _dynamicWorld;
 }
 
-BulletRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info) {
-	BulletRigidBody* brg = new BulletRigidBody(info);
+BulletRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms) {
+	BulletRigidBody* brg = new BulletRigidBody(info,ms);
 	_vRigidBody.push_back(brg);
 	return brg;
 

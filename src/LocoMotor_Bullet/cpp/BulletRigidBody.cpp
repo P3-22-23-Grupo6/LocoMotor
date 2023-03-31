@@ -2,12 +2,19 @@
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 #include "lmVector.h"
+#include "MeshStrider.h"
 using namespace PhysicsWrapper;
-BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
-	if (info.size <= 0.0)
-		_shape = new btBoxShape(info.boxSize);
-	else
-		_shape = new btSphereShape(info.size);
+BulletRigidBody::BulletRigidBody(RigidBodyInfo info, MeshStrider* mesh) {
+	if (mesh != nullptr) {
+		_shape = new btBvhTriangleMeshShape(mesh,true,true);
+	}
+	else {
+		if (info.size <= 0.0)
+			_shape = new btBoxShape(info.boxSize);
+		else
+			_shape = new btSphereShape(info.size);
+	}
+
 	btTransform groundTransform;
 	groundTransform.setIdentity();
 	groundTransform.setOrigin(info.origin);

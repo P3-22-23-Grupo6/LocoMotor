@@ -5,6 +5,7 @@
 class LMVector3;
 class LMQuaternion;
 class BulletRigidBody;
+class MeshStrider;
 namespace PhysicsWrapper {
 	class RigidBodyInfo;
 	class BulletRigidBody;
@@ -53,6 +54,7 @@ namespace LocoMotor {
 		float _damping;
 		float _angDamping;
 		bool _gravity;
+		MeshStrider* _ms;
 
 	};
 }
