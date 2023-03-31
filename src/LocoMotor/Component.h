@@ -1,4 +1,11 @@
 #pragma once
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
+
+#pragma once
 #ifndef LM_COMPONENT
 #define LM_COMPONENT
 
