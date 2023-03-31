@@ -27,6 +27,7 @@ namespace OgreWrapper {
 		static CEGUI::OgreRenderer* myRenderer;
 		CEGUI::GUIContext* m_context = nullptr;
 		CEGUI::Window* m_root = nullptr;
+		void pruebas();
 	};
 
 }

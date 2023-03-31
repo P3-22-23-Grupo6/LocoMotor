@@ -1,5 +1,6 @@
 #include "GUI.h"
 #include "OgreManager.h"
+#include "OgreRenderWindow.h"
 
 CEGUI::OgreRenderer* OgreWrapper::GUI::myRenderer = nullptr;
 
@@ -7,27 +8,21 @@ void OgreWrapper::GUI::init(const std::string& resourceDirectory) {
 	//Check si el renderer y el sistema han sido inicializados
 	if (myRenderer == nullptr) {
 		//myRenderer = &CEGUI::OgreRenderer::bootstrapSystem();
-		myRenderer = &CEGUI::OgreRenderer::bootstrapSystem(*OgreWrapper::OgreManager::GetInstance()->GetRenderTarget());
-
+		myRenderer = &CEGUI::OgreRenderer::bootstrapSystem(*OgreWrapper::OgreManager::GetInstance()->GetRenderWindow());
+		myRenderer->setUsingShaders(true);
 		//Asignar los recursos de la UI a Assets/GUI
-		CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*> (CEGUI::System::getSingleton().getResourceProvider());
-		rp->setResourceGroupDirectory("imagesets", resourceDirectory + "/imagesets");
-		rp->setResourceGroupDirectory("schemes", resourceDirectory + "/schemes");
-		rp->setResourceGroupDirectory("fonts", resourceDirectory + "/fonts");
-		rp->setResourceGroupDirectory("layouts", resourceDirectory + "/layouts");
-		rp->setResourceGroupDirectory("looknfeels", resourceDirectory + "/looknfeel");
-		rp->setResourceGroupDirectory("lua_scripts", resourceDirectory + "/lua_scripts");
 
-		CEGUI::ImageManager::setImagesetDefaultResourceGroup("imagesets");
-		CEGUI::Scheme::setDefaultResourceGroup("schemes");
-		CEGUI::Font::setDefaultResourceGroup("fonts");
-		CEGUI::WidgetLookManager::setDefaultResourceGroup("looknfeels");
-		CEGUI::WindowManager	::setDefaultResourceGroup("layouts");
-		CEGUI::ScriptModule::setDefaultResourceGroup("lua_scripts");
+		CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
+		CEGUI::Scheme::setDefaultResourceGroup("Schemes");
+		CEGUI::Font::setDefaultResourceGroup("Fonts");
+		CEGUI::WidgetLookManager::setDefaultResourceGroup("Looknfeels");
+		CEGUI::WindowManager	::setDefaultResourceGroup("Layouts");
+		//CEGUI::ScriptModule::setDefaultResourceGroup("Lua_scripts");
 	}
 
 	m_context = &CEGUI::System::getSingleton().createGUIContext(myRenderer->getDefaultRenderTarget());
 	m_root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "root");
+	m_root->activate();
 	m_context->setRootWindow(m_root);
 }
 
@@ -40,6 +35,8 @@ void OgreWrapper::GUI::draw() {
 	myRenderer->endRendering();
 	//Disable Scissors test (?), solo en GL se supone?
 }
+
+
 
 CEGUI::Window* OgreWrapper::GUI::createWidget(const std::string& type, const std::string& name) {
 	CEGUI::Window* newWindow = CEGUI::WindowManager::getSingleton().createWindow(type, name);

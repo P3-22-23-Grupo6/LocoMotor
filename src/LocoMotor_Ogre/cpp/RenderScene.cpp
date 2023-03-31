@@ -114,12 +114,16 @@ void OgreWrapper::RenderScene::Prueba() {
 	
 	//Init the UI
 	m_gui.init("Assets/GUI");
+	m_gui.loadScheme("TaharezLook.scheme");
+	m_gui.setFont("DejaVuSans-10");
+	auto x = m_gui.createWidget("TaharezLook/Slider", "prueba");
+	x->setText("");
+
+	}
 	////Set UI Defaults
 	//m_gui.loadScheme("TaharezLook.scheme");
 	//m_gui.setFont("DejavuSans-10");
 	////Create Button
-	//m_gui.createWidget("TaharezLook/FrameWindow", "TestButton");
+	//m_gui.createWidget("TaharezLook/FrameWindow", "TestButton")
 
-
-}
 
