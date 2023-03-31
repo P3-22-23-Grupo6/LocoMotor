@@ -47,6 +47,24 @@ void LocoMotor::RigidBodyComponent::Start() {
 	
 }
 
+void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	for (int i = 0; i < params.size(); i++) {
+		if (params[i].first == "mass") {
+			_mass = std::stof(params[i].second);
+		}
+		else if (params[i].first == "damping") {
+			_damping = std::stof(params[i].second);
+		}
+		else if (params[i].first == "angDamping") {
+			_angDamping = std::stof(params[i].second);
+		}
+		else if (params[i].first == "gravity") {
+			_gravity = std::stoi(params[i].second);
+		}
+	}
+	_body = nullptr;
+}
+
 void LocoMotor::RigidBodyComponent::Update(float dt) {
 	gameObject->SetPosition(_body->getPosition());
 	//gameObject->SetRotation(_body->getRotation());

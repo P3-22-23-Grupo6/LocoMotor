@@ -23,6 +23,8 @@ namespace LocoMotor {
 		void addForce(LMVector3 force);
 		/// @brief 
 		void Start() override;
+		/// @brief 
+		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's
 		/// @param dt DeltaTime used to calculate the velocity
 		void Update(float dt) override;
