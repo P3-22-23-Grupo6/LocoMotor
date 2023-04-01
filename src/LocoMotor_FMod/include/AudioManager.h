@@ -20,8 +20,6 @@ namespace FmodWrapper {
 	class AudioManager : public Singleton<FmodWrapper::AudioManager> {
 
 		friend Singleton<FmodWrapper::AudioManager>;
-		friend AudioSource;
-		friend AudioListener;
 
 	public:
 		~AudioManager();
@@ -42,14 +40,26 @@ namespace FmodWrapper {
 		/// @return A number that by passing it to GetError(unsigned short) you can get more info if there was an error
 		unsigned short PlaySound(const unsigned int id);
 
+		/// @brief Plays an already added sound, but gives access to the channel its being played
+		/// @param Name of the sound to play
+		/// @return A number that by passing it to GetError(unsigned short) you can get more info if there was an error
+		unsigned short PlaySoundwChannel(const unsigned int name, FMOD::Channel** channel);
+
 		/// @brief Adds a listener to Fmod
 		/// @param index The index of the newly created listener
+		/// @return The iterator to the position in the listeners list where it is stored;
+		std::list<AudioListener*>::iterator AddListener(AudioListener* curr, int& index);
+
+		/// @brief Removes the listener
+		/// @param The listener to remove
 		/// @return A number that by passing it to GetError(unsigned short) you can get more info if there was an error
-		unsigned short AddListener(int& index);
+		unsigned short RemoveListener(AudioListener* curr);
 
 		/// @brief Gets the FMOD::System object from this manager
 		/// @return The System in question
 		FMOD::System* GetSystem() const;
+
+		FMOD::Sound* GetSound(const unsigned int id);
 
 		/// @brief Get the fmod error corresponding to the param passed
 		/// @param errorCode Param to get the Fmod error corresponding to it
@@ -63,17 +73,11 @@ namespace FmodWrapper {
 
 		std::unordered_map<unsigned int, FMOD::Sound*> _soundLib;
 
+		std::list<AudioListener*> _listeners;
 
 		/// @brief Constructor is set to private, use the 'Get' method for access to the instance of this object
 		AudioManager();
 		AudioManager(int numChannels);
-
-		/// @brief Plays an already added sound, but gives access to the channel its being played
-		/// @param Name of the sound to play
-		/// @return A number that by passing it to GetError(unsigned short) you can get more info if there was an error
-		unsigned short PlaySoundwChannel(const unsigned int name, FMOD::Channel** channel);
-
-		FMOD::Sound* GetSound(const unsigned int id);
 
 	};
 }

@@ -1,4 +1,5 @@
 #include "AudioManager.h"
+#include "AudioListener.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -26,6 +27,7 @@ AudioManager::AudioManager() {
 	_sys->set3DSettings(1.f, 1.f, 1.f);
 
 	_soundLib = std::unordered_map<unsigned int, FMOD::Sound*>();
+	_listeners = std::list<AudioListener*>();
 }
 
 AudioManager::AudioManager(int numChannels) {
@@ -117,17 +119,36 @@ Sound* AudioManager::GetSound(const unsigned int id) {
 	return _soundLib[id];
 }
 
-unsigned short AudioManager::AddListener(int& index) {
-	static bool first = true;
-	if (first) {
-		first = false;
-		index = 0;
-		return 0;
+std::list<AudioListener*>::iterator AudioManager::AddListener(AudioListener* curr, int& index) {
+	index = _listeners.size();
+	_listeners.push_back(curr);
+
+	_sys->set3DNumListeners(_listeners.size());
+
+	auto it = _listeners.end();
+	it--;
+	return it;
+}
+
+unsigned short FmodWrapper::AudioManager::RemoveListener(AudioListener* curr) {
+	auto it = _listeners.erase(curr->GetIterator());
+	int nIndex = curr->GetIndex();
+
+	unsigned short err = 0;
+
+	while (it != _listeners.end()) {
+		err = (*it)->ChangeIndex(nIndex);
+
+	#ifdef _DEBUG
+		if (err != 0) {
+			std::cout << "AUDIO: Trying to update listeners while removing number '" << curr->GetIndex() << "' caused fmod exception: " << FMOD_ErrorString((FMOD_RESULT)err) << std::endl;
+		}
+	#endif // _DEBUG
+
+		nIndex++;
 	}
-	else {
-		_sys->get3DNumListeners(&index);
-		return _sys->set3DNumListeners(index + 1);
-	}
+	_sys->set3DNumListeners(_listeners.size());
+	return err;
 }
 
 System* AudioManager::GetSystem() const {
