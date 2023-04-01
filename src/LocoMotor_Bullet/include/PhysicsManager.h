@@ -4,6 +4,7 @@
 #include <vector>
 #include <btBulletDynamicsCommon.h>
 #include "Singleton.h"
+#include "lmVector.h"
 class MeshStrider;
 namespace PhysicsWrapper {
 	/// @brief Info to create a RigidBody
@@ -23,8 +24,8 @@ namespace PhysicsWrapper {
 	/// @param hitVNormal The normal vector of the surface hit
 	struct RaycastInfo {
 		bool hasHit;
-		btVector3 hitPos;
-		btVector3 hitVNormal;
+		LMVector3 hitPos;
+		LMVector3 hitVNormal;
 	};
 
 	class BulletRigidBody;

@@ -147,7 +147,7 @@ bool InputManager::RegisterEvents() {
 				case SDL_BUTTON_X2:
 					break;
 			}
-			std::cout << "MOUSE " << "\n";
+			//std::cout << "MOUSE " << "\n";
 		}
 
 		//std::cout << "joystickAxis_0 = " << joystickAxis[0] << "\n";
@@ -354,10 +354,10 @@ void InputManager::SetControllerLedColor(int r, int g, int b) {
 
 		if (SDL_GameControllerHasLED(_currentController))
 			SDL_GameControllerSetLED(_currentController, r, g, b);
-		else
-			std::cout << "[ERROR] Could not change LED color: currentController has not LED support";
+		//else
+			//std::cout << "[ERROR] Could not change LED color: currentController has not LED support";
 	}
-	else std::cout << "[ERROR] Could not change LED color: currentController not assigned";
+	//else std::cout << "[ERROR] Could not change LED color: currentController not assigned";
 }
 
 // Vibracion

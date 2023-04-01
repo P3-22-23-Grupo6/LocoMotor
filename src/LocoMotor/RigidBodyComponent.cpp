@@ -118,3 +118,15 @@ void LocoMotor::RigidBodyComponent::setStatic() {
 void LocoMotor::RigidBodyComponent::setNoContactResponse() {
 	_body->setBodystate(4);
 }
+
+bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
+	return _body->createRaycast(from, to).hasHit;
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetraycastHitPoint(LMVector3 from, LMVector3 to) {
+	return _body->createRaycast(from, to).hitPos;
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GethasRaycastHitNormal(LMVector3 from, LMVector3 to){
+	return _body->createRaycast(from, to).hitVNormal;
+}

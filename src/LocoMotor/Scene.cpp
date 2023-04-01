@@ -90,7 +90,7 @@ void Scene::Update(float dt) {
 
 		LMVector3 pos = camera_gObj->GetTransform().position;
 
-		std::cout << "CAMERAPOSITION_GAMEOBJ = " << pos.GetX() << ", " << pos.GetY() << ", " << pos.GetZ() << "\n";
+		//std::cout << "CAMERAPOSITION_GAMEOBJ = " << pos.GetX() << ", " << pos.GetY() << ", " << pos.GetZ() << "\n";
 
 		//std::cout << "CARPOSITION_NODE = " << x << ", " << y << ", " << z << "\n";
 	}

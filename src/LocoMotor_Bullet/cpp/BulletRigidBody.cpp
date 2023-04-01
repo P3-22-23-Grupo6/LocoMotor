@@ -96,13 +96,14 @@ RaycastInfo PhysicsWrapper::BulletRigidBody::createRaycast(LMVector3 from, LMVec
 	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction), rayCallback);
 	if (rayCallback.hasHit()) {
 		newRaycastInfo.hasHit = true;
-		newRaycastInfo.hitPos = btVector3(rayCallback.m_hitPointWorld.getX(),
+		newRaycastInfo.hitPos = LMVector3(rayCallback.m_hitPointWorld.getX(),
 										  rayCallback.m_hitPointWorld.getY(), 
 										  rayCallback.m_hitPointWorld.getZ());
-		newRaycastInfo.hitVNormal = btVector3(rayCallback.m_hitNormalWorld.getX(),
+		newRaycastInfo.hitVNormal = LMVector3(rayCallback.m_hitNormalWorld.getX(),
 											  rayCallback.m_hitNormalWorld.getY(),
 											  rayCallback.m_hitNormalWorld.getZ());
 	}
+	else newRaycastInfo.hasHit = false;
 	return newRaycastInfo;
 }
 
