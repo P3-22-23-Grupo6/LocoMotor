@@ -4,7 +4,7 @@
 #include "PhysicsManager.h"
 #include "GameObject.h"
 #include "Renderer3D.h"
-#include "MeshRederer.h"
+#include "MeshRenderer.h"
 #include "MeshStrider.h"
 using namespace PhysicsWrapper;
 using namespace LocoMotor;

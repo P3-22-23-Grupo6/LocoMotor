@@ -85,7 +85,7 @@
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h">
+    <ClInclude Include="..\..\src\LocoMotor\MeshRenderer.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioListenerFactory.h">

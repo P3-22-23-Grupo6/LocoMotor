@@ -3,19 +3,15 @@
 #pragma once
 #include "Singleton.h"
 #include <string>
-extern "C"
-{
-#include <lua.h>
-#include <lauxlib.h>
-#include <lualib.h>
-}
+
+class lua_State;
 namespace luabridge {
 	class LuaRef;
 }
 
 
 namespace LocoMotor {
-	class SceneManager;
+	//class SceneManager;
 	class GameObject;
 	class Scene;
 	class ScriptManager : public Singleton<ScriptManager> {
@@ -33,7 +29,7 @@ namespace LocoMotor {
 		~ScriptManager();
 
 		lua_State* luaState;
-		SceneManager* scMan;
+		//SceneManager* scMan;
 
 	};
 }

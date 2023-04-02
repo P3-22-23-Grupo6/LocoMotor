@@ -69,7 +69,7 @@
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h" />
-    <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h" />
+    <ClInclude Include="..\..\src\LocoMotor\MeshRenderer.h" />
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h" />
   </ItemGroup>

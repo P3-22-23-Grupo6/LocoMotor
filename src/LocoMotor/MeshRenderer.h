@@ -23,11 +23,6 @@ namespace LocoMotor {
 
 		void Start() override;
 
-		void SetContext(GameObject* ent) {
-			Component::SetContext(ent);
-			gameObject->SetRenderer(_nod);
-		};
-
 		//OgreWrapper::Node* GetNode();
 		OgreWrapper::Renderer3D* GetRenderer();
 

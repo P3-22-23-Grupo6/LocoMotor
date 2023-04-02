@@ -2,12 +2,14 @@
 #include "Scene.h"
 #include "SceneManager.h"
 
+extern "C" {
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
+}
 
 #include <LuaBridge/LuaBridge.h>
 #include "GameObject.h"
-
-
-#include "SceneManager.h"
 using namespace LocoMotor;
 
 //bool LocoMotor::ScriptManager::Init() {
@@ -74,7 +76,7 @@ void ScriptManager::LoadSceneFromFile(std::string path) {
 
 ScriptManager::ScriptManager() {
     luaState = luaL_newstate();
-    scMan = SceneManager::GetInstance();
+    //scMan = SceneManager::GetInstance();
     luaL_openlibs(luaState);
 }
 

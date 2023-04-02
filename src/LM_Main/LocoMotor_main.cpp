@@ -16,7 +16,8 @@ int exec();
 int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
-
+	
+	
 #pragma region Explicit dll loading
 
 	HINSTANCE juegoDeAutosDLL;
@@ -59,6 +60,10 @@ int main() {
 	
 	MotorApi* a = new MotorApi();
 	a->init();
+
+	
+	
+
 	delete a;
 	
 

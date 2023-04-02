@@ -1,5 +1,5 @@
 
-#include "MeshRederer.h"
+#include "MeshRenderer.h"
 #include "Renderer3D.h"
 #include "OgreManager.h"
 #include "RenderScene.h"

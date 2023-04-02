@@ -7,7 +7,7 @@
 #include "Renderer3D.h"
 #include "RigidBodyComponent.h"
 #include "PhysicsManager.h"
-#include "MeshRederer.h"
+#include "MeshRenderer.h"
 #include "ParticleSystem.h"
 
 using namespace LocoMotor;

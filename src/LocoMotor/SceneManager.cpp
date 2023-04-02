@@ -6,6 +6,7 @@
 using namespace LocoMotor;
 
 SceneManager* Singleton<SceneManager>::_instance = nullptr;
+
 SceneManager::SceneManager() {
 	_activeScene = nullptr;
 	_actTime = 0;

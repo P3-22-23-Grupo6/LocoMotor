@@ -12,11 +12,17 @@
 #include "RenderScene.h"
 #include "SceneManager.h"
 #include "GameObject.h"
+#include "LocoMotor_Lua/include/ScriptManager.h"
+
 using namespace PhysicsWrapper;
 MotorApi::MotorApi() {
 }
 
 void MotorApi::init() {
+	LocoMotor::ScriptManager* mScMan = LocoMotor::ScriptManager::Init();
+	mScMan->LoadSceneFromFile("Assets/scene.lua");
+	LocoMotor::ScriptManager::Clear();
+	return;
 	auto audio = FmodWrapper::AudioManager::Init(8);
 	audio->AddSound(0, "Assets/si.wav");
 	////new int();
@@ -39,7 +45,7 @@ void MotorApi::init() {
 	//info2.origin = btVector3(2, 10, 0);
 	//BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
-	LocoMotor::SceneManager* mSM = new LocoMotor::SceneManager();
+	LocoMotor::SceneManager* mSM = LocoMotor::SceneManager::Init();
 	mSM->CreateScene("Escena");
 	mSM->ChangeScene("Escena");
 
@@ -105,7 +111,7 @@ void MotorApi::init() {
 			//gObj->GetComponent<LocoMotor::AudioSource>()->Play(0);
 		}
 	}
-	delete mSM;
+	LocoMotor::SceneManager::Clear();
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();
