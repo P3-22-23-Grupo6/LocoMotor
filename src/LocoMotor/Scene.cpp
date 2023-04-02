@@ -39,11 +39,13 @@ void Scene::Start() {
 	//GameObject* camera = new GameObject();
 
 	// TODO: camera->AddComponent();
-
+	GameObject* map = AddGameobject("map");
+	map->AddComponent<MeshRenderer>("map", "Track.mesh", "FalconRedone/FalconMat", _renderScn);
+	map->AddComponent<RigidBodyComponent>(0);
 
 	_isActiveScene = true;
 	ship_gObj = AddGameobject("ship");
-	ship_gObj->AddComponent<MeshRenderer>("ship", "Feisar.mesh", "Racers/Falcon", _renderScn);
+	ship_gObj->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
 	ship_gObj->AddComponent<ParticleSystem>("smoke", _renderScn, "Racers/Smoke");
 	ship_gObj->AddComponent<ParticleSystem>("fire", _renderScn, "Racers/Fire");	
 
@@ -53,15 +55,21 @@ void Scene::Start() {
 	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
 	//rend->SetMaterial("Racers/Falcon");
 	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
-
+	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
+	ship_gObj->SetPosition(LMVector3(0, 10, 0));
+	ship_gObj->setMovable(true);
 	_renderScn->Prueba();
+	//Skybox
+	_renderScn->SetSkybox();
 
 	for (auto obj : _gameObjList) {
 		obj->StartComp();
 	}
 
 	camera_gObj->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 5, 15));
-	ship_gObj->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	//ship_gObj->GetComponent<RigidBodyComponent>()
+	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	map->GetComponent<RigidBodyComponent>()->setStatic();
 }
 
 void Scene::Update(float dt) {
@@ -82,7 +90,7 @@ void Scene::Update(float dt) {
 
 		LMVector3 pos = camera_gObj->GetTransform().position;
 
-		std::cout << "CAMERAPOSITION_GAMEOBJ = " << pos.GetX() << ", " << pos.GetY() << ", " << pos.GetZ() << "\n";
+		//std::cout << "CAMERAPOSITION_GAMEOBJ = " << pos.GetX() << ", " << pos.GetY() << ", " << pos.GetZ() << "\n";
 
 		//std::cout << "CARPOSITION_NODE = " << x << ", " << y << ", " << z << "\n";
 	}

@@ -24,14 +24,9 @@ material Racers/SkyBoxBlue
 
             texture_unit
             {
-                texture falcon_t.png
+                texture Skybox2.png
                 tex_coord_set 0
-            }
-            texture_unit
-            {
-                texture falcon_t.png
-                tex_coord_set 0
-                rotate_anim 0.05
+                scroll_anim 0.04 0
             }
         }
     }

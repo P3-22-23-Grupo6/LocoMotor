@@ -51,6 +51,8 @@ namespace OgreWrapper {
 		/// </summary>
 		void Render();
 
+		void SetSkybox();
+
 		Node* CreateNode(std::string name);
 
 		Node* CreateNode(std::string name, std::string parent);

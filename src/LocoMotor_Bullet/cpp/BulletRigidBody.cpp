@@ -2,12 +2,19 @@
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 #include "lmVector.h"
+#include "MeshStrider.h"
 using namespace PhysicsWrapper;
-BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
-	if (info.size <= 0.0)
-		_shape = new btBoxShape(info.boxSize);
-	else
-		_shape = new btSphereShape(info.size);
+BulletRigidBody::BulletRigidBody(RigidBodyInfo info, MeshStrider* mesh) {
+	if (mesh != nullptr) {
+		_shape = new btBvhTriangleMeshShape(mesh,true,true);
+	}
+	else {
+		if (info.size <= 0.0)
+			_shape = new btBoxShape(info.boxSize);
+		else
+			_shape = new btSphereShape(info.size);
+	}
+
 	btTransform groundTransform;
 	groundTransform.setIdentity();
 	groundTransform.setOrigin(info.origin);
@@ -79,6 +86,25 @@ void PhysicsWrapper::BulletRigidBody::resetSphereShapeSize(float size) {
 
 void PhysicsWrapper::BulletRigidBody::setBodystate(int state) {
 	_rigidBody->setCollisionFlags(state);
+}
+
+RaycastInfo PhysicsWrapper::BulletRigidBody::createRaycast(LMVector3 from, LMVector3 direction) {
+	RaycastInfo newRaycastInfo = RaycastInfo();
+	
+	btCollisionWorld::ClosestRayResultCallback rayCallback(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction));
+	
+	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction), rayCallback);
+	if (rayCallback.hasHit()) {
+		newRaycastInfo.hasHit = true;
+		newRaycastInfo.hitPos = LMVector3(rayCallback.m_hitPointWorld.getX(),
+										  rayCallback.m_hitPointWorld.getY(), 
+										  rayCallback.m_hitPointWorld.getZ());
+		newRaycastInfo.hitVNormal = LMVector3(rayCallback.m_hitNormalWorld.getX(),
+											  rayCallback.m_hitNormalWorld.getY(),
+											  rayCallback.m_hitNormalWorld.getZ());
+	}
+	else newRaycastInfo.hasHit = false;
+	return newRaycastInfo;
 }
 
 BulletRigidBody::~BulletRigidBody() {

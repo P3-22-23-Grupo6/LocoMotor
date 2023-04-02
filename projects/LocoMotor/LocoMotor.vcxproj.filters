@@ -1,13 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\src\LocoMotor\Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\LocoMotor_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\LogSystem.cpp">
@@ -19,9 +13,6 @@
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\FactoryComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -30,11 +21,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\ParticleSystem.cpp">
       <Filter>Source Files\Components</Filter>
-    <ClCompile Include="..\..\src\LocoMotor\AudioListenerFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\AudioSourceFactory.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\RigidBodyComponent.cpp">
       <Filter>Source Files\Components</Filter>
@@ -48,11 +34,30 @@
     <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\AudioListenerFactory.cpp">
+      <Filter>Source Files\Components\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\AudioSourceFactory.cpp">
+      <Filter>Source Files\Components\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\FactoryComponent.cpp">
+      <Filter>Source Files\Components\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\Component.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp">
+      <Filter>Source Files\Components\Factories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\LocoMotor\Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -65,22 +70,12 @@
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\FactoryComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\Camera.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\AudioListenerFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\AudioSourceFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -93,6 +88,28 @@
     <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\AudioListenerFactory.h">
+      <Filter>Header Files\Components\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\AudioSourceFactory.h">
+      <Filter>Header Files\Components\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\FactoryComponent.h">
+      <Filter>Header Files\Components\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\Component.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h">
+      <Filter>Header Files\Components\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\include\framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\include\pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -106,6 +123,12 @@
     </Filter>
     <Filter Include="Header Files\Components">
       <UniqueIdentifier>{216936c4-7c73-4509-8442-52a94e1c311c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\Factorias">
+      <UniqueIdentifier>{be1f815b-e630-45d6-ad97-503cd7191528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components\Factories">
+      <UniqueIdentifier>{daa893f3-e8ee-4b2e-99f2-b1cc4a984554}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

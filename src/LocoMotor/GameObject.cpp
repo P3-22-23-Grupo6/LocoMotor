@@ -28,7 +28,7 @@ void GameObject::Update(float dt) {
 	}
 	if (GetComponent<RigidBodyComponent>() == nullptr) return;
 	InputManager* man = InputManager::Get();
-
+	if (!movable)return;
 	if (man->controllerConnected()) {
 
 		float gyroRotate = man->GetGyroscopeAngularSpeed(InputManager::Axis::Horizontal);
@@ -46,13 +46,22 @@ void GameObject::Update(float dt) {
 		else if (man->GetButton(SDL_CONTROLLER_BUTTON_B))
 			verticalMov = -.1f;
 
-		GetComponent<RigidBodyComponent>()->addForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
-		//_rigidBody->AddForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
-		//SetPosition(LMVector3(100, 10, 10));
+		RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
+		rbComp->addForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
 		_node->Translate(-joystickValue_0_Hor, verticalMov, -joystickValue_0_Ver);
+
+		
 
 		SetPosition(LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z()));
 	}
+	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
+	LMVector3 from = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z());
+	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 5, _node->GetPosition_Z());
+	if (rbComp->GetRaycastHit(from, to)) {
+		std::cout << "Collision! *****************";
+		//_node->Rotate(0, 3, 0);
+	}
+	else std::cout << "NO COLL! *****************";
 
 
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);

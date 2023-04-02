@@ -15,6 +15,7 @@ namespace OgreWrapper {
 		~Renderer3D();
 		Ogre::MovableObject* GetMovObj() override;
 		void SetMaterial(std::string mat);
+		Ogre::Mesh* GetMesh();
 	private:
 		Ogre::Entity* _mesh;
 

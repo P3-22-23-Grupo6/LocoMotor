@@ -31,6 +31,10 @@ void OgreWrapper::RenderScene::Render() {
 	_mainCam->GetViewport()->update();
 }
 
+void OgreWrapper::RenderScene::SetSkybox() {
+	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000, false);
+}
+
 OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name) {
 	if (_sceneStructure.count(name) > 0 || name == "Root") {
 		std::cerr << "A node with the name " << name << " is already created\n";
@@ -94,17 +98,19 @@ OgreWrapper::ParticleHelper* OgreWrapper::RenderScene::CreateParticleHelper(std:
 }
 
 void OgreWrapper::RenderScene::Prueba() {
+	//SET TEXTURE FILTERING A NONE
+	Ogre::MaterialManager& matMan = Ogre::MaterialManager::getSingleton();
+	matMan.setDefaultTextureFiltering(Ogre::TextureFilterOptions::TFO_BILINEAR);
+
 	OgreWrapper::Node* mLightNode = CreateNode("Luz");
 	OgreWrapper::Light* mLight = new Light(_manager->createLight(), Ogre::Light::LT_DIRECTIONAL);
 	mLightNode->Attach(mLight);
 	mLight->SetDiffuse(1, 1, 1);
 	mLightNode->SetDirection(-1, -1, -1);
 	//Road
-	OgreWrapper::Node* mTrackNode = CreateNode("Track");
-	OgreWrapper::Renderer3D* track = new Renderer3D(_manager->createEntity("Track.mesh"));
-	mTrackNode->Attach(track);
-	mTrackNode->SetScale(0.7f, 0.7f, 0.7f);
-	//Skybox
-	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000, false);
+	//OgreWrapper::Node* mTrackNode = CreateNode("Track");
+	//OgreWrapper::Renderer3D* track = new Renderer3D(_manager->createEntity("map.mesh"));
+	//mTrackNode->Attach(track);
+	//mTrackNode->SetScale(0.7f, 0.7f, 0.7f);
+	//mTrackNode->Rotate(-90, 0, 25);
 }
-

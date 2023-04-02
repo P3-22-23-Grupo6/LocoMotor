@@ -280,12 +280,8 @@ LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) {
 	this->_y = a.GetY();
 	this->_z = a.GetZ();
 
-	return *this;
+	return a;
 }
-
-
-
-
 
 
 // VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
