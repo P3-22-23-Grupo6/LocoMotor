@@ -67,48 +67,11 @@ int main() {
 		std::cerr << "DLL EXPLICIT LOADING ERROR: '" << dllName << "' wasn't found" << std::endl;
 	}
 
-#pragma region Explicit dll loading
-
-	HINSTANCE motorDLL;
-	InitMotor initMotor;
-
-	LPCWSTR dllNamem;
-
-	// Esa 'L' antes del string es un prefijo que permite pasar los caracteres de una string a "long char" o "wide char"
-	// (chars que utilizan 2 bytes para guardarse en vez de 1), que es lo que usa LPCWSTR (long pointer to constant WIDE string)
-#ifdef _DEBUG
-	dllNamem = L"LocoMotor_d";
-#else
-	dllNamem = L"LocoMotor";
-#endif  _DEBUG
-
-	// Cargamos la libreria
-	motorDLL = LoadLibrary(dllNamem);
-
-	if (motorDLL != NULL) {
-
-		// Buscamos la funcion, notese que no hace falta hacer lo de Wide Char
-		LPCSTR functionName = LPCSTR("init");
-		initMotor = (InitMotor) GetProcAddress(motorDLL, functionName);
-
-		if (initMotor != NULL) {
-			// La ejecutamos
-			initMotor();
-		}
-		else {
-			std::cerr << "DLL EXPLICIT LOADING ERROR: '" << functionName << "' function couldn't be executed" << std::endl;
-		}
-		FreeLibrary(motorDLL);
-	}
-	else {
-		std::cerr << "DLL EXPLICIT LOADING ERROR: '" << dllNamem << "' wasn't found" << std::endl;
-	}
-
-	/*
+	
 	MotorApi* a = new MotorApi();
 	a->init();
 	delete a;
-	*/
+	
 
 	return 0;
 }
