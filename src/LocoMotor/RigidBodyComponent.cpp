@@ -8,6 +8,7 @@
 #include "MeshStrider.h"
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
+
 const std::string RigidBodyComponent::name = "RigidBodyComponent";
 
 LocoMotor::RigidBodyComponent::RigidBodyComponent(float mass) {
@@ -125,7 +126,7 @@ bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* go) {
 
 PhysicsWrapper::BulletRigidBody* LocoMotor::RigidBodyComponent::getBody() {
 	return _body;
-}
+}	
 
 bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
 	return _body->createRaycast(from, to).hasHit;

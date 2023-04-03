@@ -61,15 +61,7 @@ void Scene::Start() {
 	ship_gObj->setMovable(true);
 
 
-	//// Checkpoint
-	//GameObject* checkpoint = AddGameobject("checkpoint");
-	//checkpoint->AddComponent<Checkpoint>();
-	////checkpoint->AddComponent<RigidBodyComponent>(1);
-	////checkpoint->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
-	////checkpoint->GetComponent<RigidBodyComponent>()->setStatic();
-	//checkpoint->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
-	//checkpoint->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
-	//checkpoint->SetPosition(LMVector3(0, 15, 0));
+	//// CHECKPOINT
 
 	GameObject* checkpoint = AddGameobject("checkpoint");
 	checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
@@ -81,6 +73,7 @@ void Scene::Start() {
 	//rend->SetMaterial("Racers/Falcon");
 	checkpoint->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	checkpoint->SetPosition(LMVector3(0, 5, -50));
+	checkpoint->AddComponent<Checkpoint>(ship_gObj);
 	//bruh->setMovable(true);
 
 

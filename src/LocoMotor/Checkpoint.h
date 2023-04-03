@@ -14,17 +14,19 @@
 namespace LocoMotor {
 	class Scene;
 	class GameObject;
+	class RigidBodyComponent;
 
 	class Checkpoint : public Component {
 	public:
 		const static std::string name;
 
-		// Para crear la camara se necesita tanto la escena como la escena de Render
-		// 
-		Checkpoint();
+		Checkpoint(GameObject* player = nullptr);
 
-
-		void InitComponent() override;
+		void Start() override;
 		void Update(float dt) override;
+
+	private:
+		RigidBodyComponent* _rb;
+		GameObject* _player;
 	};
 }
