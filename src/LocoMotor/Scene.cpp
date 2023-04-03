@@ -9,6 +9,8 @@
 #include "PhysicsManager.h"
 #include "MeshRederer.h"
 #include "ParticleSystem.h"
+#include "CEGUI/CEGUI.h"
+
 
 using namespace LocoMotor;
 Scene::Scene(std::string nombre) {
