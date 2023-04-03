@@ -10,7 +10,7 @@ using namespace FmodWrapper;
 using namespace FMOD;
 
 AudioSource::AudioSource() : _man(AudioManager::GetInstance()) {
-	_chMap = std::unordered_map<unsigned int, ChannelData>();
+	_chMap = std::unordered_map<const char*, ChannelData>();
 	_volumeMult = 1.f;
 	_posRemember = new FMOD_VECTOR();
 	_posRemember->x = 0;
@@ -27,17 +27,17 @@ AudioSource::~AudioSource() {
 	}
 }
 
-unsigned short AudioSource::AddSound(const unsigned int id, const char* fileName) {
-	return _man->AddSound(id, fileName);
+unsigned short AudioSource::AddSound(const char* fileName) {
+	return _man->AddSound(fileName);
 }
 
-unsigned short AudioSource::PlaySound(const unsigned int id, int loops, unsigned int loopBegin, unsigned int loopEnd) {
-	auto snd = _man->GetSound(id);
+unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned int loopBegin, unsigned int loopEnd) {
+	auto snd = _man->GetSound(fileName);
 	if (snd == nullptr) {
 	#ifdef _DEBUG
-		std::cout << "Sound " << id << " is not currently added to the manager";
+		std::cout << "Sound " << fileName << " is not added to the manager, adding it now";
 	#endif // _DEBUG
-		return FMOD_ERR_INVALID_PARAM;
+		AddSound(fileName);
 	}
 
 	unsigned int len;
@@ -61,31 +61,31 @@ unsigned short AudioSource::PlaySound(const unsigned int id, int loops, unsigned
 		snd->setLoopCount(std::max(-1, loops));
 	}
 	Channel* channel;
-	auto fail = _man->PlaySoundwChannel(id, &channel);
+	auto fail = _man->PlaySoundwChannel(fileName, &channel);
 
 	FMOD_VECTOR vel = FMOD_VECTOR(); vel.x = 0; vel.y = 0; vel.z = 0;
 	if (fail != FMOD_OK)
 		channel->set3DAttributes(_posRemember, &vel);
 	else
 		fail = channel->set3DAttributes(_posRemember, &vel);
-	_chMap[id].channel = channel;
+	_chMap[fileName].channel = channel;
 	float aux;
-	_chMap[id].channel->getFrequency(&aux);
-	_chMap[id].ogFrec = aux;
-	_chMap[id].channel->setVolume(_volumeMult);
+	_chMap[fileName].channel->getFrequency(&aux);
+	_chMap[fileName].ogFrec = aux;
+	_chMap[fileName].channel->setVolume(_volumeMult);
 
 	channel->setPaused(false);
 	return fail;
 }
 
-unsigned short FmodWrapper::AudioSource::PauseS(const unsigned int id, bool pause) {
-	if (!_chMap[id].channel) {
+unsigned short FmodWrapper::AudioSource::PauseS(const char* fileName, bool pause) {
+	if (!_chMap[fileName].channel) {
 	#ifdef _DEBUG
-		std::cout << "Sound " << id << " is not currently playing on this AudioSource, from PauseSound()";
+		std::cout << "Sound " << fileName << " is not currently playing on this AudioSource, from PauseSound()";
 	#endif // _DEBUG
 		return FMOD_ERR_INVALID_PARAM;
 	}
-	return _chMap[id].channel->setPaused(pause);
+	return _chMap[fileName].channel->setPaused(pause);
 }
 
 unsigned short FmodWrapper::AudioSource::PauseSource(bool pause) {
@@ -99,14 +99,14 @@ unsigned short FmodWrapper::AudioSource::PauseSource(bool pause) {
 	return res;
 }
 
-unsigned short FmodWrapper::AudioSource::StopSound(const unsigned int id) {
-	if (!_chMap[id].channel) {
+unsigned short FmodWrapper::AudioSource::StopSound(const char* fileName) {
+	if (!_chMap[fileName].channel) {
 	#ifdef _DEBUG
-		std::cout << "Sound " << id << " is not currently playing on this AudioSource, from Stop()";
+		std::cout << "Sound '" << fileName << "' is not currently playing on this AudioSource, from Stop()";
 	#endif // _DEBUG
 		return FMOD_ERR_INVALID_PARAM;
 	}
-	return _chMap[id].channel->stop();
+	return _chMap[fileName].channel->stop();
 }
 
 unsigned short FmodWrapper::AudioSource::StopSource() {
@@ -120,14 +120,14 @@ unsigned short FmodWrapper::AudioSource::StopSource() {
 	return res;
 }
 
-unsigned short FmodWrapper::AudioSource::SetSoundVolume(const unsigned int id, const float volume) {
-	if (!_chMap[id].channel) {
+unsigned short FmodWrapper::AudioSource::SetSoundVolume(const char* fileName, const float volume) {
+	if (!_chMap[fileName].channel) {
 	#ifdef _DEBUG
-		std::cout << "Sound " << id << " is not currently playing on this AudioSource, from SetVolume()";
+		std::cout << "Sound '" << fileName << "' is not currently playing on this AudioSource, from SetVolume()";
 	#endif // _DEBUG
 		return FMOD_ERR_INVALID_PARAM;
 	}
-	return _chMap[id].channel->setVolume(volume);
+	return _chMap[fileName].channel->setVolume(volume);
 }
 
 unsigned short FmodWrapper::AudioSource::SetSourceVolume(const float volume) {
@@ -142,14 +142,14 @@ unsigned short FmodWrapper::AudioSource::SetSourceVolume(const float volume) {
 	return res;
 }
 
-unsigned short AudioSource::SetSoundFreq(const unsigned int id, const float freqMult) {
-	if (!_chMap[id].channel) {
+unsigned short AudioSource::SetSoundFreq(const char* fileName, const float freqMult) {
+	if (!_chMap[fileName].channel) {
 	#ifdef _DEBUG
-		std::cout << "Sound " << id << " is not currently playing on this AudioSource, from SetSoundFreq()";
+		std::cout << "Sound " << fileName << " is not currently playing on this AudioSource, from SetSoundFreq()";
 	#endif // _DEBUG
 		return FMOD_ERR_INVALID_PARAM;
 	}
-	return _chMap[id].channel->setFrequency(std::max(0.f, _chMap[id].ogFrec * freqMult));
+	return _chMap[fileName].channel->setFrequency(std::max(0.f, _chMap[fileName].ogFrec * freqMult));
 }
 
 unsigned short FmodWrapper::AudioSource::SetFrequency(const float freqMult) {

@@ -56,8 +56,8 @@ int main() {
 		std::cerr << "DLL EXPLICIT LOADING ERROR: '" << dllName << "' wasn't found" << std::endl;
 	}
 
-#pragma endregion
-	
+#pragma region Explicit dll loading
+
 	MotorApi* a = new MotorApi();
 	a->init();
 
@@ -65,7 +65,6 @@ int main() {
 	
 
 	delete a;
-	
 
 	return 0;
 }

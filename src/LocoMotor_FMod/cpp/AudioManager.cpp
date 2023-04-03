@@ -1,4 +1,5 @@
 #include "AudioManager.h"
+#include "AudioListener.h"
 
 #ifdef _DEBUG
 #include <iostream>
@@ -25,7 +26,8 @@ AudioManager::AudioManager() {
 #endif
 	_sys->set3DSettings(1.f, 1.f, 1.f);
 
-	_soundLib = std::unordered_map<unsigned int, FMOD::Sound*>();
+	_soundLib = std::unordered_map<const char*, FMOD::Sound*>();
+	_listeners = std::list<AudioListener*>();
 }
 
 AudioManager::AudioManager(int numChannels) {
@@ -42,7 +44,7 @@ AudioManager::AudioManager(int numChannels) {
 #endif
 	_sys->set3DSettings(1.f, 1.f, 1.f);
 
-	_soundLib = std::unordered_map<unsigned int, FMOD::Sound*>();
+	_soundLib = std::unordered_map<const char*, FMOD::Sound*>();
 }
 
 AudioManager::~AudioManager() {
@@ -61,25 +63,28 @@ unsigned short AudioManager::Update(float deltaTime) {
 	return _sys->update();
 }
 
-unsigned short AudioManager::AddSound(const unsigned int name, const char* fileName, bool ui) {
-	if (_soundLib[name] != nullptr) {
-		_soundLib[name]->release();
-		_soundLib[name] = nullptr;
+unsigned short AudioManager::AddSound(const char* fileName, bool ui) {
+	if (_soundLib[fileName] != nullptr) {
+		if (ui)
+			_soundLib[fileName]->setMode(FMOD_DEFAULT);
+		else
+			_soundLib[fileName]->setMode(FMOD_3D_WORLDRELATIVE);
+		return 0;
 	}
 
 #ifndef _DEBUG
 	if (ui)
-		return _sys->createSound(fileName, FMOD_DEFAULT, nullptr, &_soundLib[name]);
+		return _sys->createSound(fileName, FMOD_DEFAULT, nullptr, &_soundLib[fileName]);
 	else
-		return _sys->createSound(fileName, FMOD_3D_WORLDRELATIVE, nullptr, &_soundLib[name]);
+		return _sys->createSound(fileName, FMOD_3D_WORLDRELATIVE, nullptr, &_soundLib[fileName]);
 #endif // _DEBUG
 
 #ifdef _DEBUG
 	FMOD_RESULT err;
 	if (ui)
-		err = _sys->createSound(fileName, FMOD_DEFAULT, nullptr, &_soundLib[name]);
+		err = _sys->createSound(fileName, FMOD_DEFAULT, nullptr, &_soundLib[fileName]);
 	else
-		err = _sys->createSound(fileName, FMOD_3D_WORLDRELATIVE, nullptr, &_soundLib[name]);
+		err = _sys->createSound(fileName, FMOD_3D_WORLDRELATIVE, nullptr, &_soundLib[fileName]);
 
 	if (err != 0) {
 		std::cout << "AUDIO: File '" << fileName << "' caused fmod exception: " << FMOD_ErrorString(err) << std::endl;
@@ -88,7 +93,7 @@ unsigned short AudioManager::AddSound(const unsigned int name, const char* fileN
 #endif // _DEBUG
 }
 
-unsigned short AudioManager::PlaySound(const unsigned int name) {
+unsigned short AudioManager::PlaySound(const char* name) {
 
 	Channel* ch;
 	auto err = PlaySoundwChannel(name, &ch);
@@ -96,7 +101,7 @@ unsigned short AudioManager::PlaySound(const unsigned int name) {
 	return err;
 }
 
-unsigned short AudioManager::PlaySoundwChannel(const unsigned int name, Channel** channel) {
+unsigned short AudioManager::PlaySoundwChannel(const char* name, Channel** channel) {
 #ifndef _DEBUG
 	auto err = _sys->playSound(_soundLib[name], _main, true, channel);
 
@@ -113,21 +118,40 @@ unsigned short AudioManager::PlaySoundwChannel(const unsigned int name, Channel*
 #endif // _DEBUG
 }
 
-Sound* AudioManager::GetSound(const unsigned int id) {
-	return _soundLib[id];
+Sound* AudioManager::GetSound(const char* id) {
+	return _soundLib[id] ? _soundLib[id] : nullptr;
 }
 
-unsigned short AudioManager::AddListener(int& index) {
-	static bool first = true;
-	if (first) {
-		first = false;
-		index = 0;
-		return 0;
+std::list<AudioListener*>::iterator AudioManager::AddListener(AudioListener* curr, int& index) {
+	index = _listeners.size();
+	_listeners.push_back(curr);
+
+	_sys->set3DNumListeners(_listeners.size());
+
+	auto it = _listeners.end();
+	it--;
+	return it;
+}
+
+unsigned short FmodWrapper::AudioManager::RemoveListener(AudioListener* curr) {
+	auto it = _listeners.erase(curr->GetIterator());
+	int nIndex = curr->GetIndex();
+
+	unsigned short err = 0;
+
+	while (it != _listeners.end()) {
+		err = (*it)->ChangeIndex(nIndex);
+
+	#ifdef _DEBUG
+		if (err != 0) {
+			std::cout << "AUDIO: Trying to update listeners while removing number '" << curr->GetIndex() << "' caused fmod exception: " << FMOD_ErrorString((FMOD_RESULT)err) << std::endl;
+		}
+	#endif // _DEBUG
+
+		nIndex++;
 	}
-	else {
-		_sys->get3DNumListeners(&index);
-		return _sys->set3DNumListeners(index + 1);
-	}
+	_sys->set3DNumListeners(_listeners.size());
+	return err;
 }
 
 System* AudioManager::GetSystem() const {
