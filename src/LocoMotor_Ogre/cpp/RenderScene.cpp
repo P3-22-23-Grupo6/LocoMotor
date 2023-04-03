@@ -12,11 +12,13 @@
 #include <OgreEntity.h>
 #include <OgreShaderGenerator.h>
 #include <iostream>
+#include "GUI.h"
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;
 	_mainCam = nullptr;
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
+	myGUI = new GUI();
 }
 
 OgreWrapper::RenderScene::~RenderScene() {

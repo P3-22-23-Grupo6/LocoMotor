@@ -11,7 +11,6 @@
 #include "ParticleSystem.h"
 #include "CEGUI/CEGUI.h"
 
-
 using namespace LocoMotor;
 Scene::Scene(std::string nombre) {
 	_name = nombre;

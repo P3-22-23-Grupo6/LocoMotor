@@ -67,6 +67,7 @@ namespace OgreWrapper {
 		ParticleHelper* CreateParticleHelper(std::string name, std::string filename);
 
 	private:
+		GUI myGUI;
 		Ogre::SceneManager* _manager;
 		Camera* _mainCam;
 		Node* _root;
