@@ -22,9 +22,8 @@ namespace PhysicsWrapper {
 		/// @param brb 
 		/// @return 
 		bool checkCollision(BulletRigidBody* other);
-		/// @brief 
-		/// @return 
-		btRigidBody* getBody();
+
+		
 		/// @brief Add central force to the rigidBody
 		/// @param force LMVector3 The force that is applied
 		void AddForce(LMVector3 force);
@@ -61,6 +60,9 @@ namespace PhysicsWrapper {
 		/// @brief Destructor of BulletRigidBody
 		~BulletRigidBody();
 	private:
+		/// @brief 
+		/// @return 
+		btRigidBody* getBody();
 		btRigidBody* _rigidBody = nullptr;
 		btCollisionShape* _shape = nullptr;
 	};
