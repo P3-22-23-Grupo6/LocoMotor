@@ -2,18 +2,7 @@
 //
 
 #include <iostream>
-#include "OgreManager.h"
-#include "AudioManager.h"
-#include "AudioListener.h"
-#include "AudioSource.h"
-#include "InputManager.h"
 #include "CheckML.h"
-#include "PhysicsManager.h"
-#include "BulletRigidBody.h"
-#include "lmVector.h"
-#include "RenderScene.h"
-#include "SceneManager.h"
-#include "GameObject.h"
 
 #include "windows.h"
 #include "MotorApi.h"
@@ -24,7 +13,6 @@ typedef const char* (CALLBACK* InitJuegoFunc)();
 typedef void (CALLBACK* InitMotor)();
 
 int exec();
-using namespace PhysicsWrapper;
 int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
