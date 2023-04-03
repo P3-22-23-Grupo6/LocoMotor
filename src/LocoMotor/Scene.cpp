@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Camera.h"
+#include "Checkpoint.h"
 #include "OgreManager.h"
 #include "RenderScene.h"
 #include "Node.h"
@@ -58,6 +59,32 @@ void Scene::Start() {
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->SetPosition(LMVector3(0, 10, 0));
 	ship_gObj->setMovable(true);
+
+
+	//// Checkpoint
+	//GameObject* checkpoint = AddGameobject("checkpoint");
+	//checkpoint->AddComponent<Checkpoint>();
+	////checkpoint->AddComponent<RigidBodyComponent>(1);
+	////checkpoint->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	////checkpoint->GetComponent<RigidBodyComponent>()->setStatic();
+	//checkpoint->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
+	//checkpoint->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	//checkpoint->SetPosition(LMVector3(0, 15, 0));
+
+	GameObject* checkpoint = AddGameobject("checkpoint");
+	checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
+
+	checkpoint->AddComponent<RigidBodyComponent>(0);
+	//_gameObjList.push_back(ship_gObj);
+
+	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
+	//rend->SetMaterial("Racers/Falcon");
+	checkpoint->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	checkpoint->SetPosition(LMVector3(0, 5, -50));
+	//bruh->setMovable(true);
+
+
+
 	_renderScn->Prueba();
 	//Skybox
 	_renderScn->SetSkybox();
