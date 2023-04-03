@@ -18,6 +18,13 @@ namespace PhysicsWrapper {
 		/// @brief Gets the rigidBodyPosition
 		/// @return 
 		LMVector3 getPosition();
+		/// @brief 
+		/// @param brb 
+		/// @return 
+		bool checkCollision(BulletRigidBody* other);
+		/// @brief 
+		/// @return 
+		btRigidBody* getBody();
 		/// @brief Add central force to the rigidBody
 		/// @param force LMVector3 The force that is applied
 		void AddForce(LMVector3 force);
