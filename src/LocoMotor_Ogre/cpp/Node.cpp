@@ -69,3 +69,10 @@ float OgreWrapper::Node::GetPosition_Z() {
 void OgreWrapper::Node::SetScale(float x, float y, float z) {
 	_node->setScale(x, y, z);
 }
+
+void OgreWrapper::Node::ResetOrientation() {
+	_node->resetOrientation();
+}
+
+void OgreWrapper::Node::SetOrientation(/*Ogre::Quaternion q*/) {
+}

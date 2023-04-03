@@ -12,11 +12,14 @@
 #include <OgreEntity.h>
 #include <OgreShaderGenerator.h>
 #include <iostream>
+#include <Ogre.h>
+#include <OgreOverlayPrerequisites.h>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;
 	_mainCam = nullptr;
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
+	//OverlayManager::getSingleton().createOverlayElement("Panel", "myNewPanel");
 }
 
 OgreWrapper::RenderScene::~RenderScene() {
