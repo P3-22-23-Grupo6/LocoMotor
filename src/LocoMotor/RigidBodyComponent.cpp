@@ -119,6 +119,14 @@ void LocoMotor::RigidBodyComponent::setNoContactResponse() {
 	_body->setBodystate(4);
 }
 
+bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* go) {
+	return _body->checkCollision(go->GetComponent<RigidBodyComponent>()->getBody());
+}
+
+PhysicsWrapper::BulletRigidBody* LocoMotor::RigidBodyComponent::getBody() {
+	return _body;
+}
+
 bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
 	return _body->createRaycast(from, to).hasHit;
 }
