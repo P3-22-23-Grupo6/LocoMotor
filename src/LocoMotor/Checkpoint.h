@@ -20,12 +20,15 @@ namespace LocoMotor {
 	public:
 		const static std::string name;
 
-		Checkpoint(GameObject* player = nullptr);
+		Checkpoint(GameObject* player = nullptr, int checkpointIndex = 0);
 
 		void Start() override;
 		void Update(float dt) override;
 
 	private:
+
+		int _checkpointIndex;
+
 		RigidBodyComponent* _rb;
 		GameObject* _player;
 	};

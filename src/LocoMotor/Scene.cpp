@@ -65,16 +65,10 @@ void Scene::Start() {
 
 	GameObject* checkpoint = AddGameobject("checkpoint");
 	checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
-
 	checkpoint->AddComponent<RigidBodyComponent>(0);
-	//_gameObjList.push_back(ship_gObj);
-
-	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
-	//rend->SetMaterial("Racers/Falcon");
-	checkpoint->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
 	checkpoint->SetPosition(LMVector3(0, 5, -50));
-	checkpoint->AddComponent<Checkpoint>(ship_gObj);
-	//bruh->setMovable(true);
+	checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
 
 
 

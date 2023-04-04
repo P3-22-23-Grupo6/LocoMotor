@@ -10,10 +10,10 @@ using namespace LocoMotor;
 
 const std::string Checkpoint::name = "Checkpoint";
 
-LocoMotor::Checkpoint::Checkpoint(GameObject* player) {
+LocoMotor::Checkpoint::Checkpoint(GameObject* player, int checkpointIndex) {
 
 	_player = player;
-	//_rigidbody = gameObject->GetComponent<RigidBodyComponent>();
+	_checkpointIndex = checkpointIndex;
 }
 
 void LocoMotor::Checkpoint::Start() {
