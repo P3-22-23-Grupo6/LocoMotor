@@ -26,6 +26,19 @@ void LocoMotor::Checkpoint::Start() {
 
 void LocoMotor::Checkpoint::Update(float dt) {
 
-	if (_rb->checkCollision(_player))
-		std::cout << "COLLISION" << "\n" << "\n" << "\n";
+	// COLISION
+
+	//if (_rb->checkCollision(_player))
+	//	// Comunicar al racemanager que este checkpoint ha sido alcanzado por el jugador
+	//	std::cout << "COLLISION" << "\n" << "\n";
+
+
+	// DISTANCIAS
+	float distance = (_player->GetTransform().position - gameObject->GetTransform().position).Magnitude();
+
+	if (distance < 40)
+		checked = true;
+
+
+	std::cout << "DISTANCE = " << distance << "\n";
 }

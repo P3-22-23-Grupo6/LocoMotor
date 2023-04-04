@@ -595,7 +595,7 @@ public:
 
 	inline bool checkCollideWith(const btCollisionObject* co) const
 	{
-		if (m_checkCollideWith)
+		if (m_checkCollideWith || true) // TODO: Cambiar
 			return checkCollideWithOverride(co);
 
 		return true;

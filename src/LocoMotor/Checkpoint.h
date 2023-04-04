@@ -28,6 +28,7 @@ namespace LocoMotor {
 	private:
 
 		int _checkpointIndex;
+		bool checked; // Si el jugador ya ha alcanzado este checkpoint en esta vuelta
 
 		RigidBodyComponent* _rb;
 		GameObject* _player;
