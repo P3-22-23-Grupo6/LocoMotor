@@ -5,6 +5,7 @@
 class LMVector3;
 class LMQuaternion;
 class BulletRigidBody;
+class MeshStrider;
 namespace PhysicsWrapper {
 	class RigidBodyInfo;
 	class BulletRigidBody;
@@ -22,6 +23,8 @@ namespace LocoMotor {
 		void addForce(LMVector3 force);
 		/// @brief 
 		void Start() override;
+		/// @brief 
+		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's
 		/// @param dt DeltaTime used to calculate the velocity
 		void Update(float dt) override;
@@ -47,12 +50,23 @@ namespace LocoMotor {
 		void setStatic();
 		/// @brief Set the body to no contact response state / trigger
 		void setNoContactResponse();
+		/// @brief 
+		/// @return 
+		bool checkCollision(GameObject* go);
+		/// @brief 
+		/// @return 
+		PhysicsWrapper::BulletRigidBody* getBody();
+		/// @brief Methods to return RaycastInfo
+		bool GetRaycastHit(LMVector3 from, LMVector3 to);
+		LMVector3 GetraycastHitPoint(LMVector3 from, LMVector3 to);
+		LMVector3 GethasRaycastHitNormal(LMVector3 from, LMVector3 to);
 	private:
 		float _mass;
 		PhysicsWrapper::BulletRigidBody* _body;
 		float _damping;
 		float _angDamping;
 		bool _gravity;
+		MeshStrider* _ms;
 
 	};
 }

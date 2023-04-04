@@ -2,12 +2,19 @@
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 #include "lmVector.h"
+#include "MeshStrider.h"
 using namespace PhysicsWrapper;
-BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
-	if (info.size <= 0.0)
-		_shape = new btBoxShape(info.boxSize);
-	else
-		_shape = new btSphereShape(info.size);
+BulletRigidBody::BulletRigidBody(RigidBodyInfo info, MeshStrider* mesh) {
+	if (mesh != nullptr) {
+		_shape = new btBvhTriangleMeshShape(mesh,true,true);
+	}
+	else {
+		if (info.size <= 0.0)
+			_shape = new btBoxShape(info.boxSize);
+		else
+			_shape = new btSphereShape(info.size);
+	}
+
 	btTransform groundTransform;
 	groundTransform.setIdentity();
 	groundTransform.setOrigin(info.origin);
@@ -29,7 +36,6 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info) {
 	//add the body to the dynamics world;
 	PhysicsManager::GetInstance()->AddRigidBodyToWorld(_rigidBody);
 	_rigidBody->setDamping(0.7, 0.7);
-	
 }
 
 LMVector3 PhysicsWrapper::BulletRigidBody::getPosition() {
@@ -89,13 +95,14 @@ RaycastInfo PhysicsWrapper::BulletRigidBody::createRaycast(LMVector3 from, LMVec
 	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction), rayCallback);
 	if (rayCallback.hasHit()) {
 		newRaycastInfo.hasHit = true;
-		newRaycastInfo.hitPos = btVector3(rayCallback.m_hitPointWorld.getX(),
+		newRaycastInfo.hitPos = LMVector3(rayCallback.m_hitPointWorld.getX(),
 										  rayCallback.m_hitPointWorld.getY(), 
 										  rayCallback.m_hitPointWorld.getZ());
-		newRaycastInfo.hitVNormal = btVector3(rayCallback.m_hitNormalWorld.getX(),
+		newRaycastInfo.hitVNormal = LMVector3(rayCallback.m_hitNormalWorld.getX(),
 											  rayCallback.m_hitNormalWorld.getY(),
 											  rayCallback.m_hitNormalWorld.getZ());
 	}
+	else newRaycastInfo.hasHit = false;
 	return newRaycastInfo;
 }
 
@@ -108,6 +115,17 @@ BulletRigidBody::~BulletRigidBody() {
 	_rigidBody = nullptr;
 	delete _shape;
 	_shape = nullptr;
+}
+
+bool PhysicsWrapper::BulletRigidBody::checkCollision(BulletRigidBody* other) {
+	if (other != nullptr) {
+		 return _rigidBody->checkCollideWith(other->getBody());
+	}
+	return false;
+}
+
+btRigidBody* PhysicsWrapper::BulletRigidBody::getBody() {
+	return _rigidBody;
 }
 
 void BulletRigidBody::AddForce(LMVector3 force) {

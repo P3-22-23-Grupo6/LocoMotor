@@ -12,11 +12,14 @@
 #include <OgreEntity.h>
 #include <OgreShaderGenerator.h>
 #include <iostream>
+#include <Ogre.h>
+//#include <OgreOverlayPrerequisites.h>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;
 	_mainCam = nullptr;
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
+	//OverlayManager::getSingleton().createOverlayElement("Panel", "myNewPanel");
 }
 
 OgreWrapper::RenderScene::~RenderScene() {
@@ -108,9 +111,9 @@ void OgreWrapper::RenderScene::Prueba() {
 	mLight->SetDiffuse(1, 1, 1);
 	mLightNode->SetDirection(-1, -1, -1);
 	//Road
-	OgreWrapper::Node* mTrackNode = CreateNode("Track");
-	OgreWrapper::Renderer3D* track = new Renderer3D(_manager->createEntity("map.mesh"));
-	mTrackNode->Attach(track);
-	mTrackNode->SetScale(0.7f, 0.7f, 0.7f);
-	mTrackNode->Rotate(-90, 0, 25);
+	//OgreWrapper::Node* mTrackNode = CreateNode("Track");
+	//OgreWrapper::Renderer3D* track = new Renderer3D(_manager->createEntity("map.mesh"));
+	//mTrackNode->Attach(track);
+	//mTrackNode->SetScale(0.7f, 0.7f, 0.7f);
+	//mTrackNode->Rotate(-90, 0, 25);
 }

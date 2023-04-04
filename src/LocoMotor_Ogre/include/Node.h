@@ -7,11 +7,10 @@
 namespace Ogre {
 	class SceneNode;
 	class MovableObject;
-}
+	}
 
 namespace OgreWrapper {
 	class RenderEntity;
-
 	class Node {
 	public:
 		Node(Ogre::SceneNode* node);
@@ -92,6 +91,13 @@ namespace OgreWrapper {
 		/// </summary>
 		/// <param name="obj"></param>
 		void Attach(RenderEntity* ent);
+
+		/// <summary>
+		/// Resets the node Orientation
+		/// </summary>
+		void ResetOrientation();
+
+		void SetOrientation(/*Ogre::Quaternion q*/);
 
 		Node* CreateChild();
 	protected:

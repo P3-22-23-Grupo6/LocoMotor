@@ -4,6 +4,8 @@
 #include <vector>
 #include <btBulletDynamicsCommon.h>
 #include "Singleton.h"
+#include "lmVector.h"
+class MeshStrider;
 namespace PhysicsWrapper {
 	/// @brief Info to create a RigidBody
 	/// @param btVector3 boxSize The size of the box if is Box
@@ -22,8 +24,8 @@ namespace PhysicsWrapper {
 	/// @param hitVNormal The normal vector of the surface hit
 	struct RaycastInfo {
 		bool hasHit;
-		btVector3 hitPos;
-		btVector3 hitVNormal;
+		LMVector3 hitPos;
+		LMVector3 hitVNormal;
 	};
 
 	class BulletRigidBody;
@@ -35,7 +37,7 @@ namespace PhysicsWrapper {
 		/// @brief Create the rigidBody with the info given
 		/// @param info The information to build the rigidBody
 		/// @return The BulletRigidBody pointer created
-		BulletRigidBody* CreateRigidBody(RigidBodyInfo info);
+		BulletRigidBody* CreateRigidBody(RigidBodyInfo info, MeshStrider* ms=nullptr);
 		/// @brief Add the RigidBody to the physics world
 		/// @param rb The pointer of the rigidbody
 		void AddRigidBodyToWorld(btRigidBody* rb);

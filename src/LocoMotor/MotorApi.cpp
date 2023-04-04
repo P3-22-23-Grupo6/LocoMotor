@@ -19,7 +19,7 @@ MotorApi::MotorApi() {
 
 void MotorApi::init() {
 	auto audio = FmodWrapper::AudioManager::Init(8);
-	audio->AddSound(0, "Assets/si.wav");
+	audio->AddSound("Assets/si.wav");
 	////new int();
 	OgreWrapper::OgreManager::Init(_gameName);
 	//OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance();
