@@ -40,13 +40,13 @@ AudioManager::AudioManager(int numChannels) {
 #else
 	_main->setVolume(vol * 0.1f);
 #endif
-	_sys->set3DSettings(1.f, 1.f, 1.f);
+	_sys->set3DSettings(1.1f, 1.f, 1.f);
 
 	_soundLib = std::unordered_map<unsigned int, FMOD::Sound*>();
 }
 
 AudioManager::~AudioManager() {
-	for (auto snd : _soundLib) {
+	for (auto& snd : _soundLib) {
 		snd.second->release();
 		//delete snd.second;
 	}
