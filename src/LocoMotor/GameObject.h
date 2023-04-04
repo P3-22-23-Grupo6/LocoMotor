@@ -2,7 +2,7 @@
 #ifndef LM_GAMEOBJECT
 #define LM_GAMEOBJECT
 
-#include "LocoMotor_Utils/lmVector.h"
+#include "LMVector.h"
 #include "Component.h"
 #include <map>
 

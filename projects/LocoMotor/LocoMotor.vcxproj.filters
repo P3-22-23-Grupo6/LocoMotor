@@ -55,13 +55,17 @@
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp" />
-<<<<<<< Updated upstream
+    <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\Checkpoint.cpp">
-=======
-    <ClCompile Include="..\..\src\LocoMotor\RaceManager.cpp">
->>>>>>> Stashed changes
       <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\RaceManager.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\src\LMVector.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,13 +120,17 @@
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
-<<<<<<< Updated upstream
+    <ClInclude Include="..\..\src\LocoMotor\MotorApi.h">
+    <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\Checkpoint.h">
-=======
-    <ClInclude Include="..\..\src\LocoMotor\RaceManager.h">
->>>>>>> Stashed changes
       <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\RaceManager.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\include\LMVector.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

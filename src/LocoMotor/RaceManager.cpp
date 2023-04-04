@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "RaceManager.h"
-#include "../LocoMotor_Utils/lmVector.h"
+#include "LMVector.h"
 const std::string name = "RaceManager";
+
+RaceManager* RaceManager::_instance = nullptr;
 
 RaceManager::RaceManager()
 {

@@ -1,5 +1,5 @@
 #include "RigidBodyComponent.h"
-#include "lmVector.h"
+#include "LMVector.h"
 #include "BulletRigidBody.h"
 #include "PhysicsManager.h"
 #include "GameObject.h"
