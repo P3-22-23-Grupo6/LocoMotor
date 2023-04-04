@@ -13,7 +13,7 @@
 #include <OgreShaderGenerator.h>
 #include <iostream>
 #include <Ogre.h>
-#include <OgreOverlayPrerequisites.h>
+//#include <OgreOverlayPrerequisites.h>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;

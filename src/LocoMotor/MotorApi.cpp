@@ -14,13 +14,14 @@
 #include "GameObject.h"
 using namespace PhysicsWrapper;
 MotorApi::MotorApi() {
+	_gameName = "";
 }
 
 void MotorApi::init() {
 	auto audio = FmodWrapper::AudioManager::Init(8);
 	audio->AddSound("Assets/si.wav");
 	////new int();
-	OgreWrapper::OgreManager::Init("Prueba");
+	OgreWrapper::OgreManager::Init(_gameName);
 	//OgreWrapper::OgreManager* man = OgreWrapper::OgreManager::GetInstance();
 	//OgreWrapper::RenderScene* x = man->CreateScene("Escena");
 	//x->Prueba();
@@ -110,4 +111,8 @@ void MotorApi::init() {
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();
 	InputManager::Destroy();
+}
+
+void MotorApi::RegisterGame(const char* gameName) {
+	_gameName = gameName;
 }
