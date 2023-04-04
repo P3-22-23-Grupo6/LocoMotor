@@ -47,7 +47,6 @@ namespace LocoMotor {
 	private:
 		//camera
 
-
 		LM_Component::Camera* _currentCam;
 
 		OgreWrapper::Camera* _cam;

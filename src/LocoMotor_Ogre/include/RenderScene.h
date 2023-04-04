@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include "GUI.h"
 
 namespace Ogre {
 	class SceneManager;
@@ -14,6 +15,7 @@ namespace Ogre {
 
 namespace OgreWrapper {
 
+	class GUI;
 	class Light;
 	class Camera;
 	class Renderer3D;
@@ -67,7 +69,7 @@ namespace OgreWrapper {
 		ParticleHelper* CreateParticleHelper(std::string name, std::string filename);
 
 	private:
-		GUI myGUI;
+		GUI m_gui;
 		Ogre::SceneManager* _manager;
 		Camera* _mainCam;
 		Node* _root;

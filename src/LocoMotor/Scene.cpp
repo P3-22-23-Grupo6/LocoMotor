@@ -22,6 +22,7 @@ Scene::Scene(std::string nombre) {
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();
 
 	/*SetSceneCam(_renderScn->CreateCamera("ScnCam"));*/
+	
 }
 
 Scene::~Scene() {

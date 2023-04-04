@@ -16,7 +16,7 @@
 *.obj
 *.tlog
 [Dd]ependecies/Ogre/[Bb]uild/
-[Dd]ependecies/CEGUI/cegui-0.8.7/cegui-0.8.7/build
+[Dd]ependecies/CEGUI/cegui-0.8.7/build
 [Dd]ependecies/Lua/[Bb]uild/
 Dependecies/Bullet/Src/examples/ThirdPartyLibs/openvr/bin
 Dependecies/Bullet/Build/

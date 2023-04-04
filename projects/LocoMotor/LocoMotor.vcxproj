@@ -192,7 +192,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_MOTORDLL</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\CEGUI\cegui-0.8.7\cegui-0.8.7\build\cegui\include;$(SolutionDir)Dependecies\CEGUI\cegui-0.8.7\cegui-0.8.7\cegui\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)src;$(SolutionDir)src\LocoMotor\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\CEGUI\cegui-0.8.7\build\cegui\include;$(SolutionDir)Dependecies\CEGUI\cegui-0.8.7\cegui\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)src;$(SolutionDir)src\LocoMotor\include</AdditionalIncludeDirectories>
       <AdditionalModuleDependencies>
       </AdditionalModuleDependencies>
     </ClCompile>
@@ -200,7 +200,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>LocoMotor_Utils_d.lib;$(SolutionDir)Dependecies\Ogre\Build\lib\$(Configuration)\OgreMain_d.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib;LocoMotor_Bullet_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Lib;$(SolutionDir)Dependecies\Ogre\Build\lib\%(Configuration);$(SolutionDir)Dependecies\Bullet\Build\lib\$(Configuration);$(SolutionDir)Dependecies\CEGUI\cegui-0.8.7\cegui-0.8.7\build\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Lib;$(SolutionDir)Dependecies\Ogre\Build\lib\%(Configuration);$(SolutionDir)Dependecies\Bullet\Build\lib\$(Configuration);$(SolutionDir)Dependecies\CEGUI\cegui-0.8.7\build\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

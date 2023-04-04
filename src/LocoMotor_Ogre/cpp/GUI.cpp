@@ -9,7 +9,7 @@ void OgreWrapper::GUI::init(const std::string& resourceDirectory) {
 	if (myRenderer == nullptr) {
 		//myRenderer = &CEGUI::OgreRenderer::bootstrapSystem();
 		myRenderer = &CEGUI::OgreRenderer::bootstrapSystem(*OgreWrapper::OgreManager::GetInstance()->GetRenderWindow());
-		myRenderer->setUsingShaders(true);
+		//myRenderer->setUsingShaders(true);
 		//Asignar los recursos de la UI a Assets/GUI
 
 		CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
