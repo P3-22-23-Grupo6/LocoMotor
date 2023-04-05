@@ -9,7 +9,7 @@ namespace LocoMotor {
 	public:
 		AudioSourceFactory();
 		~AudioSourceFactory();
-		Component* Create(std::string params)override;
+		Component* Create(std::vector<std::pair<std::string, std::string>>& params)override;
 	};
 }
 #endif // !LM_AUDIOSOURCE_FACTORY

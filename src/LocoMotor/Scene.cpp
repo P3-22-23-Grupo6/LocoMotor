@@ -25,9 +25,9 @@ Scene::Scene(std::string nombre) {
 }
 
 Scene::~Scene() {
-	std::vector<GameObject*>::const_iterator it;
+	std::unordered_map<std::string, GameObject*>::const_iterator it;
 	for (it = _gameObjList.cbegin(); it != _gameObjList.end(); it = _gameObjList.erase(it)) {
-		delete* it;
+		delete it->second;
 	}
 	_renderScn = nullptr;
 	_cam = nullptr;
@@ -40,7 +40,7 @@ void Scene::Start() {
 	//GameObject* camera = new GameObject();
 
 	for (auto obj : _gameObjList) {
-		obj->StartComp();
+		obj.second->StartComp();
 	}
 
 	_isActiveScene = true;
@@ -100,7 +100,7 @@ void Scene::Update(float dt) {
 	}
 	for (auto obj : _gameObjList) {
 
-		obj->Update(dt);
+		obj.second->Update(dt);
 
 		//float x = ship_gObj->GetNode()->GetPosition_X();
 		//float y = ship_gObj->GetNode()->GetPosition_Y();
@@ -151,14 +151,22 @@ void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 }
 
 GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
+	if (_gameObjList.count(name) > 0) {
+	#ifdef DEBUG
+		std::cerr << "Ya existe un objeto con el nombre " << name << " se retornara" << std::endl;
+	#endif // DEBUG
+		return _gameObjList[name];	
+	}
 	OgreWrapper::Node* newNode = _renderScn->CreateNode(name);
 	GameObject* newObj = new GameObject(newNode);
-	AddObject(newObj);
+	_gameObjList.insert({ name, newObj });
 	return newObj;
 }
 
-void Scene::AddObject(GameObject* obj) {
-	_gameObjList.push_back(obj);
+GameObject* LocoMotor::Scene::GetObjectByName(std::string name) {
+	if(_gameObjList.count(name) == 0)
+		return nullptr;
+	return _gameObjList[name];
 }
 
 OgreWrapper::RenderScene* LocoMotor::Scene::GetRender() {

@@ -56,7 +56,7 @@ namespace LocoMotor {
 			//bool comps[Camera::id] == true -> error
 		};
 
-
+		void AddComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params);
 
 		/// @brief Remove a Component
 		/// @param T The type of the component to remove

@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "Singleton.h"
 #include <map>
+#include <vector>
 #include <string>
 typedef uint32_t Uint32;
 
@@ -29,7 +30,10 @@ namespace LocoMotor {
 
 
 		Scene* GetSceneByName(std::string name);
-		Component* CreateComponent(std::string name, std::string params);
+		 
+		Scene* GetCurrentScene();
+
+		Component* CreateComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params);
 
 		void Update();
 

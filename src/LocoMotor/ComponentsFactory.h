@@ -3,6 +3,7 @@
 #define LM_COMPONENTS_FACTORY
 #include <map>
 #include <string>
+#include <vector>
 
 namespace LocoMotor {
 	class Component;
@@ -16,7 +17,7 @@ namespace LocoMotor {
 		/// @brief Register a FactoryComponent by a name
 		void RegisterFactoryComponent(std::string name, FactoryComponent* factComp);
 		/// @brief Create a Component
-		Component* CreateComponent(std::string name, std::string params);
+		Component* CreateComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params);
 	protected:
 		std::map<std::string, FactoryComponent*> _factories;
 	};

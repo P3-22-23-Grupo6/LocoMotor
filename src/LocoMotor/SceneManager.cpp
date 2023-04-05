@@ -81,7 +81,12 @@ Scene* SceneManager::GetSceneByName(std::string name) {
 
 }
 
-Component* LocoMotor::SceneManager::CreateComponent(std::string name, std::string params)
+Scene* LocoMotor::SceneManager::GetCurrentScene()
+{
+	return _activeScene;
+}
+
+Component* LocoMotor::SceneManager::CreateComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params)
 {
 	return factory->CreateComponent(name, params);
 }

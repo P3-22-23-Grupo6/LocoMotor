@@ -14,7 +14,7 @@
 #include "GameObject.h"
 #include "Node.h"
 
-#include "MeshRederer.h"
+#include "MeshRenderer.h"
 #include <RigidBodyComponent.h>
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
@@ -50,7 +50,7 @@ void MotorApi::init() {
 	//info2.origin = btVector3(2, 10, 0);
 	//BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
-	_scnManager = new LocoMotor::SceneManager();
+	_scnManager = LocoMotor::SceneManager::Init();
 	_scnManager->CreateScene("Escena");
 	_scnManager->ChangeScene("Escena");
 
@@ -116,7 +116,7 @@ void MotorApi::init() {
 			//gObj->GetComponent<LocoMotor::AudioSource>()->Play(0);
 		}
 	}
-	delete _scnManager;
+	LocoMotor::SceneManager::Clear();
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();
@@ -188,7 +188,7 @@ void MotorApi::Init() {
 	FmodWrapper::AudioManager::Init(8);
 	PhysicsManager::Init();
 	InputManager::Get();
-	_scnManager = new LocoMotor::SceneManager();
+	_scnManager = LocoMotor::SceneManager::Init();
 }
 
 void MotorApi::MainLoop() {

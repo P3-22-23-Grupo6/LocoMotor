@@ -43,7 +43,7 @@ void ScriptManager::readLuaScript(const std::string path) {
     report_errors(scriptLoadStatus);
 }
 void ScriptManager::LoadSceneFromFile(std::string path) {
-   // Scene* s = SceneManager::GetInstance()->getCurrentScene();
+    Scene* s = SceneManager::GetInstance()->GetCurrentScene();
     readLuaScript(path);
 
     luabridge::LuaRef allEnts = getFromLua("entities");
@@ -52,6 +52,8 @@ void ScriptManager::LoadSceneFromFile(std::string path) {
 
     for (int i = 1; i <= numEnts; i++) {
         luabridge::LuaRef entity = getFromLua(allEnts[i]);
+
+        //De referencia por si hacemos layers
         //std::string layer;
         /*f (!layers.isNil()) {
             luabridge::LuaRef l = getFromLua(allEnts[i]);
@@ -60,12 +62,11 @@ void ScriptManager::LoadSceneFromFile(std::string path) {
         else
             layer = "prueba";*/
 
-        GameObject* ent = nullptr;
-        //if (ent == nullptr) {
-        //    //ent = s->AddE;
-        //    //std::cout << "Loading entity: " << ent->getName() << "\n";
-        //    
-        //}
+        //Cargo las entidades 
+        GameObject* ent = s->GetObjectByName(allEnts[i]);
+        if (ent == nullptr) {
+            ent = s->AddGameobject(allEnts[i]);            
+        }
         std::cout << "Loading entity: " << allEnts[i] << " Components: \n";
         setParams(entity, ent, nullptr, "layer");
         
@@ -112,7 +113,7 @@ void ScriptManager::setParams(luabridge::LuaRef entity, GameObject* ent, Scene* 
         }
 
         
-        //ent->AddComponent<Component>(compName, parameters);
+        ent->AddComponent(compName, parameters);
         for (auto p : parameters) {
             std::cout << "\t" << p.first << ": " << p.second << "\n";
         }

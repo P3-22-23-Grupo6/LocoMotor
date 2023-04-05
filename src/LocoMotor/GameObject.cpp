@@ -93,7 +93,7 @@ void GameObject::Update(float dt) {
 }
 
 
-void LocoMotor::GameObject::AddComponent(std::string name, std::string params) {
+void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params) {
 	if (_componentsByName.count(name) > 0) {
 		return;
 	}
