@@ -2,24 +2,18 @@
 #ifndef LM_GAMEOBJECT
 #define LM_GAMEOBJECT
 
-#include "lmVector.h"
+#include "LMVector.h"
 #include "Component.h"
 #include <map>
 
 //HITO 1 POC
+#include "Renderer3D.h"
+#include "BulletRigidBody.h"
 
 namespace OgreWrapper {
 	class Node;
 }
 
-namespace PhysicsWrapper {
-	class BulletRigidBody;
-}
-
-namespace OgreWrapper {
-	class Node;
-	class Renderer3D;
-}
 
 namespace LocoMotor {
 	struct Transform {
@@ -46,25 +40,21 @@ namespace LocoMotor {
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
 		template<typename T, typename ...Ts>
-		T* AddComponent(Ts&& ...params) {
+		void AddComponent(Ts&& ...params) {
 			if (_componentsByName.count(T::name) > 0) {
-				
-				return static_cast<T*>(_componentsByName[T::name]);
+				return;
 			}
 			else {
-				T* comp = new T(std::forward<Ts>(params)...);
+				Component* comp = new T(std::forward<Ts>(params)...);
 				comp->SetContext(this);
 				comp->InitComponent();
 				_componentsByName.insert({ T::name, comp });
-				return comp;
 			}
 			//EJ.:
 			//ent->AddComponent<Camera>(10,0,0);
 
 			//bool comps[Camera::id] == true -> error
 		};
-
-		void AddComponent(std::string name, std::string params);
 
 
 

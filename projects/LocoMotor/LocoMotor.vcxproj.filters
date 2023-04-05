@@ -55,7 +55,18 @@
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\Checkpoint.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\RaceManager.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\src\LMVector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\GameObject.h">
@@ -109,7 +120,18 @@
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
+    <ClInclude Include="..\..\src\LocoMotor\MotorApi.h">
+    <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\Checkpoint.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\RaceManager.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\include\LMVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

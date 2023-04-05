@@ -4,7 +4,7 @@
 //	class Component;
 //}
 #include "Component.h"
-#include "lmVector.h"
+#include "LMVector.h"
 
 namespace OgreWrapper {
 	class RenderScene;

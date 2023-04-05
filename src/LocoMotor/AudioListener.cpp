@@ -1,6 +1,6 @@
 #include "AudioListener.h"
 #include "GameObject.h"
-#include "LocoMotor_Utils/lmVector.h"
+#include "LMVector.h"
 #include "LocoMotor_FMod/include/AudioListener.h"
 #include "LocoMotor_FMod/include/AudioManager.h"
 

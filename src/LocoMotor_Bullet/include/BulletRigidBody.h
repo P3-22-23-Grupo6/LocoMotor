@@ -16,8 +16,12 @@ namespace PhysicsWrapper {
 		/// @param info RigidBodyInfo The info of the rigidBody 
 		BulletRigidBody(RigidBodyInfo info,MeshStrider *mesh=nullptr);
 		/// @brief Gets the rigidBodyPosition
-		/// @return 
+		/// @return LMVector3 position
 		LMVector3 getPosition();
+		/// @brief Check if this body has collision with other body
+		/// @param other BulletRigidBody
+		/// @return bool true if collides 
+		bool checkCollision(BulletRigidBody* other);
 		/// @brief Add central force to the rigidBody
 		/// @param force LMVector3 The force that is applied
 		void AddForce(LMVector3 force);
@@ -54,6 +58,9 @@ namespace PhysicsWrapper {
 		/// @brief Destructor of BulletRigidBody
 		~BulletRigidBody();
 	private:
+		/// @brief Gets the btRigidBody.
+		/// @return btRigidBody
+		btRigidBody* getBody();
 		btRigidBody* _rigidBody = nullptr;
 		btCollisionShape* _shape = nullptr;
 	};

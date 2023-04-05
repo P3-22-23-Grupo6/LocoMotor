@@ -1,5 +1,5 @@
 #include "RigidBodyComponent.h"
-#include "lmVector.h"
+#include "LMVector.h"
 #include "BulletRigidBody.h"
 #include "PhysicsManager.h"
 #include "GameObject.h"
@@ -8,6 +8,7 @@
 #include "MeshStrider.h"
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
+
 const std::string RigidBodyComponent::name = "RigidBodyComponent";
 
 LocoMotor::RigidBodyComponent::RigidBodyComponent(float mass) {
@@ -118,6 +119,14 @@ void LocoMotor::RigidBodyComponent::setStatic() {
 void LocoMotor::RigidBodyComponent::setNoContactResponse() {
 	_body->setBodystate(4);
 }
+
+bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* go) {
+	return _body->checkCollision(go->GetComponent<RigidBodyComponent>()->getBody());
+}
+
+PhysicsWrapper::BulletRigidBody* LocoMotor::RigidBodyComponent::getBody() {
+	return _body;
+}	
 
 bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
 	return _body->createRaycast(from, to).hasHit;

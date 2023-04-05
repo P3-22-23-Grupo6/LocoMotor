@@ -8,16 +8,17 @@
 #include "MotorApi.h"
 
 // typedef de los metodos que vamos a encontrar en la dll del Juego
-typedef const char* (CALLBACK* InitJuegoFunc)();
-
-typedef void (CALLBACK* InitMotor)();
+typedef const char* (CALLBACK* InitJuegoFunc)(MotorApi* m);
 
 int exec();
 int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
-	
-	
+
+	bool dllLoaded = false;
+
+	MotorApi* motor = new MotorApi();
+	motor->Init();
 #pragma region Explicit dll loading
 
 	HINSTANCE juegoDeAutosDLL;
@@ -44,27 +45,24 @@ int main() {
 
 		if (initJuego != NULL) {
 			// La ejecutamos
-			auto result = initJuego();
+			auto result = initJuego(motor);
 			std::cout << result << std::endl;
 		}
 		else {
 			std::cerr << "DLL EXPLICIT LOADING ERROR: '" << functionName << "' function couldn't be executed" << std::endl;
 		}
-		FreeLibrary(juegoDeAutosDLL);
+
+		dllLoaded = true;
 	}
 	else {
 		std::cerr << "DLL EXPLICIT LOADING ERROR: '" << dllName << "' wasn't found" << std::endl;
 	}
 
-#pragma region Explicit dll loading
-
-	MotorApi* a = new MotorApi();
-	a->init();
-
-	
-	
-
-	delete a;
+#pragma endregion
+	motor->MainLoop();
+	delete motor;
+	if (dllLoaded)
+		FreeLibrary(juegoDeAutosDLL);
 
 	return 0;
 }

@@ -41,6 +41,7 @@
     <ClCompile Include="..\..\src\LocoMotor\AudioSource.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\AudioSourceFactory.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\Checkpoint.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Component.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\FactoryComponent.cpp" />
@@ -48,26 +49,31 @@
     <ClCompile Include="..\..\src\LocoMotor\LogSystem.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ParticleSystem.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\RaceManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\RigidBodyComponent.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Scene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\src\LMVector.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
     <ClInclude Include="..\..\src\LocoMotor\AudioListenerFactory.h" />
     <ClInclude Include="..\..\src\LocoMotor\AudioSourceFactory.h" />
+    <ClInclude Include="..\..\src\LocoMotor\Checkpoint.h" />
     <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h" />
     <ClInclude Include="..\..\src\LocoMotor\FactoryComponent.h" />
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h" />
     <ClInclude Include="..\..\src\LocoMotor\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />
+    <ClInclude Include="..\..\src\LocoMotor\include\LMVector.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h" />
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h" />
+    <ClInclude Include="..\..\src\LocoMotor\RaceManager.h" />
     <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h" />
     <ClInclude Include="..\..\src\LocoMotor\MeshRenderer.h" />
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />

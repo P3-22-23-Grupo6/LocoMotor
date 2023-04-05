@@ -63,7 +63,6 @@ void GameObject::Update(float dt) {
 	}
 	else std::cout << "NO COLL! *****************";
 
-
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
 

@@ -1,7 +1,7 @@
 #include "BulletRigidBody.h"
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
-#include "lmVector.h"
+#include "LMVector.h"
 #include "MeshStrider.h"
 using namespace PhysicsWrapper;
 BulletRigidBody::BulletRigidBody(RigidBodyInfo info, MeshStrider* mesh) {
@@ -36,7 +36,6 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info, MeshStrider* mesh) {
 	//add the body to the dynamics world;
 	PhysicsManager::GetInstance()->AddRigidBodyToWorld(_rigidBody);
 	_rigidBody->setDamping(0.7, 0.7);
-	
 }
 
 LMVector3 PhysicsWrapper::BulletRigidBody::getPosition() {
@@ -116,6 +115,17 @@ BulletRigidBody::~BulletRigidBody() {
 	_rigidBody = nullptr;
 	delete _shape;
 	_shape = nullptr;
+}
+
+bool PhysicsWrapper::BulletRigidBody::checkCollision(BulletRigidBody* other) {
+	if (other != nullptr) {
+		 return _rigidBody->checkCollideWith(other->getBody());
+	}
+	return false;
+}
+
+btRigidBody* PhysicsWrapper::BulletRigidBody::getBody() {
+	return _rigidBody;
 }
 
 void BulletRigidBody::AddForce(LMVector3 force) {
