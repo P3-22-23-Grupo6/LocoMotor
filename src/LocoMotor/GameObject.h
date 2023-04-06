@@ -4,6 +4,7 @@
 
 #include "LocoMotor_Utils/lmVector.h"
 #include "Component.h"
+#include "ComponentsFactory.h"
 #include <map>
 
 //HITO 1 POC
@@ -45,7 +46,7 @@ namespace LocoMotor {
 				return;
 			}
 			else {
-				Component* comp = new T(std::forward<Ts>(params)...);
+				Component* comp = ComponentsFactory::GetInstance()->CreateComponent(T::name);
 				comp->SetContext(this);
 				comp->InitComponent();
 				_componentsByName.insert({ T::name, comp });

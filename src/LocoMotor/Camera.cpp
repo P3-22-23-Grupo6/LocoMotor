@@ -9,6 +9,14 @@ using namespace LocoMotor;
 
 const std::string Camera::name = "Camera";
 
+LocoMotor::Camera::Camera()
+{
+	_scene = nullptr;
+	_renderScn = nullptr;
+	_target = nullptr;
+	_offset = LMVector3(0, 0, 0);
+}
+
 LocoMotor::Camera::Camera(Scene* scene, OgreWrapper::RenderScene* renderScn, GameObject* target, LMVector3 offset) {
 
 	// Guardar variables para usarlas en el inicializador del componente

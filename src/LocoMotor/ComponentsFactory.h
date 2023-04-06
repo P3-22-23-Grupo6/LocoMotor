@@ -3,22 +3,29 @@
 #define LM_COMPONENTS_FACTORY
 #include <map>
 #include <string>
+#include "Singleton.h"
 
 namespace LocoMotor {
 	class Component;
-	class FactoryComponent;
-	class ComponentsFactory {
+
+	typedef Component* (*CmpFactory) ();
+
+	class ComponentsFactory : public Singleton<ComponentsFactory>{
+
+		friend Singleton<ComponentsFactory>;
+
 	public:
-		/// @brief Constructor
-		ComponentsFactory();
 		/// @brief Destructor
 		~ComponentsFactory();
 		/// @brief Register a FactoryComponent by a name
-		void RegisterFactoryComponent(std::string name, FactoryComponent* factComp);
+		void RegisterFactoryComponent(const std::string& name, CmpFactory fac);
 		/// @brief Create a Component
-		Component* CreateComponent(std::string name);
+		Component* CreateComponent(const std::string& name);
 	protected:
-		std::map<std::string, FactoryComponent*> _factories;
+		std::map<std::string, CmpFactory> _factories;
+	private:
+		/// @brief Constructor
+		ComponentsFactory();
 	};
 }
 #endif 

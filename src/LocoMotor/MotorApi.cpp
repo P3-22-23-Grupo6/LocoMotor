@@ -12,6 +12,16 @@
 #include "RenderScene.h"
 #include "SceneManager.h"
 #include "GameObject.h"
+#include "Node.h"
+#include "ComponentsFactory.h"
+
+#include "MeshRederer.h"
+#include <RigidBodyComponent.h>
+#include <ParticleSystem.h>
+#include <Checkpoint.h>
+#include <Camera.h>
+#include <FactoryComponent.h>
+
 using namespace PhysicsWrapper;
 MotorApi::MotorApi() {
 	_gameName = "";
@@ -115,4 +125,93 @@ void MotorApi::init() {
 
 void MotorApi::RegisterGame(const char* gameName) {
 	_gameName = gameName;
+	OgreWrapper::OgreManager::Init(gameName); 
+
+	auto _mScene = _scnManager->CreateScene("Escena");
+
+#pragma region Escena que teniamos antes
+
+	auto _renderScn = _mScene->GetRender();
+
+	auto map = _mScene->AddGameobject("map");
+	map->AddComponent<MeshRenderer>("map", "Track.mesh", "FalconRedone/FalconMat", _mScene->GetRender());
+	map->AddComponent<RigidBodyComponent>(0);
+
+	auto ship_gObj = _mScene->AddGameobject("ship");
+	ship_gObj->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _mScene->GetRender());
+	ship_gObj->AddComponent<ParticleSystem>("smoke", _mScene->GetRender(), "Racers/Smoke");
+	ship_gObj->AddComponent<ParticleSystem>("fire", _mScene->GetRender(), "Racers/Fire");
+
+	ship_gObj->AddComponent<RigidBodyComponent>(1);
+	//_gameObjList.push_back(ship_gObj);
+
+	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
+	//rend->SetMaterial("Racers/Falcon");
+	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
+	ship_gObj->SetPosition(LMVector3(0, 10, 0));
+	ship_gObj->setMovable(true);
+
+
+	//// CHECKPOINT
+
+	GameObject* checkpoint = _mScene->AddGameobject("checkpoint");
+	checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
+	checkpoint->AddComponent<RigidBodyComponent>(0);
+	checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
+	checkpoint->SetPosition(LMVector3(0, 5, -50));
+	checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
+
+
+
+	_renderScn->Prueba();
+	//Skybox
+	_renderScn->SetSkybox();
+
+
+#pragma endregion
+
+	_scnManager->ChangeScene("Escena");
+
+#pragma region All Components Started
+
+	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
+
+	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	map->GetComponent<RigidBodyComponent>()->setStatic();
+
+#pragma endregion
+
+}
+
+void MotorApi::Init() {
+	FmodWrapper::AudioManager::Init(8);
+	PhysicsManager::Init();
+	InputManager::Get();
+	_scnManager = new LocoMotor::SceneManager();
+
+	auto cmpFac = ComponentsFactory::Init();
+
+	FactoryComponent<AudioSource>();
+	FactoryComponent<Camera>();
+	//FactoryComponent<MeshRenderer>();
+	//FactoryComponent<RigidBodyComponent>();
+	//FactoryComponent<ParticleSystem>();
+	FactoryComponent<Checkpoint>();
+
+}
+
+void MotorApi::MainLoop() {
+
+	while (!_exit) {
+
+		FmodWrapper::AudioManager::GetInstance()->Update(0.0f);
+		OgreWrapper::OgreManager::GetInstance()->Render();
+		PhysicsManager::GetInstance()->Update();
+		if (InputManager::Get()->RegisterEvents())
+			break;
+
+		_scnManager->Update();
+	}
+	return;
 }
