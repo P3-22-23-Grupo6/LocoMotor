@@ -1,5 +1,4 @@
 #include "ComponentsFactory.h"
-#include "FactoryComponent.h"
 
 LocoMotor::ComponentsFactory* Singleton<LocoMotor::ComponentsFactory>::_instance = nullptr;
 

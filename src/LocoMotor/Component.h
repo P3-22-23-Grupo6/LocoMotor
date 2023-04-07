@@ -17,7 +17,6 @@ namespace LocoMotor {
 	class GameObject;
 	 class Component {
 	public:
-
 		/// @brief Destructor
 		virtual ~Component() = default;
 
@@ -36,6 +35,7 @@ namespace LocoMotor {
 		void SetContext(GameObject* ent);
 
 		MOTOR_API virtual void InitComponent();
+		
 
 	protected:
 		/// @brief Constructor

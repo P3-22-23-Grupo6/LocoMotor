@@ -20,8 +20,6 @@
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
 #include <Camera.h>
-#include <FactoryComponent.h>
-#include "../../src/include/PlayerController.h"
 
 using namespace LocoMotor;
 using namespace PhysicsWrapper;
@@ -136,19 +134,19 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto _renderScn = _mScene->GetRender();
 
 	auto map = _mScene->AddGameobject("map");
-	map->AddComponent<MeshRenderer>();
+	map->AddComponent("MeshRenderer");
 	map->GetComponent<MeshRenderer>()->Start("map", "Track.mesh", "FalconRedone/FalconMat");
-	map->AddComponent<RigidBodyComponent>();
+	map->AddComponent("RigidBodyComponent");
 	map->GetComponent<RigidBodyComponent>()->Start(0);
-	map->AddComponent<PlayerController>();
+	map->AddComponent("PlayerController");
 
 	auto ship_gObj = _mScene->AddGameobject("ship");
-	ship_gObj->AddComponent<MeshRenderer>();
+	ship_gObj->AddComponent("MeshRenderer");
 	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat");
-	ship_gObj->AddComponent<ParticleSystem>();
+	ship_gObj->AddComponent("ParticleSystem");
 	//ship_gObj->AddComponent<ParticleSystem>("fire", _mScene->GetRender(), "Racers/Fire");
 
-	ship_gObj->AddComponent<RigidBodyComponent>();
+	ship_gObj->AddComponent("RigidBodyComponent");
 	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
 	//_gameObjList.push_back(ship_gObj);
 
@@ -197,14 +195,13 @@ void MotorApi::Init() {
 	_scnManager = new LocoMotor::SceneManager();
 
 	auto cmpFac = ComponentsFactory::Init();
-
-	cmpFac->RegisterComponent<AudioSource>();
-	cmpFac->RegisterComponent<AudioListener>();
-	cmpFac->RegisterComponent<Camera>();
-	cmpFac->RegisterComponent<Checkpoint>();
-	cmpFac->RegisterComponent<MeshRenderer>();
-	cmpFac->RegisterComponent<ParticleSystem>();
-	cmpFac->RegisterComponent<RigidBodyComponent>();
+	cmpFac->RegisterComponent<AudioSource>("AudioSource");
+	cmpFac->RegisterComponent<AudioListener>("AudioListener");
+	cmpFac->RegisterComponent<Camera>("Camera");
+	cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
+	cmpFac->RegisterComponent<MeshRenderer>("MeshRenderer");
+	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
+	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
 }
 
 void MotorApi::MainLoop() {

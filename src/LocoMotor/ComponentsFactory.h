@@ -28,8 +28,8 @@ namespace LocoMotor {
 		Component* CreateComponent(const std::string& name);
 
 		template <typename T>
-		void RegisterComponent() {
-			this->RegisterFactoryComponent(T::name, (CmpFactory) []() {
+		void RegisterComponent(std::string name) {
+			this->RegisterFactoryComponent(name, (CmpFactory) []() {
 				return static_cast<Component*>(new T());
 			});
 		};

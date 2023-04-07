@@ -37,14 +37,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor\AudioListenerFactory.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\AudioSource.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor\AudioSourceFactory.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Checkpoint.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Component.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor\FactoryComponent.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\GameObject.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\LogSystem.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp" />
@@ -60,11 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
-    <ClInclude Include="..\..\src\LocoMotor\AudioListenerFactory.h" />
-    <ClInclude Include="..\..\src\LocoMotor\AudioSourceFactory.h" />
     <ClInclude Include="..\..\src\LocoMotor\Checkpoint.h" />
     <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h" />
-    <ClInclude Include="..\..\src\LocoMotor\FactoryComponent.h" />
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h" />
     <ClInclude Include="..\..\src\LocoMotor\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />

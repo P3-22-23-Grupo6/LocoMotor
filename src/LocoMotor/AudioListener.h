@@ -14,7 +14,9 @@ namespace LocoMotor {
 
 	public:
 		const static std::string name;
-
+		static std::string GetName() {
+			return "AudioListener";
+		};
 		AudioListener();
 		~AudioListener();
 

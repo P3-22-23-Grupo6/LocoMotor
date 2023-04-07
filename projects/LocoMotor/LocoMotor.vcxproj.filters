@@ -34,15 +34,6 @@
     <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\AudioListenerFactory.cpp">
-      <Filter>Source Files\Components\Factories</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\AudioSourceFactory.cpp">
-      <Filter>Source Files\Components\Factories</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\FactoryComponent.cpp">
-      <Filter>Source Files\Components\Factories</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\Component.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -99,15 +90,6 @@
     <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\AudioListenerFactory.h">
-      <Filter>Header Files\Components\Factorias</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\AudioSourceFactory.h">
-      <Filter>Header Files\Components\Factorias</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\FactoryComponent.h">
-      <Filter>Header Files\Components\Factorias</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\Component.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -121,7 +103,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h">
-    <Filter>Header Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\Checkpoint.h">
       <Filter>Header Files\Components</Filter>

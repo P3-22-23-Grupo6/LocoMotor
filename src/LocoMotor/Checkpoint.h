@@ -17,6 +17,9 @@ namespace LocoMotor {
 	class Checkpoint : public Component {
 	public:
 		const static std::string name;
+		static std::string GetName() {
+			return "CheckPoint";
+		};
 		Checkpoint();
 		//Checkpoint(GameObject* player = nullptr, int checkpointIndex = 0);
 

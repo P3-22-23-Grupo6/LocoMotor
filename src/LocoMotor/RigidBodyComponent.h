@@ -14,6 +14,9 @@ namespace LocoMotor {
 	class RigidBodyComponent : public Component {
 	public:
 		const static std::string name;
+		static std::string GetName() {
+			return "RigidBodyComponent";
+		};
 		RigidBodyComponent();
 		/// @brief Constructor
 		void Start(float mass);

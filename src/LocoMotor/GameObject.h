@@ -1,7 +1,11 @@
 #pragma once
 #ifndef LM_GAMEOBJECT
 #define LM_GAMEOBJECT
-
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include "LMVector.h"
 #include "Component.h"
 #include "ComponentsFactory.h"
@@ -26,7 +30,7 @@ namespace LocoMotor {
 
 	class Scene;
 
-	class GameObject {
+    class GameObject {
 	public:
 		/// @brief Constructor
 		GameObject(OgreWrapper::Node* node);
@@ -40,16 +44,16 @@ namespace LocoMotor {
 
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
-		template<typename T, typename ...Ts>
-		void AddComponent(Ts&& ...params) {
-			if (_componentsByName.count(T::name) > 0) {
+		template<typename ...Ts>
+	    void AddComponent(std::string name ,Ts&& ...params) {
+			if (_componentsByName.count(name) > 0) {
 				return;
 			}
 			else {
-				Component* comp = ComponentsFactory::GetInstance()->CreateComponent(T::name);
+				Component* comp = ComponentsFactory::GetInstance()->CreateComponent(name);
 				comp->SetContext(this);
 				comp->InitComponent();
-				_componentsByName.insert({ T::name, comp });
+				_componentsByName.insert({ name, comp });
 			}
 			//EJ.:
 			//ent->AddComponent<Camera>(10,0,0);
@@ -61,13 +65,12 @@ namespace LocoMotor {
 
 		/// @brief Remove a Component
 		/// @param T The type of the component to remove
-		template <typename T>
-		void RemoveComponent() {
-			if (_componentsByName.count(T::name) == 0) {
+		void RemoveComponent(std::string name) {
+			if (_componentsByName.count(name) == 0) {
 				//Error: no component exists with that name
 			}
-			auto comp = _componentsByName.find(T::name);
-			delete comp.second;
+			auto comp = _componentsByName.find(name);
+			delete comp->second;
 			_componentsByName.erase(comp);
 
 		}
@@ -76,11 +79,18 @@ namespace LocoMotor {
 		/// @param T The type of the component to get
 		template <typename T>
 		T* GetComponent() {
-			if (_componentsByName.count(T::name) == 0) {
-				//Error: no component exists with that name
-				return nullptr;
+			auto it = _componentsByName.begin();
+			T* comp = nullptr;
+			while (it != _componentsByName.end() && comp == nullptr) {
+				comp = dynamic_cast<T*>(it->second);
+				it++;
 			}
-			return static_cast<T*>(_componentsByName.at(T::name));
+			return comp;
+			//if (_componentsByName.count(name) == 0) {
+			//	//Error: no component exists with that name
+			//	return nullptr;
+			//}
+			//return static_cast<T*>(_componentsByName.at(name));
 		}
 
 		/// @brief Get the transform of the GameObject

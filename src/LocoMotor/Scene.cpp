@@ -18,7 +18,7 @@ Scene::Scene(std::string nombre) {
 
 	// Crear camara
 	camera_gObj = AddGameobject("cam");
-	camera_gObj->AddComponent<LocoMotor::Camera>(this, _renderScn);
+	camera_gObj->AddComponent("Camera",this, _renderScn);
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();
 
 	/*SetSceneCam(_renderScn->CreateCamera("ScnCam"));*/
