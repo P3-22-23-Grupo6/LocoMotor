@@ -39,51 +39,57 @@ void Scene::Start() {
 
 	//GameObject* camera = new GameObject();
 
-	// TODO: camera->AddComponent();
-	GameObject* map = AddGameobject("map");
-	map->AddComponent<MeshRenderer>("map", "Track.mesh", "FalconRedone/FalconMat", _renderScn);
-	map->AddComponent<RigidBodyComponent>(0);
-
-	_isActiveScene = true;
-	ship_gObj = AddGameobject("ship");
-	ship_gObj->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
-	ship_gObj->AddComponent<ParticleSystem>("smoke", _renderScn, "Racers/Smoke");
-	ship_gObj->AddComponent<ParticleSystem>("fire", _renderScn, "Racers/Fire");	
-
-	ship_gObj->AddComponent<RigidBodyComponent>(1);
-	//_gameObjList.push_back(ship_gObj);
-
-	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
-	//rend->SetMaterial("Racers/Falcon");
-	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
-	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
-	ship_gObj->SetPosition(LMVector3(0, 10, 0));
-	ship_gObj->setMovable(true);
-
-
-	//// CHECKPOINT
-
-	GameObject* checkpoint = AddGameobject("checkpoint");
-	checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
-	checkpoint->AddComponent<RigidBodyComponent>(0);
-	checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
-	checkpoint->SetPosition(LMVector3(0, 5, -50));
-	checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
-
-
-
-	_renderScn->Prueba();
-	//Skybox
-	_renderScn->SetSkybox();
-
 	for (auto obj : _gameObjList) {
 		obj->StartComp();
 	}
 
-	camera_gObj->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 5, 15));
-	//ship_gObj->GetComponent<RigidBodyComponent>()
-	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
-	map->GetComponent<RigidBodyComponent>()->setStatic();
+	_isActiveScene = true;
+
+	// TODO: camera->AddComponent();
+	//GameObject* map = AddGameobject("map");
+	//map->AddComponent<MeshRenderer>("map", "Track.mesh", "FalconRedone/FalconMat", _renderScn);
+	//map->AddComponent<RigidBodyComponent>(0);
+
+	//_isActiveScene = true;
+	//ship_gObj = AddGameobject("ship");
+	//ship_gObj->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
+	//ship_gObj->AddComponent<ParticleSystem>("smoke", _renderScn, "Racers/Smoke");
+	//ship_gObj->AddComponent<ParticleSystem>("fire", _renderScn, "Racers/Fire");	
+
+	//ship_gObj->AddComponent<RigidBodyComponent>(1);
+	////_gameObjList.push_back(ship_gObj);
+
+	////ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
+	////rend->SetMaterial("Racers/Falcon");
+	//ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	////ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
+	//ship_gObj->SetPosition(LMVector3(0, 10, 0));
+	//ship_gObj->setMovable(true);
+
+
+	////// CHECKPOINT
+
+	//GameObject* checkpoint = AddGameobject("checkpoint");
+	//checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
+	//checkpoint->AddComponent<RigidBodyComponent>(0);
+	//checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
+	//checkpoint->SetPosition(LMVector3(0, 5, -50));
+	//checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
+
+
+
+	//_renderScn->Prueba();
+	////Skybox
+	//_renderScn->SetSkybox();
+
+	//for (auto obj : _gameObjList) {
+	//	obj->StartComp();
+	//}
+
+	//camera_gObj->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 5, 15));
+	////ship_gObj->GetComponent<RigidBodyComponent>()
+	//map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	//map->GetComponent<RigidBodyComponent>()->setStatic();
 }
 
 void Scene::Update(float dt) {
@@ -96,17 +102,17 @@ void Scene::Update(float dt) {
 
 		obj->Update(dt);
 
-		float x = ship_gObj->GetNode()->GetPosition_X();
-		float y = ship_gObj->GetNode()->GetPosition_Y();
-		float z = ship_gObj->GetNode()->GetPosition_Z();
-		camera_gObj->SetPosition(LMVector3(x, y + 10, z + 50));
-		//_nod->SetPosition(node->GetPosition_X(), node->GetPosition_Y() + 10, node->GetPosition_Z() + 15);
+		//float x = ship_gObj->GetNode()->GetPosition_X();
+		//float y = ship_gObj->GetNode()->GetPosition_Y();
+		//float z = ship_gObj->GetNode()->GetPosition_Z();
+		//camera_gObj->SetPosition(LMVector3(x, y + 10, z + 50));
+		////_nod->SetPosition(node->GetPosition_X(), node->GetPosition_Y() + 10, node->GetPosition_Z() + 15);
 
-		LMVector3 pos = camera_gObj->GetTransform().position;
+		//LMVector3 pos = camera_gObj->GetTransform().position;
 
-		//std::cout << "CAMERAPOSITION_GAMEOBJ = " << pos.GetX() << ", " << pos.GetY() << ", " << pos.GetZ() << "\n";
+		////std::cout << "CAMERAPOSITION_GAMEOBJ = " << pos.GetX() << ", " << pos.GetY() << ", " << pos.GetZ() << "\n";
 
-		//std::cout << "CARPOSITION_NODE = " << x << ", " << y << ", " << z << "\n";
+		////std::cout << "CARPOSITION_NODE = " << x << ", " << y << ", " << z << "\n";
 	}
 }
 void Scene::Render() {
@@ -153,6 +159,14 @@ GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
 
 void Scene::AddObject(GameObject* obj) {
 	_gameObjList.push_back(obj);
+}
+
+OgreWrapper::RenderScene* LocoMotor::Scene::GetRender() {
+	return _renderScn;
+}
+
+GameObject* LocoMotor::Scene::GetCamera() {
+	return camera_gObj;
 }
 
 

@@ -66,7 +66,7 @@ void PhysicsManager::Update() {
 			trans = obj->getWorldTransform();
 		}
 		//trans.setRotation(btQuaternion(1, 1, 1, 1));
-		printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
+		//printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
 		//printf("world rot object %d = %f,%f,%f,%f\n", j, float(trans.getRotation().x()), float(trans.getRotation().y()), float(trans.getRotation().z()), float(trans.getRotation().w()));
 		//std::cout<<body->getCollisionFlags();
 	}

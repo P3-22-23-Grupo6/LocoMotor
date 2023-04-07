@@ -10,14 +10,15 @@
 // typedef de los metodos que vamos a encontrar en la dll del Juego
 typedef const char* (CALLBACK* InitJuegoFunc)(MotorApi* m);
 
-typedef void (CALLBACK* InitMotor)();
-
 int exec();
 int main() {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
+	bool dllLoaded = false;
+
 	MotorApi* motor = new MotorApi();
+	motor->Init();
 #pragma region Explicit dll loading
 
 	HINSTANCE juegoDeAutosDLL;
@@ -50,15 +51,18 @@ int main() {
 		else {
 			std::cerr << "DLL EXPLICIT LOADING ERROR: '" << functionName << "' function couldn't be executed" << std::endl;
 		}
-		FreeLibrary(juegoDeAutosDLL);
+
+		dllLoaded = true;
 	}
 	else {
 		std::cerr << "DLL EXPLICIT LOADING ERROR: '" << dllName << "' wasn't found" << std::endl;
 	}
 
 #pragma endregion
-	motor->init();
+	motor->MainLoop();
 	delete motor;
+	if (dllLoaded)
+		FreeLibrary(juegoDeAutosDLL);
 
 	return 0;
 }

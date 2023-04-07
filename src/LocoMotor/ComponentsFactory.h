@@ -21,6 +21,13 @@ namespace LocoMotor {
 		void RegisterFactoryComponent(const std::string& name, CmpFactory fac);
 		/// @brief Create a Component
 		Component* CreateComponent(const std::string& name);
+
+		template <typename T>
+		void RegisterComponent() {
+			this->RegisterFactoryComponent(T::name, (CmpFactory) []() {
+				return static_cast<Component*>(new T());
+			});
+		};
 	protected:
 		std::map<std::string, CmpFactory> _factories;
 	private:

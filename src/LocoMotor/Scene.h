@@ -42,7 +42,9 @@ namespace LocoMotor {
 		GameObject* AddGameobject(std::string name);
 		void AddObject(GameObject* obj);
 
-		
+		OgreWrapper::RenderScene* GetRender();
+
+		GameObject* GetCamera();
 
 	private:
 		//camera
