@@ -8,7 +8,7 @@
 #include "CheckML.h"
 #include "PhysicsManager.h"
 #include "BulletRigidBody.h"
-#include "LMVector.h"
+#include "lmVector.h"
 #include "RenderScene.h"
 #include "SceneManager.h"
 #include "GameObject.h"
@@ -23,10 +23,8 @@
 #include <FactoryComponent.h>
 
 using namespace PhysicsWrapper;
-using namespace LocoMotor;
 MotorApi::MotorApi() {
 	_gameName = "";
-	_exit = false;
 }
 
 void MotorApi::init() {
@@ -52,9 +50,9 @@ void MotorApi::init() {
 	//info2.origin = btVector3(2, 10, 0);
 	//BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
-	_scnManager = new LocoMotor::SceneManager();
-	_scnManager->CreateScene("Escena");
-	_scnManager->ChangeScene("Escena");
+	LocoMotor::SceneManager* mSM = new LocoMotor::SceneManager();
+	mSM->CreateScene("Escena");
+	mSM->ChangeScene("Escena");
 
 
 	//audioSrc.PlaySound(0, -1);
@@ -96,7 +94,7 @@ void MotorApi::init() {
 		// RENDER
 		//man->Render();
 		btmngr->Update();
-		_scnManager->Update();
+		mSM->Update();
 		// DEMO TECNICA
 
 		// Giroscopio
@@ -118,7 +116,7 @@ void MotorApi::init() {
 			//gObj->GetComponent<LocoMotor::AudioSource>()->Play(0);
 		}
 	}
-	delete _scnManager;
+	delete mSM;
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();
