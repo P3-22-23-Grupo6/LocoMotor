@@ -153,6 +153,7 @@ void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
 	OgreWrapper::Node* newNode = _renderScn->CreateNode(name);
 	GameObject* newObj = new GameObject(newNode);
+	newObj->SetContext(this);
 	AddObject(newObj);
 	return newObj;
 }

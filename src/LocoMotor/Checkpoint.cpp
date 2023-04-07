@@ -10,11 +10,21 @@ using namespace LocoMotor;
 
 const std::string Checkpoint::name = "Checkpoint";
 
-LocoMotor::Checkpoint::Checkpoint(GameObject* player, int checkpointIndex) {
-
-	_player = player;
-	_checkpointIndex = checkpointIndex;
+LocoMotor::Checkpoint::Checkpoint()
+{
+	_player = nullptr;
+	_checkpointIndex = 0;
+	checked = false;
+	_rb = nullptr;
 }
+
+//LocoMotor::Checkpoint::Checkpoint(GameObject* player, int checkpointIndex) {
+//
+//	_player = player;
+//	_checkpointIndex = checkpointIndex;
+//	_rb = nullptr;
+//	checked = false;
+//}
 
 void LocoMotor::Checkpoint::Start() {
 	

@@ -56,6 +56,7 @@ void PhysicsWrapper::BulletRigidBody::FreezeRotation(LMVector3 axis) {
 
 void PhysicsWrapper::BulletRigidBody::setMass(float m) {
 	_rigidBody->setMassProps(m, _rigidBody->getLocalInertia());
+	if (m > 0)setBodystate(0);
 }
 
 void PhysicsWrapper::BulletRigidBody::resetBoxShapeSize(LMVector3 size) {

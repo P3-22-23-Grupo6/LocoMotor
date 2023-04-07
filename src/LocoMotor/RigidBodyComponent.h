@@ -14,8 +14,9 @@ namespace LocoMotor {
 	class RigidBodyComponent : public Component {
 	public:
 		const static std::string name;
+		RigidBodyComponent();
 		/// @brief Constructor
-		RigidBodyComponent(float mass);
+		void Start(float mass);
 		/// @brief Destructor
 		virtual ~RigidBodyComponent();
 		/// @brief Add force to the body
@@ -31,7 +32,7 @@ namespace LocoMotor {
 		/// @brief Sets the body rotation
 		/// @param rot Rotation to set
 		void setRotation(LMQuaternion rot);
-		/// @brief Set the bodys mass
+		/// @brief Set the bodys mass (NOT WORKING)
 		void setMass(float m);
 		/// @brief Enable/Disable the gravity force affected to this body
 		/// @param gravity 

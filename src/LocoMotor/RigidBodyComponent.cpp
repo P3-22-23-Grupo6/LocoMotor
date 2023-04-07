@@ -11,12 +11,19 @@ using namespace LocoMotor;
 
 const std::string RigidBodyComponent::name = "RigidBodyComponent";
 
-LocoMotor::RigidBodyComponent::RigidBodyComponent(float mass) {
-	_mass = mass;
+LocoMotor::RigidBodyComponent::RigidBodyComponent()
+{
+	_mass = 0;
 	_damping = 0.9;
 	_angDamping = 0.7;
 	_gravity = true;
 	_body = nullptr;
+	_ms = nullptr;
+}
+
+void LocoMotor::RigidBodyComponent::Start(float mass)
+{
+	_mass = mass;
 }
 
 LocoMotor::RigidBodyComponent::~RigidBodyComponent() {

@@ -1,7 +1,11 @@
 #pragma once
 #ifndef LM_FACTORY_COMPONENT
 #define LM_FACTORY_COMPONENT
-
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include "ComponentsFactory.h"
 #include <string>
 

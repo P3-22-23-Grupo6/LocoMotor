@@ -21,7 +21,9 @@
 #include <Checkpoint.h>
 #include <Camera.h>
 #include <FactoryComponent.h>
+#include "../../src/include/PlayerController.h"
 
+using namespace LocoMotor;
 using namespace PhysicsWrapper;
 MotorApi::MotorApi() {
 	_gameName = "";
@@ -134,15 +136,20 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto _renderScn = _mScene->GetRender();
 
 	auto map = _mScene->AddGameobject("map");
-	map->AddComponent<MeshRenderer>("map", "Track.mesh", "FalconRedone/FalconMat", _mScene->GetRender());
-	map->AddComponent<RigidBodyComponent>(0);
+	map->AddComponent<MeshRenderer>();
+	map->GetComponent<MeshRenderer>()->Start("map", "Track.mesh", "FalconRedone/FalconMat");
+	map->AddComponent<RigidBodyComponent>();
+	map->GetComponent<RigidBodyComponent>()->Start(0);
+	map->AddComponent<PlayerController>();
 
 	auto ship_gObj = _mScene->AddGameobject("ship");
-	ship_gObj->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _mScene->GetRender());
-	ship_gObj->AddComponent<ParticleSystem>("smoke", _mScene->GetRender(), "Racers/Smoke");
-	ship_gObj->AddComponent<ParticleSystem>("fire", _mScene->GetRender(), "Racers/Fire");
+	ship_gObj->AddComponent<MeshRenderer>();
+	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat");
+	ship_gObj->AddComponent<ParticleSystem>();
+	//ship_gObj->AddComponent<ParticleSystem>("fire", _mScene->GetRender(), "Racers/Fire");
 
-	ship_gObj->AddComponent<RigidBodyComponent>(1);
+	ship_gObj->AddComponent<RigidBodyComponent>();
+	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
 	//_gameObjList.push_back(ship_gObj);
 
 	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
@@ -155,12 +162,12 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	//// CHECKPOINT
 
-	GameObject* checkpoint = _mScene->AddGameobject("checkpoint");
-	checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
-	checkpoint->AddComponent<RigidBodyComponent>(0);
-	checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
-	checkpoint->SetPosition(LMVector3(0, 5, -50));
-	checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
+	//GameObject* checkpoint = _mScene->AddGameobject("checkpoint");
+	//checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
+	//checkpoint->AddComponent<RigidBodyComponent>(0);
+	//checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
+	//checkpoint->SetPosition(LMVector3(0, 5, -50));
+	//checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
 
 
 
@@ -179,7 +186,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 	map->GetComponent<RigidBodyComponent>()->setStatic();
-
 #pragma endregion
 
 }
@@ -193,10 +199,16 @@ void MotorApi::Init() {
 	auto cmpFac = ComponentsFactory::Init();
 
 	cmpFac->RegisterComponent<AudioSource>();
+	cmpFac->RegisterComponent<AudioListener>();
+	cmpFac->RegisterComponent<Camera>();
+	cmpFac->RegisterComponent<Checkpoint>();
+	cmpFac->RegisterComponent<MeshRenderer>();
+	cmpFac->RegisterComponent<ParticleSystem>();
+	cmpFac->RegisterComponent<RigidBodyComponent>();
 }
 
 void MotorApi::MainLoop() {
-
+	OgreWrapper::OgreManager::Init("GAME DLL FAIL");
 	while (!_exit) {
 
 		FmodWrapper::AudioManager::GetInstance()->Update(0.0f);
@@ -207,5 +219,11 @@ void MotorApi::MainLoop() {
 
 		_scnManager->Update();
 	}
+	FmodWrapper::AudioManager::Clear();
+	OgreWrapper::OgreManager::Clear();
+	PhysicsManager::Clear();
+	InputManager::Destroy();
+	ComponentsFactory::Clear();
+	delete _scnManager;
 	return;
 }

@@ -30,6 +30,8 @@ LocoMotor::Camera::Camera(Scene* scene, OgreWrapper::RenderScene* renderScn, Gam
 void LocoMotor::Camera::InitComponent() {
 
 	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject
+	_scene = gameObject->GetScene();
+	_renderScn = _scene->GetRender();
 	_node = gameObject->GetNode();
 
 	//Crear camara

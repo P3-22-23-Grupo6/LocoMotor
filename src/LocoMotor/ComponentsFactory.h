@@ -1,6 +1,11 @@
 #pragma once
 #ifndef LM_COMPONENTS_FACTORY
 #define LM_COMPONENTS_FACTORY
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include <map>
 #include <string>
 #include "Singleton.h"
@@ -10,7 +15,7 @@ namespace LocoMotor {
 
 	typedef Component* (*CmpFactory) ();
 
-	class ComponentsFactory : public Singleton<ComponentsFactory>{
+	MOTOR_API class ComponentsFactory : public Singleton<ComponentsFactory>{
 
 		friend Singleton<ComponentsFactory>;
 
@@ -18,7 +23,7 @@ namespace LocoMotor {
 		/// @brief Destructor
 		~ComponentsFactory();
 		/// @brief Register a FactoryComponent by a name
-		void RegisterFactoryComponent(const std::string& name, CmpFactory fac);
+		MOTOR_API void RegisterFactoryComponent(const std::string& name, CmpFactory fac);
 		/// @brief Create a Component
 		Component* CreateComponent(const std::string& name);
 

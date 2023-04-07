@@ -16,12 +16,13 @@ namespace LocoMotor {
 	public:
 		const static std::string name;
 
-		MeshRenderer(std::string name,std::string file,std::string mat,OgreWrapper::RenderScene* rndSc);
+		MeshRenderer();
 		~MeshRenderer();
 
 		void Render();
 
 		void Start() override;
+		void Start(std::string name, std::string file, std::string mat);
 
 		void SetContext(GameObject* ent) {
 			Component::SetContext(ent);

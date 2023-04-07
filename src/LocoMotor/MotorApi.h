@@ -7,6 +7,7 @@
 
 #include <string>
 
+
 namespace LocoMotor {
 	class SceneManager;
 }
@@ -23,6 +24,10 @@ public:
 	/// @return please
 	MOTOR_API void MainLoop();
 
+	//template <typename T>
+	//MOTOR_API void RegisterComponent() {
+	//	ComponentsFactory::GetInstance()->RegisterComponent<T>();
+	//}
 private:
 	std::string _gameName;
 
