@@ -6,6 +6,7 @@
 #include "Node.h"
 //Borrar luego
 #include "RigidBodyComponent.h"
+#include "OpenSteer/SimpleVehicle.h"
 
 using namespace LocoMotor;
 

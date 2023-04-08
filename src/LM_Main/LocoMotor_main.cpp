@@ -7,6 +7,7 @@
 #include "windows.h"
 #include "MotorApi.h"
 
+
 // typedef de los metodos que vamos a encontrar en la dll del Juego
 typedef const char* (CALLBACK* InitJuegoFunc)(MotorApi* m);
 
