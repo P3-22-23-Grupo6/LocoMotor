@@ -133,28 +133,45 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	auto _renderScn = _mScene->GetRender();
 
-	auto map = _mScene->AddGameobject("map");
-	map->AddComponent("MeshRenderer");
-	map->GetComponent<MeshRenderer>()->Start("map", "Track.mesh", "FalconRedone/FalconMat");
-	map->AddComponent("RigidBodyComponent");
-	map->GetComponent<RigidBodyComponent>()->Start(0);
-	map->AddComponent("PlayerController");
+	#pragma region RaceTrack
+		auto map = _mScene->AddGameobject("map");
+		map->AddComponent("MeshRenderer");
+		map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");
+		map->AddComponent("RigidBodyComponent");
+		map->GetComponent<RigidBodyComponent>()->Start(0);
+		map->AddComponent("PlayerController");
+	#pragma endregion
 
+	#pragma region TestMap
+		//auto map = _mScene->AddGameobject("map");
+		//map->AddComponent("MeshRenderer");
+		//map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");
+		//
+		//map->AddComponent("RigidBodyComponent");
+		//map->GetComponent<RigidBodyComponent>()->Start(0);
+		//map->AddComponent("PlayerController");
+	#pragma endregion
+
+		//
 	auto ship_gObj = _mScene->AddGameobject("ship");
 	ship_gObj->AddComponent("MeshRenderer");
-	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat");
+	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");
 	ship_gObj->AddComponent("ParticleSystem");
 	//ship_gObj->AddComponent<ParticleSystem>("fire", _mScene->GetRender(), "Racers/Fire");
 
 	ship_gObj->AddComponent("RigidBodyComponent");
 	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
+	//ship_gObj->GetComponent<RigidBodyComponent>()->setMass(20);
 	//_gameObjList.push_back(ship_gObj);
 
+	//map->GetNode()->SetScale(10,10,10);
+	//map->GetNode()->SetPosition(0, 1, 0);
+	//map->SetPosition(LMVector3(0, -5, 0));
 	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
 	//rend->SetMaterial("Racers/Falcon");
 	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
-	ship_gObj->SetPosition(LMVector3(0, 10, 0));
+	ship_gObj->SetPosition(LMVector3(0, 4, 0));
 	ship_gObj->setMovable(true);
 
 
