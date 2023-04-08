@@ -10,6 +10,7 @@
 
 namespace LocoMotor {
 	class SceneManager;
+	class GameObject;
 }
 
 MOTOR_API class MotorApi {
@@ -29,12 +30,13 @@ public:
 	//	ComponentsFactory::GetInstance()->RegisterComponent<T>();
 	//}
 private:
+	void Prueba(float a);
 	std::string _gameName;
 
 	LocoMotor::SceneManager* _scnManager;
 
 	std::string _startScene;
-
+	LocoMotor::GameObject* enemy_gObj;
 	bool _exit;
 };
 

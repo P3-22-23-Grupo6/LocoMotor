@@ -20,7 +20,9 @@
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
 #include <Camera.h>
+#include "tweeny.h"
 
+using tweeny::easing;
 using namespace LocoMotor;
 using namespace PhysicsWrapper;
 MotorApi::MotorApi() {
@@ -136,60 +138,60 @@ void MotorApi::RegisterGame(const char* gameName) {
 	#pragma region RaceTrack
 		auto map = _mScene->AddGameobject("map");
 		map->AddComponent("MeshRenderer");
-		map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");
+		map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 		map->AddComponent("RigidBodyComponent");
 		map->GetComponent<RigidBodyComponent>()->Start(0);
 		map->AddComponent("PlayerController");
 	#pragma endregion
 
-	#pragma region TestMap
-		//auto map = _mScene->AddGameobject("map");
-		//map->AddComponent("MeshRenderer");
-		//map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");
-		//
-		//map->AddComponent("RigidBodyComponent");
-		//map->GetComponent<RigidBodyComponent>()->Start(0);
-		//map->AddComponent("PlayerController");
-	#pragma endregion
-
-		//
 	auto ship_gObj = _mScene->AddGameobject("ship");
 	ship_gObj->AddComponent("MeshRenderer");
 	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");
 	ship_gObj->AddComponent("ParticleSystem");
-	//ship_gObj->AddComponent<ParticleSystem>("fire", _mScene->GetRender(), "Racers/Fire");
 
 	ship_gObj->AddComponent("RigidBodyComponent");
 	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
-	//ship_gObj->GetComponent<RigidBodyComponent>()->setMass(20);
-	//_gameObjList.push_back(ship_gObj);
 
-	//map->GetNode()->SetScale(10,10,10);
-	//map->GetNode()->SetPosition(0, 1, 0);
-	//map->SetPosition(LMVector3(0, -5, 0));
-	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
-	//rend->SetMaterial("Racers/Falcon");
 	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->SetPosition(LMVector3(0, 4, 0));
 	ship_gObj->setMovable(true);
 
+	enemy_gObj = _mScene->AddGameobject("Enemy");
+	enemy_gObj->AddComponent("MeshRenderer");
+	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "");
+	enemy_gObj->AddComponent("RigidBodyComponent");
+	enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
+	enemy_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
+
+#pragma region PathWaypoints
+	auto wayPoint01 = _mScene->AddGameobject("WayPoint01");
+	wayPoint01->AddComponent("MeshRenderer");
+	wayPoint01->GetComponent<MeshRenderer>()->Start("WayPoint01", "SphereDebug.mesh", "");
+	wayPoint01->GetNode()->SetScale(5, 5, 5);
+	wayPoint01->SetPosition(LMVector3(50, 2, -100));
+	auto wayPoint02 = _mScene->AddGameobject("WayPoint02");
+	wayPoint02->AddComponent("MeshRenderer");
+	wayPoint02->GetComponent<MeshRenderer>()->Start("WayPoint02", "SphereDebug.mesh", "");
+	wayPoint02->GetNode()->SetScale(5, 5, 5);
+	wayPoint02->SetPosition(LMVector3(-50, 2, -100));
+
+	
+	//while (tween.progress() < 1.0f) {
+	//	tween.step(0.01f);
+	//}
+#pragma endregion
 
 	//// CHECKPOINT
-
+	//Skybox
+	_renderScn->SetSkybox();
 	//GameObject* checkpoint = _mScene->AddGameobject("checkpoint");
 	//checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
 	//checkpoint->AddComponent<RigidBodyComponent>(0);
 	//checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
 	//checkpoint->SetPosition(LMVector3(0, 5, -50));
 	//checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
-
-
-
-	_renderScn->Prueba();
-	//Skybox
-	_renderScn->SetSkybox();
-
 
 #pragma endregion
 
@@ -223,6 +225,7 @@ void MotorApi::Init() {
 
 void MotorApi::MainLoop() {
 	OgreWrapper::OgreManager::Init("GAME DLL FAIL");
+	auto tween = tweeny::from(0).to(10).during(1).via(easing::linear);
 	while (!_exit) {
 
 		FmodWrapper::AudioManager::GetInstance()->Update(0.0f);

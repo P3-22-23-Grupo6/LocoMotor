@@ -28,3 +28,18 @@ material TestMat {
         }
     }
 }
+material EnemyMat {
+    receive_shadows on
+    technique {
+        pass {
+            diffuse 1.0 1.0 1.0 1.0
+            specular 1.0 1.0 1.0 1.0
+            lighting off
+            texture_unit {
+                texture Enemy_Atlas_t.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
