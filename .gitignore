@@ -16,5 +16,6 @@
 *.tlog
 [Dd]ependecies/Ogre/[Bb]uild/
 [Dd]ependecies/Lua/[Bb]uild/
+[Dd]ependecies/OpenSteer/[Bb]uild/
 Dependecies/Bullet/Src/examples/ThirdPartyLibs/openvr/bin
 Dependecies/Bullet/Build/
