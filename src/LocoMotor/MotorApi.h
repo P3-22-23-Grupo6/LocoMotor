@@ -6,7 +6,7 @@
 #endif
 
 #include <string>
-
+#include <OgreSimpleSpline.h>//TEMPORAL
 
 namespace LocoMotor {
 	class SceneManager;
@@ -30,13 +30,18 @@ public:
 	//	ComponentsFactory::GetInstance()->RegisterComponent<T>();
 	//}
 private:
-	void Prueba(float a);
+
 	std::string _gameName;
 
 	LocoMotor::SceneManager* _scnManager;
 
 	std::string _startScene;
-	LocoMotor::GameObject* enemy_gObj;
 	bool _exit;
+	
+	//TEMPORAL
+	Ogre::SimpleSpline* mySpline;
+	void Prueba(float a);
+	LocoMotor::GameObject* enemy_gObj;
+	LocoMotor::GameObject* ship_gObj;
 };
 

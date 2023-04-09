@@ -28,6 +28,9 @@ namespace LocoMotor {
 		Scene* GetSceneByName(std::string name);
 
 		void Update();
+		float GetDelta() {
+			return _deltaTime;
+		};
 
 	private:
 		std::map<std::string, Scene*> _sceneInfo;

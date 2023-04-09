@@ -20,9 +20,11 @@
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
 #include <Camera.h>
-#include "tweeny.h"
 
-using tweeny::easing;
+#include <tweeners/builder.hpp>
+#include <tweeners/easing.hpp>
+#include <tweeners/system.hpp>
+
 using namespace LocoMotor;
 using namespace PhysicsWrapper;
 MotorApi::MotorApi() {
@@ -144,7 +146,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		map->AddComponent("PlayerController");
 	#pragma endregion
 
-	auto ship_gObj = _mScene->AddGameobject("ship");
+	ship_gObj = _mScene->AddGameobject("ship");
 	ship_gObj->AddComponent("MeshRenderer");
 	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");
 	ship_gObj->AddComponent("ParticleSystem");
@@ -157,6 +159,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->SetPosition(LMVector3(0, 4, 0));
 	ship_gObj->setMovable(true);
 
+	//ENEMY MODEL
 	enemy_gObj = _mScene->AddGameobject("Enemy");
 	enemy_gObj->AddComponent("MeshRenderer");
 	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "");
@@ -166,17 +169,45 @@ void MotorApi::RegisterGame(const char* gameName) {
 	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
 
 #pragma region PathWaypoints
+	LMVector3 pos01 = LMVector3(50, 10, -100);
+	LMVector3 pos02 = LMVector3(-50, 60, -100);
+	LMVector3 pos03 = LMVector3(-20, 10, -50);
+
 	auto wayPoint01 = _mScene->AddGameobject("WayPoint01");
 	wayPoint01->AddComponent("MeshRenderer");
 	wayPoint01->GetComponent<MeshRenderer>()->Start("WayPoint01", "SphereDebug.mesh", "");
 	wayPoint01->GetNode()->SetScale(5, 5, 5);
-	wayPoint01->SetPosition(LMVector3(50, 2, -100));
+	wayPoint01->SetPosition(pos01);
+
 	auto wayPoint02 = _mScene->AddGameobject("WayPoint02");
 	wayPoint02->AddComponent("MeshRenderer");
 	wayPoint02->GetComponent<MeshRenderer>()->Start("WayPoint02", "SphereDebug.mesh", "");
 	wayPoint02->GetNode()->SetScale(5, 5, 5);
-	wayPoint02->SetPosition(LMVector3(-50, 2, -100));
+	wayPoint02->SetPosition(pos02);
 
+	auto wayPoint03 = _mScene->AddGameobject("WayPoint03");
+	wayPoint03->AddComponent("MeshRenderer");
+	wayPoint03->GetComponent<MeshRenderer>()->Start("WayPoint03", "SphereDebug.mesh", "");
+	wayPoint03->GetNode()->SetScale(5, 5, 5);
+	wayPoint03->SetPosition(pos03);
+
+	mySpline = new Ogre::SimpleSpline;
+	mySpline->addPoint(Ogre::Vector3(LMVector3(pos01)));
+	mySpline->addPoint(Ogre::Vector3(LMVector3(pos02)));
+	mySpline->addPoint(Ogre::Vector3(LMVector3(pos03)));
+	mySpline->addPoint(Ogre::Vector3(LMVector3(pos01)));
+
+	int maxBalls = 100;
+	for (float i = 1; i < maxBalls; i++){
+		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
+		wayPointNew->AddComponent("MeshRenderer");
+		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
+		wayPointNew->GetNode()->SetScale(3, 3, 3);
+		//wayPointNew->SetPosition(LMVector3(i *5, 10, -100));
+		wayPointNew->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(i / maxBalls)));
+		mySpline->recalcTangents();
+	}
+	//enemy_gObj->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(interpol)));
 	
 	//while (tween.progress() < 1.0f) {
 	//	tween.step(0.01f);
@@ -225,7 +256,6 @@ void MotorApi::Init() {
 
 void MotorApi::MainLoop() {
 	OgreWrapper::OgreManager::Init("GAME DLL FAIL");
-	auto tween = tweeny::from(0).to(10).during(1).via(easing::linear);
 	while (!_exit) {
 
 		FmodWrapper::AudioManager::GetInstance()->Update(0.0f);
@@ -235,6 +265,12 @@ void MotorApi::MainLoop() {
 			break;
 
 		_scnManager->Update();
+		//float interpol = _scnManager->GetDelta();
+		//if (interpol > 1) interpol = 0;
+		//enemy_gObj->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(interpol)));
+		enemy_gObj->GetNode()->LookAt(ship_gObj->GetNode()->GetPosition_X(), 
+									  ship_gObj->GetNode()->GetPosition_Y(), 
+									  ship_gObj->GetNode()->GetPosition_Z());
 	}
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();

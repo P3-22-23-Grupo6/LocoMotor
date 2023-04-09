@@ -14,7 +14,7 @@ LocoMotor::ParticleSystem::ParticleSystem()
 	_renderScn = nullptr;
 	_particleHelper = nullptr;
 
-	_filename = "Racers/Smoke";
+	_filename = "Racers/JetEngine2";
 	_name = "smoke";
 }
 

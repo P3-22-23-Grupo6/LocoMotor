@@ -140,6 +140,7 @@ namespace LocoMotor {
 
 		//Prueba
 		bool movable=false;
+		double tiltAmount;
 	};
 }
 

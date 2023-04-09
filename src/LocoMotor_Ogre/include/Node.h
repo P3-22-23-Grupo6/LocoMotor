@@ -34,6 +34,11 @@ namespace OgreWrapper {
 		/// <param name="y">Y rotation</param>
 		/// <param name="z">Z rotation</param>
 		void Rotate(float x, float y, float z);
+		/// <summary>
+		/// Rotates the node in LocalSpace
+		/// Parameters passed in Degrees
+		/// </summary>
+		void RotateLocal(float x, float y, float z);
 
 		/// <summary>
 		/// Scales the node, taking into account the actual scale.

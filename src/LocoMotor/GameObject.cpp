@@ -18,6 +18,8 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 	_tr.scale = LMVector3(1,1,1);
 
 	_node = node;
+
+	tiltAmount = 0.0f;//TEMPORAL
 }
 
 // Update the GameObject
@@ -55,6 +57,7 @@ void GameObject::Update(float dt) {
 		SetPosition(LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z()));
 	}
 	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
+	//RAYCAST TEMPORAL
 	LMVector3 from = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z());
 	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 5, _node->GetPosition_Z());
 	if (rbComp->GetRaycastHit(from, to)) {
@@ -68,7 +71,7 @@ void GameObject::Update(float dt) {
 
 		double degToRad = 0.0174533;
 
-		GetComponent<RigidBodyComponent>()->addForce(LMVector3(20 * std::sin(_tr.rotation.GetY() * degToRad), 0, 20 * std::cos(_tr.rotation.GetY() * degToRad)) * dt);
+		GetComponent<RigidBodyComponent>()->addForce(LMVector3(-20 * std::sin(_tr.rotation.GetY() * degToRad), 0, -20 * std::cos(_tr.rotation.GetY() * degToRad)) * dt);
 		//_rigidBody->AddForce(LMVector3(0, 0, 1));
 		//SetPosition(LMVector3(100, 10, 10));
 		//_node->Translate(0, 0, 1);
@@ -87,6 +90,7 @@ void GameObject::Update(float dt) {
 		//_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
 		_node->Rotate(0, -3, 0);
 		_tr.rotation.SetY(_tr.rotation.GetY() - 3.);
+		tiltAmount = 5.0f;
 	}
 
 	std::cout << _tr.rotation.GetY() << std::endl;
