@@ -75,6 +75,7 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
 	gameObject->SetPosition(_body->getPosition());
+	_body->clearForce();
 	//gameObject->SetRotation(_body->getRotation());
 	
 	//LMVector3 rayFrom = LMVector3(_body->getPosition());

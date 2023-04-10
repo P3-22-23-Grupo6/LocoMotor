@@ -92,6 +92,10 @@ void PhysicsWrapper::BulletRigidBody::setBodystate(int state) {
 	_rigidBody->setCollisionFlags(state);
 }
 
+void PhysicsWrapper::BulletRigidBody::clearForce() {
+	_rigidBody->clearForces();
+}
+
 RaycastInfo PhysicsWrapper::BulletRigidBody::createRaycast(LMVector3 from, LMVector3 direction) {
 	RaycastInfo newRaycastInfo = RaycastInfo();
 	

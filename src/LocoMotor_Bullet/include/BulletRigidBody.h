@@ -52,6 +52,8 @@ namespace PhysicsWrapper {
 		/// @brief set the rigidBodyState (dynamic,kinematic,static)
 		/// @param state int The state you want to set to the rigidBody, 0=Dynamic, 1=Static, 2=Kinematic
 		void setBodystate(int state);
+		/// @brief Clear the body force
+		void clearForce();
 		/// @brief Creates a Raycast
 		/// @param the vector from where the raycast is created, and its direction
 		RaycastInfo createRaycast(LMVector3 from, LMVector3 direction);
