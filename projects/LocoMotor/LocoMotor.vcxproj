@@ -44,6 +44,7 @@
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\EnemyAI.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\GameObject.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\InputManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\LogSystem.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ParticleSystem.cpp" />
@@ -66,6 +67,7 @@
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\LMVector.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h" />
+    <ClInclude Include="..\..\src\LocoMotor\InputManager.h" />
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h" />

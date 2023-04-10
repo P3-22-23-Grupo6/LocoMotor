@@ -46,6 +46,8 @@ namespace LocoMotor {
 
 		GameObject* GetCamera();
 
+
+
 	private:
 		//camera
 

@@ -26,6 +26,8 @@ namespace LocoMotor {
 
 
 		Scene* GetSceneByName(std::string name);
+		std::string GetActiveSceneName();
+		void DeleteScene(std::string name);
 
 		void Update();
 		float GetDelta() {
@@ -41,6 +43,8 @@ namespace LocoMotor {
 		float _lastTime;
 		float _actTime;
 		float _deltaTime;
+
+		
 
 	};
 }

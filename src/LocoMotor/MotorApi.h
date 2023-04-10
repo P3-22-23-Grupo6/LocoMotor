@@ -16,7 +16,7 @@ namespace LocoMotor {
 MOTOR_API class MotorApi {
 public:
 	MOTOR_API MotorApi();
-	MOTOR_API void init();
+	
 	MOTOR_API void Init();
 
 	MOTOR_API void RegisterGame(const char* gameName);

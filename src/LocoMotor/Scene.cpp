@@ -116,6 +116,14 @@ void Scene::Update(float dt) {
 	}
 }
 void Scene::Render() {
+
+	if (!_isActiveScene) {
+
+		return;
+
+	}
+
+
 	_renderScn->Render();
 	OgreWrapper::OgreManager::GetInstance()->Render();
 }

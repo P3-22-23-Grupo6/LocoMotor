@@ -1,6 +1,7 @@
 #include "SceneManager.h"
 #include <SDL.h>
 
+
 using namespace LocoMotor;
 SceneManager::SceneManager() {
 	_activeScene = nullptr;
@@ -13,7 +14,9 @@ SceneManager::~SceneManager() {
 	std::map<std::string, Scene*>::const_iterator it;
 	for (it = _sceneInfo.cbegin(); it != _sceneInfo.cend(); it = _sceneInfo.erase(it)) {
 		delete it->second;
+		
 	}
+	_sceneInfo.clear();
 }
 
 Scene* SceneManager::CreateScene(std::string nombre) {
@@ -45,6 +48,7 @@ Scene* SceneManager::ChangeScene(std::string name) {
 		if (_activeScene != nullptr) {
 
 			_activeScene->Deactivate();
+			
 		}
 
 		StartScene(it->second);
@@ -86,10 +90,43 @@ void LocoMotor::SceneManager::Update() {
 	if (_activeScene != nullptr) {
 		_activeScene->Update(_deltaTime);
 		_activeScene->Render();
+	/*	for (auto it = _sceneInfo.cbegin(); it != _sceneInfo.cend();) {
+			it->second->Update(_deltaTime);
+			it->second->Render();
+			it++;
+		}*/
+
 	}
+
+	
+
+	
+	
 
 }
 
 void SceneManager::StartScene(Scene* scn) {
 	scn->Start();
+}
+
+std::string SceneManager::GetActiveSceneName() {
+
+	return _activeScene->GetSceneName();
+	
+}
+
+
+void SceneManager::DeleteScene(std::string name) {
+	std::map<std::string, Scene*>::const_iterator it;
+	for (it = _sceneInfo.cbegin(); it != _sceneInfo.cend();) {
+		if (it->first == name) {
+			delete it->second;
+			_sceneInfo.erase(it);
+		}
+		else {
+			it++;
+		}
+
+	}
+	
 }
