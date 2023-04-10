@@ -39,7 +39,6 @@ private:
 	bool _exit;
 	
 	//TEMPORAL
-	Ogre::SimpleSpline* mySpline;
 	void Prueba(float a);
 	LocoMotor::GameObject* enemy_gObj;
 	LocoMotor::GameObject* ship_gObj;

@@ -23,9 +23,9 @@
 #include <Camera.h>
 #include <EnemyAI.h>
 
-#include <tweeners/builder.hpp>
-#include <tweeners/easing.hpp>
-#include <tweeners/system.hpp>
+//#include <tweeners/builder.hpp>
+//#include <tweeners/easing.hpp>
+//#include <tweeners/system.hpp>
 
 using namespace LocoMotor;
 using namespace PhysicsWrapper;
@@ -60,7 +60,7 @@ void MotorApi::init() {
 	mSM->CreateScene("Escena");
 	mSM->ChangeScene("Escena");
 
-
+	
 	//audioSrc.PlaySound(0, -1);
 
 	InputManager* input = InputManager::Get();
@@ -204,13 +204,12 @@ void MotorApi::RegisterGame(const char* gameName) {
 	wayPoint03->GetNode()->SetScale(5, 5, 5);
 	wayPoint03->SetPosition(pos03);
 
-	mySpline = new Ogre::SimpleSpline;
-	mySpline->addPoint(Ogre::Vector3(LMVector3(pos01)));
-	mySpline->addPoint(Ogre::Vector3(LMVector3(pos02)));
-	mySpline->addPoint(Ogre::Vector3(LMVector3(pos03)));
-	mySpline->addPoint(Ogre::Vector3(LMVector3(pos01)));
-
 	OgreWrapper::Spline* nuevaSpl = new OgreWrapper::Spline();
+	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos01)));
+	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos02)));
+	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos03)));
+	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos01)));
+
 
 	int maxBalls = 100;
 	for (float i = 1; i < maxBalls; i++){
@@ -219,8 +218,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
 		wayPointNew->GetNode()->SetScale(3, 3, 3);
 		//wayPointNew->SetPosition(LMVector3(i *5, 10, -100));
-		wayPointNew->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(i / maxBalls)));
-		mySpline->recalcTangents();
+		wayPointNew->SetPosition(LMVector3::OgreToLm(nuevaSpl->Interpolate(i / maxBalls)));
+		nuevaSpl->RecalcTangents();
 	}
 
 	//enemy_gObj->AddComponent("EnemyAI");
@@ -271,6 +270,7 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
 	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
 	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
+
 }
 
 void MotorApi::MainLoop() {
@@ -292,7 +292,6 @@ void MotorApi::MainLoop() {
 		//enemy_gObj->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(0.69f)));
 		//Ogre::Vector3 a = mySpline->interpolate(0.69f);
 		//enemy_gObj->GetNode()->Translate(a.x, a.y, a.z);
-		
 	}
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
