@@ -13,6 +13,7 @@
 #include "SceneManager.h"
 #include "GameObject.h"
 #include "Node.h"
+#include "Spline.h"
 #include "ComponentsFactory.h"
 
 #include "MeshRederer.h"
@@ -20,6 +21,7 @@
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
 #include <Camera.h>
+#include <EnemyAI.h>
 
 #include <tweeners/builder.hpp>
 #include <tweeners/easing.hpp>
@@ -144,11 +146,19 @@ void MotorApi::RegisterGame(const char* gameName) {
 		map->AddComponent("RigidBodyComponent");
 		map->GetComponent<RigidBodyComponent>()->Start(0);
 		map->AddComponent("PlayerController");
+
+
+		auto map01 = _mScene->AddGameobject("map01");
+		map01->AddComponent("MeshRenderer");
+		map01->GetComponent<MeshRenderer>()->Start("map01", "Track.mesh", "");//Track.mesh para el antiguo
+		map01->SetPosition(LMVector3(0, -8, 0));
+		map01->AddComponent("RigidBodyComponent");
+		map01->GetComponent<RigidBodyComponent>()->Start(0);
 	#pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
 	ship_gObj->AddComponent("MeshRenderer");
-	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");
+	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
 	ship_gObj->AddComponent("ParticleSystem");
 
 	ship_gObj->AddComponent("RigidBodyComponent");
@@ -162,11 +172,14 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//ENEMY MODEL
 	enemy_gObj = _mScene->AddGameobject("Enemy");
 	enemy_gObj->AddComponent("MeshRenderer");
-	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "");
+	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
 	enemy_gObj->AddComponent("RigidBodyComponent");
 	enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
 	enemy_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
+	enemy_gObj->AddComponent("EnemyAI");
+
+	//OgreWrapper::Spline* nuevaSpline = _mScene->;
 
 #pragma region PathWaypoints
 	LMVector3 pos01 = LMVector3(50, 10, -100);
@@ -197,6 +210,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	mySpline->addPoint(Ogre::Vector3(LMVector3(pos03)));
 	mySpline->addPoint(Ogre::Vector3(LMVector3(pos01)));
 
+	OgreWrapper::Spline* nuevaSpl = new OgreWrapper::Spline();
+
 	int maxBalls = 100;
 	for (float i = 1; i < maxBalls; i++){
 		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
@@ -207,6 +222,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 		wayPointNew->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(i / maxBalls)));
 		mySpline->recalcTangents();
 	}
+
+	//enemy_gObj->AddComponent("EnemyAI");
+	//enemy_gObj->GetComponent<EnemyAI>()->Start(enemy_gObj, enemy_gObj->GetNode(), mySpline);
 	//enemy_gObj->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(interpol)));
 	
 	//while (tween.progress() < 1.0f) {
@@ -252,6 +270,7 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<MeshRenderer>("MeshRenderer");
 	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
 	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
+	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
 }
 
 void MotorApi::MainLoop() {
@@ -265,12 +284,15 @@ void MotorApi::MainLoop() {
 			break;
 
 		_scnManager->Update();
+		enemy_gObj->GetNode()->LookAt(ship_gObj->GetNode()->GetPosition_X(),
+									  ship_gObj->GetNode()->GetPosition_Y(),
+									  ship_gObj->GetNode()->GetPosition_Z());
 		//float interpol = _scnManager->GetDelta();
 		//if (interpol > 1) interpol = 0;
-		//enemy_gObj->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(interpol)));
-		enemy_gObj->GetNode()->LookAt(ship_gObj->GetNode()->GetPosition_X(), 
-									  ship_gObj->GetNode()->GetPosition_Y(), 
-									  ship_gObj->GetNode()->GetPosition_Z());
+		//enemy_gObj->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(0.69f)));
+		//Ogre::Vector3 a = mySpline->interpolate(0.69f);
+		//enemy_gObj->GetNode()->Translate(a.x, a.y, a.z);
+		
 	}
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();

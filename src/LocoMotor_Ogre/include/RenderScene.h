@@ -9,6 +9,7 @@ namespace Ogre {
 	class SceneNode;
 	class Camera;
 	class Viewport;
+	class SimpleSpline;
 }
 
 
@@ -19,6 +20,7 @@ namespace OgreWrapper {
 	class Renderer3D;
 	class Node;
 	class ParticleHelper;
+	class Spline;
 
 	class RenderScene {
 	public:
@@ -57,6 +59,8 @@ namespace OgreWrapper {
 
 		Node* CreateNode(std::string name, std::string parent);
 		Node* GetNode(std::string name);
+
+		Spline* CreateSpline();
 
 		Light* CreateLight();
 		Renderer3D* CreateRenderer(std::string mesh);

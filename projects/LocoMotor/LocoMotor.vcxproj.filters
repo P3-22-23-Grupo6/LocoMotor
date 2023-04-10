@@ -58,6 +58,9 @@
     <ClCompile Include="..\..\src\LocoMotor\src\LMVector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\EnemyAI.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\GameObject.h">
@@ -113,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\include\LMVector.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\EnemyAI.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

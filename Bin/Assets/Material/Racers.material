@@ -24,7 +24,7 @@ material Racers/SkyBoxBlue
 
             texture_unit
             {
-                texture Skybox2.png
+                texture Skybox02.png
                 tex_coord_set 0
                 scroll_anim 0.04 0
             }

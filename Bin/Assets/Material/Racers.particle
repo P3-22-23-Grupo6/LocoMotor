@@ -141,7 +141,7 @@ particle_system Racers/JetEngine2
 	particle_height	1
 	cull_each		false
 	quota			200
-	billboard_type	point
+	billboard_type	oriented_self
     local_space true
     common_direction 0 0 -1
 
