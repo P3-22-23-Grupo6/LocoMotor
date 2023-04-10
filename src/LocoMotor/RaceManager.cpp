@@ -89,6 +89,5 @@ void RaceManager::UpdateRanking()
 				ranking[i] = aux;
 			}
 		}
-		
 	}
 }

@@ -61,7 +61,7 @@ void MotorApi::init() {
 	mSM->CreateScene("Escena");
 	mSM->ChangeScene("Escena");
 
-	
+
 	//audioSrc.PlaySound(0, -1);
 
 	InputManager* input = InputManager::Get();
@@ -132,7 +132,7 @@ void MotorApi::init() {
 
 void MotorApi::RegisterGame(const char* gameName) {
 	_gameName = gameName;
-	OgreWrapper::OgreManager::Init(gameName); 
+	OgreWrapper::OgreManager::Init(gameName);
 
 	auto _mScene = _scnManager->CreateScene("Escena");
 
@@ -140,22 +140,22 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	auto _renderScn = _mScene->GetRender();
 
-	#pragma region RaceTrack
-		auto map = _mScene->AddGameobject("map");
-		map->AddComponent("MeshRenderer");
-		map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
-		map->AddComponent("RigidBodyComponent");
-		map->GetComponent<RigidBodyComponent>()->Start(0);
-		map->AddComponent("PlayerController");
+#pragma region RaceTrack
+	auto map = _mScene->AddGameobject("map");
+	map->AddComponent("MeshRenderer");
+	map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
+	map->AddComponent("RigidBodyComponent");
+	map->GetComponent<RigidBodyComponent>()->Start(0);
+	map->AddComponent("PlayerController");
 
 
-		auto map01 = _mScene->AddGameobject("map01");
-		map01->AddComponent("MeshRenderer");
-		map01->GetComponent<MeshRenderer>()->Start("map01", "Track.mesh", "");//Track.mesh para el antiguo
-		map01->SetPosition(LMVector3(0, -8, 0));
-		map01->AddComponent("RigidBodyComponent");
-		map01->GetComponent<RigidBodyComponent>()->Start(0);
-	#pragma endregion
+	auto map01 = _mScene->AddGameobject("map01");
+	map01->AddComponent("MeshRenderer");
+	map01->GetComponent<MeshRenderer>()->Start("map01", "Track.mesh", "");//Track.mesh para el antiguo
+	map01->SetPosition(LMVector3(0, -8, 0));
+	map01->AddComponent("RigidBodyComponent");
+	map01->GetComponent<RigidBodyComponent>()->Start(0);
+#pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
 	ship_gObj->AddComponent("MeshRenderer");
@@ -182,7 +182,29 @@ void MotorApi::RegisterGame(const char* gameName) {
 	enemy_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
 	enemy_gObj->AddComponent("EnemyAI");
-	
+
+
+
+	LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
+	checkpoint_gObj->AddComponent("MeshRenderer");
+	checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
+	checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	checkpoint_gObj->SetPosition(LMVector3(0, 4, -10));
+	checkpoint_gObj->AddComponent("Checkpoint");
+	checkpoint_gObj->GetComponent<Checkpoint>()->Start(ship_gObj, 0);
+
+
+
+	////GameObject* checkpoint_gObj = _mScene->AddGameobject("checkpoint");
+	////checkpoint_gObj->AddComponent("MeshRenderer");
+	////checkpoint_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
+	//////checkpoint->AddComponent<RigidBodyComponent>(0);
+	//////checkpoint_gObj->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
+	////checkpoint_gObj->GetNode()->SetScale(100.0f, 100.0f, 100.0f);
+	////checkpoint_gObj->SetPosition(LMVector3(0, 5, -50));
+	////////checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
+	//////checkpoint_gObj->AddComponent("Checkpoint");
+
 
 #pragma region PathWaypoints
 	LMVector3 pos01 = LMVector3(50, 10, -100);
@@ -212,12 +234,12 @@ void MotorApi::RegisterGame(const char* gameName) {
 	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos02)));
 	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos03)));
 	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos01)));
-	
+
 	//enemy_gObj->setMovable(true);
 	enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl);
-	
+
 	int maxBalls = 100;
-	for (float i = 1; i < maxBalls; i++){
+	for (float i = 1; i < maxBalls; i++) {
 		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
 		wayPointNew->AddComponent("MeshRenderer");
 		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
@@ -267,6 +289,7 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
 	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
 	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
+	cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
 
 }
 

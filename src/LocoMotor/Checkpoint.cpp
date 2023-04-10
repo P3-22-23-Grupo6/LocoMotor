@@ -10,8 +10,7 @@ using namespace LocoMotor;
 
 const std::string Checkpoint::name = "Checkpoint";
 
-LocoMotor::Checkpoint::Checkpoint()
-{
+LocoMotor::Checkpoint::Checkpoint() {
 	_player = nullptr;
 	_checkpointIndex = 0;
 	checked = false;
@@ -26,12 +25,17 @@ LocoMotor::Checkpoint::Checkpoint()
 //	checked = false;
 //}
 
-void LocoMotor::Checkpoint::Start() {
-	
-	// Acceder al componente Rigidbody
-	_rb = gameObject->GetComponent<RigidBodyComponent>();
-	if (_rb == nullptr)
-		std::cout << "[ERROR] : Rigidbody needed for Checkpoint";
+void LocoMotor::Checkpoint::Start(GameObject* player, int checkpointIndex) {
+
+	_player = player;
+	_checkpointIndex = checkpointIndex;
+	_rb = nullptr;
+	checked = false;
+
+	////// Acceder al componente Rigidbody
+	////_rb = gameObject->GetComponent<RigidBodyComponent>();
+	////if (_rb == nullptr)
+	////	std::cout << "[ERROR] : Rigidbody needed for Checkpoint";
 }
 
 void LocoMotor::Checkpoint::Update(float dt) {

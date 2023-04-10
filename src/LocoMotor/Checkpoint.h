@@ -23,7 +23,7 @@ namespace LocoMotor {
 		Checkpoint();
 		//Checkpoint(GameObject* player = nullptr, int checkpointIndex = 0);
 
-		void Start() override;
+		void Start(GameObject* player, int checkpointIndex);
 		void Update(float dt) override;
 
 	private:

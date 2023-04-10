@@ -52,7 +52,8 @@ void Scene::Start() {
 	//map->AddComponent<RigidBodyComponent>(0);
 
 	//_isActiveScene = true;
-	//ship_gObj = AddGameobject("ship");
+	//
+	//  = AddGameobject("ship");
 	//ship_gObj->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
 	//ship_gObj->AddComponent<ParticleSystem>("smoke", _renderScn, "Racers/Smoke");
 	//ship_gObj->AddComponent<ParticleSystem>("fire", _renderScn, "Racers/Fire");	
