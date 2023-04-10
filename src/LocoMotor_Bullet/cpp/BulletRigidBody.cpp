@@ -36,6 +36,10 @@ BulletRigidBody::BulletRigidBody(RigidBodyInfo info, MeshStrider* mesh) {
 	//add the body to the dynamics world;
 	PhysicsManager::GetInstance()->AddRigidBodyToWorld(_rigidBody);
 	_rigidBody->setDamping(0.7, 0.7);
+	if (isDynamic) {
+		_rigidBody->setCcdMotionThreshold(0.0000001);
+		_rigidBody->setCcdSweptSphereRadius(0.5f);
+	}
 }
 
 LMVector3 PhysicsWrapper::BulletRigidBody::getPosition() {
