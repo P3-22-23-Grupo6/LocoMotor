@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 namespace Ogre {
+	class Quaternion;
 	class SceneNode;
 	class MovableObject;
 	}
@@ -102,7 +103,7 @@ namespace OgreWrapper {
 		/// </summary>
 		void ResetOrientation();
 
-		void SetOrientation(/*Ogre::Quaternion q*/);
+		void SetOrientation(Ogre::Quaternion* q);
 
 		Node* CreateChild();
 	protected:

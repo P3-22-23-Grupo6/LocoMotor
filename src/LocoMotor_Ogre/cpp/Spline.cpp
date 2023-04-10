@@ -6,7 +6,8 @@ OgreWrapper::Spline::Spline(bool DebugMode) {
 }
 
 OgreWrapper::Spline::~Spline() {
-
+	_spline->clear();
+	delete _spline;
 }
 
 //Adds a new point
@@ -21,8 +22,7 @@ void OgreWrapper::Spline::ClearAll() {
 
 //Returns a Point from the Spline
 Ogre::Vector3 OgreWrapper::Spline::GetPoint(int pointIndex) {
-	_spline->getPoint(pointIndex);
-	return Ogre::Vector3();
+	return _spline->getPoint(pointIndex);
 }
 //Returns a point based on a TimeIndex, frmo 0-1, representing the whole Spline
 Ogre::Vector3 OgreWrapper::Spline::Interpolate(float timeInter) {

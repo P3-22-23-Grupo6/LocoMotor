@@ -29,7 +29,7 @@ namespace LocoMotor {
 
 		void Update();
 		float GetDelta() {
-			return _deltaTime;
+			return _actTime;
 		};
 
 	private:

@@ -174,16 +174,15 @@ void MotorApi::RegisterGame(const char* gameName) {
 	enemy_gObj = _mScene->AddGameobject("Enemy");
 	enemy_gObj->AddComponent("MeshRenderer");
 	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
-	enemy_gObj->AddComponent("RigidBodyComponent");
-	enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
+	//enemy_gObj->AddComponent("RigidBodyComponent");
+	//enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
 	enemy_gObj->AddComponent("AudioSource");
 	enemy_gObj->GetComponent<AudioSource>()->Start();
 	enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
 	enemy_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
 	enemy_gObj->AddComponent("EnemyAI");
-
-	//OgreWrapper::Spline* nuevaSpline = _mScene->;
+	
 
 #pragma region PathWaypoints
 	LMVector3 pos01 = LMVector3(50, 10, -100);
@@ -213,8 +212,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos02)));
 	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos03)));
 	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos01)));
-
-
+	
+	//enemy_gObj->setMovable(true);
+	enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl);
+	
 	int maxBalls = 100;
 	for (float i = 1; i < maxBalls; i++){
 		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
@@ -225,14 +226,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 		wayPointNew->SetPosition(LMVector3::OgreToLm(nuevaSpl->Interpolate(i / maxBalls)));
 		nuevaSpl->RecalcTangents();
 	}
-
-	//enemy_gObj->AddComponent("EnemyAI");
-	//enemy_gObj->GetComponent<EnemyAI>()->Start(enemy_gObj, enemy_gObj->GetNode(), mySpline);
-	//enemy_gObj->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(interpol)));
-	
-	//while (tween.progress() < 1.0f) {
-	//	tween.step(0.01f);
-	//}
 #pragma endregion
 
 	//// CHECKPOINT
@@ -288,14 +281,7 @@ void MotorApi::MainLoop() {
 			break;
 
 		_scnManager->Update();
-		enemy_gObj->GetNode()->LookAt(ship_gObj->GetNode()->GetPosition_X(),
-									  ship_gObj->GetNode()->GetPosition_Y(),
-									  ship_gObj->GetNode()->GetPosition_Z());
-		//float interpol = _scnManager->GetDelta();
-		//if (interpol > 1) interpol = 0;
-		//enemy_gObj->SetPosition(LMVector3::OgreToLm(mySpline->interpolate(0.69f)));
-		//Ogre::Vector3 a = mySpline->interpolate(0.69f);
-		//enemy_gObj->GetNode()->Translate(a.x, a.y, a.z);
+		//std::cout << _scnManager->GetDelta();
 	}
 	delete _scnManager;
 	FmodWrapper::AudioManager::Clear();

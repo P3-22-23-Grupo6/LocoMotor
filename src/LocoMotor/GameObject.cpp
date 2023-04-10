@@ -90,7 +90,6 @@ void GameObject::Update(float dt) {
 		//_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
 		_node->Rotate(0, -3, 0);
 		_tr.rotation.SetY(_tr.rotation.GetY() - 3.);
-		tiltAmount = 5.0f;
 	}
 
 	std::cout << _tr.rotation.GetY() << std::endl;

@@ -3,38 +3,42 @@
 #include "Scene.h"
 #include "GameObject.h"
 #include "Node.h"
+#include "Spline.h"
 #include <OgreSimpleSpline.h>
+#include <LMVector.h>
 
 //float testTime = 0.0f;
 LocoMotor::EnemyAI::EnemyAI() {
 }
 
-LocoMotor::EnemyAI::~EnemyAI()
-{
-	delete _node;
-	delete _renderScn;
+LocoMotor::EnemyAI::~EnemyAI(){
+	delete mySpline;
 }
 
-void LocoMotor::EnemyAI::Start(LocoMotor::GameObject* enemyGbj, OgreWrapper::Node* node, Ogre::SimpleSpline* ogreSpline) {
-	myGbj = enemyGbj;
-	_node = node;
-	mySpline = ogreSpline;
-	//mySpline->addPoint(ogreSpline.getPoint(0));
-	//mySpline->addPoint(ogreSpline.getPoint(1));
-	//mySpline->addPoint(ogreSpline.getPoint(2));
+void LocoMotor::EnemyAI::Start(OgreWrapper::Spline* splineToFollow)
+ {
+	timeStep = 0.0f;
+	lastTimeStep = 0.0f;
+	myGbj = gameObject;
+	_node = gameObject->GetNode();
+	mySpline = splineToFollow;
+
+	//currentNode = LMVector3::OgreToLm(mySpline->GetPoint(0));
+	Ogre::Vector3 ogrePos = mySpline->GetPoint(2); //mySpline.GetPoint(0);
+	myGbj->SetPosition(LMVector3::OgreToLm(ogrePos));
 }
 
 void LocoMotor::EnemyAI::Update(float dt) 
 {
-	//if (testTime > 1) testTime = 0.0f;
-	//testTime += dt;
-	////Look At Waypoint
-	//float a = mySpline->getPoint(1).x;
-	//float b = mySpline->getPoint(1).z;
-	//float c = mySpline->getPoint(1).y;
-	//_node->LookAt(a,b,c);
-	//std::cout << a;
-	//std::cout << b;
-	//std::cout << c;
-	//myGbj->SetPosition(LMVector3(a,b,c));
+	//std::cout << dt;
+	timeStep += 0.01f;
+	if (timeStep > 1) {
+		timeStep = 0.0f;
+		//lastTimeStep = 0.0f;
+	}
+	
+	//if (timeStep - lastTimeStep > 0.2f) {
+	//	lastTimeStep = timeStep;
+	//}
+	myGbj->SetPosition(LMVector3::OgreToLm(mySpline->Interpolate(timeStep)));
 }
