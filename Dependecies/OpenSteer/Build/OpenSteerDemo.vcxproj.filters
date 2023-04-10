@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\third-party\glfw\deps\glad.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\OpenSteerDemo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\Boids.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\CaptureTheFlag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\LowSpeedTurn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\MapDrive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\MultiplePursuit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\OneTurning.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\Pedestrian.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\PedestriansWalkingAnEight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\plugins\Soccer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\TerrainRayTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\test\PolylineSegmentedPathTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\test\PolylineSegmentedPathwaySingleRadiusTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\test\SharedPointerTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\win32\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{69E385D8-27B6-3D96-9DF4-8D27EB1B7CC9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6B64CBA5-FB9C-30CB-9EA2-BEB25DA75D56}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

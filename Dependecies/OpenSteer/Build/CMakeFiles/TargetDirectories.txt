@@ -1,0 +1,9 @@
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/libopensteer.dir
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/OpenSteerDemo.dir
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/INSTALL.dir
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/third-party/glfw/CMakeFiles/INSTALL.dir
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/third-party/glfw/CMakeFiles/ALL_BUILD.dir
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/third-party/glfw/src/CMakeFiles/glfw.dir
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/third-party/glfw/src/CMakeFiles/INSTALL.dir

@@ -1,0 +1,26 @@
+﻿  1>Building Custom Rule C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/CMakeLists.txt
+  Camera.cpp
+  Clock.cpp
+  Obstacle.cpp
+  OldPathway.cpp
+  Path.cpp
+  Pathway.cpp
+  PlugIn.cpp
+  PolylineSegmentedPath.cpp
+  PolylineSegmentedPathwaySegmentRadii.cpp
+  PolylineSegmentedPathwaySingleRadius.cpp
+  SegmentedPath.cpp
+  SegmentedPathway.cpp
+  SimpleVehicle.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\SimpleVehicle.cpp(127,47): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  TerrainRayTest.cpp
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\TerrainRayTest.cpp(139,107): warning C4244: 'argumento': conversión de 'TRTScalar' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\TerrainRayTest.cpp(139,83): warning C4244: 'argumento': conversión de 'TRTScalar' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\TerrainRayTest.cpp(140,86): warning C4244: 'argumento': conversión de 'TRTScalar' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\TerrainRayTest.cpp(140,56): warning C4244: 'argumento': conversión de 'TRTScalar' a 'float'; posible pérdida de datos
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\TerrainRayTest.cpp(57,12): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Vec3.cpp
+  Vec3Utilities.cpp
+  Generando código...
+  lq.c
+  libopensteer.vcxproj -> C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\Release\libopensteer.lib

@@ -83,6 +83,7 @@ void GameObject::Update(float dt) {
 		//_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
 		_node->Rotate(0, 3, 0);
 		_tr.rotation.SetY(_tr.rotation.GetY() + 3.);
+		_tr.direction = _tr.direction.Rotate(_tr.direction.Up(), 3) * _tr.direction;
 	}
 	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
 	if (rotateLeft) {
@@ -90,6 +91,7 @@ void GameObject::Update(float dt) {
 		//_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
 		_node->Rotate(0, -3, 0);
 		_tr.rotation.SetY(_tr.rotation.GetY() - 3.);
+		_tr.direction = _tr.direction.Rotate(_tr.direction.Up(), -3) * _tr.direction;
 	}
 
 	std::cout << _tr.rotation.GetY() << std::endl;

@@ -1,0 +1,16 @@
+# CMake generation dependency list for this directory.
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CheckIncludeFile.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CheckLibraryExists.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindPackageMessage.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindThreads.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/third-party/glfw/CMake/modules/FindVulkan.cmake
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/third-party/glfw/CMakeLists.txt
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/third-party/glfw/src/glfw3.pc.in
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/third-party/glfw/src/glfw3Config.cmake.in
+C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/third-party/glfw/src/glfw_config.h.in

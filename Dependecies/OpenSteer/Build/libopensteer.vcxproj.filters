@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Camera.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Clock.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\lq.c">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Obstacle.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\OldPathway.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Path.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Pathway.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\PlugIn.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\PolylineSegmentedPath.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\PolylineSegmentedPathwaySegmentRadii.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\PolylineSegmentedPathwaySingleRadius.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\SegmentedPath.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\SegmentedPathway.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\SimpleVehicle.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\TerrainRayTest.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Vec3.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Vec3Utilities.cpp">
+      <Filter>OpenSteer\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\AbstractVehicle.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Annotation.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Camera.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Clock.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Color.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Draw.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\LocalSpace.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\lq.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Obstacle.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\OldPathway.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\OpenSteerDemo.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Path.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Pathway.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\PlugIn.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\PolylineSegmentedPath.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\PolylineSegmentedPathwaySegmentRadii.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\PolylineSegmentedPathwaySingleRadius.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Proximity.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\QueryPathAlike.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\QueryPathAlikeBaseDataExtractionPolicies.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\QueryPathAlikeMappings.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\QueryPathAlikeUtilities.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SegmentedPath.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SegmentedPathAlikeUtilities.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SegmentedPathway.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SharedPointer.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SimpleVehicle.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\StandardTypes.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SteerLibrary.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\UnusedParameter.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Utilities.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Vec3.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Vec3Utilities.h">
+      <Filter>OpenSteer\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="OpenSteer">
+      <UniqueIdentifier>{E6FA3ECF-059E-3E52-A7BE-F0812E8959F9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSteer\include">
+      <UniqueIdentifier>{7F130E19-5B0A-3B19-AF9E-23260D70E8D0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSteer\src">
+      <UniqueIdentifier>{4BFCCFE2-AFFB-3617-BC53-CE92192F1F31}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

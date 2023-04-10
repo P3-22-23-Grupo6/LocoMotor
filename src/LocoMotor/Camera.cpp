@@ -53,7 +53,11 @@ void LocoMotor::Camera::Update(float dt) {
 		float x = _target->GetNode()->GetPosition_X();
 		float y = _target->GetNode()->GetPosition_Y();
 		float z = _target->GetNode()->GetPosition_Z();
-		gameObject->SetPosition(LMVector3(x + _offset.GetX(), y + _offset.GetY(), z + _offset.GetZ()));
+		auto vec = LMVector3(_offset.GetX(), _offset.GetY(), _offset.GetZ());
+		auto rotVec = _target->GetTransform().direction.Rotate(vec);
+		gameObject->SetPosition(LMVector3(x,y,z) + rotVec);
+		auto a = _target->GetTransform().direction.LmToOgre(_target->GetTransform().direction);
+		gameObject->GetNode()->SetOrientation(&a);
 	}
 }
 

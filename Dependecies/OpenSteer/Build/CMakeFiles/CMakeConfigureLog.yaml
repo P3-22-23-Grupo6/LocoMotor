@@ -1,0 +1,413 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineSystem.cmake:204 (message)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      The system is: Windows - 10.0.19045 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.4.1+9a89d02ff for .NET Framework
+      Compilaci¢n iniciada a las 10/04/2023 15:35:52.
+      Proyecto "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdC\\CompilerIdC.vcxproj" en nodo 1 (destinos predeterminados).
+      PrepareForBuild:
+        Creando directorio "Debug\\".
+        Creando directorio "Debug\\CompilerIdC.tlog\\".
+      InitializeBuildStatus:
+        Se crear  "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "C:\\DEV\\vcpkg\\installed\\x64-windows\\"
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdC\\CompilerIdC.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdC\\CompilerIdC.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        "pwsh.exe" no se reconoce como un comando interno o externo,
+        programa o archivo por lotes ejecutable.
+        El comando "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdC\\CompilerIdC.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"" sali¢ con el c¢digo 9009.
+        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdC\\CompilerIdC.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Se eliminar  el archivo "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
+        Aplicando tarea Touch a "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
+      Compilaci¢n del proyecto terminada "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdC\\CompilerIdC.vcxproj" (destinos predeterminados).
+      
+      Compilaci¢n correcta.
+          0 Advertencia(s)
+          0 Errores
+      
+      Tiempo transcurrido 00:00:01.33
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/3.26.0-rc1/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      MSBuild version 17.4.1+9a89d02ff for .NET Framework
+      Compilaci¢n iniciada a las 10/04/2023 15:35:54.
+      Proyecto "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" en nodo 1 (destinos predeterminados).
+      PrepareForBuild:
+        Creando directorio "Debug\\".
+        Creando directorio "Debug\\CompilerIdCXX.tlog\\".
+      InitializeBuildStatus:
+        Se crear  "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "C:\\DEV\\vcpkg\\installed\\x64-windows\\"
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdCXX\\CompilerIdCXX.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdCXX\\CompilerIdCXX.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        "pwsh.exe" no se reconoce como un comando interno o externo,
+        programa o archivo por lotes ejecutable.
+        El comando "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdCXX\\CompilerIdCXX.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"" sali¢ con el c¢digo 9009.
+        "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdCXX\\CompilerIdCXX.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        Se eliminar  el archivo "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
+        Aplicando tarea Touch a "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
+      Compilaci¢n del proyecto terminada "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\3.26.0-rc1\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (destinos predeterminados).
+      
+      Compilaci¢n correcta.
+          0 Advertencia(s)
+          0 Errores
+      
+      Tiempo transcurrido 00:00:00.96
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/3.26.0-rc1/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-g1zpls"
+      binary: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-g1zpls"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-g1zpls
+        
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_d460b.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 10/04/2023 15:35:56.
+        Proyecto "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-g1zpls\\cmTC_d460b.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_d460b.dir\\Debug\\".
+          Creando directorio "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-g1zpls\\Debug\\".
+          Creando directorio "cmTC_d460b.dir\\Debug\\cmTC_d460b.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_d460b.dir\\Debug\\cmTC_d460b.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\DEV\\vcpkg\\installed\\x64-windows\\"
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d460b.dir\\Debug\\\\" /Fd"cmTC_d460b.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          CMakeCCompilerABI.c
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d460b.dir\\Debug\\\\" /Fd"cmTC_d460b.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\CMake\\share\\cmake-3.26\\Modules\\CMakeCCompilerABI.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-g1zpls\\Debug\\cmTC_d460b.exe" /INCREMENTAL /ILK:"cmTC_d460b.dir\\Debug\\cmTC_d460b.ilk" /NOLOGO /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-g1zpls/Debug/cmTC_d460b.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-g1zpls/Debug/cmTC_d460b.lib" /MACHINE:X64  /machine:x64 cmTC_d460b.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_d460b.vcxproj -> C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-g1zpls\\Debug\\cmTC_d460b.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-g1zpls\\Debug\\cmTC_d460b.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_d460b.dir\\Debug\\cmTC_d460b.tlog\\cmTC_d460b.write.1u.tlog" "cmTC_d460b.dir\\Debug\\vcpkg.applocal.log"
+          "pwsh.exe" no se reconoce como un comando interno o externo,
+          programa o archivo por lotes ejecutable.
+          El comando "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-g1zpls\\Debug\\cmTC_d460b.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_d460b.dir\\Debug\\cmTC_d460b.tlog\\cmTC_d460b.write.1u.tlog" "cmTC_d460b.dir\\Debug\\vcpkg.applocal.log"" sali¢ con el c¢digo 9009.
+          "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-g1zpls\\Debug\\cmTC_d460b.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_d460b.dir\\Debug\\cmTC_d460b.tlog\\cmTC_d460b.write.1u.tlog" "cmTC_d460b.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Se eliminar  el archivo "cmTC_d460b.dir\\Debug\\cmTC_d460b.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_d460b.dir\\Debug\\cmTC_d460b.tlog\\cmTC_d460b.lastbuildstate".
+        Compilaci¢n del proyecto terminada "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-g1zpls\\cmTC_d460b.vcxproj" (destinos predeterminados).
+        
+        Compilaci¢n correcta.
+            0 Advertencia(s)
+            0 Errores
+        
+        Tiempo transcurrido 00:00:01.05
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-uttm0h"
+      binary: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-uttm0h"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-uttm0h
+        
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_bcdb0.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 10/04/2023 15:35:58.
+        Proyecto "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-uttm0h\\cmTC_bcdb0.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_bcdb0.dir\\Debug\\".
+          Creando directorio "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-uttm0h\\Debug\\".
+          Creando directorio "cmTC_bcdb0.dir\\Debug\\cmTC_bcdb0.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_bcdb0.dir\\Debug\\cmTC_bcdb0.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\DEV\\vcpkg\\installed\\x64-windows\\"
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_bcdb0.dir\\Debug\\\\" /Fd"cmTC_bcdb0.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          CMakeCXXCompilerABI.cpp
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_bcdb0.dir\\Debug\\\\" /Fd"cmTC_bcdb0.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\CMake\\share\\cmake-3.26\\Modules\\CMakeCXXCompilerABI.cpp"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-uttm0h\\Debug\\cmTC_bcdb0.exe" /INCREMENTAL /ILK:"cmTC_bcdb0.dir\\Debug\\cmTC_bcdb0.ilk" /NOLOGO /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-uttm0h/Debug/cmTC_bcdb0.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-uttm0h/Debug/cmTC_bcdb0.lib" /MACHINE:X64  /machine:x64 cmTC_bcdb0.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_bcdb0.vcxproj -> C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-uttm0h\\Debug\\cmTC_bcdb0.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-uttm0h\\Debug\\cmTC_bcdb0.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_bcdb0.dir\\Debug\\cmTC_bcdb0.tlog\\cmTC_bcdb0.write.1u.tlog" "cmTC_bcdb0.dir\\Debug\\vcpkg.applocal.log"
+          "pwsh.exe" no se reconoce como un comando interno o externo,
+          programa o archivo por lotes ejecutable.
+          El comando "pwsh.exe -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-uttm0h\\Debug\\cmTC_bcdb0.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_bcdb0.dir\\Debug\\cmTC_bcdb0.tlog\\cmTC_bcdb0.write.1u.tlog" "cmTC_bcdb0.dir\\Debug\\vcpkg.applocal.log"" sali¢ con el c¢digo 9009.
+          "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "C:\\DEV\\vcpkg\\scripts\\buildsystems\\msbuild\\applocal.ps1" "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-uttm0h\\Debug\\cmTC_bcdb0.exe" "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\bin" "cmTC_bcdb0.dir\\Debug\\cmTC_bcdb0.tlog\\cmTC_bcdb0.write.1u.tlog" "cmTC_bcdb0.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          Se eliminar  el archivo "cmTC_bcdb0.dir\\Debug\\cmTC_bcdb0.tlog\\unsuccessfulbuild".
+          Aplicando tarea Touch a "cmTC_bcdb0.dir\\Debug\\cmTC_bcdb0.tlog\\cmTC_bcdb0.lastbuildstate".
+        Compilaci¢n del proyecto terminada "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-uttm0h\\cmTC_bcdb0.vcxproj" (destinos predeterminados).
+        
+        Compilaci¢n correcta.
+            0 Advertencia(s)
+            0 Errores
+        
+        Tiempo transcurrido 00:00:01.00
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake:76 (cmake_check_source_compiles)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "third-party/glfw/CMakeLists.txt:62 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-4i4oy8"
+      binary: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-4i4oy8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_MODULE_PATH: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/third-party/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-4i4oy8
+        
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_d95a4.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 10/04/2023 15:36:00.
+        Proyecto "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\cmTC_d95a4.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_d95a4.dir\\Debug\\".
+          Creando directorio "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\Debug\\".
+          Creando directorio "cmTC_d95a4.dir\\Debug\\cmTC_d95a4.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_d95a4.dir\\Debug\\cmTC_d95a4.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\DEV\\vcpkg\\installed\\x64-windows\\"
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d95a4.dir\\Debug\\\\" /Fd"cmTC_d95a4.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\src.c"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          src.c
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d95a4.dir\\Debug\\\\" /Fd"cmTC_d95a4.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\src.c"
+        C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\src.c(1,10): fatal  error C1083: No se puede abrir el archivo incluir: 'pthread.h': No such file or directory [C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\cmTC_d95a4.vcxproj]
+        Compilaci¢n del proyecto terminada "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\cmTC_d95a4.vcxproj" (destinos predeterminados) -- ERROR.
+        
+        ERROR al compilar.
+        
+        "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\cmTC_d95a4.vcxproj" (destino predeterminado) (1) ->
+        (ClCompile destino) -> 
+          C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\src.c(1,10): fatal  error C1083: No se puede abrir el archivo incluir: 'pthread.h': No such file or directory [C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-4i4oy8\\cmTC_d95a4.vcxproj]
+        
+            0 Advertencia(s)
+            1 Errores
+        
+        Tiempo transcurrido 00:00:00.34
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CheckLibraryExists.cmake:71 (try_compile)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "third-party/glfw/CMakeLists.txt:62 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-6m25db"
+      binary: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-6m25db"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_MODULE_PATH: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/third-party/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-6m25db
+        
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_2ab74.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 10/04/2023 15:36:00.
+        Proyecto "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\cmTC_2ab74.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_2ab74.dir\\Debug\\".
+          Creando directorio "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\Debug\\".
+          Creando directorio "cmTC_2ab74.dir\\Debug\\cmTC_2ab74.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_2ab74.dir\\Debug\\cmTC_2ab74.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\DEV\\vcpkg\\installed\\x64-windows\\"
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2ab74.dir\\Debug\\\\" /Fd"cmTC_2ab74.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\CheckFunctionExists.c"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          CheckFunctionExists.c
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2ab74.dir\\Debug\\\\" /Fd"cmTC_2ab74.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\CheckFunctionExists.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\Debug\\cmTC_2ab74.exe" /INCREMENTAL /ILK:"cmTC_2ab74.dir\\Debug\\cmTC_2ab74.ilk" /NOLOGO /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-6m25db/Debug/cmTC_2ab74.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-6m25db/Debug/cmTC_2ab74.lib" /MACHINE:X64  /machine:x64 cmTC_2ab74.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: no se puede abrir el archivo 'pthreads.lib' [C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\cmTC_2ab74.vcxproj]
+        Compilaci¢n del proyecto terminada "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\cmTC_2ab74.vcxproj" (destinos predeterminados) -- ERROR.
+        
+        ERROR al compilar.
+        
+        "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\cmTC_2ab74.vcxproj" (destino predeterminado) (1) ->
+        (Link destino) -> 
+          LINK : fatal error LNK1104: no se puede abrir el archivo 'pthreads.lib' [C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-6m25db\\cmTC_2ab74.vcxproj]
+        
+            0 Advertencia(s)
+            1 Errores
+        
+        Tiempo transcurrido 00:00:00.43
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/CheckLibraryExists.cmake:71 (try_compile)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/CMake/share/cmake-3.26/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "third-party/glfw/CMakeLists.txt:62 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-z6k568"
+      binary: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-z6k568"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_MODULE_PATH: "C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/third-party/glfw/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-z6k568
+        
+        Run Build Command(s):C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe cmTC_93d27.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n && MSBuild version 17.4.1+9a89d02ff for .NET Framework
+        Compilaci¢n iniciada a las 10/04/2023 15:36:01.
+        Proyecto "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\cmTC_93d27.vcxproj" en nodo 1 (destinos predeterminados).
+        PrepareForBuild:
+          Creando directorio "cmTC_93d27.dir\\Debug\\".
+          Creando directorio "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\Debug\\".
+          Creando directorio "cmTC_93d27.dir\\Debug\\cmTC_93d27.tlog\\".
+        InitializeBuildStatus:
+          Se crear  "cmTC_93d27.dir\\Debug\\cmTC_93d27.tlog\\unsuccessfulbuild" porque se especific¢ "AlwaysCreate".
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "C:\\DEV\\vcpkg\\installed\\x64-windows\\"
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\CL.exe /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_93d27.dir\\Debug\\\\" /Fd"cmTC_93d27.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\CheckFunctionExists.c"
+          Compilador de optimizaci¢n de C/C++ de Microsoft (R) versi¢n 19.34.31937 para x64
+          CheckFunctionExists.c
+          (C) Microsoft Corporation. Todos los derechos reservados.
+          cl /c /I"C:\\DEV\\vcpkg\\installed\\x64-windows\\include" /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_93d27.dir\\Debug\\\\" /Fd"cmTC_93d27.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\CheckFunctionExists.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.34.31933\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\Debug\\cmTC_93d27.exe" /INCREMENTAL /ILK:"cmTC_93d27.dir\\Debug\\cmTC_93d27.ilk" /NOLOGO /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib" /LIBPATH:"C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\manual-link" pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\\DEV\\vcpkg\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-z6k568/Debug/cmTC_93d27.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/CMakeScratch/TryCompile-z6k568/Debug/cmTC_93d27.lib" /MACHINE:X64  /machine:x64 cmTC_93d27.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: no se puede abrir el archivo 'pthread.lib' [C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\cmTC_93d27.vcxproj]
+        Compilaci¢n del proyecto terminada "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\cmTC_93d27.vcxproj" (destinos predeterminados) -- ERROR.
+        
+        ERROR al compilar.
+        
+        "C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\cmTC_93d27.vcxproj" (destino predeterminado) (1) ->
+        (Link destino) -> 
+          LINK : fatal error LNK1104: no se puede abrir el archivo 'pthread.lib' [C:\\Users\\Javier\\Desktop\\MasMierdas\\UniTwT\\Grupo6\\Juego\\Juego_de_autos\\Motor\\Dependecies\\OpenSteer\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-z6k568\\cmTC_93d27.vcxproj]
+        
+            0 Advertencia(s)
+            1 Errores
+        
+        Tiempo transcurrido 00:00:00.47
+        
+      exitCode: 1
+...

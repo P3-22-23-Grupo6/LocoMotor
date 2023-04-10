@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8C5B4EBD-2A99-34A1-8D69-D0C5C49CE6BF}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>libopensteer</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">libopensteer.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">libopensteer</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">libopensteer.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">libopensteer</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">libopensteer.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">libopensteer</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">libopensteer.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">libopensteer</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\bin\cmake.exe -SC:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src -BC:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build --check-stamp-file C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeCCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeCXXCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeRCCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\bin\cmake.exe -SC:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src -BC:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build --check-stamp-file C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeCCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeCXXCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeRCCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\bin\cmake.exe -SC:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src -BC:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build --check-stamp-file C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeCCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeCXXCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeRCCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\bin\cmake.exe -SC:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/src -BC:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build --check-stamp-file C:/Users/Javier/Desktop/MasMierdas/UniTwT/Grupo6/Juego/Juego_de_autos/Motor/Dependecies/OpenSteer/Build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCXXInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeGenericSystem.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeInitializeConfigs.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeLanguageInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeRCInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC-C.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC-CXX.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Compiler\MSVC.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows-MSVC.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\Windows.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\CMake\share\cmake-3.26\Modules\Platform\WindowsPaths.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeCCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeCXXCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeRCCompiler.cmake;C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\3.26.0-rc1\CMakeSystem.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\AbstractVehicle.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Annotation.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Camera.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Clock.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Color.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Draw.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\LocalSpace.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\lq.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Obstacle.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\OldPathway.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\OpenSteerDemo.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Path.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Pathway.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\PlugIn.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\PolylineSegmentedPath.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\PolylineSegmentedPathwaySegmentRadii.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\PolylineSegmentedPathwaySingleRadius.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Proximity.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\QueryPathAlike.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\QueryPathAlikeBaseDataExtractionPolicies.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\QueryPathAlikeMappings.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\QueryPathAlikeUtilities.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SegmentedPath.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SegmentedPathAlikeUtilities.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SegmentedPathway.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SharedPointer.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SimpleVehicle.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\StandardTypes.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\SteerLibrary.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\UnusedParameter.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Utilities.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Vec3.h" />
+    <ClInclude Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\include\OpenSteer\Vec3Utilities.h" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Camera.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Clock.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\lq.c" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Obstacle.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\OldPathway.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Path.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Pathway.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\PlugIn.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\PolylineSegmentedPath.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\PolylineSegmentedPathwaySegmentRadii.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\PolylineSegmentedPathwaySingleRadius.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\SegmentedPath.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\SegmentedPathway.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\SimpleVehicle.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\TerrainRayTest.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Vec3.cpp" />
+    <ClCompile Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\src\src\Vec3Utilities.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Javier\Desktop\MasMierdas\UniTwT\Grupo6\Juego\Juego_de_autos\Motor\Dependecies\OpenSteer\Build\ZERO_CHECK.vcxproj">
+      <Project>{840F084A-B67E-361F-9B36-FB8B8D68EDE9}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
