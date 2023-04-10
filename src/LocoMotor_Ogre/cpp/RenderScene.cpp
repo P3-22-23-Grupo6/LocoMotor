@@ -3,6 +3,7 @@
 #include "Node.h"
 #include "Renderer3D.h"
 #include "Light.h"
+#include "Spline.h"
 #include "Camera.h"
 #include "ParticleHelper.h"
 #include <OgreRenderWindow.h>
@@ -78,6 +79,10 @@ OgreWrapper::Node* OgreWrapper::RenderScene::GetNode(std::string name) {
 
 OgreWrapper::Light* OgreWrapper::RenderScene::CreateLight() {
 	return new Light(_manager->createLight(), Ogre::Light::LT_DIRECTIONAL);
+}
+
+OgreWrapper::Spline* OgreWrapper::RenderScene::CreateSpline() {
+	return new Spline();
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer(std::string mesh) {

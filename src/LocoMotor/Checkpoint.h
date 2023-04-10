@@ -4,7 +4,6 @@
 //	class Component;
 //}
 #include "Component.h"
-#include "LMVector.h"
 
 //namespace OgreWrapper {
 //	class RenderScene;
@@ -12,15 +11,17 @@
 //}
 
 namespace LocoMotor {
-	class Scene;
 	class GameObject;
 	class RigidBodyComponent;
 
 	class Checkpoint : public Component {
 	public:
 		const static std::string name;
-
-		Checkpoint(GameObject* player = nullptr, int checkpointIndex = 0);
+		static std::string GetName() {
+			return "CheckPoint";
+		};
+		Checkpoint();
+		//Checkpoint(GameObject* player = nullptr, int checkpointIndex = 0);
 
 		void Start() override;
 		void Update(float dt) override;

@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 namespace Ogre {
+	class Quaternion;
 	class SceneNode;
 	class MovableObject;
 	}
@@ -34,6 +35,11 @@ namespace OgreWrapper {
 		/// <param name="y">Y rotation</param>
 		/// <param name="z">Z rotation</param>
 		void Rotate(float x, float y, float z);
+		/// <summary>
+		/// Rotates the node in LocalSpace
+		/// Parameters passed in Degrees
+		/// </summary>
+		void RotateLocal(float x, float y, float z);
 
 		/// <summary>
 		/// Scales the node, taking into account the actual scale.
@@ -97,7 +103,7 @@ namespace OgreWrapper {
 		/// </summary>
 		void ResetOrientation();
 
-		void SetOrientation(/*Ogre::Quaternion q*/);
+		void SetOrientation(Ogre::Quaternion* q);
 
 		Node* CreateChild();
 	protected:

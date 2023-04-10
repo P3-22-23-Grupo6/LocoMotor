@@ -2,8 +2,11 @@
 #ifndef LM_SINGLETON
 #define LM_SINGLETON
 //#include "CheckML.h"
-#include <utility>
-
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 template<typename T>
 class Singleton {
 public:
@@ -25,7 +28,7 @@ public:
 
 	/// @brief Get a pointer to the instance of the singleton
 	/// @return :/
-	static T* GetInstance() {
+	MOTOR_API static T* GetInstance() {
 		if (_instance == nullptr) {
 			return nullptr;
 		}

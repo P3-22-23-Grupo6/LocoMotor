@@ -8,23 +8,30 @@
 #include "CheckML.h"
 #include "PhysicsManager.h"
 #include "BulletRigidBody.h"
-#include "LMVector.h"
+#include "lmVector.h"
 #include "RenderScene.h"
 #include "SceneManager.h"
 #include "GameObject.h"
 #include "Node.h"
+#include "Spline.h"
+#include "ComponentsFactory.h"
+#include <OgreSimpleSpline.h>//TEMPORAL
 
-#include "MeshRenderer.h"
+#include "MeshRederer.h"
 #include <RigidBodyComponent.h>
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
 #include <Camera.h>
+#include <EnemyAI.h>
 
-using namespace PhysicsWrapper;
+//#include <tweeners/builder.hpp>
+//#include <tweeners/easing.hpp>
+//#include <tweeners/system.hpp>
+
 using namespace LocoMotor;
+using namespace PhysicsWrapper;
 MotorApi::MotorApi() {
 	_gameName = "";
-	_exit = false;
 }
 
 void MotorApi::init() {
@@ -50,11 +57,11 @@ void MotorApi::init() {
 	//info2.origin = btVector3(2, 10, 0);
 	//BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
-	_scnManager = LocoMotor::SceneManager::Init();
-	_scnManager->CreateScene("Escena");
-	_scnManager->ChangeScene("Escena");
+	LocoMotor::SceneManager* mSM = new LocoMotor::SceneManager();
+	mSM->CreateScene("Escena");
+	mSM->ChangeScene("Escena");
 
-
+	
 	//audioSrc.PlaySound(0, -1);
 
 	InputManager* input = InputManager::Get();
@@ -94,7 +101,7 @@ void MotorApi::init() {
 		// RENDER
 		//man->Render();
 		btmngr->Update();
-		_scnManager->Update();
+		mSM->Update();
 		// DEMO TECNICA
 
 		// Giroscopio
@@ -116,7 +123,7 @@ void MotorApi::init() {
 			//gObj->GetComponent<LocoMotor::AudioSource>()->Play(0);
 		}
 	}
-	LocoMotor::SceneManager::Clear();
+	delete mSM;
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();
@@ -133,41 +140,103 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	auto _renderScn = _mScene->GetRender();
 
-	auto map = _mScene->AddGameobject("map");
-	map->AddComponent<MeshRenderer>("map", "Track.mesh", "FalconRedone/FalconMat", _mScene->GetRender());
-	map->AddComponent<RigidBodyComponent>(0);
+	#pragma region RaceTrack
+		auto map = _mScene->AddGameobject("map");
+		map->AddComponent("MeshRenderer");
+		map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
+		map->AddComponent("RigidBodyComponent");
+		map->GetComponent<RigidBodyComponent>()->Start(0);
+		map->AddComponent("PlayerController");
 
-	auto ship_gObj = _mScene->AddGameobject("ship");
-	ship_gObj->AddComponent<MeshRenderer>("ship", "BlueFalcon.mesh", "FalconRedone/FalconMat", _mScene->GetRender());
-	ship_gObj->AddComponent<ParticleSystem>("smoke", _mScene->GetRender(), "Racers/Smoke");
-	ship_gObj->AddComponent<ParticleSystem>("fire", _mScene->GetRender(), "Racers/Fire");
 
-	ship_gObj->AddComponent<RigidBodyComponent>(1);
-	//_gameObjList.push_back(ship_gObj);
+		auto map01 = _mScene->AddGameobject("map01");
+		map01->AddComponent("MeshRenderer");
+		map01->GetComponent<MeshRenderer>()->Start("map01", "Track.mesh", "");//Track.mesh para el antiguo
+		map01->SetPosition(LMVector3(0, -8, 0));
+		map01->AddComponent("RigidBodyComponent");
+		map01->GetComponent<RigidBodyComponent>()->Start(0);
+	#pragma endregion
 
-	//ship_gObj->SetRigidBody(PhysicsWrapper::PhysicsManager::GetInstance()->CreateRigidBody(rb));
-	//rend->SetMaterial("Racers/Falcon");
+	ship_gObj = _mScene->AddGameobject("ship");
+	ship_gObj->AddComponent("MeshRenderer");
+	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
+	ship_gObj->AddComponent("ParticleSystem");
+
+	ship_gObj->AddComponent("RigidBodyComponent");
+	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
+
 	ship_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
-	ship_gObj->SetPosition(LMVector3(0, 10, 0));
+	ship_gObj->SetPosition(LMVector3(0, 4, 0));
 	ship_gObj->setMovable(true);
 
+	//ENEMY MODEL
+	enemy_gObj = _mScene->AddGameobject("Enemy");
+	enemy_gObj->AddComponent("MeshRenderer");
+	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
+	//enemy_gObj->AddComponent("RigidBodyComponent");
+	//enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
+	enemy_gObj->AddComponent("AudioSource");
+	enemy_gObj->GetComponent<AudioSource>()->Start();
+	enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
+	enemy_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
+	enemy_gObj->AddComponent("EnemyAI");
+	
+
+#pragma region PathWaypoints
+	LMVector3 pos01 = LMVector3(50, 10, -100);
+	LMVector3 pos02 = LMVector3(-50, 60, -100);
+	LMVector3 pos03 = LMVector3(-20, 10, -50);
+
+	auto wayPoint01 = _mScene->AddGameobject("WayPoint01");
+	wayPoint01->AddComponent("MeshRenderer");
+	wayPoint01->GetComponent<MeshRenderer>()->Start("WayPoint01", "SphereDebug.mesh", "");
+	wayPoint01->GetNode()->SetScale(5, 5, 5);
+	wayPoint01->SetPosition(pos01);
+
+	auto wayPoint02 = _mScene->AddGameobject("WayPoint02");
+	wayPoint02->AddComponent("MeshRenderer");
+	wayPoint02->GetComponent<MeshRenderer>()->Start("WayPoint02", "SphereDebug.mesh", "");
+	wayPoint02->GetNode()->SetScale(5, 5, 5);
+	wayPoint02->SetPosition(pos02);
+
+	auto wayPoint03 = _mScene->AddGameobject("WayPoint03");
+	wayPoint03->AddComponent("MeshRenderer");
+	wayPoint03->GetComponent<MeshRenderer>()->Start("WayPoint03", "SphereDebug.mesh", "");
+	wayPoint03->GetNode()->SetScale(5, 5, 5);
+	wayPoint03->SetPosition(pos03);
+
+	OgreWrapper::Spline* nuevaSpl = new OgreWrapper::Spline();
+	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos01)));
+	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos02)));
+	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos03)));
+	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos01)));
+	
+	//enemy_gObj->setMovable(true);
+	enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl);
+	
+	int maxBalls = 100;
+	for (float i = 1; i < maxBalls; i++){
+		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
+		wayPointNew->AddComponent("MeshRenderer");
+		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
+		wayPointNew->GetNode()->SetScale(3, 3, 3);
+		//wayPointNew->SetPosition(LMVector3(i *5, 10, -100));
+		wayPointNew->SetPosition(LMVector3::OgreToLm(nuevaSpl->Interpolate(i / maxBalls)));
+		nuevaSpl->RecalcTangents();
+	}
+#pragma endregion
 
 	//// CHECKPOINT
-
-	GameObject* checkpoint = _mScene->AddGameobject("checkpoint");
-	checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
-	checkpoint->AddComponent<RigidBodyComponent>(0);
-	checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
-	checkpoint->SetPosition(LMVector3(0, 5, -50));
-	checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
-
-
-
-	_renderScn->Prueba();
 	//Skybox
 	_renderScn->SetSkybox();
-
+	//GameObject* checkpoint = _mScene->AddGameobject("checkpoint");
+	//checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
+	//checkpoint->AddComponent<RigidBodyComponent>(0);
+	//checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
+	//checkpoint->SetPosition(LMVector3(0, 5, -50));
+	//checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
 
 #pragma endregion
 
@@ -179,7 +248,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 	map->GetComponent<RigidBodyComponent>()->setStatic();
-
 #pragma endregion
 
 }
@@ -188,11 +256,22 @@ void MotorApi::Init() {
 	FmodWrapper::AudioManager::Init(8);
 	PhysicsManager::Init();
 	InputManager::Get();
-	_scnManager = LocoMotor::SceneManager::Init();
+	_scnManager = new LocoMotor::SceneManager();
+
+	auto cmpFac = ComponentsFactory::Init();
+	cmpFac->RegisterComponent<AudioSource>("AudioSource");
+	cmpFac->RegisterComponent<AudioListener>("AudioListener");
+	cmpFac->RegisterComponent<Camera>("Camera");
+	cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
+	cmpFac->RegisterComponent<MeshRenderer>("MeshRenderer");
+	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
+	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
+	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
+
 }
 
 void MotorApi::MainLoop() {
-
+	OgreWrapper::OgreManager::Init("GAME DLL FAIL");
 	while (!_exit) {
 
 		FmodWrapper::AudioManager::GetInstance()->Update(0.0f);
@@ -202,6 +281,13 @@ void MotorApi::MainLoop() {
 			break;
 
 		_scnManager->Update();
+		//std::cout << _scnManager->GetDelta();
 	}
+	delete _scnManager;
+	FmodWrapper::AudioManager::Clear();
+	OgreWrapper::OgreManager::Clear();
+	PhysicsManager::Clear();
+	InputManager::Destroy();
+	ComponentsFactory::Clear();
 	return;
 }

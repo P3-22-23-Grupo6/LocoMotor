@@ -9,6 +9,15 @@ using namespace LocoMotor;
 
 std::string ParticleSystem::name = "ParticleSystem";
 
+LocoMotor::ParticleSystem::ParticleSystem()
+{
+	_renderScn = nullptr;
+	_particleHelper = nullptr;
+
+	_filename = "Racers/JetEngine2";
+	_name = "smoke";
+}
+
 ParticleSystem::ParticleSystem(std::string sysName, OgreWrapper::RenderScene* renderScn, std::string filename) {
 	_name = sysName;
 	_renderScn = renderScn;
@@ -16,6 +25,7 @@ ParticleSystem::ParticleSystem(std::string sysName, OgreWrapper::RenderScene* re
 }
 
 void ParticleSystem::InitComponent() {
+	_renderScn = gameObject->GetScene()->GetRender();
 	//Crear nodo
 	_node = _renderScn->CreateNode("ParticleNode");
 	//Crear particulas

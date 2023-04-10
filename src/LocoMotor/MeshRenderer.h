@@ -15,13 +15,16 @@ namespace LocoMotor {
 	class MeshRenderer: public Component {
 	public:
 		const static std::string name;
-
-		MeshRenderer(std::string name,std::string file,std::string mat,OgreWrapper::RenderScene* rndSc);
+		static std::string GetName() {
+			return "MeshRenderer";
+		};
+		MeshRenderer();
 		~MeshRenderer();
 
 		void Render();
 
 		void Start() override;
+		void Start(std::string name, std::string file, std::string mat);
 
 		//OgreWrapper::Node* GetNode();
 		OgreWrapper::Renderer3D* GetRenderer();

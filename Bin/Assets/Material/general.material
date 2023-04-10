@@ -92,3 +92,23 @@ material ogre : base_material
     set_texture_alias specMap GreenSkin.jpg
     set_texture_alias normalMap NMHollyBumps.png
 }
+
+material general/Flare
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend add
+			depth_write off
+			diffuse vertexcolour
+            colour_op modulate
+			texture_unit
+			{
+				texture jet_p.png
+                rotate 180
+			}
+		}
+	}
+}

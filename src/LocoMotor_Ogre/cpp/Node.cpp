@@ -26,6 +26,12 @@ void OgreWrapper::Node::Rotate(float x, float y, float z) {
 	_node->roll(Ogre::Degree(z));
 }
 
+void OgreWrapper::Node::RotateLocal(float x, float y, float z) {
+	_node->pitch(Ogre::Degree(x), Ogre::Node::TS_LOCAL);
+	_node->yaw(Ogre::Degree(y), Ogre::Node::TS_LOCAL);
+	_node->roll(Ogre::Degree(z), Ogre::Node::TS_LOCAL);
+}
+
 void OgreWrapper::Node::Scale(float x, float y, float z) {
 	_node->scale(x, y, z);
 }
@@ -74,5 +80,6 @@ void OgreWrapper::Node::ResetOrientation() {
 	_node->resetOrientation();
 }
 
-void OgreWrapper::Node::SetOrientation(/*Ogre::Quaternion q*/) {
+void OgreWrapper::Node::SetOrientation(Ogre::Quaternion* q) {
+	_node->setOrientation(q->x, q->y, q->z, q->w);
 }

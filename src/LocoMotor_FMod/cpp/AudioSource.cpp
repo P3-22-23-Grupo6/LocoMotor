@@ -38,6 +38,7 @@ unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned 
 		std::cout << "Sound " << fileName << " is not added to the manager, adding it now";
 	#endif // _DEBUG
 		AddSound(fileName);
+		snd = _man->GetSound(fileName);
 	}
 
 	unsigned int len;
@@ -157,18 +158,22 @@ unsigned short FmodWrapper::AudioSource::SetFrequency(const float freqMult) {
 }
 
 void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel) {
-	for (auto& ch : _chMap) {
+
+	auto it = _chMap.begin();
+
+	while (it != _chMap.end()) {
 		bool is;
-		ch.second.channel->isPlaying(&is);
+		it->second.channel->isPlaying(&is);
 		if (is) {
-			ch.second.channel->set3DAttributes(&newPos, &newVel);
+			it->second.channel->set3DAttributes(&newPos, &newVel);
+			it++;
 		}
 		else {
-			ch.second.channel->setFrequency(ch.second.ogFrec);
-			ch.second.channel->setVolume(1.f);
-			ch.second.channel->stop();
-			ch.second.channel = nullptr;
-			_chMap.erase(ch.first);
+			it->second.channel->setFrequency(it->second.ogFrec);
+			it->second.channel->setVolume(1.f);
+			it->second.channel->stop();
+			it->second.channel = nullptr;
+			it = _chMap.erase(it);
 		}
 	}
 

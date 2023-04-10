@@ -36,6 +36,9 @@ namespace LocoMotor {
 		Component* CreateComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params);
 
 		void Update();
+		float GetDelta() {
+			return _actTime;
+		};
 
 	private:
 		SceneManager();

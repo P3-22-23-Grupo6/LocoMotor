@@ -1,4 +1,4 @@
-#include "SceneManager.h"
+﻿#include "SceneManager.h"
 #include <SDL.h>
 
 #include "ComponentsFactory.h"
@@ -100,7 +100,7 @@ void LocoMotor::SceneManager::Update() {
 	if (_deltaTime <= 0) _deltaTime = 0.001f;
 
 	if (_activeScene != nullptr) {
-		_activeScene->Update(_deltaTime);
+		_activeScene->Update(_deltaTime); 
 		_activeScene->Render();
 	}
 

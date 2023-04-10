@@ -53,7 +53,7 @@ namespace FmodWrapper {
 		/// @brief Removes the listener
 		/// @param The listener to remove
 		/// @return A number that by passing it to GetError(unsigned short) you can get more info if there was an error
-		unsigned short RemoveListener(AudioListener* curr);
+		unsigned short RemoveListener(std::list<AudioListener*>::iterator it, int indexToRemove);
 
 		/// @brief Gets the FMOD::System object from this manager
 		/// @return The System in question
