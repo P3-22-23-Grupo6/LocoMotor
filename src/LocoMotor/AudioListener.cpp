@@ -31,7 +31,7 @@ void LocoMotor::AudioListener::Update(float dt) {
 									std::cos(rot.GetX()) * std::cos(rot.GetZ()),
 									std::sin(rot.GetZ()) * std::cos(rot.GetX()));
 
-	LMVector3 vel = (gameObject->GetTransform().position - *_lastPos) / dt;
+	LMVector3 vel = (gameObject->GetTransform().position - *_lastPos) / (dt / 1000);
 
 #ifdef _DEBUG
 	std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(_list->SetTransform(LMVector3::LmToFMod(gameObject->GetTransform().position), LMVector3::LmToFMod(vel), LMVector3::LmToFMod(forwardVec), LMVector3::LmToFMod(upwardVec))) << std::endl;
