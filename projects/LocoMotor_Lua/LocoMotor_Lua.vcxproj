@@ -22,7 +22,6 @@
     <ClInclude Include="..\..\src\LocoMotor_Lua\include\ScriptManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\LocoMotor_Lua\cpp\Lua_main.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Lua\cpp\ScriptManager.cpp" />
   </ItemGroup>
   <ItemGroup>
