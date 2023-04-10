@@ -6,7 +6,6 @@
 #endif
 
 #include <string>
-#include <OgreSimpleSpline.h>//TEMPORAL
 
 namespace LocoMotor {
 	class SceneManager;

@@ -12,23 +12,7 @@ using namespace FmodWrapper;
 
 AudioManager* Singleton<AudioManager>::_instance = nullptr;
 
-AudioManager::AudioManager() {
-	System_Create(&_sys);
-	_sys->init(32, FMOD_INIT_NORMAL, 0);
-	_sys->createChannelGroup(0, &_main);
-
-	float vol;
-	_main->getVolume(&vol);
-#ifdef _DEBUG
-	_main->setVolume(vol * 0.9f);
-#else
-	_main->setVolume(vol * 0.1f);
-#endif
-	_sys->set3DSettings(1.f, 1.f, 1.f);
-
-	_soundLib = std::unordered_map<const char*, FMOD::Sound*>();
-	_listeners = std::list<AudioListener*>();
-}
+AudioManager::AudioManager() : AudioManager(32){ }
 
 AudioManager::AudioManager(int numChannels) {
 	System_Create(&_sys);
@@ -37,12 +21,7 @@ AudioManager::AudioManager(int numChannels) {
 
 	float vol;
 	_main->getVolume(&vol);
-#ifdef _DEBUG
-	_main->setVolume(vol * 0.9f);
-#else
-	_main->setVolume(vol * 0.1f);
-#endif
-	_sys->set3DSettings(1.1f, 1.f, 1.f);
+	_sys->set3DSettings(1.1f, 100.f, 1.f);
 
 	_soundLib = std::unordered_map<const char*, FMOD::Sound*>();
 }
@@ -128,14 +107,14 @@ std::list<AudioListener*>::iterator AudioManager::AddListener(AudioListener* cur
 
 	_sys->set3DNumListeners(_listeners.size());
 
-	auto it = _listeners.end();
+	std::list<AudioListener*>::iterator it = _listeners.end();
 	it--;
 	return it;
 }
 
-unsigned short FmodWrapper::AudioManager::RemoveListener(AudioListener* curr) {
-	auto it = _listeners.erase(curr->GetIterator());
-	int nIndex = curr->GetIndex();
+unsigned short FmodWrapper::AudioManager::RemoveListener(std::list<AudioListener*>::iterator listenerIt, int indexToRemove) {
+	auto it = _listeners.erase(listenerIt);
+	int nIndex = indexToRemove;
 
 	unsigned short err = 0;
 
@@ -144,7 +123,7 @@ unsigned short FmodWrapper::AudioManager::RemoveListener(AudioListener* curr) {
 
 	#ifdef _DEBUG
 		if (err != 0) {
-			std::cout << "AUDIO: Trying to update listeners while removing number '" << curr->GetIndex() << "' caused fmod exception: " << FMOD_ErrorString((FMOD_RESULT)err) << std::endl;
+			std::cout << "AUDIO: Trying to update listeners while removing number '" << indexToRemove << "' caused fmod exception: " << FMOD_ErrorString((FMOD_RESULT)err) << std::endl;
 		}
 	#endif // _DEBUG
 

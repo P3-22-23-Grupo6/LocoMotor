@@ -11,7 +11,7 @@ FmodWrapper::AudioListener::AudioListener() : _man(AudioManager::GetInstance()) 
 }
 
 FmodWrapper::AudioListener::~AudioListener() {
-	_man->RemoveListener(this);
+	_man->RemoveListener(_thisIT, _fIndex);
 }
 
 unsigned short FmodWrapper::AudioListener::SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up) {

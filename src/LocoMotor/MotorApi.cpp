@@ -15,6 +15,7 @@
 #include "Node.h"
 #include "Spline.h"
 #include "ComponentsFactory.h"
+#include <OgreSimpleSpline.h>//TEMPORAL
 
 #include "MeshRederer.h"
 #include <RigidBodyComponent.h>
@@ -175,6 +176,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
 	enemy_gObj->AddComponent("RigidBodyComponent");
 	enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
+	enemy_gObj->AddComponent("AudioSource");
+	enemy_gObj->GetComponent<AudioSource>()->Start();
+	enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
 	enemy_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
 	enemy_gObj->AddComponent("EnemyAI");
@@ -293,11 +297,11 @@ void MotorApi::MainLoop() {
 		//Ogre::Vector3 a = mySpline->interpolate(0.69f);
 		//enemy_gObj->GetNode()->Translate(a.x, a.y, a.z);
 	}
+	delete _scnManager;
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();
 	InputManager::Destroy();
 	ComponentsFactory::Clear();
-	delete _scnManager;
 	return;
 }
