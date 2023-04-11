@@ -26,6 +26,41 @@ void LocoMotor::AudioSource::InitComponent() {
 	_src = new FmodWrapper::AudioSource();
 }
 
+void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	int loops = 0;
+	unsigned int loopStart = 0;
+	unsigned int loopEnd = 0xffffffff;
+	for (int i = 0; i < params.size(); i++) {
+		if (params[i].first == "vol" || params[i].first == "volume") {
+			SetVolume(std::stof(params[i].second));
+		}
+		else if (params[i].first == "freq" || params[i].first == "frequency") {
+			SetFreq(std::stof(params[i].second));
+		}
+		else if (params[i].first == "preloadaudio" || params[i].first == "loadaudio" || params[i].first == "load") {
+			_src->AddSound(params[i].second.c_str());
+		}
+		else if (params[i].first == "loops") {
+			loops = std::stoi(params[i].second);
+		}
+		else if (params[i].first == "loopStart") {
+			int a = std::stoi(params[i].second);
+			if (a < 0)
+				a = 0;
+			loopStart = a;
+		}
+		else if (params[i].first == "loopEnd") {
+			int a = std::stoi(params[i].second);
+			if (a < 0)
+				a = 0;
+			loopEnd = a;
+		}
+		else if (params[i].first == "playonStart") {
+			Play(params[i].second.c_str(), loops, loopStart, loopEnd);
+		}
+	}
+}
+
 void LocoMotor::AudioSource::Update(float dt) {
 #ifdef _DEBUG
 	if (_lastError != 0)
