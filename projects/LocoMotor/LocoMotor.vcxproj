@@ -53,7 +53,6 @@
     <ClCompile Include="..\..\src\LocoMotor\Scene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor\src\LMVector.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -64,7 +63,6 @@
     <ClInclude Include="..\..\src\LocoMotor\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor\EnemyAI.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />
-    <ClInclude Include="..\..\src\LocoMotor\include\LMVector.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h" />
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />

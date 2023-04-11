@@ -33,7 +33,7 @@ namespace LocoMotor {
 		 
 		Scene* GetCurrentScene();
 
-		Component* CreateComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params);
+		
 
 		void Update();
 		float GetDelta() {
@@ -44,7 +44,6 @@ namespace LocoMotor {
 		SceneManager();
 		~SceneManager();
 		std::map<std::string, Scene*> _sceneInfo;
-		ComponentsFactory* factory;
 
 		//std::string _currScn;
 		Scene* _activeScene;

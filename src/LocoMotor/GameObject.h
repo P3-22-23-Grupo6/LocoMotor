@@ -12,11 +12,12 @@
 #include <map>
 
 //HITO 1 POC
-#include "Renderer3D.h"
-#include "BulletRigidBody.h"
+
+
 
 namespace OgreWrapper {
 	class Node;
+	class Renderer3D;
 }
 
 

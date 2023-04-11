@@ -12,7 +12,6 @@ SceneManager::SceneManager() {
 	_actTime = 0;
 	_lastTime = 0;
 	_deltaTime = 0.1f;
-	factory = new ComponentsFactory();
 }
 
 SceneManager::~SceneManager() {
@@ -84,11 +83,6 @@ Scene* SceneManager::GetSceneByName(std::string name) {
 Scene* LocoMotor::SceneManager::GetCurrentScene()
 {
 	return _activeScene;
-}
-
-Component* LocoMotor::SceneManager::CreateComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params)
-{
-	return factory->CreateComponent(name, params);
 }
 
 void LocoMotor::SceneManager::Update() {

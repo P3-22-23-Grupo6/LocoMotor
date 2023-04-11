@@ -101,7 +101,9 @@ void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair
 	if (_componentsByName.count(name) > 0) {
 		return;
 	}
-	Component* comp = SceneManager::GetInstance()->CreateComponent(name, params);
+	Component* comp = ComponentsFactory::GetInstance()->CreateComponent(name);
+	comp->SetContext(this);
+	comp->Init(params);
 	_componentsByName.insert({ name, comp });
 }
 
