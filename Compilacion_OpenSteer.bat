@@ -1,6 +1,5 @@
-set BIN=.\Bin
-set cmake=.\Dependecies\CMake\bin\cmake.exe
 ::CMAKE OpenSteer
+set cmake=.\Dependecies\CMake\bin\cmake.exe
 set OpenSteerBuild=.\Dependecies\OpenSteer\Build
 set OpenSteerSrc=.\Dependecies\OpenSteer\src
 mkdir %OpenSteerBuild%
