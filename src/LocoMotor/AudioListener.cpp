@@ -9,13 +9,22 @@ using namespace LocoMotor;
 const std::string AudioListener::name = "AudioListener";
 
 AudioListener::AudioListener() {
-	_list = new FmodWrapper::AudioListener();
-	_lastPos = new LMVector3();
+	_list = nullptr;
+	_lastPos = nullptr;
 }
 
 AudioListener::~AudioListener() {
 	delete _list;
 	delete _lastPos;
+}
+
+void LocoMotor::AudioListener::Start() {
+	*_lastPos = gameObject->GetTransform().position;
+}
+
+void LocoMotor::AudioListener::InitComponent() {
+	_list = new FmodWrapper::AudioListener();
+	_lastPos = new LMVector3();
 }
 
 void LocoMotor::AudioListener::Update(float dt) {
@@ -42,6 +51,4 @@ void LocoMotor::AudioListener::Update(float dt) {
 	*_lastPos = gameObject->GetTransform().position;
 }
 
-void LocoMotor::AudioListener::Start() {
-	*_lastPos = gameObject->GetTransform().position;
-}
+

@@ -14,12 +14,16 @@ using namespace LocoMotor;
 const std::string AudioSource::name = "AudioSource";
 
 AudioSource::AudioSource() {
-	_src = new FmodWrapper::AudioSource();
 	_lastError = 0;
+	_src = nullptr;
 }
 
 AudioSource::~AudioSource() {
 	delete _src;
+}
+
+void LocoMotor::AudioSource::InitComponent() {
+	_src = new FmodWrapper::AudioSource();
 }
 
 void LocoMotor::AudioSource::Update(float dt) {

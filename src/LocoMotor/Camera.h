@@ -24,8 +24,7 @@ namespace LocoMotor {
 		// Para crear la camara se necesita tanto la escena como la escena de Render
 		// 
 		Camera();
-		Camera(Scene* scene, OgreWrapper::RenderScene* renderScn, GameObject* target = nullptr, LMVector3 offset = LMVector3(0, 0, 0));
-
+		
 		OgreWrapper::Node* _node;
 
 		void InitComponent() override;

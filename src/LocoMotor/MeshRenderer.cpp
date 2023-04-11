@@ -38,6 +38,24 @@ void LocoMotor::MeshRenderer::Start(std::string name, std::string file, std::str
 	_mat = mat;
 }
 
+void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	for (int i = 0; i < params.size(); i++) {
+		if (params[i].first == "name") {
+			_name = params[i].second;
+		}
+		else if (params[i].first == "file") {
+			_src = params[i].second;
+		}
+		else if (params[i].first == "mat") {
+			_mat = params[i].second;
+		}
+	}
+}
+
+void LocoMotor::MeshRenderer::InitComponent() {
+
+}
+
 OgreWrapper::Renderer3D* LocoMotor::MeshRenderer::GetRenderer() {
 	return _rend3D;
 }
