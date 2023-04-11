@@ -38,7 +38,7 @@ void LocoMotor::RigidBodyComponent::Start() {
 	
 	RigidBodyInfo info;
 	info.mass = _mass;
-	info.boxSize = LMVector3::LmToBullet(gameObject->GetTransform().scale);
+	info.boxSize = LMVector3::LmToBullet(LMVector3(12,3,5));
 	info.origin = LMVector3::LmToBullet(gameObject->GetTransform().position);
 	info.size = -1;
 	if (_mass == 0) {
@@ -75,6 +75,7 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
 	gameObject->SetPosition(_body->getPosition());
+	_body->clearForce();
 	//gameObject->SetRotation(_body->getRotation());
 	
 	//LMVector3 rayFrom = LMVector3(_body->getPosition());
