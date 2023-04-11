@@ -30,7 +30,7 @@ namespace LocoMotor {
 
 	class Scene;
 
-    class GameObject {
+    class MOTOR_API GameObject {
 	public:
 		/// @brief Constructor
 		GameObject(OgreWrapper::Node* node);

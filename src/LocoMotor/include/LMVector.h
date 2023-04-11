@@ -3,6 +3,11 @@
 #define LM_VECTOR
 
 
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 
 
 #include "OgreVector.h"
@@ -10,7 +15,7 @@
 #include "fmod_common.h"
 //Vector class to be used with LocoMotor
 
-class LMVector3 {
+class MOTOR_API LMVector3 {
 
 
 public:

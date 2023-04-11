@@ -185,25 +185,15 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 
 
+
 	LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
 	checkpoint_gObj->AddComponent("MeshRenderer");
 	checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
 	checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 	checkpoint_gObj->SetPosition(LMVector3(0, 4, -10));
-	checkpoint_gObj->AddComponent("Checkpoint");
-	checkpoint_gObj->GetComponent<Checkpoint>()->Start(ship_gObj, 0);
-
-
-
-	////GameObject* checkpoint_gObj = _mScene->AddGameobject("checkpoint");
-	////checkpoint_gObj->AddComponent("MeshRenderer");
-	////checkpoint_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
-	//////checkpoint->AddComponent<RigidBodyComponent>(0);
-	//////checkpoint_gObj->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
-	////checkpoint_gObj->GetNode()->SetScale(100.0f, 100.0f, 100.0f);
-	////checkpoint_gObj->SetPosition(LMVector3(0, 5, -50));
-	////////checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
-	//////checkpoint_gObj->AddComponent("Checkpoint");
+	//checkpoint_gObj->AddComponent("Checkpoint");
+	//checkpoint_gObj->AddComponent("PlayerController");
+	//checkpoint_gObj->GetComponent<Checkpoint>()->Start(ship_gObj, 0);
 
 
 #pragma region PathWaypoints
@@ -250,15 +240,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	}
 #pragma endregion
 
-	//// CHECKPOINT
 	//Skybox
 	_renderScn->SetSkybox();
-	//GameObject* checkpoint = _mScene->AddGameobject("checkpoint");
-	//checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
-	//checkpoint->AddComponent<RigidBodyComponent>(0);
-	//checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
-	//checkpoint->SetPosition(LMVector3(0, 5, -50));
-	//checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
 
 #pragma endregion
 
@@ -284,12 +267,11 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<AudioSource>("AudioSource");
 	cmpFac->RegisterComponent<AudioListener>("AudioListener");
 	cmpFac->RegisterComponent<Camera>("Camera");
-	cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
 	cmpFac->RegisterComponent<MeshRenderer>("MeshRenderer");
 	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
 	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
 	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
-	cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
+	//cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
 
 }
 
