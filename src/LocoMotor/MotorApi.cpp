@@ -156,6 +156,43 @@ void MotorApi::RegisterGame(const char* gameName) {
 	map01->SetPosition(LMVector3(0, -8, 0));
 	map01->AddComponent("RigidBodyComponent");
 	map01->GetComponent<RigidBodyComponent>()->Start(0);
+	//TurboPlane
+	auto turboPlane = _mScene->AddGameobject("TurboPlane");
+	turboPlane->AddComponent("MeshRenderer");
+	turboPlane->GetComponent<MeshRenderer>()->Start("TurboPlane", "TurboPlane.mesh", "");//Track.mesh para el antiguo
+	turboPlane->SetPosition(LMVector3(0, 0.1f, 0));
+	turboPlane->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+#pragma region palmTrees
+	auto palmTree = _mScene->AddGameobject("PalmTree00");
+	palmTree->AddComponent("MeshRenderer");
+	palmTree->GetComponent<MeshRenderer>()->Start("PalmTree00", "PalmTree.mesh", "");//Track.mesh para el antiguo
+	palmTree->SetPosition(LMVector3(-50,0,-85));
+	palmTree->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	palmTree->GetNode()->SetDirection(50,0,0);
+	palmTree->AddComponent("RigidBodyComponent");
+	palmTree->GetComponent<RigidBodyComponent>()->Start(0);
+	auto palmTree01 = _mScene->AddGameobject("PalmTree01");
+	palmTree01->AddComponent("MeshRenderer");
+	palmTree01->GetComponent<MeshRenderer>()->Start("PalmTree01", "PalmTree.mesh", "");//Track.mesh para el antiguo
+	palmTree01->SetPosition(LMVector3(40, 0, -50));
+	palmTree01->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	palmTree01->AddComponent("RigidBodyComponent");
+	palmTree01->GetComponent<RigidBodyComponent>()->Start(0);
+	auto palmTree02 = _mScene->AddGameobject("PalmTree02");
+	palmTree02->AddComponent("MeshRenderer");
+	palmTree02->GetComponent<MeshRenderer>()->Start("PalmTree02", "PalmTree.mesh", "");//Track.mesh para el antiguo
+	palmTree02->SetPosition(LMVector3(60, 0, -200));
+	palmTree02->GetNode()->SetScale(15.0f, 15.0f, 15.0f);
+	palmTree02->AddComponent("RigidBodyComponent");
+	palmTree02->GetComponent<RigidBodyComponent>()->Start(0);
+#pragma endregion
+
+	auto track00 = _mScene->AddGameobject("Track00");
+	track00->AddComponent("MeshRenderer");
+	track00->GetComponent<MeshRenderer>()->Start("Track00", "Track00.mesh", "");//Track.mesh para el antiguo
+	track00->SetPosition(LMVector3(20, 0, -200));
+	track00->AddComponent("RigidBodyComponent");
+	track00->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
@@ -195,16 +232,16 @@ void MotorApi::RegisterGame(const char* gameName) {
 	checkpoint_gObj->AddComponent("MeshRenderer");
 	checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
 	checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
-	checkpoint_gObj->SetPosition(LMVector3(0, 4, -10));
+	checkpoint_gObj->SetPosition(LMVector3(60, 4, -50));
 	//checkpoint_gObj->AddComponent("Checkpoint");
 	//checkpoint_gObj->AddComponent("PlayerController");
 	//checkpoint_gObj->GetComponent<Checkpoint>()->Start(ship_gObj, 0);
 
 
 #pragma region PathWaypoints
-	LMVector3 pos01 = LMVector3(50, 10, -100);
-	LMVector3 pos02 = LMVector3(-50, 60, -100);
-	LMVector3 pos03 = LMVector3(-20, 10, -50);
+	LMVector3 pos01 = LMVector3(50, 10, -180);
+	LMVector3 pos02 = LMVector3(-50, 60, -180);
+	LMVector3 pos03 = LMVector3(-20, 10, -100);
 
 	auto wayPoint01 = _mScene->AddGameobject("WayPoint01");
 	wayPoint01->AddComponent("MeshRenderer");
