@@ -21,6 +21,7 @@
 #include <RigidBodyComponent.h>
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
+#include <RaceManager.h>
 #include <Camera.h>
 #include <EnemyAI.h>
 
@@ -185,6 +186,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 
 
+	// CHECKPOINTS
+	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
+	Component* cmp =  raceManager_gObj->AddComponent("RaceManager");
+	//raceManager_gObj->GetComponent<RaceManager>()->Start();
 
 	LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
 	checkpoint_gObj->AddComponent("MeshRenderer");
