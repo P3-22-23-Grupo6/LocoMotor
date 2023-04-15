@@ -36,12 +36,13 @@ namespace LocoMotor {
 
 		MOTOR_API virtual void InitComponent();
 		
+		//GameObject* GetGameobject();
 
+		GameObject* gameObject;
 	protected:
 		/// @brief Constructor
 		Component() = default;
 
-		GameObject* gameObject;
 	};
 }
 

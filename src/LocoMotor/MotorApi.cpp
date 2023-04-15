@@ -141,13 +141,16 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	auto _renderScn = _mScene->GetRender();
 
+#pragma region Manager responsable del gameplay
+	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
+	Component* cmp = raceManager_gObj->AddComponent("RaceManager");
+
 #pragma region RaceTrack
 	auto map = _mScene->AddGameobject("map");
 	map->AddComponent("MeshRenderer");
 	map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 	map->AddComponent("RigidBodyComponent");
 	map->GetComponent<RigidBodyComponent>()->Start(0);
-	map->AddComponent("PlayerController");
 
 
 	auto map01 = _mScene->AddGameobject("map01");
@@ -207,6 +210,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->SetPosition(LMVector3(0, 4, 0));
 	ship_gObj->setMovable(true);
+	ship_gObj->AddComponent("PlayerController");
 
 	//ENEMY MODEL
 	enemy_gObj = _mScene->AddGameobject("Enemy");
@@ -224,18 +228,33 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 
 	// CHECKPOINTS
-	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
-	Component* cmp =  raceManager_gObj->AddComponent("RaceManager");
 	//raceManager_gObj->GetComponent<RaceManager>()->Start();
 
-	LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
-	checkpoint_gObj->AddComponent("MeshRenderer");
-	checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
-	checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
-	checkpoint_gObj->SetPosition(LMVector3(60, 4, -50));
-	//checkpoint_gObj->AddComponent("Checkpoint");
-	//checkpoint_gObj->AddComponent("PlayerController");
-	//checkpoint_gObj->GetComponent<Checkpoint>()->Start(ship_gObj, 0);
+
+	const int numberOfCheckpoints = 3;
+	LMVector3 checkpointPositions[numberOfCheckpoints];
+
+	checkpointPositions[0] = LMVector3(0, 4, -60);
+	checkpointPositions[1] = LMVector3(0, 4, -120);
+	checkpointPositions[2] = LMVector3(0, 4, -180);
+
+	for (size_t i = 0; i < numberOfCheckpoints; i++) {
+
+		std::string checkpointName = "checkP" + i;
+		LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject(checkpointName);
+		checkpoint_gObj->AddComponent("MeshRenderer");
+		checkpoint_gObj->GetComponent<MeshRenderer>()->Start(checkpointName, "SphereDebug.mesh", "");
+		checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+		checkpoint_gObj->SetPosition(checkpointPositions[i]);
+		Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
+	}
+
+	//LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
+	//checkpoint_gObj->AddComponent("MeshRenderer");
+	//checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
+	//checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	//checkpoint_gObj->SetPosition(LMVector3(0, 4, -50));
+	//Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
 
 
 #pragma region PathWaypoints
