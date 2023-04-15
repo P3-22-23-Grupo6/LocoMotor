@@ -143,7 +143,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 #pragma region Manager responsable del gameplay
 	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
-	Component* cmp = raceManager_gObj->AddComponent("RaceManager");
+	//Component* cmp = raceManager_gObj->AddComponent("RaceManager");
 
 #pragma region RaceTrack
 	auto map = _mScene->AddGameobject("map");
@@ -246,7 +246,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		checkpoint_gObj->GetComponent<MeshRenderer>()->Start(checkpointName, "SphereDebug.mesh", "");
 		checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
 		checkpoint_gObj->SetPosition(checkpointPositions[i]);
-		Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
+		//Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
 	}
 
 	//LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");

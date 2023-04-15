@@ -6,6 +6,7 @@
 #include "Spline.h"
 #include "Camera.h"
 #include "ParticleHelper.h"
+#include "Canvas.h"
 #include <OgreRenderWindow.h>
 #include <OgreSceneManager.h>
 #include <OgreSceneNode.h>
@@ -20,11 +21,14 @@ OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;
 	_mainCam = nullptr;
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
+	_canvas = new OgreWrapper::Canvas();
+	_canvas->Init("scene->getRootSceneNode()->getName()", _manager);
 	//OverlayManager::getSingleton().createOverlayElement("Panel", "myNewPanel");
 }
 
 OgreWrapper::RenderScene::~RenderScene() {
 	delete _root;
+	delete _canvas;
 	using iterador = std::map<std::string, Node*>::iterator;
 	for (iterador it = _sceneStructure.begin(); it != _sceneStructure.end(); it = _sceneStructure.erase(it)) {
 		delete it->second;
@@ -33,6 +37,7 @@ OgreWrapper::RenderScene::~RenderScene() {
 
 void OgreWrapper::RenderScene::Render() {
 	_mainCam->GetViewport()->update();
+	// _canvas->Render();
 }
 
 void OgreWrapper::RenderScene::SetSkybox() {

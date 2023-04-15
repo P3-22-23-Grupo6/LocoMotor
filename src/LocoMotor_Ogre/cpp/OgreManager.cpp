@@ -13,7 +13,8 @@
 //OgreWrapper includes
 #include "RenderScene.h"
 #include "SGTechniqueResolverListener.h"
-#include "OgreManager.h""
+#include "OgreManager.h"
+#include "UIElement.h"
 
 
 OgreWrapper::OgreManager* OgreWrapper::OgreManager::_instance = nullptr;
