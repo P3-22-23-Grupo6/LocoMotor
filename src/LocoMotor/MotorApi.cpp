@@ -17,7 +17,7 @@
 #include "ComponentsFactory.h"
 #include <OgreSimpleSpline.h>//TEMPORAL
 
-#include "MeshRederer.h"
+#include "MeshRenderer.h"
 #include <RigidBodyComponent.h>
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
@@ -58,7 +58,7 @@ void MotorApi::init() {
 	//info2.origin = btVector3(2, 10, 0);
 	//BulletRigidBody* bola = btmngr->CreateRigidBody(info2);
 
-	LocoMotor::SceneManager* mSM = new LocoMotor::SceneManager();
+	LocoMotor::SceneManager* mSM = LocoMotor::SceneManager::Init();
 	mSM->CreateScene("Escena");
 	mSM->ChangeScene("Escena");
 
@@ -124,7 +124,7 @@ void MotorApi::init() {
 			//gObj->GetComponent<LocoMotor::AudioSource>()->Play(0);
 		}
 	}
-	delete mSM;
+	SceneManager::Clear();
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();
@@ -135,7 +135,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_gameName = gameName;
 	OgreWrapper::OgreManager::Init(gameName);
 
-	auto _mScene = _scnManager->CreateScene("Escena");
+	Scene* _mScene = _scnManager->CreateScene("Escena");
 
 #pragma region Escena que teniamos antes
 
@@ -322,7 +322,7 @@ void MotorApi::Init() {
 	FmodWrapper::AudioManager::Init(8);
 	PhysicsManager::Init();
 	InputManager::Get();
-	_scnManager = new LocoMotor::SceneManager();
+	_scnManager = LocoMotor::SceneManager::Init();
 
 	auto cmpFac = ComponentsFactory::Init();
 	cmpFac->RegisterComponent<AudioSource>("AudioSource");
@@ -349,7 +349,7 @@ void MotorApi::MainLoop() {
 		_scnManager->Update();
 		//std::cout << _scnManager->GetDelta();
 	}
-	delete _scnManager;
+	SceneManager::Clear();
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	PhysicsManager::Clear();

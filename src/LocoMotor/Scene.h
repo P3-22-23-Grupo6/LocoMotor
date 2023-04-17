@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include <unordered_map>
 
 namespace OgreWrapper {
 	class Camera;
@@ -40,7 +40,9 @@ namespace LocoMotor {
 
 
 		GameObject* AddGameobject(std::string name);
-		void AddObject(GameObject* obj);
+		//void AddObject(GameObject* obj);
+
+		GameObject* GetObjectByName(std::string name);
 
 		OgreWrapper::RenderScene* GetRender();
 
@@ -61,7 +63,7 @@ namespace LocoMotor {
 
 		OgreWrapper::RenderScene* _renderScn;
 
-		std::vector<GameObject*> _gameObjList;
+		std::unordered_map<std::string, GameObject*> _gameObjList;
 
 		OgreWrapper::Node* _nod;
 

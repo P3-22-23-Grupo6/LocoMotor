@@ -27,11 +27,6 @@ namespace LocoMotor {
 		void Start(std::string name, std::string file, std::string mat);
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		void InitComponent() override;
-		void SetContext(GameObject* ent) {
-			Component::SetContext(ent);
-			gameObject->SetRenderer(_nod);
-		};
-
 		//OgreWrapper::Node* GetNode();
 		OgreWrapper::Renderer3D* GetRenderer();
 

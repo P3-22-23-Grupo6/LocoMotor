@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "Node.h"
 //Borrar luego
+#include "SceneManager.h"
 #include "RigidBodyComponent.h"
 #include "OpenSteer/SimpleVehicle.h"
 
@@ -94,6 +95,18 @@ void GameObject::Update(float dt) {
 
 	std::cout << _tr.rotation.GetY() << std::endl;
 }
+
+
+void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params) {
+	if (_componentsByName.count(name) > 0) {
+		return;
+	}
+	Component* comp = ComponentsFactory::GetInstance()->CreateComponent(name);
+	comp->SetContext(this);
+	comp->Init(params);
+	_componentsByName.insert({ name, comp });
+}
+
 
 // Set the position of the GameObject
 void GameObject::SetPosition(LMVector3 pos) {

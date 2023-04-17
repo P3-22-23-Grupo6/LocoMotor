@@ -35,8 +35,8 @@ namespace OgreWrapper {
 			return _manager;
 		};
 
-		RenderScene(RenderScene&& r) {
-		};
+		/*RenderScene(RenderScene&& r) {
+		};*/
 
 		/// <summary>
 		/// Destructor
@@ -65,6 +65,7 @@ namespace OgreWrapper {
 		Light* CreateLight();
 		Renderer3D* CreateRenderer(std::string mesh);
 		Camera* CreateCamera(std::string mesh);
+
 		void SetActiveCamera(Camera* cam);
 		Camera* GetMainCamera();
 

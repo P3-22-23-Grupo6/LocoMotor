@@ -7,6 +7,8 @@
 #else
 #define MOTOR_API __declspec(dllimport)
 #endif
+
+#include <utility>
 template<typename T>
 class Singleton {
 public:

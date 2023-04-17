@@ -23,7 +23,7 @@ OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 }
 
 OgreWrapper::Camera::~Camera() {
-	int _zOrder;
+	//int _zOrder;
 }
 
 Ogre::Viewport* OgreWrapper::Camera::GetViewport() {
