@@ -19,9 +19,8 @@ namespace LocoMotor {
 			return "ParticleSystem";
 		};
 		ParticleSystem();
-		ParticleSystem(std::string sysName, OgreWrapper::RenderScene* renderScn, std::string filename);
 		OgreWrapper::Node* _node;
-
+		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		void InitComponent() override;
 
 		void Update(float dt) override;

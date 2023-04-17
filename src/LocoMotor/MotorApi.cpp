@@ -21,6 +21,7 @@
 #include <RigidBodyComponent.h>
 #include <ParticleSystem.h>
 #include <Checkpoint.h>
+#include <RaceManager.h>
 #include <Camera.h>
 #include <EnemyAI.h>
 
@@ -140,13 +141,16 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	auto _renderScn = _mScene->GetRender();
 
+#pragma region Manager responsable del gameplay
+	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
+	Component* cmp = raceManager_gObj->AddComponent("RaceManager");
+
 #pragma region RaceTrack
 	auto map = _mScene->AddGameobject("map");
 	map->AddComponent("MeshRenderer");
 	map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 	map->AddComponent("RigidBodyComponent");
 	map->GetComponent<RigidBodyComponent>()->Start(0);
-	map->AddComponent("PlayerController");
 
 
 	auto map01 = _mScene->AddGameobject("map01");
@@ -155,6 +159,43 @@ void MotorApi::RegisterGame(const char* gameName) {
 	map01->SetPosition(LMVector3(0, -8, 0));
 	map01->AddComponent("RigidBodyComponent");
 	map01->GetComponent<RigidBodyComponent>()->Start(0);
+	//TurboPlane
+	auto turboPlane = _mScene->AddGameobject("TurboPlane");
+	turboPlane->AddComponent("MeshRenderer");
+	turboPlane->GetComponent<MeshRenderer>()->Start("TurboPlane", "TurboPlane.mesh", "");//Track.mesh para el antiguo
+	turboPlane->SetPosition(LMVector3(0, 0.1f, 0));
+	turboPlane->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+#pragma region palmTrees
+	auto palmTree = _mScene->AddGameobject("PalmTree00");
+	palmTree->AddComponent("MeshRenderer");
+	palmTree->GetComponent<MeshRenderer>()->Start("PalmTree00", "PalmTree.mesh", "");//Track.mesh para el antiguo
+	palmTree->SetPosition(LMVector3(-50,0,-85));
+	palmTree->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	palmTree->GetNode()->SetDirection(50,0,0);
+	palmTree->AddComponent("RigidBodyComponent");
+	palmTree->GetComponent<RigidBodyComponent>()->Start(0);
+	auto palmTree01 = _mScene->AddGameobject("PalmTree01");
+	palmTree01->AddComponent("MeshRenderer");
+	palmTree01->GetComponent<MeshRenderer>()->Start("PalmTree01", "PalmTree.mesh", "");//Track.mesh para el antiguo
+	palmTree01->SetPosition(LMVector3(40, 0, -50));
+	palmTree01->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	palmTree01->AddComponent("RigidBodyComponent");
+	palmTree01->GetComponent<RigidBodyComponent>()->Start(0);
+	auto palmTree02 = _mScene->AddGameobject("PalmTree02");
+	palmTree02->AddComponent("MeshRenderer");
+	palmTree02->GetComponent<MeshRenderer>()->Start("PalmTree02", "PalmTree.mesh", "");//Track.mesh para el antiguo
+	palmTree02->SetPosition(LMVector3(60, 0, -200));
+	palmTree02->GetNode()->SetScale(15.0f, 15.0f, 15.0f);
+	palmTree02->AddComponent("RigidBodyComponent");
+	palmTree02->GetComponent<RigidBodyComponent>()->Start(0);
+#pragma endregion
+
+	auto track00 = _mScene->AddGameobject("Track00");
+	track00->AddComponent("MeshRenderer");
+	track00->GetComponent<MeshRenderer>()->Start("Track00", "Track00.mesh", "");//Track.mesh para el antiguo
+	track00->SetPosition(LMVector3(20, 0, -200));
+	track00->AddComponent("RigidBodyComponent");
+	track00->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
@@ -169,6 +210,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->SetPosition(LMVector3(0, 4, 0));
 	ship_gObj->setMovable(true);
+	ship_gObj->AddComponent("PlayerController");
 
 	//ENEMY MODEL
 	enemy_gObj = _mScene->AddGameobject("Enemy");
@@ -185,31 +227,40 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 
 
-	LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
-	checkpoint_gObj->AddComponent("MeshRenderer");
-	checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
-	checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
-	checkpoint_gObj->SetPosition(LMVector3(0, 4, -10));
-	checkpoint_gObj->AddComponent("Checkpoint");
-	checkpoint_gObj->GetComponent<Checkpoint>()->Start(ship_gObj, 0);
+	// CHECKPOINTS
+	//raceManager_gObj->GetComponent<RaceManager>()->Start();
 
 
+	const int numberOfCheckpoints = 3;
+	LMVector3 checkpointPositions[numberOfCheckpoints];
 
-	////GameObject* checkpoint_gObj = _mScene->AddGameobject("checkpoint");
-	////checkpoint_gObj->AddComponent("MeshRenderer");
-	////checkpoint_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
-	//////checkpoint->AddComponent<RigidBodyComponent>(0);
-	//////checkpoint_gObj->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
-	////checkpoint_gObj->GetNode()->SetScale(100.0f, 100.0f, 100.0f);
-	////checkpoint_gObj->SetPosition(LMVector3(0, 5, -50));
-	////////checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
-	//////checkpoint_gObj->AddComponent("Checkpoint");
+	checkpointPositions[0] = LMVector3(0, 4, -60);
+	checkpointPositions[1] = LMVector3(0, 4, -120);
+	checkpointPositions[2] = LMVector3(0, 4, -180);
+
+	for (size_t i = 0; i < numberOfCheckpoints; i++) {
+
+		std::string checkpointName = "checkP" + i;
+		LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject(checkpointName);
+		checkpoint_gObj->AddComponent("MeshRenderer");
+		checkpoint_gObj->GetComponent<MeshRenderer>()->Start(checkpointName, "SphereDebug.mesh", "");
+		checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+		checkpoint_gObj->SetPosition(checkpointPositions[i]);
+		Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
+	}
+
+	//LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
+	//checkpoint_gObj->AddComponent("MeshRenderer");
+	//checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
+	//checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
+	//checkpoint_gObj->SetPosition(LMVector3(0, 4, -50));
+	//Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
 
 
 #pragma region PathWaypoints
-	LMVector3 pos01 = LMVector3(50, 10, -100);
-	LMVector3 pos02 = LMVector3(-50, 60, -100);
-	LMVector3 pos03 = LMVector3(-20, 10, -50);
+	LMVector3 pos01 = LMVector3(50, 10, -180);
+	LMVector3 pos02 = LMVector3(-50, 60, -180);
+	LMVector3 pos03 = LMVector3(-20, 10, -100);
 
 	auto wayPoint01 = _mScene->AddGameobject("WayPoint01");
 	wayPoint01->AddComponent("MeshRenderer");
@@ -250,15 +301,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	}
 #pragma endregion
 
-	//// CHECKPOINT
 	//Skybox
 	_renderScn->SetSkybox();
-	//GameObject* checkpoint = _mScene->AddGameobject("checkpoint");
-	//checkpoint->AddComponent<MeshRenderer>("checkpoint", "BlueFalcon.mesh", "FalconRedone/FalconMat", _renderScn);
-	//checkpoint->AddComponent<RigidBodyComponent>(0);
-	//checkpoint->GetNode()->SetScale(60.0f, 10.0f, 10.0f);
-	//checkpoint->SetPosition(LMVector3(0, 5, -50));
-	//checkpoint->AddComponent<Checkpoint>(ship_gObj, 0);
 
 #pragma endregion
 
@@ -284,12 +328,11 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<AudioSource>("AudioSource");
 	cmpFac->RegisterComponent<AudioListener>("AudioListener");
 	cmpFac->RegisterComponent<Camera>("Camera");
-	cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
 	cmpFac->RegisterComponent<MeshRenderer>("MeshRenderer");
 	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
 	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
 	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
-	cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
+	//cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
 
 }
 

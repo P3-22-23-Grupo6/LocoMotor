@@ -17,16 +17,6 @@ LocoMotor::Camera::Camera()
 	_offset = LMVector3(0, 0, 0);
 }
 
-LocoMotor::Camera::Camera(Scene* scene, OgreWrapper::RenderScene* renderScn, GameObject* target, LMVector3 offset) {
-
-	// Guardar variables para usarlas en el inicializador del componente
-
-	_scene = scene;
-	_renderScn = renderScn;
-	_target = target;
-	_offset = offset;
-}
-
 void LocoMotor::Camera::InitComponent() {
 
 	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject

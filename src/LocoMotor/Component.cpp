@@ -1,4 +1,5 @@
 #include "Component.h"
+#include "GameObject.h"
 
 
 LocoMotor::GameObject* LocoMotor::Component::GetContext() {
@@ -10,3 +11,6 @@ void LocoMotor::Component::SetContext(GameObject* ent) {
 
 void LocoMotor::Component::InitComponent() {
 }
+
+//LocoMotor::GameObject* LocoMotor::Component::GetGameobject() 
+//{ return gameObject; }

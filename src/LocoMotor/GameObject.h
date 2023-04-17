@@ -31,7 +31,7 @@ namespace LocoMotor {
 
 	class Scene;
 
-    class GameObject {
+    class MOTOR_API GameObject {
 	public:
 		/// @brief Constructor
 		GameObject(OgreWrapper::Node* node);
@@ -46,15 +46,17 @@ namespace LocoMotor {
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
 		template<typename ...Ts>
-	    void AddComponent(std::string name ,Ts&& ...params) {
+		Component* AddComponent(std::string name ,Ts&& ...params) {
 			if (_componentsByName.count(name) > 0) {
-				return;
+				return nullptr;
 			}
 			else {
 				Component* comp = ComponentsFactory::GetInstance()->CreateComponent(name);
 				comp->SetContext(this);
 				comp->InitComponent();
 				_componentsByName.insert({ name, comp });
+
+				return comp;
 			}
 			//EJ.:
 			//ent->AddComponent<Camera>(10,0,0);

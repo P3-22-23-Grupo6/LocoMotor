@@ -18,10 +18,16 @@ LocoMotor::ParticleSystem::ParticleSystem()
 	_name = "smoke";
 }
 
-ParticleSystem::ParticleSystem(std::string sysName, OgreWrapper::RenderScene* renderScn, std::string filename) {
-	_name = sysName;
-	_renderScn = renderScn;
-	_filename = filename;
+
+void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	for (int i = 0; i < params.size(); i++) {
+		if (params[i].first == "name") {
+			_name = params[i].second;
+		}
+		else if (params[i].first == "file") {
+			_filename = params[i].second;
+		}
+	}
 }
 
 void ParticleSystem::InitComponent() {

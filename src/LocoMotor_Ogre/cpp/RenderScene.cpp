@@ -37,6 +37,11 @@ void OgreWrapper::RenderScene::Render() {
 
 void OgreWrapper::RenderScene::SetSkybox() {
 	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000, false);
+	
+	//Para NIEBLA
+	//Ogre::ColourValue fadeColour(0.8, 0.8, 0.9);
+	//_mainCam->GetViewport()->setBackgroundColour(fadeColour);
+	//_manager->setFog(Ogre::FOG_LINEAR, fadeColour, 0, 2200, 2800);
 }
 
 OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name) {

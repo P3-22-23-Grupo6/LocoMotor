@@ -19,7 +19,8 @@ namespace LocoMotor {
 
 			AudioSource();
 			~AudioSource();
-
+			void InitComponent() override;
+			void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 			/// @brief Updates the source's position and velocity in the world
 			/// @param dt DeltaTime used to calculate the velocity by comparing last position
 			void Update(const float dt) override;
