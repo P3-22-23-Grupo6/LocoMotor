@@ -43,30 +43,30 @@ bool OgreWrapper::Canvas::Init(const char* name, Ogre::SceneManager* man) {
 	// _aux->addOverlay(_canvas);
 	_container = static_cast<Ogre::OverlayContainer*>(_aux->createOverlayElement("Panel", "Main"));
 	_container->setPosition(0.0f, 0.0f);
-	_container->setDimensions(0.2, 0.2);
+	_container->setDimensions(0.5, 0.5);
 	_container->setMaterialName(/*Ogre::MaterialManager::getSingleton().getDefaultMaterial()->getName()*/"TestMat");
 	// Add the panel to the overlay
-
+	
 	_canvas->add2D(_container);
 
 #pragma region TEMP, Mostrar texto
-	/*
-	Ogre::FontPtr pFont = Ogre::FontManager::getSingletonPtr()->create("MyFont", Ogre::OverlayElement::DEFAULT_RESOURCE_GROUP);
+	
+	Ogre::FontPtr pFont = Ogre::FontManager::getSingletonPtr()->create("MyFont.fontdef", Ogre::OverlayElement::DEFAULT_RESOURCE_GROUP);
 	pFont->setType(Ogre::FT_TRUETYPE);
 	pFont->setSource("Roboto-Thin.ttf");
 	pFont->setTrueTypeSize(16);
 	pFont->_setMaterial(Ogre::MaterialManager::getSingleton().getDefaultMaterial());
 	pFont->setTrueTypeResolution(1024);
 
-	Ogre::GlyphInfo a = Ogre::GlyphInfo();
-	a.uvRect = Ogre::Font::UVRect(1, 1, 1, 1);
-	a.codePoint = 200;
-	a.aspectRatio = 1.f;
-	a.advance = 1.f;
-	a.bearing = 1.f;
-	pFont->setGlyphInfo(a);
+	//Ogre::GlyphInfo a = Ogre::GlyphInfo();
+	//a.uvRect = Ogre::Font::UVRect(1, 1, 1, 1);
+	//a.codePoint = 200;
+	//a.aspectRatio = 1.f;
+	//a.advance = 1.f;
+	//a.bearing = 1.f;
+	//pFont->setGlyphInfo(a);
 
-	//pFont->load();
+	pFont->load();
 
 	std::cout << "AAAAAAA";
 
@@ -84,7 +84,7 @@ bool OgreWrapper::Canvas::Init(const char* name, Ogre::SceneManager* man) {
 	tex->setAlignment(Ogre::TextAreaOverlayElement::Left);
 	//std::cout << tex->getFontName();
 	_container->addChild(tex);
-	*/
+	
 #pragma endregion
 
 	_canvas->show();
@@ -100,3 +100,16 @@ bool OgreWrapper::Canvas::Render() {
 
 void OgreWrapper::Canvas::SetSceneManager() {
 }
+
+bool OgreWrapper::Canvas::ShutDown() {
+	for (UIElement* uie : _uiElems) {
+		delete uie;
+	}
+	_uiElems.clear();
+
+	delete _ovrSys;
+	_ovrSys = nullptr;
+
+	return false;
+}
+
