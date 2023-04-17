@@ -51,23 +51,23 @@ void PhysicsManager::RemoveRigidBodyFromWorld(btRigidBody* rb) {
 	_dynamicWorld->removeRigidBody(rb);
 }
 
-void PhysicsManager::Update() {
-	_dynamicWorld->stepSimulation(1.0 / 60.0);
+void PhysicsManager::Update(float dT) {
+	_dynamicWorld->stepSimulation(dT / 1000.f);
 
-	//print positions of all objects
-	for (int j = _dynamicWorld->getNumCollisionObjects() - 1; j >= 0; j--) {
-		btCollisionObject* obj = _dynamicWorld->getCollisionObjectArray()[j];
-		btRigidBody* body = btRigidBody::upcast(obj);
-		btTransform trans;
-		if (body && body->getMotionState()) {
-			body->getMotionState()->getWorldTransform(trans);
-		}
-		else {
-			trans = obj->getWorldTransform();
-		}
-		//trans.setRotation(btQuaternion(1, 1, 1, 1));
-		//printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
-		//printf("world rot object %d = %f,%f,%f,%f\n", j, float(trans.getRotation().x()), float(trans.getRotation().y()), float(trans.getRotation().z()), float(trans.getRotation().w()));
-		//std::cout<<body->getCollisionFlags();
-	}
+	////print positions of all objects
+	//for (int j = _dynamicWorld->getNumCollisionObjects() - 1; j >= 0; j--) {
+	//	btCollisionObject* obj = _dynamicWorld->getCollisionObjectArray()[j];
+	//	btRigidBody* body = btRigidBody::upcast(obj);
+	//	btTransform trans;
+	//	if (body && body->getMotionState()) {
+	//		body->getMotionState()->getWorldTransform(trans);
+	//	}
+	//	else {
+	//		trans = obj->getWorldTransform();
+	//	}
+	//	//trans.setRotation(btQuaternion(1, 1, 1, 1));
+	//	//printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
+	//	//printf("world rot object %d = %f,%f,%f,%f\n", j, float(trans.getRotation().x()), float(trans.getRotation().y()), float(trans.getRotation().z()), float(trans.getRotation().w()));
+	//	//std::cout<<body->getCollisionFlags();
+	//}
 }

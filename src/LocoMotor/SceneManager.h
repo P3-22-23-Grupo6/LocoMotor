@@ -36,9 +36,7 @@ namespace LocoMotor {
 		
 
 		void Update();
-		float GetDelta() {
-			return _actTime;
-		};
+		float GetDelta();
 
 	private:
 		SceneManager();

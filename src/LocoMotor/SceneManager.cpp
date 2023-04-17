@@ -88,7 +88,7 @@ Scene* LocoMotor::SceneManager::GetCurrentScene()
 void LocoMotor::SceneManager::Update() {
 
 	_actTime = SDL_GetTicks();
-	_deltaTime = _actTime - (float)_lastTime;
+	_deltaTime = (float)_actTime - (float)_lastTime;
 	_lastTime = _actTime;
 
 	if (_deltaTime <= 0) _deltaTime = 0.001f;
@@ -98,6 +98,10 @@ void LocoMotor::SceneManager::Update() {
 		_activeScene->Render();
 	}
 
+}
+
+float LocoMotor::SceneManager::GetDelta() {
+	return _deltaTime;
 }
 
 void SceneManager::StartScene(Scene* scn) {

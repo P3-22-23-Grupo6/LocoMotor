@@ -33,7 +33,7 @@ namespace PhysicsWrapper {
 		friend Singleton<PhysicsWrapper::PhysicsManager>;
 	public:
 		/// @brief Update the physics world , steps the physic simulation
-		void Update();
+		void Update(float dT);
 		/// @brief Create the rigidBody with the info given
 		/// @param info The information to build the rigidBody
 		/// @return The BulletRigidBody pointer created
