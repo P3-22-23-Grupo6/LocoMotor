@@ -105,7 +105,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->AddComponent("ParticleSystem");
 
 	ship_gObj->AddComponent("RigidBodyComponent");
-	ship_gObj->GetComponent<RigidBodyComponent>()->Start(0.5f);
+	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
 
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->setMovable(true);
