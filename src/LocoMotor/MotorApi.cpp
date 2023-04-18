@@ -7,7 +7,6 @@
 #include "InputManager.h"
 #include "CheckML.h"
 #include "PhysicsManager.h"
-#include "BulletRigidBody.h"
 #include "lmVector.h"
 #include "RenderScene.h"
 #include "SceneManager.h"
@@ -20,8 +19,6 @@
 #include "MeshRenderer.h"
 #include <RigidBodyComponent.h>
 #include <ParticleSystem.h>
-#include <Checkpoint.h>
-#include <RaceManager.h>
 #include <Camera.h>
 #include <EnemyAI.h>
 
@@ -217,7 +214,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
-	map->GetComponent<RigidBodyComponent>()->setStatic();
 #pragma endregion
 
 }
