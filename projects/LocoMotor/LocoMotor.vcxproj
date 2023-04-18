@@ -52,6 +52,7 @@
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
@@ -61,6 +62,7 @@
     <ClInclude Include="..\..\src\LocoMotor\EnemyAI.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h" />
+    <ClInclude Include="..\..\src\LocoMotor\include\Transform.h" />
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h" />

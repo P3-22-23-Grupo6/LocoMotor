@@ -17,6 +17,7 @@ Scene::Scene(std::string nombre) {
 
 	// Crear camara
 	camera_gObj = AddGameobject("cam");
+	camera_gObj->AddComponent("Transform");
 	camera_gObj->AddComponent("Camera");
 	camera_gObj->AddComponent("AudioListener");
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();

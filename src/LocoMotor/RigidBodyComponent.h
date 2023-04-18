@@ -35,6 +35,9 @@ namespace LocoMotor {
 		/// @brief Sets the body rotation
 		/// @param rot Rotation to set
 		void setRotation(LMQuaternion rot);
+		/// @brief Sets the body rotation
+		/// @param rot Rotation to set
+		void setPosition(LMVector3 pos);
 		/// @brief Enable/Disable the gravity force affected to this body
 		/// @param gravity 
 		void useGravity(LMVector3 gravity);
@@ -54,6 +57,10 @@ namespace LocoMotor {
 		bool GetRaycastHit(LMVector3 from, LMVector3 to);
 		LMVector3 GetraycastHitPoint(LMVector3 from, LMVector3 to);
 		LMVector3 GethasRaycastHitNormal(LMVector3 from, LMVector3 to);
+
+		/// @brief Set The friction of this rigidbody
+		/// @param fric the new friction value
+		void SetFriction(float fric);
 	private:
 		float _mass;
 		btRigidBody* _body;

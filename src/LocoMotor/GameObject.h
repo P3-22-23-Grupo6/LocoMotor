@@ -22,14 +22,9 @@ namespace OgreWrapper {
 
 
 namespace LocoMotor {
-	struct Transform {
-		LMVector3 position;
-		LMVector3 rotation;
-		LMVector3 scale;
-		LMQuaternion direction;
-	};
 
 	class Scene;
+	class Transform;
 
     class MOTOR_API GameObject {
 	public:
@@ -96,17 +91,14 @@ namespace LocoMotor {
 			//return static_cast<T*>(_componentsByName.at(name));
 		}
 
-		/// @brief Get the transform of the GameObject
-		Transform GetTransform();
-
 		/// @brief Set the position of the GameObject
 		void SetPosition(LMVector3 pos);
 		/// @brief Set the rotation of the GameObject
-		void SetRotation(LMVector3 rot);
+		void SetRotation(LMQuaternion rot);
 		/// @brief Set the scale of the GameObject
 		void SetScale(LMVector3 sc);
-		/// @brief Set the transform direction of the GameObject
-		void SetDirection(LMQuaternion dir);
+
+		Transform* GetTransform();
 
 		//HITO 1 POC
 
@@ -126,15 +118,18 @@ namespace LocoMotor {
 
 		void StartComp();
 
+		void RegisterTransform(Transform* newTrans);
+
 		//Prueba
 		void setMovable(bool b) {
 			movable = b;
 		}
 
 	private:
-		Transform _tr;
 		std::map<std::string, Component*> _componentsByName;
 		Scene* scene;
+
+		Transform* transform;
 
 		//HITO 1 POC
 		//PhysicsWrapper::BulletRigidBody* _rigidBody;

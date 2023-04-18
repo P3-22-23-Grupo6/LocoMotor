@@ -2,6 +2,7 @@
 #include "LMVector.h"
 #include "PhysicsManager.h"
 #include "GameObject.h"
+#include "Transform.h"
 #include "Renderer3D.h"
 #include "MeshRenderer.h"
 #include "MeshStrider.h"
@@ -38,7 +39,7 @@ void LocoMotor::RigidBodyComponent::Start() {
 	RigidBodyInfo info;
 	info.mass = _mass;
 	info.boxSize = LMVector3::LmToBullet(LMVector3(12,3,5));
-	info.origin = LMVector3::LmToBullet(gameObject->GetTransform().position);
+	info.origin = LMVector3::LmToBullet(gameObject->GetTransform()->GetPosition());
 	info.size = -1;
 	if (_mass == 0) {
 		OgreWrapper::Renderer3D* mesh = gameObject->GetComponent<MeshRenderer>()->GetRenderer();
@@ -81,6 +82,11 @@ void LocoMotor::RigidBodyComponent::setRotation(LMQuaternion rot)
 	_body->getWorldTransform().setRotation(LMQuaternion::LmToBullet(rot));
 }
 
+void LocoMotor::RigidBodyComponent::setPosition(LMVector3 pos)
+{
+	_body->getWorldTransform().setOrigin(LMVector3::LmToBullet(pos));
+}
+
 void LocoMotor::RigidBodyComponent::useGravity(LMVector3 gravity) {
 
 	_body->setGravity(LMVector3::LmToBullet(gravity));
@@ -115,4 +121,8 @@ LMVector3 LocoMotor::RigidBodyComponent::GetraycastHitPoint(LMVector3 from, LMVe
 
 LMVector3 LocoMotor::RigidBodyComponent::GethasRaycastHitNormal(LMVector3 from, LMVector3 to){
 	return PhysicsManager::GetInstance()->createRaycast(from, to).hitVNormal;
+}
+
+void LocoMotor::RigidBodyComponent::SetFriction(float fric) {
+	_body->setFriction(fric);
 }
