@@ -78,7 +78,19 @@ void LocoMotor::Transform::SetSize(const LMVector3& newSize) {
 void LocoMotor::Transform::SetUpwards(const LMVector3& newUpward) {
 	double angle = GetRotation().Up().Angle(newUpward);
 	if (angle == 0.) return;
-	LMVector3 axis = GetRotation().Up() * newUpward;
+
+
+	//LMVector3 axis = GetRotation().Up() * newUpward;
+	// Producto vectorial para hallar el vector perpendicular a otros dos vectores
+	// Despues pasar esto al LMVectoresque :TODO
+
+	LMVector3 v1 = GetRotation().Up();
+	LMVector3 v2 = newUpward;
+	LMVector3 axis = LMVector3(
+		v1.GetY() * v2.GetZ() - v1.GetZ() * v2.GetY(),
+		v1.GetZ() * v2.GetX() - v1.GetX() * v2.GetZ(),
+		v1.GetX() * v2.GetY() - v1.GetY() * v2.GetX());
+
 	SetRotation(GetRotation().Rotate(axis, angle));
 }
 

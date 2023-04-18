@@ -60,18 +60,32 @@ void GameObject::Update(float dt) {
 	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
 	//RAYCAST TEMPORAL
 	LMVector3 from = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z());
-	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 5, _node->GetPosition_Z());
+	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 20, _node->GetPosition_Z());
 	if (rbComp->GetRaycastHit(from, to)) {
 		// std::cout << "Collision! *****************";
 		//_node->Rotate(0, 3, 0);
 		LMVector3 n = rbComp->GethasRaycastHitNormal(from, to);
 
-		n.Normalize();
+		//n.Normalize();
 		std::cout << "\n" << "NORMAL = " << n.GetX() << ", " << n.GetY() << ", " << n.GetZ()<< "\n";
 
-		LMVector3 p = rbComp->GetraycastHitPoint(from, to) + n;
-		std::cout << "\n" << "CarPos = " << p.GetX() << ", " << p.GetY() << ", " << p.GetZ() << "\n";
+		//LMVector3 p = rbComp->GetraycastHitPoint(from, to) + n;
+		//std::cout << "\n" << "CarPos = " << p.GetX() << ", " << p.GetY() << ", " << p.GetZ() << "\n";
 
+
+		//GetTransform()->GetRotation().GetX()
+		//LMVector3 p = rbComp->GetraycastHitPoint(from, to) + n;
+		//std::cout << "\n" << "CarPos = " << p.GetX() << ", " << p.GetY() << ", " << p.GetZ() << "\n";
+
+		//LMVector3 prueba = LMVector3(0, 5, 6);
+		//prueba.Normalize();
+
+		// Intensidad con la que se va a actualizar el vector normal del coche
+		float pitchIntensity = 40;
+
+		n = LMVector3(n.GetX() * pitchIntensity, n.GetY() * pitchIntensity, n.GetZ() * pitchIntensity);
+
+		GetTransform()->SetUpwards(n);
 	}
 	else {
 		//std::cout << "NO COLL! *****************";
@@ -82,6 +96,16 @@ void GameObject::Update(float dt) {
 		double degToRad = 0.0174533;
 
 		GetComponent<RigidBodyComponent>()->addForce(transform->GetRotation().Forward() * 10 * dt);
+
+		//LMVector3 forward = GetTransform()->GetRotation().Forward();
+		//forward.Normalize();
+
+		//double speed = 3;
+
+		//forward = LMVector3(forward.GetX() * speed, forward.GetY() * speed, forward.GetZ() * speed);
+
+		//GetTransform()->SetPosition(GetTransform()->GetPosition() + forward);
+
 		//_rigidBody->AddForce(LMVector3(0, 0, 1));
 		//SetPosition(LMVector3(100, 10, 10));
 		//_node->Translate(0, 0, 1);
