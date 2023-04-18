@@ -55,8 +55,6 @@ public:
 	// Divide operators of vectors with a double
 	Vector3D operator/(const double& other);
 
-	operator LMVector3() const;
-
 
 	//Normalize a vector
 	/// @brief Normalize the Vector
@@ -82,9 +80,27 @@ public:
 	/// @param axis The Axis to Rotate the Vector
 	/// @param degrees The Degrees to Rotate the Vector
 	Vector3D Rotate(Vector3D& axis, double& degrees);
+
+	//Point a vector towards another vector
+	/// @brief Point the Vector towards another Vector
+	/// @param other The other Vector to Point the Vector towards
+	Vector3D PointTowards(Vector3D& other);
+
+	//Cross product of two vectors
+	/// @brief Get the Cross Product of two Vectors
+	/// @param other The other Vector to get the Cross Product with
+	Vector3D Cross(Vector3D& other);
+	
+	//Dot product of two vectors
+	/// @brief Get the Dot Product of two Vectors
+	/// @param other The other Vector to get the Dot Product with
+	double Dot(Vector3D& other);
 	
 	
 private:
+	//Makes it able to convert to LMVector3 for LocoMotor
+	operator LMVector3() const;
+	
 	double _x;
 	double _y;
 	double _z;
@@ -132,14 +148,13 @@ public:
 
 	// Multiply operators of quaternions with a double
 	Quaternion3D operator*(const double& other);
-
+	
 	// Divide operators of quaternions
 	Quaternion3D operator/(const Quaternion3D& other);
 
 	// Divide operators of quaternions with a double
 	Quaternion3D operator/(const double& other);
 
-	operator LMQuaternion() const;
 
 	//Normalize a quaternion
 	/// @brief Normalize the Quaternion
@@ -149,13 +164,27 @@ public:
 	/// @brief Get the Magnitude of the Quaternion
 	double Magnitude();
 	
-	//Lerp between two quaternions
-	/// @brief Lerp between two Quaternions
-	/// @param other The other Quaternion to Lerp with
-	/// @param t The t value to Lerp with
-	Quaternion3D Lerp(Quaternion3D& other, double t);
+	//Conjugate of a quaternion
+	/// @brief Get the Conjugate of the Quaternion
+	Quaternion3D Conjugate();
 
+	//Quaternion rotation by degrees
+	/// @brief Rotate the Quaternion in Degrees
+	/// @param axis The Axis to Rotate the Quaternion
+	/// @degrees The Degrees to Rotate the Quaternion
+	Quaternion3D Rotate(Vector3D& axis, double& degrees);
+	
+	//Vector rotation with a quaternion
+	/// @brief Rotate a Vector with the Quaternion
+	/// @param other The Vector to Rotate
+	/// @param quat The Quaternion to Rotate with
+	Vector3D QuaternionRotate(Vector3D& other, Quaternion3D& quat);
+
+	
 private:
+	//Makes it able to convert to LMQuaternion for LocoMotor
+	operator LMQuaternion() const;
+	
 	double _x;
 	double _y;
 	double _z;

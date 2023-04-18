@@ -128,7 +128,6 @@ LMVector3 LMVector3::operator*(const LMVector3& other) const {
 		this->_x * other._x,
 		this->_y * other._y,
 		this->_z * other._z);
-
 	return aux;
 }
 LMVector3 LMVector3::operator*(const btVector3& other) const {
@@ -281,6 +280,11 @@ LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) {
 	this->_z = a.GetZ();
 
 	return a;
+}
+
+//Get the perpendicular vector from two vectors
+LMVector3 LMVector3::Perpendicular(const LMVector3& other) const {
+	return Cross(other).Cross(*this);
 }
 
 

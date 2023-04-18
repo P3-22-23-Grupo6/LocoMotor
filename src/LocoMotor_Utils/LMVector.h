@@ -128,6 +128,11 @@ public:
 	/// @param angle The angle to rotate (degrees)
 	LMVector3 Rotate(const LMVector3& axis, double angle);
 
+	
+	//Product
+	///	@brief Get the Product of two Vectors
+	/// @param other The other Vector
+	LMVector3 Product(const LMVector3& other) const;
 
 
 
