@@ -38,8 +38,6 @@ void LocoMotor::Transform::Start() {
 }
 
 void LocoMotor::Transform::Update(const float dt) {
-	//TODO: Quitar esto
-	SetPhysRotation(_direction);
 }
 
 const LMVector3& LocoMotor::Transform::GetPosition() {
@@ -101,6 +99,7 @@ void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
 
 void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
 	_direction = newRotation;
+	_direction.Normalize();
 	Ogre::Quaternion a = newRotation.LmToOgre(newRotation);
 	_gObjNode->SetOrientation(a);
 }
