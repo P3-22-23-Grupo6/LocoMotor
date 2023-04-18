@@ -2,7 +2,7 @@
 #include "PhysicsManager.h"
 #include <btBulletDynamicsCommon.h>
 #include "LMVector.h"
-#include "MeshStrider.h"
+
 using namespace PhysicsWrapper;
 BulletRigidBody::BulletRigidBody(RigidBodyInfo info, MeshStrider* mesh) {
 	if (mesh != nullptr) {

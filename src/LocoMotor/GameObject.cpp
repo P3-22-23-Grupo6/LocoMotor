@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Transform.h"
 
 //HITO 1 POC
 #include "InputManager.h"
@@ -13,10 +14,6 @@ using namespace LocoMotor;
 
 // Constructor
 GameObject::GameObject(OgreWrapper::Node* node) {
-	_tr.direction = LMQuaternion();
-	_tr.position = LMVector3();
-	_tr.rotation = LMVector3();
-	_tr.scale = LMVector3(1,1,1);
 
 	_node = node;
 
@@ -27,6 +24,7 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 void GameObject::Update(float dt) {
 	std::map<std::string, Component*>::iterator it;
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
+		if(it->second->isEnabled())
 		it->second->Update(dt);
 	}
 	if (GetComponent<RigidBodyComponent>() == nullptr) return;
@@ -62,17 +60,18 @@ void GameObject::Update(float dt) {
 	LMVector3 from = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z());
 	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 5, _node->GetPosition_Z());
 	if (rbComp->GetRaycastHit(from, to)) {
-		std::cout << "Collision! *****************";
+		// std::cout << "Collision! *****************";
 		//_node->Rotate(0, 3, 0);
 	}
-	else std::cout << "NO COLL! *****************";
-
+	else {
+		//std::cout << "NO COLL! *****************";
+	}
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
 
 		double degToRad = 0.0174533;
 
-		GetComponent<RigidBodyComponent>()->addForce(LMVector3(-20 * std::sin(_tr.rotation.GetY() * degToRad), 0, -20 * std::cos(_tr.rotation.GetY() * degToRad)) * dt);
+		GetComponent<RigidBodyComponent>()->addForce(transform->GetRotation().Forward() * 10 * dt);
 		//_rigidBody->AddForce(LMVector3(0, 0, 1));
 		//SetPosition(LMVector3(100, 10, 10));
 		//_node->Translate(0, 0, 1);
@@ -80,20 +79,19 @@ void GameObject::Update(float dt) {
 
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
 	if (rotateRight) {
-		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, 1, 0, 0));
-		//_rigidBody->setRotation(LMQuaternion(1, 1, 0, 0));
-		_node->Rotate(0, 3, 0);
-		_tr.rotation.SetY(_tr.rotation.GetY() + 3.);
+		transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), 3.));
 	}
 	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
 	if (rotateLeft) {
+		/*
 		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, -1, 0, 0));
 		//_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
 		_node->Rotate(0, -3, 0);
-		_tr.rotation.SetY(_tr.rotation.GetY() - 3.);
+		*/
+		transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), -3.));
 	}
 
-	std::cout << _tr.rotation.GetY() << std::endl;
+	std::cout << transform->GetRotation().GetY() << std::endl;
 }
 
 
@@ -105,31 +103,30 @@ void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair
 	comp->SetContext(this);
 	comp->Init(params);
 	_componentsByName.insert({ name, comp });
+	if (name == "Transform")
+	{
+		transform = dynamic_cast<Transform*>(comp);
+	}
 }
 
 
 // Set the position of the GameObject
 void GameObject::SetPosition(LMVector3 pos) {
-	_tr.position = pos;
-	_node->SetPosition(_tr.position.GetX(), _tr.position.GetY(), _tr.position.GetZ()); // Todo: Revisar
-}
-// Set the rotation of the GameObject
-void GameObject::SetRotation(LMVector3 rot) {
-	_tr.rotation = rot;
+	transform->SetPosition(pos);
 }
 
-// Set the transform direction of the GameObject
-void GameObject::SetDirection(LMQuaternion dir) {
-	_tr.direction = dir;
+void LocoMotor::GameObject::SetRotation(LMQuaternion rot){
+	transform->SetRotation(rot);
 }
 
 // Set the scale of the GameObject
 void GameObject::SetScale(LMVector3 sc) {
-	_tr.scale = sc;
+	transform->SetSize(sc);
 }
+
 // Get the transform of the GameObject
-Transform GameObject::GetTransform() {
-	return _tr;
+Transform* GameObject::GetTransform() {
+	return transform;
 }
 
 // Set the renderer of the GameObject
@@ -155,6 +152,10 @@ void GameObject::StartComp(){
 	for (auto comp : _componentsByName) {
 		comp.second->Start();
 	}
+}
+
+void LocoMotor::GameObject::RegisterTransform(Transform* newTrans) {
+	transform = newTrans;
 }
 
 

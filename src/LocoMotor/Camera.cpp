@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include "LocoMotor_Ogre/include/Camera.h"
+#include "Transform.h"
 #include "RenderScene.h"
 #include "Scene.h"
 #include "GameObject.h"
@@ -40,10 +41,9 @@ void LocoMotor::Camera::Update(float dt) {
 	// Comprobar si hay asignado un target
 	if (_target != nullptr) {
 		// Actualizar posicion para que siga al target
-		float x = _target->GetNode()->GetPosition_X();
-		float y = _target->GetNode()->GetPosition_Y();
-		float z = _target->GetNode()->GetPosition_Z();
-		gameObject->SetPosition(LMVector3(x + _offset.GetX(), y + _offset.GetY(), z + _offset.GetZ()));
+		auto rotVec = _target->GetTransform()->GetRotation().Rotate(_offset);
+		gameObject->SetPosition(_target->GetTransform()->GetPosition() + rotVec);
+		gameObject->SetRotation(_target->GetTransform()->GetRotation());
 	}
 }
 

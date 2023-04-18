@@ -1,7 +1,5 @@
 #pragma once
-#include <string>
 #include "Component.h"
-#include "GameObject.h"
 
 namespace OgreWrapper {
 	class Renderer3D;

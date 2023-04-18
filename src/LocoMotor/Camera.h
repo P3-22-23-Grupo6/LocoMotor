@@ -5,6 +5,7 @@
 //}
 #include "Component.h"
 #include "LMVector.h"
+//struct LMVector3;
 
 namespace OgreWrapper {
 	class RenderScene;

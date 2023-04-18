@@ -1,8 +1,8 @@
 #include "RigidBodyComponent.h"
 #include "LMVector.h"
-#include "BulletRigidBody.h"
 #include "PhysicsManager.h"
 #include "GameObject.h"
+#include "Transform.h"
 #include "Renderer3D.h"
 #include "MeshRenderer.h"
 #include "MeshStrider.h"
@@ -32,14 +32,14 @@ LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
 
 void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
 {
-	_body->AddForce(force);
+	_body->applyCentralForce(LMVector3::LmToBullet(force));
 }
 void LocoMotor::RigidBodyComponent::Start() {
 	
 	RigidBodyInfo info;
 	info.mass = _mass;
 	info.boxSize = LMVector3::LmToBullet(LMVector3(12,3,5));
-	info.origin = LMVector3::LmToBullet(gameObject->GetTransform().position);
+	info.origin = LMVector3::LmToBullet(gameObject->GetTransform()->GetPosition());
 	info.size = -1;
 	if (_mass == 0) {
 		OgreWrapper::Renderer3D* mesh = gameObject->GetComponent<MeshRenderer>()->GetRenderer();
@@ -51,8 +51,6 @@ void LocoMotor::RigidBodyComponent::Start() {
 		}	
 	}
 	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
-
-	
 }
 
 void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std::string>>& params) {
@@ -74,76 +72,57 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 }
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
-	gameObject->SetPosition(_body->getPosition());
-	_body->clearForce();
-	//gameObject->SetRotation(_body->getRotation());
-	
-	//LMVector3 rayFrom = LMVector3(_body->getPosition());
-	//LMVector3 rayTo = LMVector3(_body->getPosition());
-	////btVector3 btTo(camPos.x, -5000.0f, camPos.z);
-	//btCollisionWorld::ClosestRayResultCallback res(rayFrom, rayTo);
-	//Base::getSingletonPtr()->m_btWorld->rayTest(btFrom, btTo, res); // m_btWorld is btDiscreteDynamicsWorld
+	gameObject->SetPosition(LMVector3::BulletToLm(_body->getWorldTransform().getOrigin()));
+	_body->clearForces();
 }
 
 
 void LocoMotor::RigidBodyComponent::setRotation(LMQuaternion rot)
 {
-	_body->setRotation(rot);
+	_body->getWorldTransform().setRotation(LMQuaternion::LmToBullet(rot));
 }
 
-void LocoMotor::RigidBodyComponent::setMass(float m) {
-	_mass = m;
-	_body->setMass(m);
+void LocoMotor::RigidBodyComponent::setPosition(LMVector3 pos)
+{
+	_body->getWorldTransform().setOrigin(LMVector3::LmToBullet(pos));
 }
 
-void LocoMotor::RigidBodyComponent::useGravity(bool gravity) {
-	if (gravity)
-		_body->setGravity(LMVector3(0, -99, 0));
-	else
-		_body->setGravity(LMVector3(0, 0, 0));
+void LocoMotor::RigidBodyComponent::useGravity(LMVector3 gravity) {
 
+	_body->setGravity(LMVector3::LmToBullet(gravity));
 }
 
 void LocoMotor::RigidBodyComponent::FreezePosition(LMVector3 freezeAxis) {
-	_body->FreezePosition(freezeAxis);
+	_body->setLinearFactor(LMVector3::LmToBullet(freezeAxis));
 }
 
 void LocoMotor::RigidBodyComponent::FreezeRotation(LMVector3 freezeAxis) {
-	_body->FreezeRotation(freezeAxis);
+	_body->setAngularFactor(LMVector3::LmToBullet(freezeAxis));
 }
 
-void LocoMotor::RigidBodyComponent::setDynamic() {
-	_body->setBodystate(0);
+bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* other) {
+	if (other != nullptr) {
+		return _body->checkCollideWith(other->GetComponent<RigidBodyComponent>()->getBody());
+	}
+	return false;
 }
 
-void LocoMotor::RigidBodyComponent::setKinematic() {
-	_body->setBodystate(2);
-}
-
-void LocoMotor::RigidBodyComponent::setStatic() {
-	_body->setBodystate(1);
-}
-
-void LocoMotor::RigidBodyComponent::setNoContactResponse() {
-	_body->setBodystate(4);
-}
-
-bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* go) {
-	return _body->checkCollision(go->GetComponent<RigidBodyComponent>()->getBody());
-}
-
-PhysicsWrapper::BulletRigidBody* LocoMotor::RigidBodyComponent::getBody() {
+btRigidBody* LocoMotor::RigidBodyComponent::getBody() {
 	return _body;
 }	
 
 bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
-	return _body->createRaycast(from, to).hasHit;
+	return PhysicsManager::GetInstance()->createRaycast(from,to).hasHit;
 }
 
 LMVector3 LocoMotor::RigidBodyComponent::GetraycastHitPoint(LMVector3 from, LMVector3 to) {
-	return _body->createRaycast(from, to).hitPos;
+	return PhysicsManager::GetInstance()->createRaycast(from, to).hitPos;
 }
 
 LMVector3 LocoMotor::RigidBodyComponent::GethasRaycastHitNormal(LMVector3 from, LMVector3 to){
-	return _body->createRaycast(from, to).hitVNormal;
+	return PhysicsManager::GetInstance()->createRaycast(from, to).hitVNormal;
+}
+
+void LocoMotor::RigidBodyComponent::SetFriction(float fric) {
+	_body->setFriction(fric);
 }

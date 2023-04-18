@@ -489,7 +489,7 @@ LMQuaternion LMQuaternion::Rotate(const LMVector3& axis, double angle) const 	{
 	q.SetX(axis.GetX() * sinHalfAngle);
 	q.SetY(axis.GetY() * sinHalfAngle);
 	q.SetZ(axis.GetZ() * sinHalfAngle);
-	return q;
+	return q * (*this);
 }
 
 // Rotate a vector by this quaternion

@@ -1,15 +1,14 @@
 #include "Scene.h"
 #include "Camera.h"
-#include "Checkpoint.h"
 #include "OgreManager.h"
 #include "RenderScene.h"
 #include "Node.h"
-#include "GameObject.h"
 #include "Renderer3D.h"
 #include "RigidBodyComponent.h"
 #include "PhysicsManager.h"
 #include "MeshRenderer.h"
 #include "ParticleSystem.h"
+#include "GameObject.h"
 
 using namespace LocoMotor;
 Scene::Scene(std::string nombre) {
@@ -18,6 +17,7 @@ Scene::Scene(std::string nombre) {
 
 	// Crear camara
 	camera_gObj = AddGameobject("cam");
+	camera_gObj->AddComponent("Transform");
 	camera_gObj->AddComponent("Camera");
 	camera_gObj->AddComponent("AudioListener");
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();

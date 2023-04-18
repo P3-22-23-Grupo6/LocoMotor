@@ -1,7 +1,8 @@
 #include "PhysicsManager.h"
 #include <iostream>
-#include "BulletRigidBody.h"
 #include <btBulletDynamicsCommon.h>
+#include "MeshStrider.h"
+#include "LMVector.h"
 using namespace PhysicsWrapper;
 PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
 
@@ -20,8 +21,16 @@ PhysicsManager::PhysicsManager() {
 }
 
 PhysicsManager::~PhysicsManager() {
-	for (auto rb : _vRigidBody)delete rb;
-	_vRigidBody.clear();
+	for (int i = _dynamicWorld->getNumCollisionObjects() - 1; i >= 0; i--) {
+		btCollisionObject* obj = _dynamicWorld->getCollisionObjectArray()[i];
+		btRigidBody* body = btRigidBody::upcast(obj);
+		if (body && body->getMotionState()) {
+			delete body->getMotionState();
+		}
+		delete body->getCollisionShape();
+		_dynamicWorld->removeCollisionObject(obj);
+		delete obj;
+	}
 	delete _collisionConfiguration;
 	delete _dispatcher;
 	delete _overlappingPairCache;
@@ -29,10 +38,44 @@ PhysicsManager::~PhysicsManager() {
 	delete _dynamicWorld;
 }
 
-BulletRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms) {
-	BulletRigidBody* brg = new BulletRigidBody(info,ms);
-	_vRigidBody.push_back(brg);
-	return brg;
+btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms) {
+	btCollisionShape* shape;
+	if (ms != nullptr) {
+		shape = new btBvhTriangleMeshShape(ms, true, true);
+	}
+	else {
+		if (info.size <= 0.0)
+			shape = new btBoxShape(info.boxSize);
+		else
+			shape = new btSphereShape(info.size);
+	}
+
+	btTransform groundTransform;
+	groundTransform.setIdentity();
+	groundTransform.setOrigin(info.origin);
+
+	btScalar mass(info.mass);
+
+	//rigidbody is dynamic if and only if mass is non zero, otherwise static
+	bool isDynamic = (mass != 0.f);
+
+	btVector3 localInertia(0, 0, 0);
+	if (isDynamic)
+		shape->calculateLocalInertia(mass, localInertia);
+
+	//using motionstate is optional, it provides interpolation capabilities, and only synchronizes 'active' objects
+	btDefaultMotionState* myMotionState = new btDefaultMotionState(groundTransform);
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, shape, localInertia);
+	btRigidBody* rigidbody = new btRigidBody(rbInfo);
+
+	//add the body to the dynamics world;
+	_dynamicWorld->addRigidBody(rigidbody);
+	rigidbody->setDamping(0.7, 0.7);
+	if (isDynamic) {
+		rigidbody->setCcdMotionThreshold(0.0000001);
+		rigidbody->setCcdSweptSphereRadius(0.5f);
+	}
+	return rigidbody;
 
 }
 void PhysicsManager::SetWorldGravity(btVector3 gravity) {
@@ -43,31 +86,28 @@ btDynamicsWorld* PhysicsWrapper::PhysicsManager::GetDynamicWorld() {
 	return _dynamicWorld;
 }
 
-void PhysicsManager::AddRigidBodyToWorld(btRigidBody* rb) {
-	_dynamicWorld->addRigidBody(rb);
-}
-
 void PhysicsManager::RemoveRigidBodyFromWorld(btRigidBody* rb) {
 	_dynamicWorld->removeRigidBody(rb);
 }
 
 void PhysicsManager::Update(float dT) {
 	_dynamicWorld->stepSimulation(dT / 1000.f);
+}
+RaycastInfo PhysicsWrapper::PhysicsManager::createRaycast(LMVector3 from, LMVector3 direction) {
+	RaycastInfo newRaycastInfo = RaycastInfo();
 
-	////print positions of all objects
-	//for (int j = _dynamicWorld->getNumCollisionObjects() - 1; j >= 0; j--) {
-	//	btCollisionObject* obj = _dynamicWorld->getCollisionObjectArray()[j];
-	//	btRigidBody* body = btRigidBody::upcast(obj);
-	//	btTransform trans;
-	//	if (body && body->getMotionState()) {
-	//		body->getMotionState()->getWorldTransform(trans);
-	//	}
-	//	else {
-	//		trans = obj->getWorldTransform();
-	//	}
-	//	//trans.setRotation(btQuaternion(1, 1, 1, 1));
-	//	//printf("world pos object %d = %f,%f,%f\n", j, float(trans.getOrigin().getX()), float(trans.getOrigin().getY()), float(trans.getOrigin().getZ()));
-	//	//printf("world rot object %d = %f,%f,%f,%f\n", j, float(trans.getRotation().x()), float(trans.getRotation().y()), float(trans.getRotation().z()), float(trans.getRotation().w()));
-	//	//std::cout<<body->getCollisionFlags();
-	//}
+	btCollisionWorld::ClosestRayResultCallback rayCallback(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction));
+
+	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction), rayCallback);
+	if (rayCallback.hasHit()) {
+		newRaycastInfo.hasHit = true;
+		newRaycastInfo.hitPos = LMVector3(rayCallback.m_hitPointWorld.getX(),
+										  rayCallback.m_hitPointWorld.getY(),
+										  rayCallback.m_hitPointWorld.getZ());
+		newRaycastInfo.hitVNormal = LMVector3(rayCallback.m_hitNormalWorld.getX(),
+											  rayCallback.m_hitNormalWorld.getY(),
+											  rayCallback.m_hitNormalWorld.getZ());
+	}
+	else newRaycastInfo.hasHit = false;
+	return newRaycastInfo;
 }

@@ -37,10 +37,7 @@ namespace PhysicsWrapper {
 		/// @brief Create the rigidBody with the info given
 		/// @param info The information to build the rigidBody
 		/// @return The BulletRigidBody pointer created
-		BulletRigidBody* CreateRigidBody(RigidBodyInfo info, MeshStrider* ms=nullptr);
-		/// @brief Add the RigidBody to the physics world
-		/// @param rb The pointer of the rigidbody
-		void AddRigidBodyToWorld(btRigidBody* rb);
+		btRigidBody* CreateRigidBody(RigidBodyInfo info, MeshStrider* ms=nullptr);
 		/// @brief Add the RigidBody to the physics world
 		/// @param rb The pointer of the rigidbody
 		void RemoveRigidBodyFromWorld(btRigidBody* rb);
@@ -49,6 +46,8 @@ namespace PhysicsWrapper {
 		void SetWorldGravity(btVector3 gravity);
 		/// @brief Gets dynamic World
 		btDynamicsWorld* GetDynamicWorld();
+
+		RaycastInfo createRaycast(LMVector3 from, LMVector3 direction);
 
 	private:
 		//Configuraciones para crear el mundo físico
