@@ -14,11 +14,11 @@ class MOTOR_API Vector3D {
 
 public:
 // Default constructor initializes vector to (0, 0, 0)
-/// @brief Create a new Vector3D with everything Set to 0
+/// @brief Create a new Vector3D with everything set to 0
 	Vector3D();
 	
 	// Constructor initializes vector to specified values
-	/// @brief Create a new Vector3D
+	/// @brief Create a new Vector3D with the specified values
 	Vector3D(double x, double y, double z);
 
 	// Getter functions
@@ -84,6 +84,7 @@ public:
 	//Point a vector towards another vector
 	/// @brief Point the Vector towards another Vector
 	/// @param other The other Vector to Point the Vector towards
+	/// @note Remember that this vector will be normalized
 	Vector3D PointTowards(Vector3D& other);
 
 	//Cross product of two vectors

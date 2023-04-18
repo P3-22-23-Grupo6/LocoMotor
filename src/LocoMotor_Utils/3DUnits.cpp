@@ -118,7 +118,7 @@ Vector3D Vector3D::Rotate(Vector3D& axis, double& angle) {
 //Point the vector towards another vector
 Vector3D Vector3D::PointTowards(Vector3D& other) {
 	Vector3D dir = other - *this;
-	//dir.Normalize();
+	dir.Normalize();
 	return dir;
 }
 //Cross product of two vectors
@@ -253,7 +253,7 @@ Quaternion3D Quaternion3D::Rotate(Vector3D& axis, double& degrees) {
 	return q * (*this);
 }
 //Rotate a vector by a quaternion
-Vector3D QuaternionRotate(Vector3D& other, Quaternion3D& quat) {
+Vector3D Quaternion3D::QuaternionRotate(Vector3D& other, Quaternion3D& quat) {
 	Quaternion3D q = Quaternion3D(other.GetX(), other.GetY(), other.GetZ(), 0);
 	Quaternion3D q2 = quat * q * quat.Conjugate();
 	return Vector3D(q2.GetX(), q2.GetY(), q2.GetZ());
