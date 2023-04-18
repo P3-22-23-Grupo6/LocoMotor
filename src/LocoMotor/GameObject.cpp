@@ -29,6 +29,8 @@ void GameObject::Update(float dt) {
 	}
 	if (GetComponent<RigidBodyComponent>() == nullptr) return;
 	InputManager* man = InputManager::Get();
+
+
 	if (!movable)return;
 	if (man->controllerConnected()) {
 
@@ -62,6 +64,14 @@ void GameObject::Update(float dt) {
 	if (rbComp->GetRaycastHit(from, to)) {
 		// std::cout << "Collision! *****************";
 		//_node->Rotate(0, 3, 0);
+		LMVector3 n = rbComp->GethasRaycastHitNormal(from, to);
+
+		n.Normalize();
+		std::cout << "\n" << "NORMAL = " << n.GetX() << ", " << n.GetY() << ", " << n.GetZ()<< "\n";
+
+		LMVector3 p = rbComp->GetraycastHitPoint(from, to) + n;
+		std::cout << "\n" << "CarPos = " << p.GetX() << ", " << p.GetY() << ", " << p.GetZ() << "\n";
+
 	}
 	else {
 		//std::cout << "NO COLL! *****************";
