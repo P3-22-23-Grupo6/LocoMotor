@@ -45,6 +45,7 @@ namespace LocoMotor {
 		OgreWrapper::RenderScene* GetRender();
 
 		GameObject* GetCamera();
+		void SetMainCamera(GameObject* nCam);
 
 
 
@@ -69,7 +70,7 @@ namespace LocoMotor {
 
 		OgreWrapper::Node* _node;
 
-		GameObject* camera_gObj;
+		GameObject* main_camera_gObj;
 		GameObject* ship_gObj;
 	};
 }

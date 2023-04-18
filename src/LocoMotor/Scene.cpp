@@ -17,8 +17,8 @@ Scene::Scene(std::string nombre) {
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->CreateScene(_name);
 
 	// Crear camara
-	camera_gObj = AddGameobject("cam");
-	camera_gObj->AddComponent("Camera",this, _renderScn);
+	main_camera_gObj = AddGameobject("cam");
+	main_camera_gObj->AddComponent("Camera",this, _renderScn);
 	//_currentCam = cam_Obj->AddComponent<LM_Component::Camera>();
 
 	/*SetSceneCam(_renderScn->CreateCamera("ScnCam"));*/
@@ -175,7 +175,13 @@ OgreWrapper::RenderScene* LocoMotor::Scene::GetRender() {
 }
 
 GameObject* LocoMotor::Scene::GetCamera() {
-	return camera_gObj;
+	return main_camera_gObj;
+}
+
+void LocoMotor::Scene::SetMainCamera(GameObject* nCam) {
+	if(nCam->GetComponent<Camera>()!=nullptr)
+	main_camera_gObj = nCam;
+	//return main_camera_gObj;
 }
 
 
