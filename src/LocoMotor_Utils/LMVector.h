@@ -129,10 +129,10 @@ public:
 	LMVector3 Rotate(const LMVector3& axis, double angle);
 
 	
-	//Product
-	///	@brief Get the Product of two Vectors
+	// perpendicular
+	///	@brief Get the perpendicular vector from two Vectors
 	/// @param other The other Vector
-	LMVector3 Product(const LMVector3& other) const;
+	LMVector3 Perpendicular(const LMVector3& other) const;
 
 
 
