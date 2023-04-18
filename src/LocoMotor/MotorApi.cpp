@@ -123,8 +123,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
 	enemy_gObj->AddComponent("EnemyAI");
 
-
-
 	// CHECKPOINTS
 	//raceManager_gObj->GetComponent<RaceManager>()->Start();
 
@@ -149,14 +147,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 		Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
 		lsBalls.push_back(checkpoint_gObj);
 	}
-
-	//LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
-	//checkpoint_gObj->AddComponent("MeshRenderer");
-	//checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
-	//checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
-	//checkpoint_gObj->SetPosition(LMVector3(0, 4, -50));
-	//Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
-
 
 #pragma region PathWaypoints
 	LMVector3 pos01 = LMVector3(50, 10, -180);
@@ -235,7 +225,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	}
 	for (int i = 1; i < waypointBalls.size(); i++) {
 		waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
-		waypointBalls[i]->SetPosition(LMVector3::OgreToLm(nuevaSpl->Interpolate(i / maxBalls)));
+		waypointBalls[i]->SetPosition(LMVector3::OgreToLm(nuevaSpl->Interpolate((float) i / maxBalls)));
 	}
 
 #pragma region All Components Started

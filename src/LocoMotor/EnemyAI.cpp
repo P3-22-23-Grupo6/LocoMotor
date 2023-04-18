@@ -30,15 +30,12 @@ void LocoMotor::EnemyAI::Start(OgreWrapper::Spline* splineToFollow)
 
 void LocoMotor::EnemyAI::Update(float dt) 
 {
-	//std::cout << dt;
 	timeStep += 0.01f;
 	if (timeStep > 1) {
 		timeStep = 0.0f;
-		//lastTimeStep = 0.0f;
 	}
-	
-	//if (timeStep - lastTimeStep > 0.2f) {
-	//	lastTimeStep = timeStep;
-	//}
+	//LookAt
+	myGbj->GetNode()->LookAt(mySpline->Interpolate(timeStep).x, mySpline->Interpolate(timeStep).y, mySpline->Interpolate(timeStep).z);
+	//Interpolate Position
 	myGbj->SetPosition(LMVector3::OgreToLm(mySpline->Interpolate(timeStep)));
 }
