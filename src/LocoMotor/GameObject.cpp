@@ -27,6 +27,7 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 void GameObject::Update(float dt) {
 	std::map<std::string, Component*>::iterator it;
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
+		if(it->second->isEnabled())
 		it->second->Update(dt);
 	}
 	if (GetComponent<RigidBodyComponent>() == nullptr) return;

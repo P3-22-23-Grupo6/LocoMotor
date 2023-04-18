@@ -19,3 +19,7 @@ void LocoMotor::Component::SetActive(bool active) {
 		OnDisable();
 	}
 }
+
+bool LocoMotor::Component::isEnabled() {
+	return enabled;
+}
