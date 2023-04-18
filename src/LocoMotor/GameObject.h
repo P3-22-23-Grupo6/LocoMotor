@@ -120,7 +120,7 @@ namespace LocoMotor {
 
 		void RegisterTransform(Transform* newTrans);
 
-		//Prueba
+		//Pruebaval
 		void setMovable(bool b) {
 			movable = b;
 		}
@@ -141,6 +141,8 @@ namespace LocoMotor {
 		//Prueba
 		bool movable=false;
 		double tiltAmount;
+
+		LMVector3 localVelocity = LMVector3(0, 0, 0);
 	};
 }
 

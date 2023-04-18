@@ -83,7 +83,7 @@ void GameObject::Update(float dt) {
 		LMVector3 n = rbComp->GethasRaycastHitNormal(from, to);
 
 		//n.Normalize();
-		std::cout << "\n" << "NORMAL = " << n.GetX() << ", " << n.GetY() << ", " << n.GetZ() << "\n";
+		//std::cout << "\n" << "NORMAL = " << n.GetX() << ", " << n.GetY() << ", " << n.GetZ() << "\n";
 
 		//LMVector3 p = rbComp->GetraycastHitPoint(from, to) + n;
 		//std::cout << "\n" << "CarPos = " << p.GetX() << ", " << p.GetY() << ", " << p.GetZ() << "\n";
@@ -106,7 +106,7 @@ void GameObject::Update(float dt) {
 			GetTransform()->SetUpwards(newUp);
 
 			LMVector3 hitPos = rbComp->GetraycastHitPoint(from, to);
-			double hoverDist = 4;
+			double hoverDist = 5;
 			LMVector3 hoverDisplacement = LMVector3(n.GetX() * hoverDist, n.GetY() * hoverDist, n.GetZ() * hoverDist);
 			GetTransform()->SetPosition(hitPos + hoverDisplacement);
 		}
@@ -128,12 +128,12 @@ void GameObject::Update(float dt) {
 		else {
 			LMVector3 forward = GetTransform()->GetRotation().Forward();
 			forward.Normalize();
-			double speed = 14;
+			double speed = .5; //14;
 			forward = LMVector3(forward.GetX() * speed, forward.GetY() * speed, forward.GetZ() * speed);
-			GetTransform()->SetPosition(GetTransform()->GetPosition() + forward);
+			//GetTransform()->SetPosition(GetTransform()->GetPosition() + forward);
+
+			localVelocity = localVelocity + forward;
 		}
-
-
 
 
 		//_rigidBody->AddForce(LMVector3(0, 0, 1));
@@ -156,6 +156,41 @@ void GameObject::Update(float dt) {
 	}
 
 	std::cout << transform->GetRotation().GetY() << std::endl;
+
+
+
+	// MOVIMIENTO CALCULADO CON MATES :TODO
+	if (!physicsBasedMovement) {
+
+	// Aplicar velocidad
+
+	// Ralentizar velocidad
+		float currentVelocity = localVelocity.Magnitude();
+		currentVelocity -= .2f;
+		if (currentVelocity < 0) currentVelocity = 0;
+		localVelocity.Normalize();
+		localVelocity = LMVector3(localVelocity.GetX() * currentVelocity,
+						  localVelocity.GetY() * currentVelocity,
+						  localVelocity.GetZ() * currentVelocity);
+
+
+	// Clamp localVelocity
+		float maxVelocity = 10;
+
+		if (localVelocity.Magnitude() > maxVelocity) {
+			localVelocity.Normalize();
+			localVelocity = LMVector3(localVelocity.GetX() * maxVelocity,
+									  localVelocity.GetY() * maxVelocity,
+									  localVelocity.GetZ() * maxVelocity);
+		}
+
+
+		std::cout << "\n" << "localVelocity = " << localVelocity.GetX()
+			<< ", " << localVelocity.GetY() << ", " << localVelocity.GetZ() << "\n";
+
+		GetTransform()->SetPosition(GetTransform()->GetPosition() + localVelocity);
+
+	}
 }
 
 
