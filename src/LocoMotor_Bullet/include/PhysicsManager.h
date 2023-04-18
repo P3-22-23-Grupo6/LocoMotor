@@ -8,13 +8,19 @@
 class MeshStrider;
 namespace PhysicsWrapper {
 	/// @brief Info to create a RigidBody
+	/// @param type 1=BoxShape, 2=SphereShape, 3=CapsuleShapeZ
 	/// @param btVector3 boxSize The size of the box if is Box
 	/// @param float size The size of the sphere if is Sphere
+	/// @param capsuleRadius if is capsule
+	/// @param capsuleHeight if is capsule
 	/// @param btVector3 origin The origin point of transform
 	/// @param float mass The mass of rigidbody, if mass !=0 , it is dynamic
 	struct RigidBodyInfo {
+		int type;
 		btVector3 boxSize;
-		float size;
+		float sphereSize;
+		float capsuleRadius;
+		float capsuleHeight;
 		btVector3 origin;
 		float mass;
 	};
