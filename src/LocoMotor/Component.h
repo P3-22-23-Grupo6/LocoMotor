@@ -30,16 +30,22 @@ namespace LocoMotor {
 		/// @brief Render the component
 		virtual void Render() {
 		}
+		virtual void OnEnable() {
+		};
+		virtual void OnDisable() {
+		};
+
 		GameObject* GetContext ();
 		/// @brief Set the component to a gameobject
 		void SetContext(GameObject* ent);
-
-		MOTOR_API virtual void InitComponent();
+		void SetActive(bool active);
+		MOTOR_API virtual void InitComponent(){ };
 		
 		//GameObject* GetGameobject();
 
 		GameObject* gameObject;
 	protected:
+		bool enabled;
 		/// @brief Constructor
 		Component() = default;
 

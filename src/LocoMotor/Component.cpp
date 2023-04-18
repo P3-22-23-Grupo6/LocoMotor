@@ -9,8 +9,13 @@ void LocoMotor::Component::SetContext(GameObject* ent) {
 	this->gameObject = ent;
 }
 
-void LocoMotor::Component::InitComponent() {
+void LocoMotor::Component::SetActive(bool active) {
+	if (active && !enabled) {
+		enabled = active;
+		OnEnable();
+	}
+	else if (!active && enabled) {
+		enabled = active;
+		OnDisable();
+	}
 }
-
-//LocoMotor::GameObject* LocoMotor::Component::GetGameobject() 
-//{ return gameObject; }
