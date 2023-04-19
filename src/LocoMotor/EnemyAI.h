@@ -30,6 +30,6 @@ namespace LocoMotor {
 		LMVector3* currentNode;
 		OgreWrapper::Spline* mySpline;
 		LocoMotor::GameObject* myGbj;
-		float timeStep,lastTimeStep;
+		float timeStep, lastTimeStep;
 	};
 }

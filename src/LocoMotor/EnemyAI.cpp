@@ -37,5 +37,6 @@ void LocoMotor::EnemyAI::Update(float dt)
 	//LookAt
 	myGbj->GetNode()->LookAt(mySpline->Interpolate(timeStep).x, mySpline->Interpolate(timeStep).y, mySpline->Interpolate(timeStep).z);
 	//Interpolate Position
-	myGbj->SetPosition(LMVector3::OgreToLm(mySpline->Interpolate(timeStep)));
+	Ogre::Vector3 newPos = mySpline->Interpolate(timeStep);
+	myGbj->SetPosition(LMVector3::OgreToLm(newPos));
 }
