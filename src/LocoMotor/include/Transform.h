@@ -44,6 +44,7 @@ namespace LocoMotor {
 		//void LookAt(const LMVector3& position, const LMVector3& upward);
 
 		void SetUpwards(const LMVector3& newUpward);
+		void LookAt(const LMVector3& lookPos);
 
 	private:
 
@@ -59,6 +60,7 @@ namespace LocoMotor {
 		void SetPhysPosition(const LMVector3& newPosition);
 		void SetPhysRotation(const LMQuaternion& newRotation);
 		void SetPhysScale(const LMVector3& newsize);
+		
 
 
 		OgreWrapper::Node* _gObjNode;

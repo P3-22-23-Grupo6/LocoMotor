@@ -115,17 +115,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("PlayerController");
 
-	//ENEMY MODEL
-	enemy_gObj = _mScene->AddGameobject("Enemy");
-	enemy_gObj->AddComponent("Transform");
-	enemy_gObj->AddComponent("MeshRenderer");
-	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
-	//enemy_gObj->AddComponent("RigidBodyComponent");
-	//enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
-	enemy_gObj->AddComponent("AudioSource");
-	enemy_gObj->GetComponent<AudioSource>()->Start();
-	enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
-	enemy_gObj->AddComponent("EnemyAI");
+	
 
 	// CHECKPOINTS
 	//raceManager_gObj->GetComponent<RaceManager>()->Start();
@@ -176,18 +166,32 @@ void MotorApi::RegisterGame(const char* gameName) {
 	};
 
 	OgreWrapper::Spline* nuevaSpl = new OgreWrapper::Spline();
-	for (int i = 0; i < 18; i++)
-	{
+	for (int i = 0; i < 18; i++) {
 		nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(positionsList[i])));
 		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
 		wayPoint->AddComponent("Transform");
 		wayPoint->AddComponent("MeshRenderer");
 		wayPoint->GetComponent<MeshRenderer>()->Start("WayPoint" + i, "SphereDebug.mesh", "");
 		wayPoint->SetPosition(LMVector3(positionsList[i]));
-		wayPoint->SetScale(LMVector3(5,5,5));
+		wayPoint->SetScale(LMVector3(5, 5, 5));
 	}
-	
-	enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl);
+
+	for (int i = 0; i < 5; i++){
+		auto enemy_gObj = _mScene->AddGameobject("Enemy" + i);
+		enemy_gObj->AddComponent("Transform");
+		enemy_gObj->AddComponent("MeshRenderer");
+		enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy" + i, "EnemyCar.mesh", "FalconRedone/FalconMat");
+		//enemy_gObj->AddComponent("RigidBodyComponent");
+		//enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
+		enemy_gObj->AddComponent("AudioSource");
+		enemy_gObj->GetComponent<AudioSource>()->Start();
+		enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
+		enemy_gObj->AddComponent("EnemyAI");
+
+		enemy_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
+		enemy_gObj->SetPosition(LMVector3(-70 + i*35, 3.0f, -80));
+		enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl, -70 + i * 35);
+	}
 
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
 	int maxBalls = 400;
@@ -217,12 +221,12 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//palmTree01->SetPosition(LMVector3(40, 0, -50));
 	palmTree02->SetPosition(LMVector3(60, 0, -200));
 	//track00->SetPosition(LMVector3(20, 0, -200));
-	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
+	//enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
 	palmTree->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	//palmTree01->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	palmTree02->SetScale(LMVector3(15.0f, 15.0f, 15.0f));
 	ship_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
-	enemy_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
+	
 
 	//for (int i = 1; i < numberOfCheckpoints; i++) {
 	//	lsBalls[i]->SetScale(LMVector3(10.0f, 10.0f, 10.0f));

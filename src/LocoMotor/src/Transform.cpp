@@ -125,3 +125,7 @@ void LocoMotor::Transform::SetPhysRotation(const LMQuaternion& newRotation) {
 
 void LocoMotor::Transform::SetPhysScale(const LMVector3& newsize) {
 }
+
+void LocoMotor::Transform::LookAt(const LMVector3& lookPos) {
+	_gObjNode->LookAt(lookPos.GetX(), lookPos.GetY(), lookPos.GetZ());
+}
