@@ -30,7 +30,7 @@ void LocoMotor::EnemyAI::Start(OgreWrapper::Spline* splineToFollow)
 
 void LocoMotor::EnemyAI::Update(float dt) 
 {
-	timeStep += 0.01f;
+	timeStep += 0.002675f;
 	if (timeStep > 1) {
 		timeStep = 0.0f;
 	}

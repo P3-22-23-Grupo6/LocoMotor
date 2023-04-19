@@ -60,41 +60,35 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto trackMain = _mScene->AddGameobject("trackMain");
 	trackMain->AddComponent("Transform");
 	trackMain->AddComponent("MeshRenderer");
-	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "TrackMain.mesh", "");//Track.mesh para el antiguo
+	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "TrackMain.mesh", "");
 	trackMain->AddComponent("RigidBodyComponent");
 	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
 	//Track Border No Coll
 	auto trackBorder = _mScene->AddGameobject("trackBorder");
 	trackBorder->AddComponent("Transform");
 	trackBorder->AddComponent("MeshRenderer");
-	trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");//Track.mesh para el antiguo
+	trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");
 	//trackBorder->AddComponent("RigidBodyComponent");
 	//trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
 	//Collision
 	auto Debug01 = _mScene->AddGameobject("Debug01");
 	Debug01->AddComponent("Transform");
 	Debug01->AddComponent("MeshRenderer");
-	Debug01->GetComponent<MeshRenderer>()->Start("Debug01", "Debug_c.mesh", "");//Track.mesh para el antiguo
+	Debug01->GetComponent<MeshRenderer>()->Start("Debug01", "Debug_c.mesh", "");
 	Debug01->AddComponent("RigidBodyComponent");
 	Debug01->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma region palmTrees
 	auto palmTree = _mScene->AddGameobject("PalmTree00");
 	palmTree->AddComponent("Transform");
 	palmTree->AddComponent("MeshRenderer");
-	palmTree->GetComponent<MeshRenderer>()->Start("PalmTree00", "PalmTree.mesh", "");//Track.mesh para el antiguo
-	//palmTree->GetNode()->SetDirection(50,0,0);
+	palmTree->GetComponent<MeshRenderer>()->Start("PalmTree00", "PalmTree.mesh", "");
 	palmTree->AddComponent("RigidBodyComponent");
 	palmTree->GetComponent<RigidBodyComponent>()->Start(0);
-	//auto palmTree01 = _mScene->AddGameobject("PalmTree01");
-	//palmTree01->AddComponent("Transform");
-	//palmTree01->AddComponent("MeshRenderer");
-	//palmTree01->GetComponent<MeshRenderer>()->Start("PalmTree01", "PalmTree.mesh", "");//Track.mesh para el antiguo
-	//palmTree01->AddComponent("RigidBodyComponent");
-	//palmTree01->GetComponent<RigidBodyComponent>()->Start(0);
+	
 	auto palmTree02 = _mScene->AddGameobject("PalmTree02");
 	palmTree02->AddComponent("Transform");
 	palmTree02->AddComponent("MeshRenderer");
-	palmTree02->GetComponent<MeshRenderer>()->Start("PalmTree02", "PalmTree.mesh", "");//Track.mesh para el antiguo
+	palmTree02->GetComponent<MeshRenderer>()->Start("PalmTree02", "PalmTree.mesh", "");
 	palmTree02->AddComponent("RigidBodyComponent");
 	palmTree02->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma endregion
@@ -150,7 +144,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	}
 
 #pragma region SPLINE
-	LMVector3 positionsList[] //Estoy tomando medidas con el archivo de Blender, aun no puedo exportar posiciones
+	std::vector<LMVector3> positionsList //Estoy tomando medidas con el archivo de Blender, aun no puedo exportar posiciones
 	{
 		LMVector3(0, 5, 0),
 		LMVector3(0, 5, -210),
@@ -158,11 +152,22 @@ void MotorApi::RegisterGame(const char* gameName) {
 		LMVector3(-50,65,-420),
 		LMVector3(-165,101,-535),
 		LMVector3(-342,107,-570),
-		LMVector3(-545,90,-556)
+		LMVector3(-545,90,-556),
+		LMVector3(-800,3,-392),
+		LMVector3(-838,-37,-218),
+		LMVector3(-830,-37,	75),
+		LMVector3(-805,-37, 345),
+		LMVector3(-679,-37, 630),
+		LMVector3(-415,0, 742),
+		LMVector3(-151,60, 736),
+		LMVector3(90,67, 567),
+		LMVector3(98,28, 347),
+		LMVector3(31,8, 185),
+		LMVector3(0, 5, 0)//reset
 	};
 
 	OgreWrapper::Spline* nuevaSpl = new OgreWrapper::Spline();
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 18; i++)
 	{
 		nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(positionsList[i])));
 		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
@@ -176,15 +181,15 @@ void MotorApi::RegisterGame(const char* gameName) {
 	enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl);
 
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
-	int maxBalls = 100;
-	//for (float i = 1; i < maxBalls; i++) {
-	//	auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
-	//	wayPointNew->AddComponent("Transform");
-	//	wayPointNew->AddComponent("MeshRenderer");
-	//	wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
-	//	nuevaSpl->RecalcTangents();
-	//	waypointBalls.push_back(wayPointNew);
-	//}
+	int maxBalls = 400;
+	for (float i = 1; i < maxBalls; i++) {
+		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
+		wayPointNew->AddComponent("Transform");
+		wayPointNew->AddComponent("MeshRenderer");
+		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
+		nuevaSpl->RecalcTangents();
+		waypointBalls.push_back(wayPointNew);
+	}
 #pragma endregion
 
 	//Skybox
