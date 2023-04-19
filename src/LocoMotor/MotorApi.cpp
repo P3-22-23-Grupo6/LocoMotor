@@ -176,7 +176,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		wayPoint->SetScale(LMVector3(5, 5, 5));
 	}
 
-	for (int i = 0; i < 5; i++){
+	for (int i = 0; i < 1; i++){
 		auto enemy_gObj = _mScene->AddGameobject("Enemy" + i);
 		enemy_gObj->AddComponent("Transform");
 		enemy_gObj->AddComponent("MeshRenderer");

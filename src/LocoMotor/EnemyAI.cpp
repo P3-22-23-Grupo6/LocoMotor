@@ -34,11 +34,11 @@ void LocoMotor::EnemyAI::Start(OgreWrapper::Spline* splineToFollow, float sep)
 
 void LocoMotor::EnemyAI::Update(float dt) 
 {
-	timeStep += 0.0026f;// *100.0f;
+	timeStep += 0.0026f;
+	//*10000.0f;
 	if (timeStep > 1) {
 		timeStep = 0.0f;
 	}
-	//RAYCAST TEMPORAL
 	LMVector3 from = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z());
 	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 20, _node->GetPosition_Z());
 
@@ -59,7 +59,6 @@ void LocoMotor::EnemyAI::Update(float dt)
 	//Interpolate Position
 	Ogre::Vector3 newPos = mySpline->Interpolate(timeStep);
 	newPos += myGbj->GetTransform()->GetRotation().Right() * startSeparation;
-	//LookAt
 	myGbj->GetTransform()->LookAt(LMVector3::OgreToLm(newPos));
 	//Set Position
 	myGbj->SetPosition(LMVector3::OgreToLm(newPos));
