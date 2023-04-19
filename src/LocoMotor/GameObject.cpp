@@ -63,46 +63,23 @@ void GameObject::Update(float dt) {
 		rbComp->useGravity(LMVector3(0, 0, 0));
 
 
-		//RAYCAST TEMPORAL
-	LMVector3 from = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z());
-	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 20, _node->GetPosition_Z());
+	LMVector3 from = GetTransform()->GetPosition();
+	LMVector3 to = from + LMVector3(0, -20, 0);
 
 	LMVector3 upVector = GetTransform()->GetRotation().Up();
 	upVector.Normalize();
-
-	//double verticalAxisMargin = 2;
-	//from = from + LMVector3(upVector.GetX() * verticalAxisMargin, upVector.GetY() * verticalAxisMargin, upVector.GetZ() * verticalAxisMargin);
-
 	double raycastDistance = 7;
-	upVector = LMVector3(upVector.GetX() * raycastDistance, upVector.GetY() * raycastDistance, upVector.GetZ() * raycastDistance);
+	upVector = upVector * raycastDistance;
 	to = from - upVector;
 
 	if (rbComp->GetRaycastHit(from, to)) {
-		// std::cout << "Collision! *****************";
-		//_node->Rotate(0, 3, 0);
 		LMVector3 n = rbComp->GethasRaycastHitNormal(from, to);
-
-		//n.Normalize();
-		//std::cout << "\n" << "NORMAL = " << n.GetX() << ", " << n.GetY() << ", " << n.GetZ() << "\n";
-
-		//LMVector3 p = rbComp->GetraycastHitPoint(from, to) + n;
-		//std::cout << "\n" << "CarPos = " << p.GetX() << ", " << p.GetY() << ", " << p.GetZ() << "\n";
-
-
-		//GetTransform()->GetRotation().GetX()
-		//LMVector3 p = rbComp->GetraycastHitPoint(from, to) + n;
-		//std::cout << "\n" << "CarPos = " << p.GetX() << ", " << p.GetY() << ", " << p.GetZ() << "\n";
-
-		//LMVector3 prueba = LMVector3(0, 5, 6);
-		//prueba.Normalize();
-
-
+		
 		// MOVIMIENTO CALCULADO CON MATES :TODO
-
 		if (!physicsBasedMovement) {
 			//Intensidad con la que se va a actualizar el vector normal del coche
 			float pitchIntensity = 40;
-			LMVector3 newUp = LMVector3(n.GetX() * pitchIntensity, n.GetY() * pitchIntensity, n.GetZ() * pitchIntensity);
+			LMVector3 newUp = n * pitchIntensity;
 			GetTransform()->SetUpwards(newUp);
 
 			LMVector3 hitPos = rbComp->GetraycastHitPoint(from, to);
@@ -112,8 +89,6 @@ void GameObject::Update(float dt) {
 		}
 	}
 	else {
-		//std::cout << "NO COLL! *****************";
-
 		// Si no detecta suelo, que se caiga
 		localVelocity = localVelocity + LMVector3(0, -.2f, 0);
 	}

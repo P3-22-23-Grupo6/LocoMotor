@@ -1,11 +1,7 @@
 #include "EnemyAI.h"
-#include "RenderScene.h"
-#include "Scene.h"
 #include "GameObject.h"
 #include "Transform.h"
-#include "Node.h"
 #include "Spline.h"
-#include <OgreSimpleSpline.h>
 #include <LMVector.h>
 #include "RigidBodyComponent.h"
 
@@ -20,45 +16,39 @@ LocoMotor::EnemyAI::~EnemyAI(){
 void LocoMotor::EnemyAI::Start(OgreWrapper::Spline* splineToFollow, float sep)
  {
 	startSeparation = sep;
+	mySpline = splineToFollow;
+	
 	timeStep = 0.0f;
 	lastTimeStep = 0.0f;
-	enemySpeed = 26;
 	myGbj = gameObject;
-	_node = gameObject->GetNode();
-	mySpline = splineToFollow;
-
-	//currentNode = LMVector3::OgreToLm(mySpline->GetPoint(0));
-	Ogre::Vector3 ogrePos = mySpline->GetPoint(2); //mySpline.GetPoint(0);
-	myGbj->SetPosition(LMVector3::OgreToLm(ogrePos));
 }
 
 void LocoMotor::EnemyAI::Update(float dt) 
 {
 	timeStep += 0.0026f;
-	//*10000.0f;
 	if (timeStep > 1) {
 		timeStep = 0.0f;
 	}
-	LMVector3 from = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z());
-	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 20, _node->GetPosition_Z());
+	LMVector3 from = myGbj->GetTransform()->GetPosition();
+	LMVector3 to = from + LMVector3(0,-20,0);
 
 	LMVector3 upVector = myGbj->GetTransform()->GetRotation().Up();
 	upVector.Normalize();
 	RigidBodyComponent* rbComp = myGbj->GetComponent<RigidBodyComponent>();
 	double raycastDistance = 7;
-	upVector = LMVector3(upVector.GetX() * raycastDistance, upVector.GetY() * raycastDistance, upVector.GetZ() * raycastDistance);
+	upVector = upVector * raycastDistance;
 	to = from - upVector;
 
 	if (rbComp->GetRaycastHit(from, to)) {
 		LMVector3 n = rbComp->GethasRaycastHitNormal(from, to);
-		float pitchIntensity = 1;
-		LMVector3 newUp = LMVector3(n.GetX() * pitchIntensity, n.GetY() * pitchIntensity, n.GetZ() * pitchIntensity);
+		LMVector3 newUp = n * 40;
 		myGbj->GetTransform()->SetUpwards(newUp);
 	}
 
 	//Interpolate Position
 	Ogre::Vector3 newPos = mySpline->Interpolate(timeStep);
 	newPos += myGbj->GetTransform()->GetRotation().Right() * startSeparation;
+	//LookAt
 	myGbj->GetTransform()->LookAt(LMVector3::OgreToLm(newPos));
 	//Set Position
 	myGbj->SetPosition(LMVector3::OgreToLm(newPos));
