@@ -113,7 +113,12 @@ void GameObject::Update(float dt) {
 	}
 	else {
 		//std::cout << "NO COLL! *****************";
+
+		// Si no detecta suelo, que se caiga
+		localVelocity = localVelocity + LMVector3(0, -.2f, 0);
 	}
+
+
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
 
