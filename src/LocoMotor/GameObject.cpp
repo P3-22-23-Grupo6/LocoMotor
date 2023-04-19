@@ -24,11 +24,13 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 void GameObject::Update(float dt) {
 	std::map<std::string, Component*>::iterator it;
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
-		if(it->second->isEnabled())
-		it->second->Update(dt);
+		if (it->second->isEnabled())
+			it->second->Update(dt);
 	}
 	if (GetComponent<RigidBodyComponent>() == nullptr) return;
 	InputManager* man = InputManager::Get();
+
+
 	if (!movable)return;
 	if (man->controllerConnected()) {
 
@@ -51,27 +53,69 @@ void GameObject::Update(float dt) {
 		rbComp->addForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
 		_node->Translate(-joystickValue_0_Hor, verticalMov, -joystickValue_0_Ver);
 
-		
 
 		SetPosition(LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z()));
 	}
 	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
-	//RAYCAST TEMPORAL
-	LMVector3 from = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z());
-	LMVector3 to = LMVector3(_node->GetPosition_X(), _node->GetPosition_Y() - 5, _node->GetPosition_Z());
+
+	// MOVIMIENTO CALCULADO CON MATES :TODO
+	if (!physicsBasedMovement)
+		rbComp->useGravity(LMVector3(0, 0, 0));
+
+
+	LMVector3 from = GetTransform()->GetPosition();
+	LMVector3 to = from + LMVector3(0, -20, 0);
+
+	LMVector3 upVector = GetTransform()->GetRotation().Up();
+	upVector.Normalize();
+	double raycastDistance = 7;
+	upVector = upVector * raycastDistance;
+	to = from - upVector;
+
 	if (rbComp->GetRaycastHit(from, to)) {
-		// std::cout << "Collision! *****************";
-		//_node->Rotate(0, 3, 0);
+		LMVector3 n = rbComp->GethasRaycastHitNormal(from, to);
+		
+		// MOVIMIENTO CALCULADO CON MATES :TODO
+		if (!physicsBasedMovement) {
+			//Intensidad con la que se va a actualizar el vector normal del coche
+			float pitchIntensity = 40;
+			LMVector3 newUp = n * pitchIntensity;
+			GetTransform()->SetUpwards(newUp);
+
+			LMVector3 hitPos = rbComp->GetraycastHitPoint(from, to);
+			double hoverDist = 5;
+			LMVector3 hoverDisplacement = LMVector3(n.GetX() * hoverDist, n.GetY() * hoverDist, n.GetZ() * hoverDist);
+			GetTransform()->SetPosition(hitPos + hoverDisplacement);
+		}
 	}
 	else {
-		//std::cout << "NO COLL! *****************";
+		// Si no detecta suelo, que se caiga
+		localVelocity = localVelocity + LMVector3(0, -.2f, 0);
 	}
+
+
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
 
 		double degToRad = 0.0174533;
 
-		GetComponent<RigidBodyComponent>()->addForce(transform->GetRotation().Forward() * 10 * dt);
+		// MOVIMIENTO CON FISICAS :TODO
+		// Para que funcione, la gravedad tiene que estar activada y el objeto tener una masa distinta de 0
+		if (physicsBasedMovement)
+			GetComponent<RigidBodyComponent>()->addForce(transform->GetRotation().Forward() * 10 * dt);
+
+			// MOVIMIENTO CALCULADO CON MATES :TODO
+		else {
+			LMVector3 forward = GetTransform()->GetRotation().Forward();
+			forward.Normalize();
+			double speed = .5; //14;
+			forward = LMVector3(forward.GetX() * speed, forward.GetY() * speed, forward.GetZ() * speed);
+			//GetTransform()->SetPosition(GetTransform()->GetPosition() + forward);
+
+			localVelocity = localVelocity + forward;
+		}
+
+
 		//_rigidBody->AddForce(LMVector3(0, 0, 1));
 		//SetPosition(LMVector3(100, 10, 10));
 		//_node->Translate(0, 0, 1);
@@ -79,7 +123,7 @@ void GameObject::Update(float dt) {
 
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
 	if (rotateRight) {
-		transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), 3.));
+		transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), 2.));
 	}
 	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
 	if (rotateLeft) {
@@ -88,10 +132,50 @@ void GameObject::Update(float dt) {
 		//_rigidBody->setRotation(LMQuaternion(1, -1, 0, 0));
 		_node->Rotate(0, -3, 0);
 		*/
-		transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), -3.));
+		transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), -2.));
 	}
 
 	std::cout << transform->GetRotation().GetY() << std::endl;
+
+
+
+	// MOVIMIENTO CALCULADO CON MATES :TODO
+	if (!physicsBasedMovement) {
+
+	// Aplicar velocidad
+
+	// Ralentizar velocidad
+		float currentVelocity = localVelocity.Magnitude();
+		currentVelocity -= .2f;
+		if (currentVelocity < 0) currentVelocity = 0;
+		localVelocity.Normalize();
+		localVelocity = LMVector3(localVelocity.GetX() * currentVelocity,
+						  localVelocity.GetY() * currentVelocity,
+						  localVelocity.GetZ() * currentVelocity);
+
+
+	// Clamp localVelocity
+		float maxVelocity = 10;
+
+		if (localVelocity.Magnitude() > maxVelocity) {
+			localVelocity.Normalize();
+			localVelocity = LMVector3(localVelocity.GetX() * maxVelocity,
+									  localVelocity.GetY() * maxVelocity,
+									  localVelocity.GetZ() * maxVelocity);
+		}
+
+
+		std::cout << "\n" << "localVelocity = " << localVelocity.GetX()
+			<< ", " << localVelocity.GetY() << ", " << localVelocity.GetZ() << "\n";
+
+		GetTransform()->SetPosition(GetTransform()->GetPosition() + localVelocity);
+
+
+		if(GetTransform()->GetPosition().GetY() < -45)
+		{
+			GetTransform()->SetPosition(LMVector3(0,5,0));
+		}
+	}
 }
 
 
@@ -103,8 +187,7 @@ void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair
 	comp->SetContext(this);
 	comp->Init(params);
 	_componentsByName.insert({ name, comp });
-	if (name == "Transform")
-	{
+	if (name == "Transform") {
 		transform = dynamic_cast<Transform*>(comp);
 	}
 }
@@ -115,7 +198,7 @@ void GameObject::SetPosition(LMVector3 pos) {
 	transform->SetPosition(pos);
 }
 
-void LocoMotor::GameObject::SetRotation(LMQuaternion rot){
+void LocoMotor::GameObject::SetRotation(LMQuaternion rot) {
 	transform->SetRotation(rot);
 }
 
@@ -148,7 +231,7 @@ OgreWrapper::Node* LocoMotor::GameObject::GetNode() {
 
 
 
-void GameObject::StartComp(){
+void GameObject::StartComp() {
 	for (auto comp : _componentsByName) {
 		comp.second->Start();
 	}

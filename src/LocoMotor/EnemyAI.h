@@ -19,7 +19,7 @@ namespace LocoMotor {
 		EnemyAI();
 		~EnemyAI();
 		/// @brief Sets the initial position of the listener to the gameobject's
-		void Start(OgreWrapper::Spline* splineToFollow);
+		void Start(OgreWrapper::Spline* splineToFollow, float sep);
 
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's
 		/// @param dt DeltaTime used to calculate the velocity
@@ -30,6 +30,10 @@ namespace LocoMotor {
 		LMVector3* currentNode;
 		OgreWrapper::Spline* mySpline;
 		LocoMotor::GameObject* myGbj;
-		float timeStep,lastTimeStep;
+		float timeStep, lastTimeStep;
+		//STATS
+		float enemySpeed;
+		float enemyMaxAcc;
+		float startSeparation;
 	};
 }

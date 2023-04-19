@@ -39,17 +39,19 @@ PhysicsManager::~PhysicsManager() {
 }
 
 btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms) {
-	btCollisionShape* shape;
+	btCollisionShape* shape=nullptr;
 	if (ms != nullptr) {
 		shape = new btBvhTriangleMeshShape(ms, true, true);
 	}
 	else {
-		if (info.size <= 0.0)
+		if (info.capsuleHeight > 0.0)
+			shape = new btCapsuleShapeZ(info.capsuleRadius, info.capsuleHeight);
+		else if (info.sphereSize <= 0.0)
 			shape = new btBoxShape(info.boxSize);
-		else
-			shape = new btSphereShape(info.size);
+		else if(info.sphereSize)
+			shape = new btSphereShape(info.sphereSize);
 	}
-
+	if (shape == nullptr)return nullptr;
 	btTransform groundTransform;
 	groundTransform.setIdentity();
 	groundTransform.setOrigin(info.origin);

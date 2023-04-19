@@ -120,14 +120,16 @@ namespace LocoMotor {
 
 		void RegisterTransform(Transform* newTrans);
 
-		//Prueba
+		//Pruebaval
 		void setMovable(bool b) {
 			movable = b;
 		}
 
+		bool physicsBasedMovement = false;
 	private:
 		std::map<std::string, Component*> _componentsByName;
 		Scene* scene;
+
 
 		Transform* transform;
 
@@ -139,6 +141,8 @@ namespace LocoMotor {
 		//Prueba
 		bool movable=false;
 		double tiltAmount;
+
+		LMVector3 localVelocity = LMVector3(0, 0, 0);
 	};
 }
 

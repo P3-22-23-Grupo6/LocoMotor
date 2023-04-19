@@ -38,9 +38,11 @@ void LocoMotor::RigidBodyComponent::Start() {
 	
 	RigidBodyInfo info;
 	info.mass = _mass;
-	info.boxSize = LMVector3::LmToBullet(LMVector3(12,3,5));
+	info.boxSize = LMVector3::LmToBullet(LMVector3(0,0,0));
 	info.origin = LMVector3::LmToBullet(gameObject->GetTransform()->GetPosition());
-	info.size = -1;
+	info.sphereSize = 5;
+	info.capsuleHeight = 10;
+	info.capsuleRadius = 3;
 	if (_mass == 0) {
 		OgreWrapper::Renderer3D* mesh = gameObject->GetComponent<MeshRenderer>()->GetRenderer();
 		if (mesh != nullptr) {

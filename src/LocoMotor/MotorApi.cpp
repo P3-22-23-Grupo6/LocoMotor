@@ -52,50 +52,54 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto map = _mScene->AddGameobject("map");
 	map->AddComponent("Transform");
 	map->AddComponent("MeshRenderer");
-	map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
+	map->GetComponent<MeshRenderer>()->Start("map", "SandPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 	map->AddComponent("RigidBodyComponent");
 	map->GetComponent<RigidBodyComponent>()->Start(0);
+	//WaterPlane
+	auto waterPlane = _mScene->AddGameobject("waterPlane");
+	waterPlane->AddComponent("Transform");
+	waterPlane->SetPosition(LMVector3(0,30,0));
+	waterPlane->AddComponent("MeshRenderer");
+	waterPlane->GetComponent<MeshRenderer>()->Start("waterPlane", "WaterPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
+	//waterPlane->AddComponent("RigidBodyComponent");
+	//waterPlane->GetComponent<RigidBodyComponent>()->Start(0);
+	
 
-
-	auto map01 = _mScene->AddGameobject("map01");
-	map01->AddComponent("Transform");
-	map01->AddComponent("MeshRenderer");
-	map01->GetComponent<MeshRenderer>()->Start("map01", "Track.mesh", "");//Track.mesh para el antiguo
-	map01->AddComponent("RigidBodyComponent");
-	map01->GetComponent<RigidBodyComponent>()->Start(0);
-	//TurboPlane
-	auto turboPlane = _mScene->AddGameobject("TurboPlane");
-	turboPlane->AddComponent("Transform");
-	turboPlane->AddComponent("MeshRenderer");
-	turboPlane->GetComponent<MeshRenderer>()->Start("TurboPlane", "TurboPlane.mesh", "");//Track.mesh para el antiguo
+	//Track Main Road
+	auto trackMain = _mScene->AddGameobject("trackMain");
+	trackMain->AddComponent("Transform");
+	trackMain->AddComponent("MeshRenderer");
+	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "TrackMain.mesh", "");
+	trackMain->AddComponent("RigidBodyComponent");
+	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
+	//Track Border No Coll
+	auto trackBorder = _mScene->AddGameobject("trackBorder");
+	trackBorder->AddComponent("Transform");
+	trackBorder->AddComponent("MeshRenderer");
+	trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");
+	//trackBorder->AddComponent("RigidBodyComponent");
+	//trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
+	//Collision
+	auto Debug01 = _mScene->AddGameobject("Debug01");
+	Debug01->AddComponent("Transform");
+	Debug01->AddComponent("MeshRenderer");
+	Debug01->GetComponent<MeshRenderer>()->Start("Debug01", "Debug_c.mesh", "");
+	Debug01->AddComponent("RigidBodyComponent");
+	Debug01->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma region palmTrees
 	auto palmTree = _mScene->AddGameobject("PalmTree00");
 	palmTree->AddComponent("Transform");
 	palmTree->AddComponent("MeshRenderer");
-	palmTree->GetComponent<MeshRenderer>()->Start("PalmTree00", "PalmTree.mesh", "");//Track.mesh para el antiguo
-	//palmTree->GetNode()->SetDirection(50,0,0);
+	palmTree->GetComponent<MeshRenderer>()->Start("PalmTree00", "PalmTree.mesh", "");
 	palmTree->AddComponent("RigidBodyComponent");
 	palmTree->GetComponent<RigidBodyComponent>()->Start(0);
-	auto palmTree01 = _mScene->AddGameobject("PalmTree01");
-	palmTree01->AddComponent("Transform");
-	palmTree01->AddComponent("MeshRenderer");
-	palmTree01->GetComponent<MeshRenderer>()->Start("PalmTree01", "PalmTree.mesh", "");//Track.mesh para el antiguo
-	palmTree01->AddComponent("RigidBodyComponent");
-	palmTree01->GetComponent<RigidBodyComponent>()->Start(0);
+	
 	auto palmTree02 = _mScene->AddGameobject("PalmTree02");
 	palmTree02->AddComponent("Transform");
 	palmTree02->AddComponent("MeshRenderer");
-	palmTree02->GetComponent<MeshRenderer>()->Start("PalmTree02", "PalmTree.mesh", "");//Track.mesh para el antiguo
+	palmTree02->GetComponent<MeshRenderer>()->Start("PalmTree02", "PalmTree.mesh", "");
 	palmTree02->AddComponent("RigidBodyComponent");
 	palmTree02->GetComponent<RigidBodyComponent>()->Start(0);
-#pragma endregion
-
-	auto track00 = _mScene->AddGameobject("Track00");
-	track00->AddComponent("Transform");
-	track00->AddComponent("MeshRenderer");
-	track00->GetComponent<MeshRenderer>()->Start("Track00", "Track00.mesh", "");//Track.mesh para el antiguo
-	track00->AddComponent("RigidBodyComponent");
-	track00->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
@@ -111,19 +115,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("PlayerController");
 
-	//ENEMY MODEL
-	enemy_gObj = _mScene->AddGameobject("Enemy");
-	enemy_gObj->AddComponent("Transform");
-	enemy_gObj->AddComponent("MeshRenderer");
-	enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy", "EnemyCar.mesh", "FalconRedone/FalconMat");
-	//enemy_gObj->AddComponent("RigidBodyComponent");
-	//enemy_gObj->GetComponent<RigidBodyComponent>()->Start(1);
-	enemy_gObj->AddComponent("AudioSource");
-	enemy_gObj->GetComponent<AudioSource>()->Start();
-	enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
-	enemy_gObj->AddComponent("EnemyAI");
-
-
+	
 
 	// CHECKPOINTS
 	//raceManager_gObj->GetComponent<RaceManager>()->Start();
@@ -150,45 +142,57 @@ void MotorApi::RegisterGame(const char* gameName) {
 		lsBalls.push_back(checkpoint_gObj);
 	}
 
-	//LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject("checkP");
-	//checkpoint_gObj->AddComponent("MeshRenderer");
-	//checkpoint_gObj->GetComponent<MeshRenderer>()->Start("checkP", "SphereDebug.mesh", "");
-	//checkpoint_gObj->GetNode()->SetScale(10.0f, 10.0f, 10.0f);
-	//checkpoint_gObj->SetPosition(LMVector3(0, 4, -50));
-	//Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
-
-
-#pragma region PathWaypoints
-	LMVector3 pos01 = LMVector3(50, 10, -180);
-	LMVector3 pos02 = LMVector3(-50, 60, -180);
-	LMVector3 pos03 = LMVector3(-20, 10, -100);
-
-	auto wayPoint01 = _mScene->AddGameobject("WayPoint01");
-	wayPoint01->AddComponent("Transform");
-	wayPoint01->AddComponent("MeshRenderer");
-	wayPoint01->GetComponent<MeshRenderer>()->Start("WayPoint01", "SphereDebug.mesh", "");
-
-	auto wayPoint02 = _mScene->AddGameobject("WayPoint02");
-	wayPoint02->AddComponent("Transform");
-	wayPoint02->AddComponent("MeshRenderer");
-	wayPoint02->GetComponent<MeshRenderer>()->Start("WayPoint02", "SphereDebug.mesh", "");
-
-	auto wayPoint03 = _mScene->AddGameobject("WayPoint03");
-	wayPoint03->AddComponent("Transform");
-	wayPoint03->AddComponent("MeshRenderer");
-	wayPoint03->GetComponent<MeshRenderer>()->Start("WayPoint03", "SphereDebug.mesh", "");
+#pragma region SPLINE
+	std::vector<LMVector3> positionsList //Estoy tomando medidas con el archivo de Blender, aun no puedo exportar posiciones
+	{
+		LMVector3(0, 5, 0),
+		LMVector3(0, 5, -210),
+		LMVector3(-17,27,-325),
+		LMVector3(-50,65,-420),
+		LMVector3(-165,101,-535),
+		LMVector3(-342,107,-570),
+		LMVector3(-545,90,-556),
+		LMVector3(-800,3,-392),
+		LMVector3(-838,-37,-218),
+		LMVector3(-830,-37,	75),
+		LMVector3(-805,-37, 345),
+		LMVector3(-679,-37, 630),
+		LMVector3(-415,0, 742),
+		LMVector3(-151,60, 736),
+		LMVector3(90,67, 567),
+		LMVector3(98,28, 347),
+		LMVector3(31,8, 185),
+		LMVector3(0, 5, 0)//reset
+	};
 
 	OgreWrapper::Spline* nuevaSpl = new OgreWrapper::Spline();
-	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos01)));
-	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos02)));
-	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos03)));
-	nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(pos01)));
+	for (int i = 0; i < 18; i++) {
+		nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(positionsList[i])));
+		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
+		wayPoint->AddComponent("Transform");
+		wayPoint->AddComponent("MeshRenderer");
+		wayPoint->GetComponent<MeshRenderer>()->Start("WayPoint" + i, "SphereDebug.mesh", "");
+		wayPoint->SetPosition(LMVector3(positionsList[i]));
+		wayPoint->SetScale(LMVector3(5, 5, 5));
+	}
 
-	//enemy_gObj->setMovable(true);
-	enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl);
+	for (int i = 0; i < 1; i++){
+		auto enemy_gObj = _mScene->AddGameobject("Enemy" + i);
+		enemy_gObj->AddComponent("Transform");
+		enemy_gObj->AddComponent("MeshRenderer");
+		enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy" + i, "EnemyCar.mesh", "FalconRedone/FalconMat");
+		enemy_gObj->AddComponent("AudioSource");
+		enemy_gObj->GetComponent<AudioSource>()->Start();
+		enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
+		enemy_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
+		enemy_gObj->SetPosition(LMVector3(-70 + i * 35, 3.0f, -80));
+
+		enemy_gObj->AddComponent("EnemyAI");
+		enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl, -70 + i * 35);
+	}
 
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
-	int maxBalls = 100;
+	int maxBalls = 400;
 	for (float i = 1; i < maxBalls; i++) {
 		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
 		wayPointNew->AddComponent("Transform");
@@ -206,36 +210,29 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	_scnManager->ChangeScene("Escena");
 
-	ship_gObj->SetPosition(LMVector3(0, 4, 0));
+	ship_gObj->SetPosition(LMVector3(50, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
-	map01->SetPosition(LMVector3(0, -8, 0));
-	turboPlane->SetPosition(LMVector3(0, 0.1f, 0));
+	trackMain->SetPosition(LMVector3(0, -3, -100));
+	trackBorder->SetPosition(LMVector3(0, -3, -100));
+	Debug01->SetPosition(LMVector3(0, -3, -100));
 	palmTree->SetPosition(LMVector3(-50, 0, -85));
-	palmTree01->SetPosition(LMVector3(40, 0, -50));
+	//palmTree01->SetPosition(LMVector3(40, 0, -50));
 	palmTree02->SetPosition(LMVector3(60, 0, -200));
-	track00->SetPosition(LMVector3(20, 0, -200));
-	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
-	wayPoint01->SetPosition(pos01);
-	wayPoint02->SetPosition(pos02);
-	wayPoint03->SetPosition(pos03);
-
-	turboPlane->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
+	//track00->SetPosition(LMVector3(20, 0, -200));
+	//enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
 	palmTree->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
-	palmTree01->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
+	//palmTree01->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	palmTree02->SetScale(LMVector3(15.0f, 15.0f, 15.0f));
 	ship_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
-	enemy_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
-	wayPoint01->SetScale(LMVector3(5.0f, 5.0f, 5.0f));
-	wayPoint02->SetScale(LMVector3(5.0f, 5.0f, 5.0f));
-	wayPoint03->SetScale(LMVector3(5.0f, 5.0f, 5.0f));
+	
 
-	for (int i = 1; i < numberOfCheckpoints; i++) {
-		lsBalls[i]->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
-		lsBalls[i]->SetPosition(checkpointPositions[i]);
-	}
+	//for (int i = 1; i < numberOfCheckpoints; i++) {
+	//	lsBalls[i]->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
+	//	lsBalls[i]->SetPosition(checkpointPositions[i]);
+	//}
 	for (int i = 1; i < waypointBalls.size(); i++) {
 		waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
-		waypointBalls[i]->SetPosition(LMVector3::OgreToLm(nuevaSpl->Interpolate(i / maxBalls)));
+		waypointBalls[i]->SetPosition(LMVector3::OgreToLm(nuevaSpl->Interpolate((float) i / maxBalls)));
 	}
 
 #pragma region All Components Started
@@ -243,6 +240,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion
 
 }

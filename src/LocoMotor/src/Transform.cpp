@@ -38,8 +38,6 @@ void LocoMotor::Transform::Start() {
 }
 
 void LocoMotor::Transform::Update(const float dt) {
-	//TODO: Quitar esto
-	SetPhysRotation(_direction);
 }
 
 const LMVector3& LocoMotor::Transform::GetPosition() {
@@ -78,8 +76,51 @@ void LocoMotor::Transform::SetSize(const LMVector3& newSize) {
 void LocoMotor::Transform::SetUpwards(const LMVector3& newUpward) {
 	double angle = GetRotation().Up().Angle(newUpward);
 	if (angle == 0.) return;
-	LMVector3 axis = GetRotation().Up() * newUpward;
+
+
+	//LMVector3 axis = GetRotation().Up() * newUpward;
+	// Producto vectorial para hallar el vector perpendicular a otros dos vectores
+	// Despues pasar esto al LMVectoresque :TODO
+
+	LMVector3 v1 = GetRotation().Up();
+	LMVector3 v2 = newUpward;
+	LMVector3 axis = LMVector3(
+		v1.GetY() * v2.GetZ() - v1.GetZ() * v2.GetY(),
+		v1.GetZ() * v2.GetX() - v1.GetX() * v2.GetZ(),
+		v1.GetX() * v2.GetY() - v1.GetY() * v2.GetX());
+
 	SetRotation(GetRotation().Rotate(axis, angle));
+}
+
+void LocoMotor::Transform::SetForward(const LMVector3& newForward) {
+	double angle = GetRotation().Forward().Angle(newForward);
+	if (angle == 0.) return;
+
+
+	//LMVector3 axis = GetRotation().Up() * newUpward;
+	// Producto vectorial para hallar el vector perpendicular a otros dos vectores
+	// Despues pasar esto al LMVectoresque :TODO
+
+	LMVector3 v1 = GetRotation().Forward();
+	LMVector3 v2 = newForward;
+	LMVector3 axis = LMVector3(
+		v1.GetY() * v2.GetZ() - v1.GetZ() * v2.GetY(),
+		v1.GetZ() * v2.GetX() - v1.GetX() * v2.GetZ(),
+		v1.GetX() * v2.GetY() - v1.GetY() * v2.GetX());
+
+	SetRotation(GetRotation().Rotate(axis, angle));
+}
+
+void LocoMotor::Transform::LookAt(const LMVector3& lookPos) {
+	LMVector3 newForward = lookPos - GetPosition();
+	SetForward(newForward);
+	//_gObjNode->LookAt(lookPos.GetX() * 10, lookPos.GetY() * 10, lookPos.GetZ() * 10);
+}
+
+void LocoMotor::Transform::LookAt(const LMVector3& lookPos, const LMVector3& up) {
+	SetUpwards(up);
+	LMVector3 newForward = lookPos - GetPosition();
+	SetForward(newForward);
 }
 
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
@@ -89,6 +130,7 @@ void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
 
 void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
 	_direction = newRotation;
+	_direction.Normalize();
 	Ogre::Quaternion a = newRotation.LmToOgre(newRotation);
 	_gObjNode->SetOrientation(a);
 }

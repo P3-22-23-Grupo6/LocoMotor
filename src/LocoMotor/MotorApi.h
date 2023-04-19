@@ -38,7 +38,6 @@ private:
 	
 	//TEMPORAL
 	void Prueba(float a);
-	LocoMotor::GameObject* enemy_gObj;
 	LocoMotor::GameObject* ship_gObj;
 };
 
