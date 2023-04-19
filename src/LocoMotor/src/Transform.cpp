@@ -92,6 +92,37 @@ void LocoMotor::Transform::SetUpwards(const LMVector3& newUpward) {
 	SetRotation(GetRotation().Rotate(axis, angle));
 }
 
+void LocoMotor::Transform::SetForward(const LMVector3& newForward) {
+	double angle = GetRotation().Forward().Angle(newForward);
+	if (angle == 0.) return;
+
+
+	//LMVector3 axis = GetRotation().Up() * newUpward;
+	// Producto vectorial para hallar el vector perpendicular a otros dos vectores
+	// Despues pasar esto al LMVectoresque :TODO
+
+	LMVector3 v1 = GetRotation().Forward();
+	LMVector3 v2 = newForward;
+	LMVector3 axis = LMVector3(
+		v1.GetY() * v2.GetZ() - v1.GetZ() * v2.GetY(),
+		v1.GetZ() * v2.GetX() - v1.GetX() * v2.GetZ(),
+		v1.GetX() * v2.GetY() - v1.GetY() * v2.GetX());
+
+	SetRotation(GetRotation().Rotate(axis, angle));
+}
+
+void LocoMotor::Transform::LookAt(const LMVector3& lookPos) {
+	LMVector3 newForward = lookPos - GetPosition();
+	SetForward(newForward);
+	//_gObjNode->LookAt(lookPos.GetX() * 10, lookPos.GetY() * 10, lookPos.GetZ() * 10);
+}
+
+void LocoMotor::Transform::LookAt(const LMVector3& lookPos, const LMVector3& up) {
+	SetUpwards(up);
+	LMVector3 newForward = lookPos - GetPosition();
+	SetForward(newForward);
+}
+
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
 	_position = newPosition;
 	_gObjNode->SetPosition(newPosition.GetX(), newPosition.GetY(), newPosition.GetZ());
@@ -124,8 +155,4 @@ void LocoMotor::Transform::SetPhysRotation(const LMQuaternion& newRotation) {
 }
 
 void LocoMotor::Transform::SetPhysScale(const LMVector3& newsize) {
-}
-
-void LocoMotor::Transform::LookAt(const LMVector3& lookPos) {
-	_gObjNode->LookAt(lookPos.GetX(), lookPos.GetY(), lookPos.GetZ());
 }

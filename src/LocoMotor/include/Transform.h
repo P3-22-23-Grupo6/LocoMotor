@@ -35,16 +35,15 @@ namespace LocoMotor {
 		const LMQuaternion& GetRotation();
 		void SetRotation(const LMQuaternion& newRotation);
 
-		const LMVector3& GetEulerRotation();
-		void SetEulerRotation(const LMVector3& newRotation);
-
 		const LMVector3& GetSize();
 		void SetSize(const LMVector3& newSize);
 
 		//void LookAt(const LMVector3& position, const LMVector3& upward);
 
 		void SetUpwards(const LMVector3& newUpward);
+		void SetForward(const LMVector3& newForward);
 		void LookAt(const LMVector3& lookPos);
+		void LookAt(const LMVector3& lookPos, const LMVector3& up);
 
 	private:
 
