@@ -24,6 +24,9 @@
     <ClCompile Include="..\..\src\LocoMotor_Utils\3DUnits.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Utils\LMInputs.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Utils\Singleton.h">
@@ -39,6 +42,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor_Utils\3DUnits.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Utils\LMInputs.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
