@@ -52,7 +52,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto map = _mScene->AddGameobject("map");
 	map->AddComponent("Transform");
 	map->AddComponent("MeshRenderer");
-	map->GetComponent<MeshRenderer>()->Start("map", "Plane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
+	map->GetComponent<MeshRenderer>()->Start("map", "SandPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 	map->AddComponent("RigidBodyComponent");
 	map->GetComponent<RigidBodyComponent>()->Start(0);
 
@@ -60,9 +60,16 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto map01 = _mScene->AddGameobject("map01");
 	map01->AddComponent("Transform");
 	map01->AddComponent("MeshRenderer");
-	map01->GetComponent<MeshRenderer>()->Start("map01", "Track.mesh", "");//Track.mesh para el antiguo
+	map01->GetComponent<MeshRenderer>()->Start("map01", "Plane.004.mesh", "");//Track.mesh para el antiguo
 	map01->AddComponent("RigidBodyComponent");
 	map01->GetComponent<RigidBodyComponent>()->Start(0);
+	//Collision
+	auto Debug01 = _mScene->AddGameobject("Debug01");
+	Debug01->AddComponent("Transform");
+	Debug01->AddComponent("MeshRenderer");
+	Debug01->GetComponent<MeshRenderer>()->Start("Debug01", "Debug_c.mesh", "");//Track.mesh para el antiguo
+	Debug01->AddComponent("RigidBodyComponent");
+	Debug01->GetComponent<RigidBodyComponent>()->Start(0);
 	//TurboPlane
 	auto turboPlane = _mScene->AddGameobject("TurboPlane");
 	turboPlane->AddComponent("Transform");
@@ -90,12 +97,12 @@ void MotorApi::RegisterGame(const char* gameName) {
 	palmTree02->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma endregion
 
-	auto track00 = _mScene->AddGameobject("Track00");
-	track00->AddComponent("Transform");
-	track00->AddComponent("MeshRenderer");
-	track00->GetComponent<MeshRenderer>()->Start("Track00", "Track00.mesh", "");//Track.mesh para el antiguo
-	track00->AddComponent("RigidBodyComponent");
-	track00->GetComponent<RigidBodyComponent>()->Start(0);
+	//auto track00 = _mScene->AddGameobject("Track00");
+	//track00->AddComponent("Transform");
+	//track00->AddComponent("MeshRenderer");
+	//track00->GetComponent<MeshRenderer>()->Start("Track00", "Track00.mesh", "");//Track.mesh para el antiguo
+	//track00->AddComponent("RigidBodyComponent");
+	//track00->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
@@ -198,12 +205,13 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	ship_gObj->SetPosition(LMVector3(0, 4, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
-	map01->SetPosition(LMVector3(0, -8, 0));
+	map01->SetPosition(LMVector3(0, -7, 7));
+	Debug01->SetPosition(LMVector3(0, -7, 7));
 	turboPlane->SetPosition(LMVector3(0, 0.1f, 0));
 	palmTree->SetPosition(LMVector3(-50, 0, -85));
 	palmTree01->SetPosition(LMVector3(40, 0, -50));
 	palmTree02->SetPosition(LMVector3(60, 0, -200));
-	track00->SetPosition(LMVector3(20, 0, -200));
+	//track00->SetPosition(LMVector3(20, 0, -200));
 	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
 	wayPoint01->SetPosition(pos01);
 	wayPoint02->SetPosition(pos02);

@@ -36,7 +36,7 @@ void OgreWrapper::RenderScene::Render() {
 }
 
 void OgreWrapper::RenderScene::SetSkybox() {
-	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000, false);
+	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000.0f, true);
 	
 	//Para NIEBLA
 	//Ogre::ColourValue fadeColour(0.8, 0.8, 0.9);
