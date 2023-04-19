@@ -55,6 +55,15 @@ void MotorApi::RegisterGame(const char* gameName) {
 	map->GetComponent<MeshRenderer>()->Start("map", "SandPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 	map->AddComponent("RigidBodyComponent");
 	map->GetComponent<RigidBodyComponent>()->Start(0);
+	//WaterPlane
+	auto waterPlane = _mScene->AddGameobject("waterPlane");
+	waterPlane->AddComponent("Transform");
+	waterPlane->SetPosition(LMVector3(0,30,0));
+	waterPlane->AddComponent("MeshRenderer");
+	waterPlane->GetComponent<MeshRenderer>()->Start("waterPlane", "WaterPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
+	//waterPlane->AddComponent("RigidBodyComponent");
+	//waterPlane->GetComponent<RigidBodyComponent>()->Start(0);
+	
 
 	//Track Main Road
 	auto trackMain = _mScene->AddGameobject("trackMain");
@@ -209,7 +218,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	palmTree02->SetPosition(LMVector3(60, 0, -200));
 	//track00->SetPosition(LMVector3(20, 0, -200));
 	enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
-
 	palmTree->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	//palmTree01->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	palmTree02->SetScale(LMVector3(15.0f, 15.0f, 15.0f));
@@ -230,6 +238,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion
 
 }
