@@ -53,6 +53,10 @@ namespace PhysicsWrapper {
 		/// @brief Gets dynamic World
 		btDynamicsWorld* GetDynamicWorld();
 
+		void setContactStartCallback(ContactStartedCallback funtion);
+		void setContactProcessCallback(ContactProcessedCallback funtion);
+		void setContactEndedCallback(ContactEndedCallback funtion);
+
 		RaycastInfo createRaycast(LMVector3 from, LMVector3 direction);
 
 	private:

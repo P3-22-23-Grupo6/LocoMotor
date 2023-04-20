@@ -16,7 +16,7 @@ using namespace LocoMotor;
 GameObject::GameObject(OgreWrapper::Node* node) {
 
 	_node = node;
-
+	_componentsByName = {};
 	tiltAmount = 0.0f;//TEMPORAL
 }
 
@@ -192,6 +192,30 @@ void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair
 	}
 }
 
+
+void LocoMotor::GameObject::OnCollisionEnter(GameObject* other) {
+	std::map<std::string, Component*>::iterator it;
+	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
+		if (it->second->isEnabled())
+			it->second->OnCollisionEnter(other);
+	}
+}
+
+void LocoMotor::GameObject::OnCollisionExit(GameObject* other) {
+	std::map<std::string, Component*>::iterator it;
+	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
+		if (it->second->isEnabled())
+			it->second->OnCollisionExit(other);
+	}
+}
+
+void LocoMotor::GameObject::OnCollisionStay(GameObject* other) {
+	std::map<std::string, Component*>::iterator it;
+	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
+		if (it->second->isEnabled())
+			it->second->OnCollisionStay(other);
+	}
+}
 
 // Set the position of the GameObject
 void GameObject::SetPosition(LMVector3 pos) {

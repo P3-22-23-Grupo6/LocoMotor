@@ -70,6 +70,7 @@ namespace LocoMotor {
 		float _angDamping;
 		bool _gravity;
 		MeshStrider* _ms;
+		bool _trigger = false;
 
 	};
 }

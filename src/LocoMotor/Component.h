@@ -34,6 +34,12 @@ namespace LocoMotor {
 		};
 		virtual void OnDisable() {
 		};
+		virtual void OnCollisionEnter(GameObject* other) {
+		};
+		virtual void OnCollisionStay(GameObject* other) {
+		};
+		virtual void OnCollisionExit(GameObject* other) {
+		};
 
 		GameObject* GetContext ();
 		/// @brief Set the component to a gameobject

@@ -22,6 +22,7 @@
 #include <ParticleSystem.h>
 #include <Camera.h>
 #include <EnemyAI.h>
+#include "CallBackBullet.h"
 
 //#include <tweeners/builder.hpp>
 //#include <tweeners/easing.hpp>
@@ -250,7 +251,9 @@ void MotorApi::Init() {
 	PhysicsManager::Init();
 	InputManager::Get();
 	_scnManager = LocoMotor::SceneManager::Init();
-
+	PhysicsManager::GetInstance()->setContactStartCallback(contactStartBullet);
+	PhysicsManager::GetInstance()->setContactProcessCallback(contactProcessedBullet);
+	PhysicsManager::GetInstance()->setContactEndedCallback(contactExitBullet);
 	auto cmpFac = ComponentsFactory::Init();
 	cmpFac->RegisterComponent<AudioSource>("AudioSource");
 	cmpFac->RegisterComponent<AudioListener>("AudioListener");

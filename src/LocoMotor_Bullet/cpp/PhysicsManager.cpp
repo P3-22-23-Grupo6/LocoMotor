@@ -7,7 +7,6 @@ using namespace PhysicsWrapper;
 PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
 
 PhysicsManager::PhysicsManager() {
-
 	//Set default configuration
 	_collisionConfiguration = new btDefaultCollisionConfiguration();
 	_dispatcher = new btCollisionDispatcher(_collisionConfiguration);
@@ -86,6 +85,18 @@ void PhysicsManager::SetWorldGravity(btVector3 gravity) {
 
 btDynamicsWorld* PhysicsWrapper::PhysicsManager::GetDynamicWorld() {
 	return _dynamicWorld;
+}
+
+void PhysicsWrapper::PhysicsManager::setContactStartCallback(ContactStartedCallback funtion) {
+	gContactStartedCallback = funtion;
+}
+
+void PhysicsWrapper::PhysicsManager::setContactProcessCallback(ContactProcessedCallback funtion) {
+	gContactProcessedCallback = funtion;
+}
+
+void PhysicsWrapper::PhysicsManager::setContactEndedCallback(ContactEndedCallback funtion) {
+	gContactEndedCallback = funtion;
 }
 
 void PhysicsManager::RemoveRigidBodyFromWorld(btRigidBody* rb) {

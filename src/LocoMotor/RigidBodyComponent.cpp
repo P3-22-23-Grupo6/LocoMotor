@@ -48,12 +48,15 @@ void LocoMotor::RigidBodyComponent::Start() {
 		if (mesh != nullptr) {
 			_ms = new MeshStrider(mesh->GetMesh());
 			_body = PhysicsManager::GetInstance()->CreateRigidBody(info, _ms);
+			_body->setUserPointer(gameObject);
 			//delete ms;
 			return;
 		}	
 	}
 	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
+	_body->setUserPointer(gameObject);
 }
+
 
 void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	for (int i = 0; i < params.size(); i++) {

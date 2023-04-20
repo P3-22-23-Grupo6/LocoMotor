@@ -50,6 +50,7 @@
     <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Scene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\src\CallBackBullet.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\Transform.cpp" />
@@ -60,6 +61,7 @@
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h" />
     <ClInclude Include="..\..\src\LocoMotor\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor\EnemyAI.h" />
+    <ClInclude Include="..\..\src\LocoMotor\include\CallBackBullet.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\Transform.h" />
