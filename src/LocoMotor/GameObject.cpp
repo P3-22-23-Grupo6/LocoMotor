@@ -20,9 +20,9 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 	_node = node;
 	_componentsByName = {};
 
-	physicsBasedMovement = false;
+	physicsBasedMovement = true;
 
-	tiltAmount = 0.0f;//TEMPORAL
+	tiltAmount = 0.0f; //TEMPORAL
 }
 
 // Update the GameObject
