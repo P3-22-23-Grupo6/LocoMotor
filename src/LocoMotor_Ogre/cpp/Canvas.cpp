@@ -14,6 +14,8 @@
 #include <OgreTextAreaOverlayElement.h>
 #include <OgreFontManager.h>
 #include <iostream>
+#include "UIElement.h"
+#include "UIImage.h"
 
 unsigned int OgreWrapper::Canvas::_numOfCanvas = 0;
 Ogre::OverlaySystem* OgreWrapper::Canvas::_ovrSys = nullptr;
@@ -39,15 +41,20 @@ bool OgreWrapper::Canvas::Init(const char* name, Ogre::SceneManager* man) {
 		_ovrSys = OGRE_NEW Ogre::OverlaySystem();
 	man->addRenderQueueListener(_ovrSys);
 	auto _aux = Ogre::OverlayManager::getSingletonPtr();
-	_canvas = _aux->create((const char*) &_numOfCanvas);
+	
+	//_canvas = _aux->create((const char*) &_numOfCanvas);
+	_canvas = _aux->create("MainOverlay");
 	// _aux->addOverlay(_canvas);
 	_container = static_cast<Ogre::OverlayContainer*>(_aux->createOverlayElement("Panel", "Main"));
 	_container->setPosition(0.0f, 0.0f);
 	_container->setDimensions(0.5, 0.5);
-	_container->setMaterialName(/*Ogre::MaterialManager::getSingleton().getDefaultMaterial()->getName()*/"TestMat");
+	//_container->setMaterialName(/*Ogre::MaterialManager::getSingleton().getDefaultMaterial()->getName()*/"TestMat");
 	// Add the panel to the overlay
 	
 	_canvas->add2D(_container);
+
+	UIImage* im = new UIImage("TestMat");
+	addUIElement(im);
 
 #pragma region TEMP, Mostrar texto
 	
@@ -83,7 +90,7 @@ bool OgreWrapper::Canvas::Init(const char* name, Ogre::SceneManager* man) {
 	tex->setVerticalAlignment(Ogre::GVA_TOP);
 	tex->setAlignment(Ogre::TextAreaOverlayElement::Left);
 	//std::cout << tex->getFontName();
-	_container->addChild(tex);
+	//_container->addChild(tex);
 	
 #pragma endregion
 
@@ -99,6 +106,10 @@ bool OgreWrapper::Canvas::Render() {
 }
 
 void OgreWrapper::Canvas::SetSceneManager() {
+}
+
+void OgreWrapper::Canvas::addUIElement(UIElement* uiEl) {
+	_uiElems.push_back(uiEl);
 }
 
 bool OgreWrapper::Canvas::ShutDown() {

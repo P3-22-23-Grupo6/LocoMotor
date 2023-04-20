@@ -56,7 +56,6 @@
     <ClCompile Include="..\..\src\LocoMotor\src\LMVector.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\UIElement.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
@@ -77,7 +76,6 @@
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h" />
     <ClInclude Include="..\..\src\LocoMotor\UIElement.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIImage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\Component.h" />

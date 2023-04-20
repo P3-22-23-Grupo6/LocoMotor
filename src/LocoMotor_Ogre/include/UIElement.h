@@ -15,15 +15,15 @@ namespace Ogre {
 
 namespace OgreWrapper {
 
-	struct AnchorPoint {
+	/*struct AnchorPoint {
 		float x = 0;
 		float y = 0;
-	};
+	};*/
 
-	struct Position {
+	/*struct Position {
 		short x = 0;
 		short y = 0;
-	};
+	};*/
 
 	struct NativeWindowPair;
 
@@ -49,10 +49,12 @@ namespace OgreWrapper {
 		Ogre::OverlayContainer* _container;
 		Ogre::OverlayManager* _overlayMngr;
 
-		AnchorPoint _anchor;
-		Position _position;
+		/*AnchorPoint _anchor;
+		Position _position;*/
 
 		static unsigned int _numOfUIElements;
+
+		const double defaultX = 0, defaultY = 0, defaultW = 0.5, defaultH = 0.5;
 	};
 
 }

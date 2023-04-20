@@ -51,8 +51,9 @@ namespace OgreWrapper {
 
 		static void SetSceneManager();
 
+		void addUIElement(UIElement* uiEl);
 
-		template<typename T, typename ...Ts>
+		/*template<typename T, typename ...Ts>
 		T* addUIElement(std::string type, std::string name, Ts &&... args) {
 
 			T* uEl = new T(type,name, args...);
@@ -60,7 +61,7 @@ namespace OgreWrapper {
 			_uiElems.push_back(uEl);
 
 			return uEl;
-		}
+		}*/
 
 	
 

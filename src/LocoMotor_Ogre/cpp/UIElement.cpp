@@ -12,6 +12,7 @@
 using namespace OgreWrapper;
 
 //Ogre::SceneManager* UIElement::_ogreScnManager = nullptr;
+
 unsigned int OgreWrapper::UIElement::_numOfUIElements = 0;
 
 OgreWrapper::UIElement::UIElement() {
