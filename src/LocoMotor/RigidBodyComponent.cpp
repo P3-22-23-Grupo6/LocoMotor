@@ -112,7 +112,12 @@ bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* other) {
 
 btRigidBody* LocoMotor::RigidBodyComponent::getBody() {
 	return _body;
-}	
+}
+void LocoMotor::RigidBodyComponent::beATrigger()
+{
+	_body->setCollisionFlags(_body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+}
+
 
 bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
 	return PhysicsManager::GetInstance()->createRaycast(from,to).hasHit;

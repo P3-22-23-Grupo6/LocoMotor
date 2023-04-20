@@ -53,6 +53,8 @@ namespace LocoMotor {
 		/// @brief 
 		/// @return 
 		btRigidBody* getBody();
+		/// @brief Convert the body to be a Trigger(No contact Response)
+		void beATrigger();
 		/// @brief Methods to return RaycastInfo
 		bool GetRaycastHit(LMVector3 from, LMVector3 to);
 		LMVector3 GetraycastHitPoint(LMVector3 from, LMVector3 to);
