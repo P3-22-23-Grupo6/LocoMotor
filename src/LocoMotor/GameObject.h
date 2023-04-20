@@ -127,7 +127,7 @@ namespace LocoMotor {
 			movable = b;
 		}
 
-		bool physicsBasedMovement = false;
+		bool physicsBasedMovement;
 	private:
 		std::map<std::string, Component*> _componentsByName;
 		Scene* scene;
