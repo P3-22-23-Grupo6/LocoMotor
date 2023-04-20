@@ -141,6 +141,7 @@
     <ClCompile Include="..\..\src\LocoMotor_Utils\3DUnits.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Utils\LMInputs.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Utils\LMVector.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Utils\LmVectorConverter.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Utils\MeshStrider.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +149,7 @@
     <ClInclude Include="..\..\src\LocoMotor_Utils\CheckML.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\LMInputs.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\LMVector.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\LmVectorConverter.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\MeshStrider.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\Singleton.h" />
   </ItemGroup>

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <btBulletDynamicsCommon.h>
 #include "MeshStrider.h"
+#include "LmVectorConverter.h"
 #include "LMVector.h"
 using namespace PhysicsWrapper;
 PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
@@ -109,9 +110,9 @@ void PhysicsManager::Update(float dT) {
 RaycastInfo PhysicsWrapper::PhysicsManager::createRaycast(LMVector3 from, LMVector3 direction) {
 	RaycastInfo newRaycastInfo = RaycastInfo();
 
-	btCollisionWorld::ClosestRayResultCallback rayCallback(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction));
+	btCollisionWorld::ClosestRayResultCallback rayCallback(LmToBullet(from), LmToBullet(direction));
 
-	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction), rayCallback);
+	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LmToBullet(from), LmToBullet(direction), rayCallback);
 	if (rayCallback.hasHit()) {
 		newRaycastInfo.hasHit = true;
 		newRaycastInfo.hitPos = LMVector3(rayCallback.m_hitPointWorld.getX(),

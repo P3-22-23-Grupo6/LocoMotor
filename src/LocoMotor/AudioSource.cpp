@@ -4,6 +4,7 @@
 #include "LMVector.h"
 #include "LocoMotor_FMod/include/AudioSource.h"
 #include "LocoMotor_FMod/include/AudioManager.h"
+#include "LmVectorConverter.h"
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
@@ -67,7 +68,7 @@ void LocoMotor::AudioSource::Update(float dt) {
 	if (_lastError != 0)
 		std::cout << FmodWrapper::AudioManager::GetInstance()->GetError(_lastError) << std::endl;
 #endif // _DEBUG
-	_src->SetPositionAndVelocity(LMVector3::LmToFMod(gameObject->GetTransform()->GetPosition()), dt / 1000.f);
+	_src->SetPositionAndVelocity(LmToFMod(gameObject->GetTransform()->GetPosition()), dt / 1000.f);
 }
 
 void LocoMotor::AudioSource::Play(const char* fileName, const int loop, const unsigned int loopStart, const unsigned int loopEnd) {

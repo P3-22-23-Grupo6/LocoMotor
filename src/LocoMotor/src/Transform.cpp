@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "RigidBodyComponent.h"
 #include "Node.h"
+#include "LmVectorConverter.h"
 
 LocoMotor::Transform::Transform() {
 	_position = LMVector3();
@@ -131,7 +132,7 @@ void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
 void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
 	_direction = newRotation;
 	_direction.Normalize();
-	Ogre::Quaternion a = newRotation.LmToOgre(newRotation);
+	Ogre::Quaternion a = LmToOgre(newRotation);
 	_gObjNode->SetOrientation(a);
 }
 

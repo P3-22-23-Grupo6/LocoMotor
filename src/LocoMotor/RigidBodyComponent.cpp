@@ -6,6 +6,7 @@
 #include "Renderer3D.h"
 #include "MeshRenderer.h"
 #include "MeshStrider.h"
+#include "LmVectorConverter.h"
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
 
@@ -32,14 +33,14 @@ LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
 
 void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
 {
-	_body->applyCentralForce(LMVector3::LmToBullet(force));
+	_body->applyCentralForce(LmToBullet(force));
 }
 void LocoMotor::RigidBodyComponent::Start() {
 	
 	RigidBodyInfo info;
 	info.mass = _mass;
-	info.boxSize = LMVector3::LmToBullet(LMVector3(0,0,0));
-	info.origin = LMVector3::LmToBullet(gameObject->GetTransform()->GetPosition());
+	info.boxSize = LmToBullet(LMVector3(0,0,0));
+	info.origin = LmToBullet(gameObject->GetTransform()->GetPosition());
 	info.sphereSize = 5;
 	info.capsuleHeight = 10;
 	info.capsuleRadius = 3;
@@ -77,33 +78,33 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 }
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
-	gameObject->SetPosition(LMVector3::BulletToLm(_body->getWorldTransform().getOrigin()));
-	gameObject->SetRotation(LMQuaternion::BulletToLm(_body->getWorldTransform().getRotation()));
+	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
+	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
 	_body->clearForces();
 }
 
 
 void LocoMotor::RigidBodyComponent::setRotation(LMQuaternion rot)
 {
-	_body->getWorldTransform().setRotation(LMQuaternion::LmToBullet(rot));
+	_body->getWorldTransform().setRotation(LmToBullet(rot));
 }
 
 void LocoMotor::RigidBodyComponent::setPosition(LMVector3 pos)
 {
-	_body->getWorldTransform().setOrigin(LMVector3::LmToBullet(pos));
+	_body->getWorldTransform().setOrigin(LmToBullet(pos));
 }
 
 void LocoMotor::RigidBodyComponent::useGravity(LMVector3 gravity) {
 
-	_body->setGravity(LMVector3::LmToBullet(gravity));
+	_body->setGravity(LmToBullet(gravity));
 }
 
 void LocoMotor::RigidBodyComponent::FreezePosition(LMVector3 freezeAxis) {
-	_body->setLinearFactor(LMVector3::LmToBullet(freezeAxis));
+	_body->setLinearFactor(LmToBullet(freezeAxis));
 }
 
 void LocoMotor::RigidBodyComponent::FreezeRotation(LMVector3 freezeAxis) {
-	_body->setAngularFactor(LMVector3::LmToBullet(freezeAxis));
+	_body->setAngularFactor(LmToBullet(freezeAxis));
 }
 
 bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* other) {

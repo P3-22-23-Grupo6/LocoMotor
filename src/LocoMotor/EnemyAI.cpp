@@ -4,7 +4,7 @@
 #include "Spline.h"
 #include <LMVector.h>
 #include "RigidBodyComponent.h"
-
+#include "LmVectorConverter.h"
 //float testTime = 0.0f;
 LocoMotor::EnemyAI::EnemyAI() {
 }
@@ -47,9 +47,9 @@ void LocoMotor::EnemyAI::Update(float dt)
 
 	//Interpolate Position
 	Ogre::Vector3 newPos = mySpline->Interpolate(timeStep);
-	newPos += myGbj->GetTransform()->GetRotation().Right() * startSeparation;
+	newPos += LmToOgre (myGbj->GetTransform()->GetRotation().Right() * startSeparation);
 	//LookAt
-	myGbj->GetTransform()->LookAt(LMVector3::OgreToLm(newPos));
+	myGbj->GetTransform()->LookAt(OgreToLm(newPos));
 	//Set Position
-	myGbj->SetPosition(LMVector3::OgreToLm(newPos));
+	myGbj->SetPosition(OgreToLm(newPos));
 }

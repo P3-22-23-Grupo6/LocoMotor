@@ -1,5 +1,6 @@
 #include "CallBackBullet.h"
 #include "GameObject.h"
+#include "btBulletDynamicsCommon.h"
 
 void contactStartBullet(btPersistentManifold* const& manifold) {
 		//Tomamos los dos rb guardados previamente en UserPointer
