@@ -142,7 +142,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto _renderScn = _mScene->GetRender();
 
 #pragma region Manager responsable del gameplay
-	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
+	//LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
 	//Component* cmp = raceManager_gObj->AddComponent("RaceManager");
 
 #pragma region RaceTrack
@@ -210,7 +210,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->SetPosition(LMVector3(0, 4, 0));
 	ship_gObj->setMovable(true);
-	ship_gObj->AddComponent("PlayerController");
+	//ship_gObj->AddComponent("PlayerController");
 
 	//ENEMY MODEL
 	enemy_gObj = _mScene->AddGameobject("Enemy");

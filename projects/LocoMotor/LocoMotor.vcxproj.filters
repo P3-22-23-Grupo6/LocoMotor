@@ -64,6 +64,9 @@
     <ClCompile Include="..\..\src\LocoMotor\UIElement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\GameObject.h">
@@ -124,6 +127,9 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\UIElement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIImage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
