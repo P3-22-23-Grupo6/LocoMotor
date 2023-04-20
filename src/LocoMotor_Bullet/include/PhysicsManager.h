@@ -23,6 +23,8 @@ namespace PhysicsWrapper {
 		float capsuleHeight;
 		btVector3 origin;
 		float mass;
+
+		RigidBodyInfo();
 	};
 	/// @brief Info to retreieve from a Raycast
 	/// @param hasHit tells if there was a Collision
@@ -32,6 +34,8 @@ namespace PhysicsWrapper {
 		bool hasHit;
 		LMVector3 hitPos;
 		LMVector3 hitVNormal;
+
+		RaycastInfo();
 	};
 
 	class BulletRigidBody;

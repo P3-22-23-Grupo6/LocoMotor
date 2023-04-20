@@ -108,6 +108,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->AddComponent("MeshRenderer");
 	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
 	ship_gObj->AddComponent("ParticleSystem");
+	ship_gObj->AddComponent("AudioListener");
 
 	ship_gObj->AddComponent("RigidBodyComponent");
 	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
@@ -189,7 +190,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		enemy_gObj->SetPosition(LMVector3(-70 + i * 35, 3.0f, -80));
 
 		enemy_gObj->AddComponent("EnemyAI");
-		enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl, -70 + i * 35);
+		enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl, -70.f + i * 35.f);
 	}
 
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();

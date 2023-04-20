@@ -48,7 +48,6 @@ namespace LocoMotor {
 	private:
 
 		LMVector3 _position;
-		LMVector3 _rotation;
 		LMVector3 _scale;
 		LMQuaternion _direction;
 

@@ -71,9 +71,9 @@ btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms
 
 	//add the body to the dynamics world;
 	_dynamicWorld->addRigidBody(rigidbody);
-	rigidbody->setDamping(0.7, 0.7);
+	rigidbody->setDamping(0.7f, 0.7f);
 	if (isDynamic) {
-		rigidbody->setCcdMotionThreshold(0.0000001);
+		rigidbody->setCcdMotionThreshold(0.0000001f);
 		rigidbody->setCcdSweptSphereRadius(0.5f);
 	}
 	return rigidbody;
@@ -123,4 +123,20 @@ RaycastInfo PhysicsWrapper::PhysicsManager::createRaycast(LMVector3 from, LMVect
 	}
 	else newRaycastInfo.hasHit = false;
 	return newRaycastInfo;
+}
+
+PhysicsWrapper::RigidBodyInfo::RigidBodyInfo() {
+	type = 0;
+	boxSize = btVector3();
+	sphereSize = 0.f;
+	capsuleRadius = 0.f;
+	capsuleHeight = 0.f;
+	origin = btVector3();
+	mass = 0.f;
+}
+
+PhysicsWrapper::RaycastInfo::RaycastInfo() {
+	hasHit = false;
+	hitPos = LMVector3();
+	hitVNormal = LMVector3();
 }

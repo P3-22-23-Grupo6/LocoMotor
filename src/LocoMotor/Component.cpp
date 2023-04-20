@@ -23,3 +23,9 @@ void LocoMotor::Component::SetActive(bool active) {
 bool LocoMotor::Component::isEnabled() {
 	return enabled;
 }
+
+LocoMotor::Component::Component()
+{
+	gameObject = nullptr;
+	enabled = true;
+}

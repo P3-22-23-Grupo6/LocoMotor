@@ -12,7 +12,7 @@ namespace LocoMotor {
 	class GameObject;
 }
 
-MOTOR_API class MotorApi {
+class MotorApi {
 public:
 	MOTOR_API MotorApi();
 	MOTOR_API void Init();

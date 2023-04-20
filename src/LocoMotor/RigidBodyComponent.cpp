@@ -14,8 +14,8 @@ const std::string RigidBodyComponent::name = "RigidBodyComponent";
 LocoMotor::RigidBodyComponent::RigidBodyComponent()
 {
 	_mass = 0;
-	_damping = 0.9;
-	_angDamping = 0.7;
+	_damping = 0.9f;
+	_angDamping = 0.7f;
 	_gravity = true;
 	_body = nullptr;
 	_ms = nullptr;

@@ -11,8 +11,8 @@
 #include "OgreVector.h"
 #include "btBulletDynamicsCommon.h"
 #include "fmod_common.h"
-//Vector class to be used with LocoMotor
 
+//Vector class to be used with LocoMotor
 class MOTOR_API LMVector3 {
 
 
@@ -167,7 +167,7 @@ private:
 };
 
 //Quaternion class to be used with LocoMotor
-class LMQuaternion {
+class MOTOR_API LMQuaternion {
 
 
 public:

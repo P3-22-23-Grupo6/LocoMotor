@@ -7,7 +7,7 @@ class LMQuaternion;
 class btRigidBody;
 class MeshStrider;
 namespace PhysicsWrapper {
-	class RigidBodyInfo;
+	struct RigidBodyInfo;
 	class BulletRigidBody;
 }
 namespace LocoMotor {

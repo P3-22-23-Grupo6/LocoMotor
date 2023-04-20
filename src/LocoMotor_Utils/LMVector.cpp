@@ -295,7 +295,7 @@ LMVector3 LMVector3::BulletToLm(const btVector3& bulletVector) {
 }
 // Converts an lmVector to Bullet vector
 btVector3 LMVector3::LmToBullet(const LMVector3& lmVector) {
-	return btVector3(lmVector.GetX(), lmVector.GetY(), lmVector.GetZ());
+	return btVector3((float)lmVector.GetX(), (float) lmVector.GetY(), (float) lmVector.GetZ());
 }
 // Converts an Ogre vector to lmVector
 LMVector3 LMVector3::OgreToLm(const Ogre::Vector3& ogreVector) {
@@ -303,7 +303,7 @@ LMVector3 LMVector3::OgreToLm(const Ogre::Vector3& ogreVector) {
 }
 // Converts an lmVector to an Ogre vector
 Ogre::Vector3 LMVector3::LmToOgre(const LMVector3& lmVector) {
-	return Ogre::Vector3((double) lmVector.GetX(), (double) lmVector.GetY(), (double) lmVector.GetZ());
+	return Ogre::Vector3((float) lmVector.GetX(), (float) lmVector.GetY(), (float) lmVector.GetZ());
 }
 // Converts an FMod vector to an lmVector
 LMVector3 LMVector3::FModToLm(const FMOD_VECTOR& fmVector) {
@@ -526,7 +526,7 @@ LMQuaternion LMQuaternion::BulletToLm(const btQuaternion& bulletQuaternion) {
 }
 // Converts an LMQuaternion to Bullet vector
 btQuaternion LMQuaternion::LmToBullet(const LMQuaternion& LMQuaternion) {
-	return btQuaternion(LMQuaternion.GetX(), LMQuaternion.GetY(), LMQuaternion.GetZ(), LMQuaternion.GetW());
+	return btQuaternion((float) LMQuaternion.GetX(), (float) LMQuaternion.GetY(), (float) LMQuaternion.GetZ(), (float) LMQuaternion.GetW());
 }
 // Converts an Ogre quaternion to LMQuaternion
 LMQuaternion LMQuaternion::OgreToLm(const Ogre::Quaternion& ogreQuaternion) {
@@ -534,7 +534,7 @@ LMQuaternion LMQuaternion::OgreToLm(const Ogre::Quaternion& ogreQuaternion) {
 }
 // Converts an LMQuaternion to an Ogre quaternion
 Ogre::Quaternion LMQuaternion::LmToOgre(const LMQuaternion& LMQuaternion) {
-	return Ogre::Quaternion(LMQuaternion.GetW(), LMQuaternion.GetX(), LMQuaternion.GetY(), LMQuaternion.GetZ());
+	return Ogre::Quaternion((float)LMQuaternion.GetW(), (float) LMQuaternion.GetX(), (float) LMQuaternion.GetY(), (float) LMQuaternion.GetZ());
 }
 // Converts a Bullet transform to LMQuaternion
 LMQuaternion LMQuaternion::BullTransformToLm(btTransform bulletTransform) {

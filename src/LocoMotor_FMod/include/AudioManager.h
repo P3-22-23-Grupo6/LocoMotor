@@ -48,12 +48,12 @@ namespace FmodWrapper {
 		/// @brief Adds a listener to Fmod
 		/// @param index The index of the newly created listener
 		/// @return The iterator to the position in the listeners list where it is stored;
-		std::list<AudioListener*>::iterator AddListener(AudioListener* curr, int& index);
+		std::list<AudioListener*>::iterator AddListener(AudioListener* curr, size_t& index);
 
 		/// @brief Removes the listener
 		/// @param The listener to remove
 		/// @return A number that by passing it to GetError(unsigned short) you can get more info if there was an error
-		unsigned short RemoveListener(std::list<AudioListener*>::iterator it, int indexToRemove);
+		unsigned short RemoveListener(std::list<AudioListener*>::iterator it, size_t indexToRemove);
 
 		/// @brief Gets the FMOD::System object from this manager
 		/// @return The System in question

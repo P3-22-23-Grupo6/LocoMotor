@@ -14,9 +14,14 @@ using namespace LocoMotor;
 
 // Constructor
 GameObject::GameObject(OgreWrapper::Node* node) {
-
+	scene = nullptr;
+	transform = nullptr;
+	_renderer = nullptr;
 	_node = node;
 	_componentsByName = {};
+
+	physicsBasedMovement = false;
+
 	tiltAmount = 0.0f;//TEMPORAL
 }
 
@@ -97,8 +102,6 @@ void GameObject::Update(float dt) {
 	bool acelerate = man->GetKey(SDL_SCANCODE_W);
 	if (acelerate) {
 
-		double degToRad = 0.0174533;
-
 		// MOVIMIENTO CON FISICAS :TODO
 		// Para que funcione, la gravedad tiene que estar activada y el objeto tener una masa distinta de 0
 		if (physicsBasedMovement)
@@ -135,8 +138,7 @@ void GameObject::Update(float dt) {
 		transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), -2.));
 	}
 
-	std::cout << transform->GetRotation().GetY() << std::endl;
-
+	// std::cout << transform->GetRotation().GetY() << std::endl;
 
 
 	// MOVIMIENTO CALCULADO CON MATES :TODO
@@ -145,7 +147,7 @@ void GameObject::Update(float dt) {
 	// Aplicar velocidad
 
 	// Ralentizar velocidad
-		float currentVelocity = localVelocity.Magnitude();
+		float currentVelocity = (float)localVelocity.Magnitude();
 		currentVelocity -= .2f;
 		if (currentVelocity < 0) currentVelocity = 0;
 		localVelocity.Normalize();
@@ -165,8 +167,8 @@ void GameObject::Update(float dt) {
 		}
 
 
-		std::cout << "\n" << "localVelocity = " << localVelocity.GetX()
-			<< ", " << localVelocity.GetY() << ", " << localVelocity.GetZ() << "\n";
+		// std::cout << "\n" << "localVelocity = " << localVelocity.GetX()
+			// << ", " << localVelocity.GetY() << ", " << localVelocity.GetZ() << "\n";
 
 		GetTransform()->SetPosition(GetTransform()->GetPosition() + localVelocity);
 
@@ -256,7 +258,7 @@ OgreWrapper::Node* LocoMotor::GameObject::GetNode() {
 
 
 void GameObject::StartComp() {
-	for (auto comp : _componentsByName) {
+	for (auto& comp : _componentsByName) {
 		comp.second->Start();
 	}
 }

@@ -21,7 +21,7 @@ AudioManager::AudioManager(int numChannels) {
 
 	float vol;
 	_main->getVolume(&vol);
-	_sys->set3DSettings(10.f, 100.f, 1.f);
+	_sys->set3DSettings(15.f, 30.f, 1.f);
 
 	_soundLib = std::unordered_map<const char*, FMOD::Sound*>();
 }
@@ -101,20 +101,20 @@ Sound* AudioManager::GetSound(const char* id) {
 	return _soundLib[id] ? _soundLib[id] : nullptr;
 }
 
-std::list<AudioListener*>::iterator AudioManager::AddListener(AudioListener* curr, int& index) {
+std::list<AudioListener*>::iterator AudioManager::AddListener(AudioListener* curr, size_t& index) {
 	index = _listeners.size();
 	_listeners.push_back(curr);
 
-	_sys->set3DNumListeners(_listeners.size());
+	_sys->set3DNumListeners((int)_listeners.size());
 
 	std::list<AudioListener*>::iterator it = _listeners.end();
 	it--;
 	return it;
 }
 
-unsigned short FmodWrapper::AudioManager::RemoveListener(std::list<AudioListener*>::iterator listenerIt, int indexToRemove) {
+unsigned short FmodWrapper::AudioManager::RemoveListener(std::list<AudioListener*>::iterator listenerIt, size_t indexToRemove) {
 	auto it = _listeners.erase(listenerIt);
-	int nIndex = indexToRemove;
+	int nIndex = (int)indexToRemove;
 
 	unsigned short err = 0;
 
@@ -129,7 +129,7 @@ unsigned short FmodWrapper::AudioManager::RemoveListener(std::list<AudioListener
 
 		nIndex++;
 	}
-	_sys->set3DNumListeners(_listeners.size());
+	_sys->set3DNumListeners((int)_listeners.size());
 	return err;
 }
 

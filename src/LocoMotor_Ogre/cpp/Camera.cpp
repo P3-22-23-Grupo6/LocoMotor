@@ -19,7 +19,7 @@ OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 	_mZOrder = Camera::_zOrder;
 	vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
 	Camera::_zOrder++;
-	vp->setBackgroundColour(Ogre::ColourValue(0.6, 0.7, 0.8));
+	vp->setBackgroundColour(Ogre::ColourValue(0.6f, 0.7f, 0.8f));
 }
 
 OgreWrapper::Camera::~Camera() {
