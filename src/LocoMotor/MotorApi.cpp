@@ -79,8 +79,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackBorder->AddComponent("Transform");
 	trackBorder->AddComponent("MeshRenderer");
 	trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");
-	//trackBorder->AddComponent("RigidBodyComponent");
-	//trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
+	trackBorder->AddComponent("RigidBodyComponent");
+	trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
 	//Collision
 	auto Debug01 = _mScene->AddGameobject("Debug01");
 	Debug01->AddComponent("Transform");
@@ -243,6 +243,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion
 

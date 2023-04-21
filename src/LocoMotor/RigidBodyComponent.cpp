@@ -135,6 +135,46 @@ LMVector3 LocoMotor::RigidBodyComponent::GethasRaycastHitNormal(LMVector3 from, 
 	return PhysicsManager::GetInstance()->createRaycast(from, to).hitVNormal;
 }
 
+void LocoMotor::RigidBodyComponent::SetCollisionGroup(int group)
+{
+	btBroadphaseProxy* proxy= _body->getBroadphaseProxy();
+	proxy->m_collisionFilterGroup = group;
+}
+
+int LocoMotor::RigidBodyComponent::GetCollisionGroup()
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	return proxy->m_collisionFilterGroup;
+}
+
+void LocoMotor::RigidBodyComponent::SetCollisionMask(int mask)
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	proxy->m_collisionFilterMask = 1<<mask;
+}
+
+int LocoMotor::RigidBodyComponent::GetCollisionMask()
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	return proxy->m_collisionFilterMask;
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetLinearVelocity() {
+	return BulletToLm(_body->getLinearVelocity()) ;
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetTotalTorque() {
+	return BulletToLm(_body->getTotalTorque());
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetTurnVelocity() {
+	return BulletToLm(_body->getTurnVelocity());
+}
+
+void LocoMotor::RigidBodyComponent::ApplyTorqueImpulse(LMVector3 impulse) {
+	_body->applyTorqueImpulse(LmToBullet(impulse));
+}
+
 void LocoMotor::RigidBodyComponent::SetFriction(float fric) {
 	_body->setFriction(fric);
 }

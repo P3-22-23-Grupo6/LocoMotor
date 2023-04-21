@@ -60,6 +60,14 @@ namespace LocoMotor {
 		LMVector3 GetraycastHitPoint(LMVector3 from, LMVector3 to);
 		LMVector3 GethasRaycastHitNormal(LMVector3 from, LMVector3 to);
 
+		void SetCollisionGroup(int group);
+		int GetCollisionGroup();
+		void SetCollisionMask(int mask);
+		int GetCollisionMask();
+		LMVector3 GetLinearVelocity();
+		LMVector3 GetTotalTorque();
+		LMVector3 GetTurnVelocity();
+		void ApplyTorqueImpulse(LMVector3 impulse);
 		/// @brief Set The friction of this rigidbody
 		/// @param fric the new friction value
 		void SetFriction(float fric);
@@ -71,6 +79,8 @@ namespace LocoMotor {
 		bool _gravity;
 		MeshStrider* _ms;
 		bool _trigger = false;
+		int collisionGroup;
+		int collisionMask;
 
 	};
 }
