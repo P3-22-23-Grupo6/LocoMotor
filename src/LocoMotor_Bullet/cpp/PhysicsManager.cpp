@@ -4,6 +4,7 @@
 #include "MeshStrider.h"
 #include "LmVectorConverter.h"
 #include "LMVector.h"
+#include "RaycastCallBack.h"
 using namespace PhysicsWrapper;
 PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
 
@@ -110,7 +111,7 @@ void PhysicsManager::Update(float dT) {
 RaycastInfo PhysicsWrapper::PhysicsManager::createRaycast(LMVector3 from, LMVector3 direction) {
 	RaycastInfo newRaycastInfo = RaycastInfo();
 
-	btCollisionWorld::ClosestRayResultCallback rayCallback(LmToBullet(from), LmToBullet(direction));
+	ClosestRayCallbackBullet rayCallback(LmToBullet(from), LmToBullet(direction));
 
 	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LmToBullet(from), LmToBullet(direction), rayCallback);
 	if (rayCallback.hasHit()) {

@@ -206,6 +206,25 @@ LMVector3 LMVector3::Perpendicular(const LMVector3& other) const {
 	return Cross(other).Cross(*this);
 }
 
+LMQuaternion& LMVector3::AsRotToQuaternion() const {
+	// Abbreviations for the various angular functions
+
+	double cr = cos(this->_x * 0.5);
+	double sr = sin(this->_x * 0.5);
+	double cp = cos(this->_y * 0.5);
+	double sp = sin(this->_y * 0.5);
+	double cy = cos(this->_z * 0.5);
+	double sy = sin(this->_z * 0.5);
+
+	LMQuaternion q;
+	q.SetW(cr * cp * cy + sr * sp * sy);
+	q.SetX(sr * cp * cy - cr * sp * sy);
+	q.SetY(cr * sp * cy + sr * cp * sy);
+	q.SetZ(cr * cp * sy - sr * sp * cy);
+
+	return q;
+}
+
 
 
 
@@ -342,6 +361,27 @@ LMVector3 LMQuaternion::Right() const {
 // Forward vector of this quaternion
 LMVector3 LMQuaternion::Forward() const {
 	return Rotate(LMVector3(0, 0, -1));
+}
+
+LMVector3& LMQuaternion::ToEuler() const {
+	LMVector3 angles;
+
+// roll (x-axis rotation)
+	double sinr_cosp = 2 * (this->_w * this->_x + this->_y * this->_z);
+	double cosr_cosp = 1 - 2 * (this->_x * this->_x + this->_y * this->_y);
+	angles.SetX(std::atan2(sinr_cosp, cosr_cosp));
+
+	// pitch (y-axis rotation)
+	double sinp = std::sqrt(1 + 2 * (this->_w * this->_y - this->_x * this->_z));
+	double cosp = std::sqrt(1 - 2 * (this->_w * this->_y - this->_x * this->_z));
+	angles.SetY(2 * std::atan2(sinp, cosp) - M_PI / 2);
+
+	// yaw (z-axis rotation)
+	double siny_cosp = 2 * (this->_w * this->_z + this->_x * this->_y);
+	double cosy_cosp = 1 - 2 * (this->_y * this->_y + this->_z * this->_z);
+	angles.SetZ(std::atan2(siny_cosp, cosy_cosp));
+
+	return angles;
 }
 
 

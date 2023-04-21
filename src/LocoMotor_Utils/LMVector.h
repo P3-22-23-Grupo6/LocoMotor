@@ -8,8 +8,7 @@
 #define MOTOR_API __declspec(dllimport)
 #endif
 
-
-
+class LMQuaternion;
 //Vector class to be used with LocoMotor
 class MOTOR_API LMVector3 {
 
@@ -111,6 +110,8 @@ public:
 	/// @param other The other Vector
 	LMVector3 Perpendicular(const LMVector3& other) const;
 
+	LMQuaternion& AsRotToQuaternion() const;
+
 
 private:
 	double _x = 0, _y = 0, _z = 0;
@@ -204,6 +205,8 @@ public:
 	// Forward vector from Quaternion
 	/// @brief Get the Forward Vector from a Quaternion
 	LMVector3 Forward() const;
+
+	LMVector3& ToEuler() const;
 
 
 // QUATERNION TRANSFORMATIONS BETWEEN LANGUAGES
