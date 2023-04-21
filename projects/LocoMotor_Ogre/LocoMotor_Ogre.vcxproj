@@ -32,6 +32,7 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Spline.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIElement.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIImage.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIText.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h" />
@@ -48,6 +49,7 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Spline.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIElement.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIImage.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIText.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">

@@ -20,8 +20,8 @@ OgreWrapper::UIImage::UIImage(std::string imgName): UIElement() {
 OgreWrapper::UIImage::~UIImage() {
 }
 
-bool OgreWrapper::UIImage::Init() {
-	UIElement::Init();
-
-	return false;
-}
+//bool OgreWrapper::UIImage::Init() {
+//	UIElement::Init();
+//
+//	return false;
+//}

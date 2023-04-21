@@ -16,6 +16,7 @@
 #include <iostream>
 #include "UIElement.h"
 #include "UIImage.h"
+#include "UIText.h"
 
 unsigned int OgreWrapper::Canvas::_numOfCanvas = 0;
 Ogre::OverlaySystem* OgreWrapper::Canvas::_ovrSys = nullptr;
@@ -75,20 +76,22 @@ bool OgreWrapper::Canvas::Init(const char* name, Ogre::SceneManager* man) {
 
 	pFont->load();
 
-	std::cout << "AAAAAAA";
+	UIText* UItXT = new UIText("Hola", "MyFont.fontdef");
 
-	auto tex = static_cast<Ogre::TextAreaOverlayElement*>(_aux->createOverlayElement("TextArea", "texto"));
-	tex->setCaption("HAA");
-	tex->setMetricsMode(Ogre::GMM_RELATIVE);
-	tex->setPosition(0.f, 0.f);
-	tex->setDimensions(50, 50.5);
-	tex->setCharHeight(1);
-	tex->setFontName(pFont.get()->getName());
-	tex->setColourBottom(Ogre::ColourValue::Black);
-	tex->setColourTop(Ogre::ColourValue::Black);
-	tex->setHorizontalAlignment(Ogre::GHA_LEFT);
-	tex->setVerticalAlignment(Ogre::GVA_TOP);
-	tex->setAlignment(Ogre::TextAreaOverlayElement::Left);
+	//std::cout << "AAAAAAA";
+
+	//auto tex = static_cast<Ogre::TextAreaOverlayElement*>(_aux->createOverlayElement("TextArea", "texto"));
+	//tex->setCaption("HAA");
+	//tex->setMetricsMode(Ogre::GMM_RELATIVE);
+	//tex->setPosition(0.f, 0.f);
+	//tex->setDimensions(50, 50.5);
+	//tex->setCharHeight(1);
+	//tex->setFontName(pFont.get()->getName());
+	//tex->setColourBottom(Ogre::ColourValue::Black);
+	//tex->setColourTop(Ogre::ColourValue::Black);
+	//tex->setHorizontalAlignment(Ogre::GHA_LEFT);
+	//tex->setVerticalAlignment(Ogre::GVA_TOP);
+	//tex->setAlignment(Ogre::TextAreaOverlayElement::Left);
 	//std::cout << tex->getFontName();
 	//_container->addChild(tex);
 	
