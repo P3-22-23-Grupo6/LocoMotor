@@ -195,7 +195,7 @@ void GameObject::Update(float dt) {
 	//	rbComp->getBody()->setAngularVelocity(LmToBullet(LMVector3(0, 0, 0)));
 
 	// Clampear la velocidad angular maxima permitida
-	float maxAngularVelocity = 3;
+	float maxAngularVelocity = 2;
 	if (currentAngularVelocity.Magnitude() > maxAngularVelocity) {
 		currentAngularVelocity.Normalize();
 		// Conocer la direccion en la que se esta rotando (izquierda/derecha)
