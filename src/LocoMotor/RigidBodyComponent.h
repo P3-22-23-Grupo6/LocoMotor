@@ -60,10 +60,14 @@ namespace LocoMotor {
 		LMVector3 GetraycastHitPoint(LMVector3 from, LMVector3 to);
 		LMVector3 GethasRaycastHitNormal(LMVector3 from, LMVector3 to);
 
-		void setCollisionGroup(int group);
-		int getCollisionGroup();
-		void setCollisionMask(int mask);
-		int getCollisionMask();
+		void SetCollisionGroup(int group);
+		int GetCollisionGroup();
+		void SetCollisionMask(int mask);
+		int GetCollisionMask();
+		LMVector3 GetLinearVelocity();
+		LMVector3 GetTotalTorque();
+		LMVector3 GetTurnVelocity();
+		void ApplyTorqueImpulse(LMVector3 impulse);
 		/// @brief Set The friction of this rigidbody
 		/// @param fric the new friction value
 		void SetFriction(float fric);

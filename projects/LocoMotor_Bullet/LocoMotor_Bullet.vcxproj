@@ -172,6 +172,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\LocoMotor_Bullet\include\RaycastCallBack.h" />
     <ClInclude Include="..\..\src\LocoMotor_Bullet\include\PhysicsManager.h" />
   </ItemGroup>
   <ItemGroup>
