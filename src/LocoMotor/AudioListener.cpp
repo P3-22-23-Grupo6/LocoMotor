@@ -42,7 +42,7 @@ void LocoMotor::AudioListener::Update(float dt) {
 		std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(err) << std::endl;
 	}
 #else
-	_list->SetTransform(gameObject->GetTransform()->GetPosition(), vel, forwardVec, LMVector3::LmToFMod(upwardVec));
+	_list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));
 #endif // _DEBUG
 
 	*_lastPos = gameObject->GetTransform()->GetPosition();
