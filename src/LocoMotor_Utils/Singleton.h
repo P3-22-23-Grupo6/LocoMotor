@@ -10,7 +10,7 @@
 
 #include <utility>
 template<typename T>
-class MOTOR_API Singleton {
+class MOTOR_API  Singleton {
 public:
 
 	/// @brief When trying to copy the singleton, the former instance will be deleted
@@ -30,7 +30,7 @@ public:
 
 	/// @brief Get a pointer to the instance of the singleton
 	/// @return :/
-	static T* GetInstance() {
+	static  T* GetInstance() {
 		if (_instance == nullptr) {
 			return nullptr;
 		}
@@ -49,7 +49,7 @@ protected:
 	virtual ~Singleton() = default;
 
 private:
-	static T* _instance;
+	 static  T* _instance;
 };
 
 #endif

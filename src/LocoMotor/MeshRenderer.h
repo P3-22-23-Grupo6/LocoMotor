@@ -1,4 +1,9 @@
 #pragma once
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include "Component.h"
 
 namespace OgreWrapper {
@@ -10,7 +15,7 @@ namespace OgreWrapper {
 
 namespace LocoMotor {
 	class GameObject;
-	class MeshRenderer: public Component {
+	class MOTOR_API MeshRenderer: public Component {
 	public:
 		const static std::string name;
 		static std::string GetName() {

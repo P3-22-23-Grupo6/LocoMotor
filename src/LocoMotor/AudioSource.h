@@ -1,7 +1,11 @@
 #pragma once
 #ifndef LM_AUDIOSOURCE
 #define LM_AUDIOSOURCE
-
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include "Component.h"
 
 namespace FmodWrapper {
@@ -9,7 +13,7 @@ namespace FmodWrapper {
 }
 
 namespace LocoMotor {
-		class AudioSource : public Component {
+		class MOTOR_API AudioSource : public Component {
 
 		public:
 			const static std::string name;

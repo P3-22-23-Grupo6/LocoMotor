@@ -162,7 +162,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_MOTORDLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_MOTORDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Bites\include;$(SolutionDir)Dependecies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>

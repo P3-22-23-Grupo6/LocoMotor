@@ -1,6 +1,10 @@
 #ifndef LM_PARTICLESYS
 #define LM_PARTICLESYS
-
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include "Component.h"
 
 namespace OgreWrapper {
@@ -12,7 +16,7 @@ namespace OgreWrapper {
 namespace LocoMotor {
 	class Scene;
 	class GameObject;
-	class ParticleSystem : public Component {
+	class MOTOR_API ParticleSystem : public Component {
 	public:
 		static std::string name;
 		static std::string GetName() {

@@ -41,7 +41,7 @@ namespace LocoMotor {
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
 		template<typename ...Ts>
-		Component* AddComponent(std::string name ,Ts&& ...params) {
+		inline Component* AddComponent(std::string name ,Ts&& ...params) {
 			if (_componentsByName.count(name) > 0) {
 				return nullptr;
 			}
@@ -76,7 +76,7 @@ namespace LocoMotor {
 		/// @brief Get a Component
 		/// @param T The type of the component to get
 		template <typename T>
-		T* GetComponent() {
+		inline T* GetComponent() {
 			auto it = _componentsByName.begin();
 			T* comp = nullptr;
 			while (it != _componentsByName.end() && comp == nullptr) {
@@ -123,7 +123,7 @@ namespace LocoMotor {
 
 		void RegisterTransform(Transform* newTrans);
 		//Pruebaval
-		void setMovable(bool b) {
+		inline void setMovable(bool b) {
 			movable = b;
 		}
 

@@ -25,6 +25,9 @@
     <ClCompile Include="..\..\src\LocoMotor_Lua\cpp\ScriptManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LocoMotor\LocoMotor.vcxproj">
+      <Project>{b3a1c7d3-a022-4475-8517-eeb5873ebe89}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
       <Project>{e08d5061-8a9a-42e2-bfdd-d2a9dc3e1730}</Project>
     </ProjectReference>
@@ -91,12 +94,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Lib\</OutDir>
-    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Lib\</OutDir>
-    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Configuration)\$(Platform)\</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -144,7 +147,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_MOTORDLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_MOTORDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Lua\include;$(SolutionDir)Dependecies\Lua\src;$(SolutionDir)Dependecies\LuaBridge\Source;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Utils\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>

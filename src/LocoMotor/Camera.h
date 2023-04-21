@@ -6,7 +6,11 @@
 #include "Component.h"
 #include "LMVector.h"
 //struct LMVector3;
-
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 namespace OgreWrapper {
 	class RenderScene;
 	class Node;
@@ -16,7 +20,7 @@ namespace LocoMotor {
 	class Scene;
 	class GameObject;
 
-	class Camera : public Component {
+	class MOTOR_API Camera : public Component {
 	public:
 		const static std::string name;
 		static std::string GetName() {
