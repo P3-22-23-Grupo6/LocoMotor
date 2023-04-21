@@ -151,6 +151,8 @@ void GameObject::Update(float dt) {
 	}
 
 	// std::cout << transform->GetRotation().GetY() << std::endl;
+	rbComp->getBody()->applyTorqueImpulse(btVector3(0, 0, rbComp->getBody()->getTotalTorque().getZ()));
+	//rbComp->FreezeRotation(LMVector3(1, 1, 0));
 
 	// Comprobacion para que no gire demasiado rapido
 	if (rbComp->getBody()->getTotalTorque().length() > 100.f)
