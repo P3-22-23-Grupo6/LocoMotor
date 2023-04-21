@@ -125,6 +125,34 @@ void GameObject::Update(float dt) {
 		//_node->Translate(0, 0, 1);
 	}
 
+	// Desacelerar la velocidad actual para que no haya tanto derrape
+
+	//LMVector3 localVel = BulletToLm(rbComp->getBody()->getLinearVelocity());
+	LMVector3 localVel = rbComp->GetLinearVelocity();
+
+	//btVector3 BULLETVECTOR = rbComp->getBody()->getLinearVelocity();
+
+	LMVector3 forward = GetTransform()->GetRotation().Forward();
+	double angle = localVel.Angle(forward);
+
+	std::cout << "\n" << "ANGLE = " << angle;
+
+	double intensity = localVel.Magnitude();
+
+	localVel.Normalize();
+
+	std::cout << "\n" << "LOCAL VEL = " << localVel.GetX()
+		<< ", " << localVel.GetY() << ", " << localVel.GetZ() << "\n";
+
+	LMVector3 invertedVelocity = localVel * -1;
+
+	if (angle > .5f)
+	if (physicsBasedMovement)
+		GetComponent<RigidBodyComponent>()->addForce(invertedVelocity * intensity/20 * angle * dt);
+
+
+
+
 	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
 
 	float torqueStrengh = 5.f;

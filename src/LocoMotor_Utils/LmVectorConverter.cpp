@@ -1,4 +1,5 @@
 #include "LmVectorConverter.h"
+#include "LMVector.h"
 
 // VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
 // Converts a Bullet vector to lmVector
