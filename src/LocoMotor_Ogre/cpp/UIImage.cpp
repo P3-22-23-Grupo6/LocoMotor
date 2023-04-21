@@ -5,7 +5,7 @@
 
 
 OgreWrapper::UIImage::UIImage(std::string imgName): UIElement() {
-	_imName=imgName
+	_imName = imgName;
 	/*_overlay = _overlayMngr->create((const char*) &_numOfUIElements);
 	_container = static_cast<Ogre::OverlayContainer*>(_overlayMngr->createOverlayElement("Panel", "UIImageContainer" + std::to_string(_numOfUIElements)));
 	_container->setMetricsMode(Ogre::GMM_RELATIVE);

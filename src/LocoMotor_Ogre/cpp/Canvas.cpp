@@ -80,10 +80,10 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 	UIText* tXT = new UIText("Hola", "MyFont.fontdef");
 	addUIElement(tXT);
 	//tXT->SetPosition(1,0);
-	tXT->ChangeText("Patata");
-	//tXT->AlignRight();
-	tXT->SetBottomColor(125, 0, 100);
-	tXT->SetHeight(0.5);
+	//tXT->ChangeText("Patata");
+	////tXT->AlignRight();
+	//tXT->SetBottomColor(125, 0, 100);
+	//tXT->SetHeight(0.5);
 	
 	//std::cout << "AAAAAAA";
 

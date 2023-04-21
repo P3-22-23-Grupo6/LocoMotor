@@ -40,7 +40,7 @@ OgreWrapper::UIText::UIText(std::string txtName,std::string font) : UIElement() 
     //_overlay->add2D(_container);
     /**/
     
-    _overlay->show();
+   /* _overlay->show();*/
 }
 
 bool OgreWrapper::UIText::Init() {
@@ -73,7 +73,7 @@ bool OgreWrapper::UIText::Init() {
     _container->addChild(_txtElem);
     _overlay->add2D(_container);
 
-
+    _overlay->show();
 
     return false;
 }
