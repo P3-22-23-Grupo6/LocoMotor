@@ -76,8 +76,14 @@ bool OgreWrapper::Canvas::Init(const char* name, Ogre::SceneManager* man) {
 
 	pFont->load();
 
-	UIText* UItXT = new UIText("Hola", "MyFont.fontdef");
-
+	UIText* tXT = new UIText("Hola", "MyFont.fontdef");
+	addUIElement(tXT);
+	//tXT->SetPosition(1,0);
+	tXT->ChangeText("Patata");
+	//tXT->AlignRight();
+	tXT->SetBottomColor(125, 0, 100);
+	tXT->SetHeight(0.5);
+	
 	//std::cout << "AAAAAAA";
 
 	//auto tex = static_cast<Ogre::TextAreaOverlayElement*>(_aux->createOverlayElement("TextArea", "texto"));

@@ -17,8 +17,6 @@ OgreWrapper::UIImage::UIImage(std::string imgName): UIElement() {
 	_overlay->show();
 }
 
-OgreWrapper::UIImage::~UIImage() {
-}
 
 //bool OgreWrapper::UIImage::Init() {
 //	UIElement::Init();

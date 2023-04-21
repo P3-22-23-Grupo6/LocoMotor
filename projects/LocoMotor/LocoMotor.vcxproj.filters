@@ -61,9 +61,6 @@
     <ClCompile Include="..\..\src\LocoMotor\EnemyAI.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\UIElement.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\GameObject.h">
@@ -122,9 +119,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\EnemyAI.h">
       <Filter>Header Files\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\UIElement.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

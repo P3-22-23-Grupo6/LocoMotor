@@ -19,7 +19,18 @@ namespace OgreWrapper {
 	public:
 		UIText(std::string txtName,std::string font);
 		//UIText(std::string txtName, Ogre::FontPtr font);
-		~UIText();
+		~UIText() = default;
+
+		void ChangeText(std::string newtxt);
+		void SetHeight(double height);
+		void SetFont(std::string nfont);
+		void AlignCenter();
+		void AlignLeft();
+		void AlignRight();
+		
+		void SetTopColor(int r,int g, int b);
+		void SetBottomColor(int r, int g, int b);
+
 
 	protected:
 		Ogre::TextAreaOverlayElement* _txtElem;

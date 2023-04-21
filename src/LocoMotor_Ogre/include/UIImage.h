@@ -9,7 +9,7 @@ namespace OgreWrapper {
 	class UIImage :public UIElement {
 	public:
 		UIImage(std::string imgName);
-		~UIImage();
+		~UIImage() = default;
 		//virtual bool Init();
 	};
 }
