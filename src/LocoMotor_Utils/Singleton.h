@@ -30,7 +30,7 @@ public:
 
 	/// @brief Get a pointer to the instance of the singleton
 	/// @return :/
-	MOTOR_API static T* GetInstance() {
+	static T* GetInstance() {
 		if (_instance == nullptr) {
 			return nullptr;
 		}
