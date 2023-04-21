@@ -18,15 +18,15 @@ InputManager* InputManager::Get() {
 
 
 // TECLADO
-bool InputManager::GetKeyDown(const SDL_Scancode& scanCode) {
+bool InputManager::GetKeyDown(const LMKeyboard& scanCode) {
 	return _keyboardKeys[scanCode].down;
 }
 
-bool InputManager::GetKey(const SDL_Scancode& scanCode) {
+bool InputManager::GetKey(const LMKeyboard& scanCode) {
 	return _keyboardKeys[scanCode].isPressed;
 }
 
-bool InputManager::GetKeyUp(const SDL_Scancode& scanCode) {
+bool InputManager::GetKeyUp(const LMKeyboard& scanCode) {
 	return _keyboardKeys[scanCode].up;
 }
 

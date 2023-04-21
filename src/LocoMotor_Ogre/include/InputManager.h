@@ -2,15 +2,15 @@
 #ifndef INPUTMANAGER
 #define INPUTMANAGER
 
-#include "SDL_keyboard.h"
-#include <SDL_gamecontroller.h>
+#include "LMInputs.h"
+//#include <SDL_gamecontroller.h>
 
 #include <vector>
 #include <array>
 
 union SDL_Event;
 
-//class SDL_GameController;
+class SDL_GameController;
 //class SDL_Scancode;
 
 
@@ -29,11 +29,11 @@ public:
 
 	// TECLADO
 	// Devuelve true solo el frame en el que se presiona la tecla
-	bool GetKeyDown(const SDL_Scancode& scanCode);
+	bool GetKeyDown(const LMKeyboard& scanCode);
 	// Devuelve true siempre que la tecla este presionada
-	bool GetKey(const SDL_Scancode& scanCode);
+	bool GetKey(const LMKeyboard& scanCode);
 	// Devuelve true solo el frame en el que se deja de presionar la tecla
-	bool GetKeyUp(const SDL_Scancode& scanCode);
+	bool GetKeyUp(const LMKeyboard& scanCode);
 
 	// MANDO
 
