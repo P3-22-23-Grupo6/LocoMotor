@@ -21,6 +21,8 @@ namespace OgreWrapper {
 		//UIText(std::string txtName, Ogre::FontPtr font);
 		~UIText() = default;
 
+		bool Init() override;
+
 		void ChangeText(std::string newtxt);
 		void SetHeight(double height);
 		void SetFont(std::string nfont);
@@ -34,6 +36,8 @@ namespace OgreWrapper {
 
 	protected:
 		Ogre::TextAreaOverlayElement* _txtElem;
+		std::string _uFont;
+		std::string _uTxtName;
 		
 	};
 

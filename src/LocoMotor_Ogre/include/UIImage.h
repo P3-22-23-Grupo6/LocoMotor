@@ -12,8 +12,13 @@ namespace OgreWrapper {
 		~UIImage() = default;
 
 		void ChangeImage(std::string nImage);
-		//virtual bool Init();
+		bool Init() override;
+
+	protected:
+		std::string _imName;
+
 	};
+
 }
 
 

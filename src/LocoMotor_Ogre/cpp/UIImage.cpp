@@ -5,8 +5,8 @@
 
 
 OgreWrapper::UIImage::UIImage(std::string imgName): UIElement() {
-
-	_overlay = _overlayMngr->create((const char*) &_numOfUIElements);
+	_imName=imgName
+	/*_overlay = _overlayMngr->create((const char*) &_numOfUIElements);
 	_container = static_cast<Ogre::OverlayContainer*>(_overlayMngr->createOverlayElement("Panel", "UIImageContainer" + std::to_string(_numOfUIElements)));
 	_container->setMetricsMode(Ogre::GMM_RELATIVE);
 	_container->setMaterialName(imgName);
@@ -14,7 +14,7 @@ OgreWrapper::UIImage::UIImage(std::string imgName): UIElement() {
 	_container->setDimensions(defaultW, defaultH);
 	_overlay = _overlayMngr->create("UIImage" + std::to_string(_numOfUIElements));
 	_overlay->add2D(_container);
-	_overlay->show();
+	_overlay->show();*/
 }
 
 void OgreWrapper::UIImage::ChangeImage(std::string nImage) {
@@ -24,8 +24,16 @@ void OgreWrapper::UIImage::ChangeImage(std::string nImage) {
 
 
 
-//bool OgreWrapper::UIImage::Init() {
-//	UIElement::Init();
-//
-//	return false;
-//}
+bool OgreWrapper::UIImage::Init() {
+	_overlay = _overlayMngr->create((const char*) &_numOfUIElements);
+	_container = static_cast<Ogre::OverlayContainer*>(_overlayMngr->createOverlayElement("Panel", "UIImageContainer" + std::to_string(_numOfUIElements)));
+	_container->setMetricsMode(Ogre::GMM_RELATIVE);
+	_container->setMaterialName(_imName);
+	_container->setPosition(defaultX, defaultY);
+	_container->setDimensions(defaultW, defaultH);
+	_overlay = _overlayMngr->create("UIImage" + std::to_string(_numOfUIElements));
+	_overlay->add2D(_container);
+	_overlay->show();
+
+	return false;
+}

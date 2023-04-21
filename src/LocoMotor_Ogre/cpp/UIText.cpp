@@ -8,38 +8,74 @@
 
 
 OgreWrapper::UIText::UIText(std::string txtName,std::string font) : UIElement() {
-//OgreWrapper::UIText::UIText(std::string txtName, Ogre::FontPtr font) : UIElement() {
+
+    _uFont = font;
+    _uTxtName = txtName;
+    //_txtElem = static_cast<Ogre::TextAreaOverlayElement*>(
+    //       _overlayMngr->createOverlayElement("TextArea", "UITextElem" + std::to_string(_numOfUIElements)));
+
+    //_txtElem->setMetricsMode(Ogre::GMM_RELATIVE);
+   
+    //_txtElem->setCaption(txtName);
+    //_txtElem->setCharHeight(0.25);
+    //_txtElem->setPosition(0.5, 0);
+    //_txtElem->setDimensions(defaultW, defaultH);
+    //_txtElem->setFontName(font);
+    //
+    ////_txtElem->setFontName(font.get()->getName());
+    //_txtElem->setColourBottom(Ogre::ColourValue::Black);
+    //_txtElem->setColourTop(Ogre::ColourValue::Black);
+    //_txtElem->setAlignment(Ogre::TextAreaOverlayElement::Alignment::Center);
+   
+    //_overlay = _overlayMngr->create("UITextContainer" + std::to_string(_numOfUIElements));
+    ////_overlay->add2D((Ogre::OverlayContainer*) _txtElem);
+
+    ////Metemos el texto en un container
+    //_container = static_cast<Ogre::OverlayContainer*>(_overlayMngr->createOverlayElement("Panel", "UIImageTextContainer" + std::to_string(_numOfUIElements)));
+    //_container->setMetricsMode(Ogre::GMM_RELATIVE);
+    //
+    //_container->setPosition(defaultX, defaultY);
+    //_container->setDimensions(defaultW, defaultH);
+    //_container->addChild(_txtElem);
+    //_overlay->add2D(_container);
+    /**/
+    
+    _overlay->show();
+}
+
+bool OgreWrapper::UIText::Init() {
 
     _txtElem = static_cast<Ogre::TextAreaOverlayElement*>(
-           _overlayMngr->createOverlayElement("TextArea", "UITextElem" + std::to_string(_numOfUIElements)));
+          _overlayMngr->createOverlayElement("TextArea", "UITextElem" + std::to_string(_numOfUIElements)));
 
     _txtElem->setMetricsMode(Ogre::GMM_RELATIVE);
-   
-    _txtElem->setCaption(txtName);
+
+    _txtElem->setCaption(_uTxtName);
     _txtElem->setCharHeight(0.25);
     _txtElem->setPosition(0.5, 0);
     _txtElem->setDimensions(defaultW, defaultH);
-    _txtElem->setFontName(font);
-    
+    _txtElem->setFontName(_uFont);
+
     //_txtElem->setFontName(font.get()->getName());
     _txtElem->setColourBottom(Ogre::ColourValue::Black);
     _txtElem->setColourTop(Ogre::ColourValue::Black);
     _txtElem->setAlignment(Ogre::TextAreaOverlayElement::Alignment::Center);
-   
+
     _overlay = _overlayMngr->create("UITextContainer" + std::to_string(_numOfUIElements));
     //_overlay->add2D((Ogre::OverlayContainer*) _txtElem);
 
     //Metemos el texto en un container
     _container = static_cast<Ogre::OverlayContainer*>(_overlayMngr->createOverlayElement("Panel", "UIImageTextContainer" + std::to_string(_numOfUIElements)));
     _container->setMetricsMode(Ogre::GMM_RELATIVE);
-    
+
     _container->setPosition(defaultX, defaultY);
     _container->setDimensions(defaultW, defaultH);
     _container->addChild(_txtElem);
     _overlay->add2D(_container);
-    /**/
-    
-    _overlay->show();
+
+
+
+    return false;
 }
 
 void OgreWrapper::UIText::ChangeText(std::string newtxt) {
