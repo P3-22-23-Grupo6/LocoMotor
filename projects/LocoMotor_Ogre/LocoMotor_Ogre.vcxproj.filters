@@ -42,9 +42,6 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\ParticleHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Spline.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h">
@@ -75,9 +72,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\ParticleHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Spline.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

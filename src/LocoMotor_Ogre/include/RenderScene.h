@@ -60,8 +60,6 @@ namespace OgreWrapper {
 		Node* CreateNode(std::string name, std::string parent);
 		Node* GetNode(std::string name);
 
-		Spline* CreateSpline();
-
 		Light* CreateLight();
 		Renderer3D* CreateRenderer(std::string mesh);
 		Camera* CreateCamera(std::string mesh);

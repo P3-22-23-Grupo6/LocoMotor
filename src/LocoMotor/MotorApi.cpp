@@ -12,7 +12,7 @@
 #include "SceneManager.h"
 #include "GameObject.h"
 #include "Node.h"
-#include "Spline.h"
+#include "LMSpline.h"
 #include "Transform.h"
 #include "ComponentsFactory.h"
 #include <OgreSimpleSpline.h>//TEMPORAL
@@ -168,9 +168,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 		LMVector3(0, 5, 0)//reset
 	};
 
-	OgreWrapper::Spline* nuevaSpl = new OgreWrapper::Spline();
+	LocoMotor::Spline* nuevaSpl = new LocoMotor::Spline();
 	for (int i = 0; i < 18; i++) {
-		nuevaSpl->AddPoint(LmToOgre(LMVector3(positionsList[i])));
+		nuevaSpl->AddPoint(LMVector3(positionsList[i]));
 		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
 		wayPoint->AddComponent("Transform");
 		wayPoint->AddComponent("MeshRenderer");
@@ -235,7 +235,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//}
 	for (int i = 1; i < waypointBalls.size(); i++) {
 		waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
-		waypointBalls[i]->SetPosition(OgreToLm(nuevaSpl->Interpolate((float) i / maxBalls)));
+		waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
 	}
 
 #pragma region All Components Started
