@@ -22,7 +22,7 @@ OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_mainCam = nullptr;
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
 	_canvas = new OgreWrapper::Canvas();
-	_canvas->Init("scene->getRootSceneNode()->getName()", _manager);
+	_canvas->Init(_manager);
 	//OverlayManager::getSingleton().createOverlayElement("Panel", "myNewPanel");
 }
 

@@ -44,7 +44,7 @@ namespace OgreWrapper {
 		Canvas();
 		~Canvas();
 
-		bool Init(const char* name, Ogre::SceneManager* man);
+		bool Init(Ogre::SceneManager* man);
 		bool ShutDown();
 
 		bool Render();

@@ -34,21 +34,22 @@ OgreWrapper::Canvas::~Canvas() {
 	}
 }
 
-bool OgreWrapper::Canvas::Init(const char* name, Ogre::SceneManager* man) {
+bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 
 	std::cout << "\n\nCANVAS=====================================================================\n";
 
-	if (!_ovrSys)
+	if (!_ovrSys) {
 		_ovrSys = OGRE_NEW Ogre::OverlaySystem();
-	man->addRenderQueueListener(_ovrSys);
+		man->addRenderQueueListener(_ovrSys);
+	}
 	auto _aux = Ogre::OverlayManager::getSingletonPtr();
 	
 	//_canvas = _aux->create((const char*) &_numOfCanvas);
-	_canvas = _aux->create("MainOverlay");
+	_canvas = _aux->create("MainOverlay"+_numOfCanvas);
 	// _aux->addOverlay(_canvas);
 	_container = static_cast<Ogre::OverlayContainer*>(_aux->createOverlayElement("Panel", "Main"));
 	_container->setPosition(0.0f, 0.0f);
-	_container->setDimensions(0.5, 0.5);
+	_container->setDimensions(1.0f, 1.0f);
 	//_container->setMaterialName(/*Ogre::MaterialManager::getSingleton().getDefaultMaterial()->getName()*/"TestMat");
 	// Add the panel to the overlay
 	
