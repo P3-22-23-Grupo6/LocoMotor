@@ -12,10 +12,9 @@ namespace LocoMotor {
 	class GameObject;
 }
 
-MOTOR_API class MotorApi {
+class MotorApi {
 public:
 	MOTOR_API MotorApi();
-	MOTOR_API void init();
 	MOTOR_API void Init();
 
 	MOTOR_API void RegisterGame(const char* gameName);
@@ -39,7 +38,6 @@ private:
 	
 	//TEMPORAL
 	void Prueba(float a);
-	LocoMotor::GameObject* enemy_gObj;
 	LocoMotor::GameObject* ship_gObj;
 };
 

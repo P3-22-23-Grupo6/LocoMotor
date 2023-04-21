@@ -80,6 +80,6 @@ void OgreWrapper::Node::ResetOrientation() {
 	_node->resetOrientation();
 }
 
-void OgreWrapper::Node::SetOrientation(Ogre::Quaternion* q) {
-	_node->setOrientation(q->x, q->y, q->z, q->w);
+void OgreWrapper::Node::SetOrientation(Ogre::Quaternion& q) {
+	_node->setOrientation(q.w, q.x, q.y, q.z);
 }

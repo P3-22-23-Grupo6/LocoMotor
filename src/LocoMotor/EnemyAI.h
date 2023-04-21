@@ -1,16 +1,11 @@
 #pragma once
-#include <string>
 #include "Component.h"
 
-namespace OgreWrapper {
-	class Node;
-	class RenderScene;
-	class Spline;
-}
 class LMVector3;
 
 namespace LocoMotor {
 	class GameObject;
+	class Spline;
 	class EnemyAI : public Component {
 	public:
 		const static std::string name;
@@ -20,17 +15,20 @@ namespace LocoMotor {
 		EnemyAI();
 		~EnemyAI();
 		/// @brief Sets the initial position of the listener to the gameobject's
-		void Start(OgreWrapper::Spline* splineToFollow);
+		void Start(LocoMotor::Spline* splineToFollow, float sep);
 
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's
 		/// @param dt DeltaTime used to calculate the velocity
 		void Update(float dt) override;
 	private:
 		//OgreWrapper::RenderScene* _renderScn;
-		OgreWrapper::Node* _node; 
 		LMVector3* currentNode;
-		OgreWrapper::Spline* mySpline;
-		LocoMotor::GameObject* myGbj;
-		float timeStep,lastTimeStep;
+		Spline* mySpline;
+		GameObject* myGbj;
+		float timeStep, lastTimeStep;
+		//STATS
+		float enemySpeed;
+		float enemyMaxAcc;
+		float startSeparation;
 	};
 }

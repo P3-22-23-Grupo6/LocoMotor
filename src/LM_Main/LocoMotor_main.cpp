@@ -45,7 +45,7 @@ int main() {
 		initJuego = (InitJuegoFunc) GetProcAddress(juegoDeAutosDLL, functionName);
 
 		if (initJuego != NULL) {
-			// La ejecutamos
+			// La ejecutamoss
 			auto result = initJuego(motor);
 			std::cout << result << std::endl;
 		}

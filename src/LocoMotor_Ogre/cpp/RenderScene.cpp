@@ -3,7 +3,6 @@
 #include "Node.h"
 #include "Renderer3D.h"
 #include "Light.h"
-#include "Spline.h"
 #include "Camera.h"
 #include "ParticleHelper.h"
 #include "Canvas.h"
@@ -41,12 +40,14 @@ void OgreWrapper::RenderScene::Render() {
 }
 
 void OgreWrapper::RenderScene::SetSkybox() {
-	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 5000, false);
+	_manager->setSkyBox(true, "Racers/SkyBoxBlue", 300, true);
+	//_manager->setSkyDome(true, "Racers/SkyBoxBlue", 5, 2);
+	//_manager->setSkyPlane(true, Ogre::Plane(Ogre::Vector3::UNIT_Z, -20), "Racers/SkyBoxBlue", 1, 1, true, 1.0, 100, 100);
 	
 	//Para NIEBLA
-	//Ogre::ColourValue fadeColour(0.8, 0.8, 0.9);
+	//Ogre::ColourValue fadeColour(0.8, 0.8, 1.0);
 	//_mainCam->GetViewport()->setBackgroundColour(fadeColour);
-	//_manager->setFog(Ogre::FOG_LINEAR, fadeColour, 0, 2200, 2800);
+	//_manager->setFog(Ogre::FOG_LINEAR, fadeColour, 0, 5000, 7000);
 }
 
 OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name) {
@@ -89,10 +90,6 @@ OgreWrapper::Node* OgreWrapper::RenderScene::GetNode(std::string name) {
 
 OgreWrapper::Light* OgreWrapper::RenderScene::CreateLight() {
 	return new Light(_manager->createLight(), Ogre::Light::LT_DIRECTIONAL);
-}
-
-OgreWrapper::Spline* OgreWrapper::RenderScene::CreateSpline() {
-	return new Spline();
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer(std::string mesh) {

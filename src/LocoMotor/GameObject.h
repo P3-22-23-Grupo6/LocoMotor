@@ -12,23 +12,19 @@
 #include <map>
 
 //HITO 1 POC
-#include "Renderer3D.h"
-#include "BulletRigidBody.h"
+
+
 
 namespace OgreWrapper {
 	class Node;
+	class Renderer3D;
 }
 
 
 namespace LocoMotor {
-	struct Transform {
-		LMVector3 position;
-		LMVector3 rotation;
-		LMVector3 scale;
-		LMQuaternion direction;
-	};
 
 	class Scene;
+	class Transform;
 
     class MOTOR_API GameObject {
 	public:
@@ -63,7 +59,7 @@ namespace LocoMotor {
 			//bool comps[Camera::id] == true -> error
 		};
 
-
+		void AddComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params);
 
 		/// @brief Remove a Component
 		/// @param T The type of the component to remove
@@ -94,18 +90,18 @@ namespace LocoMotor {
 			//}
 			//return static_cast<T*>(_componentsByName.at(name));
 		}
-
-		/// @brief Get the transform of the GameObject
-		Transform GetTransform();
+		void OnCollisionEnter(GameObject* other);
+		void OnCollisionStay(GameObject* other);
+		void OnCollisionExit(GameObject* other);
 
 		/// @brief Set the position of the GameObject
 		void SetPosition(LMVector3 pos);
 		/// @brief Set the rotation of the GameObject
-		void SetRotation(LMVector3 rot);
+		void SetRotation(LMQuaternion rot);
 		/// @brief Set the scale of the GameObject
 		void SetScale(LMVector3 sc);
-		/// @brief Set the transform direction of the GameObject
-		void SetDirection(LMQuaternion dir);
+
+		Transform* GetTransform();
 
 		//HITO 1 POC
 
@@ -125,15 +121,19 @@ namespace LocoMotor {
 
 		void StartComp();
 
-		//Prueba
+		void RegisterTransform(Transform* newTrans);
+		//Pruebaval
 		void setMovable(bool b) {
 			movable = b;
 		}
 
+		bool physicsBasedMovement;
 	private:
-		Transform _tr;
 		std::map<std::string, Component*> _componentsByName;
 		Scene* scene;
+
+
+		Transform* transform;
 
 		//HITO 1 POC
 		//PhysicsWrapper::BulletRigidBody* _rigidBody;
@@ -143,6 +143,8 @@ namespace LocoMotor {
 		//Prueba
 		bool movable=false;
 		double tiltAmount;
+
+		LMVector3 localVelocity = LMVector3(0, 0, 0);
 	};
 }
 

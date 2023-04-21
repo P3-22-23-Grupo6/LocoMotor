@@ -25,6 +25,9 @@
     <ProjectReference Include="..\LocoMotor\LocoMotor.vcxproj">
       <Project>{b3a1c7d3-a022-4475-8517-eeb5873ebe89}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\LocoMotor_Lua\LocoMotor_Lua.vcxproj">
+      <Project>{72d80436-2b2e-4873-8aec-6c8123e81bab}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -79,13 +82,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)Bin/</OutDir>
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)Bin/</OutDir>
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

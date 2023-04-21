@@ -29,7 +29,6 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Renderer3D.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\RenderScene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\SGTechniqueResolverListener.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Spline.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIElement.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIImage.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIText.cpp" />
@@ -46,7 +45,6 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Renderer3D.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\SGTechniqueResolverListener.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Spline.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIElement.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIImage.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIText.h" />
@@ -121,12 +119,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Lib/</OutDir>
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Lib/</OutDir>
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -170,7 +168,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MOTORDLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Bites\include;$(SolutionDir)Dependecies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Overlay\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
@@ -190,7 +188,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MOTORDLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Bites\include;$(SolutionDir)Dependecies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Overlay\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>

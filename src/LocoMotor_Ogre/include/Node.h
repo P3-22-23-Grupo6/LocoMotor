@@ -103,7 +103,7 @@ namespace OgreWrapper {
 		/// </summary>
 		void ResetOrientation();
 
-		void SetOrientation(Ogre::Quaternion* q);
+		void SetOrientation(Ogre::Quaternion& q);
 
 		Node* CreateChild();
 	protected:

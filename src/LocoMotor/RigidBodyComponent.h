@@ -4,10 +4,10 @@
 #include "Component.h"
 class LMVector3;
 class LMQuaternion;
-class BulletRigidBody;
+class btRigidBody;
 class MeshStrider;
 namespace PhysicsWrapper {
-	class RigidBodyInfo;
+	struct RigidBodyInfo;
 	class BulletRigidBody;
 }
 namespace LocoMotor {
@@ -35,42 +35,75 @@ namespace LocoMotor {
 		/// @brief Sets the body rotation
 		/// @param rot Rotation to set
 		void setRotation(LMQuaternion rot);
-		/// @brief Set the bodys mass (NOT WORKING)
-		void setMass(float m);
+		/// @brief Sets the body rotation
+		/// @param rot Rotation to set
+		void setPosition(LMVector3 pos);
 		/// @brief Enable/Disable the gravity force affected to this body
 		/// @param gravity 
-		void useGravity(bool gravity);
+		void useGravity(LMVector3 gravity);
 		/// @brief Freeze the position of the rigidbody , limit the motion of position in those axis
 		/// @param axis LMVector3 x,y,z axis , 0 means limit(stop motion) , 1 means no limit(allow motion)
 		void FreezePosition(LMVector3 freezeAxis);
 		/// @brief Freeze the rotation of the rigidbody , limit the motion of rotation in those axis
 		/// @param axis LMVector3 x,y,z axis , 0 means limit(stop motion) , 1 means no limit(allow motion)
 		void FreezeRotation(LMVector3 freezeAxis);
-		/// @brief Set the body to Dynamic state
-		void setDynamic();
-		/// @brief Set the body to Kinematic state
-		void setKinematic();
-		/// @brief Set the body to Static state
-		void setStatic();
-		/// @brief Set the body to no contact response state / trigger
-		void setNoContactResponse();
 		/// @brief 
 		/// @return 
-		bool checkCollision(GameObject* go);
+		bool checkCollision(GameObject* other);
 		/// @brief 
 		/// @return 
-		PhysicsWrapper::BulletRigidBody* getBody();
+		btRigidBody* getBody();
+		/// @brief Convert the body to be a Trigger(No contact Response)
+		void beATrigger();
 		/// @brief Methods to return RaycastInfo
 		bool GetRaycastHit(LMVector3 from, LMVector3 to);
+		/// @brief Gets the raycast hit point
+		/// @param from Vector
+		/// @param to Vector
+		/// @return Returns the point in LmVector3
 		LMVector3 GetraycastHitPoint(LMVector3 from, LMVector3 to);
+		/// @brief Gets the raycast hit normal
+		/// @param from Vector
+		/// @param to Vector
+		/// @return Returns the normal in LMVector3
 		LMVector3 GethasRaycastHitNormal(LMVector3 from, LMVector3 to);
+		/// @brief Set the body to be a group of collision , if not set the group is 0
+		/// @param group To set
+		void SetCollisionGroup(int group);
+		/// @brief Gets the number of rigidbodys group 
+		/// @return The number of group
+		int GetCollisionGroup();
+		/// @brief Set the mask that want to collide , the number is the group you want to collide
+		/// @param mask The group number
+		void SetCollisionMask(int mask);
+		/// @brief Gets actual collision mask
+		/// @return the number of collsion mask
+		int GetCollisionMask();
+		/// @brief Gets the linearvelocity of the body
+		/// @return Return a LMVector3 of linear velocity
+		LMVector3 GetLinearVelocity();
+		/// @brief Gets the total torque of the body
+		/// @return Return a LMVector3 of total torque
+		LMVector3 GetTotalTorque();
+		/// @brief Gets the turn velocity of the body
+		/// @return Return a LMVector3 of turn velocity
+		LMVector3 GetTurnVelocity();
+		/// @brief Applies a torque impulse to the body
+		/// @param impulse the impulse to aplly
+		void ApplyTorqueImpulse(LMVector3 impulse);
+		/// @brief Set The friction of this rigidbody
+		/// @param fric the new friction value
+		void SetFriction(float fric);
 	private:
 		float _mass;
-		PhysicsWrapper::BulletRigidBody* _body;
+		btRigidBody* _body;
 		float _damping;
 		float _angDamping;
 		bool _gravity;
 		MeshStrider* _ms;
+		bool _trigger = false;
+		int collisionGroup;
+		int collisionMask;
 
 	};
 }

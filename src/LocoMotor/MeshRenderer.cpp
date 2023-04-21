@@ -1,10 +1,11 @@
 
-#include "MeshRederer.h"
+#include "MeshRenderer.h"
 #include "Renderer3D.h"
 #include "OgreManager.h"
 #include "RenderScene.h"
 #include "Node.h"
 #include "Scene.h"
+#include "GameObject.h"
 using namespace LocoMotor;
 
 const std::string MeshRenderer::name = "MeshRenderer";

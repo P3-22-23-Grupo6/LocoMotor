@@ -30,13 +30,13 @@ namespace FmodWrapper {
 
 		unsigned short ChangeIndex(int index);
 
-		int GetIndex();
+		size_t GetIndex();
 
 		std::list<AudioListener*>::iterator GetIterator();
 
 	private:
 
-		int _fIndex;
+		size_t _fIndex;
 
 		FmodWrapper::AudioManager* _man;
 

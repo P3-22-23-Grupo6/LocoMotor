@@ -1,8 +1,10 @@
 #include "AudioListener.h"
 #include "GameObject.h"
+#include "Transform.h"
 #include "LMVector.h"
 #include "LocoMotor_FMod/include/AudioListener.h"
 #include "LocoMotor_FMod/include/AudioManager.h"
+#include "LmVectorConverter.h"
 
 using namespace LocoMotor;
 
@@ -19,7 +21,7 @@ AudioListener::~AudioListener() {
 }
 
 void LocoMotor::AudioListener::Start() {
-	*_lastPos = gameObject->GetTransform().position;
+	*_lastPos = gameObject->GetTransform()->GetPosition();
 }
 
 void LocoMotor::AudioListener::InitComponent() {
@@ -28,27 +30,22 @@ void LocoMotor::AudioListener::InitComponent() {
 }
 
 void LocoMotor::AudioListener::Update(float dt) {
-	double degToRad = 0.0174533;
 
-	LMVector3 rot = gameObject->GetTransform().rotation * degToRad;
-	LMVector3 forwardVec = LMVector3(std::sin(rot.GetY()) * std::cos(rot.GetX()),
-									 std::sin(-rot.GetX()),
-									 std::cos(rot.GetX()) * std::cos(rot.GetY()));
+	LMVector3 forwardVec = gameObject->GetTransform()->GetRotation().Forward() * -1;
+	LMVector3 upwardVec = gameObject->GetTransform()->GetRotation().Up();
 
-	// TODO: No se si este esta bien calculado pero bueno xd
-	LMVector3 upwardVec = LMVector3(std::sin(-rot.GetZ()),
-									std::cos(rot.GetX()) * std::cos(rot.GetZ()),
-									std::sin(rot.GetZ()) * std::cos(rot.GetX()));
-
-	LMVector3 vel = (gameObject->GetTransform().position - *_lastPos) / (dt / 1000);
+	LMVector3 vel = (gameObject->GetTransform()->GetPosition() - *_lastPos) / (dt / 1000);
 
 #ifdef _DEBUG
-	std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(_list->SetTransform(LMVector3::LmToFMod(gameObject->GetTransform().position), LMVector3::LmToFMod(vel), LMVector3::LmToFMod(forwardVec), LMVector3::LmToFMod(upwardVec))) << std::endl;
+	auto err = _list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));
+	if (err > 0) {
+		std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(err) << std::endl;
+	}
 #else
-	_list->SetTransform(gameObject->GetTransform().position, vel, forwardVec, LMVector3::LmToFMod(upwardVec));
+	_list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));
 #endif // _DEBUG
 
-	*_lastPos = gameObject->GetTransform().position;
+	*_lastPos = gameObject->GetTransform()->GetPosition();
 }
 
 

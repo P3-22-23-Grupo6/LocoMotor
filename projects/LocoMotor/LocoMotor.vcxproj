@@ -39,7 +39,6 @@
     <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\AudioSource.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor\Checkpoint.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Component.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\EnemyAI.cpp" />
@@ -47,31 +46,30 @@
     <ClCompile Include="..\..\src\LocoMotor\LogSystem.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ParticleSystem.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor\RaceManager.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\RigidBodyComponent.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Scene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\src\CallBackBullet.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor\src\LMVector.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\src\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
-    <ClInclude Include="..\..\src\LocoMotor\Checkpoint.h" />
     <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h" />
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h" />
     <ClInclude Include="..\..\src\LocoMotor\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor\EnemyAI.h" />
+    <ClInclude Include="..\..\src\LocoMotor\include\CallBackBullet.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />
-    <ClInclude Include="..\..\src\LocoMotor\include\LMVector.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h" />
+    <ClInclude Include="..\..\src\LocoMotor\include\Transform.h" />
     <ClInclude Include="..\..\src\LocoMotor\LogSystem.h" />
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h" />
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h" />
-    <ClInclude Include="..\..\src\LocoMotor\RaceManager.h" />
     <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h" />
-    <ClInclude Include="..\..\src\LocoMotor\MeshRederer.h" />
+    <ClInclude Include="..\..\src\LocoMotor\MeshRenderer.h" />
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h" />
   </ItemGroup>
@@ -142,13 +140,13 @@
     <TargetName>$(ProjectName)32</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <OutDir>$(SolutionDir)Bin/</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <OutDir>$(SolutionDir)Bin/</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

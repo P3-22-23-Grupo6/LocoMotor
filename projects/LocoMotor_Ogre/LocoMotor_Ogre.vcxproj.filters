@@ -48,9 +48,6 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\ParticleHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Spline.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIElement.cpp">
       <Filter>Source Files\UIElements</Filter>
     </ClCompile>
@@ -93,9 +90,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\ParticleHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Spline.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIElement.h">
