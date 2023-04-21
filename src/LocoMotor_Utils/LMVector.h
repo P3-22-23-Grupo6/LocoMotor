@@ -8,6 +8,7 @@
 #define MOTOR_API __declspec(dllimport)
 #endif
 
+class LMQuaternion;
 //Vector class to be used with LocoMotor
 class MOTOR_API LMVector3 {
 
