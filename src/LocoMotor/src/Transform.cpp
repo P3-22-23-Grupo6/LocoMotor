@@ -36,7 +36,7 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 					try {
 						value = std::stof(num);
 					}
-					catch (const char* _) {
+					catch (const char*) {
 						value = 0.f;
 					}
 					if (currAxis == 0) {
@@ -67,7 +67,7 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 					try {
 						value = std::stof(num);
 					}
-					catch (const char* _) {
+					catch (const char*) {
 						value = 0.f;
 					}
 					if (currAxis == 0) {
@@ -98,7 +98,7 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 					try {
 						value = std::stof(num);
 					}
-					catch (const char* _) {
+					catch (const char*) {
 						value = 0.f;
 					}
 					if (currAxis == 0) {

@@ -4,7 +4,8 @@
 #include "OgreVector.h"
 #include "btBulletDynamicsCommon.h"
 #include "fmod_common.h"
-#include "LMVector.h"
+class LMVector3;
+class LMQuaternion;
 
 // VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
 	/// @brief Converts a Bullet vector to lmVector
