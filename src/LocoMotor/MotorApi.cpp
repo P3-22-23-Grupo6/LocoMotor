@@ -282,10 +282,11 @@ void MotorApi::MainLoop() {
 		_scnManager->Update();
 		//std::cout << _scnManager->GetDelta();
 	}
+	PhysicsManager::Clear();
 	SceneManager::Clear();
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
-	PhysicsManager::Clear();
+
 	InputManager::Destroy();
 	ComponentsFactory::Clear();
 	return;
