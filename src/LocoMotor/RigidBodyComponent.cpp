@@ -135,6 +135,30 @@ LMVector3 LocoMotor::RigidBodyComponent::GethasRaycastHitNormal(LMVector3 from, 
 	return PhysicsManager::GetInstance()->createRaycast(from, to).hitVNormal;
 }
 
+void LocoMotor::RigidBodyComponent::setCollisionGroup(int group)
+{
+	btBroadphaseProxy* proxy= _body->getBroadphaseProxy();
+	proxy->m_collisionFilterGroup = group;
+}
+
+int LocoMotor::RigidBodyComponent::getCollisionGroup()
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	return proxy->m_collisionFilterGroup;
+}
+
+void LocoMotor::RigidBodyComponent::setCollisionMask(int mask)
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	proxy->m_collisionFilterMask = 1<<mask | 1<<0;
+}
+
+int LocoMotor::RigidBodyComponent::getCollisionMask()
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	return proxy->m_collisionFilterMask;
+}
+
 void LocoMotor::RigidBodyComponent::SetFriction(float fric) {
 	_body->setFriction(fric);
 }
