@@ -10,7 +10,7 @@
 
 #include <utility>
 template<typename T>
-class Singleton {
+class MOTOR_API Singleton {
 public:
 
 	/// @brief When trying to copy the singleton, the former instance will be deleted
