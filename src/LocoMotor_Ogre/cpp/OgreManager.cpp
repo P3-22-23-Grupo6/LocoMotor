@@ -14,7 +14,7 @@
 #include "RenderScene.h"
 #include "SGTechniqueResolverListener.h"
 #include "OgreManager.h"
-#include "UIElement.h"
+
 
 
 OgreWrapper::OgreManager* Singleton<OgreWrapper::OgreManager>::_instance = nullptr;

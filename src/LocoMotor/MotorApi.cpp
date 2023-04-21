@@ -116,7 +116,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->setMovable(true);
-	//ship_gObj->AddComponent("PlayerController");
+	ship_gObj->AddComponent("PlayerController");
 
 	
 
