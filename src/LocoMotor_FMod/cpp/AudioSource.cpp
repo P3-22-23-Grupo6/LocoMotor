@@ -2,6 +2,7 @@
 #include "AudioManager.h"
 #include <fmod.hpp>
 #include <fmod_errors.h>
+#include <random>
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
@@ -16,6 +17,7 @@ AudioSource::AudioSource() : _man(AudioManager::GetInstance()) {
 	_posRemember->x = 0;
 	_posRemember->y = 0;
 	_posRemember->z = 0;
+	_mode = FMOD_3D | FMOD_3D_WORLDRELATIVE;
 }
 
 AudioSource::~AudioSource() {
@@ -50,9 +52,9 @@ unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned 
 		loopEnd = len;
 
 	if (!loops)
-		snd->setMode(FMOD_3D | FMOD_3D_WORLDRELATIVE);
+		snd->setMode(_mode);
 	else {
-		snd->setMode(FMOD_3D | FMOD_3D_WORLDRELATIVE | FMOD_LOOP_NORMAL);
+		snd->setMode(_mode | FMOD_LOOP_NORMAL);
 		auto err = snd->setLoopPoints(std::min(loopBegin, loopEnd), FMOD_TIMEUNIT_MS, std::max(loopBegin, loopEnd), FMOD_TIMEUNIT_MS);
 	#ifdef _DEBUG
 		if (err != FMOD_OK) {
@@ -74,6 +76,39 @@ unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned 
 	_chMap[fileName].channel->getFrequency(&aux);
 	_chMap[fileName].ogFrec = aux;
 	_chMap[fileName].channel->setVolume(_volumeMult);
+
+	channel->setPaused(false);
+	return fail;
+}
+
+unsigned short FmodWrapper::AudioSource::PlayOneShot(const char* fileName, const FMOD_VECTOR& position, const float volume) {
+	float randPtch = 0.8f + (float)(rand()) / ((float)(RAND_MAX / (1.1f - 0.8f)));
+	return PlayOneShot(fileName, position, volume, randPtch);
+}
+
+unsigned short FmodWrapper::AudioSource::PlayOneShot(const char* fileName, const FMOD_VECTOR& position, const float volume, const float pitch) {
+	auto snd = _man->GetSound(fileName);
+	if (snd == nullptr) {
+	#ifdef _DEBUG
+		std::cout << "Sound " << fileName << " is not added to the manager, adding it now";
+	#endif // _DEBUG
+		AddSound(fileName);
+		snd = _man->GetSound(fileName);
+	}
+	snd->setMode(_mode);
+
+	Channel* channel;
+	auto fail = _man->PlaySoundwChannel(fileName, &channel);
+
+	FMOD_VECTOR vel = FMOD_VECTOR(); vel.x = 0; vel.y = 0; vel.z = 0;
+	if (fail != FMOD_OK)
+		channel->set3DAttributes(&position, &vel);
+	else
+		fail = channel->set3DAttributes(&position, &vel);
+	float aux;
+	channel->getFrequency(&aux);
+	channel->setFrequency(aux * pitch);
+	channel->setVolume(volume);
 
 	channel->setPaused(false);
 	return fail;
@@ -107,12 +142,16 @@ unsigned short FmodWrapper::AudioSource::StopSound(const char* fileName) {
 	#endif // _DEBUG
 		return FMOD_ERR_INVALID_PARAM;
 	}
+	_chMap[fileName].channel->setFrequency(_chMap[fileName].ogFrec);
+	_chMap[fileName].channel->setVolume(1.f);
 	return _chMap[fileName].channel->stop();
 }
 
 unsigned short FmodWrapper::AudioSource::StopSource() {
 	unsigned short res = 0;
 	for (auto& chan : _chMap) {
+		chan.second.channel->setFrequency(chan.second.ogFrec);
+		chan.second.channel->setVolume(1.f);
 		auto aux = chan.second.channel->stop();
 		if (aux > res) {
 			res = aux;
@@ -165,6 +204,7 @@ void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_V
 		bool is;
 		it->second.channel->isPlaying(&is);
 		if (is) {
+			if (_mode == FMOD_2D) continue;
 			it->second.channel->set3DAttributes(&newPos, &newVel);
 			it++;
 		}
@@ -191,9 +231,12 @@ void FmodWrapper::AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos,
 	SetPositionAndVelocity(newPos, vel);
 }
 
-void FmodWrapper::AudioSource::Prueba() {
-	/*FMOD_VECTOR aux = FMOD_VECTOR(); aux.x = _posRemember->x - 0.0001f; aux.y = _posRemember->y; aux.z = _posRemember->z;
-	SetPositionAndVelocity(aux, FMOD_VECTOR());*/
+void FmodWrapper::AudioSource::SetMode3D() {
+	_mode = FMOD_3D | FMOD_3D_WORLDRELATIVE;
+}
+
+void FmodWrapper::AudioSource::SetMode2D() {
+	_mode = FMOD_2D;
 }
 
 FmodWrapper::AudioManager* FmodWrapper::AudioSource::GetManager() {
