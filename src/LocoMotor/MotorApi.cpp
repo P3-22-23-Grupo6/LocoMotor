@@ -24,6 +24,8 @@
 #include <EnemyAI.h>
 #include "CallBackBullet.h"
 #include "LmVectorConverter.h"
+#include "UIImageLM.h"
+#include "UITextLM.h"
 
 //#include <tweeners/builder.hpp>
 //#include <tweeners/easing.hpp>
@@ -209,6 +211,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//Skybox
 	_renderScn->SetSkybox();
 
+	//UIExamples
+	
+
 #pragma endregion
 
 	_scnManager->ChangeScene("Escena");
@@ -267,6 +272,10 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
 	cmpFac->RegisterComponent<Transform>("Transform");
 	//cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
+
+	/*cmpFac->RegisterComponent<UIImageLM>("UIImage");
+	cmpFac->RegisterComponent<UITextLM>("UIText");*/
+	
 
 }
 

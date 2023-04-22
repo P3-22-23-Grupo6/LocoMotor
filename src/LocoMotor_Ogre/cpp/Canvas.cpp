@@ -55,8 +55,8 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 	
 	_canvas->add2D(_container);
 
-	UIImage* im = new UIImage("TestMat");
-	addUIElement(im);
+	/*UIImage* im = new UIImage("TestMat");
+	addUIElement(im)*/;
 
 #pragma region TEMP, Mostrar texto
 	
@@ -77,8 +77,8 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 
 	pFont->load();
 
-	UIText* tXT = new UIText("Hola", "MyFont.fontdef");
-	addUIElement(tXT);
+	/*UIText* tXT = new UIText("Hola", "MyFont.fontdef");
+	addUIElement(tXT);*/
 	//tXT->SetPosition(1,0);
 	//tXT->ChangeText("Patata");
 	////tXT->AlignRight();
