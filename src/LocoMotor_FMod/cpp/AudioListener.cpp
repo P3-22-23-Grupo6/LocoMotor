@@ -40,13 +40,3 @@ unsigned short FmodWrapper::AudioListener::ChangeIndex(int index)
 
 	return err;
 }
-
-size_t FmodWrapper::AudioListener::GetIndex()
-{
-	return _fIndex;
-}
-
-std::list<FmodWrapper::AudioListener*>::iterator FmodWrapper::AudioListener::GetIterator()
-{
-	return _thisIT;
-}

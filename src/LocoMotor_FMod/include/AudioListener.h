@@ -28,11 +28,10 @@ namespace FmodWrapper {
 		/// @return A number that by passing it to AudioManager::GetError(unsigned short) you can get more info if there was an error
 		unsigned short SetTransform(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel, const FMOD_VECTOR& forward, const FMOD_VECTOR& up);
 
+		/// @brief Change the index this listener is associated with in the manager
+		/// @param index The new index of the listener
+		/// @return A number that by passing it to AudioManager::GetError(unsigned short) you can get more info if there was an error
 		unsigned short ChangeIndex(int index);
-
-		size_t GetIndex();
-
-		std::list<AudioListener*>::iterator GetIterator();
 
 	private:
 

@@ -75,6 +75,14 @@ void LocoMotor::AudioSource::Play(const char* fileName, const int loop, const un
 	_lastError = _src->PlaySound(fileName, loop, loopStart, loopEnd);
 }
 
+void LocoMotor::AudioSource::PlayOneShot(const char* fileName, const LMVector3& position, const float volume) {
+	_lastError = _src->PlayOneShot(fileName, LmToFMod(position), volume);
+}
+
+void LocoMotor::AudioSource::PlayOneShot(const char* fileName, const LMVector3& position, const float volume, const float pitch) {
+	_lastError = _src->PlayOneShot(fileName, LmToFMod(position), volume, pitch);
+}
+
 void LocoMotor::AudioSource::PauseSound(const char* fileName, bool pause) {
 	_lastError = _src->PauseS(fileName, pause);
 }
@@ -105,4 +113,12 @@ void LocoMotor::AudioSource::SetFreq(const char* fileName, const float freqMult)
 
 void LocoMotor::AudioSource::SetFreq(const float freqMult) {
 	_lastError = _src->SetFrequency(freqMult);
+}
+
+void LocoMotor::AudioSource::Set3D() {
+	_src->SetMode3D();
+}
+
+void LocoMotor::AudioSource::Set2D() {
+	_src->SetMode2D();
 }
