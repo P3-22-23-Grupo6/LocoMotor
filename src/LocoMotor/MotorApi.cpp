@@ -254,7 +254,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 void MotorApi::Init() {
 	FmodWrapper::AudioManager::Init(8);
 	PhysicsManager::Init();
-	InputManager::Get();
+	InputManager::Init();
 	_scnManager = LocoMotor::SceneManager::Init();
 	PhysicsManager::GetInstance()->setContactStartCallback(contactStartBullet);
 	PhysicsManager::GetInstance()->setContactProcessCallback(contactProcessedBullet);
@@ -279,7 +279,8 @@ void MotorApi::MainLoop() {
 		FmodWrapper::AudioManager::GetInstance()->Update(_scnManager->GetDelta());
 		OgreWrapper::OgreManager::GetInstance()->Render();
 		PhysicsManager::GetInstance()->Update(_scnManager->GetDelta());
-		if (InputManager::Get()->RegisterEvents())
+
+		if (LocoMotor::InputManager::GetInstance()->RegisterEvents())
 			break;
 
 		_scnManager->Update();
@@ -290,7 +291,7 @@ void MotorApi::MainLoop() {
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 
-	InputManager::Destroy();
+	InputManager::Clear();
 	ComponentsFactory::Clear();
 	return;
 }

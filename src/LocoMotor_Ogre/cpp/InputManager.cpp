@@ -4,9 +4,11 @@
 #include <SDL_events.h>
 #include <iostream>
 #include <SDL_gamecontroller.h>
+#include "LMInputs.h"
 
+using namespace LocoMotor;
 
-InputManager* InputManager::_instance = nullptr;
+LocoMotor::InputManager* Singleton<LocoMotor::InputManager>::_instance = nullptr;
 
 InputManager::InputManager() {
 	_gyroscopeValue[0] = 0.f;
@@ -19,10 +21,10 @@ InputManager::InputManager() {
 	_joystickAxis[3] = 0.f;
 }
 
-InputManager* InputManager::Get() {
-	if (InputManager::_instance == nullptr)  _instance = new InputManager();
-	return _instance;
-}
+//InputManager* InputManager::Get() {
+//	if (InputManager::_instance == nullptr)  _instance = new InputManager();
+//	return _instance;
+//}
 
 
 // TECLADO
