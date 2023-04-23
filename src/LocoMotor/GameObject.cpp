@@ -37,36 +37,39 @@ void GameObject::Update(float dt) {
 	InputManager* man = InputManager::Get();
 
 
+
+
 	if (!movable)return;
-	if (man->controllerConnected()) {
 
-		float gyroRotate = man->GetGyroscopeAngularSpeed(InputManager::Axis::Horizontal);
-		float joystickValue_1_Hor = man->GetJoystickValue(1, InputManager::Axis::Horizontal);
-		//_node->Rotate(0, joystickValue_1_Hor * 5, -gyroRotate * 200);
-		_node->Rotate(0, gyroRotate * 200 + -joystickValue_1_Hor * 5, 0);
+	//if (man->controllerConnected()) {
 
-		float joystickValue_0_Hor = man->GetJoystickValue(0, InputManager::Axis::Horizontal);
-		float joystickValue_0_Ver = man->GetJoystickValue(0, InputManager::Axis::Vertical);
+	//	float gyroRotate = man->GetGyroscopeAngularSpeed(InputManager::Axis::Horizontal);
+	//	float joystickValue_1_Hor = man->GetJoystickValue(1, InputManager::Axis::Horizontal);
+	//	//_node->Rotate(0, joystickValue_1_Hor * 5, -gyroRotate * 200);
+	//	_node->Rotate(0, gyroRotate * 200 + -joystickValue_1_Hor * 5, 0);
 
-		float verticalMov = 0;
-		if (man->GetButton(SDL_CONTROLLER_BUTTON_A)) {
-			verticalMov = .1f;
-		}
-		else if (man->GetButton(SDL_CONTROLLER_BUTTON_B))
-			verticalMov = -.1f;
+	//	float joystickValue_0_Hor = man->GetJoystickValue(0, InputManager::Axis::Horizontal);
+	//	float joystickValue_0_Ver = man->GetJoystickValue(0, InputManager::Axis::Vertical);
 
-		RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
-		rbComp->addForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
-		_node->Translate(-joystickValue_0_Hor, verticalMov, -joystickValue_0_Ver);
+	//	float verticalMov = 0;
+	//	if (man->GetButton(SDL_CONTROLLER_BUTTON_A)) {
+	//		verticalMov = .1f;
+	//	}
+	//	else if (man->GetButton(SDL_CONTROLLER_BUTTON_B))
+	//		verticalMov = -.1f;
+
+	//	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
+	//	rbComp->addForce(LMVector3(joystickValue_0_Hor, verticalMov, joystickValue_0_Ver));
+	//	_node->Translate(-joystickValue_0_Hor, verticalMov, -joystickValue_0_Ver);
 
 
-		SetPosition(LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z()));
-	}
+	//	SetPosition(LMVector3(_node->GetPosition_X(), _node->GetPosition_Y(), _node->GetPosition_Z()));
+	//}
 	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
 
 	// MOVIMIENTO CALCULADO CON MATES :TODO
 	//if (!physicsBasedMovement)
-		rbComp->useGravity(LMVector3(0, 0, 0));
+	rbComp->useGravity(LMVector3(0, 0, 0));
 
 
 	LMVector3 from = GetTransform()->GetPosition();
@@ -80,27 +83,28 @@ void GameObject::Update(float dt) {
 
 	if (rbComp->GetRaycastHit(from, to)) {
 		LMVector3 n = rbComp->GethasRaycastHitNormal(from, to);
-		
+
 		// MOVIMIENTO CALCULADO CON MATES :TODO
 		// if (!physicsBasedMovement) {
 			//Intensidad con la que se va a actualizar el vector normal del coche
-			float pitchIntensity = 40;
-			LMVector3 newUp = n * pitchIntensity;
-			GetTransform()->SetUpwards(newUp);
+		float pitchIntensity = 40;
+		LMVector3 newUp = n * pitchIntensity;
+		GetTransform()->SetUpwards(newUp);
 
-			LMVector3 hitPos = rbComp->GetraycastHitPoint(from, to);
-			double hoverDist = 7;
-			LMVector3 hoverDisplacement = LMVector3(n.GetX() * hoverDist, n.GetY() * hoverDist, n.GetZ() * hoverDist);
-			GetTransform()->SetPosition(hitPos + hoverDisplacement);
-		// }
+		LMVector3 hitPos = rbComp->GetraycastHitPoint(from, to);
+		double hoverDist = 7;
+		LMVector3 hoverDisplacement = LMVector3(n.GetX() * hoverDist, n.GetY() * hoverDist, n.GetZ() * hoverDist);
+		GetTransform()->SetPosition(hitPos + hoverDisplacement);
+	// }
 	}
 	else {
 		// Si no detecta suelo, que se caiga
-		localVelocity = localVelocity + LMVector3(0, -.2f, 0);
+		if (!physicsBasedMovement)
+			localVelocity = localVelocity + LMVector3(0, -.2f, 0);
 	}
 
 
-	bool acelerate = man->GetKey(SDL_SCANCODE_W);
+	bool acelerate = man->GetKey(LMKS_W);
 	if (acelerate) {
 
 		// MOVIMIENTO CON FISICAS :TODO
@@ -127,44 +131,40 @@ void GameObject::Update(float dt) {
 
 	// Desacelerar la velocidad actual para que no haya tanto derrape
 
-	//LMVector3 localVel = BulletToLm(rbComp->getBody()->getLinearVelocity());
-	LMVector3 localVel = rbComp->GetLinearVelocity();
+	if (physicsBasedMovement) {
 
-	//btVector3 BULLETVECTOR = rbComp->getBody()->getLinearVelocity();
+		//LMVector3 localVel = BulletToLm(rbComp->getBody()->getLinearVelocity());
+		LMVector3 localVel = rbComp->GetLinearVelocity();
 
-	LMVector3 forward = GetTransform()->GetRotation().Forward();
-	double angle = localVel.Angle(forward);
+		LMVector3 forward = GetTransform()->GetRotation().Forward();
+		double angle = localVel.Angle(forward);
 
-	std::cout << "\n" << "ANGLE = " << angle;
+		double intensity = localVel.Magnitude();
 
-	double intensity = localVel.Magnitude();
+		localVel.Normalize();
+		LMVector3 invertedVelocity = localVel * -1;
 
-	localVel.Normalize();
+		// Si el angulo entre la velocidad real del coche y la direccion en la que esta mirando es grande
+		if (angle > .5f)
+			GetComponent<RigidBodyComponent>()->addForce(invertedVelocity * intensity / 20 * angle * dt);
+	}
 
-	std::cout << "\n" << "LOCAL VEL = " << localVel.GetX()
-		<< ", " << localVel.GetY() << ", " << localVel.GetZ() << "\n";
-
-	LMVector3 invertedVelocity = localVel * -1;
-
-	if (angle > .5f)
-	if (physicsBasedMovement)
-		GetComponent<RigidBodyComponent>()->addForce(invertedVelocity * intensity/20 * angle * dt);
+	//std::cout << "\n" << "LOCAL VEL = " << localVel.GetX()
+	//	<< ", " << localVel.GetY() << ", " << localVel.GetZ() << "\n";
 
 
 
-
-	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
-
+	bool rotateRight = man->GetKey(LMKS_D);
 	float torqueStrengh = 5.f;
 	if (rotateRight) {
 		if (physicsBasedMovement) {
 			// TODO: quitar la referencia directa a btvector3 abajo tambien
-			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * torqueStrengh);
+			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * -torqueStrengh);
 		}
 		else
 			transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), 90. * dt / 1000.f));
 	}
-	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
+	bool rotateLeft = man->GetKey(LMKS_A);
 	if (rotateLeft) {
 		/*
 		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, -1, 0, 0));
@@ -172,27 +172,57 @@ void GameObject::Update(float dt) {
 		_node->Rotate(0, -3, 0);
 		*/
 		if (physicsBasedMovement) {
-			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * -torqueStrengh);
+			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * torqueStrengh);
 		}
 		else
-		transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), -90. * dt / 1000.f));
+			transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), -90. * dt / 1000.f));
 	}
 
-	// std::cout << transform->GetRotation().GetY() << std::endl;
-	rbComp->getBody()->applyTorqueImpulse(btVector3(0, 0, rbComp->getBody()->getTotalTorque().getZ()));
-	//rbComp->FreezeRotation(LMVector3(1, 1, 0));
+	//// std::cout << transform->GetRotation().GetY() << std::endl;
+	////rbComp->getBody()->applyTorqueImpulse(btVector3(0, 0, rbComp->getBody()->getTotalTorque().getZ()));
+	////rbComp->FreezeRotation(LMVector3(1, 1, 0));
 
 	// Comprobacion para que no gire demasiado rapido
-	if (rbComp->getBody()->getTotalTorque().length() > 100.f)
-		rbComp->getBody()->applyTorqueImpulse(rbComp->getBody()->getTotalTorque() * -0.2f);
+	//if (rbComp->getBody()->getTotalTorque().length() > 10)
+	//	rbComp->getBody()->applyTorqueImpulse(rbComp->getBody()->getTotalTorque() * -0.2f);
 
-	// MOVIMIENTO CALCULADO CON MATES :TODO
+	LMVector3 currentAngularVelocity = BulletToLm(rbComp->getBody()->getAngularVelocity());
+	std::cout << "\n" << "TURN VEL = " << currentAngularVelocity.GetX()
+		<< ", " << currentAngularVelocity.GetY() << ", " << currentAngularVelocity.GetZ() << "\n";
+
+	//if (!rotateLeft && !rotateRight)
+	//	rbComp->getBody()->setAngularVelocity(LmToBullet(LMVector3(0, 0, 0)));
+
+	// Clampear la velocidad angular maxima permitida
+	float maxAngularVelocity = 3.5;
+	if (currentAngularVelocity.Magnitude() > maxAngularVelocity) {
+		currentAngularVelocity.Normalize();
+		// Conocer la direccion en la que se esta rotando (izquierda/derecha)
+		double yAngVel = currentAngularVelocity.GetY();
+		int direction = abs(yAngVel) / yAngVel;
+		// Modificar el vector de la velocidad angular actual
+		currentAngularVelocity = LMVector3(0, maxAngularVelocity * direction, 0);
+	}
+	// Añadir un drag angular para frenar la rotacion mas controladamente
+	double angularDrag = .7;
+	if (!rotateLeft && !rotateRight)
+		currentAngularVelocity = LMVector3(currentAngularVelocity.GetX() * angularDrag,
+					  currentAngularVelocity.GetY() * angularDrag,
+					  currentAngularVelocity.GetZ() * angularDrag);
+
+		// Actualizar velocidad angular
+	rbComp->getBody()->setAngularVelocity(LmToBullet(currentAngularVelocity));
+
+	//btScalar i = 0;
+	//rbComp->getBody()->setFriction(i);
+
+		// MOVIMIENTO CALCULADO CON MATES :TODO
 	if (!physicsBasedMovement) {
 
 	// Aplicar velocidad
 
 	// Ralentizar velocidad
-		float currentVelocity = (float)localVelocity.Magnitude();
+		float currentVelocity = (float) localVelocity.Magnitude();
 		currentVelocity -= .2f;
 		if (currentVelocity < 0) currentVelocity = 0;
 		localVelocity.Normalize();
@@ -218,9 +248,8 @@ void GameObject::Update(float dt) {
 		GetTransform()->SetPosition(GetTransform()->GetPosition() + localVelocity);
 
 
-		if(GetTransform()->GetPosition().GetY() < -45)
-		{
-			GetTransform()->SetPosition(LMVector3(0,5,0));
+		if (GetTransform()->GetPosition().GetY() < -45) {
+			GetTransform()->SetPosition(LMVector3(0, 5, 0));
 		}
 	}
 }

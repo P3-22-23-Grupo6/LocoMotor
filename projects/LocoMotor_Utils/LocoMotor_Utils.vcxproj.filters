@@ -30,6 +30,9 @@
     <ClCompile Include="..\..\src\LocoMotor_Utils\LmVectorConverter.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Utils\LMSpline.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Utils\Singleton.h">
@@ -51,6 +54,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor_Utils\LmVectorConverter.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Utils\LMSpline.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

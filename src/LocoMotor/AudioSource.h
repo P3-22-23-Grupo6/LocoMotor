@@ -12,6 +12,8 @@ namespace FmodWrapper {
 	class AudioSource;
 }
 
+class LMVector3;
+
 namespace LocoMotor {
 		class MOTOR_API AudioSource : public Component {
 
@@ -37,6 +39,19 @@ namespace LocoMotor {
 			/// @param loopEnd The end of the loop section (in miliseconds)
 			void Play(const char* fileName, const int loop = 0, const unsigned int loopStart = 0, const unsigned int loopEnd = 0xffffffff);
 
+			/// @brief Plays a sound independently of this source, meaning it won´t update its position; with a randomized pitch
+			/// @param fileName the file where the sound is, it will load the first time it plays and stay loaded until the game closes
+			/// @param position the position where the sound will come from
+			/// @param volume the volume the sound will have when played
+			void PlayOneShot(const char* fileName, const LMVector3& position, const float volume = 1.f);
+
+			/// @brief Plays a sound independently of this source, meaning it won´t update its position
+			/// @param fileName the file where the sound is, it will load the first time it plays and stay loaded until the game closes
+			/// @param position the position where the sound will come from
+			/// @param volume the volume the sound will have when played
+			/// @param pitch the pitch multiplier the sound should have when played
+			void PlayOneShot(const char* fileName, const LMVector3& position, const float volume, const float pitch);
+
 			/// @brief Pauses a specific sound that is being played
 			/// @param id The sound to pause
 			/// @param pause Bool to pause or unpause
@@ -53,7 +68,6 @@ namespace LocoMotor {
 
 			/// @brief Stops all sounds from this source
 			void Stop();
-
 
 			/// @brief Set the volume multiplier for a sound that is being played
 			/// @param id The sound to apply the volume change to
@@ -72,6 +86,12 @@ namespace LocoMotor {
 			/// @brief Set the frequency multiplier for all sounds that play on this source
 			/// @param freqMult by how much should the original frequency of each sound be multiplied by
 			void SetFreq(const float freqMult);
+
+			/// @brief Set the source to play sounds in world space
+			void Set3D();
+
+			/// @brief Set the source to play sounds globally, with no regard of its position
+			void Set2D();
 		private:
 			FmodWrapper::AudioSource* _src;
 			unsigned short _lastError;
