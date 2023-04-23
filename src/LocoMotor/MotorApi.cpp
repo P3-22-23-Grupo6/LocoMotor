@@ -127,9 +127,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 	const int numberOfCheckpoints = 3;
 	LMVector3 checkpointPositions[numberOfCheckpoints];
 
-	checkpointPositions[0] = LMVector3(0, 4, -60);
-	checkpointPositions[1] = LMVector3(0, 4, -120);
-	checkpointPositions[2] = LMVector3(0, 4, -180);
+	checkpointPositions[0] = LMVector3(0, 4, -100);
+	checkpointPositions[1] = LMVector3(0, 4, -200);
+	checkpointPositions[2] = LMVector3(0, 18, -300);
 
 	
 	std::vector<GameObject*> lsBalls = std::vector<GameObject*>();
@@ -141,6 +141,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 		checkpoint_gObj->AddComponent("Transform");
 		checkpoint_gObj->AddComponent("MeshRenderer");
 		checkpoint_gObj->GetComponent<MeshRenderer>()->Start(checkpointName, "SphereDebug.mesh", "");
+		checkpoint_gObj->GetTransform()->SetSize(LMVector3(20, 20, 20));
+		checkpoint_gObj->GetTransform()->SetPosition(checkpointPositions[i]);
 		Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
 		lsBalls.push_back(checkpoint_gObj);
 	}
@@ -213,7 +215,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	_scnManager->ChangeScene("Escena");
 
-	ship_gObj->SetPosition(LMVector3(50, 6, 0));
+	ship_gObj->SetPosition(LMVector3(0, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
 	trackMain->SetPosition(LMVector3(0, -3, -100));
 	trackBorder->SetPosition(LMVector3(0, -3, -100));
