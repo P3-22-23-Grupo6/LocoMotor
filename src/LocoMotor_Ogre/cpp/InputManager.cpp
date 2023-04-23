@@ -26,15 +26,15 @@ InputManager* InputManager::Get() {
 
 
 // TECLADO
-bool InputManager::GetKeyDown(const LMKeyboard& scanCode) {
+bool InputManager::GetKeyDown(const LMScanCode& scanCode) {
 	return _keyboardKeys[scanCode].down;
 }
 
-bool InputManager::GetKey(const LMKeyboard& scanCode) {
+bool InputManager::GetKey(const LMScanCode& scanCode) {
 	return _keyboardKeys[scanCode].isPressed;
 }
 
-bool InputManager::GetKeyUp(const LMKeyboard& scanCode) {
+bool InputManager::GetKeyUp(const LMScanCode& scanCode) {
 	return _keyboardKeys[scanCode].up;
 }
 
@@ -291,7 +291,7 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 
 }
 
-bool InputManager::ControllerDeviceAdded(const Sint32& controllerAdded) {
+bool InputManager::ControllerDeviceAdded(const int32_t& controllerAdded) {
 
 	// Si ya hay un mando conectado, ignorar este
 	if (_currentController != nullptr)
@@ -308,7 +308,7 @@ bool InputManager::ControllerDeviceAdded(const Sint32& controllerAdded) {
 	return true;
 }
 
-void InputManager::ControllerDeviceRemoved(const Sint32& controllerRemoved) {
+void InputManager::ControllerDeviceRemoved(const int32_t& controllerRemoved) {
 
 	//TODO: esto no parece acabado?????
 

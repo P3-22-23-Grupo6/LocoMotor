@@ -7,6 +7,10 @@
 #define MOTOR_API __declspec(dllimport)
 #endif
 
+//These key codes act as intermediaries between the InputManager and SDL,
+//this way we can avoid including SDL in the InputManager header
+///@brief Key codes for keyboard input
+///@note scan codes are generally symbol dependent, so they usually change depending on keyboard layout
 enum LMKeyboard {
     LMK_UNKNOWN = 0,
 
@@ -47,10 +51,6 @@ enum LMKeyboard {
     LMK_GREATER = '>',
     LMK_QUESTION = '?',
     LMK_AT = '@',
-
-    /*
-       Skip uppercase letters
-     */
 
     LMK_LEFTBRACKET = '[',
     LMK_BACKSLASH = '\\',
@@ -152,12 +152,128 @@ enum LMKeyboard {
 
     LMK_MODE = 1073742081,
 };
-enum Controller {
-    
 
-};
-enum Gyro {
+//These scan codes act as intermediaries between the InputManager and SDL,
+//this way we can avoid including SDL in the InputManager header.
+///@brief Scan Codes for keyboard input
+///@note scan codes are generally dependent on position rather than symbol, so they don't tend to change between keyboard layouts
+enum LMScanCode {
+    LMKS_UNKNOWN = 0,
 
+    LMKS_A = 4,
+    LMKS_B = 5,
+    LMKS_C = 6,
+    LMKS_D = 7,
+    LMKS_E = 8,
+    LMKS_F = 9,
+    LMKS_G = 10,
+    LMKS_H = 11,
+    LMKS_I = 12,
+    LMKS_J = 13,
+    LMKS_K = 14,
+    LMKS_L = 15,
+    LMKS_M = 16,
+    LMKS_N = 17,
+    LMKS_O = 18,
+    LMKS_P = 19,
+    LMKS_Q = 20,
+    LMKS_R = 21,
+    LMKS_S = 22,
+    LMKS_T = 23,
+    LMKS_U = 24,
+    LMKS_V = 25,
+    LMKS_W = 26,
+    LMKS_X = 27,
+    LMKS_Y = 28,
+    LMKS_Z = 29,
+
+    LMKS_1 = 30,
+    LMKS_2 = 31,
+    LMKS_3 = 32,
+    LMKS_4 = 33,
+    LMKS_5 = 34,
+    LMKS_6 = 35,
+    LMKS_7 = 36,
+    LMKS_8 = 37,
+    LMKS_9 = 38,
+    LMKS_0 = 39,
+
+    LMKS_RETURN = 40,
+    LMKS_ESCAPE = 41,
+    LMKS_BACKSPACE = 42,
+    LMKS_TAB = 43,
+    LMKS_SPACE = 44,
+
+    LMKS_MINUS = 45,
+    LMKS_EQUALS = 46,
+    LMKS_LEFTBRACKET = 47,
+    LMKS_RIGHTBRACKET = 48,
+    LMKS_BACKSLASH = 49,
+
+    LMKS_SEMICOLON = 51,
+    LMKS_APOSTROPHE = 52,
+    LMKS_GRAVE = 53,
+    LMKS_COMMA = 54,
+    LMKS_PERIOD = 55,
+    LMKS_SLASH = 56,
+
+    LMKS_CAPSLOCK = 57,
+
+    LMKS_F1 = 58,
+    LMKS_F2 = 59,
+    LMKS_F3 = 60,
+    LMKS_F4 = 61,
+    LMKS_F5 = 62,
+    LMKS_F6 = 63,
+    LMKS_F7 = 64,
+    LMKS_F8 = 65,
+    LMKS_F9 = 66,
+    LMKS_F10 = 67,
+    LMKS_F11 = 68,
+    LMKS_F12 = 69,
+
+    LMKS_PRINTSCREEN = 70,
+    LMKS_SCROLLLOCK = 71,
+    LMKS_PAUSE = 72,
+    LMKS_INSERT = 73,
+    LMKS_HOME = 74,
+    LMKS_PAGEUP = 75,
+    LMKS_DELETE = 76,
+    LMKS_END = 77,
+    LMKS_PAGEDOWN = 78,
+    LMKS_RIGHT = 79,
+    LMKS_LEFT = 80,
+    LMKS_DOWN = 81,
+    LMKS_UP = 82,
+
+    LMKS_NUMLOCKCLEAR = 83,
+    LMKS_KP_DIVIDE = 84,
+    LMKS_KP_MULTIPLY = 85,
+    LMKS_KP_MINUS = 86,
+    LMKS_KP_PLUS = 87,
+    LMKS_KP_ENTER = 88,
+    LMKS_KP_1 = 89,
+    LMKS_KP_2 = 90,
+    LMKS_KP_3 = 91,
+    LMKS_KP_4 = 92,
+    LMKS_KP_5 = 93,
+    LMKS_KP_6 = 94,
+    LMKS_KP_7 = 95,
+    LMKS_KP_8 = 96,
+    LMKS_KP_9 = 97,
+    LMKS_KP_0 = 98,
+    LMKS_KP_PERIOD = 99,
+
+    LMKS_LCTRL = 224,
+    LMKS_LSHIFT = 225,
+    LMKS_LALT = 226,
+    LMKS_LGUI = 227,
+    LMKS_RCTRL = 228,
+    LMKS_RSHIFT = 229,
+    LMKS_RALT = 230,
+    LMKS_RGUI = 231,
+
+    LMKS_MODE = 257,
 };
 
 

@@ -4,13 +4,12 @@
 
 #include "LMInputs.h"
 //#include <SDL_gamecontroller.h>
-
 #include <vector>
 #include <array>
 
 union SDL_Event;
 
-class SDL_GameController;
+typedef struct _SDL_GameController SDL_GameController;
 //class SDL_Scancode;
 
 
@@ -29,11 +28,11 @@ public:
 
 	// TECLADO
 	// Devuelve true solo el frame en el que se presiona la tecla
-	bool GetKeyDown(const LMKeyboard& scanCode);
+	bool GetKeyDown(const LMScanCode& scanCode);
 	// Devuelve true siempre que la tecla este presionada
-	bool GetKey(const LMKeyboard& scanCode);
+	bool GetKey(const LMScanCode& scanCode);
 	// Devuelve true solo el frame en el que se deja de presionar la tecla
-	bool GetKeyUp(const LMKeyboard& scanCode);
+	bool GetKeyUp(const LMScanCode& scanCode);
 
 	// MANDO
 
@@ -59,8 +58,8 @@ public:
 	void ManageKeyboardEvents(const SDL_Event& event);
 	void ManageControllerEvents(const SDL_Event& event);
 
-	bool ControllerDeviceAdded(const Sint32& controller);
-	void ControllerDeviceRemoved(const Sint32& controller);
+	bool ControllerDeviceAdded(const int32_t& controller);
+	void ControllerDeviceRemoved(const int32_t& controller);
 
 	// Las teclas que hayan llamado a los eventos SDL_KEYDOWN y SDL_KEYUP en el frame anterior,
 	// Tienen las variables de Down/Up activas, solo queremos que esten activas un frame, por lo tanto
@@ -105,10 +104,10 @@ private:
 		bool up = false;
 	};
 	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de las teclas
-	KeyState _keyboardKeys[SDL_NUM_SCANCODES];
+	KeyState _keyboardKeys[512];
 
 	// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
-	KeyState _controllerButtons[SDL_CONTROLLER_BUTTON_MAX];
+	KeyState _controllerButtons[21];
 
 	SDL_GameController* _currentController = nullptr;
 

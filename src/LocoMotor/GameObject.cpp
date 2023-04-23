@@ -104,7 +104,7 @@ void GameObject::Update(float dt) {
 	}
 
 
-	bool acelerate = man->GetKey(SDL_SCANCODE_W);
+	bool acelerate = man->GetKey(LMKS_W);
 	if (acelerate) {
 
 		// MOVIMIENTO CON FISICAS :TODO
@@ -154,7 +154,7 @@ void GameObject::Update(float dt) {
 
 
 
-	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
+	bool rotateRight = man->GetKey(LMKS_D);
 
 	float torqueStrengh = 5.f;
 	if (rotateRight) {
@@ -165,7 +165,7 @@ void GameObject::Update(float dt) {
 		else
 			transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), 90. * dt / 1000.f));
 	}
-	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
+	bool rotateLeft = man->GetKey(LMKS_A);
 	if (rotateLeft) {
 		/*
 		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, -1, 0, 0));
