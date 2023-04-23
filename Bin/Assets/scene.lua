@@ -1,22 +1,12 @@
 camera = {
-    transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    camera = {}
+    Camera = {}
 }
 coche = {
-    transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
+    RigidBodyComponent = {
+        mass = "1",
+        damping = "0.7",
+        gravity = "1"
     },
-    mesh = {
-        mesh = "Feisar.mesh",
-        material = "Racers/Falcon"
-    },
-    rigidBody = {}
 }
 
 entities = {"camera", "coche"}

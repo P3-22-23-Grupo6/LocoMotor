@@ -10,7 +10,7 @@
 #include "Singleton.h"
 #include <string>
 
-class lua_State;
+struct lua_State;
 namespace luabridge {
 	class LuaRef;
 }
@@ -21,7 +21,7 @@ namespace LocoMotor {
 	class GameObject;
 	class Scene;
 	class MOTOR_API ScriptManager : public Singleton<ScriptManager> {
-		friend Singleton<ScriptManager>;
+	    friend Singleton<ScriptManager>;
 	public:
 		/*bool Init();*/
 		void LoadSceneFromFile(std::string path);

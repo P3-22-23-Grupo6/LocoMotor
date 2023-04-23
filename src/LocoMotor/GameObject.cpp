@@ -2,7 +2,7 @@
 #include "Transform.h"
 
 //HITO 1 POC
-#include "InputManager.h"
+//#include "InputManager.h"
 #include "Scene.h"
 #include "Node.h"
 //Borrar luego
@@ -22,7 +22,7 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 	_componentsByName = {};
 
 	physicsBasedMovement = true;
-
+	this->AddComponent("Transform");
 	tiltAmount = 0.0f; //TEMPORAL
 }
 
@@ -34,7 +34,7 @@ void GameObject::Update(float dt) {
 			it->second->Update(dt);
 	}
 	if (GetComponent<RigidBodyComponent>() == nullptr) return;
-	InputManager* man = InputManager::Get();
+	//InputManager* man = InputManager::GetInstance();
 
 
 
@@ -67,8 +67,6 @@ void GameObject::Update(float dt) {
 	//}
 	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
 
-	// MOVIMIENTO CALCULADO CON MATES :TODO
-	//if (!physicsBasedMovement)
 	rbComp->useGravity(LMVector3(0, 0, 0));
 
 
@@ -104,7 +102,7 @@ void GameObject::Update(float dt) {
 	}
 
 
-	bool acelerate = man->GetKey(SDL_SCANCODE_W);
+	bool acelerate = true;//man->GetKey(LMKS_W);
 	if (acelerate) {
 
 		// MOVIMIENTO CON FISICAS :TODO
@@ -154,18 +152,17 @@ void GameObject::Update(float dt) {
 
 
 
-	bool rotateRight = man->GetKey(SDL_SCANCODE_A);
-
+	bool rotateRight = true; //man->GetKey(LMKS_D);
 	float torqueStrengh = 5.f;
 	if (rotateRight) {
 		if (physicsBasedMovement) {
 			// TODO: quitar la referencia directa a btvector3 abajo tambien
-			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * torqueStrengh);
+			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * -torqueStrengh);
 		}
 		else
 			transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), 90. * dt / 1000.f));
 	}
-	bool rotateLeft = man->GetKey(SDL_SCANCODE_D);
+	bool rotateLeft = true; // man->GetKey(LMKS_A);
 	if (rotateLeft) {
 		/*
 		GetComponent<RigidBodyComponent>()->setRotation(LMQuaternion(1, -1, 0, 0));
@@ -173,7 +170,7 @@ void GameObject::Update(float dt) {
 		_node->Rotate(0, -3, 0);
 		*/
 		if (physicsBasedMovement) {
-			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * -torqueStrengh);
+			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * torqueStrengh);
 		}
 		else
 			transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), -90. * dt / 1000.f));

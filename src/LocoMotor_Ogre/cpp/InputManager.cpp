@@ -4,9 +4,11 @@
 #include <SDL_events.h>
 #include <iostream>
 #include <SDL_gamecontroller.h>
+#include "LMInputs.h"
 
+using namespace LocoMotor;
 
-InputManager* InputManager::_instance = nullptr;
+LocoMotor::InputManager* Singleton<LocoMotor::InputManager>::_instance = nullptr;
 
 InputManager::InputManager() {
 	_gyroscopeValue[0] = 0.f;
@@ -19,22 +21,22 @@ InputManager::InputManager() {
 	_joystickAxis[3] = 0.f;
 }
 
-InputManager* InputManager::Get() {
-	if (InputManager::_instance == nullptr)  _instance = new InputManager();
-	return _instance;
-}
+//InputManager* InputManager::Get() {
+//	if (InputManager::_instance == nullptr)  _instance = new InputManager();
+//	return _instance;
+//}
 
 
 // TECLADO
-bool InputManager::GetKeyDown(const SDL_Scancode& scanCode) {
+bool InputManager::GetKeyDown(const LMScanCode& scanCode) {
 	return _keyboardKeys[scanCode].down;
 }
 
-bool InputManager::GetKey(const SDL_Scancode& scanCode) {
+bool InputManager::GetKey(const LMScanCode& scanCode) {
 	return _keyboardKeys[scanCode].isPressed;
 }
 
-bool InputManager::GetKeyUp(const SDL_Scancode& scanCode) {
+bool InputManager::GetKeyUp(const LMScanCode& scanCode) {
 	return _keyboardKeys[scanCode].up;
 }
 
@@ -291,7 +293,7 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 
 }
 
-bool InputManager::ControllerDeviceAdded(const Sint32& controllerAdded) {
+bool InputManager::ControllerDeviceAdded(const int32_t& controllerAdded) {
 
 	// Si ya hay un mando conectado, ignorar este
 	if (_currentController != nullptr)
@@ -308,7 +310,7 @@ bool InputManager::ControllerDeviceAdded(const Sint32& controllerAdded) {
 	return true;
 }
 
-void InputManager::ControllerDeviceRemoved(const Sint32& controllerRemoved) {
+void InputManager::ControllerDeviceRemoved(const int32_t& controllerRemoved) {
 
 	//TODO: esto no parece acabado?????
 

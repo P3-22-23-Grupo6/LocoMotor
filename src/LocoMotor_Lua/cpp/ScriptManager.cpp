@@ -65,12 +65,12 @@ void ScriptManager::LoadSceneFromFile(std::string path) {
         //Cargo las entidades 
         GameObject* ent = s->GetObjectByName(allEnts[i]);
         if (ent == nullptr) {
-            ent = s->AddGameobject(allEnts[i]);            
+            ent = s->AddGameobject(allEnts[i]);
         }
         std::cout << "Loading entity: " << allEnts[i] << " Components: \n";
         setParams(entity, ent, nullptr, "layer");
         
-
+        ent->StartComp();
     }
 
 }

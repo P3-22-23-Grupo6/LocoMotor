@@ -1,4 +1,9 @@
 #pragma once
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include "Scene.h"
 #include "Singleton.h"
 #include <map>
@@ -11,7 +16,7 @@ typedef uint32_t Uint32;
 namespace LocoMotor {
 	class ComponentsFactory;
 	class Component;
-	class SceneManager : public Singleton<SceneManager> {
+	class MOTOR_API SceneManager : public Singleton<SceneManager> {
 		friend Singleton<SceneManager>;
 
 	public:
