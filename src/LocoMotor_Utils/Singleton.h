@@ -2,15 +2,10 @@
 #ifndef LM_SINGLETON
 #define LM_SINGLETON
 //#include "CheckML.h"
-#ifdef _MOTORDLL
-#define MOTOR_API __declspec(dllexport)
-#else
-#define MOTOR_API __declspec(dllimport)
-#endif
 
 #include <utility>
 template<typename T>
-class MOTOR_API  Singleton {
+class Singleton {
 public:
 
 	/// @brief When trying to copy the singleton, the former instance will be deleted

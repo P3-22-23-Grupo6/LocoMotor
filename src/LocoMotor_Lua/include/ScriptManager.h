@@ -21,7 +21,7 @@ namespace LocoMotor {
 	class GameObject;
 	class Scene;
 	class MOTOR_API ScriptManager : public Singleton<ScriptManager> {
-		MOTOR_API friend Singleton<ScriptManager>;
+	    friend Singleton<ScriptManager>;
 	public:
 		/*bool Init();*/
 		void LoadSceneFromFile(std::string path);
