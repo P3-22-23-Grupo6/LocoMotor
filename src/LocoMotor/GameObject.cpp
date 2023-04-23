@@ -155,12 +155,11 @@ void GameObject::Update(float dt) {
 
 
 	bool rotateRight = man->GetKey(LMKS_D);
-
 	float torqueStrengh = 5.f;
 	if (rotateRight) {
 		if (physicsBasedMovement) {
 			// TODO: quitar la referencia directa a btvector3 abajo tambien
-			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * torqueStrengh);
+			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * -torqueStrengh);
 		}
 		else
 			transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), 90. * dt / 1000.f));
@@ -173,7 +172,7 @@ void GameObject::Update(float dt) {
 		_node->Rotate(0, -3, 0);
 		*/
 		if (physicsBasedMovement) {
-			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * -torqueStrengh);
+			rbComp->getBody()->applyTorqueImpulse(btVector3(transform->GetRotation().Up().GetX(), transform->GetRotation().Up().GetY(), transform->GetRotation().Up().GetZ()) * torqueStrengh);
 		}
 		else
 			transform->SetRotation(transform->GetRotation().Rotate(transform->GetRotation().Up(), -90. * dt / 1000.f));
