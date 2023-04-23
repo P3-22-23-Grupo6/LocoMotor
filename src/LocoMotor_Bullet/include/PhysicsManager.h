@@ -23,6 +23,8 @@ namespace PhysicsWrapper {
 		float capsuleHeight;
 		btVector3 origin;
 		float mass;
+
+		RigidBodyInfo();
 	};
 	/// @brief Info to retreieve from a Raycast
 	/// @param hasHit tells if there was a Collision
@@ -32,6 +34,8 @@ namespace PhysicsWrapper {
 		bool hasHit;
 		LMVector3 hitPos;
 		LMVector3 hitVNormal;
+
+		RaycastInfo();
 	};
 
 	class BulletRigidBody;
@@ -52,6 +56,10 @@ namespace PhysicsWrapper {
 		void SetWorldGravity(btVector3 gravity);
 		/// @brief Gets dynamic World
 		btDynamicsWorld* GetDynamicWorld();
+
+		void setContactStartCallback(ContactStartedCallback funtion);
+		void setContactProcessCallback(ContactProcessedCallback funtion);
+		void setContactEndedCallback(ContactEndedCallback funtion);
 
 		RaycastInfo createRaycast(LMVector3 from, LMVector3 direction);
 

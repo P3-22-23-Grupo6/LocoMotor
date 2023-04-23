@@ -90,6 +90,9 @@ namespace LocoMotor {
 			//}
 			//return static_cast<T*>(_componentsByName.at(name));
 		}
+		void OnCollisionEnter(GameObject* other);
+		void OnCollisionStay(GameObject* other);
+		void OnCollisionExit(GameObject* other);
 
 		/// @brief Set the position of the GameObject
 		void SetPosition(LMVector3 pos);
@@ -119,13 +122,12 @@ namespace LocoMotor {
 		void StartComp();
 
 		void RegisterTransform(Transform* newTrans);
-
 		//Pruebaval
 		void setMovable(bool b) {
 			movable = b;
 		}
 
-		bool physicsBasedMovement = false;
+		bool physicsBasedMovement;
 	private:
 		std::map<std::string, Component*> _componentsByName;
 		Scene* scene;

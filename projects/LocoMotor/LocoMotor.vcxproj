@@ -50,6 +50,7 @@
     <ClCompile Include="..\..\src\LocoMotor\MeshRenderer.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Scene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\SceneManager.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\src\CallBackBullet.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\Transform.cpp" />
@@ -60,6 +61,7 @@
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h" />
     <ClInclude Include="..\..\src\LocoMotor\Camera.h" />
     <ClInclude Include="..\..\src\LocoMotor\EnemyAI.h" />
+    <ClInclude Include="..\..\src\LocoMotor\include\CallBackBullet.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\framework.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\pch.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\Transform.h" />
@@ -138,13 +140,13 @@
     <TargetName>$(ProjectName)32</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <OutDir>$(SolutionDir)Bin/</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
-    <OutDir>$(SolutionDir)Bin/</OutDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

@@ -6,6 +6,7 @@
 #include "Renderer3D.h"
 #include "MeshRenderer.h"
 #include "MeshStrider.h"
+#include "LmVectorConverter.h"
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
 
@@ -14,8 +15,8 @@ const std::string RigidBodyComponent::name = "RigidBodyComponent";
 LocoMotor::RigidBodyComponent::RigidBodyComponent()
 {
 	_mass = 0;
-	_damping = 0.9;
-	_angDamping = 0.7;
+	_damping = 0.9f;
+	_angDamping = 0.7f;
 	_gravity = true;
 	_body = nullptr;
 	_ms = nullptr;
@@ -32,14 +33,14 @@ LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
 
 void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
 {
-	_body->applyCentralForce(LMVector3::LmToBullet(force));
+	_body->applyCentralForce(LmToBullet(force));
 }
 void LocoMotor::RigidBodyComponent::Start() {
 	
 	RigidBodyInfo info;
 	info.mass = _mass;
-	info.boxSize = LMVector3::LmToBullet(LMVector3(0,0,0));
-	info.origin = LMVector3::LmToBullet(gameObject->GetTransform()->GetPosition());
+	info.boxSize = LmToBullet(LMVector3(0,0,0));
+	info.origin = LmToBullet(gameObject->GetTransform()->GetPosition());
 	info.sphereSize = 5;
 	info.capsuleHeight = 10;
 	info.capsuleRadius = 3;
@@ -48,12 +49,15 @@ void LocoMotor::RigidBodyComponent::Start() {
 		if (mesh != nullptr) {
 			_ms = new MeshStrider(mesh->GetMesh());
 			_body = PhysicsManager::GetInstance()->CreateRigidBody(info, _ms);
+			_body->setUserPointer(gameObject);
 			//delete ms;
 			return;
 		}	
 	}
 	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
+	_body->setUserPointer(gameObject);
 }
+
 
 void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	for (int i = 0; i < params.size(); i++) {
@@ -74,32 +78,33 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 }
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
-	gameObject->SetPosition(LMVector3::BulletToLm(_body->getWorldTransform().getOrigin()));
+	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
+	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
 	_body->clearForces();
 }
 
 
 void LocoMotor::RigidBodyComponent::setRotation(LMQuaternion rot)
 {
-	_body->getWorldTransform().setRotation(LMQuaternion::LmToBullet(rot));
+	_body->getWorldTransform().setRotation(LmToBullet(rot));
 }
 
 void LocoMotor::RigidBodyComponent::setPosition(LMVector3 pos)
 {
-	_body->getWorldTransform().setOrigin(LMVector3::LmToBullet(pos));
+	_body->getWorldTransform().setOrigin(LmToBullet(pos));
 }
 
 void LocoMotor::RigidBodyComponent::useGravity(LMVector3 gravity) {
 
-	_body->setGravity(LMVector3::LmToBullet(gravity));
+	_body->setGravity(LmToBullet(gravity));
 }
 
 void LocoMotor::RigidBodyComponent::FreezePosition(LMVector3 freezeAxis) {
-	_body->setLinearFactor(LMVector3::LmToBullet(freezeAxis));
+	_body->setLinearFactor(LmToBullet(freezeAxis));
 }
 
 void LocoMotor::RigidBodyComponent::FreezeRotation(LMVector3 freezeAxis) {
-	_body->setAngularFactor(LMVector3::LmToBullet(freezeAxis));
+	_body->setAngularFactor(LmToBullet(freezeAxis));
 }
 
 bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* other) {
@@ -111,7 +116,12 @@ bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* other) {
 
 btRigidBody* LocoMotor::RigidBodyComponent::getBody() {
 	return _body;
-}	
+}
+void LocoMotor::RigidBodyComponent::beATrigger()
+{
+	_body->setCollisionFlags(_body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
+}
+
 
 bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
 	return PhysicsManager::GetInstance()->createRaycast(from,to).hasHit;
@@ -123,6 +133,46 @@ LMVector3 LocoMotor::RigidBodyComponent::GetraycastHitPoint(LMVector3 from, LMVe
 
 LMVector3 LocoMotor::RigidBodyComponent::GethasRaycastHitNormal(LMVector3 from, LMVector3 to){
 	return PhysicsManager::GetInstance()->createRaycast(from, to).hitVNormal;
+}
+
+void LocoMotor::RigidBodyComponent::SetCollisionGroup(int group)
+{
+	btBroadphaseProxy* proxy= _body->getBroadphaseProxy();
+	proxy->m_collisionFilterGroup = group;
+}
+
+int LocoMotor::RigidBodyComponent::GetCollisionGroup()
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	return proxy->m_collisionFilterGroup;
+}
+
+void LocoMotor::RigidBodyComponent::SetCollisionMask(int mask)
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	proxy->m_collisionFilterMask = 1<<mask;
+}
+
+int LocoMotor::RigidBodyComponent::GetCollisionMask()
+{
+	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
+	return proxy->m_collisionFilterMask;
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetLinearVelocity() {
+	return BulletToLm(_body->getLinearVelocity()) ;
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetTotalTorque() {
+	return BulletToLm(_body->getTotalTorque());
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetTurnVelocity() {
+	return BulletToLm(_body->getTurnVelocity());
+}
+
+void LocoMotor::RigidBodyComponent::ApplyTorqueImpulse(LMVector3 impulse) {
+	_body->applyTorqueImpulse(LmToBullet(impulse));
 }
 
 void LocoMotor::RigidBodyComponent::SetFriction(float fric) {

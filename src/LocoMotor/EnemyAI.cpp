@@ -1,10 +1,10 @@
 #include "EnemyAI.h"
 #include "GameObject.h"
 #include "Transform.h"
-#include "Spline.h"
+#include "LMSpline.h"
 #include <LMVector.h>
 #include "RigidBodyComponent.h"
-
+#include "LmVectorConverter.h"
 //float testTime = 0.0f;
 LocoMotor::EnemyAI::EnemyAI() {
 }
@@ -13,7 +13,7 @@ LocoMotor::EnemyAI::~EnemyAI(){
 	delete mySpline;
 }
 
-void LocoMotor::EnemyAI::Start(OgreWrapper::Spline* splineToFollow, float sep)
+void LocoMotor::EnemyAI::Start(LocoMotor::Spline* splineToFollow, float sep)
  {
 	startSeparation = sep;
 	mySpline = splineToFollow;
@@ -46,10 +46,10 @@ void LocoMotor::EnemyAI::Update(float dt)
 	}
 
 	//Interpolate Position
-	Ogre::Vector3 newPos = mySpline->Interpolate(timeStep);
-	newPos += myGbj->GetTransform()->GetRotation().Right() * startSeparation;
+	LMVector3 newPos = mySpline->Interpolate(timeStep);
+	newPos = newPos + myGbj->GetTransform()->GetRotation().Right() * startSeparation;
 	//LookAt
-	myGbj->GetTransform()->LookAt(LMVector3::OgreToLm(newPos));
+	myGbj->GetTransform()->LookAt(newPos);
 	//Set Position
-	myGbj->SetPosition(LMVector3::OgreToLm(newPos));
+	myGbj->SetPosition(newPos);
 }

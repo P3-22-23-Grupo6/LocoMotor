@@ -2,13 +2,15 @@
 #ifndef LM_VECTOR
 #define LM_VECTOR
 
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 
-#include "OgreVector.h"
-#include "btBulletDynamicsCommon.h"
-#include "fmod_common.h"
+class LMQuaternion;
 //Vector class to be used with LocoMotor
-
-class LMVector3 {
+class MOTOR_API LMVector3 {
 
 
 public:
@@ -37,48 +39,22 @@ public:
 	void SetZ(double z);
 
 	// Equal operators of vectors
-	LMVector3 operator=(const Ogre::Vector3& v);
-	LMVector3 operator=(const FMOD_VECTOR& v);
-	LMVector3 operator=(const btVector3& v);
-	LMVector3 operator=(const btTransform& v);
 
 	// Sum operators of vectors
 	LMVector3 operator+(const LMVector3& other) const;
-	LMVector3 operator+(const btVector3& other) const;
-	LMVector3 operator+(const btTransform& other) const;
-	LMVector3 operator+(const Ogre::Vector3& other) const;
-	LMVector3 operator+(const FMOD_VECTOR& other) const;
 	LMVector3 operator+(const double& other) const;
-
 	// Sub operators of vectors
 	LMVector3 operator-(const LMVector3& other) const;
-	LMVector3 operator-(const btVector3& other) const;
-	LMVector3 operator-(const btTransform& other) const;
-	LMVector3 operator-(const Ogre::Vector3& other) const;
-	LMVector3 operator-(const FMOD_VECTOR& other) const;
 	LMVector3 operator-(const double& other) const;
 
 	// Mul operators of vectors
 	LMVector3 operator*(const LMVector3& other) const;
-	LMVector3 operator*(const btVector3& other) const;
-	LMVector3 operator*(const btTransform& other) const;
-	LMVector3 operator*(const Ogre::Vector3& other) const;
-	LMVector3 operator*(const FMOD_VECTOR& other) const;
 	LMVector3 operator*(const double& other) const;
 
 	// Div operators of vectors
 	LMVector3 operator/(const LMVector3& other) const;
-	LMVector3 operator/(const btVector3& other) const;
-	LMVector3 operator/(const btTransform& other) const;
-	LMVector3 operator/(const Ogre::Vector3& other) const;
-	LMVector3 operator/(const FMOD_VECTOR& other) const;
 	LMVector3 operator/(const double& other) const;
 
-	// Type operators between vectors
-	operator Ogre::Vector3() const;
-		// Due to lmBullet antics, this operator makes conflicts with the "/" operator beteen LMVector and btVector3.h //operator btVector3() const;
-	operator btTransform() const;
-	operator FMOD_VECTOR() const;
 
 	// Dot product
 	///	@brief Get the Dot Product of two Vectors
@@ -134,25 +110,7 @@ public:
 	/// @param other The other Vector
 	LMVector3 Perpendicular(const LMVector3& other) const;
 
-
-
-// VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
-	/// @brief Converts a Bullet vector to lmVector
-	static LMVector3 BulletToLm(const btVector3& bulletVector);
-   /// @brief Converts an lmVector to Bullet vector
-	static btVector3 LmToBullet(const LMVector3& lmVector);
-   /// @brief Converts an Ogre vector to lmVector
-	static LMVector3 OgreToLm(const Ogre::Vector3& ogreVector);
-   /// @brief Converts an lmVector to an Ogre vector
-	static Ogre::Vector3 LmToOgre(const LMVector3& lmVector);
-	/// @brief Converts an FMod vector to an lmVector
-	static LMVector3 FModToLm(const FMOD_VECTOR& fmVector);
-	/// @brief Converts an lmVector to an FMod vector
-	static FMOD_VECTOR LmToFMod(const LMVector3& lmVector);
-	/// @brief Converts a Bullet transform to lmVector
-	static LMVector3 BullTransformToLm(const btTransform& bulletTransform);
-	/// @brief Converts an lmVector to a Bullet Transform
-	static btTransform LmToBullTransform(const LMVector3& lmVector);
+	LMQuaternion& AsRotToQuaternion() const;
 
 
 private:
@@ -162,7 +120,7 @@ private:
 };
 
 //Quaternion class to be used with LocoMotor
-class LMQuaternion {
+class MOTOR_API LMQuaternion {
 
 
 public:
@@ -196,26 +154,17 @@ public:
 
 	//Equal operators of quaternions
 	LMQuaternion operator=(const LMQuaternion& other);
-	LMQuaternion operator=(const btQuaternion& other);
-	LMQuaternion operator=(const btTransform& other);
-	LMQuaternion operator=(const Ogre::Quaternion& other);
+
 
 	// Add operators of quaternions
 	LMQuaternion operator+(const LMQuaternion& other) const;
-	LMQuaternion operator+(const btQuaternion& other) const;
-	LMQuaternion operator+(const btTransform& other) const;
-	LMQuaternion operator+(const Ogre::Quaternion& other) const;
+
 
 	// Sub operators of quaternions
 	LMQuaternion operator-(const LMQuaternion& other) const;
-	LMQuaternion operator-(const btQuaternion& other) const;
-	LMQuaternion operator-(const btTransform& other) const;
-	LMQuaternion operator-(const Ogre::Quaternion& other) const;
+
 	// Mul operators of quaternions
 	LMQuaternion operator*(const LMQuaternion& other) const;
-	LMQuaternion operator*(const btQuaternion& other) const;
-	LMQuaternion operator*(const btTransform& other) const;
-	LMQuaternion operator*(const Ogre::Quaternion& other) const;
 	LMQuaternion operator*(double scalar) const;
 
 	// Div operators of quaternions
@@ -257,24 +206,11 @@ public:
 	/// @brief Get the Forward Vector from a Quaternion
 	LMVector3 Forward() const;
 
+	LMVector3& ToEuler() const;
+
 
 // QUATERNION TRANSFORMATIONS BETWEEN LANGUAGES
 	/// @brief Converts a Bullet quaternion to LMQuaternion
-	static LMQuaternion BulletToLm(const btQuaternion& bulletQuaternion);
-	/// @brief Converts an LMQuaternion to Bullet vector
-	static btQuaternion LmToBullet(const LMQuaternion& LMQuaternion);
-	/// @brief Converts an Ogre quaternion to LMQuaternion
-	static LMQuaternion OgreToLm(const Ogre::Quaternion& ogreQuaternion);
-	/// @brief Converts an LMQuaternion to an Ogre quaternion
-	static Ogre::Quaternion LmToOgre(const LMQuaternion& LMQuaternion);
-	/// @brief Converts a Bullet transform to LMQuaternion
-	LMQuaternion BullTransformToLm(btTransform bulletTransform);
-	/// @brief Converts an LMQuaternion to a Bullet Transform
-	btTransform LmToBullTransform(LMQuaternion LMQuaternion);
-	/// @brief Converts an lmVector and LMQuaternion to a Bullet Transform
-	btTransform LmToBullTransform(LMVector3 lmVector, LMQuaternion LMQuaternion);
-
-
 
 private:
 	double _w = 0, _x = 0, _y = 0, _z = 0;

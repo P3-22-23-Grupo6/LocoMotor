@@ -51,9 +51,9 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 			return _emitters[name];
 		}
 		else {
-			int num = _emitters.size();
+			size_t num = _emitters.size();
 			bool found = false;
-			std::string newName = name + std::to_string(num);
+			std::string newName = name + std::to_string((unsigned long long)num);
 			while (!found) {
 
 				if (_emitters.find(newName) != _emitters.end()) {
@@ -61,10 +61,11 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 				}
 				else {
 					num++;
-					newName = name + std::to_string(num);
+					newName = name + std::to_string((unsigned long long)num);
 				}
 			}
 		}
+		return nullptr;
 	}
 
 	void ParticleHelper::RemoveEmitter(std::string name) {
@@ -73,9 +74,9 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 			_emitters.erase(name);
 		}
 		else {
-			int num = _emitters.size();
+			size_t num = _emitters.size();
 			bool found = false;
-			std::string delName = name + std::to_string(num);
+			std::string delName = name + std::to_string((unsigned long long)num);
 			while (!found) {
 
 				if (_emitters.find(delName) == _emitters.end()) {
@@ -86,7 +87,7 @@ ParticleHelper::ParticleHelper(Ogre::ParticleSystem* sys) {
 				}
 				else {
 					num++;
-					delName = name + std::to_string(num);
+					delName = name + std::to_string((unsigned long long)num);
 				}
 			}
 		}

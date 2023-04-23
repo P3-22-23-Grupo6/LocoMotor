@@ -15,7 +15,7 @@ namespace LocoMotor {
 
 	typedef Component* (*CmpFactory) ();
 
-	MOTOR_API class ComponentsFactory : public Singleton<ComponentsFactory>{
+	class ComponentsFactory : public Singleton<ComponentsFactory>{
 
 		friend Singleton<ComponentsFactory>;
 

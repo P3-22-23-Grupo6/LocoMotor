@@ -2,9 +2,9 @@
 #include "MeshStrider.h"
 #include "Ogre.h"
 int MeshStrider::getNumSubParts() const {
-    int ret = mMesh->getNumSubMeshes();
+    size_t ret = mMesh->getNumSubMeshes();
     assert(ret > 0);
-    return ret;
+    return (int)ret;
 }
 
 void MeshStrider::getLockedReadOnlyVertexIndexBase(

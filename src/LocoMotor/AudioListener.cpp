@@ -4,6 +4,7 @@
 #include "LMVector.h"
 #include "LocoMotor_FMod/include/AudioListener.h"
 #include "LocoMotor_FMod/include/AudioManager.h"
+#include "LmVectorConverter.h"
 
 using namespace LocoMotor;
 
@@ -36,12 +37,12 @@ void LocoMotor::AudioListener::Update(float dt) {
 	LMVector3 vel = (gameObject->GetTransform()->GetPosition() - *_lastPos) / (dt / 1000);
 
 #ifdef _DEBUG
-	auto err = _list->SetTransform(gameObject->GetTransform()->GetPosition(), vel, forwardVec, upwardVec);
+	auto err = _list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));
 	if (err > 0) {
 		std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(err) << std::endl;
 	}
 #else
-	_list->SetTransform(gameObject->GetTransform()->GetPosition(), vel, forwardVec, LMVector3::LmToFMod(upwardVec));
+	_list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));
 #endif // _DEBUG
 
 	*_lastPos = gameObject->GetTransform()->GetPosition();

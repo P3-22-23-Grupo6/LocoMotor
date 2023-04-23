@@ -2,12 +2,13 @@
 #include <iostream>
 #include <btBulletDynamicsCommon.h>
 #include "MeshStrider.h"
+#include "LmVectorConverter.h"
 #include "LMVector.h"
+#include "RaycastCallBack.h"
 using namespace PhysicsWrapper;
 PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
 
 PhysicsManager::PhysicsManager() {
-
 	//Set default configuration
 	_collisionConfiguration = new btDefaultCollisionConfiguration();
 	_dispatcher = new btCollisionDispatcher(_collisionConfiguration);
@@ -72,9 +73,9 @@ btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms
 
 	//add the body to the dynamics world;
 	_dynamicWorld->addRigidBody(rigidbody);
-	rigidbody->setDamping(0.7, 0.7);
+	rigidbody->setDamping(0.7f, 0.7f);
 	if (isDynamic) {
-		rigidbody->setCcdMotionThreshold(0.0000001);
+		rigidbody->setCcdMotionThreshold(0.0000001f);
 		rigidbody->setCcdSweptSphereRadius(0.5f);
 	}
 	return rigidbody;
@@ -88,6 +89,18 @@ btDynamicsWorld* PhysicsWrapper::PhysicsManager::GetDynamicWorld() {
 	return _dynamicWorld;
 }
 
+void PhysicsWrapper::PhysicsManager::setContactStartCallback(ContactStartedCallback funtion) {
+	gContactStartedCallback = funtion;
+}
+
+void PhysicsWrapper::PhysicsManager::setContactProcessCallback(ContactProcessedCallback funtion) {
+	gContactProcessedCallback = funtion;
+}
+
+void PhysicsWrapper::PhysicsManager::setContactEndedCallback(ContactEndedCallback funtion) {
+	gContactEndedCallback = funtion;
+}
+
 void PhysicsManager::RemoveRigidBodyFromWorld(btRigidBody* rb) {
 	_dynamicWorld->removeRigidBody(rb);
 }
@@ -98,9 +111,9 @@ void PhysicsManager::Update(float dT) {
 RaycastInfo PhysicsWrapper::PhysicsManager::createRaycast(LMVector3 from, LMVector3 direction) {
 	RaycastInfo newRaycastInfo = RaycastInfo();
 
-	btCollisionWorld::ClosestRayResultCallback rayCallback(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction));
+	ClosestRayCallbackBullet rayCallback(LmToBullet(from), LmToBullet(direction));
 
-	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LMVector3::LmToBullet(from), LMVector3::LmToBullet(direction), rayCallback);
+	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LmToBullet(from), LmToBullet(direction), rayCallback);
 	if (rayCallback.hasHit()) {
 		newRaycastInfo.hasHit = true;
 		newRaycastInfo.hitPos = LMVector3(rayCallback.m_hitPointWorld.getX(),
@@ -112,4 +125,20 @@ RaycastInfo PhysicsWrapper::PhysicsManager::createRaycast(LMVector3 from, LMVect
 	}
 	else newRaycastInfo.hasHit = false;
 	return newRaycastInfo;
+}
+
+PhysicsWrapper::RigidBodyInfo::RigidBodyInfo() {
+	type = 0;
+	boxSize = btVector3();
+	sphereSize = 0.f;
+	capsuleRadius = 0.f;
+	capsuleHeight = 0.f;
+	origin = btVector3();
+	mass = 0.f;
+}
+
+PhysicsWrapper::RaycastInfo::RaycastInfo() {
+	hasHit = false;
+	hitPos = LMVector3();
+	hitVNormal = LMVector3();
 }

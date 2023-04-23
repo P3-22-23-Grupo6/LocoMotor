@@ -12,7 +12,7 @@
 #include "SceneManager.h"
 #include "GameObject.h"
 #include "Node.h"
-#include "Spline.h"
+#include "LMSpline.h"
 #include "Transform.h"
 #include "ComponentsFactory.h"
 #include <OgreSimpleSpline.h>//TEMPORAL
@@ -22,6 +22,8 @@
 #include <ParticleSystem.h>
 #include <Camera.h>
 #include <EnemyAI.h>
+#include "CallBackBullet.h"
+#include "LmVectorConverter.h"
 
 //#include <tweeners/builder.hpp>
 //#include <tweeners/easing.hpp>
@@ -77,8 +79,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackBorder->AddComponent("Transform");
 	trackBorder->AddComponent("MeshRenderer");
 	trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");
-	//trackBorder->AddComponent("RigidBodyComponent");
-	//trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
+	trackBorder->AddComponent("RigidBodyComponent");
+	trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
 	//Collision
 	auto Debug01 = _mScene->AddGameobject("Debug01");
 	Debug01->AddComponent("Transform");
@@ -107,6 +109,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->AddComponent("MeshRenderer");
 	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
 	ship_gObj->AddComponent("ParticleSystem");
+	ship_gObj->AddComponent("AudioListener");
 
 	ship_gObj->AddComponent("RigidBodyComponent");
 	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
@@ -165,9 +168,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 		LMVector3(0, 5, 0)//reset
 	};
 
-	OgreWrapper::Spline* nuevaSpl = new OgreWrapper::Spline();
+	LocoMotor::Spline* nuevaSpl = new LocoMotor::Spline();
 	for (int i = 0; i < 18; i++) {
-		nuevaSpl->AddPoint(Ogre::Vector3(LMVector3(positionsList[i])));
+		nuevaSpl->AddPoint(LMVector3(positionsList[i]));
 		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
 		wayPoint->AddComponent("Transform");
 		wayPoint->AddComponent("MeshRenderer");
@@ -188,7 +191,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		enemy_gObj->SetPosition(LMVector3(-70 + i * 35, 3.0f, -80));
 
 		enemy_gObj->AddComponent("EnemyAI");
-		enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl, -70 + i * 35);
+		enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl, -70.f + i * 35.f);
 	}
 
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
@@ -232,7 +235,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//}
 	for (int i = 1; i < waypointBalls.size(); i++) {
 		waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
-		waypointBalls[i]->SetPosition(LMVector3::OgreToLm(nuevaSpl->Interpolate((float) i / maxBalls)));
+		waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
 	}
 
 #pragma region All Components Started
@@ -240,6 +243,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion
 
@@ -250,7 +254,9 @@ void MotorApi::Init() {
 	PhysicsManager::Init();
 	InputManager::Get();
 	_scnManager = LocoMotor::SceneManager::Init();
-
+	PhysicsManager::GetInstance()->setContactStartCallback(contactStartBullet);
+	PhysicsManager::GetInstance()->setContactProcessCallback(contactProcessedBullet);
+	PhysicsManager::GetInstance()->setContactEndedCallback(contactExitBullet);
 	auto cmpFac = ComponentsFactory::Init();
 	cmpFac->RegisterComponent<AudioSource>("AudioSource");
 	cmpFac->RegisterComponent<AudioListener>("AudioListener");
@@ -277,10 +283,11 @@ void MotorApi::MainLoop() {
 		_scnManager->Update();
 		//std::cout << _scnManager->GetDelta();
 	}
+	PhysicsManager::Clear();
 	SceneManager::Clear();
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
-	PhysicsManager::Clear();
+
 	InputManager::Destroy();
 	ComponentsFactory::Clear();
 	return;

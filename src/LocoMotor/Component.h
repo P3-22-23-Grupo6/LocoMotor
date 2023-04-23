@@ -1,13 +1,13 @@
 #pragma once
+
+#ifndef LM_COMPONENT
+#define LM_COMPONENT
+
 #ifdef _MOTORDLL
 #define MOTOR_API __declspec(dllexport)
 #else
 #define MOTOR_API __declspec(dllimport)
 #endif
-
-#pragma once
-#ifndef LM_COMPONENT
-#define LM_COMPONENT
 
 #include <iostream>
 #include <vector>
@@ -15,7 +15,8 @@
 
 namespace LocoMotor {
 	class GameObject;
-	 class Component {
+
+	class MOTOR_API Component {
 	public:
 		/// @brief Destructor
 		virtual ~Component() = default;
@@ -34,21 +35,27 @@ namespace LocoMotor {
 		};
 		virtual void OnDisable() {
 		};
+		virtual void OnCollisionEnter(GameObject* other) {
+		};
+		virtual void OnCollisionStay(GameObject* other) {
+		};
+		virtual void OnCollisionExit(GameObject* other) {
+		};
 
 		GameObject* GetContext ();
 		/// @brief Set the component to a gameobject
 		void SetContext(GameObject* ent);
 		void SetActive(bool active);
 		bool isEnabled();
-		MOTOR_API virtual void InitComponent(){ };
+		virtual void InitComponent(){ };
 		
 		//GameObject* GetGameobject();
 
 		GameObject* gameObject;
 	protected:
-		bool enabled=true;
+		bool enabled;
 		/// @brief Constructor
-		Component() = default;
+		Component();
 
 	};
 }

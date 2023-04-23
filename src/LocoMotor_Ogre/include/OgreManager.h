@@ -13,7 +13,7 @@ namespace Ogre {
 	}
 }
 
-class SDL_Window;
+struct SDL_Window;
 namespace OgreWrapper {
 	class RenderScene;
 

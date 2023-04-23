@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)Lib</OutDir>
+    <OutDir>$(SolutionDir)Lib\</OutDir>
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)Lib</OutDir>
+    <OutDir>$(SolutionDir)Lib\</OutDir>
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -111,7 +111,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MOTORDLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -126,7 +126,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MOTORDLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -140,14 +140,18 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_Utils\3DUnits.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Utils\LMInputs.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Utils\LMSpline.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Utils\LMVector.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Utils\LmVectorConverter.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Utils\MeshStrider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Utils\3DUnits.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\CheckML.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\LMInputs.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\LMSpline.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\LMVector.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\LmVectorConverter.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\MeshStrider.h" />
     <ClInclude Include="..\..\src\LocoMotor_Utils\Singleton.h" />
   </ItemGroup>

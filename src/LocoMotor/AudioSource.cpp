@@ -4,6 +4,7 @@
 #include "LMVector.h"
 #include "LocoMotor_FMod/include/AudioSource.h"
 #include "LocoMotor_FMod/include/AudioManager.h"
+#include "LmVectorConverter.h"
 #ifdef _DEBUG
 #include <iostream>
 #endif // _DEBUG
@@ -67,11 +68,19 @@ void LocoMotor::AudioSource::Update(float dt) {
 	if (_lastError != 0)
 		std::cout << FmodWrapper::AudioManager::GetInstance()->GetError(_lastError) << std::endl;
 #endif // _DEBUG
-	_src->SetPositionAndVelocity(LMVector3::LmToFMod(gameObject->GetTransform()->GetPosition()), dt / 1000.f);
+	_src->SetPositionAndVelocity(LmToFMod(gameObject->GetTransform()->GetPosition()), dt / 1000.f);
 }
 
 void LocoMotor::AudioSource::Play(const char* fileName, const int loop, const unsigned int loopStart, const unsigned int loopEnd) {
 	_lastError = _src->PlaySound(fileName, loop, loopStart, loopEnd);
+}
+
+void LocoMotor::AudioSource::PlayOneShot(const char* fileName, const LMVector3& position, const float volume) {
+	_lastError = _src->PlayOneShot(fileName, LmToFMod(position), volume);
+}
+
+void LocoMotor::AudioSource::PlayOneShot(const char* fileName, const LMVector3& position, const float volume, const float pitch) {
+	_lastError = _src->PlayOneShot(fileName, LmToFMod(position), volume, pitch);
 }
 
 void LocoMotor::AudioSource::PauseSound(const char* fileName, bool pause) {
@@ -104,4 +113,12 @@ void LocoMotor::AudioSource::SetFreq(const char* fileName, const float freqMult)
 
 void LocoMotor::AudioSource::SetFreq(const float freqMult) {
 	_lastError = _src->SetFrequency(freqMult);
+}
+
+void LocoMotor::AudioSource::Set3D() {
+	_src->SetMode3D();
+}
+
+void LocoMotor::AudioSource::Set2D() {
+	_src->SetMode2D();
 }

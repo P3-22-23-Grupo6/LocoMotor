@@ -7,7 +7,7 @@ class LMQuaternion;
 class btRigidBody;
 class MeshStrider;
 namespace PhysicsWrapper {
-	class RigidBodyInfo;
+	struct RigidBodyInfo;
 	class BulletRigidBody;
 }
 namespace LocoMotor {
@@ -53,11 +53,44 @@ namespace LocoMotor {
 		/// @brief 
 		/// @return 
 		btRigidBody* getBody();
+		/// @brief Convert the body to be a Trigger(No contact Response)
+		void beATrigger();
 		/// @brief Methods to return RaycastInfo
 		bool GetRaycastHit(LMVector3 from, LMVector3 to);
+		/// @brief Gets the raycast hit point
+		/// @param from Vector
+		/// @param to Vector
+		/// @return Returns the point in LmVector3
 		LMVector3 GetraycastHitPoint(LMVector3 from, LMVector3 to);
+		/// @brief Gets the raycast hit normal
+		/// @param from Vector
+		/// @param to Vector
+		/// @return Returns the normal in LMVector3
 		LMVector3 GethasRaycastHitNormal(LMVector3 from, LMVector3 to);
-
+		/// @brief Set the body to be a group of collision , if not set the group is 0
+		/// @param group To set
+		void SetCollisionGroup(int group);
+		/// @brief Gets the number of rigidbodys group 
+		/// @return The number of group
+		int GetCollisionGroup();
+		/// @brief Set the mask that want to collide , the number is the group you want to collide
+		/// @param mask The group number
+		void SetCollisionMask(int mask);
+		/// @brief Gets actual collision mask
+		/// @return the number of collsion mask
+		int GetCollisionMask();
+		/// @brief Gets the linearvelocity of the body
+		/// @return Return a LMVector3 of linear velocity
+		LMVector3 GetLinearVelocity();
+		/// @brief Gets the total torque of the body
+		/// @return Return a LMVector3 of total torque
+		LMVector3 GetTotalTorque();
+		/// @brief Gets the turn velocity of the body
+		/// @return Return a LMVector3 of turn velocity
+		LMVector3 GetTurnVelocity();
+		/// @brief Applies a torque impulse to the body
+		/// @param impulse the impulse to aplly
+		void ApplyTorqueImpulse(LMVector3 impulse);
 		/// @brief Set The friction of this rigidbody
 		/// @param fric the new friction value
 		void SetFriction(float fric);
@@ -68,6 +101,9 @@ namespace LocoMotor {
 		float _angDamping;
 		bool _gravity;
 		MeshStrider* _ms;
+		bool _trigger = false;
+		int collisionGroup;
+		int collisionMask;
 
 	};
 }

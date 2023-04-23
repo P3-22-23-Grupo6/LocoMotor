@@ -28,7 +28,6 @@
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Renderer3D.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\RenderScene.cpp" />
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\SGTechniqueResolverListener.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Spline.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Camera.h" />
@@ -41,7 +40,6 @@
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Renderer3D.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\RenderScene.h" />
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\SGTechniqueResolverListener.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Spline.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LocoMotor_Utils\LocoMotor_Utils.vcxproj">
@@ -113,12 +111,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Lib/</OutDir>
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Lib/</OutDir>
-    <IntDir>$(SolutionDir)Temp/$(ProjectName)/$(Platform)/$(Configuration)</IntDir>
+    <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -162,7 +160,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MOTORDLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Bites\include;$(SolutionDir)Dependecies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
@@ -173,7 +171,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>Codec_STBI_d.lib;OgreMain_d.lib;RenderSystem_Direct3D11_d.lib;OgreRTShaderSystem_d.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-build\RelWithDebInfo;$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-build\RelWithDebInfo\;$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -182,7 +180,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_MOTORDLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)Dependecies\Ogre\Src\Components\Bites\include;$(SolutionDir)Dependecies\Ogre\Src\Components\RTShaderSystem\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)\src\LocoMotor_Utils</AdditionalIncludeDirectories>
       <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
@@ -195,7 +193,7 @@
     </Link>
     <Lib>
       <AdditionalDependencies>Codec_STBI.lib;OgreMain.lib;RenderSystem_Direct3D11.lib;OgreRTShaderSystem.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-build\RelWithDebInfo;$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-build\RelWithDebInfo\;$(SolutionDir)Dependecies\Ogre\Build\lib\$(ConfigurationName)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
