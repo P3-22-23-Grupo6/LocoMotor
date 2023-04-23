@@ -24,6 +24,7 @@
 #include <EnemyAI.h>
 #include "CallBackBullet.h"
 #include "LmVectorConverter.h"
+#include "../LocoMotor_Lua/include/ScriptManager.h"
 
 //#include <tweeners/builder.hpp>
 //#include <tweeners/easing.hpp>
@@ -255,6 +256,7 @@ void MotorApi::Init() {
 	FmodWrapper::AudioManager::Init(8);
 	PhysicsManager::Init();
 	InputManager::Init();
+	ScriptManager::Init();
 	_scnManager = LocoMotor::SceneManager::Init();
 	PhysicsManager::GetInstance()->setContactStartCallback(contactStartBullet);
 	PhysicsManager::GetInstance()->setContactProcessCallback(contactProcessedBullet);
@@ -290,7 +292,7 @@ void MotorApi::MainLoop() {
 	SceneManager::Clear();
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
-
+	ScriptManager::Clear();
 	InputManager::Clear();
 	ComponentsFactory::Clear();
 	return;

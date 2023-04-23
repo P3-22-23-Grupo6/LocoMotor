@@ -1,6 +1,11 @@
 #pragma once
 #ifndef _RIGIDBODY_COMPONENT_H_
 #define _RIGIDBODY_COMPONENT_H_
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include "Component.h"
 class LMVector3;
 class LMQuaternion;
@@ -11,7 +16,7 @@ namespace PhysicsWrapper {
 	class BulletRigidBody;
 }
 namespace LocoMotor {
-	class RigidBodyComponent : public Component {
+	class MOTOR_API RigidBodyComponent : public Component {
 	public:
 		const static std::string name;
 		static std::string GetName() {
