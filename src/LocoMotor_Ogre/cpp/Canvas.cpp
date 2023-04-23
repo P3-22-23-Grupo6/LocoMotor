@@ -65,7 +65,7 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 	pFont->setSource("Roboto-Thin.ttf");
 	pFont->setTrueTypeSize(16);
 	pFont->_setMaterial(Ogre::MaterialManager::getSingleton().getDefaultMaterial());
-	pFont->setTrueTypeResolution(1024);
+	pFont->setTrueTypeResolution(512);
 
 	//Ogre::GlyphInfo a = Ogre::GlyphInfo();
 	//a.uvRect = Ogre::Font::UVRect(1, 1, 1, 1);

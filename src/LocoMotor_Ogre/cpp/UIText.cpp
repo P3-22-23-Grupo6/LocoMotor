@@ -7,10 +7,10 @@
 //#include "OgreFont.h"
 
 
-OgreWrapper::UIText::UIText(std::string txtName,std::string font) : UIElement() {
+OgreWrapper::UIText::UIText() : UIElement() {
 
-    _uFont = font;
-    _uTxtName = txtName;
+    _uFont = "MyFont.fontdef";
+    _uTxtName = "New Text";
     //_txtElem = static_cast<Ogre::TextAreaOverlayElement*>(
     //       _overlayMngr->createOverlayElement("TextArea", "UITextElem" + std::to_string(_numOfUIElements)));
 
@@ -84,7 +84,8 @@ void OgreWrapper::UIText::ChangeText(std::string newtxt) {
 }
 
 void OgreWrapper::UIText::SetFont(std::string nfont) {
-    _txtElem->setFontName(nfont);
+    _txtElem->getFont()->setSource(nfont);
+    _txtElem->getFont()->load();
 }
 
 void OgreWrapper::UIText::AlignCenter() {

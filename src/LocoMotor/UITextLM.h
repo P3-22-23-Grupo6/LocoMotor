@@ -17,10 +17,13 @@ namespace LocoMotor {
 			return "UIText";
 		};
 
-		UITextLM(std::string txtName, std::string font);
+		UITextLM();
 		~UITextLM();
 		void InitComponent() override;
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
+
+		void SetPosition(double x, double y);
+		void SetSize(double x, double y);
 
 		void ChangeText(std::string newtxt);
 		void SetTextHeight(double height);
@@ -36,6 +39,9 @@ namespace LocoMotor {
 		OgreWrapper::UIText* _uTxt;
 		std::string _uFont;
 		std::string _uTxtName;
+
+		double posX, posY;
+		double sizeX, sizeY;
 	};
 }
 #endif

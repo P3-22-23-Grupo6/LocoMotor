@@ -7,11 +7,14 @@ using namespace LocoMotor;
 
 const std::string UITextLM::name = "UIText";
 
-LocoMotor::UITextLM::UITextLM(std::string txtName, std::string font) {
+LocoMotor::UITextLM::UITextLM() {
 	_uTxt = nullptr;
-	_uFont = font;
-	_uTxtName = txtName;
-
+	_uFont = "";
+	_uTxtName = "";
+	posX = 0.;
+	posY = 0.;
+	sizeX = 0.;
+	sizeY = 0.;
 }
 
 LocoMotor::UITextLM::~UITextLM() {
@@ -19,11 +22,104 @@ LocoMotor::UITextLM::~UITextLM() {
 }
 
 void LocoMotor::UITextLM::InitComponent() {
-	_uTxt = new OgreWrapper::UIText(_uTxtName, _uFont);
+	_uTxt = new OgreWrapper::UIText();
+	_uTxt->Init();
 }
 
 void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>& params) {
-	_uTxt->Init();
+	for (int i = 0; i < params.size(); i++) {
+		if (params[i].first == "posx" || params[i].first == "positionx") {
+			SetPosition(std::stod(params[i].second), posY);
+		}
+		else if (params[i].first == "posy" || params[i].first == "positiony") {
+			SetPosition(posX, std::stod(params[i].second));
+		}
+		else if (params[i].first == "pos" || params[i].first == "position") {
+			unsigned char currAxis = 0;
+			std::string num = "";
+			double resultX = 0.;
+			double resultY = 0.;
+			for (const auto& c : params[i].second) {
+				if (c != ' ') {
+					num += c;
+				}
+				else {
+					float value = 0.f;
+					try {
+						value = std::stod(num);
+					}
+					catch (const char*) {
+						value = 0.f;
+					}
+					if (currAxis == 0) {
+						resultX = value;
+					}
+					else if (currAxis == 1) {
+						resultY = value;
+					}
+					currAxis++;
+					if (currAxis == 2) break;
+					num = "";
+				}
+			}
+			SetPosition(resultX, resultY);
+		}
+		else if (params[i].first == "sizex") {
+			SetSize(std::stod(params[i].second), sizeY);
+		}
+		else if (params[i].first == "sizey") {
+			SetSize(sizeX, std::stod(params[i].second));
+		}
+		else if (params[i].first == "size") {
+			unsigned char currAxis = 0;
+			std::string num = "";
+			double resultX = 0.;
+			double resultY = 0.;
+			for (const auto& c : params[i].second) {
+				if (c != ' ') {
+					num += c;
+				}
+				else {
+					float value = 0.f;
+					try {
+						value = std::stod(num);
+					}
+					catch (const char*) {
+						value = 0.f;
+					}
+					if (currAxis == 0) {
+						resultX = value;
+					}
+					else if (currAxis == 1) {
+						resultY = value;
+					}
+					currAxis++;
+					if (currAxis == 2) break;
+					num = "";
+				}
+			}
+			SetSize(resultX, resultY);
+		}
+		else if (params[i].first == "txt" || params[i].first == "text") {
+			ChangeText(params[i].second);
+		}
+		else if (params[i].first == "fnt" || params[i].first == "font") {
+			SetFont(params[i].second);
+		}
+	}
+}
+
+void LocoMotor::UITextLM::SetPosition(double x, double y) {
+	posX = x;
+	posY = y;
+	_uTxt->SetPosition(x, y);
+}
+
+void LocoMotor::UITextLM::SetSize(double x, double y) {
+	sizeX = x;
+	sizeY = y;
+	SetTextHeight(y);
+	_uTxt->SetDimensions(x, y);
 }
 
 void LocoMotor::UITextLM::ChangeText(std::string newtxt) {

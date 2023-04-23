@@ -18,15 +18,22 @@ namespace LocoMotor {
 			return "UIImage";
 		};
 
-		UIImageLM(std::string imgName);
+		UIImageLM();
 		~UIImageLM();
 		void InitComponent() override;
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
+
+		void SetPosition(double x, double y);
+		void SetSize(double x, double y);
+
 		void ChangeImage(std::string newimg);
 
 	protected:
 		OgreWrapper::UIImage* _uimg;
 		std::string _imgName;
+
+		double posX, posY;
+		double sizeX, sizeY;
 
 	};
 }

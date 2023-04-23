@@ -15,9 +15,9 @@ namespace OgreWrapper {
 
 	
 
-	class UIText :public UIElement {
+	class UIText : public UIElement {
 	public:
-		UIText(std::string txtName,std::string font);
+		UIText();
 		//UIText(std::string txtName, Ogre::FontPtr font);
 		~UIText() = default;
 

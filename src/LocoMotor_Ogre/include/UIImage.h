@@ -8,14 +8,12 @@
 namespace OgreWrapper {
 	class UIImage :public UIElement {
 	public:
-		UIImage(std::string imgName);
+		UIImage();
 		~UIImage() = default;
 
 		void ChangeImage(std::string nImage);
 		bool Init() override;
 
-	protected:
-		std::string _imName;
 
 	};
 
