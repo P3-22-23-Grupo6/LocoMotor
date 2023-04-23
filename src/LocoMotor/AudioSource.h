@@ -27,10 +27,10 @@ namespace LocoMotor {
 			~AudioSource();
 			void InitComponent() override;
 			void Init(std::vector<std::pair<std::string, std::string>>& params) override;
+
 			/// @brief Updates the source's position and velocity in the world
 			/// @param dt DeltaTime used to calculate the velocity by comparing last position
 			void Update(const float dt) override;
-
 
 			/// @brief Plays a sound loaded in the system
 			/// @param fileName the file where the sound is, it will load the first time it plays and stay loaded until the game closes

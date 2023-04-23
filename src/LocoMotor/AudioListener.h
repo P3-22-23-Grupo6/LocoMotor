@@ -7,11 +7,11 @@
 #define MOTOR_API __declspec(dllimport)
 #endif
 #include "Component.h"
+#include "LMVector.h"
 
 namespace FmodWrapper {
 	class AudioListener;
 }
-class LMVector3;
 
 namespace LocoMotor {
 	class MOTOR_API AudioListener : public Component {
@@ -32,7 +32,8 @@ namespace LocoMotor {
 		void Update(float dt) override;
 	private:
 		FmodWrapper::AudioListener* _list;
-		LMVector3* _lastPos;
+		LMVector3 _lastPos;
+		LMVector3 _lastVel;
 	};
 };
 #endif // !LM_AUDIOLISTENER
