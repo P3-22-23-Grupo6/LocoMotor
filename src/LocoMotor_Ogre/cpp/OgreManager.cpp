@@ -16,6 +16,7 @@
 #include "OgreManager.h"
 
 
+
 OgreWrapper::OgreManager* Singleton<OgreWrapper::OgreManager>::_instance = nullptr;
 
 OgreWrapper::OgreManager::OgreManager(std::string name) {

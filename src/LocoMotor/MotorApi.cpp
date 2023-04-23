@@ -15,7 +15,6 @@
 #include "LMSpline.h"
 #include "Transform.h"
 #include "ComponentsFactory.h"
-#include <OgreSimpleSpline.h>//TEMPORAL
 
 #include "MeshRenderer.h"
 #include <RigidBodyComponent.h>
@@ -24,6 +23,8 @@
 #include <EnemyAI.h>
 #include "CallBackBullet.h"
 #include "LmVectorConverter.h"
+#include "UIImageLM.h"
+#include "UITextLM.h"
 #include "../LocoMotor_Lua/include/ScriptManager.h"
 
 //#include <tweeners/builder.hpp>
@@ -119,6 +120,18 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("PlayerController");
 
+	ship_gObj->AddComponent("UITextLM");
+	// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
+	// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
+	ship_gObj->GetComponent<UITextLM>()->ChangeText("FUNCIOAN");
+	ship_gObj->GetComponent<UITextLM>()->SetSize(0.3, 0.3);
+
+	ship_gObj->AddComponent("UIImageLM");
+	// TODO: no se si es bueno cargar las texturas a traves de un .material tampoco eh :vv
+	ship_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
+	ship_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
+	ship_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
+
 	
 
 	// CHECKPOINTS
@@ -212,6 +225,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//Skybox
 	_renderScn->SetSkybox();
 
+	//UIExamples
+	
+
 #pragma endregion
 
 	_scnManager->ChangeScene("Escena");
@@ -270,7 +286,13 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
 	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
 	cmpFac->RegisterComponent<Transform>("Transform");
+	cmpFac->RegisterComponent<UITextLM>("UITextLM");
+	cmpFac->RegisterComponent<UIImageLM>("UIImageLM");
 	//cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
+
+	/*cmpFac->RegisterComponent<UIImageLM>("UIImage");
+	cmpFac->RegisterComponent<UITextLM>("UIText");*/
+	
 
 }
 

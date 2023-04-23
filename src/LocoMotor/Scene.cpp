@@ -46,7 +46,7 @@ void Scene::Start() {
 
 	_isActiveScene = true;
 
-	// TODO: camera->AddComponent();
+	//camera->AddComponent();
 	//GameObject* map = AddGameobject("map");
 	//map->AddComponent<MeshRenderer>("map", "Track.mesh", "FalconRedone/FalconMat", _renderScn);
 	//map->AddComponent<RigidBodyComponent>(0);

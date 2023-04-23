@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -54,6 +54,8 @@
     <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\src\Transform.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\UIImageLM.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor\UITextLM.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
@@ -72,6 +74,8 @@
     <ClInclude Include="..\..\src\LocoMotor\MeshRenderer.h" />
     <ClInclude Include="..\..\src\LocoMotor\Scene.h" />
     <ClInclude Include="..\..\src\LocoMotor\SceneManager.h" />
+    <ClInclude Include="..\..\src\LocoMotor\UIImageLM.h" />
+    <ClInclude Include="..\..\src\LocoMotor\UITextLM.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\Component.h" />

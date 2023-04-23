@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\UIElements">
+      <UniqueIdentifier>{a635b309-15b3-4d3f-bb08-0dc1bd3fd619}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UIElements">
+      <UniqueIdentifier>{9471663c-bd6d-4ada-baa8-fe65b25c85a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Camera.cpp">
@@ -41,6 +47,18 @@
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\ParticleHelper.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIElement.cpp">
+      <Filter>Source Files\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\Canvas.cpp">
+      <Filter>Source Files\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIImage.cpp">
+      <Filter>Source Files\UIElements</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor_Ogre\cpp\UIText.cpp">
+      <Filter>Source Files\UIElements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +91,18 @@
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor_Ogre\include\ParticleHelper.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIElement.h">
+      <Filter>Header Files\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\Canvas.h">
+      <Filter>Header Files\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIImage.h">
+      <Filter>Header Files\UIElements</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor_Ogre\include\UIText.h">
+      <Filter>Header Files\UIElements</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

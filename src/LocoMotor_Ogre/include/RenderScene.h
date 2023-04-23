@@ -21,6 +21,7 @@ namespace OgreWrapper {
 	class Node;
 	class ParticleHelper;
 	class Spline;
+	class Canvas;
 
 	class RenderScene {
 	public:
@@ -74,6 +75,8 @@ namespace OgreWrapper {
 		Camera* _mainCam;
 		Node* _root;
 		std::map<std::string, Node*> _sceneStructure;
+
+		Canvas* _canvas;
 	};
 }
 #endif

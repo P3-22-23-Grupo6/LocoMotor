@@ -1,0 +1,5 @@
+font MyFont
+{
+    type truetype
+    source Roboto-Thin.ttf
+}
