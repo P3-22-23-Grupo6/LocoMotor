@@ -122,8 +122,11 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->AddComponent("UITextLM");
 	// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
 	// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
-	ship_gObj->GetComponent<UITextLM>()->ChangeText("FUNCIOAN");
-	ship_gObj->GetComponent<UITextLM>()->SetSize(0.3, 0.3);
+	ship_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .1);
+	ship_gObj->GetComponent<UITextLM>()->AlignLeft();
+
+	ship_gObj->GetComponent<UITextLM>()->ChangeText("1 / 3");
+	ship_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
 
 	ship_gObj->AddComponent("UIImageLM");
 	// TODO: no se si es bueno cargar las texturas a traves de un .material tampoco eh :vv
