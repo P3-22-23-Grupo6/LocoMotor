@@ -25,8 +25,7 @@
 #include "LmVectorConverter.h"
 #include "UIImageLM.h"
 #include "UITextLM.h"
-#include "../LocoMotor_Lua/include/ScriptManager.h"
-
+#include "ScriptManager.h"
 //#include <tweeners/builder.hpp>
 //#include <tweeners/easing.hpp>
 //#include <tweeners/system.hpp>
