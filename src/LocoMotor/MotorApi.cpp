@@ -51,6 +51,23 @@ void MotorApi::RegisterGame(const char* gameName) {
 	raceManager_gObj->AddComponent("Transform");
 	Component* cmp = raceManager_gObj->AddComponent("RaceManager");
 
+	raceManager_gObj->AddComponent("UITextLM");
+// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
+// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
+	raceManager_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .1);
+	raceManager_gObj->GetComponent<UITextLM>()->AlignLeft();
+	
+	raceManager_gObj->GetComponent<UITextLM>()->ChangeText("1 / 3");
+	raceManager_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
+	
+	raceManager_gObj->AddComponent("UIImageLM");
+	// TODO: no se si es bueno cargar las texturas a traves de un .material tampoco eh :vv
+	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
+	raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
+	raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
+	 
+
+
 #pragma region RaceTrack
 	auto map = _mScene->AddGameobject("map");
 	map->AddComponent("Transform");
@@ -58,6 +75,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	map->GetComponent<MeshRenderer>()->Start("map", "SandPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 	map->AddComponent("RigidBodyComponent");
 	map->GetComponent<RigidBodyComponent>()->Start(0);
+
 	//WaterPlane
 	auto waterPlane = _mScene->AddGameobject("waterPlane");
 	waterPlane->AddComponent("Transform");
@@ -65,7 +83,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	waterPlane->AddComponent("MeshRenderer");
 	waterPlane->GetComponent<MeshRenderer>()->Start("waterPlane", "WaterPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 	//waterPlane->AddComponent("RigidBodyComponent");
-	//waterPlane->GetComponent<RigidBodyComponent>()->Start(0);
+	//waterPlane->GetComponent<RigidBodyComponent>()->Start(0);ç
 	
 
 	//Track Main Road
@@ -118,21 +136,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("PlayerController");
-
-	ship_gObj->AddComponent("UITextLM");
-	// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
-	// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
-	ship_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .1);
-	ship_gObj->GetComponent<UITextLM>()->AlignLeft();
-
-	ship_gObj->GetComponent<UITextLM>()->ChangeText("1 / 3");
-	ship_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
-
-	ship_gObj->AddComponent("UIImageLM");
-	// TODO: no se si es bueno cargar las texturas a traves de un .material tampoco eh :vv
-	ship_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
-	ship_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
-	ship_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
 
 	
 
@@ -272,6 +275,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 	Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion
+
+
+	map->GetTransform()->SetPosition(LMVector3(0, -500, 0));
 
 }
 

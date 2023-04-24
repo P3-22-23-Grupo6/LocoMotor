@@ -1,7 +1,11 @@
 #pragma once
 #ifndef LM_UITEXT
 #define LM_UITEXT
-
+#ifdef _MOTORDLL
+#define MOTOR_API __declspec(dllexport)
+#else
+#define MOTOR_API __declspec(dllimport)
+#endif
 #include "Component.h"
 
 namespace OgreWrapper {
@@ -9,7 +13,7 @@ namespace OgreWrapper {
 }
 
 namespace LocoMotor {
-	class UITextLM : public Component {
+	class MOTOR_API UITextLM : public Component {
 
 	public:
 		const static std::string name;

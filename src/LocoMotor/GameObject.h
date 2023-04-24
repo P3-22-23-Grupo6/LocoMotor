@@ -10,6 +10,7 @@
 #include "Component.h"
 #include "ComponentsFactory.h"
 #include <map>
+#include <unordered_map>
 
 //HITO 1 POC
 
@@ -129,7 +130,7 @@ namespace LocoMotor {
 
 		bool physicsBasedMovement;
 	private:
-		std::map<std::string, Component*> _componentsByName;
+		std::unordered_map<std::string, Component*> _componentsByName;
 		Scene* scene;
 
 

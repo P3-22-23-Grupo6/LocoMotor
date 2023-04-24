@@ -78,6 +78,7 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 }
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
+
 	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
 	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
 	_body->clearForces();
