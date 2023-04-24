@@ -195,7 +195,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		wayPoint->SetScale(LMVector3(5, 5, 5));
 	}
 
-	for (int i = 0; i < 1; i++){
+	for (int i = 0; i < 5; i++){
 		auto enemy_gObj = _mScene->AddGameobject("Enemy" + i);
 		enemy_gObj->AddComponent("Transform");
 		enemy_gObj->AddComponent("MeshRenderer");
@@ -223,8 +223,12 @@ void MotorApi::RegisterGame(const char* gameName) {
 #pragma endregion
 
 	//Skybox
-	_renderScn->SetSkybox();
-
+	//_renderScn->SetSkybox();
+	//Mesh Skybox 
+	auto skyboxMesh = _mScene->AddGameobject("skyboxMesh");
+	skyboxMesh->AddComponent("Transform");
+	skyboxMesh->AddComponent("MeshRenderer");
+	skyboxMesh->GetComponent<MeshRenderer>()->Start("skyboxMesh", "SkyboxMesh.mesh", "");
 	//UIExamples
 	
 
