@@ -64,6 +64,9 @@
     <ClCompile Include="..\..\src\LocoMotor\UITextLM.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\Boost.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\GameObject.h">
@@ -124,6 +127,9 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\UITextLM.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\LocoMotor\Boost.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>

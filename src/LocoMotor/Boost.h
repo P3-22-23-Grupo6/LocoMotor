@@ -5,34 +5,27 @@ class LMVector3;
 
 namespace LocoMotor {
 	class GameObject;
-	class Spline;
-	class EnemyAI : public Component {
+	class Boost : public Component {
 	public:
 		const static std::string name;
 		static std::string GetName() {
-			return "EnemyAI";
+			return "Boost";
 		};
-		EnemyAI();
-		~EnemyAI();
+		Boost();
+		~Boost();
 		/// @brief Sets the initial position of the listener to the gameobject's
-		void Start(LocoMotor::Spline* splineToFollow, float sep);
+		void Start(float thrust);
 
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's
 		/// @param dt DeltaTime used to calculate the velocity
 		void Update(float dt) override;
 
-		//void OnCollisionEnter(GameObject* other) override;
+		void OnCollisionEnter(GameObject* other) override;
 		//void OnCollisionStay(GameObject* other) override;
 		//void OnCollisionExit(GameObject* other) override;
 	private:
-		//OgreWrapper::RenderScene* _renderScn;
-		LMVector3* currentNode;
-		Spline* mySpline;
 		GameObject* myGbj;
-		float timeStep, lastTimeStep;
 		//STATS
-		float enemySpeed;
-		float enemyMaxAcc;
-		float startSeparation;
+		float boostThrust;
 	};
 }
