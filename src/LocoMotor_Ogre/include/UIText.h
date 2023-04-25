@@ -30,8 +30,8 @@ namespace OgreWrapper {
 		void AlignLeft();
 		void AlignRight();
 		
-		void SetTopColor(int r,int g, int b);
-		void SetBottomColor(int r, int g, int b);
+		void SetTopColor(double r, double g, double b);
+		void SetBottomColor(double r, double g, double b);
 
 
 	protected:

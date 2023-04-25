@@ -146,10 +146,10 @@ void LocoMotor::UITextLM::AlignRight() {
 	_uTxt->AlignRight();
 }
 
-void LocoMotor::UITextLM::SetTopColor(int r, int g, int b) {
+void LocoMotor::UITextLM::SetTopColor(double r, double g, double b) {
 	_uTxt->SetTopColor(r, g, b);
 }
 
-void LocoMotor::UITextLM::SetBottomColor(int r, int g, int b) {
+void LocoMotor::UITextLM::SetBottomColor(double r, double g, double b) {
 	_uTxt->SetBottomColor(r,g,b);
 }

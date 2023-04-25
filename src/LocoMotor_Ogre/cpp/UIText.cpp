@@ -100,11 +100,11 @@ void OgreWrapper::UIText::AlignRight() {
     _txtElem->setAlignment(Ogre::TextAreaOverlayElement::Alignment::Right);
 }
 
-void OgreWrapper::UIText::SetTopColor(int r, int g, int b) {
+void OgreWrapper::UIText::SetTopColor(double r, double g, double b) {
     _txtElem->setColourTop(Ogre::ColourValue(r,g,b));
 }
 
-void OgreWrapper::UIText::SetBottomColor(int r, int g, int b) {
+void OgreWrapper::UIText::SetBottomColor(double r, double g, double b) {
     _txtElem->setColourBottom(Ogre::ColourValue(r,g,b));
 }
 
