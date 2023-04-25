@@ -44,7 +44,7 @@ protected:
 	virtual ~Singleton() = default;
 
 private:
-	 static  T* _instance;
+	 static T* _instance;
 };
 
 #endif

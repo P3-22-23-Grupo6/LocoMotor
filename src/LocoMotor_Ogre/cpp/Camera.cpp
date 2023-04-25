@@ -22,12 +22,12 @@ OgreWrapper::Camera::Camera(Ogre::Camera* camera, int cameraMode) {
 		vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
 	//Camera Left 2 Player Mode
 	else if (cameraMode == 1) {
-		vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, 0.0, 0.0, 0.0, 0.5, 1.0);
+		vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, 0, 0.0f, 0.0f, 0.5f, 1.0f);
 		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 	}	
 	//Camera Right 2 Player Mode
 	else if (cameraMode == 2) {
-		vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, 0.0, 0.0, 0.0, 0.5, 1.0);
+		vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, 0, 0.0f, 0.0f, 0.5f, 1.0f);
 		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 	}
 	Camera::_zOrder++;

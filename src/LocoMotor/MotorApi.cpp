@@ -272,6 +272,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
+	trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion

@@ -8,8 +8,6 @@
 
 using namespace LocoMotor;
 
-const std::string Camera::name = "Camera";
-
 LocoMotor::Camera::Camera()
 {
 	_scene = nullptr;

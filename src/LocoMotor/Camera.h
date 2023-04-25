@@ -22,10 +22,6 @@ namespace LocoMotor {
 
 	class MOTOR_API Camera : public Component {
 	public:
-		const static std::string name;
-		static std::string GetName() {
-			return "Camera";
-		};
 		// Para crear la camara se necesita tanto la escena como la escena de Render
 		// 
 		Camera();
