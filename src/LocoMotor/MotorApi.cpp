@@ -282,11 +282,13 @@ void MotorApi::RegisterGame(const char* gameName) {
 }
 
 void MotorApi::Init() {
+	OgreWrapper::OgreManager::Init("AHHHH");
 	FmodWrapper::AudioManager::Init(8);
 	PhysicsManager::Init();
 	InputManager::Init();
-	ScriptManager::Init();
+	SceneManager::Init();
 	_scnManager = LocoMotor::SceneManager::Init();
+	ScriptManager::Init();
 	PhysicsManager::GetInstance()->setContactStartCallback(contactStartBullet);
 	PhysicsManager::GetInstance()->setContactProcessCallback(contactProcessedBullet);
 	PhysicsManager::GetInstance()->setContactEndedCallback(contactExitBullet);

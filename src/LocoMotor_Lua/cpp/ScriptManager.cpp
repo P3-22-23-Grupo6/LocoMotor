@@ -44,6 +44,9 @@ void ScriptManager::readLuaScript(const std::string path) {
 }
 void ScriptManager::LoadSceneFromFile(std::string path) {
     Scene* s = SceneManager::GetInstance()->GetCurrentScene();
+    if (s == nullptr) {
+        s = scMan->CreateScene(path);
+    }
     readLuaScript(path);
 
     luabridge::LuaRef allEnts = getFromLua("entities");
@@ -70,14 +73,16 @@ void ScriptManager::LoadSceneFromFile(std::string path) {
         std::cout << "Loading entity: " << allEnts[i] << " Components: \n";
         setParams(entity, ent, nullptr, "layer");
         
-        ent->StartComp();
+       // ent->StartComp();
     }
+
+    s->Start();
 
 }
 
 ScriptManager::ScriptManager() {
     luaState = luaL_newstate();
-    //scMan = SceneManager::GetInstance();
+    scMan = SceneManager::GetInstance();
     luaL_openlibs(luaState);
 }
 
