@@ -56,6 +56,9 @@ namespace OgreWrapper {
 		/// </summary>
 		/// <param name="s">The scene to become active</param>
 		void SetActiveScene(OgreWrapper::RenderScene* s);
+
+		int GetWindowHeight();
+		int GetWindowWidth();
 	protected:
 		Ogre::Root* _root;
 		NativeWindowPair _mWindow;

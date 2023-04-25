@@ -20,6 +20,9 @@ union SDL_Event;
 typedef struct _SDL_GameController SDL_GameController;
 //class SDL_Scancode;
 
+//namespace OgreWrapper {
+//	class OgreManager;
+//}
 
 namespace LocoMotor {
 	class MOTOR_API InputManager : public Singleton<InputManager> {
@@ -67,6 +70,8 @@ namespace LocoMotor {
 		// Almacena el evento de teclado registrado en la variable referenciada "event" en el array keys
 		void ManageKeyboardEvents(const SDL_Event& event);
 		void ManageControllerEvents(const SDL_Event& event);
+		void ManageMouseEvents(const SDL_Event& event);
+
 
 		bool ControllerDeviceAdded(const int32_t& controller);
 		void ControllerDeviceRemoved(const int32_t& controller);
@@ -121,6 +126,8 @@ namespace LocoMotor {
 		// Vector que almacena que botones deben ser refrescadas despues de cada frame
 		std::vector<int> _controllerInputs_ToReset;
 
+		// Posicion del raton en la pantalla
+		std::pair<int, int>_mousePos;
 
 		// Joysticks
 		float _joystickAxis[4]; // cuatro espacios : dos ejes en cada uno de los dos joysticks
@@ -136,7 +143,7 @@ namespace LocoMotor {
 		// (Numero de digitos = Numero de ceros)
 		const int _roundNumber = 1000000;
 
-
+		//OgreWrapper::OgreManager* ogreMng;
 	};
 }
 

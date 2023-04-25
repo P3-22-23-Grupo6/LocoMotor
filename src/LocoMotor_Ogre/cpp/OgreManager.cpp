@@ -74,6 +74,14 @@ void OgreWrapper::OgreManager::SetActiveScene(OgreWrapper::RenderScene* s) {
 	_activeScene = s;
 }
 
+int OgreWrapper::OgreManager::GetWindowHeight() {
+	return _mWindow.render->getHeight();
+}
+
+int OgreWrapper::OgreManager::GetWindowWidth() {
+	return _mWindow.render->getWidth();
+}
+
 void OgreWrapper::OgreManager::LoadResources() {
 	Ogre::ConfigFile cf;
 	cf.load("resources.cfg");

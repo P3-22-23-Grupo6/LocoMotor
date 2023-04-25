@@ -5,6 +5,7 @@
 #include <iostream>
 #include <SDL_gamecontroller.h>
 #include "LMInputs.h"
+//#include "OgreManager.h"
 
 using namespace LocoMotor;
 
@@ -19,6 +20,9 @@ InputManager::InputManager() {
 	_joystickAxis[1] = 0.f;
 	_joystickAxis[2] = 0.f;
 	_joystickAxis[3] = 0.f;
+	_mousePos.first = 0;
+	_mousePos.second = 0;
+	//ogreMng = OgreWrapper::OgreManager::GetInstance();
 }
 
 //InputManager* InputManager::Get() {
@@ -141,6 +145,8 @@ bool InputManager::RegisterEvents() {
 		// Almacenar eventos de mando en el array "controllerButtons" (a parte de eventos Add/Remove del mando)
 		ManageControllerEvents(event);
 
+		// Gestionar eventos del raton
+		ManageMouseEvents(event);
 
 		//if (event.type == SDL_JOYAXISMOTION)
 		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
@@ -160,6 +166,8 @@ bool InputManager::RegisterEvents() {
 			}
 			//std::cout << "MOUSE " << "\n";
 		}
+
+		
 
 		//std::cout << "joystickAxis_0 = " << joystickAxis[0] << "\n";
 		//std::cout << "joystickAxis_1 = " << joystickAxis[1] << "\n";
@@ -291,6 +299,13 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 
 	}
 
+}
+
+void InputManager::ManageMouseEvents(const SDL_Event& event) {
+	if (event.type == SDL_MOUSEMOTION) {
+		_mousePos.first = event.motion.x;
+		_mousePos.second = event.motion.y;
+	}
 }
 
 bool InputManager::ControllerDeviceAdded(const int32_t& controllerAdded) {
