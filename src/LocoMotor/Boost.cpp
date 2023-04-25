@@ -24,5 +24,5 @@ void LocoMotor::Boost::Update(float dt)
 
 void LocoMotor::Boost::OnCollisionEnter(GameObject* other) {
 	//other->GetComponent<RigidBodyComponent>()
-	other->GetComponent<RigidBodyComponent>()->addForce(LMVector3(other->GetTransform()->GetRotation().Forward() * -20000));
+	other->GetComponent<RigidBodyComponent>()->addForce(LMVector3(other->GetTransform()->GetRotation().Forward() * -200));
 }

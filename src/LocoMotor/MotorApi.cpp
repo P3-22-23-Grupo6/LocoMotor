@@ -116,7 +116,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	boost->GetComponent<MeshRenderer>()->Start("boost", "TurboTestMesh.mesh", "");
 	boost->AddComponent("RigidBodyComponent");
 	boost->GetComponent<RigidBodyComponent>()->Start(0);
-//	boost->GetComponent<RigidBodyComponent>()->beATrigger();
+
 	
 	boost->AddComponent("Boost");
 
@@ -322,9 +322,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
+	boost->GetComponent<RigidBodyComponent>()->beATrigger();
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion
-
 
 	map->GetTransform()->SetPosition(LMVector3(0, -500, 0));
 
