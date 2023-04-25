@@ -115,6 +115,14 @@ void LocoMotor::UIImageLM::SetSize(double x, double y) {
 	_uimg->SetDimensions(x, y);
 }
 
+void LocoMotor::UIImageLM::SetInteractive(bool interactive) {
+	_uimg->SetInteractive(interactive);
+}
+
+bool LocoMotor::UIImageLM::GetInteractive() {
+	return _uimg->GetInteractive();
+}
+
 void LocoMotor::UIImageLM::ChangeImage(std::string newimg) {
 	_uimg->ChangeImage(newimg);
 

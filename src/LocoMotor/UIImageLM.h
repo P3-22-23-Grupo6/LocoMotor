@@ -26,6 +26,9 @@ namespace LocoMotor {
 		void SetPosition(double x, double y);
 		void SetSize(double x, double y);
 
+		void SetInteractive(bool interactive);
+		bool GetInteractive();
+
 		void ChangeImage(std::string newimg);
 
 	protected:

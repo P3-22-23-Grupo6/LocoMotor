@@ -47,3 +47,11 @@ void OgreWrapper::UIElement::Hide() {
 	_container->hide();
 }
 
+bool OgreWrapper::UIElement::GetInteractive() {
+	return _isInteractive;
+}
+
+void OgreWrapper::UIElement::SetInteractive(bool interactive) {
+	_isInteractive = interactive;
+}
+

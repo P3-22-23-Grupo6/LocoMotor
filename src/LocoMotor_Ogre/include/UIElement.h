@@ -40,6 +40,9 @@ namespace OgreWrapper {
 		void Show();
 		void Hide();
 
+		void SetInteractive(bool interactive);
+		bool GetInteractive();
+
 		//bool Render();
 
 		//static void SetSceneManager();
@@ -55,6 +58,8 @@ namespace OgreWrapper {
 		static unsigned int _numOfUIElements;
 
 		const double defaultX = 0, defaultY = 0, defaultW = 0.5, defaultH = 0.5;
+
+		bool _isInteractive;
 	};
 
 }
