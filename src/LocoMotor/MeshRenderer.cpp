@@ -8,8 +8,6 @@
 #include "GameObject.h"
 using namespace LocoMotor;
 
-const std::string MeshRenderer::name = "MeshRenderer";
-
 LocoMotor::MeshRenderer::MeshRenderer()
 {
 	_gobj = nullptr;

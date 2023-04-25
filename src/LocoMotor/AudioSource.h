@@ -18,10 +18,6 @@ namespace LocoMotor {
 		class MOTOR_API AudioSource : public Component {
 
 		public:
-			const static std::string name;
-			static std::string GetName() {
-				return "AudioSource";
-			};
 
 			AudioSource();
 			~AudioSource();

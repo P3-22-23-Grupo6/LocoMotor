@@ -17,10 +17,6 @@ namespace LocoMotor {
 	class GameObject;
 	class MOTOR_API MeshRenderer: public Component {
 	public:
-		const static std::string name;
-		static std::string GetName() {
-			return "MeshRenderer";
-		};
 		MeshRenderer();
 		~MeshRenderer();
 

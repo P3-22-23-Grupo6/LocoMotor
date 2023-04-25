@@ -13,8 +13,6 @@
 
 using namespace LocoMotor;
 
-const std::string AudioSource::name = "AudioSource";
-
 AudioSource::AudioSource() {
 	_lastError = 0;
 	_src = nullptr;

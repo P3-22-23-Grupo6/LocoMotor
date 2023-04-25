@@ -21,7 +21,7 @@ void LocoMotor::EnemyAI::Start(LocoMotor::Spline* splineToFollow, float sep)
 	timeStep = 0.0f;
 	lastTimeStep = 0.0f;
 	myGbj = gameObject;
-	enemySpeed = 3 + (rand() % 5); //Rango entre 3 y 8  aprox
+	enemySpeed = 3.0f + (rand() % 5); //Rango entre 3 y 8  aprox
 }
 
 void LocoMotor::EnemyAI::Update(float dt) 

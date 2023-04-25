@@ -10,8 +10,6 @@
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
 
-const std::string RigidBodyComponent::name = "RigidBodyComponent";
-
 LocoMotor::RigidBodyComponent::RigidBodyComponent()
 {
 	_mass = 0;

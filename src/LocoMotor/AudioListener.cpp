@@ -8,8 +8,6 @@
 
 using namespace LocoMotor;
 
-const std::string AudioListener::name = "AudioListener";
-
 AudioListener::AudioListener() {
 	_list = nullptr;
 	_lastPos = LMVector3();

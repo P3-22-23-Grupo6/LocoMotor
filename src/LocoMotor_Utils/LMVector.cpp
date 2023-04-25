@@ -206,7 +206,7 @@ LMVector3 LMVector3::Perpendicular(const LMVector3& other) const {
 	return Cross(other).Cross(*this);
 }
 
-LMQuaternion& LMVector3::AsRotToQuaternion() const {
+LMQuaternion LMVector3::AsRotToQuaternion() const {
 	// Abbreviations for the various angular functions
 
 	double cr = cos(this->_x * 0.5);
@@ -363,7 +363,7 @@ LMVector3 LMQuaternion::Forward() const {
 	return Rotate(LMVector3(0, 0, -1));
 }
 
-LMVector3& LMQuaternion::ToEuler() const {
+LMVector3 LMQuaternion::ToEuler() const {
 	LMVector3 angles;
 
 // roll (x-axis rotation)

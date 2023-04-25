@@ -18,10 +18,6 @@ namespace LocoMotor {
 	class GameObject;
 	class MOTOR_API ParticleSystem : public Component {
 	public:
-		static std::string name;
-		static std::string GetName() {
-			return "ParticleSystem";
-		};
 		ParticleSystem();
 		OgreWrapper::Node* _node;
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
