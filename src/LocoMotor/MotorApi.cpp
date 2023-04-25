@@ -113,10 +113,11 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto boost = _mScene->AddGameobject("boost");
 	boost->AddComponent("Transform");
 	boost->AddComponent("MeshRenderer");
-	boost->GetComponent<MeshRenderer>()->Start("boost", "cube.mesh", "");
+	boost->GetComponent<MeshRenderer>()->Start("boost", "TurboTestMesh.mesh", "");
 	boost->AddComponent("RigidBodyComponent");
 	boost->GetComponent<RigidBodyComponent>()->Start(0);
-	//boost->GetComponent<RigidBodyComponent>()->beATrigger();
+//	boost->GetComponent<RigidBodyComponent>()->beATrigger();
+	
 	boost->AddComponent("Boost");
 
 	//Track Main Road
@@ -289,8 +290,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->SetPosition(LMVector3(0, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
 	trackMain->SetPosition(LMVector3(0, -3, -100));
-	boost->SetPosition(LMVector3(0, 10, -120));
-	boost->SetScale(LMVector3(50,50,50));
+	boost->SetPosition(LMVector3(80, 0, -120));
+	//boost->SetScale(LMVector3(50,50,50));
 	trackBorder->SetPosition(LMVector3(0, -3, -100));
 	Debug01->SetPosition(LMVector3(0, -3, -100));
 	palmTree->SetPosition(LMVector3(-50, 0, -85));
