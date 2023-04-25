@@ -40,9 +40,17 @@ void GameObject::Update(float dt) {
 	//InputManager* man = InputManager::GetInstance();
 
 
-
-
 	if (!movable)return;
+
+	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
+
+	//std::cout << "rbComp->getBody()->getTotalTorque() = "
+	//	<< rbComp->getBody()->getTotalTorque().getX() << ", "
+	//	<< rbComp->getBody()->getTotalTorque().getY() << ", "
+	//	<< rbComp->getBody()->getTotalTorque().getZ() << std::endl;
+
+
+	//_node->Rotate(0, 0, 45);
 
 
 	//if (man->controllerConnected()) {
@@ -196,9 +204,9 @@ void GameObject::Update(float dt) {
 	////if (rbComp->getBody()->getTotalTorque().length() > 10)
 	////	rbComp->getBody()->applyTorqueImpulse(rbComp->getBody()->getTotalTorque() * -0.2f);
 
-	//LMVector3 currentAngularVelocity = BulletToLm(rbComp->getBody()->getAngularVelocity());
-	//std::cout << "\n" << "TURN VEL = " << currentAngularVelocity.GetX()
-	//	<< ", " << currentAngularVelocity.GetY() << ", " << currentAngularVelocity.GetZ() << "\n";
+	LMVector3 currentAngularVelocity = BulletToLm(rbComp->getBody()->getAngularVelocity());
+	std::cout << "\n" << "TURN VEL = " << currentAngularVelocity.GetX()
+		<< ", " << currentAngularVelocity.GetY() << ", " << currentAngularVelocity.GetZ() << "\n";
 
 	////if (!rotateLeft && !rotateRight)
 	////	rbComp->getBody()->setAngularVelocity(LmToBullet(LMVector3(0, 0, 0)));

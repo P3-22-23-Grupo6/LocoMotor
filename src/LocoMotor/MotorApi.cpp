@@ -51,20 +51,43 @@ void MotorApi::RegisterGame(const char* gameName) {
 	raceManager_gObj->AddComponent("Transform");
 	Component* cmp = raceManager_gObj->AddComponent("RaceManager");
 
-	raceManager_gObj->AddComponent("UITextLM");
-// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
-// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
-	raceManager_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .1);
-	raceManager_gObj->GetComponent<UITextLM>()->AlignLeft();
-	
-	raceManager_gObj->GetComponent<UITextLM>()->ChangeText("1 / 3");
-	raceManager_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
-	
+//	raceManager_gObj->AddComponent("UITextLM");
+//// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
+//// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
+//	raceManager_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .9);
+//	raceManager_gObj->GetComponent<UITextLM>()->AlignLeft();
+//	
+//	raceManager_gObj->GetComponent<UITextLM>()->ChangeText("X / 3");
+//	raceManager_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
+
 	raceManager_gObj->AddComponent("UIImageLM");
-	// TODO: no se si es bueno cargar las texturas a traves de un .material tampoco eh :vv
 	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
 	raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
 	raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
+
+
+	LocoMotor::GameObject* lapsText_gObj = _mScene->AddGameobject("lapsText");
+	lapsText_gObj->AddComponent("Transform");
+
+	lapsText_gObj->AddComponent("UITextLM");
+	lapsText_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .9);
+	lapsText_gObj->GetComponent<UITextLM>()->AlignLeft();
+	lapsText_gObj->GetComponent<UITextLM>()->ChangeText("0 / 3");
+	lapsText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
+	lapsText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
+	lapsText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
+
+
+	LocoMotor::GameObject* positionText_gObj = _mScene->AddGameobject("positionText");
+	positionText_gObj->AddComponent("Transform");
+
+	positionText_gObj->AddComponent("UITextLM");
+	positionText_gObj->GetComponent<UITextLM>()->SetPosition(0.45, .9);
+	positionText_gObj->GetComponent<UITextLM>()->AlignRight();
+	positionText_gObj->GetComponent<UITextLM>()->ChangeText("1ºst");
+	positionText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
+	positionText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
+	positionText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
 	 
 
 
@@ -124,9 +147,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
+	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("Transform");
-	ship_gObj->AddComponent("MeshRenderer");
-	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
 	ship_gObj->AddComponent("ParticleSystem");
 	ship_gObj->AddComponent("AudioListener");
 
@@ -134,8 +156,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
 
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
-	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("PlayerController");
+
+	ship_gObj->AddComponent("MeshRenderer");
+	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
 
 	
 

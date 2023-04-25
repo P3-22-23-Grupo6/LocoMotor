@@ -79,7 +79,7 @@ void LocoMotor::RigidBodyComponent::Update(float dt) {
 
 	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
 	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
-	_body->clearForces();
+	//_body->clearForces(); // :TODO
 }
 
 
@@ -168,6 +168,10 @@ LMVector3 LocoMotor::RigidBodyComponent::GetTotalTorque() {
 
 LMVector3 LocoMotor::RigidBodyComponent::GetTurnVelocity() {
 	return BulletToLm(_body->getTurnVelocity());
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetAngularVelocity() {
+	return BulletToLm(_body->getAngularVelocity());
 }
 
 void LocoMotor::RigidBodyComponent::ApplyTorqueImpulse(LMVector3 impulse) {
