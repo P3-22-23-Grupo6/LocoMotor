@@ -5,7 +5,6 @@
 #include <iostream>
 #include <SDL_gamecontroller.h>
 #include "LMInputs.h"
-//#include "OgreManager.h"
 
 using namespace LocoMotor;
 
@@ -22,7 +21,6 @@ InputManager::InputManager() {
 	_joystickAxis[3] = 0.f;
 	_mousePos.first = 0;
 	_mousePos.second = 0;
-	//ogreMng = OgreWrapper::OgreManager::GetInstance();
 }
 
 //InputManager* InputManager::Get() {
@@ -42,6 +40,23 @@ bool InputManager::GetKey(const LMScanCode& scanCode) {
 
 bool InputManager::GetKeyUp(const LMScanCode& scanCode) {
 	return _keyboardKeys[scanCode].up;
+}
+
+// RATON
+bool InputManager::GetMouseButtonDown(const int& buttonCode) {
+	return _mouseButtons[buttonCode].down;
+}
+
+bool InputManager::GetMouseButton(const int& buttonCode) {
+	return _mouseButtons[buttonCode].isPressed;
+}
+
+bool InputManager::GetMouseButtonUp(const int& buttonCode) {
+	return _mouseButtons[buttonCode].up;
+}
+
+std::pair<int, int> LocoMotor::InputManager::GetMousePos() {
+	return _mousePos;
 }
 
 // MANDO
@@ -90,6 +105,9 @@ bool InputManager::RegisterEvents() {
 	// Si hay al menos una tecla del frame anterior que necesite ser reseteada
 	if (_keyboardInputs_ToReset.size() != 0)
 		ResetKeyboardInputs();
+
+	if (_mouseInputs_ToReset.size() != 0)
+		ResetMouseInputs();
 
 	if (_controllerInputs_ToReset.size() != 0)
 		ResetControllerInputs();
@@ -151,21 +169,21 @@ bool InputManager::RegisterEvents() {
 		//if (event.type == SDL_JOYAXISMOTION)
 		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
 
-		if (event.type == SDL_MOUSEBUTTONDOWN) {
-			switch (event.button.button) {
-				case SDL_BUTTON_LEFT:
-					break;
-				case SDL_BUTTON_MIDDLE:
-					break;
-				case SDL_BUTTON_RIGHT:
-					break;
-				case SDL_BUTTON_X1:
-					break;
-				case SDL_BUTTON_X2:
-					break;
-			}
-			//std::cout << "MOUSE " << "\n";
-		}
+		//if (event.type == SDL_MOUSEBUTTONDOWN) {
+		//	switch (event.button.button) {
+		//		case SDL_BUTTON_LEFT:
+		//			break;
+		//		case SDL_BUTTON_MIDDLE:
+		//			break;
+		//		case SDL_BUTTON_RIGHT:
+		//			break;
+		//		case SDL_BUTTON_X1:
+		//			break;
+		//		case SDL_BUTTON_X2:
+		//			break;
+		//	}
+		//	//std::cout << "MOUSE " << "\n";
+		//}
 
 		
 
@@ -306,6 +324,25 @@ void InputManager::ManageMouseEvents(const SDL_Event& event) {
 		_mousePos.first = event.motion.x;
 		_mousePos.second = event.motion.y;
 	}
+	if (event.type == SDL_MOUSEBUTTONDOWN) {
+		int scanCode = event.button.button;
+		KeyState& thisButton = _mouseButtons[scanCode];
+
+		// Comprobar si la tecla no esta siendo presionada actualmente
+		if (!thisButton.isPressed) {
+			thisButton.down = true;
+			thisButton.isPressed = true;
+			_mouseInputs_ToReset.push_back(scanCode);
+		}
+	}
+	if (event.type == SDL_MOUSEBUTTONUP) {
+		int scanCode = event.button.button;
+		KeyState& thisButton = _mouseButtons[scanCode];
+
+		thisButton.isPressed = false;
+		thisButton.up = true;
+		_mouseInputs_ToReset.push_back(scanCode);
+	}
 }
 
 bool InputManager::ControllerDeviceAdded(const int32_t& controllerAdded) {
@@ -358,6 +395,20 @@ void InputManager::ResetKeyboardInputs() {
 	_keyboardInputs_ToReset.clear();
 }
 
+void InputManager::ResetMouseInputs() {
+	for (int i = 0; i < _mouseInputs_ToReset.size(); i++) {
+		// Saber el codigo del boton del mando
+		int buttonCode = _mouseInputs_ToReset[i];
+		// Crear una referencia a la tecla y resetear sus variables a false
+		KeyState& thisButton = _mouseButtons[buttonCode];
+		thisButton.up = false;
+		thisButton.down = false;
+	}
+
+	// Limpiar las teclas ya reseteadas
+	_mouseInputs_ToReset.clear();
+}
+
 void InputManager::ResetControllerInputs() {
 
 	for (int i = 0; i < _controllerInputs_ToReset.size(); i++) {
@@ -370,7 +421,7 @@ void InputManager::ResetControllerInputs() {
 	}
 
 	// Limpiar las teclas ya reseteadas
-	_keyboardInputs_ToReset.clear();
+	_controllerInputs_ToReset.clear();
 }
 
 

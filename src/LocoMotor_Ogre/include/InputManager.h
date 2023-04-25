@@ -20,9 +20,6 @@ union SDL_Event;
 typedef struct _SDL_GameController SDL_GameController;
 //class SDL_Scancode;
 
-//namespace OgreWrapper {
-//	class OgreManager;
-//}
 
 namespace LocoMotor {
 	class MOTOR_API InputManager : public Singleton<InputManager> {
@@ -46,6 +43,16 @@ namespace LocoMotor {
 		bool GetKey(const LMScanCode& scanCode);
 		// Devuelve true solo el frame en el que se deja de presionar la tecla
 		bool GetKeyUp(const LMScanCode& scanCode);
+
+		// RATON
+		// Devuelve true solo el frame en el que se presiona el boton del raton
+		bool GetMouseButtonDown(const int& buttonCode);
+		// Devuelve true siempre que el boton este presionado
+		bool GetMouseButton(const int& buttonCode);
+		// Devuelve true solo el frame en el que se deja de presionar el boton del raton
+		bool GetMouseButtonUp(const int& buttonCode);
+		// Devuelve la posicion actual del raton en la pantalla
+		std::pair<int, int> GetMousePos();
 
 		// MANDO
 
@@ -80,6 +87,8 @@ namespace LocoMotor {
 		// Tienen las variables de Down/Up activas, solo queremos que esten activas un frame, por lo tanto
 		// la funcion de este metodo es resetear esas variables y ponerlas a False
 		void ResetKeyboardInputs();
+
+		void ResetMouseInputs();
 
 		void ResetControllerInputs();
 
@@ -118,12 +127,17 @@ namespace LocoMotor {
 		// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
 		KeyState _controllerButtons[21];
 
+		KeyState _mouseButtons[5];
+
 		SDL_GameController* _currentController = nullptr;
 
 		// Vector que almacena que teclas deben ser refrescadas despues de cada frame
 		std::vector<int> _keyboardInputs_ToReset;
 
-		// Vector que almacena que botones deben ser refrescadas despues de cada frame
+		// Vector que almacena que botones del raton deben ser refrescadas despues de cada frame
+		std::vector<int> _mouseInputs_ToReset;
+
+		// Vector que almacena que botones del mando deben ser refrescadas despues de cada frame
 		std::vector<int> _controllerInputs_ToReset;
 
 		// Posicion del raton en la pantalla
@@ -142,8 +156,6 @@ namespace LocoMotor {
 		// Redondear los datos del giroscopio un determinado numero de digitos
 		// (Numero de digitos = Numero de ceros)
 		const int _roundNumber = 1000000;
-
-		//OgreWrapper::OgreManager* ogreMng;
 	};
 }
 
