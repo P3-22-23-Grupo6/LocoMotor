@@ -161,6 +161,17 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->AddComponent("MeshRenderer");
 	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
 
+
+	LocoMotor::GameObject* velocityText_gObj = _mScene->AddGameobject("velocityText");
+	velocityText_gObj->AddComponent("Transform");
+
+	velocityText_gObj->AddComponent("UITextLM");
+	velocityText_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .1);
+	velocityText_gObj->GetComponent<UITextLM>()->AlignLeft();
+	velocityText_gObj->GetComponent<UITextLM>()->ChangeText("300 km/h");
+	velocityText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
+	velocityText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
+	velocityText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
 	
 
 	// CHECKPOINTS
