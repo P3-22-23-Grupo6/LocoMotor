@@ -89,9 +89,10 @@ namespace LocoMotor {
 		/// @brief Gets the turn velocity of the body
 		/// @return Return a LMVector3 of turn velocity
 		LMVector3 GetTurnVelocity();
-		/// @brief Gets the angular velocity of the body
+		/// @brief Gets/Sets the angular velocity of the body
 		/// @return Return a LMVector3 of turn velocity
 		LMVector3 GetAngularVelocity();
+		void SetAngularVelocity(LMVector3 newAngularVelocity);
 		/// @brief Applies a torque impulse to the body
 		/// @param impulse the impulse to aplly
 		void ApplyTorqueImpulse(LMVector3 impulse);

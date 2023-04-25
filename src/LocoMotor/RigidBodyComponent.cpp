@@ -174,6 +174,10 @@ LMVector3 LocoMotor::RigidBodyComponent::GetAngularVelocity() {
 	return BulletToLm(_body->getAngularVelocity());
 }
 
+void LocoMotor::RigidBodyComponent::SetAngularVelocity(LMVector3 newAngularVelocity) {
+	_body->setAngularVelocity(LmToBullet(newAngularVelocity));
+}
+
 void LocoMotor::RigidBodyComponent::ApplyTorqueImpulse(LMVector3 impulse) {
 	_body->applyTorqueImpulse(LmToBullet(impulse));
 }
