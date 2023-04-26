@@ -189,12 +189,13 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//raceManager_gObj->GetComponent<RaceManager>()->Start();
 
 
-	const int numberOfCheckpoints = 3;
+	const int numberOfCheckpoints = 4;
 	LMVector3 checkpointPositions[numberOfCheckpoints];
 
-	checkpointPositions[0] = LMVector3(0, 4, -100);
-	checkpointPositions[1] = LMVector3(0, 4, -200);
-	checkpointPositions[2] = LMVector3(0, 18, -300);
+	checkpointPositions[0] = LMVector3(-613.7f, 77.f, -513.4f);
+	checkpointPositions[1] = LMVector3(-827.8f, -35.3f, 204.9f);
+	checkpointPositions[2] = LMVector3(-63.7f, 71.5f, 688.5f);
+	checkpointPositions[3] = LMVector3(-1.6f, 7.6f, 56.2f);
 
 	
 	std::vector<GameObject*> lsBalls = std::vector<GameObject*>();
@@ -206,7 +207,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		checkpoint_gObj->AddComponent("Transform");
 		checkpoint_gObj->AddComponent("MeshRenderer");
 		checkpoint_gObj->GetComponent<MeshRenderer>()->Start(checkpointName, "SphereDebug.mesh", "");
-		checkpoint_gObj->GetTransform()->SetSize(LMVector3(20, 20, 20));
+		checkpoint_gObj->GetTransform()->SetSize(LMVector3(40, 40, 40));
 		checkpoint_gObj->GetTransform()->SetPosition(checkpointPositions[i]);
 		Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
 		lsBalls.push_back(checkpoint_gObj);
@@ -247,10 +248,12 @@ void MotorApi::RegisterGame(const char* gameName) {
 	}
 
 	for (int i = 0; i < 1; i++){
-		auto enemy_gObj = _mScene->AddGameobject("Enemy" + i);
+		//std::string enemyName = "Enemy" + std::to_string(i);
+		std::string enemyName = "Enemy0";
+		auto enemy_gObj = _mScene->AddGameobject(enemyName);
 		enemy_gObj->AddComponent("Transform");
 		enemy_gObj->AddComponent("MeshRenderer");
-		enemy_gObj->GetComponent<MeshRenderer>()->Start("Enemy" + i, "EnemyCar.mesh", "FalconRedone/FalconMat");
+		enemy_gObj->GetComponent<MeshRenderer>()->Start(enemyName, "EnemyCar.mesh", "FalconRedone/FalconMat");
 		enemy_gObj->AddComponent("AudioSource");
 		enemy_gObj->GetComponent<AudioSource>()->Start();
 		enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
