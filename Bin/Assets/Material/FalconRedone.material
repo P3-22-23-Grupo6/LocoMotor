@@ -220,15 +220,15 @@ material WaterMaterial {
     technique {
         pass {
             lighting off
-            scene_blend alpha_blend
-            depth_write off
+            //scene_blend alpha_blend
+            //depth_write off
 
             texture_unit {
                 texture water_t.png
                 tex_address_mode wrap
                 colour_op modulate
                 scroll_anim 0.08 0.08
-                mipmap_bias 1
+                mipmap_bias 0.5
                 //wave_xform scale sine 0.015 0.015 0.0 1.0
             }
         }
@@ -283,15 +283,16 @@ material DecalMaterial {
 
 
 material RackMaterial {
-    receive_shadows on
+    receive_shadows off
     technique {
         pass {
             lighting off
             alpha_rejection greater 50
             texture_unit {
                 texture rack_t.png
-                //tex_address_mode wrap
+                tex_address_mode wrap
                 colour_op modulate
+                //mipmap_bias 2.0
             }
         }
     }
