@@ -124,37 +124,44 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto trackMain = _mScene->AddGameobject("trackMain");
 	trackMain->AddComponent("Transform");
 	trackMain->AddComponent("MeshRenderer");
-	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "TrackMain.mesh", "");
+	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "FirstTrack.mesh", "");
 	trackMain->AddComponent("RigidBodyComponent");
 	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
-	//Track Border No Coll
-	auto trackBorder = _mScene->AddGameobject("trackBorder");
-	trackBorder->AddComponent("Transform");
-	trackBorder->AddComponent("MeshRenderer");
-	trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");
-	trackBorder->AddComponent("RigidBodyComponent");
-	trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
-	//Collision
-	auto Debug01 = _mScene->AddGameobject("Debug01");
-	Debug01->AddComponent("Transform");
-	Debug01->AddComponent("MeshRenderer");
-	Debug01->GetComponent<MeshRenderer>()->Start("Debug01", "Debug_c.mesh", "");
-	Debug01->AddComponent("RigidBodyComponent");
-	Debug01->GetComponent<RigidBodyComponent>()->Start(0);
-#pragma region palmTrees
-	auto palmTree = _mScene->AddGameobject("PalmTree00");
-	palmTree->AddComponent("Transform");
-	palmTree->AddComponent("MeshRenderer");
-	palmTree->GetComponent<MeshRenderer>()->Start("PalmTree00", "PalmTree.mesh", "");
-	palmTree->AddComponent("RigidBodyComponent");
-	palmTree->GetComponent<RigidBodyComponent>()->Start(0);
 	
-	auto palmTree02 = _mScene->AddGameobject("PalmTree02");
-	palmTree02->AddComponent("Transform");
-	palmTree02->AddComponent("MeshRenderer");
-	palmTree02->GetComponent<MeshRenderer>()->Start("PalmTree02", "PalmTree.mesh", "");
-	palmTree02->AddComponent("RigidBodyComponent");
-	palmTree02->GetComponent<RigidBodyComponent>()->Start(0);
+	auto extraMain = _mScene->AddGameobject("extraMain");
+	extraMain->AddComponent("Transform");
+	extraMain->AddComponent("MeshRenderer");
+	extraMain->GetComponent<MeshRenderer>()->Start("extraMain", "SafeExport.mesh", "");
+	//extraMain->AddComponent("RigidBodyComponent");
+	//extraMain->GetComponent<RigidBodyComponent>()->Start(0);
+	////Track Border No Coll
+	//auto trackBorder = _mScene->AddGameobject("trackBorder");
+	//trackBorder->AddComponent("Transform");
+	//trackBorder->AddComponent("MeshRenderer");
+	//trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");
+	//trackBorder->AddComponent("RigidBodyComponent");
+	//trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
+	////Collision
+	//auto Debug01 = _mScene->AddGameobject("Debug01");
+	//Debug01->AddComponent("Transform");
+	//Debug01->AddComponent("MeshRenderer");
+	//Debug01->GetComponent<MeshRenderer>()->Start("Debug01", "Debug_c.mesh", "");
+	//Debug01->AddComponent("RigidBodyComponent");
+	//Debug01->GetComponent<RigidBodyComponent>()->Start(0);
+#pragma region palmTrees
+	//auto palmTree = _mScene->AddGameobject("PalmTree00");
+	//palmTree->AddComponent("Transform");
+	//palmTree->AddComponent("MeshRenderer");
+	//palmTree->GetComponent<MeshRenderer>()->Start("PalmTree00", "PalmTree.mesh", "");
+	//palmTree->AddComponent("RigidBodyComponent");
+	//palmTree->GetComponent<RigidBodyComponent>()->Start(0);
+	//
+	//auto palmTree02 = _mScene->AddGameobject("PalmTree02");
+	//palmTree02->AddComponent("Transform");
+	//palmTree02->AddComponent("MeshRenderer");
+	//palmTree02->GetComponent<MeshRenderer>()->Start("PalmTree02", "PalmTree.mesh", "");
+	//palmTree02->AddComponent("RigidBodyComponent");
+	//palmTree02->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
@@ -292,19 +299,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	ship_gObj->SetPosition(LMVector3(0, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
-	trackMain->SetPosition(LMVector3(0, -3, -100));
+	trackMain->SetPosition(LMVector3(200,25,-1200));
+	extraMain->SetPosition(LMVector3(200,25,-1200));
 	boost->SetPosition(LMVector3(80, 0, -120));
-	//boost->SetScale(LMVector3(50,50,50));
-	trackBorder->SetPosition(LMVector3(0, -3, -100));
-	Debug01->SetPosition(LMVector3(0, -3, -100));
-	palmTree->SetPosition(LMVector3(-50, 0, -85));
-	//palmTree01->SetPosition(LMVector3(40, 0, -50));
-	palmTree02->SetPosition(LMVector3(60, 0, -200));
-	//track00->SetPosition(LMVector3(20, 0, -200));
-	//enemy_gObj->SetPosition(LMVector3(-20, .5f, 0));
-	palmTree->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
-	//palmTree01->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
-	palmTree02->SetScale(LMVector3(15.0f, 15.0f, 15.0f));
 	ship_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	
 
@@ -323,14 +320,14 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
-	trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
-	Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
-	boost->GetComponent<RigidBodyComponent>()->beATrigger();
+	//trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
+	//Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion
 
 	map->GetTransform()->SetPosition(LMVector3(0, -500, 0));
 
+	boost->GetComponent<RigidBodyComponent>()->beATrigger();
 }
 
 void MotorApi::Init() {
