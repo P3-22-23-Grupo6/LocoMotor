@@ -1,17 +1,21 @@
 #include "LogSystem.h"
 
+LogSystem* Singleton<LogSystem>::_instance = nullptr;
 
 LogSystem::LogSystem() {
-	Init();
+	//Init();
 	//Create ();
+	_file = nullptr;
 }
 
 LogSystem::~LogSystem() {
+	FileClose();
 }
 
-void LogSystem::Init() {
+void LogSystem::Initialize() {
 
-	fopen_s(&_file, "log.txt", "w+");
+	if (_file == nullptr)
+		fopen_s(&_file, "log.txt", "w+");
 }
 
 void LogSystem::FileClose() {
@@ -23,6 +27,9 @@ void LogSystem::Save(int type, std::string message) {
 	// Mensajes de error->0
 	// Mensajes de aviso->1
 	// Otros mensajes -> >1
+
+	if (_file == nullptr)
+		fopen_s(&_file, "log.txt", "w+");
 
 	if (type == 0) {
 		std::string errorStr = "Error: " + message + "\n";

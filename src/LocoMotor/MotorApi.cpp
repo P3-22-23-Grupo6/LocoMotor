@@ -16,6 +16,7 @@
 #include "Transform.h"
 #include "Boost.h"
 #include "ComponentsFactory.h"
+#include "LogSystem.h"
 
 #include "MeshRenderer.h"
 #include <RigidBodyComponent.h>
@@ -52,15 +53,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	raceManager_gObj->AddComponent("Transform");
 	Component* cmp = raceManager_gObj->AddComponent("RaceManager");
 
-//	raceManager_gObj->AddComponent("UITextLM");
-//// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
-//// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
-//	raceManager_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .9);
-//	raceManager_gObj->GetComponent<UITextLM>()->AlignLeft();
-//	
-//	raceManager_gObj->GetComponent<UITextLM>()->ChangeText("X / 3");
-//	raceManager_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
-
 	raceManager_gObj->AddComponent("UIImageLM");
 	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
 	raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
@@ -77,6 +69,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	lapsText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
 	lapsText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
 	lapsText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
+	lapsText_gObj->GetComponent<UITextLM>()->SetFont("Roboto");
 
 
 	LocoMotor::GameObject* positionText_gObj = _mScene->AddGameobject("positionText");
@@ -89,6 +82,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	positionText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
 	positionText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
 	positionText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
+	positionText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
 	 
 
 
@@ -177,6 +171,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	velocityText_gObj->AddComponent("Transform");
 
 	velocityText_gObj->AddComponent("UITextLM");
+
+	velocityText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
 	velocityText_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .1);
 	velocityText_gObj->GetComponent<UITextLM>()->AlignLeft();
 	velocityText_gObj->GetComponent<UITextLM>()->ChangeText("300 km/h");
@@ -335,6 +331,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 void MotorApi::Init() {
 	OgreWrapper::OgreManager::Init("AHHHH");
+	LogSystem::Init()->Initialize();
 	FmodWrapper::AudioManager::Init(8);
 	PhysicsManager::Init();
 	InputManager::Init();
@@ -385,5 +382,6 @@ void MotorApi::MainLoop() {
 	ScriptManager::Clear();
 	InputManager::Clear();
 	ComponentsFactory::Clear();
+	LogSystem::Clear();
 	return;
 }

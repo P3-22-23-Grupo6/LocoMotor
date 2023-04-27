@@ -1,5 +1,14 @@
-font MyFont
+Roboto
 {
     type truetype
     source Roboto-Thin.ttf
+    size 32
+    resolution 512
+}
+BrunoAce
+{
+    type truetype
+    source BrunoAceSC-Regular.ttf
+    size 32
+    resolution 512
 }
