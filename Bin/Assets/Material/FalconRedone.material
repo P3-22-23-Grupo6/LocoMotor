@@ -17,7 +17,7 @@ material TestMat {
     
     technique {
         pass {
-            diffuse 1.0 1.0 1.0 1.0
+            diffuse 1.0 0.0 0.0 1.0
             specular 1.0 1.0 1.0 1.0
             lighting off
             texture_unit {
@@ -320,6 +320,22 @@ material RackMaterial {
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0
+            }
+        }
+    }
+}
+
+material TestMat2 {
+    receive_shadows on
+    technique {
+        pass {
+            diffuse 1.0 1.0 1.0 1.0
+            specular 1.0 1.0 1.0 1.0
+            lighting off
+            texture_unit {
+                texture Falcon_Atlas_t.png
+                tex_address_mode wrap
+                colour_op add
             }
         }
     }

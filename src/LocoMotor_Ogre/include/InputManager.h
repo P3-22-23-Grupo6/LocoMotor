@@ -127,7 +127,7 @@ namespace LocoMotor {
 		// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
 		KeyState _controllerButtons[21];
 
-		KeyState _mouseButtons[5];
+		KeyState _mouseButtons[6];
 
 		SDL_GameController* _currentController = nullptr;
 

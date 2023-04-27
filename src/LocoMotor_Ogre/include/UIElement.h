@@ -59,7 +59,7 @@ namespace OgreWrapper {
 
 		const double defaultX = 0, defaultY = 0, defaultW = 0.5, defaultH = 0.5;
 
-		bool _isInteractive;
+		bool _isInteractive=false;
 	};
 
 }

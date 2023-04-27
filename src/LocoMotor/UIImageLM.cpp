@@ -1,5 +1,7 @@
 #include "UIImageLM.h"
 #include "UIImage.h"
+#include "InputManager.h"
+#include "OgreManager.h"
 
 
 using namespace LocoMotor;
@@ -12,6 +14,7 @@ LocoMotor::UIImageLM::UIImageLM() {
 	posY = 0.;
 	sizeX = 0.;
 	sizeY = 0.;
+	_ogMng = OgreWrapper::OgreManager::GetInstance();
 }
 
 LocoMotor::UIImageLM::~UIImageLM() {
@@ -123,10 +126,54 @@ bool LocoMotor::UIImageLM::GetInteractive() {
 	return _uimg->GetInteractive();
 }
 
+void LocoMotor::UIImageLM::Update(float dt) {
+
+	if (GetInteractive()) {
+		winHeight = _ogMng->GetWindowHeight();
+		winWidth = _ogMng->GetWindowWidth();
+		if (MouseOnImage()) {
+
+			if (LocoMotor::InputManager::GetInstance()->GetMouseButtonDown(1)) {
+				ChangeImage(_pressedImgName);
+				_onClick();
+				
+			}
+			else {
+				ChangeImage(_onMouseImgName);
+			}
+		}
+		else ChangeImage(_imgName);
+	}
+
+}
+
+void LocoMotor::UIImageLM::CallOnClick(const std::function<void()>& func) {
+
+	_onClick = func;
+}
+
 void LocoMotor::UIImageLM::ChangeImage(std::string newimg) {
+	if(newimg!="")
 	_uimg->ChangeImage(newimg);
 
 }
 
+void LocoMotor::UIImageLM::SetImage(std::string newimg) {
+	_imgName = newimg;
+}
+
+void LocoMotor::UIImageLM::SetOnMouseImage(std::string newimg) {
+	_onMouseImgName = newimg;
+}
+
+void LocoMotor::UIImageLM::SetPressedImage(std::string newimg) {
+	_pressedImgName = newimg;
+}
 
 
+bool LocoMotor::UIImageLM::MouseOnImage() {
+	auto pos = LocoMotor::InputManager::GetInstance()->GetMousePos();
+
+	return (pos.first/winWidth > posX && pos.first/winWidth < posX + sizeX) &&
+		(pos.second/winHeight > posY && pos.second/winHeight < posY + sizeY);
+}

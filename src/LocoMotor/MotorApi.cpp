@@ -188,6 +188,20 @@ void MotorApi::RegisterGame(const char* gameName) {
 	velocityText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
 	
 
+
+	ship_gObj->AddComponent("UIImageLM");
+
+	ship_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
+	ship_gObj->GetComponent<UIImageLM>()->SetImage("TestMat");
+	ship_gObj->GetComponent<UIImageLM>()->SetOnMouseImage("EnemyMat");
+	ship_gObj->GetComponent<UIImageLM>()->SetPressedImage("TestMat2");
+	ship_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
+	ship_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
+	ship_gObj->GetComponent<UIImageLM>()->SetInteractive(true);
+	ship_gObj->GetComponent<UIImageLM>()->CallOnClick([](){std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"; });
+
+
+
 	// CHECKPOINTS
 	//raceManager_gObj->GetComponent<RaceManager>()->Start();
 
