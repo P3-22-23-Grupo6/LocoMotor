@@ -96,6 +96,11 @@ OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer(std::string me
 	return new Renderer3D(_manager->createEntity(mesh));
 }
 
+OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::string mesh) {
+	return new Renderer3D(_manager->createStaticGeometry(mesh));
+}
+
+
 OgreWrapper::Camera* OgreWrapper::RenderScene::CreateCamera(std::string name) {
 	return new Camera(_manager->createCamera(name));
 }

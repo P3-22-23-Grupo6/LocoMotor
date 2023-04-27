@@ -24,7 +24,7 @@ namespace LocoMotor {
 		void Render();
 
 		void Start() override;
-		void Start(std::string name, std::string file, std::string mat);
+		void Start(std::string name, std::string file, std::string mat, bool isStatic = false);
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		void InitComponent() override;
 		//OgreWrapper::Node* GetNode();
@@ -46,6 +46,7 @@ namespace LocoMotor {
 
 		OgreWrapper::RenderScene* _rndScn;
 		OgreWrapper::Node* _nod;
+		bool _isStatic;
 		
 		//OgreWrapper::Node* _node;
 
