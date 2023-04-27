@@ -54,7 +54,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	Component* cmp = raceManager_gObj->AddComponent("RaceManager");
 
 	raceManager_gObj->AddComponent("UIImageLM");
-	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
+	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TemporalUIMat");
 	raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
 	raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
 
