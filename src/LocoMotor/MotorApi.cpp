@@ -188,20 +188,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	velocityText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
 	
 
-
-	ship_gObj->AddComponent("UIImageLM");
-
-	ship_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
-	ship_gObj->GetComponent<UIImageLM>()->SetImage("TestMat");
-	ship_gObj->GetComponent<UIImageLM>()->SetOnMouseImage("EnemyMat");
-	ship_gObj->GetComponent<UIImageLM>()->SetPressedImage("TestMat2");
-	ship_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
-	ship_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
-	ship_gObj->GetComponent<UIImageLM>()->SetInteractive(true);
-	ship_gObj->GetComponent<UIImageLM>()->CallOnClick([](){std::cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"; });
-
-
-
 	// CHECKPOINTS
 	//raceManager_gObj->GetComponent<RaceManager>()->Start();
 
@@ -282,15 +268,15 @@ void MotorApi::RegisterGame(const char* gameName) {
 	}
 
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
-	int maxBalls = 400;
-	for (float i = 1; i < maxBalls; i++) {
-		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
-		wayPointNew->AddComponent("Transform");
-		wayPointNew->AddComponent("MeshRenderer");
-		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
-		nuevaSpl->RecalcTangents();
-		waypointBalls.push_back(wayPointNew);
-	}
+	//int maxBalls = 400;
+	//for (float i = 1; i < maxBalls; i++) {
+	//	auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
+	//	wayPointNew->AddComponent("Transform");
+	//	wayPointNew->AddComponent("MeshRenderer");
+	//	wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
+	//	nuevaSpl->RecalcTangents();
+	//	waypointBalls.push_back(wayPointNew);
+	//}
 #pragma endregion
 
 	//Skybox
@@ -307,7 +293,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	_scnManager->ChangeScene("Escena");
 
-	ship_gObj->SetPosition(LMVector3(0, 6, 0));
+	ship_gObj->SetPosition(LMVector3(0, 30, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
 	trackMain->SetPosition(LMVector3(200,25,-1200));
 	extraMain->SetPosition(LMVector3(200,25,-1200));
@@ -319,10 +305,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//	lsBalls[i]->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	//	lsBalls[i]->SetPosition(checkpointPositions[i]);
 	//}
-	for (int i = 1; i < waypointBalls.size(); i++) {
-		waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
-		waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
-	}
+	//for (int i = 1; i < waypointBalls.size(); i++) {
+	//	waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
+	//	waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
+	//}
 
 #pragma region All Components Started
 

@@ -2,8 +2,8 @@ material FalconMat {
     
     technique {
         pass {
-            diffuse 1.0 1.0 1.0 1.0
-            specular 1.0 1.0 1.0 1.0
+           
+            
             lighting off
             texture_unit {
                 texture Falcon_Atlas_t.png
@@ -17,8 +17,6 @@ material TestMat {
     
     technique {
         pass {
-            diffuse 1.0 0.0 0.0 1.0
-            specular 1.0 1.0 1.0 1.0
             lighting off
             texture_unit {
                 texture Falcon_Atlas_t.png
@@ -32,8 +30,8 @@ material EnemyMat {
     
     technique {
         pass {
-            diffuse 1.0 1.0 1.0 1.0
-            specular 1.0 1.0 1.0 1.0
+           
+            
             lighting off
             texture_unit {
                 texture Enemy_Atlas_t.png
@@ -73,10 +71,8 @@ material PalmTreeMaterial {
     
     technique {
         pass {
-             cull_hardware none
-                cull_software none 
-                diffuse 0.8 0.8 0.8 1.0
-                specular 0.5 0.0 0 0 0
+             //cull_hardware none
+                //cull_software none 
                 lighting off
             texture_unit {
                 texture Grad_t.png
@@ -91,14 +87,7 @@ material Material {
     
     technique {
         pass {
-            diffuse 0.8 0.8 0.8 1.0
-            specular 0.5 0.0 0 0 0
             lighting off
-            rtshader_system {
-                lighting_stage metal_roughness
-                texturing_stage late_add_blend
-            }
-
             texture_unit {
                 texture Floor_t.PNG
                 tex_address_mode wrap
@@ -124,8 +113,6 @@ material PaletteMat {
     
     technique {
         pass {
-            diffuse 0.8 0.8 0.8 1.0
-            specular 0.5 0.0 0 0 0
             lighting off
             texture_unit {
                 texture Pal_t.png
@@ -140,14 +127,7 @@ material TurboMat {
     
     technique {
         pass {
-            diffuse 0.8 0.8 0.8 1.0
-            specular 0.5 0.0 0 0 0
             lighting off
-            rtshader_system {
-                lighting_stage metal_roughness
-                texturing_stage late_add_blend
-            }
-
             texture_unit {
                 texture Turbo.png
                 tex_address_mode wrap
@@ -163,8 +143,8 @@ material AtlasMaterial {
     
     technique {
         pass {
-            diffuse 0.8 0.8 0.8 1.0
-            specular 0.5 0.0 0 0 0
+            //diffuse 0.8 0.8 0.8 1.0
+            //specular 0.5 0.0 0 0 0
             lighting off
             alpha_rejection greater 150
             texture_unit {
@@ -193,13 +173,9 @@ material GridMaterial {
     }
 }
 material SandMaterial {
-    
     technique {
         pass {
-            diffuse 0.8 0.8 0.8 1.0
-            specular 0.5 0.0 0 0 0
             lighting off
-
             texture_unit {
                 texture sand_t.png
                 tex_address_mode wrap
@@ -241,7 +217,6 @@ material WaterMaterial {
                 colour_op modulate
                 scroll_anim 0.08 0.08
                 mipmap_bias 0.5
-                //wave_xform scale sine 0.015 0.015 0.0 1.0
             }
         }
     }
@@ -255,7 +230,6 @@ material PanelsMaterial {
                 tex_address_mode wrap
                 colour_op modulate
             }
-            
         }
     }
 }
@@ -269,7 +243,6 @@ material WaterfallMat {
                 colour_op modulate
                 scroll_anim 0.0 0.15
             }
-            
         }
     }
 }
@@ -282,7 +255,6 @@ material SkyMat {
                 tex_address_mode wrap
                 colour_op modulate
             }
-            
         }
     }
 }
@@ -292,12 +264,9 @@ material DecalMaterial {
         pass {
             lighting off
             scene_blend alpha_blend
-            cull_hardware none
+            //cull_hardware none
             //depth_write off
-            diffuse 0.8 0.8 0.8 1.0
-            specular 0.5 0.0 0 0 0
             alpha_rejection greater 150
-            
             texture_unit {
                 texture TrMain_Dec_t.png
                 tex_address_mode wrap
@@ -312,7 +281,7 @@ material RackMaterial {
     technique {
         pass {
             lighting off
-            alpha_rejection greater 03000
+            alpha_rejection greater 3000
             filtering anisotropic
             max_anisotropy 50
             texture_unit {
@@ -329,8 +298,6 @@ material TestMat2 {
     receive_shadows on
     technique {
         pass {
-            diffuse 1.0 1.0 1.0 1.0
-            specular 1.0 1.0 1.0 1.0
             lighting off
             texture_unit {
                 texture Falcon_Atlas_t.png
