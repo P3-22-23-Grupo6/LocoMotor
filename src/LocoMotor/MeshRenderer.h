@@ -12,15 +12,12 @@ namespace OgreWrapper {
 	class Node;
 	class RenderScene;
 }
-
+class LMVector3;
 namespace LocoMotor {
+	
 	class GameObject;
 	class MOTOR_API MeshRenderer: public Component {
 	public:
-		const static std::string name;
-		static std::string GetName() {
-			return "MeshRenderer";
-		};
 		MeshRenderer();
 		~MeshRenderer();
 
@@ -32,6 +29,8 @@ namespace LocoMotor {
 		void InitComponent() override;
 		//OgreWrapper::Node* GetNode();
 		OgreWrapper::Renderer3D* GetRenderer();
+
+		void Rotate(LMVector3 newRotation);
 
 	private:
 

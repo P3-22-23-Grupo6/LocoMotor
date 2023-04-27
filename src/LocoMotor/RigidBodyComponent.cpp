@@ -10,8 +10,6 @@
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
 
-const std::string RigidBodyComponent::name = "RigidBodyComponent";
-
 LocoMotor::RigidBodyComponent::RigidBodyComponent()
 {
 	_mass = 0;
@@ -78,9 +76,10 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 }
 
 void LocoMotor::RigidBodyComponent::Update(float dt) {
+
 	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
 	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
-	_body->clearForces();
+	//_body->clearForces(); // :TODO
 }
 
 
@@ -169,6 +168,14 @@ LMVector3 LocoMotor::RigidBodyComponent::GetTotalTorque() {
 
 LMVector3 LocoMotor::RigidBodyComponent::GetTurnVelocity() {
 	return BulletToLm(_body->getTurnVelocity());
+}
+
+LMVector3 LocoMotor::RigidBodyComponent::GetAngularVelocity() {
+	return BulletToLm(_body->getAngularVelocity());
+}
+
+void LocoMotor::RigidBodyComponent::SetAngularVelocity(LMVector3 newAngularVelocity) {
+	_body->setAngularVelocity(LmToBullet(newAngularVelocity));
 }
 
 void LocoMotor::RigidBodyComponent::ApplyTorqueImpulse(LMVector3 impulse) {

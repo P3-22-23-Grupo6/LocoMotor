@@ -7,8 +7,6 @@
 
 using namespace LocoMotor;
 
-std::string ParticleSystem::name = "ParticleSystem";
-
 LocoMotor::ParticleSystem::ParticleSystem()
 {
 	_renderScn = nullptr;

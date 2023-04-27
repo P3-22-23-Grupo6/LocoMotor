@@ -20,6 +20,10 @@ namespace LocoMotor {
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's
 		/// @param dt DeltaTime used to calculate the velocity
 		void Update(float dt) override;
+
+		//void OnCollisionEnter(GameObject* other) override;
+		//void OnCollisionStay(GameObject* other) override;
+		//void OnCollisionExit(GameObject* other) override;
 	private:
 		//OgreWrapper::RenderScene* _renderScn;
 		LMVector3* currentNode;

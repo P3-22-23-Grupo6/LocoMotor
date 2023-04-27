@@ -6,9 +6,8 @@
 #include "Node.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "LMVector.h"
 using namespace LocoMotor;
-
-const std::string MeshRenderer::name = "MeshRenderer";
 
 LocoMotor::MeshRenderer::MeshRenderer()
 {
@@ -59,6 +58,10 @@ void LocoMotor::MeshRenderer::InitComponent() {
 
 OgreWrapper::Renderer3D* LocoMotor::MeshRenderer::GetRenderer() {
 	return _rend3D;
+}
+
+void LocoMotor::MeshRenderer::Rotate(LMVector3 newRotation) {
+	_nod->Rotate(newRotation.GetX(), newRotation.GetY(), newRotation.GetZ());
 }
 
 

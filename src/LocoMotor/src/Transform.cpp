@@ -21,13 +21,15 @@ void LocoMotor::Transform::InitComponent() {
 }
 
 void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	gameObject->RegisterTransform(this);
+	_gObjNode = gameObject->GetNode();
 	//TODO: como coooo
 	for (const auto& pair : params) {
 		if (pair.first == "pos" || pair.first == "position") {
 			unsigned char currAxis = 0;
 			std::string num = "";
 			LMVector3 result = LMVector3();
-			for (const auto& c : pair.second) {
+			for (const char c : pair.second) {
 				if (c != ' ') {
 					num += c;
 				}
@@ -51,6 +53,16 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 					currAxis++;
 					num = "";
 				}
+			}
+			float value = 0.0f;
+			try {
+				value = std::stof(num);
+			}
+			catch (const char*) {
+				value = 0.0f;
+			}
+			if (currAxis == 2) {
+				result.SetZ(value);
 			}
 			SetLocalPosition(result);
 		}
@@ -58,7 +70,7 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 			unsigned char currAxis = 0;
 			std::string num = "";
 			LMVector3 result = LMVector3();
-			for (const auto& c : pair.second) {
+			for (const char c : pair.second) {
 				if (c != ' ') {
 					num += c;
 				}
@@ -83,13 +95,23 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 					num = "";
 				}
 			}
+			float value = 0.0f;
+			try {
+				value = std::stof(num);
+			}
+			catch (const char*) {
+				value = 0.0f;
+			}
+			if (currAxis == 2) {
+				result.SetZ(value);
+			}
 			SetLocalEulerRotation(result);
 		}
 		else if (pair.first == "size" || pair.first == "scale") {
 			unsigned char currAxis = 0;
 			std::string num = "";
 			LMVector3 result = LMVector3();
-			for (const auto& c : pair.second) {
+			for (const char c : pair.second) {
 				if (c != ' ') {
 					num += c;
 				}
@@ -113,6 +135,16 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 					currAxis++;
 					num = "";
 				}
+			}
+			float value = 0.0f;
+			try {
+				value = std::stof(num);
+			}
+			catch (const char*) {
+				value = 0.0f;
+			}
+			if (currAxis == 2) {
+				result.SetZ(value);
 			}
 			SetLocalScale(result);
 		}

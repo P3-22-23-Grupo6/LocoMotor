@@ -30,6 +30,11 @@ Scene* SceneManager::CreateScene(std::string nombre) {
 
 		_sceneInfo.insert({ nombre, newScene });
 
+		if (_activeScene == nullptr) {
+			_activeScene = newScene;
+		
+		}
+
 		return newScene;
 	}
 

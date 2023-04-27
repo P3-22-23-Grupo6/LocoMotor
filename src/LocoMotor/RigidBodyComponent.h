@@ -18,10 +18,6 @@ namespace PhysicsWrapper {
 namespace LocoMotor {
 	class MOTOR_API RigidBodyComponent : public Component {
 	public:
-		const static std::string name;
-		static std::string GetName() {
-			return "RigidBodyComponent";
-		};
 		RigidBodyComponent();
 		/// @brief Constructor
 		void Start(float mass);
@@ -93,6 +89,10 @@ namespace LocoMotor {
 		/// @brief Gets the turn velocity of the body
 		/// @return Return a LMVector3 of turn velocity
 		LMVector3 GetTurnVelocity();
+		/// @brief Gets/Sets the angular velocity of the body
+		/// @return Return a LMVector3 of turn velocity
+		LMVector3 GetAngularVelocity();
+		void SetAngularVelocity(LMVector3 newAngularVelocity);
 		/// @brief Applies a torque impulse to the body
 		/// @param impulse the impulse to aplly
 		void ApplyTorqueImpulse(LMVector3 impulse);

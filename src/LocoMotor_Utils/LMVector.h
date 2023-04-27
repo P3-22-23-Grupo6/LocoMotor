@@ -110,7 +110,7 @@ public:
 	/// @param other The other Vector
 	LMVector3 Perpendicular(const LMVector3& other) const;
 
-	LMQuaternion& AsRotToQuaternion() const;
+	LMQuaternion AsRotToQuaternion() const;
 
 
 private:
@@ -206,7 +206,7 @@ public:
 	/// @brief Get the Forward Vector from a Quaternion
 	LMVector3 Forward() const;
 
-	LMVector3& ToEuler() const;
+	LMVector3 ToEuler() const;
 
 
 // QUATERNION TRANSFORMATIONS BETWEEN LANGUAGES

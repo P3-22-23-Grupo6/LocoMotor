@@ -12,7 +12,7 @@ using namespace FmodWrapper;
 
 AudioManager* Singleton<AudioManager>::_instance = nullptr;
 
-AudioManager::AudioManager() : AudioManager(32){ }
+AudioManager::AudioManager() : AudioManager(24){ }
 
 AudioManager::AudioManager(int numChannels) {
 	System_Create(&_sys);
@@ -21,7 +21,7 @@ AudioManager::AudioManager(int numChannels) {
 
 	float vol;
 	_main->getVolume(&vol);
-	_sys->set3DSettings(15.f, 30.f, 1.f);
+	_sys->set3DSettings(1.2f, 10.f, 2.f);
 
 	_soundLib = std::unordered_map<const char*, FMOD::Sound*>();
 }

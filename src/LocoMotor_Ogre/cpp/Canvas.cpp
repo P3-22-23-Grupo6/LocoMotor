@@ -59,13 +59,27 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 	addUIElement(im)*/;
 
 #pragma region TEMP, Mostrar texto
-	
-	Ogre::FontPtr pFont = Ogre::FontManager::getSingletonPtr()->create("MyFont.fontdef", Ogre::OverlayElement::DEFAULT_RESOURCE_GROUP);
-	pFont->setType(Ogre::FT_TRUETYPE);
-	pFont->setSource("Roboto-Thin.ttf");
-	pFont->setTrueTypeSize(16);
-	pFont->_setMaterial(Ogre::MaterialManager::getSingleton().getDefaultMaterial());
-	pFont->setTrueTypeResolution(512);
+	auto sec_name = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
+	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec_name);
+
+	auto path = genLocs.front().archive->getName();
+
+	Ogre::ResourceGroupManager &resgroup = Ogre::ResourceGroupManager::getSingleton();
+	Ogre::FontManager& fontMan = Ogre::FontManager::getSingleton();
+	fontMan.setVerbose(true);
+	resgroup.addResourceLocation(path + "/Fonts", "FileSystem", "DspaceOgre-fonts", true);
+	resgroup.initialiseResourceGroup("DspaceOgre-fonts");
+
+	auto pFont = Ogre::FontManager::getSingletonPtr()->createOrRetrieve("MyFont", "DspaceOgre-fonts");
+
+	//Ogre::FontManager::getSingletonPtr()->load("MyFont.fontdef", "OgreAutodetect");
+	//pFont->setType(Ogre::FT_TRUETYPE);
+	//pFont->setSource("BrunoAceSC-Regular.ttf");
+	//pFont->
+	//pFont->
+	//pFont->setTrueTypeSize(16);
+	//pFont->_setMaterial(Ogre::MaterialManager::getSingleton().getDefaultMaterial());
+	//pFont->setTrueTypeResolution(512);
 
 	//Ogre::GlyphInfo a = Ogre::GlyphInfo();
 	//a.uvRect = Ogre::Font::UVRect(1, 1, 1, 1);
@@ -75,7 +89,7 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 	//a.bearing = 1.f;
 	//pFont->setGlyphInfo(a);
 
-	pFont->load();
+	//pFont->load();
 
 	/*UIText* tXT = new UIText("Hola", "MyFont.fontdef");
 	addUIElement(tXT);*/

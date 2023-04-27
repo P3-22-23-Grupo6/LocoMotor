@@ -276,6 +276,34 @@ enum LMScanCode {
     LMKS_MODE = 257,
 };
 
+//Enum to define controller button codes
+///@brief Controller button codes
+enum LMControllerButtons {
+	LMC_A = 0,
+	LMC_B = 1,
+	LMC_X = 2,
+	LMC_Y = 3,
+	LMC_BACK = 4,
+	LMC_GUIDE = 5,
+	LMC_START = 6,
+	LMC_LEFTSTICK = 7,
+	LMC_RIGHTSTICK = 8,
+	LMC_LEFTSHOULDER = 9,
+	LMC_RIGHTSHOULDER = 10,
+	LMC_DPAD_UP = 11,
+	LMC_DPAD_DOWN = 12,
+	LMC_DPAD_LEFT = 13,
+	LMC_DPAD_RIGHT = 14,
+	LMC_MISC1 = 15,
+	LMC_PADDLE1 = 16,
+	LMC_PADDLE2 = 17,
+	LMC_PADDLE3 = 18,
+	LMC_PADDLE4 = 19,
+	LMC_TOUCHPAD = 20,
+	LMC_MAX = 21,
+    
+};
+
 
 
 #endif
