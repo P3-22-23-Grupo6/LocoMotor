@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <stdio.h>
+#include "Singleton.h"
 
 
 //forma distinta para guardar los mensajes
@@ -11,13 +12,14 @@
 //};
 
 
-class LogSystem {
+class LogSystem : public Singleton<LogSystem> {
+	friend Singleton<LogSystem>;
+
 public:
-	LogSystem();
 
 	~LogSystem();
 
-	void Init();
+	void Initialize();
 	void FileClose();
 
 	void Save(int type, std::string message);
@@ -27,6 +29,7 @@ public:
 private:
 
 	FILE* _file;
+	LogSystem();
 
 	//ThingsToSave messages;
 

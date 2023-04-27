@@ -4,12 +4,13 @@
 #include "OgreOverlay.h"
 #include "OgreOverlayContainer.h"
 #include "OgreTextAreaOverlayElement.h"
+#include <iostream>
 //#include "OgreFont.h"
 
 
 OgreWrapper::UIText::UIText() : UIElement() {
 
-    _uFont = "MyFont.fontdef";
+    _uFont = "";
     _uTxtName = "New Text";
     //_txtElem = static_cast<Ogre::TextAreaOverlayElement*>(
     //       _overlayMngr->createOverlayElement("TextArea", "UITextElem" + std::to_string(_numOfUIElements)));
@@ -54,7 +55,7 @@ bool OgreWrapper::UIText::Init() {
     _txtElem->setCharHeight(0.25);
     _txtElem->setPosition(0.5, 0);
     _txtElem->setDimensions(defaultW, defaultH);
-    _txtElem->setFontName(_uFont);
+    //_txtElem->setFontName(_uFont);
 
     //_txtElem->setFontName(font.get()->getName());
     _txtElem->setColourBottom(Ogre::ColourValue::Black);
@@ -84,8 +85,12 @@ void OgreWrapper::UIText::ChangeText(std::string newtxt) {
 }
 
 void OgreWrapper::UIText::SetFont(std::string nfont) {
-    _txtElem->getFont()->setSource(nfont);
-    _txtElem->getFont()->load();
+    try {
+        _txtElem->setFontName(nfont);
+    }
+    catch (const char*) {
+        std::cout << "Couldn't change to font " + nfont << std::endl;
+    }
 }
 
 void OgreWrapper::UIText::AlignCenter() {
