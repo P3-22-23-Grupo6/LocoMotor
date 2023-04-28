@@ -72,6 +72,34 @@ float OgreWrapper::Node::GetPosition_Z() {
 	return _node->getPosition().z;
 }
 
+float OgreWrapper::Node::GetRotation_W() {
+	return _node->getOrientation().w;
+}
+
+float OgreWrapper::Node::GetRotation_X() {
+	return _node->getOrientation().x;
+}
+
+float OgreWrapper::Node::GetRotation_Y() {
+	return _node->getOrientation().y;
+}
+
+float OgreWrapper::Node::GetRotation_Z() {
+	return _node->getOrientation().z;
+}
+
+float OgreWrapper::Node::GetScale_X() {
+	return _node->getScale().x;
+}
+
+float OgreWrapper::Node::GetScale_Y() {
+	return _node->getScale().y;
+}
+
+float OgreWrapper::Node::GetScale_Z() {
+	return _node->getScale().z;
+}
+
 void OgreWrapper::Node::SetScale(float x, float y, float z) {
 	_node->setScale(x, y, z);
 }

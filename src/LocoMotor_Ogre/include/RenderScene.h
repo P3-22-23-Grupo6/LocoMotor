@@ -10,8 +10,11 @@ namespace Ogre {
 	class Camera;
 	class Viewport;
 	class SimpleSpline;
+	class StaticGeometry;
 }
 
+class LMVector3;
+class LMQuaternion;
 
 namespace OgreWrapper {
 
@@ -63,7 +66,7 @@ namespace OgreWrapper {
 
 		Light* CreateLight();
 		Renderer3D* CreateRenderer(std::string mesh);
-		Renderer3D* CreateStaticRenderer(std::string mesh);
+		OgreWrapper::Renderer3D* CreateStaticRenderer(std::string mesh, OgreWrapper::Node* meshNode);
 		Camera* CreateCamera(std::string mesh);
 
 		void SetActiveCamera(Camera* cam);
@@ -78,6 +81,8 @@ namespace OgreWrapper {
 		std::map<std::string, Node*> _sceneStructure;
 
 		Canvas* _canvas;
+
+		Ogre::StaticGeometry* _stGeom;
 	};
 }
 #endif

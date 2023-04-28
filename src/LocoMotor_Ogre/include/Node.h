@@ -68,6 +68,27 @@ namespace OgreWrapper {
 		float GetPosition_Z();
 
 		/// <summary>
+		/// Gets the rotation.
+		/// </summary>
+		/// <param name="x">X position</param>
+		/// <param name="y">Y position</param>
+		/// <param name="z">Z positiontion</param>
+		float GetRotation_W();
+		float GetRotation_X();
+		float GetRotation_Y();
+		float GetRotation_Z();
+
+		/// <summary>
+		/// Gets the position.
+		/// </summary>
+		/// <param name="x">X position</param>
+		/// <param name="y">Y position</param>
+		/// <param name="z">Z positiontion</param>
+		float GetScale_X();
+		float GetScale_Y();
+		float GetScale_Z();
+
+		/// <summary>
 		/// Sets the scale of the node.
 		/// </summary>
 		/// <param name="x">X scale factor</param>

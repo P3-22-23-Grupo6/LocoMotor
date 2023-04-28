@@ -86,7 +86,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	positionText_gObj->AddComponent("UITextLM");
 	positionText_gObj->GetComponent<UITextLM>()->SetPosition(0.45, .9);
 	positionText_gObj->GetComponent<UITextLM>()->AlignRight();
-	positionText_gObj->GetComponent<UITextLM>()->ChangeText("1ºst");
+	positionText_gObj->GetComponent<UITextLM>()->ChangeText("1ï¿½st");
 	positionText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
 	positionText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
 	positionText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
@@ -108,7 +108,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	waterPlane->AddComponent("MeshRenderer");
 	waterPlane->GetComponent<MeshRenderer>()->Start("waterPlane", "WaterPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
 	//waterPlane->AddComponent("RigidBodyComponent");
-	//waterPlane->GetComponent<RigidBodyComponent>()->Start(0);ç
+	//waterPlane->GetComponent<RigidBodyComponent>()->Start(0);ï¿½
 	
 	//Boost
 	auto boost = _mScene->AddGameobject("boost");
@@ -128,20 +128,27 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "TrackMain.mesh", "");
 	trackMain->AddComponent("RigidBodyComponent");
 	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
-	//Track Border No Coll
-	auto trackBorder = _mScene->AddGameobject("trackBorder");
-	trackBorder->AddComponent("Transform");
-	trackBorder->AddComponent("MeshRenderer");
-	trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");
-	trackBorder->AddComponent("RigidBodyComponent");
-	trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
-	//Collision
-	auto Debug01 = _mScene->AddGameobject("Debug01");
-	Debug01->AddComponent("Transform");
-	Debug01->AddComponent("MeshRenderer");
-	Debug01->GetComponent<MeshRenderer>()->Start("Debug01", "Debug_c.mesh", "");
-	Debug01->AddComponent("RigidBodyComponent");
-	Debug01->GetComponent<RigidBodyComponent>()->Start(0);
+	
+	auto extraMain = _mScene->AddGameobject("extraMain");
+	extraMain->AddComponent("Transform");
+	extraMain->AddComponent("MeshRenderer");
+	extraMain->GetComponent<MeshRenderer>()->Start("extraMain", "SafeExport.mesh", "", true);
+	//extraMain->AddComponent("RigidBodyComponent");
+	//extraMain->GetComponent<RigidBodyComponent>()->Start(0);
+	////Track Border No Coll
+	//auto trackBorder = _mScene->AddGameobject("trackBorder");
+	//trackBorder->AddComponent("Transform");
+	//trackBorder->AddComponent("MeshRenderer");
+	//trackBorder->GetComponent<MeshRenderer>()->Start("trackBorder", "TrackBorder.mesh", "");
+	//trackBorder->AddComponent("RigidBodyComponent");
+	//trackBorder->GetComponent<RigidBodyComponent>()->Start(0);
+	////Collision
+	//auto Debug01 = _mScene->AddGameobject("Debug01");
+	//Debug01->AddComponent("Transform");
+	//Debug01->AddComponent("MeshRenderer");
+	//Debug01->GetComponent<MeshRenderer>()->Start("Debug01", "Debug_c.mesh", "");
+	//Debug01->AddComponent("RigidBodyComponent");
+	//Debug01->GetComponent<RigidBodyComponent>()->Start(0);
 #pragma region palmTrees
 	auto palmTree = _mScene->AddGameobject("PalmTree00");
 	palmTree->AddComponent("Transform");
@@ -296,8 +303,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackMain->SetPosition(LMVector3(0, -3, -100));
 	boost->SetPosition(LMVector3(80, 0, -120));
 	//boost->SetScale(LMVector3(50,50,50));
-	trackBorder->SetPosition(LMVector3(0, -3, -100));
-	Debug01->SetPosition(LMVector3(0, -3, -100));
+	//trackBorder->SetPosition(LMVector3(0, -3, -100));
+	//Debug01->SetPosition(LMVector3(0, -3, -100));
 	palmTree->SetPosition(LMVector3(-50, 0, -85));
 	//palmTree01->SetPosition(LMVector3(40, 0, -50));
 	palmTree02->SetPosition(LMVector3(60, 0, -200));
@@ -324,8 +331,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	map->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
-	trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
-	Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
+	//trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
+	//Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	boost->GetComponent<RigidBodyComponent>()->beATrigger();
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 #pragma endregion

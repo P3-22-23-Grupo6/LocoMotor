@@ -11,6 +11,7 @@
 #include <OgreSceneNode.h>
 #include <OgreViewport.h>
 #include <OgreEntity.h>
+#include "OgreStaticGeometry.h"
 #include <OgreShaderGenerator.h>
 #include <iostream>
 #include <Ogre.h>
@@ -22,6 +23,7 @@ OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_root = new OgreWrapper::Node(scene->getRootSceneNode());
 	_canvas = new OgreWrapper::Canvas();
 	_canvas->Init(_manager);
+	_stGeom = _manager->createStaticGeometry("st");
 	//OverlayManager::getSingleton().createOverlayElement("Panel", "myNewPanel");
 }
 
@@ -96,10 +98,22 @@ OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer(std::string me
 	return new Renderer3D(_manager->createEntity(mesh));
 }
 
-OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::string mesh) {
-	return new Renderer3D(_manager->createStaticGeometry(mesh));
+OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::string mesh, OgreWrapper::Node* meshNode) {
+	auto ent = _manager->createEntity(mesh);
+	/*if (!_stGeom) {
+	}*/
+	_stGeom->addEntity(ent, Ogre::Vector3(meshNode->GetPosition_X(), 
+					   meshNode->GetPosition_Y(), 
+					   meshNode->GetPosition_Z()), 
+					   Ogre::Quaternion(meshNode->GetRotation_W(),
+					   meshNode->GetRotation_X(),
+					   meshNode->GetRotation_Y(),
+					   meshNode->GetRotation_Z()),
+					   Ogre::Vector3(meshNode->GetScale_X(),
+					   meshNode->GetScale_Y(),
+					   meshNode->GetScale_Z()));
+	return new Renderer3D(ent);
 }
-
 
 OgreWrapper::Camera* OgreWrapper::RenderScene::CreateCamera(std::string name) {
 	return new Camera(_manager->createCamera(name));

@@ -7,6 +7,7 @@
 #include "Scene.h"
 #include "GameObject.h"
 #include "LMVector.h"
+#include "Transform.h"
 using namespace LocoMotor;
 
 LocoMotor::MeshRenderer::MeshRenderer()
@@ -25,8 +26,10 @@ LocoMotor::MeshRenderer::MeshRenderer()
 void MeshRenderer::Start() {
 	_rndScn = gameObject->GetScene()->GetRender();
 	_nod = _rndScn->GetNode(_name);
-	//_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src) : _rndScn->CreateRenderer(_src);
-	_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
+	const auto& aux = gameObject->GetTransform();
+	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _nod) : _rndScn->CreateRenderer(_src);
+	//_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
+
 	_nod->Attach(_rend3D);
 	//_rend3D->SetMaterial(_mat); TEMPORAL!
 	//gameObject->SetRenderer(_rend3D);

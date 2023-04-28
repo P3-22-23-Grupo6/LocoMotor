@@ -5,6 +5,7 @@ OgreWrapper::Renderer3D::Renderer3D(Ogre::Entity* rend) {
 	_mesh = rend;
 	_mesh->getMesh();
 }
+
 OgreWrapper::Renderer3D::Renderer3D(Ogre::StaticGeometry* rend) {
 	//_mesh = rend;
 	//_mesh->getMesh();
