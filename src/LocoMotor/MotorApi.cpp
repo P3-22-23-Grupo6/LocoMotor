@@ -289,7 +289,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 #pragma endregion
 
-	_scnManager->ChangeScene("Escena");
+	_scnManager->StartScene(_mScene);
 
 	ship_gObj->SetPosition(LMVector3(0, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
@@ -379,8 +379,8 @@ void MotorApi::MainLoop() {
 		_scnManager->Update();
 		//std::cout << _scnManager->GetDelta();
 	}
-	PhysicsManager::Clear();
 	SceneManager::Clear();
+	PhysicsManager::Clear();
 	FmodWrapper::AudioManager::Clear();
 	OgreWrapper::OgreManager::Clear();
 	ScriptManager::Clear();
