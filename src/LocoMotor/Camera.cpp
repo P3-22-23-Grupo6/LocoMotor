@@ -51,8 +51,8 @@ void LocoMotor::Camera::SetTarget(GameObject* target, LMVector3 offset) {
 	_offset = offset;
 }
 
-void LocoMotor::Camera::SetTracking(bool isTracking, GameObject* target, LMVector3 offset) {
-
+void LocoMotor::Camera::SetClippingPlane(int nearPlane, int farPlane) {
+	cam->SetClippingPlane(nearPlane, farPlane);
 }
 
 void LocoMotor::Camera::SetFOV(float newFov) {

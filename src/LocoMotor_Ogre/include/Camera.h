@@ -23,6 +23,8 @@ namespace OgreWrapper {
 		void SetAspectRatio(Ogre::Real ratio);
 		//Cambia el FieldOfView de Ogre Camera por defecto(en radianes, de 1-1.6~aprox.)
 		void SetFOV(float newFOV);//Ogre::Radian radians);
+		void SetTracking(bool shouldTrack, Ogre::SceneNode* nodeToTrack, const Ogre::Vector3& offset);//Ogre::Radian radians);
+		void SetClippingPlane(Ogre::Real nearDis, Ogre::Real farDis);//Ogre::Radian radians);
 		void Render();
 
 	private:

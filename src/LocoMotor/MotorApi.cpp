@@ -272,9 +272,11 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
 	_mScene->GetCamera()->GetComponent<Camera>()->SetFOV(60);
+	_mScene->GetCamera()->GetComponent<Camera>()->SetClippingPlane(1, 8000);
 
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
+	skyboxMesh->SetScale(LMVector3::LMVector3(0.7f, 0.7f, 0.7f));
 	//trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	//Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	boost->GetComponent<RigidBodyComponent>()->beATrigger();

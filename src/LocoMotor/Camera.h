@@ -34,7 +34,8 @@ namespace LocoMotor {
 
 		void SetTarget(GameObject* target, LMVector3 offset);
 		//Metodo de Ogre para Trackear una entidad(player)
-		void SetTracking(bool isTracking, GameObject* target, LMVector3 offset);
+		//void SetTracking(bool isTracking, GameObject* target, LMVector3 offset);
+		void SetClippingPlane(int nearPlane, int farPlane);
 		void SetFOV(float newFov);
 
 	private:

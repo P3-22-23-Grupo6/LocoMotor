@@ -12,8 +12,6 @@ int OgreWrapper::Camera::_zOrder = 0;
 
 OgreWrapper::Camera::Camera(Ogre::Camera* camera, int cameraMode) {
 	_mCamera = camera;
-	_mCamera->setNearClipDistance(1);
-	_mCamera->setFarClipDistance(10000);
 	_mCamera->setAutoAspectRatio(true);
 	//mCamera->setPolygonMode(Ogre::PM_WIREFRAME);
 	_mZOrder = Camera::_zOrder;
@@ -52,6 +50,14 @@ void OgreWrapper::Camera::SetAspectRatio(Ogre::Real ratio) {
 
 void OgreWrapper::Camera::SetFOV(float newFOV) {
 	_mCamera->setFOVy(Ogre::Radian(newFOV*3.14f/180));//Conversion Provisional, meter en LMVector o LMQuaternion
+}
+
+void OgreWrapper::Camera::SetTracking(bool shouldTrack, Ogre::SceneNode* nodeToTrack, const Ogre::Vector3& offset) {
+}
+
+void OgreWrapper::Camera::SetClippingPlane(Ogre::Real nearDis, Ogre::Real farDis) {
+	_mCamera->setNearClipDistance(nearDis);
+	_mCamera->setFarClipDistance(farDis);
 }
 
 void OgreWrapper::Camera::Render() {
