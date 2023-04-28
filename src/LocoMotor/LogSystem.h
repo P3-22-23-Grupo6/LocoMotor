@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _LOGSYSTEM_
+#define _LOGSYSTEM_
 #include <fstream>
 #include <vector>
 #include <stdio.h>
@@ -11,27 +13,29 @@
 //	std::vector<std::string> others;
 //};
 
+namespace LocoMotor {
+	class LogSystem : public LocoMotor::Singleton<LogSystem> {
+		friend LocoMotor::Singleton<LogSystem>;
 
-class LogSystem : public Singleton<LogSystem> {
-	friend Singleton<LogSystem>;
+	public:
 
-public:
+		~LogSystem();
 
-	~LogSystem();
+		void Initialize();
+		void FileClose();
 
-	void Initialize();
-	void FileClose();
-
-	void Save(int type, std::string message);
+		void Save(int type, std::string message);
 
 
 
-private:
+	private:
 
-	FILE* _file;
-	LogSystem();
+		FILE* _file;
+		LogSystem();
 
-	//ThingsToSave messages;
+		//ThingsToSave messages;
 
-};
+	};
+}
 
+#endif

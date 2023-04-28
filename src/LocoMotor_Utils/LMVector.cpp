@@ -5,6 +5,7 @@
 #include <cmath>
 //#include "btBulletDynamicsCommon.h"
 //Vector class to be used with LocoMotor
+using namespace LocoMotor;
 
 // Default constructor initializes vector to (0, 0, 0)
 LMVector3::LMVector3() : _x(0), _y(0), _z(0) {

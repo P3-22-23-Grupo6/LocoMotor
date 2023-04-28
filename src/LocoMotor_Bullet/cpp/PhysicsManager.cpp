@@ -6,6 +6,7 @@
 #include "LMVector.h"
 #include "RaycastCallBack.h"
 using namespace PhysicsWrapper;
+using namespace LocoMotor;
 PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
 
 PhysicsManager::PhysicsManager() {

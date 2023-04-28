@@ -157,7 +157,7 @@ void LocoMotor::Transform::Start() {
 void LocoMotor::Transform::Update(const float dt) {
 }
 
-const LMVector3& LocoMotor::Transform::GetPosition() {
+const LocoMotor::LMVector3& LocoMotor::Transform::GetPosition() {
 	return _position;
 }
 
@@ -166,7 +166,7 @@ void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
 	SetPhysPosition(newPosition);
 }
 
-const LMQuaternion& LocoMotor::Transform::GetRotation() {
+const LocoMotor::LMQuaternion& LocoMotor::Transform::GetRotation() {
 	return _direction;
 }
 
@@ -175,7 +175,7 @@ void LocoMotor::Transform::SetRotation(const LMQuaternion& newRotation) {
 	SetPhysRotation(newRotation);
 }
 
-const LMVector3& LocoMotor::Transform::GetEulerRotation() {
+const LocoMotor::LMVector3& LocoMotor::Transform::GetEulerRotation() {
 	return _directionEuler;
 }
 
@@ -184,7 +184,7 @@ void LocoMotor::Transform::SetEulerRotation(const LMVector3& newRotation) {
 	SetPhysEulerRotation(newRotation);
 }
 
-const LMVector3& LocoMotor::Transform::GetSize() {
+const LocoMotor::LMVector3& LocoMotor::Transform::GetSize() {
 	return _scale;
 }
 

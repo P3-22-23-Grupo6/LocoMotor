@@ -6,6 +6,7 @@
 
 #include "windows.h"
 #include "MotorApi.h"
+using namespace LocoMotor;
 
 
 // typedef de los metodos que vamos a encontrar en la dll del Juego

@@ -15,7 +15,7 @@
 #include "SGTechniqueResolverListener.h"
 #include "OgreManager.h"
 
-
+using namespace LocoMotor;
 
 OgreWrapper::OgreManager* Singleton<OgreWrapper::OgreManager>::_instance = nullptr;
 

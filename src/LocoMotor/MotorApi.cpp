@@ -7,7 +7,7 @@
 #include "InputManager.h"
 #include "CheckML.h"
 #include "PhysicsManager.h"
-#include "lmVector.h"
+
 #include "RenderScene.h"
 #include "SceneManager.h"
 #include "GameObject.h"
@@ -28,6 +28,7 @@
 #include "UIImageLM.h"
 #include "UITextLM.h"
 #include "ScriptManager.h"
+#include "LMVector.h"
 //#include <tweeners/builder.hpp>
 //#include <tweeners/easing.hpp>
 //#include <tweeners/system.hpp>

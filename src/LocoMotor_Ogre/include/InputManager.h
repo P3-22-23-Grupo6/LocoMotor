@@ -13,7 +13,7 @@
 #include <array>
 #include "Singleton.h"
 
-enum LMScanCode;
+
 
 union SDL_Event;
 
@@ -22,6 +22,7 @@ typedef struct _SDL_GameController SDL_GameController;
 
 
 namespace LocoMotor {
+	enum LMScanCode;
 	class MOTOR_API InputManager : public Singleton<InputManager> {
 		friend Singleton<InputManager>;
 	public:

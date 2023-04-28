@@ -1,6 +1,9 @@
 //#include "common.h"
 #include "MeshStrider.h"
 #include "Ogre.h"
+
+using namespace LocoMotor;
+
 int MeshStrider::getNumSubParts() const {
     size_t ret = mMesh->getNumSubMeshes();
     assert(ret > 0);

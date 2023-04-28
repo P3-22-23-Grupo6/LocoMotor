@@ -1,5 +1,5 @@
 #include "LogSystem.h"
-
+using namespace LocoMotor;
 LogSystem* Singleton<LogSystem>::_instance = nullptr;
 
 LogSystem::LogSystem() {

@@ -11,10 +11,12 @@
 namespace Ogre {
 	class SimpleSpline;
 }
-class LMVector3;
+
 
 namespace LocoMotor {
+	class LMVector3;
 	class MOTOR_API Spline {
+
 	public:
 		Spline(bool DebugMode = false);
 		~Spline();

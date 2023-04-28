@@ -4,8 +4,10 @@
 #include <vector>
 #include <btBulletDynamicsCommon.h>
 #include "Singleton.h"
-#include "lmVector.h"
-class MeshStrider;
+#include "LMVector.h"
+namespace LocoMotor {
+	class MeshStrider;
+}
 namespace PhysicsWrapper {
 	/// @brief Info to create a RigidBody
 	/// @param type 1=BoxShape, 2=SphereShape, 3=CapsuleShapeZ
@@ -32,22 +34,22 @@ namespace PhysicsWrapper {
 	/// @param hitVNormal The normal vector of the surface hit
 	struct RaycastInfo {
 		bool hasHit;
-		LMVector3 hitPos;
-		LMVector3 hitVNormal;
+		LocoMotor::LMVector3 hitPos;
+		LocoMotor::LMVector3 hitVNormal;
 
 		RaycastInfo();
 	};
 
 	class BulletRigidBody;
-	class PhysicsManager : public Singleton<PhysicsWrapper::PhysicsManager> {
-		friend Singleton<PhysicsWrapper::PhysicsManager>;
+	class PhysicsManager : public LocoMotor::Singleton<PhysicsWrapper::PhysicsManager> {
+		friend LocoMotor::Singleton<PhysicsWrapper::PhysicsManager>;
 	public:
 		/// @brief Update the physics world , steps the physic simulation
 		void Update(float dT);
 		/// @brief Create the rigidBody with the info given
 		/// @param info The information to build the rigidBody
 		/// @return The BulletRigidBody pointer created
-		btRigidBody* CreateRigidBody(RigidBodyInfo info, MeshStrider* ms=nullptr);
+		btRigidBody* CreateRigidBody(RigidBodyInfo info, LocoMotor::MeshStrider* ms = nullptr);
 		/// @brief Add the RigidBody to the physics world
 		/// @param rb The pointer of the rigidbody
 		void RemoveRigidBodyFromWorld(btRigidBody* rb);
@@ -61,7 +63,7 @@ namespace PhysicsWrapper {
 		void setContactProcessCallback(ContactProcessedCallback funtion);
 		void setContactEndedCallback(ContactEndedCallback funtion);
 
-		RaycastInfo createRaycast(LMVector3 from, LMVector3 direction);
+		RaycastInfo createRaycast(LocoMotor::LMVector3 from, LocoMotor::LMVector3 direction);
 
 	private:
 		//Configuraciones para crear el mundo físico
