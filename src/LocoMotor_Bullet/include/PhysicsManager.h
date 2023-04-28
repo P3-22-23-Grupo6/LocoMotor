@@ -62,6 +62,7 @@ namespace PhysicsWrapper {
 		void setContactEndedCallback(ContactEndedCallback funtion);
 
 		RaycastInfo createRaycast(LMVector3 from, LMVector3 direction);
+		void DeleteBody();
 
 	private:
 		//Configuraciones para crear el mundo físico

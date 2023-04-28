@@ -30,7 +30,7 @@ namespace LocoMotor {
 		void Render();
 
 		//?
-		void Deactivate();
+		void DeActivate();
 
 		//Activate
 

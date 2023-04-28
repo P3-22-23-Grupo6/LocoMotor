@@ -10,6 +10,7 @@
 #include "ParticleSystem.h"
 #include "GameObject.h"
 
+
 using namespace LocoMotor;
 Scene::Scene(std::string nombre) {
 	_name = nombre;
@@ -123,8 +124,13 @@ void Scene::Render() {
 }
 
 //?
-void Scene::Deactivate() {
+void Scene::DeActivate() {
 	_isActiveScene = false;
+	std::unordered_map<std::string, GameObject*>::iterator it;
+	for (it = _gameObjList.begin(); it != _gameObjList.end(); it = _gameObjList.erase(it)) {
+		delete it->second;
+	}
+
 }
 
 
