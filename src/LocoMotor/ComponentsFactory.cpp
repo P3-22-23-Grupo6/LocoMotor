@@ -1,6 +1,6 @@
 #include "ComponentsFactory.h"
 
-LocoMotor::ComponentsFactory* Singleton<LocoMotor::ComponentsFactory>::_instance = nullptr;
+LocoMotor::ComponentsFactory* LocoMotor::Singleton<LocoMotor::ComponentsFactory>::_instance = nullptr;
 
 LocoMotor::ComponentsFactory::ComponentsFactory() {
 }

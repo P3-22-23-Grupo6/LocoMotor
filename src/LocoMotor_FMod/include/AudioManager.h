@@ -17,9 +17,9 @@ namespace FmodWrapper {
 	class AudioSource;
 	class AudioListener;
 
-	class AudioManager : public Singleton<FmodWrapper::AudioManager> {
+	class AudioManager : public LocoMotor::Singleton<FmodWrapper::AudioManager> {
 
-		friend Singleton<FmodWrapper::AudioManager>;
+		friend LocoMotor::Singleton<FmodWrapper::AudioManager>;
 
 	public:
 		~AudioManager();

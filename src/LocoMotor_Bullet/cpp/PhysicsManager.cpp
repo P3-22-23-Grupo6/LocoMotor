@@ -6,6 +6,7 @@
 #include "LMVector.h"
 #include "RaycastCallBack.h"
 using namespace PhysicsWrapper;
+using namespace LocoMotor;
 PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
 
 PhysicsManager::PhysicsManager() {
@@ -135,6 +136,7 @@ PhysicsWrapper::RigidBodyInfo::RigidBodyInfo() {
 	capsuleHeight = 0.f;
 	origin = btVector3();
 	mass = 0.f;
+
 }
 
 PhysicsWrapper::RaycastInfo::RaycastInfo() {

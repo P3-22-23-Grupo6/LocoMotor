@@ -12,9 +12,9 @@ namespace OgreWrapper {
 	class Node;
 	class RenderScene;
 }
-class LMVector3;
+
 namespace LocoMotor {
-	
+	class LMVector3;
 	class GameObject;
 	class MOTOR_API MeshRenderer: public Component {
 	public:

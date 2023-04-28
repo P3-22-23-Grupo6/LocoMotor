@@ -21,8 +21,8 @@ namespace OgreWrapper {
 		Ogre::RenderWindow* render = nullptr;
 		SDL_Window* native = nullptr;
 	};
-	class OgreManager : public Singleton<OgreManager> {
-		friend Singleton<OgreManager>;
+	class OgreManager : public LocoMotor::Singleton<OgreManager> {
+		friend LocoMotor::Singleton<OgreManager>;
 	public:
 		/// <summary>
 		/// Creates a scene.

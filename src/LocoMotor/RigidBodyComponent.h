@@ -7,15 +7,15 @@
 #define MOTOR_API __declspec(dllimport)
 #endif
 #include "Component.h"
-class LMVector3;
-class LMQuaternion;
 class btRigidBody;
-class MeshStrider;
 namespace PhysicsWrapper {
 	struct RigidBodyInfo;
 	class BulletRigidBody;
 }
 namespace LocoMotor {
+	class LMVector3;
+	class LMQuaternion;
+	class MeshStrider;
 	class MOTOR_API RigidBodyComponent : public Component {
 	public:
 		RigidBodyComponent();

@@ -9,6 +9,7 @@
 
 using namespace FMOD;
 using namespace FmodWrapper;
+using namespace LocoMotor;
 
 AudioManager* Singleton<AudioManager>::_instance = nullptr;
 
