@@ -4,6 +4,7 @@
 #include <OgreRenderWindow.h>
 #include <OgreGpuProgramManager.h>
 #include <OgreShaderGenerator.h>
+#include <OgreOverlaySystem.h>
 //SDL includes
 #include <SDL.h>
 #include <SDL_video.h>
@@ -26,7 +27,10 @@ OgreWrapper::OgreManager::OgreManager(std::string name) {
 
 	_root = new Ogre::Root();
 	_root->showConfigDialog(nullptr);
+	_ovrSys = new Ogre::OverlaySystem();
 	_root->initialise(false);
+
+
 	InitWindow(name);
 	LoadResources();
 }
@@ -44,6 +48,7 @@ OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene(std::string name
 
 	OgreWrapper::RenderScene* sc;
 	Ogre::SceneManager* sM = _root->createSceneManager();
+	sM->addRenderQueueListener(_ovrSys);
 	sc = new OgreWrapper::RenderScene(sM);
 	_scenes.insert({ name, sc });
 	if (_activeScene == nullptr) _activeScene = sc;
@@ -63,7 +68,6 @@ void OgreWrapper::OgreManager::Render() {
 	if (_activeScene == nullptr) return;
 	_activeScene->Render();
 	_root->renderOneFrame();
-
 }
 
 Ogre::RenderWindow* OgreWrapper::OgreManager::GetRenderWindow() {
@@ -112,6 +116,10 @@ void OgreWrapper::OgreManager::LoadResources() {
 	Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/materials", type_name, sec_name);
 
 	Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/GLSL", type_name, sec_name);
+
+	Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch_name + "/Fonts", "FileSystem", "DspaceOgre-fonts", true);
+	Ogre::ResourceGroupManager::getSingleton().initialiseResourceGroup("DspaceOgre-fonts");
+
 	Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 
 	if (Ogre::RTShader::ShaderGenerator::initialize()) {
@@ -173,6 +181,7 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow(std::string n
 
 
 void OgreWrapper::OgreManager::Shutdown() {
+
 	// Restore default scheme.
 	Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 
@@ -193,6 +202,7 @@ void OgreWrapper::OgreManager::Shutdown() {
 		if (it->second = _activeScene) {
 			_activeScene = nullptr;
 		}
+		it->second->GetMan()->removeRenderQueueListener(_ovrSys);
 		_root->destroySceneManager(it->second->GetMan());
 		delete it->second;
 	}
@@ -207,9 +217,7 @@ void OgreWrapper::OgreManager::Shutdown() {
 		SDL_QuitSubSystem(SDL_INIT_VIDEO);
 		_mWindow.native = nullptr;
 	}
-
-
-
+	delete Ogre::OverlaySystem::getSingletonPtr();
 	delete _root;
 	_root = nullptr;
 }

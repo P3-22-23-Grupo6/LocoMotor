@@ -5,8 +5,11 @@
 #include "OgreOverlay.h"
 #include "OgreOverlayContainer.h"
 #include "OgreOverlayManager.h"
+#include "OgreOverlaySystem.h"
 #include "OgreImage.h"
 #include "OgreRenderWindow.h"
+#include "Canvas.h"
+#include "RenderScene.h"
 #include <OgreRoot.h>
 
 using namespace OgreWrapper;
@@ -16,18 +19,23 @@ using namespace OgreWrapper;
 unsigned int OgreWrapper::UIElement::_numOfUIElements = 0;
 
 OgreWrapper::UIElement::UIElement() {
-	_overlay = nullptr;
 	_container = nullptr;
 	_overlayMngr = Ogre::OverlayManager::getSingletonPtr();
 	_numOfUIElements++;
 }
 
 OgreWrapper::UIElement::~UIElement() {
-
+	_overlayMngr->destroyOverlayElement(_container);
 }
 
-bool OgreWrapper::UIElement::Init() {
-
+bool OgreWrapper::UIElement::Init(const std::string& sceneName) {
+	_container = static_cast<Ogre::OverlayContainer*>(_overlayMngr->createOverlayElement("Panel", "UIContainer" + std::to_string(_numOfUIElements)));
+	_container->initialise();
+	_container->setMetricsMode(Ogre::GMM_RELATIVE);
+	//_container->setMaterialName(Ogre::MaterialManager::getSingleton().getDefaultMaterial()->getName());
+	_container->setPosition(defaultX, defaultY);
+	_container->setDimensions(defaultW, defaultH);
+	OgreManager::GetInstance()->GetScene(sceneName)->GetCanvas()->addUIElement(this);
 	return false;
 }
 
@@ -49,6 +57,10 @@ void OgreWrapper::UIElement::Hide() {
 
 bool OgreWrapper::UIElement::GetInteractive() {
 	return _isInteractive;
+}
+
+Ogre::OverlayContainer* OgreWrapper::UIElement::GetElement() {
+	return _container;
 }
 
 void OgreWrapper::UIElement::SetInteractive(bool interactive) {

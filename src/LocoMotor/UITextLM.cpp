@@ -1,6 +1,7 @@
 #include "UITextLM.h"
-
 #include "UIText.h"
+#include "GameObject.h"
+#include "Scene.h"
 
 
 using namespace LocoMotor;
@@ -23,7 +24,7 @@ LocoMotor::UITextLM::~UITextLM() {
 
 void LocoMotor::UITextLM::InitComponent() {
 	_uTxt = new OgreWrapper::UIText();
-	_uTxt->Init();
+	_uTxt->Init(gameObject->GetScene()->GetSceneName());
 }
 
 void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>& params) {

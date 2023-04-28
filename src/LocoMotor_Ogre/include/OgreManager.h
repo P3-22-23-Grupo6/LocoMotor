@@ -8,6 +8,7 @@
 namespace Ogre {
 	class Root;
 	class RenderWindow;
+	class OverlaySystem;
 	namespace RTShader {
 		class ShaderGenerator;
 	}
@@ -70,6 +71,8 @@ namespace OgreWrapper {
 		OgreWrapper::RenderScene* _activeScene;
 
 		Ogre::RTShader::ShaderGenerator* _mShaderGenerator;
+
+		Ogre::OverlaySystem* _ovrSys;
 
 		/// <summary>
 		/// Creates a new OgreManager.

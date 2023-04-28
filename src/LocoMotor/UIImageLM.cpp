@@ -2,7 +2,8 @@
 #include "UIImage.h"
 #include "InputManager.h"
 #include "OgreManager.h"
-
+#include "GameObject.h"
+#include "Scene.h"
 
 using namespace LocoMotor;
 
@@ -23,7 +24,7 @@ LocoMotor::UIImageLM::~UIImageLM() {
 
 void LocoMotor::UIImageLM::InitComponent() {
 	_uimg = new OgreWrapper::UIImage();
-	_uimg->Init();
+	_uimg->Init(gameObject->GetScene()->GetSceneName());
 }
 
 void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>& params) {

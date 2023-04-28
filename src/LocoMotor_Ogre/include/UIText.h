@@ -19,9 +19,9 @@ namespace OgreWrapper {
 	public:
 		UIText();
 		//UIText(std::string txtName, Ogre::FontPtr font);
-		~UIText() = default;
+		~UIText();
 
-		bool Init() override;
+		bool Init(const std::string& sceneName) override;
 
 		void ChangeText(std::string newtxt);
 		void SetHeight(double height);

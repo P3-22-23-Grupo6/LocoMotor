@@ -264,7 +264,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		enemy_gObj->GetComponent<MeshRenderer>()->Start(enemyName, "EnemyCar.mesh", "FalconRedone/FalconMat");
 		enemy_gObj->AddComponent("AudioSource");
 		enemy_gObj->GetComponent<AudioSource>()->Start();
-		enemy_gObj->GetComponent<AudioSource>()->Play("Assets/engine.wav", -1);
+		enemy_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine.wav", -1);
 		enemy_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 		enemy_gObj->SetPosition(LMVector3(-70 + i * 35, 3.0f, -80));
 

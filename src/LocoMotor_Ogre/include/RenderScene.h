@@ -11,6 +11,7 @@ namespace Ogre {
 	class Viewport;
 	class SimpleSpline;
 	class StaticGeometry;
+	class OverlaySystem;
 }
 
 class LMVector3;
@@ -64,6 +65,8 @@ namespace OgreWrapper {
 		Node* CreateNode(std::string name, std::string parent);
 		Node* GetNode(std::string name);
 
+		Canvas* GetCanvas();
+
 		Light* CreateLight();
 		Renderer3D* CreateRenderer(std::string mesh);
 		OgreWrapper::Renderer3D* CreateStaticRenderer(std::string mesh, OgreWrapper::Node* meshNode);
@@ -81,6 +84,8 @@ namespace OgreWrapper {
 		std::map<std::string, Node*> _sceneStructure;
 
 		Canvas* _canvas;
+
+		Ogre::OverlaySystem* _overlay;
 
 		Ogre::StaticGeometry* _stGeom;
 	};

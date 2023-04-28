@@ -15,6 +15,7 @@
 #include <OgreShaderGenerator.h>
 #include <iostream>
 #include <Ogre.h>
+#include <OgreOverlaySystem.h>
 //#include <OgreOverlayPrerequisites.h>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
@@ -88,6 +89,10 @@ OgreWrapper::Node* OgreWrapper::RenderScene::GetNode(std::string name) {
 	}
 
 	return _sceneStructure.at(name);
+}
+
+OgreWrapper::Canvas* OgreWrapper::RenderScene::GetCanvas() {
+	return _canvas;
 }
 
 OgreWrapper::Light* OgreWrapper::RenderScene::CreateLight() {

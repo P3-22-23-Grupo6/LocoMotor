@@ -13,7 +13,7 @@ namespace OgreWrapper {
 
 		// Cambia la imagen a renderizar
 		void ChangeImage(std::string nImage);
-		bool Init() override;
+		bool Init(const std::string& sceneName) override;
 
 
 	};

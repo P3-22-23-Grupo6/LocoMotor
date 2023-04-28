@@ -2,6 +2,7 @@
 #ifndef UI_ELEMENT
 #define UI_ELEMENT
 
+#include <string>
 
 namespace Ogre {
 	class OverlayManager;
@@ -17,9 +18,9 @@ namespace OgreWrapper {
 
 	public:
 		UIElement();
-		~UIElement();
+		virtual ~UIElement();
 
-		virtual bool Init();
+		virtual bool Init(const std::string& sceneName);
 
 		/// @brief Establece la posicion del elemento de UI
 		void SetPosition(double x, double y);
@@ -34,9 +35,9 @@ namespace OgreWrapper {
 		/// @brief Devuelve si el elemento de UI es interactivo y se puede utilizar como un boton
 		bool GetInteractive();
 
+		Ogre::OverlayContainer* GetElement();
 
 	protected:
-		Ogre::Overlay* _overlay;
 		Ogre::OverlayContainer* _container;
 		Ogre::OverlayManager* _overlayMngr;
 
