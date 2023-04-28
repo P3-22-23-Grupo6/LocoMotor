@@ -335,9 +335,9 @@ void MotorApi::Init() {
 	SceneManager::Init();
 	_scnManager = LocoMotor::SceneManager::Init();
 	ScriptManager::Init();
-	PhysicsManager::GetInstance()->setContactStartCallback(contactStartBullet);
-	PhysicsManager::GetInstance()->setContactProcessCallback(contactProcessedBullet);
-	PhysicsManager::GetInstance()->setContactEndedCallback(contactExitBullet);
+	PhysicsManager::GetInstance()->setContactStartCallback(LMcontactStart);
+	PhysicsManager::GetInstance()->setContactProcessCallback(LMcontactProcessed);
+	PhysicsManager::GetInstance()->setContactEndedCallback(LMcontactExit);
 	auto cmpFac = ComponentsFactory::Init();
 	cmpFac->RegisterComponent<AudioSource>("AudioSource");
 	cmpFac->RegisterComponent<AudioListener>("AudioListener");
