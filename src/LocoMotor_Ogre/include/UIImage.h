@@ -11,6 +11,7 @@ namespace OgreWrapper {
 		UIImage();
 		~UIImage() = default;
 
+		// Cambia la imagen a renderizar
 		void ChangeImage(std::string nImage);
 		bool Init() override;
 

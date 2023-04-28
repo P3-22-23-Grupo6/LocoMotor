@@ -463,12 +463,10 @@ void InputManager::RumbleController(const float& intensity, const float& duratio
 
 // Giroscopio
 
-// Esta funcion comunica al manager que se quiere hacer uso del giroscopio cuando se conecte un mando
 void InputManager::ActivateGyroscopeWhenConnected() {
 	_useGyroscope = true;
 }
 
-// Esta funcion se encarga de comprobar si el mando conectado tiene giroscopio implementado y lo activa en caso de tenerlo
 bool InputManager::EnableControllerGyroscope() {
 
 	if (_currentController != nullptr) {
@@ -489,7 +487,6 @@ bool InputManager::EnableControllerGyroscope() {
 	}
 }
 
-// Esta funcion se encarga de desactivar la funcionalidad del giroscopio
 bool InputManager::DisableControllerGyroscope() {
 	if (_currentController != nullptr) {
 		if (SDL_GameControllerHasSensor(_currentController, SDL_SENSOR_GYRO) == SDL_TRUE) {
@@ -508,8 +505,6 @@ bool InputManager::DisableControllerGyroscope() {
 	}
 }
 
-// Devuelve el angulo actual normalizado significando
-// 1 : 90 grados // -1 : -90 grados
 float InputManager::GetGyroscopeAngle(const Axis& axis) {
 
 	int gyroscopeIndex = -1;

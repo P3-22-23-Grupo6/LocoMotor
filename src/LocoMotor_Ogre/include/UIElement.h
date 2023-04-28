@@ -2,28 +2,14 @@
 #ifndef UI_ELEMENT
 #define UI_ELEMENT
 
-//#include <OgreTextAreaOverlayElement.h>
 
 namespace Ogre {
-	/*class Image;
-	class SceneManager;
-	class String;*/
 	class OverlayManager;
 	class Overlay;
 	class OverlayContainer;
 }
 
 namespace OgreWrapper {
-
-	/*struct AnchorPoint {
-		float x = 0;
-		float y = 0;
-	};*/
-
-	/*struct Position {
-		short x = 0;
-		short y = 0;
-	};*/
 
 	struct NativeWindowPair;
 
@@ -35,25 +21,24 @@ namespace OgreWrapper {
 
 		virtual bool Init();
 
+		/// @brief Establece la posicion del elemento de UI
 		void SetPosition(double x, double y);
+		/// @brief Establece las dimensiones del elemento de UI
 		void SetDimensions(double w, double h);
+		/// @brief Muestra el elemento de UI
 		void Show();
+		/// @brief Oculta el elemento de UI
 		void Hide();
-
+		/// @brief Establece si el elemento de UI es interactivo para utilizarse como un boton
 		void SetInteractive(bool interactive);
+		/// @brief Devuelve si el elemento de UI es interactivo y se puede utilizar como un boton
 		bool GetInteractive();
 
-		//bool Render();
-
-		//static void SetSceneManager();
 
 	protected:
 		Ogre::Overlay* _overlay;
 		Ogre::OverlayContainer* _container;
 		Ogre::OverlayManager* _overlayMngr;
-
-		/*AnchorPoint _anchor;
-		Position _position;*/
 
 		static unsigned int _numOfUIElements;
 
