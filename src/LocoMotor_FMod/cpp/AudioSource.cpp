@@ -193,7 +193,14 @@ unsigned short AudioSource::SetSoundFreq(const char* fileName, const float freqM
 }
 
 unsigned short FmodWrapper::AudioSource::SetFrequency(const float freqMult) {
-	return 0;
+	unsigned short res = 0;
+	for (auto& chan : _chMap) {
+		auto aux = chan.second.channel->setFrequency(std::max(0.f, chan.second.ogFrec * freqMult));
+		if (aux > res) {
+			res = aux;
+		}
+	}
+	return res;
 }
 
 void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_VECTOR& newVel) {

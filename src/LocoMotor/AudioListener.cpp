@@ -32,7 +32,7 @@ void LocoMotor::AudioListener::Update(float dt) {
 	LMVector3 forwardVec = gameObject->GetTransform()->GetRotation().Forward() * -1;
 	LMVector3 upwardVec = gameObject->GetTransform()->GetRotation().Up();
 
-	LMVector3 vel = _lastVel + ((((gameObject->GetTransform()->GetPosition() - _lastPos) / (dt / 1000.f)) - _lastVel) * 0.9f);
+	LMVector3 vel = _lastVel + ((((gameObject->GetTransform()->GetPosition() - _lastPos) / (dt / 1000.f)) - _lastVel) * 0.8f);
 
 #ifdef _DEBUG
 	auto err = _list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));

@@ -128,7 +128,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("Transform");
 	ship_gObj->AddComponent("ParticleSystem");
-	ship_gObj->AddComponent("AudioListener");
 
 	ship_gObj->AddComponent("RigidBodyComponent");
 	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
@@ -138,6 +137,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	ship_gObj->AddComponent("MeshRenderer");
 	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
+	ship_gObj->AddComponent("AudioSource");
+	ship_gObj->GetComponent<AudioSource>()->Start();
+	ship_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine.wav", -1);
 
 
 	LocoMotor::GameObject* velocityText_gObj = _mScene->AddGameobject("velocityText");
@@ -223,7 +225,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		enemy_gObj->GetComponent<MeshRenderer>()->Start(enemyName, "EnemyCar.mesh", "FalconRedone/FalconMat");
 		enemy_gObj->AddComponent("AudioSource");
 		enemy_gObj->GetComponent<AudioSource>()->Start();
-		enemy_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine.wav", -1);
+		enemy_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine2.wav", -1);
 		enemy_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 		enemy_gObj->SetPosition(LMVector3(-70 + i * 35, 3.0f, -80));
 
