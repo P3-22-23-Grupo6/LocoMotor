@@ -52,21 +52,22 @@ void MotorApi::RegisterGame(const char* gameName) {
 	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
 	raceManager_gObj->AddComponent("Transform");
 	Component* cmp = raceManager_gObj->AddComponent("RaceManager");
+	//	raceManager_gObj->AddComponent("UITextLM");
+	//// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
+	//// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
+	//	raceManager_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .9);
+	//	raceManager_gObj->GetComponent<UITextLM>()->AlignLeft();
+	//	
+	//	raceManager_gObj->GetComponent<UITextLM>()->ChangeText("X / 3");
+	//	raceManager_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
+#pragma endregion
 
-//	raceManager_gObj->AddComponent("UITextLM");
-//// TODO: cargar fuentes sin necesidad de .fontdef aka que esto funcione:
-//// ship_gObj->GetComponent<UITextLM>()->SetFont("BrunoAceSC-Regular.ttf");
-//	raceManager_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .9);
-//	raceManager_gObj->GetComponent<UITextLM>()->AlignLeft();
-//	
-//	raceManager_gObj->GetComponent<UITextLM>()->ChangeText("X / 3");
-//	raceManager_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
 
+#pragma region UI
 	raceManager_gObj->AddComponent("UIImageLM");
 	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
 	raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
 	raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
-
 
 	LocoMotor::GameObject* lapsText_gObj = _mScene->AddGameobject("lapsText");
 	lapsText_gObj->AddComponent("Transform");
@@ -79,7 +80,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	lapsText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
 	lapsText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
 
-
 	LocoMotor::GameObject* positionText_gObj = _mScene->AddGameobject("positionText");
 	positionText_gObj->AddComponent("Transform");
 
@@ -90,6 +90,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	positionText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
 	positionText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
 	positionText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
+#pragma endregion 
 
 #pragma region RaceTrack
 	//WaterPlane
@@ -115,12 +116,14 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "FirstTrack.mesh", "");
 	trackMain->AddComponent("RigidBodyComponent");
 	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
-	
-	//auto extraMain = _mScene->AddGameobject("extraMain");
-	//extraMain->AddComponent("Transform");
-	//extraMain->AddComponent("MeshRenderer");
-	//extraMain->GetComponent<MeshRenderer>()->Start("extraMain", "SafeExport.mesh", "", true);
-	
+
+	//Enviroment
+	auto enviromMain = _mScene->AddGameobject("enviromMain");
+	enviromMain->AddComponent("Transform");
+	enviromMain->AddComponent("MeshRenderer");
+	enviromMain->GetComponent<MeshRenderer>()->Start("enviromMain", "SafeExport.mesh", "");
+#pragma endregion
+
 	ship_gObj = _mScene->AddGameobject("ship");
 	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("Transform");
@@ -252,6 +255,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->SetPosition(LMVector3(0, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
 	trackMain->SetPosition(LMVector3(200, 15, -1200));
+	enviromMain->SetPosition(LMVector3(200, 15, -1200));
 	boost->SetPosition(LMVector3(80, 0, -120));
 	ship_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 
@@ -268,6 +272,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
 
+	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	//trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	//Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
