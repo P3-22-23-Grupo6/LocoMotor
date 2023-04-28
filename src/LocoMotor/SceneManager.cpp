@@ -54,7 +54,7 @@ Scene* SceneManager::ChangeScene(std::string name) {
 		//si hay alguna escena activa, se desactiva
 		if (_activeScene != nullptr) {
 
-			_activeScene->Deactivate();
+			_activeScene->DeActivate();
 		}
 
 		StartScene(it->second);

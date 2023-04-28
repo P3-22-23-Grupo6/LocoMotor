@@ -63,6 +63,7 @@ namespace PhysicsWrapper {
 		void setContactProcessCallback(ContactProcessedCallback funtion);
 		void setContactEndedCallback(ContactEndedCallback funtion);
 
+
 		RaycastInfo createRaycast(LocoMotor::LMVector3 from, LocoMotor::LMVector3 direction);
 
 	private:

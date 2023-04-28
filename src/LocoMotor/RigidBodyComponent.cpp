@@ -27,6 +27,8 @@ void LocoMotor::RigidBodyComponent::Start(float mass)
 
 LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
 	delete _ms;
+	PhysicsManager::GetInstance()->RemoveRigidBodyFromWorld(_body);
+	delete _body;
 }
 
 void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)

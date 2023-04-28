@@ -136,6 +136,7 @@ PhysicsWrapper::RigidBodyInfo::RigidBodyInfo() {
 	capsuleHeight = 0.f;
 	origin = btVector3();
 	mass = 0.f;
+
 }
 
 PhysicsWrapper::RaycastInfo::RaycastInfo() {
