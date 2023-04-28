@@ -10,6 +10,7 @@ using namespace LocoMotor;
 
 LocoMotor::Camera::Camera()
 {
+	cam = nullptr;
 	_scene = nullptr;
 	_renderScn = nullptr;
 	_target = nullptr;
@@ -24,7 +25,7 @@ void LocoMotor::Camera::InitComponent() {
 	_node = gameObject->GetNode();
 
 	//Crear camara
-	OgreWrapper::Camera* cam = _renderScn->CreateCamera("ScnCam");
+	cam = _renderScn->CreateCamera("ScnCam");
 	_scene->SetSceneCam(cam);
 
 	//Attachear al nodo del gameObject
@@ -48,4 +49,12 @@ void LocoMotor::Camera::Update(float dt) {
 void LocoMotor::Camera::SetTarget(GameObject* target, LMVector3 offset) {
 	_target = target;
 	_offset = offset;
+}
+
+void LocoMotor::Camera::SetTracking(bool isTracking, GameObject* target, LMVector3 offset) {
+
+}
+
+void LocoMotor::Camera::SetFOV(float newFov) {
+	cam->SetFOV(newFov);
 }

@@ -19,7 +19,10 @@ namespace OgreWrapper {
 
 		Ogre::Viewport* GetViewport();
 		Ogre::MovableObject* GetMovObj() override;
+		//Cambia el Aspect Ratio para ajustarlo a un nuevo Viewport(pensado para el resize en multijugador, si lo hay jaja saludos)
 		void SetAspectRatio(Ogre::Real ratio);
+		//Cambia el FieldOfView de Ogre Camera por defecto(en radianes, de 1-1.6~aprox.)
+		void SetFOV(float newFOV);//Ogre::Radian radians);
 		void Render();
 
 	private:

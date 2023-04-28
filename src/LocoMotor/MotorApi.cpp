@@ -271,6 +271,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 #pragma region All Components Started
 
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
+	_mScene->GetCamera()->GetComponent<Camera>()->SetFOV(60);
 
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);

@@ -50,6 +50,10 @@ void OgreWrapper::Camera::SetAspectRatio(Ogre::Real ratio) {
 	_mCamera->setAspectRatio(ratio);
 }
 
+void OgreWrapper::Camera::SetFOV(float newFOV) {
+	_mCamera->setFOVy(Ogre::Radian(newFOV*3.14f/180));//Conversion Provisional, meter en LMVector o LMQuaternion
+}
+
 void OgreWrapper::Camera::Render() {
 	vp->update();
 }
