@@ -28,6 +28,10 @@ void LocoMotor::RigidBodyComponent::Start(float mass)
 LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
 	delete _ms;
 	PhysicsManager::GetInstance()->RemoveRigidBodyFromWorld(_body);
+	if (_body && _body->getMotionState()) {
+		delete _body->getMotionState();
+	}
+	delete _body->getCollisionShape();
 	delete _body;
 }
 

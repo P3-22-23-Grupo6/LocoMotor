@@ -104,7 +104,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto boost = _mScene->AddGameobject("boost");
 	boost->AddComponent("Transform");
 	boost->AddComponent("MeshRenderer");
-	boost->GetComponent<MeshRenderer>()->Start("boost", "TurboTestMesh.mesh", "");
+	boost->GetComponent<MeshRenderer>()->Start("boost", "TurboTestMesh.mesh", "", true);
 	boost->AddComponent("RigidBodyComponent");
 	boost->GetComponent<RigidBodyComponent>()->Start(0);
 	boost->AddComponent("Boost");
@@ -113,7 +113,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto trackMain = _mScene->AddGameobject("trackMain");
 	trackMain->AddComponent("Transform");
 	trackMain->AddComponent("MeshRenderer");
-	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "FirstTrack.mesh", "");
+	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "FirstTrack.mesh", "", true);
 	trackMain->AddComponent("RigidBodyComponent");
 	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
 
@@ -121,7 +121,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto enviromMain = _mScene->AddGameobject("enviromMain");
 	enviromMain->AddComponent("Transform");
 	enviromMain->AddComponent("MeshRenderer");
-	enviromMain->GetComponent<MeshRenderer>()->Start("enviromMain", "SafeExport.mesh", "");
+	enviromMain->GetComponent<MeshRenderer>()->Start("enviromMain", "SafeExport.mesh", "", true);
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
@@ -173,7 +173,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		LocoMotor::GameObject* checkpoint_gObj = _mScene->AddGameobject(checkpointName);
 		checkpoint_gObj->AddComponent("Transform");
 		checkpoint_gObj->AddComponent("MeshRenderer");
-		checkpoint_gObj->GetComponent<MeshRenderer>()->Start(checkpointName, "SphereDebug.mesh", "");
+		checkpoint_gObj->GetComponent<MeshRenderer>()->Start(checkpointName, "SphereDebug.mesh", "", true);
 		checkpoint_gObj->GetTransform()->SetSize(LMVector3(40, 40, 40));
 		checkpoint_gObj->GetTransform()->SetPosition(checkpointPositions[i]);
 		Component* checkpointComp = checkpoint_gObj->AddComponent("Checkpoint");
@@ -209,12 +209,12 @@ void MotorApi::RegisterGame(const char* gameName) {
 		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
 		wayPoint->AddComponent("Transform");
 		wayPoint->AddComponent("MeshRenderer");
-		wayPoint->GetComponent<MeshRenderer>()->Start("WayPoint" + i, "SphereDebug.mesh", "");
+		wayPoint->GetComponent<MeshRenderer>()->Start("WayPoint" + i, "SphereDebug.mesh", "", true);
 		wayPoint->SetPosition(LMVector3(positionsList[i]));
 		wayPoint->SetScale(LMVector3(5, 5, 5));
 	}
 
-	for (int i = 0; i < 2; i++){
+	for (int i = 0; i < 1; i++){
 		std::string enemyName = "Enemy" + std::to_string(i);
 		//std::string enemyName = "Enemy0";
 		auto enemy_gObj = _mScene->AddGameobject(enemyName);
@@ -246,7 +246,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto skyboxMesh = _mScene->AddGameobject("skyboxMesh");
 	skyboxMesh->AddComponent("Transform");
 	skyboxMesh->AddComponent("MeshRenderer");
-	skyboxMesh->GetComponent<MeshRenderer>()->Start("skyboxMesh", "SkyboxMesh.mesh", "");
+	skyboxMesh->GetComponent<MeshRenderer>()->Start("skyboxMesh", "SkyboxMesh.mesh", "", true);
 
 #pragma endregion
 

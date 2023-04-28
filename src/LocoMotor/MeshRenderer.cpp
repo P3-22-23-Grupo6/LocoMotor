@@ -1,4 +1,3 @@
-
 #include "MeshRenderer.h"
 #include "Renderer3D.h"
 #include "OgreManager.h"
