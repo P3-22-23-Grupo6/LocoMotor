@@ -97,7 +97,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto map = _mScene->AddGameobject("map");
 	map->AddComponent("Transform");
 	map->AddComponent("MeshRenderer");
-	map->GetComponent<MeshRenderer>()->Start("map", "SandPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
+	map->GetComponent<MeshRenderer>()->Start("map", "SandPlane.mesh", "FalconRedone/FalconMat", true);//track.mesh para el antiguo
 	map->AddComponent("RigidBodyComponent");
 	map->GetComponent<RigidBodyComponent>()->Start(0);
 
@@ -106,7 +106,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	waterPlane->AddComponent("Transform");
 	waterPlane->SetPosition(LMVector3(0,30,0));
 	waterPlane->AddComponent("MeshRenderer");
-	waterPlane->GetComponent<MeshRenderer>()->Start("waterPlane", "WaterPlane.mesh", "FalconRedone/FalconMat");//track.mesh para el antiguo
+	waterPlane->GetComponent<MeshRenderer>()->Start("waterPlane", "WaterPlane.mesh", "FalconRedone/FalconMat", true);//track.mesh para el antiguo
 	//waterPlane->AddComponent("RigidBodyComponent");
 	//waterPlane->GetComponent<RigidBodyComponent>()->Start(0);�
 	
