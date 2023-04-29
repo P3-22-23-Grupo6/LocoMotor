@@ -67,10 +67,12 @@ unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned 
 	auto fail = _man->PlaySoundwChannel(fileName, &channel);
 
 	FMOD_VECTOR vel = FMOD_VECTOR(); vel.x = 0; vel.y = 0; vel.z = 0;
-	if (fail != FMOD_OK)
-		channel->set3DAttributes(_posRemember, &vel);
-	else
-		fail = channel->set3DAttributes(_posRemember, &vel);
+	if (_mode != FMOD_2D) {
+		if (fail != FMOD_OK)
+			channel->set3DAttributes(_posRemember, &vel);
+		else
+			fail = channel->set3DAttributes(_posRemember, &vel);
+	}
 	_chMap[fileName].channel = channel;
 	float aux;
 	_chMap[fileName].channel->getFrequency(&aux);
@@ -211,7 +213,10 @@ void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_V
 		bool is;
 		it->second.channel->isPlaying(&is);
 		if (is) {
-			if (_mode == FMOD_2D) continue;
+			if (_mode == FMOD_2D) {
+				it++;
+				continue;
+			}
 			it->second.channel->set3DAttributes(&newPos, &newVel);
 			it++;
 		}

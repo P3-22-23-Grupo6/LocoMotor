@@ -69,6 +69,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
 	//raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
 
+	raceManager_gObj->AddComponent("AudioSource");
+	raceManager_gObj->GetComponent<AudioSource>()->Set2D();
+
 	LocoMotor::GameObject* lapsText_gObj = _mScene->AddGameobject("lapsText");
 	lapsText_gObj->AddComponent("Transform");
 
@@ -145,7 +148,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->GetComponent<MeshRenderer>()->Start("ship", "BlueFalcon.mesh", "");// or BlueFalconAlt.mesh
 	ship_gObj->AddComponent("AudioSource");
 	ship_gObj->GetComponent<AudioSource>()->Start();
-	ship_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine.wav", -1);
 
 
 	LocoMotor::GameObject* velocityText_gObj = _mScene->AddGameobject("velocityText");
@@ -279,6 +281,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_mScene->GetCamera()->GetComponent<Camera>()->SetFOV(60);
 	_mScene->GetCamera()->GetComponent<Camera>()->SetClippingPlane(1, 8000);
 
+	raceManager_gObj->GetComponent<AudioSource>()->SetVolume(0.2f);
+	raceManager_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/mainTheme.mp3", -1, 17105, 214244);
+	raceManager_gObj->GetComponent<AudioSource>()->SetFreq("Assets/Sounds/mainTheme.mp3", 0.98f);
+	ship_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine.wav", -1);
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	//trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
