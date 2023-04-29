@@ -91,8 +91,14 @@ namespace LocoMotor {
 			//}
 			//return static_cast<T*>(_componentsByName.at(name));
 		}
+		/// @brief This method is automatically called the first frame this gameobject collides
+		/// with another gameobject
 		void OnCollisionEnter(GameObject* other);
+		/// @brief This method is automatically called every frame this gameobject collides
+		/// with another gameobject
 		void OnCollisionStay(GameObject* other);
+		/// @brief This method is automatically called the first frame this gameobject no longer 
+		/// collides with another gameobject
 		void OnCollisionExit(GameObject* other);
 
 		/// @brief Set the position of the GameObject
@@ -101,7 +107,7 @@ namespace LocoMotor {
 		void SetRotation(LMQuaternion rot);
 		/// @brief Set the scale of the GameObject
 		void SetScale(LMVector3 sc);
-
+		/// @brief Returns the transform component of this gameobject
 		Transform* GetTransform();
 
 		//HITO 1 POC
@@ -113,15 +119,17 @@ namespace LocoMotor {
 		/// @brief Set the renderer of the GameObject
 		/// @param renderer The renderer to set
 		void SetRenderer(OgreWrapper::Node* node);
-
+		/// @brief Sets the scene where the gameobject is
 		void SetContext(Scene* scn);
-
+		/// @brief Returns the scene where the gameobject is
 		Scene* GetScene();
-
+		/// @brief Returns the node of this gameobject
+		/// @return 
 		OgreWrapper::Node* GetNode();
-
+		/// @brief Starts every component of this gameobject
 		void StartComp();
-
+		/// @brief Sets the transform component of this gameobject
+		/// @param newTrans 
 		void RegisterTransform(Transform* newTrans);
 		//Pruebaval
 		inline void setMovable(bool b) {

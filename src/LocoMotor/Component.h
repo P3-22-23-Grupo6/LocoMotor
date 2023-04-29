@@ -31,21 +31,32 @@ namespace LocoMotor {
 		/// @brief Render the component
 		virtual void Render() {
 		}
+		/// @brief This method is called when the component is active again
 		virtual void OnEnable() {
 		};
+		/// @brief This method is called when the component is no longer active
 		virtual void OnDisable() {
 		};
+		/// @brief This method is automatically called the first frame the gameobject this component is attached to collides
+		/// with another gameobject
 		virtual void OnCollisionEnter(GameObject* other) {
 		};
+		/// @brief This method is automatically called every frame the gameobject this component is attached to collides
+		/// with another gameobject
 		virtual void OnCollisionStay(GameObject* other) {
 		};
+		/// @brief This method is automatically called the first frame the gameobject this component is attached to no longer 
+		/// collides with another gameobject
 		virtual void OnCollisionExit(GameObject* other) {
 		};
 
+		/// @brief Returns the gameobject this component is attached to
 		GameObject* GetContext ();
 		/// @brief Set the component to a gameobject
 		void SetContext(GameObject* ent);
+		/// @brief Sets whether the component is active or not
 		void SetActive(bool active);
+		/// @brief Returns true if the component is active
 		bool isEnabled();
 		virtual void InitComponent(){ };
 		
