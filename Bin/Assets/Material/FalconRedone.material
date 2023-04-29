@@ -146,7 +146,8 @@ material AtlasMaterial {
             //diffuse 0.8 0.8 0.8 1.0
             //specular 0.5 0.0 0 0 0
             lighting off
-            alpha_rejection greater 150
+            //alpha_rejection greater 150
+            filtering none
             texture_unit {
                 texture AtlasMain00_t.png
                 tex_address_mode wrap
@@ -160,10 +161,8 @@ material GridMaterial {
     
     technique {
         pass {
-            diffuse 0.8 0.8 0.8 1.0
-            specular 0.5 0.0 0 0 0
             lighting off
-
+            filtering none
             texture_unit {
                 texture gridMat.png
                 tex_address_mode wrap

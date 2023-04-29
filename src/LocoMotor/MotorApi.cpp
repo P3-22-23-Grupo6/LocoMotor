@@ -64,10 +64,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 
 #pragma region UI
-	raceManager_gObj->AddComponent("UIImageLM");
-	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
-	raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
-	raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
+	//raceManager_gObj->AddComponent("UIImageLM");
+	//raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
+	//raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
+	//raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
 
 	LocoMotor::GameObject* lapsText_gObj = _mScene->AddGameobject("lapsText");
 	lapsText_gObj->AddComponent("Transform");
@@ -118,10 +118,16 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
 
 	//Enviroment
-	auto enviromMain = _mScene->AddGameobject("enviromMain");
-	enviromMain->AddComponent("Transform");
-	enviromMain->AddComponent("MeshRenderer");
-	enviromMain->GetComponent<MeshRenderer>()->Start("enviromMain", "SafeExport.mesh", "", true);
+	auto firstArea = _mScene->AddGameobject("firstArea");
+	firstArea->AddComponent("Transform");
+	firstArea->AddComponent("MeshRenderer");
+	firstArea->GetComponent<MeshRenderer>()->Start("firstArea", "FirstArea.mesh", "", true);
+
+	//Sea and Sky
+	auto terrain = _mScene->AddGameobject("terrain");
+	terrain->AddComponent("Transform");
+	terrain->AddComponent("MeshRenderer");
+	terrain->GetComponent<MeshRenderer>()->Start("terrain", "Terrain.mesh", "", true);
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
@@ -245,10 +251,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//}
 #pragma endregion
 
-	auto skyboxMesh = _mScene->AddGameobject("skyboxMesh");
-	skyboxMesh->AddComponent("Transform");
-	skyboxMesh->AddComponent("MeshRenderer");
-	skyboxMesh->GetComponent<MeshRenderer>()->Start("skyboxMesh", "SkyboxMesh.mesh", "", true);
+	
 
 #pragma endregion
 
@@ -256,8 +259,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	ship_gObj->SetPosition(LMVector3(0, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
-	trackMain->SetPosition(LMVector3(200, 15, -1200));
-	enviromMain->SetPosition(LMVector3(200, 15, -1200));
+	trackMain->SetPosition(LMVector3(0, -10, 0));
+	firstArea->SetPosition(LMVector3(0, -10, 0));
 	boost->SetPosition(LMVector3(80, 0, -120));
 	ship_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 
@@ -278,7 +281,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
 	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
-	skyboxMesh->SetScale(LMVector3::LMVector3(0.7f, 0.7f, 0.7f));
 	//trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	//Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	boost->GetComponent<RigidBodyComponent>()->beATrigger();

@@ -13,7 +13,7 @@ int OgreWrapper::Camera::_zOrder = 0;
 OgreWrapper::Camera::Camera(Ogre::Camera* camera, int cameraMode) {
 	_mCamera = camera;
 	_mCamera->setAutoAspectRatio(true);
-	//mCamera->setPolygonMode(Ogre::PM_WIREFRAME);
+	//_mCamera->setPolygonMode(Ogre::PM_WIREFRAME);
 	_mZOrder = Camera::_zOrder;
 	//Normal Camera
 	if(cameraMode == 0) 
