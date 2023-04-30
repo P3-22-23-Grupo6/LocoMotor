@@ -278,7 +278,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 #pragma region All Components Started
 
 	_mScene->GetCamera()->GetComponent<Camera>()->SetTarget(ship_gObj, LMVector3(0, 15, 65));
-	_mScene->GetCamera()->GetComponent<Camera>()->SetFOV(60);
+	//_mScene->GetCamera()->GetComponent<Camera>()->SetFOV(60);
 	_mScene->GetCamera()->GetComponent<Camera>()->SetClippingPlane(1, 8000);
 
 	raceManager_gObj->GetComponent<AudioSource>()->SetVolume(0.1f);
