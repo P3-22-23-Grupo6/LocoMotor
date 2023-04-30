@@ -8,12 +8,20 @@
 #include "MotorApi.h"
 using namespace LocoMotor;
 
-
 // typedef de los metodos que vamos a encontrar en la dll del Juego
 typedef const char* (CALLBACK* InitJuegoFunc)(MotorApi* m);
 
-int exec();
-int main() {
+// Para que no salga la consola hay que cambiar una propiedad en vinculador->sistema, y utilizar la funcion main de windows (WinMain)
+// Como solo queremos que pase en release, hacemos este #ifdef
+#ifdef _DEBUG
+	#define LocoMotor_Main	main
+	#define Main_Args		
+#else
+	#define LocoMotor_Main	WinMain
+	#define Main_Args		HINSTANCE hInst, HINSTANCE hInstPrev, PSTR cmdline, int cmdshow
+#endif
+
+int LocoMotor_Main(Main_Args) {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 

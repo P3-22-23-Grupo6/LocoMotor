@@ -89,6 +89,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Bin\</OutDir>
     <IntDir>$(SolutionDir)Temp\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
+    <LinkIncremental>
+    </LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -144,10 +146,10 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\OpenSteer\src\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_FMod\include;$(SolutionDir)src\LocoMotor_Bullet\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependecies\OpenSteer\Build\Release;$(SolutionDir)Lib;$(SolutionDir)Dependecies\Ogre\Build\lib\%(Configuration);$(SolutionDir)Dependecies\Bullet\Build\lib\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
