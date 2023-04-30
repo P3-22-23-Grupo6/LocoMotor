@@ -3,7 +3,9 @@
 #include "RenderScene.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "Transform.h"
 #include "Node.h"
+#include "OgreManager.h"
 
 using namespace LocoMotor;
 
@@ -29,21 +31,21 @@ void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::str
 }
 
 void ParticleSystem::InitComponent() {
-	_renderScn = gameObject->GetScene()->GetRender();
+	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	//Crear nodo
 	_node = _renderScn->CreateNode("ParticleNode");
 	//Crear particulas
 	_particleHelper = _renderScn->CreateParticleHelper(_name + "ParticleHelper", _filename);
 	//Attachear al nodo del gameObject
-	gameObject->GetNode()->Attach(_particleHelper);
+	_renderScn->GetNode(gameObject->GetName())->Attach(_particleHelper);
 	//SetNode al gameObject
 }
 
 void ParticleSystem::Update(float dt) {
 	if (_node != nullptr) {
-		float x = gameObject->GetNode()->GetPosition_X();
-		float y = gameObject->GetNode()->GetPosition_Y();
-		float z = gameObject->GetNode()->GetPosition_Z();
+		float x = gameObject->GetTransform()->GetPosition().GetX();
+		float y = gameObject->GetTransform()->GetPosition().GetY();
+		float z = gameObject->GetTransform()->GetPosition().GetZ();
 		_node->SetPosition(x, y, z);
 	}
 }

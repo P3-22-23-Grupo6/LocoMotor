@@ -110,6 +110,8 @@ namespace LocoMotor {
 		/// @brief Returns the transform component of this gameobject
 		Transform* GetTransform();
 
+		std::string GetName();
+
 		//HITO 1 POC
 
 		/// @brief Set the rigid body of the GameObject+
@@ -123,9 +125,6 @@ namespace LocoMotor {
 		void SetContext(Scene* scn);
 		/// @brief Returns the scene where the gameobject is
 		Scene* GetScene();
-		/// @brief Returns the node of this gameobject
-		/// @return 
-		OgreWrapper::Node* GetNode();
 		/// @brief Starts every component of this gameobject
 		void StartComp();
 		/// @brief Sets the transform component of this gameobject

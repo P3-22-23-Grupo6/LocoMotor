@@ -1,7 +1,10 @@
 #include "Transform.h"
 #include "GameObject.h"
+#include "Scene.h"
+#include "RenderScene.h"
 #include "RigidBodyComponent.h"
 #include "Node.h"
+#include "OgreManager.h"
 #include "LmVectorConverter.h"
 
 LocoMotor::Transform::Transform() {
@@ -17,12 +20,12 @@ LocoMotor::Transform::~Transform() {
 
 void LocoMotor::Transform::InitComponent() {
 	gameObject->RegisterTransform(this);
-	_gObjNode = gameObject->GetNode();
+	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
 }
 
 void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	gameObject->RegisterTransform(this);
-	_gObjNode = gameObject->GetNode();
+	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
 	//TODO: como coooo
 	for (const auto& pair : params) {
 		if (pair.first == "pos" || pair.first == "position") {

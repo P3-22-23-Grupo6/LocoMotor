@@ -21,7 +21,7 @@
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;
 	_mainCam = nullptr;
-	_root = new OgreWrapper::Node(scene->getRootSceneNode());
+	_root = new OgreWrapper::Node(scene->getRootSceneNode(), "root");
 	_canvas = new OgreWrapper::Canvas();
 	_canvas->Init(_manager);
 	_stGeom = _manager->createStaticGeometry("st");
@@ -58,7 +58,7 @@ OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name) {
 		std::cerr << "A node with the name " << name << " is already created\n";
 		return nullptr;
 	}
-	Node* node = _root->CreateChild();
+	Node* node = _root->CreateChild(name);
 	_sceneStructure.insert({ name,node });
 	return node;
 }
@@ -75,7 +75,7 @@ OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name, std::s
 	else if (parent == "Root") {
 		return CreateNode(name);
 	}
-	Node* node = GetNode(name)->CreateChild();
+	Node* node = GetNode(name)->CreateChild(name);
 	return node;
 }
 

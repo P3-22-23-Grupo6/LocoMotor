@@ -46,7 +46,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 #pragma region Escena que teniamos antes
 
-	auto _renderScn = _mScene->GetRender();
+	auto _renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene("Escena");
 
 #pragma region Manager responsable del gameplay
 	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
@@ -281,7 +281,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_mScene->GetCamera()->GetComponent<Camera>()->SetFOV(60);
 	_mScene->GetCamera()->GetComponent<Camera>()->SetClippingPlane(1, 8000);
 
-	raceManager_gObj->GetComponent<AudioSource>()->SetVolume(0.2f);
+	raceManager_gObj->GetComponent<AudioSource>()->SetVolume(0.1f);
 	raceManager_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/mainTheme.mp3", -1, 17105, 214244);
 	raceManager_gObj->GetComponent<AudioSource>()->SetFreq("Assets/Sounds/mainTheme.mp3", 0.98f);
 	ship_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine.wav", -1);

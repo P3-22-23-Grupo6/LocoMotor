@@ -14,7 +14,7 @@ namespace OgreWrapper {
 	class RenderEntity;
 	class Node {
 	public:
-		Node(Ogre::SceneNode* node);
+		Node(Ogre::SceneNode* node, std::string name);
 		~Node();
 
 		/// <summary>
@@ -126,10 +126,13 @@ namespace OgreWrapper {
 
 		void SetOrientation(Ogre::Quaternion& q);
 
-		Node* CreateChild();
+		Node* CreateChild(const std::string& name);
+
+		std::string GetName();
 	protected:
 		Ogre::SceneNode* _node;
 		std::vector<RenderEntity*> _ent;
+		std::string _name;
 	};
 }
 #endif

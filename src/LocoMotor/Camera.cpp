@@ -4,6 +4,7 @@
 #include "RenderScene.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "OgreManager.h"
 #include "Node.h"
 
 using namespace LocoMotor;
@@ -21,8 +22,8 @@ void LocoMotor::Camera::InitComponent() {
 
 	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject
 	_scene = gameObject->GetScene();
-	_renderScn = _scene->GetRender();
-	_node = gameObject->GetNode();
+	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
+	_node = _renderScn->GetNode(gameObject->GetName());
 
 	//Crear camara
 	cam = _renderScn->CreateCamera("ScnCam");
@@ -30,7 +31,7 @@ void LocoMotor::Camera::InitComponent() {
 
 	//Attachear al nodo del gameObject
 	//OgreWrapper::RenderEntity* renderObj = cam;
-	gameObject->GetNode()->Attach(cam);
+	_renderScn->GetNode(gameObject->GetName())->Attach(cam);
 
 	//SetNode al gameObject
 }

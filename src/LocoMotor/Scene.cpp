@@ -179,10 +179,6 @@ GameObject* LocoMotor::Scene::GetObjectByName(std::string name) {
 	return _gameObjList[name];
 }
 
-OgreWrapper::RenderScene* LocoMotor::Scene::GetRender() {
-	return _renderScn;
-}
-
 GameObject* LocoMotor::Scene::GetCamera() {
 	return camera_gObj;
 }

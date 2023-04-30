@@ -103,6 +103,10 @@ Transform* GameObject::GetTransform() {
 	return transform;
 }
 
+std::string LocoMotor::GameObject::GetName() {
+	return _node->GetName();
+}
+
 // Set the renderer of the GameObject
 void LocoMotor::GameObject::SetRenderer(OgreWrapper::Node* node) {
 	_node = node;
@@ -115,12 +119,6 @@ void LocoMotor::GameObject::SetContext(Scene* scn) {
 Scene* LocoMotor::GameObject::GetScene() {
 	return scene;
 }
-
-OgreWrapper::Node* LocoMotor::GameObject::GetNode() {
-	return _node;
-}
-
-
 
 void GameObject::StartComp() {
 	for (auto& comp : _componentsByName) {

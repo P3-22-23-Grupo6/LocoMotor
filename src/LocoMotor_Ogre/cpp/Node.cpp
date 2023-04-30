@@ -5,8 +5,9 @@
 #include <OgreNode.h>
 #include "RenderEntity.h"
 
-OgreWrapper::Node::Node(Ogre::SceneNode* node) {
+OgreWrapper::Node::Node(Ogre::SceneNode* node, std::string name) {
 	_node = node;
+	_name = name;
 	_ent = std::vector<OgreWrapper::RenderEntity*>();
 }
 
@@ -50,9 +51,13 @@ void OgreWrapper::Node::Attach(OgreWrapper::RenderEntity* obj) {
 	_ent.push_back (obj);
 }
 
-OgreWrapper::Node* OgreWrapper::Node::CreateChild() {
-	Node* child = new Node(_node->createChildSceneNode());
+OgreWrapper::Node* OgreWrapper::Node::CreateChild(const std::string& name) {
+	Node* child = new Node(_node->createChildSceneNode(), name);
 	return child;
+}
+
+std::string OgreWrapper::Node::GetName() {
+	return _name;
 }
 
 

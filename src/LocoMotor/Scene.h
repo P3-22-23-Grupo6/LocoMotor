@@ -48,8 +48,6 @@ namespace LocoMotor {
 
 		GameObject* GetObjectByName(std::string name);
 
-		OgreWrapper::RenderScene* GetRender();
-
 		GameObject* GetCamera();
 
 	private:

@@ -23,10 +23,10 @@ LocoMotor::MeshRenderer::MeshRenderer()
 
 
 void MeshRenderer::Start() {
-	_rndScn = gameObject->GetScene()->GetRender();
+	_rndScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	_nod = _rndScn->GetNode(_name);
 	const auto& aux = gameObject->GetTransform();
-	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, gameObject->GetNode()) : _rndScn->CreateRenderer(_src);
+	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _nod) : _rndScn->CreateRenderer(_src);
 	//_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
 
 	_nod->Attach(_rend3D);
