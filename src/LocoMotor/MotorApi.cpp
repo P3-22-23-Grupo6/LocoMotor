@@ -76,6 +76,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	lapsText_gObj->AddComponent("Transform");
 
 	lapsText_gObj->AddComponent("UITextLM");
+	lapsText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
 	lapsText_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .9);
 	lapsText_gObj->GetComponent<UITextLM>()->AlignLeft();
 	lapsText_gObj->GetComponent<UITextLM>()->ChangeText("0 / 3");
@@ -87,6 +88,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	positionText_gObj->AddComponent("Transform");
 
 	positionText_gObj->AddComponent("UITextLM");
+	positionText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
 	positionText_gObj->GetComponent<UITextLM>()->SetPosition(0.45, .9);
 	positionText_gObj->GetComponent<UITextLM>()->AlignRight();
 	positionText_gObj->GetComponent<UITextLM>()->ChangeText("1�st");
@@ -154,6 +156,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	velocityText_gObj->AddComponent("Transform");
 
 	velocityText_gObj->AddComponent("UITextLM");
+	velocityText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
 	velocityText_gObj->GetComponent<UITextLM>()->SetPosition(-0.45, .1);
 	velocityText_gObj->GetComponent<UITextLM>()->AlignLeft();
 	velocityText_gObj->GetComponent<UITextLM>()->ChangeText("300 km/h");
