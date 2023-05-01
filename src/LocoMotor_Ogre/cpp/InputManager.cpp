@@ -564,3 +564,8 @@ float InputManager::GetGyroscopeAngularSpeed(const Axis& axis) {
 	return outputValue / _MAXGYROSCOPEVALUE;
 }
 
+void LocoMotor::InputManager::ResetGyroscope() {
+	_gyroscopeValue[0] = 0;
+	_gyroscopeValue[1] = 0;
+}
+

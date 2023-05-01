@@ -131,6 +131,8 @@ namespace LocoMotor {
 		// Devuelve la velocidad angular del giroscopio del mando
 		float GetGyroscopeAngularSpeed(const Axis& axis = Horizontal);
 
+		void ResetGyroscope();
+
 	private:
 		InputManager();
 
