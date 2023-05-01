@@ -30,6 +30,13 @@ namespace LocoMotor {
 		OgreWrapper::Node* _node;
 
 		void InitComponent() override;
+		/* @brief
+		 * This function updates the position and rotation of a camera to follow a target object.
+		 *
+		 * @param dt dt stands for delta time, which is the time elapsed since the last frame update. It is
+		 * used to ensure that the movement and updates in the game are consistent across different hardware
+		 * and frame rates.
+		*/
 		void Update(float dt) override;
 
 		void SetTarget(GameObject* target, LMVector3 offset);
