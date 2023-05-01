@@ -27,6 +27,7 @@ OgreWrapper::OgreManager::OgreManager(std::string name) {
 
 	_root = new Ogre::Root();
 	_root->showConfigDialog(nullptr);
+	_root->restoreConfig();
 	_ovrSys = new Ogre::OverlaySystem();
 	_root->initialise(false);
 
