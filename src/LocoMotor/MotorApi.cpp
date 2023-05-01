@@ -257,6 +257,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	}
 
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
+
+	//NO QUITAR AUN HASTA QUE ESTE LA SPLINE
 	//int maxBalls = 400;
 	//for (float i = 1; i < maxBalls; i++) {
 	//	auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
@@ -266,9 +268,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//	nuevaSpl->RecalcTangents();
 	//	waypointBalls.push_back(wayPointNew);
 	//}
-#pragma endregion
-
-	
 
 #pragma endregion
 
@@ -305,6 +304,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	boost->GetComponent<RigidBodyComponent>()->beATrigger();
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
+
+	
 #pragma endregion
 }
 

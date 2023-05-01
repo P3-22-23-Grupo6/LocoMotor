@@ -1,7 +1,7 @@
-18:08:55: *-*-* OGRE Shutdown
-18:08:55: Unregistering ResourceManager for type Compositor
-18:08:55: Unregistering ResourceManager for type Material
-18:08:55: Unregistering ResourceManager for type GpuProgram
-18:08:55: Unregistering ResourceManager for type Skeleton
-18:08:55: Unregistering ResourceManager for type Mesh
-18:08:55: Error: The provided mesh file has an empty material name. See https://ogrecave.github.io/ogre/api/latest/_mesh-_tools.html#autotoc_md32
+22:29:06: *-*-* OGRE Shutdown
+22:29:06: Unregistering ResourceManager for type Compositor
+22:29:06: Unregistering ResourceManager for type Material
+22:29:06: Unregistering ResourceManager for type GpuProgram
+22:29:06: Unregistering ResourceManager for type Skeleton
+22:29:06: Unregistering ResourceManager for type Mesh
+22:29:06: Error: The provided mesh file has an empty material name. See https://ogrecave.github.io/ogre/api/latest/_mesh-_tools.html#autotoc_md32

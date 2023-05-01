@@ -5,6 +5,8 @@
 #include <LMVector.h>
 #include "RigidBodyComponent.h"
 #include "LmVectorConverter.h"
+#include "OgreMaterialManager.h"
+#include "OgreMaterial.h"
 //float testTime = 0.0f;
 LocoMotor::EnemyAI::EnemyAI() {
 }
@@ -22,6 +24,9 @@ void LocoMotor::EnemyAI::Start(LocoMotor::Spline* splineToFollow, float sep)
 	lastTimeStep = 0.0f;
 	myGbj = gameObject;
 	enemySpeed = 3.0f + (rand() % 5); //Rango entre 3 y 8  aprox
+
+	//Ogre::MaterialPtr ptr = Ogre::MaterialManager::getSingleton().load("JetEngine1", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+	//ptr->setDiffuse(Ogre::ColourValue(1.0f,0.0f,0.0f));
 }
 
 void LocoMotor::EnemyAI::Update(float dt) 
