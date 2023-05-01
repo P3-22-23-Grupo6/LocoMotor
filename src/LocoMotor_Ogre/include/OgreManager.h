@@ -25,37 +25,32 @@ namespace OgreWrapper {
 	class OgreManager : public LocoMotor::Singleton<OgreManager> {
 		friend LocoMotor::Singleton<OgreManager>;
 	public:
-		/// <summary>
-		/// Creates a scene.
-		/// If you try to create a scene with an already used name, the method will return that scene instead.
-		/// </summary>
-		/// <param name="name">Name for the new scene.</param>
-		/// <returns>The newly created scene.<para/>
-		/// If the name is already taken, the scene with that name will be returned instead.</returns>
+		/// @brief Creates a scene, if you try to create a scene with an already used name, the method will return that scene instead.
+		/// @param name Name for the new scene.
+		/// @return The newly created scene.
+		///	If the name is already taken, the scene with that name will be returned instead.
 		OgreWrapper::RenderScene* CreateScene(std::string name);
 
-		/// <summary>
-		/// Returns a created scene, searched by name in the list of scenes
-		/// </summary>
-		/// <param name="name"></param>
-		/// <returns>A pointer to the scene with the indicated name<para/>
-		/// If the name doesn't exist, getScene returns nullptr.</returns>
+		/// @brief Returns a created scene, searched by name in the list of scenes
+		/// @param name Name of the scene.
+		/// @return A pointer to the scene with the indicated name
+		/// If the name doesn't exist, getScene returns nullptr.
 		OgreWrapper::RenderScene* GetScene(std::string name);
 
-		/// <summary>
-		/// Renderiza un frame.
-		///</summary> 
+		
+		/// @brief Renders a frame.
+		
 		void Render();
 
 		/// @brief 
-		/// Devuelve la RenderWindow
-		/// @return Ventana de renderizado de Ogre
+		/// Returns RenderWindow
+		/// @return Render window of Ogre
 		Ogre::RenderWindow* GetRenderWindow();
 
-		/// <summary>
+		/// @brief
 		/// Sets the active scene for the manager
-		/// </summary>
-		/// <param name="s">The scene to become active</param>
+		
+		/// @param s The scene to become active
 		void SetActiveScene(OgreWrapper::RenderScene* s);
 		/// @brief Returns the render window height
 		int GetWindowHeight();
@@ -75,28 +70,23 @@ namespace OgreWrapper {
 
 		Ogre::OverlaySystem* _ovrSys;
 
-		/// <summary>
-		/// Creates a new OgreManager.
-		/// </summary>
-		/// <param name="name">The name for the window</param>
+		/// @brief Creates a new OgreManager.
+		
+		/// @param name The name for the window
 		OgreManager(std::string name);
 		~OgreManager();
 
-		/// <summary>
-		/// Loads the resouces and initializes the RTShaderSytem
-		/// </summary>
+		/// @brief Loads the resouces and initializes the RTShaderSytem
 		void LoadResources();
 
-		/// <summary>
-		/// Initializes the window
-		/// </summary>
-		/// <param name="name">The Window title</param>
-		/// <returns></returns>
+		/// @brief Initializes the window
+		/// @param name The Window title
+		/// @return
 		NativeWindowPair InitWindow(std::string name);
 
-		/// <summary>
+		/// @brief
 		/// Shuts down Ogre and releases all the memory related to it
-		/// </summary>
+		
 		void Shutdown();
 
 	};

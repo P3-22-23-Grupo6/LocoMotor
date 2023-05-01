@@ -34,7 +34,7 @@ unsigned short AudioSource::AddSound(const char* fileName) {
 }
 
 unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned int loopBegin, unsigned int loopEnd) {
-	auto snd = _man->GetSound(fileName);
+	FMOD::Sound* snd = _man->GetSound(fileName);
 	if (snd == nullptr) {
 	#ifdef _DEBUG
 		std::cout << "Sound " << fileName << " is not added to the manager, adding it now";
@@ -55,7 +55,7 @@ unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned 
 		snd->setMode(_mode);
 	else {
 		snd->setMode(_mode | FMOD_LOOP_NORMAL);
-		auto err = snd->setLoopPoints(std::min(loopBegin, loopEnd), FMOD_TIMEUNIT_MS, std::max(loopBegin, loopEnd), FMOD_TIMEUNIT_MS);
+		FMOD_RESULT err = snd->setLoopPoints(std::min(loopBegin, loopEnd), FMOD_TIMEUNIT_MS, std::max(loopBegin, loopEnd), FMOD_TIMEUNIT_MS);
 	#ifdef _DEBUG
 		if (err != FMOD_OK) {
 			std::cout << "Source error: Trying to play a loop: " << _man->GetError(err) << std::endl;
@@ -64,7 +64,7 @@ unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned 
 		snd->setLoopCount(std::max(-1, loops));
 	}
 	Channel* channel;
-	auto fail = _man->PlaySoundwChannel(fileName, &channel);
+	unsigned short fail = _man->PlaySoundwChannel(fileName, &channel);
 
 	FMOD_VECTOR vel = FMOD_VECTOR(); vel.x = 0; vel.y = 0; vel.z = 0;
 	if (_mode != FMOD_2D) {
@@ -89,7 +89,7 @@ unsigned short FmodWrapper::AudioSource::PlayOneShot(const char* fileName, const
 }
 
 unsigned short FmodWrapper::AudioSource::PlayOneShot(const char* fileName, const FMOD_VECTOR& position, const float volume, const float pitch) {
-	auto snd = _man->GetSound(fileName);
+	FMOD::Sound* snd = _man->GetSound(fileName);
 	if (snd == nullptr) {
 	#ifdef _DEBUG
 		std::cout << "Sound " << fileName << " is not added to the manager, adding it now";
@@ -100,7 +100,7 @@ unsigned short FmodWrapper::AudioSource::PlayOneShot(const char* fileName, const
 	snd->setMode(_mode);
 
 	Channel* channel;
-	auto fail = _man->PlaySoundwChannel(fileName, &channel);
+	unsigned short fail = _man->PlaySoundwChannel(fileName, &channel);
 
 	FMOD_VECTOR vel = FMOD_VECTOR(); vel.x = 0; vel.y = 0; vel.z = 0;
 	if (fail != FMOD_OK)
@@ -129,7 +129,7 @@ unsigned short FmodWrapper::AudioSource::PauseS(const char* fileName, bool pause
 unsigned short FmodWrapper::AudioSource::PauseSource(bool pause) {
 	unsigned short res = 0;
 	for (auto& chan : _chMap) {
-		auto aux = chan.second.channel->setPaused(pause);
+		FMOD_RESULT aux = chan.second.channel->setPaused(pause);
 		if (aux > res) {
 			res = aux;
 		}
@@ -154,7 +154,7 @@ unsigned short FmodWrapper::AudioSource::StopSource() {
 	for (auto& chan : _chMap) {
 		chan.second.channel->setFrequency(chan.second.ogFrec);
 		chan.second.channel->setVolume(1.f);
-		auto aux = chan.second.channel->stop();
+		FMOD_RESULT aux = chan.second.channel->stop();
 		if (aux > res) {
 			res = aux;
 		}
@@ -175,7 +175,7 @@ unsigned short FmodWrapper::AudioSource::SetSoundVolume(const char* fileName, co
 unsigned short FmodWrapper::AudioSource::SetSourceVolume(const float volume) {
 	unsigned short res = 0;
 	for (auto& chan : _chMap) {
-		auto aux = chan.second.channel->setVolume(volume);
+		FMOD_RESULT aux = chan.second.channel->setVolume(volume);
 		if (aux > res) {
 			res = aux;
 		}
@@ -197,7 +197,7 @@ unsigned short AudioSource::SetSoundFreq(const char* fileName, const float freqM
 unsigned short FmodWrapper::AudioSource::SetFrequency(const float freqMult) {
 	unsigned short res = 0;
 	for (auto& chan : _chMap) {
-		auto aux = chan.second.channel->setFrequency(std::max(0.f, chan.second.ogFrec * freqMult));
+		FMOD_RESULT aux = chan.second.channel->setFrequency(std::max(0.f, chan.second.ogFrec * freqMult));
 		if (aux > res) {
 			res = aux;
 		}

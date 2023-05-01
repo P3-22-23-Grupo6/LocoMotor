@@ -397,7 +397,7 @@ void LocoMotor::Transform::SetLocalScale(const LMVector3& newSize) {
  * position to set for the LocoMotor object.
  */
 void LocoMotor::Transform::SetPhysPosition(const LMVector3& newPosition) {
-	auto rb = gameObject->GetComponent<RigidBodyComponent>();
+	RigidBodyComponent* rb = gameObject->GetComponent<RigidBodyComponent>();
 	if (rb != nullptr) {
 		rb->setPosition(newPosition);
 	}
@@ -412,7 +412,7 @@ void LocoMotor::Transform::SetPhysPosition(const LMVector3& newPosition) {
  * framework being used.
  */
 void LocoMotor::Transform::SetPhysRotation(const LMQuaternion& newRotation) {
-	auto rb = gameObject->GetComponent<RigidBodyComponent>();
+	RigidBodyComponent* rb = gameObject->GetComponent<RigidBodyComponent>();
 	if (rb != nullptr) {
 		rb->setRotation(newRotation);
 	}
@@ -424,7 +424,7 @@ void LocoMotor::Transform::SetPhysRotation(const LMQuaternion& newRotation) {
  * @param newRotation A LMVector3 object representing the new rotation to be set for the Transform.
  */
 void LocoMotor::Transform::SetPhysEulerRotation(const LMVector3& newRotation) {
-	auto rb = gameObject->GetComponent<RigidBodyComponent>();
+	RigidBodyComponent* rb = gameObject->GetComponent<RigidBodyComponent>();
 	if (rb != nullptr) {
 		rb->setRotation(newRotation.AsRotToQuaternion());
 	}

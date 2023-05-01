@@ -33,7 +33,7 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 
 	std::cout << "\n\nCANVAS=====================================================================\n";
 
-	auto _aux = Ogre::OverlayManager::getSingletonPtr();
+	Ogre::OverlayManager* _aux = Ogre::OverlayManager::getSingletonPtr();
 
 	_canvas = _aux->create("MainOverlay"+_numOfCanvas);
 	_container = static_cast<Ogre::OverlayContainer*>(_aux->createOverlayElement("Panel", "Main"));

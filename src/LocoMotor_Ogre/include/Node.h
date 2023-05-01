@@ -17,111 +17,98 @@ namespace OgreWrapper {
 		Node(Ogre::SceneNode* node, std::string name);
 		~Node();
 
-		/// <summary>
+		/// @brief
 		/// Translates the node, taking into account the actual position.
 		/// Uses the parent node's axis as reference
-		/// </summary>
-		/// <param name="x">X translation</param>
-		/// <param name="y">Y translation</param>
-		/// <param name="z">Z translation</param>
+		/// @param x X translation
+		/// @param y Y translation
+		/// @param z Z translation
 		void Translate(float x, float y, float z);
 
-		/// <summary>
+		/// @brief
 		/// Rotates the node, taking into account the actual rotation.
 		/// Uses the local axis as reference
 		/// Parameters passed in Degrees
-		/// </summary>
-		/// <param name="x">X rotation</param>
-		/// <param name="y">Y rotation</param>
-		/// <param name="z">Z rotation</param>
+		/// @param x X rotation
+		/// @param y Y rotation
+		/// @param z Z rotation
 		void Rotate(float x, float y, float z);
-		/// <summary>
+		/// @brief
 		/// Rotates the node in LocalSpace
 		/// Parameters passed in Degrees
-		/// </summary>
 		void RotateLocal(float x, float y, float z);
 
-		/// <summary>
+		/// @brief
 		/// Scales the node, taking into account the actual scale.
-		/// </summary>
-		/// <param name="x">X scale factor</param>
-		/// <param name="y">Y scale factor</param>
-		/// <param name="z">Z scale factor</param>
+		/// @param x X scale factor</param>
+		/// @param y Y scale factor</param>
+		/// @param z Z scale factor</param>
 		void Scale(float x, float y, float z);
 
-		/// <summary>
+		/// @brief
 		/// Sets the position.
-		/// </summary>
-		/// <param name="x">X position</param>
-		/// <param name="y">Y position</param>
-		/// <param name="z">Z positiontion</param>
+		/// @param x X position
+		/// @param y Y position
+		/// @param z Z positiontion
 		void SetPosition(float x, float y, float z);
 
-		/// <summary>
+		/// @brief
 		/// Sets the position.
-		/// </summary>
-		/// <param name="x">X position</param>
-		/// <param name="y">Y position</param>
-		/// <param name="z">Z positiontion</param>
+		/// @param x X position
+		/// @param y Y position
+		/// @param z Z position
 		float GetPosition_X();
 		float GetPosition_Y();
 		float GetPosition_Z();
 
-		/// <summary>
+		/// @brief
 		/// Gets the rotation.
-		/// </summary>
-		/// <param name="x">X position</param>
-		/// <param name="y">Y position</param>
-		/// <param name="z">Z positiontion</param>
+		/// <param name="x">X position
+		/// <param name="y">Y position
+		/// <param name="z">Z position
 		float GetRotation_W();
 		float GetRotation_X();
 		float GetRotation_Y();
 		float GetRotation_Z();
 
-		/// <summary>
+		/// @brief
 		/// Gets the position.
-		/// </summary>
-		/// <param name="x">X position</param>
-		/// <param name="y">Y position</param>
-		/// <param name="z">Z positiontion</param>
+		/// @param x X position
+		/// @param y Y position
+		/// @param z Z position
 		float GetScale_X();
 		float GetScale_Y();
 		float GetScale_Z();
 
-		/// <summary>
+		/// @brief
 		/// Sets the scale of the node.
-		/// </summary>
-		/// <param name="x">X scale factor</param>
-		/// <param name="y">Y scale factor</param>
-		/// <param name="z">Z scale factor</param>
+		/// @param x X scale factor</param>
+		/// @param y Y scale factor</param>
+		/// @param z Z scale factor</param>
 		void SetScale(float x, float y, float z);
 
-		/// <summary>
+		/// @brief
 		/// Sets the point to wich the node looks.
-		/// </summary>
-		/// <param name="x"></param>
-		/// <param name="y"></param>
-		/// <param name="z"></param>
+		/// @param x
+		/// @param y
+		/// @param z
 		void LookAt(float x, float y, float z);
 
 
-		/// <summary>
+		/// @brief
 		/// Sets the point to wich the node looks.
-		/// </summary>
-		/// <param name="x"></param>
-		/// <param name="y"></param>
-		/// <param name="z"></param>
+		/// @param x
+		/// @param y
+		/// @param z
 		void SetDirection(float x, float y, float z);
 
-		/// <summary>
+		/// @brief
 		/// Attaches an object to the node.
-		/// </summary>
-		/// <param name="obj"></param>
+		/// @param ent
 		void Attach(RenderEntity* ent);
 
-		/// <summary>
+		/// @brief
 		/// Resets the node Orientation
-		/// </summary>
 		void ResetOrientation();
 
 		void SetOrientation(Ogre::Quaternion& q);

@@ -54,7 +54,7 @@ void LocoMotor::Camera::Update(float dt) {
 	// Comprobar si hay asignado un target
 	if (_target != nullptr) {
 		// Actualizar posicion para que siga al target
-		auto rotVec = _target->GetTransform()->GetRotation().Rotate(_offset);
+		LMVector3 rotVec = _target->GetTransform()->GetRotation().Rotate(_offset);
 		gameObject->SetPosition(_target->GetTransform()->GetPosition() + rotVec);
 		gameObject->SetRotation(_target->GetTransform()->GetRotation());
 	}
