@@ -296,24 +296,27 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 
 		int axis = event.caxis.axis;
 		//std::cout << "axis = " << axis << "\n";
+		if (axis < 4) {
+			// Si se inclina el joystick lo suficiente, guardar su valor
+			if (joystickValue > _JOYSTICKDEADZONE_MIN
+				|| joystickValue < -_JOYSTICKDEADZONE_MIN) {
 
-		// Si se inclina el joystick lo suficiente, guardar su valor
-		if (joystickValue > _JOYSTICKDEADZONE_MIN
-			|| joystickValue < -_JOYSTICKDEADZONE_MIN) {
+				float absJoystickValue = fabsf(joystickValue);
+				int sign = (int) (joystickValue / absJoystickValue);
 
-			float absJoystickValue = fabsf(joystickValue);
-			int sign = (int)(joystickValue / absJoystickValue);
+				// Convertir el valor en un valor entre 0 y 1
+				float normalizedValue = ((float) (absJoystickValue - _JOYSTICKDEADZONE_MIN)) / ((float) (_JOYSTICKDEADZONE_MAX - _JOYSTICKDEADZONE_MIN));
 
-			// Convertir el valor en un valor entre 0 y 1
-			float normalizedValue = ((float) (absJoystickValue - _JOYSTICKDEADZONE_MIN)) / ((float) (_JOYSTICKDEADZONE_MAX - _JOYSTICKDEADZONE_MIN));
+				normalizedValue *= sign;
 
-			normalizedValue *= sign;
+				_joystickAxis[axis] = normalizedValue;
+				std::cout << normalizedValue << "\n";
+			}
 
-			_joystickAxis[axis] = normalizedValue;
+			else
+				_joystickAxis[axis] = 0;
 		}
-
-		else
-			_joystickAxis[axis] = 0;
+		
 
 
 		//if (joystickValue_ != 0) {
