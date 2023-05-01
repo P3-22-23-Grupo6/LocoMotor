@@ -97,9 +97,11 @@ namespace LocoMotor {
 		/// @brief Applies a torque impulse to the body
 		/// @param impulse the impulse to aplly
 		void ApplyTorqueImpulse(LMVector3 impulse);
-		/// @brief Set The friction of this rigidbody
+		/// @brief Set the friction of this rigidbody
 		/// @param fric the new friction value
 		void SetFriction(float fric);
+		/// @brief Add the body to detect raycast
+		void UseItAsRaycast();
 	private:
 		float _mass;
 		btRigidBody* _body;
