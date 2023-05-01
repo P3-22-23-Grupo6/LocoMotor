@@ -64,10 +64,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 
 #pragma region UI
-	//raceManager_gObj->AddComponent("UIImageLM");
-	//raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TestMat");
-	//raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
-	//raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
+	raceManager_gObj->AddComponent("UIImageLM");
+	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TemporalUIMat");
+	raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
+	raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
 
 	raceManager_gObj->AddComponent("AudioSource");
 	raceManager_gObj->GetComponent<AudioSource>()->Set2D();
@@ -118,21 +118,21 @@ void MotorApi::RegisterGame(const char* gameName) {
 	auto trackMain = _mScene->AddGameobject("trackMain");
 	trackMain->AddComponent("Transform");
 	trackMain->AddComponent("MeshRenderer");
-	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "FirstTrack.mesh", "", true);
+	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "AllTrack.mesh", "", true);
 	trackMain->AddComponent("RigidBodyComponent");
 	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
 
 	//Enviroment
-	auto firstArea = _mScene->AddGameobject("firstArea");
-	firstArea->AddComponent("Transform");
-	firstArea->AddComponent("MeshRenderer");
-	firstArea->GetComponent<MeshRenderer>()->Start("firstArea", "FirstArea.mesh", "", true);
+	//auto firstArea = _mScene->AddGameobject("firstArea");
+	//firstArea->AddComponent("Transform");
+	//firstArea->AddComponent("MeshRenderer");
+	//firstArea->GetComponent<MeshRenderer>()->Start("firstArea", "FirstArea.mesh", "", true);
 
 	//Sea and Sky
-	auto terrain = _mScene->AddGameobject("terrain");
-	terrain->AddComponent("Transform");
-	terrain->AddComponent("MeshRenderer");
-	terrain->GetComponent<MeshRenderer>()->Start("terrain", "Terrain.mesh", "", true);
+	//auto terrain = _mScene->AddGameobject("terrain");
+	//terrain->AddComponent("Transform");
+	//terrain->AddComponent("MeshRenderer");
+	//terrain->GetComponent<MeshRenderer>()->Start("terrain", "Terrain.mesh", "", true);
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
@@ -265,7 +265,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	ship_gObj->SetPosition(LMVector3(0, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
 	trackMain->SetPosition(LMVector3(0, -10, 0));
-	firstArea->SetPosition(LMVector3(0, -10, 0));
+	//firstArea->SetPosition(LMVector3(0, -10, 0));
 	boost->SetPosition(LMVector3(80, 0, -120));
 	ship_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 
