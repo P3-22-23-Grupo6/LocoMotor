@@ -28,31 +28,39 @@ namespace LocoMotor {
 		void InitComponent() override;
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 
-		/// @brief Establece la posicion de la imagen en la pantalla
+		/// @brief Sets the position of the image on the screen
+		/// @param x -> horizontal axis position
+		/// @param y -> vertical axis position
 		void SetPosition(double x, double y);
-		/// @brief Establece las dimensiones de la imagen en la pantalla
+		/// @brief Sets the position of the image on the screen
+		/// @param x -> horizontal scale
+		/// @param y -> vertical scale
 		void SetSize(double x, double y);
 
-		/// @brief Establece si la imagen es interactiva para usarse como un boton
+		/// @brief sets an image as an interactive entity
+		/// @param nteractive enables or disables the interaction of the image
 		void SetInteractive(bool interactive);
-		/// @brief Devuelve true si la imagen es interactiva y puede usarse como un boton
+		/// @brief Checks if the image is intractive or not
 		bool GetInteractive();
-		/// @brief Si la imagen es interactiva, comprueba si el raton ha clickado sobre ella
+		/// @brief If the image is interactive, check if the mouse is on, or pressing it
+		/// @param dt  stands for delta time, which is the time elapsed since the last frame update.
 		void Update(float dt)override;
-		/// @brief Establece la funcion que debe ser llamada cuando se hace click sobre la imagen,
-		/// en caso de ser interactiva
+		/// @brief Sets the function is going to be called when the image is pressed if it's interactive
+		/// @param func is the function is going to be called
 		void CallOnClick(const std::function<void()> &func);
-		/// @brief Devuelve true si el raton esta posicionado sobre la imagen
+		/// @brief Returns true if the mouse is on the bound of the image
 		bool MouseOnImage();
-		/// @brief Cambia la imagen a renderizar
+		/// @brief Changes the image to render
+		/// @param newimg is the image that will replace the previous 
 		void ChangeImage(std::string newimg);
-		/// @brief Establece la imagen que se va a utilizar
+		/// @brief Sets the image is going to appear on a normal state (in case it's interactive)
+		/// @param newimg is the image that will render in a normal state
 		void SetImage(std::string newimg);
-		/// @brief Establece la imagen que se va a utilizar cuando el raton esta situado 
-		/// sobre la imagen (para botones)
+		/// @brief Sets the image is going to appear if the mouse is on the bound (in case it's interactive)
+		/// @param newimg is the image that will render when the mouse in on bounds
 		void SetOnMouseImage(std::string newimg);
-		/// @brief Establece la imagen que se va a utilizar cuando se ha hecho click 
-		/// sobre la imagen (para botones)
+		/// @brief Sets the image is going to appear if the mouse is pressing it (in case it's interactive)
+		/// @param newimg is the image that will render when the mouse is pressing it
 		void SetPressedImage(std::string newimg);
 
 	protected:

@@ -29,12 +29,8 @@ namespace LocoMotor {
 		void Update(float dt);
 		void Render();
 
-		//?
+	
 		void DeActivate();
-
-		//Activate
-
-
 
 		bool GetActiveStatus();
 
@@ -51,14 +47,11 @@ namespace LocoMotor {
 		GameObject* GetCamera();
 
 	private:
-		//camera
-
-
+		
 		LM_Component::Camera* _currentCam;
 
 		OgreWrapper::Camera* _cam;
 
-		//nombre de la escena
 		std::string _name;
 
 		bool _isActiveScene = false;

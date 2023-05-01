@@ -22,19 +22,20 @@ namespace OgreWrapper {
 
 		virtual bool Init(const std::string& sceneName);
 
-		/// @brief Establece la posicion del elemento de UI
+		/// @brief Sets the position of the entity on the UI
 		void SetPosition(double x, double y);
-		/// @brief Establece las dimensiones del elemento de UI
+		/// @brief Sets the size of the entity on the UI
 		void SetDimensions(double w, double h);
-		/// @brief Muestra el elemento de UI
+		/// @brief Shows/turns visible the entity on the UI
 		void Show();
-		/// @brief Oculta el elemento de UI
+		/// @brief Hides/turns invisible the entity on the UI
 		void Hide();
-		/// @brief Establece si el elemento de UI es interactivo para utilizarse como un boton
+		/// @brief sets the entity as an interactive entity
+		/// @param nteractive enables or disables the interaction of the entity
 		void SetInteractive(bool interactive);
-		/// @brief Devuelve si el elemento de UI es interactivo y se puede utilizar como un boton
+		/// @brief Checks if the image is intractive or not
 		bool GetInteractive();
-
+		/// @brief Returns the entity
 		Ogre::OverlayContainer* GetElement();
 
 	protected:

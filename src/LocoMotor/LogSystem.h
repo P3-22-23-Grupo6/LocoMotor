@@ -2,7 +2,6 @@
 #ifndef _LOGSYSTEM_
 #define _LOGSYSTEM_
 #include <fstream>
-#include <vector>
 #include <stdio.h>
 #include "Singleton.h"
 

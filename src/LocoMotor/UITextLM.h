@@ -26,33 +26,56 @@ namespace LocoMotor {
 		void InitComponent() override;
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 
-		/// @brief Establece la posicion del texto en la pantalla
+		/// @brief Sets the position of the text on the screen
+		/// @param x -> horizontal axis position
+		/// @param y -> vertical axis position
 		void SetPosition(double x, double y);
-		/// @brief Establece las dimensiones del texto en la pantalla
+		/// @brief Sets the size of the text on the screen 
+		/// @param x -> horizontal scale
+		/// @param y -> vertical scale
 		void SetSize(double x, double y);
 
-		/// @brief Cambia el texto a mostrar
+		/// @brief changes the text
+		/// @param newtext is the text is going to replace the previous one
 		void ChangeText(std::string newtxt);
-		/// @brief Establece la altura del texto
+		/// @brief changes the size of the text 
+		/// @param height is the size the text will have
 		void SetTextHeight(double height);
-		/// @brief Establece el tipo de fuente a utilizar
+		/// @brief Sets the font the text will be using
+		/// @param nfont is the name of the file
 		void SetFont(std::string nfont);
-		/// @brief Alinea el texto al centro de la pantalla
+			/// @brief Places the text using the position as an anchor on the center
+		/*
+											   |        <-----position/anchor
+										  Sample text
+
+		*/
 		void AlignCenter();
-		/// @brief Alinea el texto a la izquierda de la pantalla
+
+		/// @brief Places the text using the position as an anchor on the left
+		/*
+										 |        <-----position/anchor
+										  Sample text
+
+		*/
 		void AlignLeft();
-		/// @brief Alinea el texto a la derecha de la pantalla
+		/// @brief Places the text using the position as an anchor on the right
+		/*
+													 |        <-----position/anchor
+										  Sample text
+
+		*/
 		void AlignRight();
 
-		/// @brief Establece el color de la parte superior del texto
-		/// @param r: componente red
-		/// @param g: componente green
-		/// @param b: componente blue
+		/// @brief Sets the color of the top of the text
+		/// @param r red color
+		/// @param g green color
+		/// @param b blue color
 		void SetTopColor(double r, double g, double b);
-		/// @brief Establece el color de la parte inferior del texto
-		/// @param r: componente red
-		/// @param g: componente green
-		/// @param b: componente blue
+		/// @brief Sets the color of the bottom of the text
+		/// @param r red color
+		/// @param g green color
+		/// @param b blue color
 		void SetBottomColor(double r, double g, double b);
 
 	protected:
