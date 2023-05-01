@@ -207,6 +207,11 @@ LMVector3 LMVector3::Perpendicular(const LMVector3& other) const {
 	return Cross(other).Cross(*this);
 }
 
+LMVector3 LocoMotor::LMVector3::Lerp(LMVector3 from, LMVector3 to, float timeStep) {
+	return Lerp(from, to, timeStep);
+	//return LMVector3();
+}
+
 LMQuaternion LMVector3::AsRotToQuaternion() const {
 	// Abbreviations for the various angular functions
 

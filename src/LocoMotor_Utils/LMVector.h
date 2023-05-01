@@ -111,6 +111,8 @@ namespace LocoMotor {
 		/// @param other The other Vector
 		LMVector3 Perpendicular(const LMVector3& other) const;
 
+		LMVector3 Lerp(LMVector3 from, LMVector3 to, float timeStep);
+
 		LMQuaternion AsRotToQuaternion() const;
 
 
