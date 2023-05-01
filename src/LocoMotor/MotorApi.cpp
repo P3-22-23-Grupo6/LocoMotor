@@ -129,7 +129,11 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "AllTrack.mesh", "", true);
 	trackMain->AddComponent("RigidBodyComponent");
 	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
-
+	//Temporary SkyBox
+	auto skyboxMesh = _mScene->AddGameobject("skyboxMesh");
+	skyboxMesh->AddComponent("Transform");
+	skyboxMesh->AddComponent("MeshRenderer");
+	skyboxMesh->GetComponent<MeshRenderer>()->Start("skyboxMesh", "SkyboxMesh.mesh", "", true);
 	//Enviroment
 	//auto firstArea = _mScene->AddGameobject("firstArea");
 	//firstArea->AddComponent("Transform");
