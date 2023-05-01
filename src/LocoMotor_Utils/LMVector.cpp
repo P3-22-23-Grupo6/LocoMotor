@@ -193,7 +193,7 @@ LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) {
 	LMVector3 cross = axis.Cross(*this);
 	LMVector3 dot = axis * axis.Dot(*this);
 	LMVector3 cross2 = axis.Cross(cross);
-	auto a = dot + cross * sin(angle * M_PI / 180. ) + cross2 * (1 - cos(angle * M_PI / 180.));
+	LMVector3 a = dot + cross * sin(angle * M_PI / 180. ) + cross2 * (1 - cos(angle * M_PI / 180.));
 
 	this->_x = a.GetX();
 	this->_y = a.GetY();

@@ -76,20 +76,20 @@ unsigned short AudioManager::AddSound(const char* fileName, bool ui) {
 unsigned short AudioManager::PlaySound(const char* name) {
 
 	Channel* ch;
-	auto err = PlaySoundwChannel(name, &ch);
+	unsigned short err = PlaySoundwChannel(name, &ch);
 	ch->setPaused(false);
 	return err;
 }
 
 unsigned short AudioManager::PlaySoundwChannel(const char* name, Channel** channel) {
 #ifndef _DEBUG
-	auto err = _sys->playSound(_soundLib[name], _main, true, channel);
+	unsigned short err = _sys->playSound(_soundLib[name], _main, true, channel);
 
 	return err;
 #endif // _DEBUG
 
 #ifdef _DEBUG
-	auto err = _sys->playSound(_soundLib[name], _main, true, channel);
+	FMOD_RESULT err = _sys->playSound(_soundLib[name], _main, true, channel);
 
 	if (err != 0) {
 		std::cout << "AUDIO: Trying to play sound '" << name << "' caused fmod exception: " << FMOD_ErrorString(err) << std::endl;

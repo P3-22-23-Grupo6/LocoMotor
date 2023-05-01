@@ -52,7 +52,7 @@ void Scene::Start() {
 
 	//GameObject* camera = new GameObject();
 
-	for (auto obj : _gameObjList) {
+	for (auto& obj : _gameObjList) {
 		obj.second->StartComp();
 	}
 
@@ -120,7 +120,7 @@ void Scene::Update(float dt) {
 		return;
 
 	}
-	for (auto obj : _gameObjList) {
+	for (auto& obj : _gameObjList) {
 
 		obj.second->Update(dt);
 

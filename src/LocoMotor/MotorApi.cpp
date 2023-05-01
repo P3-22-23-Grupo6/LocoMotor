@@ -45,7 +45,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 #pragma region Escena que teniamos antes
 
-	auto _renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene("Escena");
+	OgreWrapper::RenderScene* _renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene("Escena");
 
 #pragma region Manager responsable del gameplay
 	LocoMotor::GameObject* raceManager_gObj = _mScene->AddGameobject("raceManager");
@@ -242,7 +242,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	for (int i = 0; i < 1; i++){
 		std::string enemyName = "Enemy" + std::to_string(i);
 		//std::string enemyName = "Enemy0";
-		auto enemy_gObj = _mScene->AddGameobject(enemyName);
+		GameObject* enemy_gObj = _mScene->AddGameobject(enemyName);
 		enemy_gObj->AddComponent("Transform");
 		enemy_gObj->AddComponent("MeshRenderer");
 		enemy_gObj->GetComponent<MeshRenderer>()->Start(enemyName, "EnemyCar.mesh", "FalconRedone/FalconMat");
@@ -320,7 +320,7 @@ void MotorApi::Init() {
 	PhysicsManager::GetInstance()->setContactStartCallback(LMcontactStart);
 	PhysicsManager::GetInstance()->setContactProcessCallback(LMcontactProcessed);
 	PhysicsManager::GetInstance()->setContactEndedCallback(LMcontactExit);
-	auto cmpFac = ComponentsFactory::Init();
+	ComponentsFactory* cmpFac = ComponentsFactory::Init();
 	cmpFac->RegisterComponent<AudioSource>("AudioSource");
 	cmpFac->RegisterComponent<AudioListener>("AudioListener");
 	cmpFac->RegisterComponent<Camera>("Camera");

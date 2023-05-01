@@ -119,7 +119,7 @@ void ScriptManager::setParams(luabridge::LuaRef entity, GameObject* ent, Scene* 
 
         
         ent->AddComponent(compName, parameters);
-        for (auto p : parameters) {
+        for (auto& p : parameters) {
             std::cout << "\t" << p.first << ": " << p.second << "\n";
         }
         lua_pop(entity, 1);

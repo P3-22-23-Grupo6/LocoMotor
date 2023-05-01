@@ -173,7 +173,7 @@ void LocoMotor::UIImageLM::SetPressedImage(std::string newimg) {
 
 
 bool LocoMotor::UIImageLM::MouseOnImage() {
-	auto pos = LocoMotor::InputManager::GetInstance()->GetMousePos();
+	std::pair<int, int> pos = LocoMotor::InputManager::GetInstance()->GetMousePos();
 
 	return (pos.first/winWidth > posX && pos.first/winWidth < posX + sizeX) &&
 		(pos.second/winHeight > posY && pos.second/winHeight < posY + sizeY);

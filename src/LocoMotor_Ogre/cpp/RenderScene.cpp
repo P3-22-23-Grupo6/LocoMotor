@@ -104,7 +104,7 @@ OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer(std::string me
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::string mesh, OgreWrapper::Node* meshNode) {
-	auto ent = _manager->createEntity(mesh);
+	Ogre::Entity* ent = _manager->createEntity(mesh);
 	/*if (!_stGeom) {
 	}*/
 	_stGeom->addEntity(ent, Ogre::Vector3(meshNode->GetPosition_X(), 
