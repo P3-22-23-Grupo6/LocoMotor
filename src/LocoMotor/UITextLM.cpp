@@ -154,3 +154,11 @@ void LocoMotor::UITextLM::SetTopColor(double r, double g, double b) {
 void LocoMotor::UITextLM::SetBottomColor(double r, double g, double b) {
 	_uTxt->SetBottomColor(r,g,b);
 }
+
+double LocoMotor::UITextLM::GetSizeX() {
+	return sizeX;
+}
+
+double LocoMotor::UITextLM::GetSizeY() {
+	return sizeY;
+}

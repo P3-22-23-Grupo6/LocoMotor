@@ -78,6 +78,9 @@ namespace LocoMotor {
 		/// @param b blue color
 		void SetBottomColor(double r, double g, double b);
 
+		double GetSizeX();
+		double GetSizeY();
+
 	protected:
 		OgreWrapper::UIText* _uTxt;
 		std::string _uFont;

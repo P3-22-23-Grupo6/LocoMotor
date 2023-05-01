@@ -98,9 +98,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 	countdownText_gObj->AddComponent("Transform");
 	countdownText_gObj->AddComponent("UITextLM");
 	countdownText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
-	countdownText_gObj->GetComponent<UITextLM>()->SetPosition(0, .5);
+	countdownText_gObj->GetComponent<UITextLM>()->SetPosition(-.033, .3);
 	countdownText_gObj->GetComponent<UITextLM>()->AlignLeft();
-	countdownText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
+	countdownText_gObj->GetComponent<UITextLM>()->SetSize(0.15, 0.15);
 	countdownText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
 	countdownText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
 #pragma endregion 
