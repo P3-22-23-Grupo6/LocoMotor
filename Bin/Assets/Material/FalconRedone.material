@@ -258,12 +258,12 @@ material SkyMat {
     }
 }
 
-material DecalMaterial {    
+material TransMaterial {    
     technique {
         pass {
             lighting off
             scene_blend alpha_blend
-            //cull_hardware none
+            cull_hardware none
             //depth_write off
             alpha_rejection greater 150
             texture_unit {
