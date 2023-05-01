@@ -83,6 +83,7 @@ namespace LocoMotor {
 		/// @brief Gets the linearvelocity of the body
 		/// @return Return a LMVector3 of linear velocity
 		LMVector3 GetLinearVelocity();
+		void SetLinearVelocity(LMVector3 newAngularVelocity);
 		/// @brief Gets the total torque of the body
 		/// @return Return a LMVector3 of total torque
 		LMVector3 GetTotalTorque();

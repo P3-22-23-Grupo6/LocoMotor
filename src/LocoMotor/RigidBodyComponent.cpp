@@ -167,6 +167,9 @@ int LocoMotor::RigidBodyComponent::GetCollisionMask()
 LMVector3 LocoMotor::RigidBodyComponent::GetLinearVelocity() {
 	return BulletToLm(_body->getLinearVelocity()) ;
 }
+void LocoMotor::RigidBodyComponent::SetLinearVelocity(LMVector3 newLinearVelocity) {
+	_body->setLinearVelocity(LmToBullet(newLinearVelocity));
+}
 
 LMVector3 LocoMotor::RigidBodyComponent::GetTotalTorque() {
 	return BulletToLm(_body->getTotalTorque());
