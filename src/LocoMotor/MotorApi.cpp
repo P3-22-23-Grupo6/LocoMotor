@@ -85,7 +85,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	LocoMotor::GameObject* positionText_gObj = _mScene->AddGameobject("positionText");
 	positionText_gObj->AddComponent("Transform");
-
 	positionText_gObj->AddComponent("UITextLM");
 	positionText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
 	positionText_gObj->GetComponent<UITextLM>()->SetPosition(0.45, .9);
@@ -94,6 +93,16 @@ void MotorApi::RegisterGame(const char* gameName) {
 	positionText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
 	positionText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
 	positionText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
+
+	LocoMotor::GameObject* countdownText_gObj = _mScene->AddGameobject("countdownText");
+	countdownText_gObj->AddComponent("Transform");
+	countdownText_gObj->AddComponent("UITextLM");
+	countdownText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
+	countdownText_gObj->GetComponent<UITextLM>()->SetPosition(0, .5);
+	countdownText_gObj->GetComponent<UITextLM>()->AlignLeft();
+	countdownText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
+	countdownText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
+	countdownText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
 #pragma endregion 
 
 #pragma region RaceTrack
