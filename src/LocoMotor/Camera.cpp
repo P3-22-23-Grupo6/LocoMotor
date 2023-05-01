@@ -9,6 +9,9 @@
 
 using namespace LocoMotor;
 
+/**
+ * This is the constructor for the LocoMotor Camera class, initializing its member variables.
+ */
 LocoMotor::Camera::Camera()
 {
 	cam = nullptr;
@@ -18,6 +21,9 @@ LocoMotor::Camera::Camera()
 	_offset = LMVector3(0, 0, 0);
 }
 
+/**
+ * This function initializes a camera component for a game object in a scene using OgreWrapper.
+ */
 void LocoMotor::Camera::InitComponent() {
 
 	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject
@@ -36,6 +42,13 @@ void LocoMotor::Camera::InitComponent() {
 	//SetNode al gameObject
 }
 
+/**
+ * This function updates the position and rotation of a camera to follow a target object.
+ * 
+ * @param dt dt stands for delta time, which is the time elapsed since the last frame update. It is
+ * used to ensure that the movement and updates in the game are consistent across different hardware
+ * and frame rates.
+ */
 void LocoMotor::Camera::Update(float dt) {
 
 	// Comprobar si hay asignado un target
@@ -47,15 +60,38 @@ void LocoMotor::Camera::Update(float dt) {
 	}
 }
 
+/**
+ * The function sets the target and offset for the camera of a LocoMotor object.
+ * @brief Set the target and offset for the camera of a LocoMotor object.
+ * @param target A pointer to a GameObject that the camera will follow as its target.
+ * @param offset The offset is a vector that represents the distance and direction from the target
+ * object's position where the camera should be positioned. It is used to adjust the camera's position
+ * relative to the target object.
+ */
 void LocoMotor::Camera::SetTarget(GameObject* target, LMVector3 offset) {
 	_target = target;
 	_offset = offset;
 }
 
+/**
+ * The function sets the clipping plane of a camera object.
+ * @brief Set the clipping plane of a camera object.
+ * @param nearPlane The distance from the camera to the nearest visible object in the scene. Any object
+ * closer than this distance will not be visible in the rendered image.
+ * @param farPlane The far clipping plane is the maximum distance from the camera at which objects will
+ * be rendered. Any objects beyond this distance will not be visible in the rendered image.
+ */
 void LocoMotor::Camera::SetClippingPlane(int nearPlane, int farPlane) {
 	cam->SetClippingPlane(nearPlane, farPlane);
 }
 
+/**
+ * This function sets the field of view (FOV) of a camera object.
+ * @brief Set the field of view (FOV) of a camera object.
+ * @param newFov newFov is a float variable representing the new field of view (FOV) value that will be
+ * set for the camera. FOV is the extent of the observable world that is seen at any given moment
+ * through the camera lens. It is usually measured in degrees and determines how much of the scene
+ */
 void LocoMotor::Camera::SetFOV(float newFov) {
 	cam->SetFOV(newFov);
 }
