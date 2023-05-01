@@ -15,10 +15,9 @@ struct ClosestRayCallbackBullet : public btCollisionWorld::RayResultCallback {
 	virtual btScalar addSingleResult(btCollisionWorld::LocalRayResult& rayResult, bool normalInWorldSpace) {
 		//caller already does the filter on the m_closestHitFraction
 		btAssert(rayResult.m_hitFraction <= m_closestHitFraction);
-
 		m_closestHitFraction = rayResult.m_hitFraction;
 		int group = rayResult.m_collisionObject->getBroadphaseHandle()->m_collisionFilterGroup;
-		if (group == 2) {
+		if (group == 10) {
 			m_collisionObject = rayResult.m_collisionObject;
 		}
 		else {

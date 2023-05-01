@@ -83,6 +83,8 @@ void LocoMotor::RigidBodyComponent::Start() {
 	}
 	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
 	_body->setUserPointer(gameObject);
+	SetCollisionGroup(1);
+	SetCollisionMask(1);
 }
 
 
@@ -380,4 +382,8 @@ void LocoMotor::RigidBodyComponent::ApplyTorqueImpulse(LMVector3 impulse) {
  */
 void LocoMotor::RigidBodyComponent::SetFriction(float fric) {
 	_body->setFriction(fric);
+}
+
+void LocoMotor::RigidBodyComponent::UseItAsRaycast() {
+	SetCollisionGroup(10);
 }
