@@ -38,7 +38,6 @@
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\AudioSource.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor\Boost.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Camera.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\Component.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp" />
@@ -60,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h" />
-    <ClInclude Include="..\..\src\LocoMotor\Boost.h" />
     <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h" />
     <ClInclude Include="..\..\src\LocoMotor\AudioSource.h" />
     <ClInclude Include="..\..\src\LocoMotor\Camera.h" />

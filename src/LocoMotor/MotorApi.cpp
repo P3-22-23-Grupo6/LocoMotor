@@ -14,7 +14,6 @@
 #include "Node.h"
 #include "LMSpline.h"
 #include "Transform.h"
-#include "Boost.h"
 #include "ComponentsFactory.h"
 
 #include "MeshRenderer.h"
@@ -112,8 +111,8 @@ void MotorApi::RegisterGame(const char* gameName) {
 	boost->GetComponent<MeshRenderer>()->Start("boost", "TurboTestMesh.mesh", "", true);
 	boost->AddComponent("RigidBodyComponent");
 	boost->GetComponent<RigidBodyComponent>()->Start(0);
-	boost->AddComponent("Boost");
-
+	//boost->AddComponent("Boost");
+	Component* cmpBoost = boost->AddComponent("Boost");
 	//Track Main Road
 	auto trackMain = _mScene->AddGameobject("trackMain");
 	trackMain->AddComponent("Transform");
@@ -319,7 +318,7 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<Transform>("Transform");
 	cmpFac->RegisterComponent<UITextLM>("UITextLM");
 	cmpFac->RegisterComponent<UIImageLM>("UIImageLM");
-	cmpFac->RegisterComponent<Boost>("Boost");
+	//cmpFac->RegisterComponent<Boost>("Boost");
 	//cmpFac->RegisterComponent<Checkpoint>("Checkpoint");
 
 	/*cmpFac->RegisterComponent<UIImageLM>("UIImage");
