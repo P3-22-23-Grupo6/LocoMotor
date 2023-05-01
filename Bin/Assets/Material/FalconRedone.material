@@ -275,6 +275,23 @@ material TransMaterial {
     }
 }
 
+material ImpostorsMaterial01 {    
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            cull_hardware none
+            //depth_write off
+            alpha_rejection greater 150
+            texture_unit {
+                texture Impostors_01_t.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
+
 
 material RackMaterial {
     technique {

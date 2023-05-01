@@ -272,7 +272,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 	ship_gObj->SetPosition(LMVector3(0, 6, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
-	trackMain->SetPosition(LMVector3(0, -10, 0));
+	trackMain->SetPosition(LMVector3(0, -30, 0));
 	//firstArea->SetPosition(LMVector3(0, -10, 0));
 	boost->SetPosition(LMVector3(80, 0, -120));
 	ship_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
