@@ -19,6 +19,8 @@ InputManager::InputManager() {
 	_joystickAxis[1] = 0.f;
 	_joystickAxis[2] = 0.f;
 	_joystickAxis[3] = 0.f;
+	_triggersValue[0] = 0.f;
+	_triggersValue[1] = 0.f;
 	_mousePos.first = 0;
 	_mousePos.second = 0;
 }
@@ -90,6 +92,11 @@ float InputManager::GetJoystickValue(const int& joystickIndex, const Axis& axis)
 			return _joystickAxis[3];
 	}
 	return 0.f;
+}
+
+float LocoMotor::InputManager::GetTriggerValue(const int& triggerIndex) {
+	if (triggerIndex == 0 || triggerIndex == 1)return _triggersValue[triggerIndex];
+	return 0.0f;
 }
 
 // MANEJO DE EVENTOS
@@ -314,6 +321,21 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 		//	int axis = event.caxis.axis;
 		//	std::cout << "joistickValue = " << joistickValue << "\n";
 		//}
+
+	}
+	if (event.type == SDL_JOYAXISMOTION) {
+
+		Sint16 triggerValue = event.jaxis.value;
+
+		
+
+		int axis = event.jaxis.axis;
+		if (axis > 3) {
+			axis -= 4;
+			float auxValue = triggerValue + _TRIGGERSVALUE_MAX / 2;
+			if (axis == 0 || axis == 1)_triggersValue[axis] = auxValue / _TRIGGERSVALUE_MAX;
+		}
+		
 
 	}
 

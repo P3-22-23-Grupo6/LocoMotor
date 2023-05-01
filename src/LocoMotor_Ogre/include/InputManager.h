@@ -69,6 +69,8 @@ namespace LocoMotor {
 		/// @return 
 		float GetJoystickValue(const int& joystickIndex, const Axis& axis);
 
+		float GetTriggerValue(const int& triggerIndex);
+
 
 		// GESTION DE EVENTOS
 		
@@ -164,6 +166,11 @@ namespace LocoMotor {
 		float _joystickAxis[4]; // cuatro espacios : dos ejes en cada uno de los dos joysticks
 		const int _JOYSTICKDEADZONE_MIN = 10000;
 		const int _JOYSTICKDEADZONE_MAX = 32000;
+
+		// Triggers
+		float _triggersValue[2];
+		const int _TRIGGERSVALUE_MIN = 0;
+		const int _TRIGGERSVALUE_MAX = 64000;
 
 		// Giroscopio del mando
 		bool _useGyroscope = false;
