@@ -300,8 +300,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	raceManager_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/mainTheme.mp3", -1, 17105, 214244);
 	raceManager_gObj->GetComponent<AudioSource>()->SetFreq("Assets/Sounds/mainTheme.mp3", 0.98f);
 	ship_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine.wav", -1);
-	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
-	trackMain->GetComponent<RigidBodyComponent>()->SetCollisionGroup(2);
+	trackMain->GetComponent<RigidBodyComponent>()->UseItAsRaycast();
 	//trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	//Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	boost->GetComponent<RigidBodyComponent>()->beATrigger();
