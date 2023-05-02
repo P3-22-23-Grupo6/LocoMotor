@@ -12,3 +12,10 @@ BrunoAce
     size 32
     resolution 512
 }
+Heavitas
+{
+    type truetype
+    source Heavitas.ttf
+    size 32
+    resolution 512
+}

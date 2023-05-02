@@ -98,7 +98,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	LocoMotor::GameObject* countdownText_gObj = _mScene->AddGameobject("countdownText");
 	countdownText_gObj->AddComponent("Transform");
 	countdownText_gObj->AddComponent("UITextLM");
-	countdownText_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
+	countdownText_gObj->GetComponent<UITextLM>()->SetFont("Heavitas");
 	countdownText_gObj->GetComponent<UITextLM>()->SetPosition(0, .3);
 	countdownText_gObj->GetComponent<UITextLM>()->AlignCenter();
 	countdownText_gObj->GetComponent<UITextLM>()->SetSize(0.15, 0.15);
