@@ -31,6 +31,9 @@ namespace LocoMotor {
 		/// @brief Update the component
 		virtual void Update(float dt) {
 		}
+		/// @brief PreUpdate the component
+		virtual void PreUpdate(float dt) {
+		}
 		/// @brief Render the component
 		virtual void Render() {
 		}

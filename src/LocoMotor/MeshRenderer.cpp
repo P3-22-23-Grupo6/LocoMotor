@@ -30,17 +30,6 @@ LocoMotor::MeshRenderer::MeshRenderer()
  * The function initializes and attaches a renderer to a node in an Ogre scene.
  */
 void MeshRenderer::PreStart() {
-	_rndScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
-	_nod = _rndScn->GetNode(gameObject->GetName());
-	const Transform* aux = gameObject->GetTransform();
-	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _nod) : _rndScn->CreateRenderer(_src);
-	//_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
-	if (_rend3D != nullptr) {
-		_nod->Attach(_rend3D);
-	}
-	else {
-		LogSystem::GetInstance()->Save(0, "Couldn't load mesh of name '" + _name + "' with filename '" + _src);
-	}
 
 	//_rend3D->SetMaterial(_mat); TEMPORAL!
 	//gameObject->SetRenderer(_rend3D);
@@ -68,7 +57,17 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 		else if (params[i].first == "static") {
 			_isStatic = true;
 		}
-			
+	}
+
+	_rndScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
+	_nod = _rndScn->GetNode(gameObject->GetName());
+	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _nod) : _rndScn->CreateRenderer(_src);
+	//_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
+	if (_rend3D != nullptr) {
+		_nod->Attach(_rend3D);
+	}
+	else {
+		LogSystem::GetInstance()->Save(0, "Couldn't load mesh of name '" + _name + "' with filename '" + _src);
 	}
 }
 

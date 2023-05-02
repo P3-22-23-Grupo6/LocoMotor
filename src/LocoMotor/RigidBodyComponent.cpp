@@ -125,7 +125,7 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
  * @param dt dt stands for delta time, which is the time elapsed since the last frame update. It is
  * used to ensure that the movement of the object is consistent across different frame rates.
  */
-void LocoMotor::RigidBodyComponent::Update(float dt) {
+void LocoMotor::RigidBodyComponent::PreUpdate(float dt) {
 
 	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
 	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
