@@ -64,10 +64,14 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 
 #pragma region UI
-	raceManager_gObj->AddComponent("UIImageLM");
-	raceManager_gObj->GetComponent<UIImageLM>()->ChangeImage("TemporalUIMat");
-	raceManager_gObj->GetComponent<UIImageLM>()->SetPosition(0.3, 0.);
-	raceManager_gObj->GetComponent<UIImageLM>()->SetSize(0.3, 0.3);
+	raceManager_gObj->AddComponent("UITextLM");
+	raceManager_gObj->GetComponent<UITextLM>()->SetFont("BrunoAce");
+	raceManager_gObj->GetComponent<UITextLM>()->SetPosition(0.45, .05);
+	raceManager_gObj->GetComponent<UITextLM>()->AlignRight();
+	raceManager_gObj->GetComponent<UITextLM>()->ChangeText("0 fps");
+	raceManager_gObj->GetComponent<UITextLM>()->SetSize(0.05, 0.05);
+	raceManager_gObj->GetComponent<UITextLM>()->SetBottomColor(0, 0, 0);
+	raceManager_gObj->GetComponent<UITextLM>()->SetTopColor(0, 0, 0);
 
 	raceManager_gObj->AddComponent("AudioSource");
 	raceManager_gObj->GetComponent<AudioSource>()->Set2D();
