@@ -173,7 +173,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	velocityText_gObj->GetComponent<UITextLM>()->SetSize(0.1, 0.1);
 	velocityText_gObj->GetComponent<UITextLM>()->SetBottomColor(1, 1, 1);
 	velocityText_gObj->GetComponent<UITextLM>()->SetTopColor(1, 1, 1);
-	
+
 
 	// CHECKPOINTS
 	//raceManager_gObj->GetComponent<RaceManager>()->Start();
@@ -187,7 +187,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	checkpointPositions[2] = LMVector3(-63.7f, 71.5f, 688.5f);
 	checkpointPositions[3] = LMVector3(-1.6f, 7.6f, 56.2f);
 
-	
+
 	std::vector<GameObject*> lsBalls = std::vector<GameObject*>();
 
 	for (size_t i = 0; i < numberOfCheckpoints; i++) {
@@ -218,10 +218,9 @@ void MotorApi::RegisterGame(const char* gameName) {
 		LMVector3(-34.75f, 13,-71) * blenderScale,
 		LMVector3(-40, 10,-63) * blenderScale,
 		LMVector3(-41.75f, 4,-53) * blenderScale,
-		LMVector3(-41.75f, 4,-53) * blenderScale,
 		LMVector3(-42, 1,-43) * blenderScale,
 		LMVector3(-42.5f, -0.3f,-34) * blenderScale,
-		LMVector3(2, 1, -8)* blenderScale
+		LMVector3(2, 1, -8) * blenderScale
 	};
 
 	LocoMotor::Spline* nuevaSpl = new LocoMotor::Spline();
@@ -236,7 +235,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		wayPoint->SetScale(LMVector3(5, 5, 5));
 	}
 
-	for (int i = 0; i < 1; i++){
+	for (int i = 0; i < 1; i++) {
 		std::string enemyName = "Enemy" + std::to_string(i);
 		//std::string enemyName = "Enemy0";
 		GameObject* enemy_gObj = _mScene->AddGameobject(enemyName);
@@ -256,15 +255,15 @@ void MotorApi::RegisterGame(const char* gameName) {
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
 
 	//NO QUITAR AUN HASTA QUE ESTE LA SPLINE
-	int maxBalls = 300;
-	for (float i = 1; i < maxBalls; i++) {
-		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
-		wayPointNew->AddComponent("Transform");
-		wayPointNew->AddComponent("MeshRenderer");
-		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
-		//nuevaSpl->RecalcTangents();
-		waypointBalls.push_back(wayPointNew);
-	}
+	//int maxBalls = 300;
+	//for (float i = 1; i < maxBalls; i++) {
+	//	auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
+	//	wayPointNew->AddComponent("Transform");
+	//	wayPointNew->AddComponent("MeshRenderer");
+	//	wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
+	//	//nuevaSpl->RecalcTangents();
+	//	waypointBalls.push_back(wayPointNew);
+	//}
 
 #pragma endregion
 
@@ -281,10 +280,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//	lsBalls[i]->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	//	lsBalls[i]->SetPosition(checkpointPositions[i]);
 	//}
-	for (int i = 1; i < waypointBalls.size(); i++) {
-		waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
-		waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
-	}
+	//for (int i = 1; i < waypointBalls.size(); i++) {
+	//	waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
+	//	waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
+	//}
 
 #pragma region All Components Started
 
@@ -302,7 +301,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	boost->GetComponent<RigidBodyComponent>()->beATrigger();
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 
-	
+
 #pragma endregion
 }
 
@@ -334,7 +333,7 @@ void MotorApi::Init() {
 
 	/*cmpFac->RegisterComponent<UIImageLM>("UIImage");
 	cmpFac->RegisterComponent<UITextLM>("UIText");*/
-	
+
 
 }
 

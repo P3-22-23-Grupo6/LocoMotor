@@ -86,6 +86,7 @@ Scene* SceneManager::ChangeScene(std::string name) {
 			_activeScene->DeActivate();
 		}
 
+
 		StartScene(it->second);
 		renderMan->SetActiveScene(renderMan->GetScene(it->second->GetSceneName()));
 		_activeScene = it->second;
@@ -96,6 +97,7 @@ Scene* SceneManager::ChangeScene(std::string name) {
 	}
 	else {
 		//Mensaje a logsystem
+
 		return nullptr;
 		//return "No existe la escena" + name;
 	}
@@ -149,11 +151,14 @@ void LocoMotor::SceneManager::Update() {
 
 	if (_deltaTime <= 0) _deltaTime = 0.001f;
 
+	Scene* sc = _activeScene;
 	if (_activeScene != nullptr) {
-		_activeScene->Update(_deltaTime); 
-		_activeScene->Render();
+		sc->Update(_deltaTime); 
+		sc->Render();
 	}
-
+	if (sc->ToDestroy()) {
+		sc->Destroy();
+	}
 }
 
 /**

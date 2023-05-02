@@ -15,7 +15,7 @@ namespace LocoMotor {
 
 	class InputManager;
 
-	class UIImageLM : public Component {
+	class MOTOR_API UIImageLM : public Component {
 
 	public:
 		const static std::string name;

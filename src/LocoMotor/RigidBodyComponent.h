@@ -123,6 +123,7 @@ namespace LocoMotor {
 		bool _trigger = false;
 		int collisionGroup;
 		int collisionMask;
+		bool _raycast = false;
 
 	};
 }

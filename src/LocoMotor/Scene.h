@@ -47,6 +47,9 @@ namespace LocoMotor {
 		GameObject* GetCamera();
 		void SetCamObj(GameObject* cam);
 
+		bool ToDestroy();
+		void Destroy();
+
 	private:
 		
 		LM_Component::Camera* _currentCam;
@@ -67,5 +70,6 @@ namespace LocoMotor {
 
 		GameObject* camera_gObj;
 		GameObject* ship_gObj;
+		bool _toDestroy = false;
 	};
 }
