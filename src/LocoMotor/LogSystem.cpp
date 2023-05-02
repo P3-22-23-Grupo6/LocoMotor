@@ -28,7 +28,8 @@ void LogSystem::Initialize() {
  * The function closes a file in the LogSystem.
  */
 void LogSystem::FileClose() {
-	fclose(_file);
+	if (_file != nullptr)
+		fclose(_file);
 }
 
 

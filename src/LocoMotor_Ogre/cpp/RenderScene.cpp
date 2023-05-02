@@ -100,17 +100,15 @@ OgreWrapper::Light* OgreWrapper::RenderScene::CreateLight() {
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer(std::string mesh) {
-	//TODO: no va el resource exists??
-	if (!Ogre::MeshManager::getSingletonPtr()->resourceExists(mesh))
+	if (Ogre::ResourceGroupManager::getSingleton().resourceExistsInAnyGroup(mesh))
 		return new Renderer3D(_manager->createEntity(mesh));
 	else
 		return nullptr;
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::string mesh, OgreWrapper::Node* meshNode) {
-	//TODO: no va el resource exists??
 	Ogre::Entity* ent;
-	if (!Ogre::MeshManager::getSingletonPtr()->resourceExists(mesh))
+	if (Ogre::ResourceGroupManager::getSingleton().resourceExistsInAnyGroup(mesh))
 		ent = _manager->createEntity(mesh);
 	else 
 		return nullptr;
@@ -142,8 +140,10 @@ OgreWrapper::Camera* OgreWrapper::RenderScene::GetMainCamera() {
 }
 
 OgreWrapper::ParticleHelper* OgreWrapper::RenderScene::CreateParticleHelper(std::string name, std::string filename) {
-	//TODO: ESTO NO VAAA
-	if (!Ogre::MaterialManager::getSingletonPtr()->resourceExists(filename))
+	if (_manager->hasParticleSystem(name))
+		return nullptr;
+	auto part = Ogre::ParticleSystemManager::getSingletonPtr()->getTemplate(filename);
+	if (part != nullptr)
 		return new ParticleHelper(_manager->createParticleSystem(name, filename));
 	return nullptr;
 }
