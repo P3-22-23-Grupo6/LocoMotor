@@ -48,6 +48,8 @@ namespace OgreWrapper {
 		/// </summary>
 		~RenderScene();
 
+		void Deactivate();
+
 		/// <summary>
 		/// Genera una escena de prueba
 		/// </summary>
@@ -64,6 +66,8 @@ namespace OgreWrapper {
 
 		Node* CreateNode(std::string name, std::string parent);
 		Node* GetNode(std::string name);
+
+		void DestroyNode(std::string name);
 
 		Canvas* GetCanvas();
 

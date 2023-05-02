@@ -7,6 +7,7 @@
 #define MOTOR_API __declspec(dllimport)
 #endif
 #include "Component.h"
+#include <string>
 
 namespace FmodWrapper {
 	class AudioSource;
@@ -24,6 +25,8 @@ namespace LocoMotor {
 		~AudioSource();
 		void InitComponent() override;
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
+
+		void Start() override;
 
 		/// @brief Updates the source's position and velocity in the world
 		/// @param dt DeltaTime used to calculate the velocity by comparing last position
@@ -92,6 +95,10 @@ namespace LocoMotor {
 	private:
 		FmodWrapper::AudioSource* _src;
 		unsigned short _lastError;
+		std::string _startPlay;
+		int loops;
+		unsigned int loopStart;
+		unsigned int loopEnd;
 	};
 }
 

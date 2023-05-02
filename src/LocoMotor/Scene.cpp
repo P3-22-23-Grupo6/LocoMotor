@@ -40,6 +40,7 @@ Scene::~Scene() {
  * active.
  */
 void Scene::Start() {
+	_toDestroy = false;
 	for (auto& obj : _gameObjList) {
 		obj.second->StartComp();
 	}
@@ -90,9 +91,10 @@ void Scene::Destroy() {
 	_isActiveScene = false;
 	std::unordered_map<std::string, GameObject*>::iterator it;
 	for (it = _gameObjList.begin(); it != _gameObjList.end(); it = _gameObjList.erase(it)) {
+		_renderScn->DestroyNode(it->second->GetName());
 		delete it->second;
 	}
-
+	_renderScn->Deactivate();
 }
 
 

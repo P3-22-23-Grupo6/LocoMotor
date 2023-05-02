@@ -37,6 +37,10 @@ OgreWrapper::RenderScene::~RenderScene() {
 	}
 }
 
+void OgreWrapper::RenderScene::Deactivate() {
+	_manager->destroyCamera("mainCam");
+}
+
 void OgreWrapper::RenderScene::Render() {
 	_mainCam->GetViewport()->update();
 	// _canvas->Render();
@@ -89,6 +93,14 @@ OgreWrapper::Node* OgreWrapper::RenderScene::GetNode(std::string name) {
 	}
 
 	return _sceneStructure.at(name);
+}
+
+void OgreWrapper::RenderScene::DestroyNode(std::string name) {
+	if (_sceneStructure.count(name) == 0 || name == "Root") {
+		std::cerr << "No node with the name " << name << " found\n";
+	}
+	_root->DestroyChild(_sceneStructure[name]);
+	_sceneStructure.erase(name);
 }
 
 OgreWrapper::Canvas* OgreWrapper::RenderScene::GetCanvas() {

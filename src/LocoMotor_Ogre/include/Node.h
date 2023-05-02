@@ -115,6 +115,8 @@ namespace OgreWrapper {
 
 		Node* CreateChild(const std::string& name);
 
+		void DestroyChild(OgreWrapper::Node* nod);
+
 		std::string GetName();
 	protected:
 		Ogre::SceneNode* _node;

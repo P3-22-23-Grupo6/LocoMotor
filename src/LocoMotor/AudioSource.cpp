@@ -20,6 +20,10 @@ using namespace LocoMotor;
 AudioSource::AudioSource() {
 	_lastError = 0;
 	_src = nullptr;
+	_startPlay = "";
+	loops = 0;
+	loopStart = 0;
+	loopEnd = 0xffffffff;
 }
 
 /**
@@ -44,9 +48,6 @@ void LocoMotor::AudioSource::InitComponent() {
  */
 void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	_src = new FmodWrapper::AudioSource();
-	int loops = 0;
-	unsigned int loopStart = 0;
-	unsigned int loopEnd = 0xffffffff;
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "vol" || params[i].first == "volume") {
 			SetVolume(std::stof(params[i].second));
@@ -73,9 +74,14 @@ void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string
 			loopEnd = a;
 		}
 		else if (params[i].first == "playonStart") {
-			Play(params[i].second.c_str(), loops, loopStart, loopEnd);
+			_startPlay = params[i].second;
 		}
 	}
+}
+
+void LocoMotor::AudioSource::Start() {
+	if (_startPlay != "")
+		Play(_startPlay.c_str(), loops, loopStart, loopEnd);
 }
 
 /**

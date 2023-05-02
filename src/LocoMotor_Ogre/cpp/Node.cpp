@@ -56,6 +56,11 @@ OgreWrapper::Node* OgreWrapper::Node::CreateChild(const std::string& name) {
 	return child;
 }
 
+void OgreWrapper::Node::DestroyChild(OgreWrapper::Node* nod) {
+	_node->removeAndDestroyChild(nod->_node);
+	delete nod;
+}
+
 std::string OgreWrapper::Node::GetName() {
 	return _name;
 }
