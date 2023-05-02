@@ -23,13 +23,6 @@ LocoMotor::ParticleSystem::ParticleSystem()
 }
 
 
-/**
- * The function initializes the particle system by setting its name and filename based on the input
- * parameters.
- * @brief Initializes the particle system by setting its name and filename based on the input
- * @param params A vector of pairs, where each pair contains a string key and a string value. These
- * pairs represent the parameters passed to the Init() function.
- */
 void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "name") {
@@ -41,11 +34,7 @@ void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::str
 	}
 }
 
-/**
- * This function initializes a particle system component by creating a node, creating particles,
- * attaching them to the node of the game object, and setting the node to the game object.
- * @brief Initializes a particle system component by creating a node, creating particles,
- */
+
 void ParticleSystem::InitComponent() {
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	//Crear nodo
@@ -61,13 +50,7 @@ void ParticleSystem::InitComponent() {
 	//SetNode al gameObject
 }
 
-/**
- * The function updates the position of a particle system node based on the position of its associated
- * game object.
- * 
- * @param dt dt stands for delta time, which is the time elapsed since the last frame update. It is
- * used to ensure that the particle system updates at a consistent rate regardless of the frame rate.
- */
+
 void ParticleSystem::Update(float dt) {
 	if (_node != nullptr) {
 		float x = gameObject->GetTransform()->GetPosition().GetX();
