@@ -183,6 +183,10 @@ do ---------------------   AREA03   ------------------------------
         MeshRenderer = {
             file =  "Area03_Terrain.mesh",
             static = ""
+        },
+        RigidBodyComponent = {
+            mass = 0,
+            usedAsRaycast = ""
         }
     }
     Area03_Extra = {
@@ -266,12 +270,22 @@ Main_Water = {
         static = ""
     }
 }
-
+SkyboxMesh = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "SkyboxMesh.mesh",
+        static = ""
+    }
+}
 
 entities = { "coche", "mainCam", 
             "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain",
             "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
-            "Main_Terrain", "Main_Water"
+            "Main_Terrain", "Main_Water", "SkyboxMesh"
         }
