@@ -23,7 +23,7 @@ namespace LocoMotor {
 
 		void Render();
 
-		void Start() override;
+		void PreStart() override;
 		void Start(std::string name, std::string file, std::string mat, bool isStatic = false);
 		
 		/// @brief Initializes the parameters of a MeshRenderer object using a vector of pairs.

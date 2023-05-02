@@ -62,7 +62,7 @@ void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
  * applicable.
  * 
  */
-void LocoMotor::RigidBodyComponent::Start() {
+void LocoMotor::RigidBodyComponent::PreStart() {
 	
 	RigidBodyInfo info;
 	info.mass = _mass;

@@ -36,7 +36,7 @@ namespace LocoMotor {
 		/// @param force to add
 		void addForce(LMVector3 force);
 		/// @brief 
-		void Start() override;
+		void PreStart() override;
 		/// @brief 
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's

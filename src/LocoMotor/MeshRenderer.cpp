@@ -29,7 +29,7 @@ LocoMotor::MeshRenderer::MeshRenderer()
 /**
  * The function initializes and attaches a renderer to a node in an Ogre scene.
  */
-void MeshRenderer::Start() {
+void MeshRenderer::PreStart() {
 	_rndScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	_nod = _rndScn->GetNode(gameObject->GetName());
 	const Transform* aux = gameObject->GetTransform();

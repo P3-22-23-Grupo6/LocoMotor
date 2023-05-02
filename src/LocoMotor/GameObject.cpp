@@ -211,6 +211,9 @@ Scene* LocoMotor::GameObject::GetScene() {
  */
 void GameObject::StartComp() {
 	for (auto& comp : _componentsByName) {
+		comp.second->PreStart();
+	}
+	for (auto& comp : _componentsByName) {
 		comp.second->Start();
 	}
 }

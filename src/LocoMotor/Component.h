@@ -23,6 +23,9 @@ namespace LocoMotor {
 
 		virtual void Init(std::vector<std::pair<std::string, std::string>>& params) {};
 		/// @brief Initialize the component
+		virtual void PreStart() {
+		}
+		/// @brief Initialize the component
 		virtual void Start() {
 		}
 		/// @brief Update the component
