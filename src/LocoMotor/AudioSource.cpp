@@ -43,6 +43,7 @@ void LocoMotor::AudioSource::InitComponent() {
  * a string representing the parameter value.
  */
 void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	_src = new FmodWrapper::AudioSource();
 	int loops = 0;
 	unsigned int loopStart = 0;
 	unsigned int loopEnd = 0xffffffff;

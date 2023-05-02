@@ -2,6 +2,7 @@
 #include <SDL.h>
 
 #include "ComponentsFactory.h"
+#include "OgreManager.h"
 
 using namespace LocoMotor;
 
@@ -76,15 +77,17 @@ Scene* SceneManager::CreateScene(std::string nombre) {
  */
 Scene* SceneManager::ChangeScene(std::string name) {
 	std::map<std::string, Scene*>::iterator it = _sceneInfo.find(name);
+	OgreWrapper::OgreManager* renderMan = OgreWrapper::OgreManager::GetInstance();
 
 	if (it != _sceneInfo.end()) {
 		//si hay alguna escena activa, se desactiva
-		if (_activeScene != nullptr) {
+		if (_activeScene != nullptr && _activeScene != it->second) {
 
 			_activeScene->DeActivate();
 		}
 
 		StartScene(it->second);
+		renderMan->SetActiveScene(renderMan->GetScene(it->second->GetSceneName()));
 		_activeScene = it->second;
 		return it->second;
 		//return "Cambiada la escena";

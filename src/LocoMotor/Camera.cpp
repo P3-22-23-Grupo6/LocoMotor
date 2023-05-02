@@ -24,22 +24,43 @@ LocoMotor::Camera::Camera()
 /**
  * This function initializes a camera component for a game object in a scene using OgreWrapper.
  */
+void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& params)
+{
+	InitComponent();
+	for (auto & param : params) {
+		if (param.first == "FOV" || param.first == "fov") {
+			try {
+				float fov = std::stof(param.second);
+				SetFOV(fov);
+			}
+			catch (...) {}
+		}
+		else if (param.first == "target") {
+			SetTarget(gameObject->GetScene()->GetObjectByName(param.second), LMVector3(0, 15, 45));
+		}
+		else if (param.first == "main") {
+			gameObject->GetScene()->SetCamObj(gameObject);
+		}
+	}
+	
+}
 void LocoMotor::Camera::InitComponent() {
 
 	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject
 	_scene = gameObject->GetScene();
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
-	_node = _renderScn->GetNode(gameObject->GetName());
+	OgreWrapper::Node* _node = _renderScn->GetNode(gameObject->GetName());
 
 	//Crear camara
-	cam = _renderScn->CreateCamera("ScnCam");
+	cam = _renderScn->CreateCamera(gameObject->GetName());
 	_scene->SetSceneCam(cam);
-
+	
 	//Attachear al nodo del gameObject
-	//OgreWrapper::RenderEntity* renderObj = cam;
-	_renderScn->GetNode(gameObject->GetName())->Attach(cam);
+	_node->Attach(cam);
+	SetClippingPlane(1, 8000);
 
 	//SetNode al gameObject
+
 }
 
 /**

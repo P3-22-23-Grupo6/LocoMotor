@@ -32,6 +32,10 @@ void LocoMotor::AudioListener::Start() {
 	_lastPos = gameObject->GetTransform()->GetPosition();
 }
 
+void LocoMotor::AudioListener::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	InitComponent();
+}
+
 /**
  * The function initializes a new instance of the FmodWrapper::AudioListener class.
  */

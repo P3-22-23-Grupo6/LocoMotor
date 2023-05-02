@@ -45,6 +45,7 @@ namespace LocoMotor {
 		GameObject* GetObjectByName(std::string name);
 
 		GameObject* GetCamera();
+		void SetCamObj(GameObject* cam);
 
 	private:
 		

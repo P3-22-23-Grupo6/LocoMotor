@@ -1,15 +1,50 @@
 
 coche = {
-    RigidBodyComponent = {
-        mass = "1",
-        damping = "0.7",
-        gravity = "1"
-    },
     Transform = {
-        position = "0 0 30",
-        rotation = "10 0 80",
-        scale = "1 1 1"
+        position = "0 6 0",
+        rotation = "0 0 0",
+        scale = "10 10 10"
+    },
+    MeshRenderer = {
+        file =  "BlueFalcon.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav"
+    },
+    PlayerController = {},
+    RigidBodyComponent = {
+        mass = 1
     }
 }
 
-entities = { "coche"}
+track = {
+    Transform = {
+        position = "0 -30 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "AllTrack.mesh"
+    },
+    RigidBodyComponent = {
+        mass = 0;
+    }
+}
+
+mainCam = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    Camera = 
+    { 
+        FOV = "60",
+        target = "coche" ,
+        main = ""
+    },
+    AudioListener = {}
+}
+
+entities = { "coche", "mainCam", "track"}

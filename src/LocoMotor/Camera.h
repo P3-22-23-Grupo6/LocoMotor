@@ -26,9 +26,7 @@ namespace LocoMotor {
 		// Para crear la camara se necesita tanto la escena como la escena de Render
 		// 
 		Camera();
-		
-		OgreWrapper::Node* _node;
-
+		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		void InitComponent() override;
 		/* @brief
 		 * This function updates the position and rotation of a camera to follow a target object.

@@ -31,7 +31,7 @@ LocoMotor::MeshRenderer::MeshRenderer()
  */
 void MeshRenderer::Start() {
 	_rndScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
-	_nod = _rndScn->GetNode(_name);
+	_nod = _rndScn->GetNode(gameObject->GetName());
 	const Transform* aux = gameObject->GetTransform();
 	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _nod) : _rndScn->CreateRenderer(_src);
 	//_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
@@ -49,7 +49,7 @@ void MeshRenderer::Start() {
 //Hasta que haya lua
 void LocoMotor::MeshRenderer::Start(std::string name, std::string file, std::string mat, bool isStatic)
 {
-	_name = name;
+	
 	_src = file;
 	_mat = mat;
 	_isStatic = isStatic;
@@ -65,15 +65,17 @@ void LocoMotor::MeshRenderer::Start(std::string name, std::string file, std::str
  */
 void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	for (int i = 0; i < params.size(); i++) {
-		if (params[i].first == "name") {
-			_name = params[i].second;
-		}
-		else if (params[i].first == "file") {
+		
+		if (params[i].first == "file") {
 			_src = params[i].second;
 		}
 		else if (params[i].first == "mat") {
 			_mat = params[i].second;
 		}
+		else if (params[i].first == "static") {
+			_isStatic = true;
+		}
+			
 	}
 }
 
