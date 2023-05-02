@@ -289,6 +289,23 @@ material TransMaterial {
         }
     }
 }
+material BubblesMaterial {    
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            cull_hardware none
+            //depth_write off
+            alpha_rejection greater 100
+            texture_unit {
+                texture Bubbles_t.png
+                tex_address_mode wrap
+                colour_op modulate
+                scroll_anim 0.0 0.8
+            }
+        }
+    }
+}
 material GlassTunnelMaterial {    
     technique {
         pass {
