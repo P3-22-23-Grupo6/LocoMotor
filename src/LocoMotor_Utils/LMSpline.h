@@ -23,6 +23,7 @@ namespace LocoMotor {
 		//Ogre::MovableObject* GetMovObj();
 
 		void AddPoint(const LMVector3& newPoint);
+		void SetAutoCalc(bool shouldAutoCalc);
 		void ClearAll();
 		LMVector3 GetPoint(int pointIndex);
 		LMVector3 Interpolate(float timeInter);
