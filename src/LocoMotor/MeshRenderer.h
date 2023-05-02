@@ -25,21 +25,34 @@ namespace LocoMotor {
 
 		void Start() override;
 		void Start(std::string name, std::string file, std::string mat, bool isStatic = false);
+		
+		/// @brief Initializes the parameters of a MeshRenderer object using a vector of pairs.
+		/// @param params A vector of pairs, where each pair contains a string key and a string value. These
+		/// pairs represent the parameters that are passed to the Init() function of the MeshRenderer class. The
+		/// function loops through each pair and checks the key to determine which member variable of the
+		/// MeshRenderer class to set with the
+		 
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		void InitComponent() override;
-		//OgreWrapper::Node* GetNode();
+		
+		/// @brief Returns a pointer to a 3D renderer object from a mesh renderer object.
+		/// @return An object of type OgreWrapper::Renderer3D* is being returned.
+		
 		OgreWrapper::Renderer3D* GetRenderer();
-
+		
+		/// @brief Rotates a mesh renderer object using a given set of new rotation values.
+		/// @param newRotation newRotation is a LMVector3 object that represents the new rotation to be applied
+		/// to the MeshRenderer. It contains three float values representing the rotation around the x, y, and z
+		/// axes respectively.
+		
 		void Rotate(LMVector3 newRotation);
 
 	private:
 
 		OgreWrapper::Renderer3D* _rend3D=nullptr;
-		//OgreWrapper::RedererEntity* _rendEnt;
-
+		
 		GameObject* _gobj;
-		//OgreWrapper::Renderer3D* _msh=nullptr;
-
+		
 		std::string _name;
 		std::string _src;
 		std::string _mat;
@@ -48,7 +61,7 @@ namespace LocoMotor {
 		OgreWrapper::Node* _nod;
 		bool _isStatic;
 		
-		//OgreWrapper::Node* _node;
+		
 
 	};
 }
