@@ -209,15 +209,23 @@ void MotorApi::RegisterGame(const char* gameName) {
 	std::vector<LMVector3> positionsList //Estoy tomando medidas con el archivo de Blender, aun no puedo exportar posiciones
 	{
 		LMVector3(2, 1, -8) * blenderScale,
-		LMVector3(2, 1, -30) * blenderScale,
+		LMVector3(2, 1, -27) * blenderScale,
 		LMVector3(2, 1,-44) * blenderScale,
 		LMVector3(2, 4,-57) * blenderScale,
-		LMVector3(-0.7f, 9,-68) * blenderScale,
+		LMVector3(-0.7f, 10,-68) * blenderScale,
+		LMVector3(-8.7f, 16,-78) * blenderScale,
+		LMVector3(-21.75f, 16,-75) * blenderScale,
+		LMVector3(-34.75f, 13,-71) * blenderScale,
+		LMVector3(-40, 10,-63) * blenderScale,
+		LMVector3(-41.75f, 4,-53) * blenderScale,
+		LMVector3(-41.75f, 4,-53) * blenderScale,
+		LMVector3(-42, 1,-43) * blenderScale,
+		LMVector3(-42.5f, -0.3f,-34) * blenderScale,
 		LMVector3(2, 1, -8)* blenderScale
 	};
 
 	LocoMotor::Spline* nuevaSpl = new LocoMotor::Spline();
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < positionsList.size(); i++) {
 		nuevaSpl->AddPoint(LMVector3(positionsList[i]));
 		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
 		wayPoint->AddComponent("Transform");
@@ -247,13 +255,13 @@ void MotorApi::RegisterGame(const char* gameName) {
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
 
 	//NO QUITAR AUN HASTA QUE ESTE LA SPLINE
-	int maxBalls = 100;
+	int maxBalls = 300;
 	for (float i = 1; i < maxBalls; i++) {
 		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
 		wayPointNew->AddComponent("Transform");
 		wayPointNew->AddComponent("MeshRenderer");
 		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
-		nuevaSpl->RecalcTangents();
+		//nuevaSpl->RecalcTangents();
 		waypointBalls.push_back(wayPointNew);
 	}
 
