@@ -79,6 +79,9 @@ btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms
 		rigidbody->setCcdMotionThreshold(0.0000001f);
 		rigidbody->setCcdSweptSphereRadius(0.5f);
 	}
+
+	rigidbody->setDeactivationTime(0);
+
 	return rigidbody;
 
 }

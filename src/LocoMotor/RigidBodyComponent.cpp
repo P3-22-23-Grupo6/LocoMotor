@@ -85,6 +85,8 @@ void LocoMotor::RigidBodyComponent::Start() {
 	_body->setUserPointer(gameObject);
 	SetCollisionGroup(1);
 	SetCollisionMask(1);
+
+	
 }
 
 
@@ -386,4 +388,8 @@ void LocoMotor::RigidBodyComponent::SetFriction(float fric) {
 
 void LocoMotor::RigidBodyComponent::UseItAsRaycast() {
 	SetCollisionGroup(10);
+}
+
+void LocoMotor::RigidBodyComponent::SetActivationState(activeState state){
+		_body->setActivationState(state);
 }

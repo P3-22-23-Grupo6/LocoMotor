@@ -5,6 +5,7 @@
 #include <btBulletDynamicsCommon.h>
 #include "Singleton.h"
 #include "LMVector.h"
+#define DISA
 namespace LocoMotor {
 	class MeshStrider;
 }
