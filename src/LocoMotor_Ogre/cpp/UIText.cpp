@@ -3,8 +3,10 @@
 #include "OgreOverlayManager.h"
 #include "OgreOverlaySystem.h"
 #include "OgreOverlay.h"
+#include "OgreResourceManager.h"
 #include "OgreOverlayContainer.h"
 #include "OgreTextAreaOverlayElement.h"
+#include "OgreFontManager.h"
 #include <iostream>
 //#include "OgreFont.h"
 
@@ -47,13 +49,12 @@ void OgreWrapper::UIText::ChangeText(std::string newtxt) {
     _txtElem->setCaption(newtxt);
 }
 
-void OgreWrapper::UIText::SetFont(std::string nfont) {
-    try {
+bool OgreWrapper::UIText::SetFont(std::string nfont) {
+    if (Ogre::FontManager::getSingletonPtr()->getByName(nfont)) {
         _txtElem->setFontName(nfont);
+        return true;
     }
-    catch (const char*) {
-        std::cout << "Couldn't change to font " + nfont << std::endl;
-    }
+    return false;
 }
 
 void OgreWrapper::UIText::AlignCenter() {

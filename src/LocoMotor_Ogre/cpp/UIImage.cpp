@@ -9,7 +9,8 @@ OgreWrapper::UIImage::UIImage(): UIElement() {
 }
 
 void OgreWrapper::UIImage::ChangeImage(std::string nImage) {
-	_container->setMaterialName(nImage);
+	if (Ogre::MaterialManager::getSingletonPtr()->resourceExists(nImage))
+		_container->setMaterialName(nImage);
 }
 
 bool OgreWrapper::UIImage::Init(const std::string& sceneName) {

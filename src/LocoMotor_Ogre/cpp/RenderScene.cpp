@@ -100,11 +100,20 @@ OgreWrapper::Light* OgreWrapper::RenderScene::CreateLight() {
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateRenderer(std::string mesh) {
-	return new Renderer3D(_manager->createEntity(mesh));
+	//TODO: no va el resource exists??
+	if (!Ogre::MeshManager::getSingletonPtr()->resourceExists(mesh))
+		return new Renderer3D(_manager->createEntity(mesh));
+	else
+		return nullptr;
 }
 
 OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::string mesh, OgreWrapper::Node* meshNode) {
-	Ogre::Entity* ent = _manager->createEntity(mesh);
+	//TODO: no va el resource exists??
+	Ogre::Entity* ent;
+	if (!Ogre::MeshManager::getSingletonPtr()->resourceExists(mesh))
+		ent = _manager->createEntity(mesh);
+	else 
+		return nullptr;
 	/*if (!_stGeom) {
 	}*/
 	_stGeom->addEntity(ent, Ogre::Vector3(meshNode->GetPosition_X(), 
@@ -133,7 +142,10 @@ OgreWrapper::Camera* OgreWrapper::RenderScene::GetMainCamera() {
 }
 
 OgreWrapper::ParticleHelper* OgreWrapper::RenderScene::CreateParticleHelper(std::string name, std::string filename) {
-	return new ParticleHelper(_manager->createParticleSystem(name, filename));
+	//TODO: ESTO NO VAAA
+	if (!Ogre::MaterialManager::getSingletonPtr()->resourceExists(filename))
+		return new ParticleHelper(_manager->createParticleSystem(name, filename));
+	return nullptr;
 }
 
 void OgreWrapper::RenderScene::Prueba() {

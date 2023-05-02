@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "LMVector.h"
 #include "Transform.h"
+#include "LogSystem.h"
 using namespace LocoMotor;
 
 /**
@@ -34,8 +35,13 @@ void MeshRenderer::Start() {
 	const Transform* aux = gameObject->GetTransform();
 	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _nod) : _rndScn->CreateRenderer(_src);
 	//_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
+	if (_rend3D != nullptr) {
+		_nod->Attach(_rend3D);
+	}
+	else {
+		LogSystem::GetInstance()->Save(0, "Couldn't load mesh of name '" + _name + "' with filename '" + _src);
+	}
 
-	_nod->Attach(_rend3D);
 	//_rend3D->SetMaterial(_mat); TEMPORAL!
 	//gameObject->SetRenderer(_rend3D);
 

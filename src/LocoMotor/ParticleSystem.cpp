@@ -6,6 +6,7 @@
 #include "Transform.h"
 #include "Node.h"
 #include "OgreManager.h"
+#include "LogSystem.h"
 
 using namespace LocoMotor;
 
@@ -52,7 +53,11 @@ void ParticleSystem::InitComponent() {
 	//Crear particulas
 	_particleHelper = _renderScn->CreateParticleHelper(_name + "ParticleHelper", _filename);
 	//Attachear al nodo del gameObject
-	_renderScn->GetNode(gameObject->GetName())->Attach(_particleHelper);
+	if (_particleHelper != nullptr)
+		_renderScn->GetNode(gameObject->GetName())->Attach(_particleHelper);
+	else {
+		LocoMotor::LogSystem::GetInstance()->Save(0, "Couldn't initialize ParticleSystem named '" + _name + "' on file '" + _filename + "'");
+	}
 	//SetNode al gameObject
 }
 

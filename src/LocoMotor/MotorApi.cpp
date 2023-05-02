@@ -15,6 +15,7 @@
 #include "LMSpline.h"
 #include "Transform.h"
 #include "ComponentsFactory.h"
+#include "LogSystem.h"
 
 #include "MeshRenderer.h"
 #include <RigidBodyComponent.h>
@@ -310,6 +311,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 }
 
 void MotorApi::Init() {
+	LogSystem::Init();
 	OgreWrapper::OgreManager::Init("AHHHH");
 	FmodWrapper::AudioManager::Init(8);
 	PhysicsManager::Init();
@@ -361,5 +363,6 @@ void MotorApi::MainLoop() {
 	ScriptManager::Clear();
 	InputManager::Clear();
 	ComponentsFactory::Clear();
+	LogSystem::Clear();
 	return;
 }

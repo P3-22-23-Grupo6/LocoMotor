@@ -2,6 +2,7 @@
 #include "UIText.h"
 #include "GameObject.h"
 #include "Scene.h"
+#include "LogSystem.h"
 
 
 using namespace LocoMotor;
@@ -132,7 +133,9 @@ void LocoMotor::UITextLM::SetTextHeight(double height) {
 }
 
 void LocoMotor::UITextLM::SetFont(std::string nfont) {
-	_uTxt->SetFont(nfont);
+	if (!_uTxt->SetFont(nfont)) {
+		LocoMotor::LogSystem::GetInstance()->Save(0, "Couldn't set to font '" + nfont + "'");
+	}
 }
 
 void LocoMotor::UITextLM::AlignCenter() {

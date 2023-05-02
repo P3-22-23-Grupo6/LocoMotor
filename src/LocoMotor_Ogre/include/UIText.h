@@ -30,7 +30,7 @@ namespace OgreWrapper {
 		void SetHeight(double height);
 		/// @brief Sets the font the text will be using
 		/// @param nfont is the name of the file
-		void SetFont(std::string nfont);
+		bool SetFont(std::string nfont);
 		/// @brief Places the text using the position as an anchor on the center
 		/*
 		                                       |        <-----position/anchor
