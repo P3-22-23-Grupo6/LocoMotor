@@ -1,7 +1,7 @@
 
 coche = {
     Transform = {
-        position = "0 30 0",
+        position = "0 60 0",
         rotation = "0 0 0",
         scale = "10 10 10"
     },
@@ -46,6 +46,22 @@ Area01_RoadBorder = {
     }
 }
 
+Area01_Vegetation = {
+    Transform = {
+        position = "0 -6 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Area03_Vegetation.mesh",
+        static = ""
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = ""
+    }
+}
+
 
 mainCam = {
     Transform = {
@@ -62,4 +78,4 @@ mainCam = {
     AudioListener = {}
 }
 
-entities = { "coche", "mainCam", "Area01_RoadMain", "Area01_RoadBorder"}
+entities = { "coche", "mainCam", "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation"}
