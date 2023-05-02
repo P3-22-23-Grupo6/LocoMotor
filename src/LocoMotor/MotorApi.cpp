@@ -218,7 +218,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 		LMVector3(-34.75f, 13,-71) * blenderScale,
 		LMVector3(-40, 10,-63) * blenderScale,
 		LMVector3(-41.75f, 4,-53) * blenderScale,
-		LMVector3(-41.75f, 4,-53) * blenderScale,
 		LMVector3(-42, 1,-43) * blenderScale,
 		LMVector3(-42.5f, -0.3f,-34) * blenderScale,
 		LMVector3(2, 1, -8)* blenderScale
@@ -256,15 +255,15 @@ void MotorApi::RegisterGame(const char* gameName) {
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
 
 	//NO QUITAR AUN HASTA QUE ESTE LA SPLINE
-	int maxBalls = 300;
-	for (float i = 1; i < maxBalls; i++) {
-		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
-		wayPointNew->AddComponent("Transform");
-		wayPointNew->AddComponent("MeshRenderer");
-		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
-		//nuevaSpl->RecalcTangents();
-		waypointBalls.push_back(wayPointNew);
-	}
+	//int maxBalls = 300;
+	//for (float i = 1; i < maxBalls; i++) {
+	//	auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
+	//	wayPointNew->AddComponent("Transform");
+	//	wayPointNew->AddComponent("MeshRenderer");
+	//	wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
+	//	//nuevaSpl->RecalcTangents();
+	//	waypointBalls.push_back(wayPointNew);
+	//}
 
 #pragma endregion
 
@@ -281,10 +280,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//	lsBalls[i]->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	//	lsBalls[i]->SetPosition(checkpointPositions[i]);
 	//}
-	for (int i = 1; i < waypointBalls.size(); i++) {
-		waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
-		waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
-	}
+	//for (int i = 1; i < waypointBalls.size(); i++) {
+	//	waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
+	//	waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
+	//}
 
 #pragma region All Components Started
 
