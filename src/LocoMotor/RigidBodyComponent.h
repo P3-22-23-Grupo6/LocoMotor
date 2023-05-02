@@ -12,6 +12,15 @@ namespace PhysicsWrapper {
 	struct RigidBodyInfo;
 	class BulletRigidBody;
 }
+
+enum ActiveState {
+	LM_ACTIVE = 1,
+	LM_ISLAND_SLEEPING = 2,
+	LM_WANTS_DEACTIVATION = 3,
+	LM_DISABLE_DEACTIVATION = 4,
+	LM_DISABLE_SIMULATION = 5
+};
+
 namespace LocoMotor {
 	class LMVector3;
 	class LMQuaternion;
@@ -102,6 +111,8 @@ namespace LocoMotor {
 		void SetFriction(float fric);
 		/// @brief Add the body to detect raycast
 		void UseItAsRaycast();
+		/// @brief Set the activation state of a body (Should sleep / not)
+		void SetActivationState(ActiveState newState);
 	private:
 		float _mass;
 		btRigidBody* _body;

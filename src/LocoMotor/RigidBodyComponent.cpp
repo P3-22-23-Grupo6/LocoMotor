@@ -387,3 +387,7 @@ void LocoMotor::RigidBodyComponent::SetFriction(float fric) {
 void LocoMotor::RigidBodyComponent::UseItAsRaycast() {
 	SetCollisionGroup(10);
 }
+
+void LocoMotor::RigidBodyComponent::SetActivationState(ActiveState newState) {
+	_body->setActivationState(newState);
+}
