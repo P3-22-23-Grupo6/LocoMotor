@@ -111,13 +111,6 @@ void MotorApi::RegisterGame(const char* gameName) {
 #pragma endregion 
 
 #pragma region RaceTrack
-	//WaterPlane
-	//auto waterPlane = _mScene->AddGameobject("waterPlane");
-	//waterPlane->AddComponent("Transform");
-	//waterPlane->SetPosition(LMVector3(0,30,0));
-	//waterPlane->AddComponent("MeshRenderer");
-	//waterPlane->GetComponent<MeshRenderer>()->Start("waterPlane", "WaterPlane.mesh", "FalconRedone/FalconMat", true);//track.mesh para el antiguo
-	
 	//Boost
 	auto boost = _mScene->AddGameobject("boost");
 	boost->AddComponent("Transform");
@@ -211,30 +204,20 @@ void MotorApi::RegisterGame(const char* gameName) {
 	}
 
 #pragma region SPLINE
+	//Difference when converting units from Blender to OgreMesh space
+	float blenderScale = 20.0f;
 	std::vector<LMVector3> positionsList //Estoy tomando medidas con el archivo de Blender, aun no puedo exportar posiciones
 	{
-		LMVector3(0, 5, 0),
-		LMVector3(0, 5, -210),
-		LMVector3(-17,27,-325),
-		LMVector3(-50,65,-420),
-		LMVector3(-165,101,-535),
-		LMVector3(-342,107,-570),
-		LMVector3(-545,90,-556),
-		LMVector3(-800,3,-392),
-		LMVector3(-838,-37,-218),
-		LMVector3(-830,-37,	75),
-		LMVector3(-805,-37, 345),
-		LMVector3(-679,-37, 630),
-		LMVector3(-415,0, 742),
-		LMVector3(-151,60, 736),
-		LMVector3(90,67, 567),
-		LMVector3(98,28, 347),
-		LMVector3(31,8, 185),
-		LMVector3(0, 5, 0)//reset
+		LMVector3(2, 1, -8) * blenderScale,
+		LMVector3(2, 1, -30) * blenderScale,
+		LMVector3(2, 1,-44) * blenderScale,
+		LMVector3(2, 4,-57) * blenderScale,
+		LMVector3(-0.7f, 9,-68) * blenderScale,
+		LMVector3(2, 1, -8)* blenderScale
 	};
 
 	LocoMotor::Spline* nuevaSpl = new LocoMotor::Spline();
-	for (int i = 0; i < 18; i++) {
+	for (int i = 0; i < 6; i++) {
 		nuevaSpl->AddPoint(LMVector3(positionsList[i]));
 		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
 		wayPoint->AddComponent("Transform");
@@ -264,23 +247,23 @@ void MotorApi::RegisterGame(const char* gameName) {
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
 
 	//NO QUITAR AUN HASTA QUE ESTE LA SPLINE
-	//int maxBalls = 400;
-	//for (float i = 1; i < maxBalls; i++) {
-	//	auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
-	//	wayPointNew->AddComponent("Transform");
-	//	wayPointNew->AddComponent("MeshRenderer");
-	//	wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
-	//	nuevaSpl->RecalcTangents();
-	//	waypointBalls.push_back(wayPointNew);
-	//}
+	int maxBalls = 100;
+	for (float i = 1; i < maxBalls; i++) {
+		auto wayPointNew = _mScene->AddGameobject("WayPointProc" + std::to_string(i));
+		wayPointNew->AddComponent("Transform");
+		wayPointNew->AddComponent("MeshRenderer");
+		wayPointNew->GetComponent<MeshRenderer>()->Start("WayPointProc" + std::to_string(i), "DebugSphere2.mesh", "");
+		nuevaSpl->RecalcTangents();
+		waypointBalls.push_back(wayPointNew);
+	}
 
 #pragma endregion
 
 	_scnManager->StartScene(_mScene);
 
-	ship_gObj->SetPosition(LMVector3(0, 6, 0));
+	ship_gObj->SetPosition(LMVector3(0, 30, 0));
 	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
-	trackMain->SetPosition(LMVector3(0, -30, 0));
+	trackMain->SetPosition(LMVector3(0, 0, 0));
 	//firstArea->SetPosition(LMVector3(0, -10, 0));
 	boost->SetPosition(LMVector3(80, 0, -120));
 	ship_gObj->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
@@ -289,10 +272,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 	//	lsBalls[i]->SetScale(LMVector3(10.0f, 10.0f, 10.0f));
 	//	lsBalls[i]->SetPosition(checkpointPositions[i]);
 	//}
-	//for (int i = 1; i < waypointBalls.size(); i++) {
-	//	waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
-	//	waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
-	//}
+	for (int i = 1; i < waypointBalls.size(); i++) {
+		waypointBalls[i]->SetScale(LMVector3(3.0f, 3.0f, 3.0f));
+		waypointBalls[i]->SetPosition(nuevaSpl->Interpolate((float) i / maxBalls));
+	}
 
 #pragma region All Components Started
 
