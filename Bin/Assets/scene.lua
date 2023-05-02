@@ -1,7 +1,7 @@
 
 coche = {
     Transform = {
-        position = "0 6 0",
+        position = "0 30 0",
         rotation = "0 0 0",
         scale = "10 10 10"
     },
@@ -14,13 +14,14 @@ coche = {
     },
     PlayerController = {},
     RigidBodyComponent = {
-        mass = 1
+        mass = 1,
+        friction = "0.0"
     }
 }
 
 track = {
     Transform = {
-        position = "0 -30 0",
+        position = "0 0 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -28,7 +29,8 @@ track = {
         file =  "AllTrack.mesh"
     },
     RigidBodyComponent = {
-        mass = 0;
+        mass = 0,
+        usedAsRaycast = ""
     }
 }
 

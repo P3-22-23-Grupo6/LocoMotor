@@ -33,6 +33,7 @@ void GameObject::Update(float dt) {
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
 		if (it->second->isEnabled())
 			it->second->Update(dt);
+		
 	}
 
 

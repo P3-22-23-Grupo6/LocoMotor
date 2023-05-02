@@ -77,6 +77,7 @@ void LocoMotor::RigidBodyComponent::Start() {
 			_ms = new MeshStrider(mesh->GetMesh());
 			_body = PhysicsManager::GetInstance()->CreateRigidBody(info, _ms);
 			_body->setUserPointer(gameObject);
+			if (_raycast) UseItAsRaycast();
 			//delete ms;
 			return;
 		}	
@@ -85,6 +86,7 @@ void LocoMotor::RigidBodyComponent::Start() {
 	_body->setUserPointer(gameObject);
 	SetCollisionGroup(1);
 	SetCollisionMask(1);
+	if (_raycast) UseItAsRaycast();
 }
 
 
@@ -109,8 +111,11 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 		else if (params[i].first == "gravity") {
 			_gravity = std::stoi(params[i].second);
 		}
+		else if (params[i].first == "usedAsRaycast") {
+			_raycast = true;
+		}
 	}
-	_body = nullptr;
+	
 }
 
 /**

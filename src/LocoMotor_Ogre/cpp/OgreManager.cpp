@@ -200,7 +200,7 @@ void OgreWrapper::OgreManager::Shutdown() {
 	}
 
 	for (auto it = _scenes.begin(); it != _scenes.end(); it = _scenes.erase(it)) {
-		if (it->second = _activeScene) {
+		if (it->second == _activeScene) {
 			_activeScene = nullptr;
 		}
 		it->second->GetMan()->removeRenderQueueListener(_ovrSys);

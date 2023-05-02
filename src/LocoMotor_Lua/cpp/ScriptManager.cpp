@@ -43,7 +43,7 @@ void ScriptManager::readLuaScript(const std::string path) {
     report_errors(scriptLoadStatus);
 }
 void ScriptManager::LoadSceneFromFile(std::string path) {
-    Scene* s = SceneManager::GetInstance()->GetCurrentScene();
+    Scene* s = SceneManager::GetInstance()->GetSceneByName(path);
     if (s == nullptr) {
         s = scMan->CreateScene(path);
     }

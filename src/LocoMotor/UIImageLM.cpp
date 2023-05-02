@@ -13,8 +13,8 @@ LocoMotor::UIImageLM::UIImageLM() {
 	_uimg = nullptr;
 	posX = 0.;
 	posY = 0.;
-	sizeX = 0.;
-	sizeY = 0.;
+	sizeX = 0.5;
+	sizeY = 0.5;
 	_ogMng = OgreWrapper::OgreManager::GetInstance();
 }
 
@@ -28,6 +28,8 @@ void LocoMotor::UIImageLM::InitComponent() {
 }
 
 void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	_uimg = new OgreWrapper::UIImage();
+	_uimg->Init(gameObject->GetScene()->GetSceneName());
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "posx" || params[i].first == "positionx") {
 			SetPosition(std::stod(params[i].second), posY);
@@ -103,6 +105,9 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 		}
 		else if (params[i].first == "img" || params[i].first == "image") {
 			ChangeImage(params[i].second);
+		}
+		else if (params[i].first == "interactive") {
+			SetInteractive(true);
 		}
 	}
 }

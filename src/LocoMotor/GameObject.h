@@ -153,6 +153,7 @@ namespace LocoMotor {
 		double tiltAmount;
 
 		LMVector3 localVelocity = LMVector3(0, 0, 0);
+		bool _destructed = false;
 	};
 }
 

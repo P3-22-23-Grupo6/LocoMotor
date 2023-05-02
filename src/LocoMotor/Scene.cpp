@@ -77,7 +77,16 @@ void Scene::Render() {
  * The function DeActivate() deactivates the scene and deletes all game objects in the scene.
  * @brief Deactivate the scene and delete all game objects in the scene.
  */
-void Scene::DeActivate() {
+void Scene::DeActivate() {	
+	_toDestroy = true;
+}
+
+
+bool LocoMotor::Scene::ToDestroy() {
+	return _toDestroy;
+}
+
+void Scene::Destroy() {
 	_isActiveScene = false;
 	std::unordered_map<std::string, GameObject*>::iterator it;
 	for (it = _gameObjList.begin(); it != _gameObjList.end(); it = _gameObjList.erase(it)) {
