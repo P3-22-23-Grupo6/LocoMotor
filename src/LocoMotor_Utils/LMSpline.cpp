@@ -18,6 +18,9 @@ Spline::~Spline() {
 void LocoMotor::Spline::AddPoint(const LMVector3& newPoint) {
 	_spline->addPoint(LmToOgre(newPoint));
 }
+void LocoMotor::Spline::SetAutoCalc(bool shouldAutoCalc){
+	_spline->setAutoCalculate(shouldAutoCalc);
+}
 
 //Destroys all Points
 void Spline::ClearAll() {

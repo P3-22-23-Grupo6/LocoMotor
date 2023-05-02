@@ -225,6 +225,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	};
 
 	LocoMotor::Spline* nuevaSpl = new LocoMotor::Spline();
+	nuevaSpl->SetAutoCalc(true);
 	for (int i = 0; i < positionsList.size(); i++) {
 		nuevaSpl->AddPoint(LMVector3(positionsList[i]));
 		auto wayPoint = _mScene->AddGameobject("WayPoint" + i);
