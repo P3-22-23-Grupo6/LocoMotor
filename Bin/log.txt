@@ -1,1 +1,1 @@
-Error: Componente 'Traform' no existe
+Error: No scene has been loaded. Exiting now

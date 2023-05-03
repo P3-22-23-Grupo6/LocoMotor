@@ -31,23 +31,15 @@ SceneManager::~SceneManager() {
 	}
 }
 
-/**
- * This function creates a new scene and adds it to the scene map if it doesn't already exist.
- * @brief Create a new scene.
- * @param nombre A string parameter that represents the name of the scene that is being
- * created.
- * 
- * @return a pointer to a newly created Scene object if the scene with the given name does not already
- * exist in the _sceneInfo map. If the scene already exists, the function returns a nullptr.
- */
-Scene* SceneManager::CreateScene(std::string nombre) {
-	std::map<std::string, Scene*>::iterator it = _sceneInfo.find(nombre);
+
+Scene* SceneManager::CreateScene(std::string name) {
+	std::map<std::string, Scene*>::iterator it = _sceneInfo.find(name);
 	if (it == _sceneInfo.end()) {
 
-		Scene* newScene = new Scene(nombre);
+		Scene* newScene = new Scene(name);
 
 
-		_sceneInfo.insert({ nombre, newScene });
+		_sceneInfo.insert({ name, newScene });
 
 		if (_activeScene == nullptr) {
 			_activeScene = newScene;
@@ -66,15 +58,7 @@ Scene* SceneManager::CreateScene(std::string nombre) {
 
 }
 
-/**
- * This function changes the active scene in a SceneManager object to the scene with the specified
- * name.
- * @brief Change the active scene.
- * @param name a string representing the name of the scene to be changed to.
- * 
- * @return The method returns a pointer to the Scene object that was changed to, or nullptr if the
- * scene with the given name does not exist.
- */
+
 Scene* SceneManager::ChangeScene(std::string name) {
 	std::map<std::string, Scene*>::iterator it = _sceneInfo.find(name);
 	OgreWrapper::OgreManager* renderMan = OgreWrapper::OgreManager::GetInstance();
@@ -105,17 +89,7 @@ Scene* SceneManager::ChangeScene(std::string name) {
 }
 
 
-/**
- * This function returns a pointer to a Scene object with a given name, if it exists in a map of scene
- * information.
- * @brief Get a scene by name.
- * @param name a string representing the name of the scene to be retrieved from the SceneManager's map
- * of scene information.
- * 
- * @return The function `GetSceneByName` returns a pointer to a `Scene` object. If the scene with the
- * given name exists in the `_sceneInfo` map, a pointer to that scene is returned. Otherwise, a null
- * pointer is returned.
- */
+
 Scene* SceneManager::GetSceneByName(std::string name) {
 
 	std::map<std::string, Scene*>::iterator it = _sceneInfo.find(name);
@@ -129,21 +103,13 @@ Scene* SceneManager::GetSceneByName(std::string name) {
 
 }
 
-/**
- * The function returns the currently active scene in the LocoMotor's SceneManager.
- * @brief Get the currently active scene.
- * @return The `GetCurrentScene()` function is returning a pointer to the currently active scene in the
- * `LocoMotor` game engine's `SceneManager`.
- */
+
 Scene* LocoMotor::SceneManager::GetCurrentScene()
 {
 	return _activeScene;
 }
 
-/**
- * This function updates and renders the active scene in the LocoMotor game engine's SceneManager
- * class.
- */
+
 void LocoMotor::SceneManager::Update() {
 
 	_actTime = SDL_GetTicks();
@@ -162,21 +128,12 @@ void LocoMotor::SceneManager::Update() {
 	}
 }
 
-/**
- * This function returns the delta time in the LocoMotor's SceneManager.
- * @brief Get the delta time.
- * @return The method `GetDelta()` is returning the value of the private member variable `_deltaTime`,
- * which is of type `float`.
- */
+
 float LocoMotor::SceneManager::GetDelta() {
 	return _deltaTime;
 }
 
-/**
- * This function starts a given scene by calling its Start() method.
- * @brief Start a scene.
- * @param scn A pointer to an object of type Scene, which is the scene that needs to be started.
- */
+
 void SceneManager::StartScene(Scene* scn) {
 	scn->Start();
 }
