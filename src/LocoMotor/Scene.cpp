@@ -78,7 +78,7 @@ void Scene::Render() {
  * The function DeActivate() deactivates the scene and deletes all game objects in the scene.
  * @brief Deactivate the scene and delete all game objects in the scene.
  */
-void Scene::DeActivate() {	
+void Scene::DeActivate() {
 	_toDestroy = true;
 }
 

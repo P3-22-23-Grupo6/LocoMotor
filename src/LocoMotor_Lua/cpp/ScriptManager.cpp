@@ -25,27 +25,31 @@ void ScriptManager::Report_errors(int status) {
 		return;
 	}
 
-	std::cerr << "[LUA ERROR] " << lua_tostring(_luaState, -1) << std::endl;
+    LogSystem::GetInstance()->Save(0, "[LUA ERROR] " + (std::string)lua_tostring(_luaState, -1));
+    //std::cerr << "[LUA ERROR] " << lua_tostring(luaState, -1) << std::endl;
 
 	// remove error message from Lua state
 	lua_pop(_luaState, 1);
 }
 
-void ScriptManager::ReadLuaScript(const std::string path) {
+int ScriptManager::ReadLuaScript(const std::string path) {
+    
+    // load some code from Lua file
+    int scriptLoadStatus = luaL_dofile(_luaState, path.c_str());
 
-	// load some code from Lua file
-	int scriptLoadStatus = luaL_dofile(_luaState, path.c_str());
-
-	// define error reporter for any Lua error
-	Report_errors(scriptLoadStatus);
+    // define error reporter for any Lua error
+    Report_errors(scriptLoadStatus);
+    return scriptLoadStatus;
 }
 
-void ScriptManager::LoadSceneFromFile(std::string path) {
-	Scene* s = SceneManager::GetInstance()->GetSceneByName(path);
-	if (s == nullptr) {
-		s = _scMan->CreateScene(path);
-	}
-	ReadLuaScript(path);
+bool ScriptManager::LoadSceneFromFile(std::string path) {
+    if (ReadLuaScript(path) != 0) {
+        return false;
+    }
+    Scene* s = SceneManager::GetInstance()->GetSceneByName(path);
+    if (s == nullptr) {
+        s = _scMan->CreateScene(path);
+    }
 
 	luabridge::LuaRef allEnts = GetFromLua("entities");
 	int numEnts = allEnts.length();
@@ -61,7 +65,8 @@ void ScriptManager::LoadSceneFromFile(std::string path) {
 		}
 	}
 
-	SceneManager::GetInstance()->ChangeScene(path);
+    SceneManager::GetInstance()->ChangeScene(path);
+    return true;
 }
 
 ScriptManager::ScriptManager() {

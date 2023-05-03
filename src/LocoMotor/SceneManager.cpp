@@ -104,6 +104,7 @@ Scene* SceneManager::ChangeScene(std::string name) {
 
 }
 
+
 /**
  * This function returns a pointer to a Scene object with a given name, if it exists in a map of scene
  * information.
