@@ -103,8 +103,9 @@ void PhysicsManager::RemoveRigidBodyFromWorld(btRigidBody* rb) {
 }
 
 void PhysicsManager::Update(float dT) {
-	_dynamicWorld->stepSimulation(dT / 1000.f);
+	_dynamicWorld->stepSimulation(dT / 1000.f, 60);
 }
+
 RaycastInfo PhysicsWrapper::PhysicsManager::CreateRaycast(LMVector3 from, LMVector3 direction) {
 	RaycastInfo newRaycastInfo = RaycastInfo();
 
