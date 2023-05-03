@@ -286,7 +286,8 @@ do ---------------------   AREA04   ------------------------------
         },
         MeshRenderer = {
             file =  "Area01_RoadWalls.mesh",
-            static = ""
+            static = "",
+            invisible = ""
         },
         RigidBodyComponent = {
             mass = 0,
@@ -301,7 +302,8 @@ do ---------------------   AREA04   ------------------------------
         },
         MeshRenderer = {
             file =  "Area02_RoadWalls.mesh",
-            static = ""
+            static = "",
+            invisible = ""
         },
         RigidBodyComponent = {
             mass = 1,
@@ -316,7 +318,8 @@ do ---------------------   AREA04   ------------------------------
         },
         MeshRenderer = {
             file =  "Area03_RoadWalls.mesh",
-            static = ""
+            static = "",
+            invisible = ""
         },
         RigidBodyComponent = {
             mass = 1,
