@@ -155,10 +155,8 @@ do ---------------------   AREA01   ------------------------------
             scale = "1 1 1"
         },
         MeshRenderer = {
-            file =  "Area01_RoadBorder.mesh"
-        },
-        RigidBodyComponent = {
-            mass = 0,
+            file =  "Area01_RoadBorder.mesh",
+            static = ""
         }
     }
 
@@ -221,7 +219,8 @@ do ---------------------   AREA02   ------------------------------
             scale = "1 1 1"
         },
         MeshRenderer = {
-            file =  "Area02_RoadBorder.mesh"
+            file =  "Area02_RoadBorder.mesh",
+            static = ""
         }
     }
     Area02_Extra = {
@@ -261,7 +260,8 @@ do ---------------------   AREA03   ------------------------------
             scale = "1 1 1"
         },
         MeshRenderer = {
-            file =  "Area03_RoadBorder.mesh"
+            file =  "Area03_RoadBorder.mesh",
+            static = ""
         }
     }
 
