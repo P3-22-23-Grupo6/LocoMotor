@@ -38,7 +38,13 @@ raceManager = {
         rotation = "0 0 0",
         scale = "1 1 1"
     },
-    RaceManager = {}
+    RaceManager = {
+        checkpoint0 =  "0 0 0",
+        checkpoint1 =  "1 1 1",
+        checkpoint2 =  "2 2 2",
+        checkpoint3 =  "3 3 3",
+        checkpoint4 =  "4 4 4"
+    }
 }
 do ---------------------   AREA01   ------------------------------
     Area01_RoadMain = {
