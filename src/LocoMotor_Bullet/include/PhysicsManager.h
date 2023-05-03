@@ -26,7 +26,6 @@ namespace PhysicsWrapper {
 		float capsuleHeight;
 		btVector3 origin;
 		float mass;
-
 		RigidBodyInfo();
 	};
 	/// @brief Info to retreieve from a Raycast
@@ -37,11 +36,9 @@ namespace PhysicsWrapper {
 		bool hasHit;
 		LocoMotor::LMVector3 hitPos;
 		LocoMotor::LMVector3 hitVNormal;
-
 		RaycastInfo();
 	};
 
-	class BulletRigidBody;
 	class PhysicsManager : public LocoMotor::Singleton<PhysicsWrapper::PhysicsManager> {
 		friend LocoMotor::Singleton<PhysicsWrapper::PhysicsManager>;
 	public:
@@ -59,27 +56,27 @@ namespace PhysicsWrapper {
 		void SetWorldGravity(btVector3 gravity);
 		/// @brief Gets dynamic World
 		btDynamicsWorld* GetDynamicWorld();
-
-		void setContactStartCallback(ContactStartedCallback funtion);
-		void setContactProcessCallback(ContactProcessedCallback funtion);
-		void setContactEndedCallback(ContactEndedCallback funtion);
-
-
-		RaycastInfo createRaycast(LocoMotor::LMVector3 from, LocoMotor::LMVector3 direction);
+		/// @brief Sets the callback when two body starts contact
+		void SetContactStartCallback(ContactStartedCallback funtion);
+		/// @brief Sets the callback when two body is in contact
+		void SetContactProcessCallback(ContactProcessedCallback funtion);
+		/// @brief Sets the callback when two body ends contact
+		void SetContactEndedCallback(ContactEndedCallback funtion);
+		/// @brief Creates a raycast from point to a direction
+		/// @param from The start point of raycast
+		/// @param direction The direction to raycast
+		/// @return The information of the raycast
+		RaycastInfo CreateRaycast(LocoMotor::LMVector3 from, LocoMotor::LMVector3 direction);
 
 	private:
-		//Configuraciones para crear el mundo físico
+		//Configuration to create the physic world
 		btDefaultCollisionConfiguration* _collisionConfiguration = nullptr;
 		btCollisionDispatcher* _dispatcher = nullptr;
 		btBroadphaseInterface* _overlappingPairCache = nullptr;
 		btSequentialImpulseConstraintSolver* _solver = nullptr;
 		btDynamicsWorld* _dynamicWorld = nullptr;
-		//Constructora y destructora de la clase
 		PhysicsManager();
 		~PhysicsManager();
-		//Vector para guardar los rigidbodys creados
-		std::vector<BulletRigidBody*> _vRigidBody;
-
 	};
 }
 #endif 

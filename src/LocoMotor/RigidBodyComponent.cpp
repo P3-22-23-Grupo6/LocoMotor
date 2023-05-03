@@ -181,17 +181,17 @@ void LocoMotor::RigidBodyComponent::beATrigger()
 
 
 bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
-	return PhysicsManager::GetInstance()->createRaycast(from,to).hasHit;
+	return PhysicsManager::GetInstance()->CreateRaycast(from,to).hasHit;
 }
 
 
 LMVector3 LocoMotor::RigidBodyComponent::GetraycastHitPoint(LMVector3 from, LMVector3 to) {
-	return PhysicsManager::GetInstance()->createRaycast(from, to).hitPos;
+	return PhysicsManager::GetInstance()->CreateRaycast(from, to).hitPos;
 }
 
 
 LMVector3 LocoMotor::RigidBodyComponent::GethasRaycastHitNormal(LMVector3 from, LMVector3 to){
-	return PhysicsManager::GetInstance()->createRaycast(from, to).hitVNormal;
+	return PhysicsManager::GetInstance()->CreateRaycast(from, to).hitVNormal;
 }
 
 

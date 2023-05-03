@@ -1,9 +1,6 @@
 #include "PhysicsManager.h"
-#include <iostream>
-#include <btBulletDynamicsCommon.h>
 #include "MeshStrider.h"
 #include "LmVectorConverter.h"
-#include "LMVector.h"
 #include "RaycastCallBack.h"
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
@@ -90,15 +87,15 @@ btDynamicsWorld* PhysicsWrapper::PhysicsManager::GetDynamicWorld() {
 	return _dynamicWorld;
 }
 
-void PhysicsWrapper::PhysicsManager::setContactStartCallback(ContactStartedCallback funtion) {
+void PhysicsWrapper::PhysicsManager::SetContactStartCallback(ContactStartedCallback funtion) {
 	gContactStartedCallback = funtion;
 }
 
-void PhysicsWrapper::PhysicsManager::setContactProcessCallback(ContactProcessedCallback funtion) {
+void PhysicsWrapper::PhysicsManager::SetContactProcessCallback(ContactProcessedCallback funtion) {
 	gContactProcessedCallback = funtion;
 }
 
-void PhysicsWrapper::PhysicsManager::setContactEndedCallback(ContactEndedCallback funtion) {
+void PhysicsWrapper::PhysicsManager::SetContactEndedCallback(ContactEndedCallback funtion) {
 	gContactEndedCallback = funtion;
 }
 
@@ -109,7 +106,7 @@ void PhysicsManager::RemoveRigidBodyFromWorld(btRigidBody* rb) {
 void PhysicsManager::Update(float dT) {
 	_dynamicWorld->stepSimulation(dT / 1000.f);
 }
-RaycastInfo PhysicsWrapper::PhysicsManager::createRaycast(LMVector3 from, LMVector3 direction) {
+RaycastInfo PhysicsWrapper::PhysicsManager::CreateRaycast(LMVector3 from, LMVector3 direction) {
 	RaycastInfo newRaycastInfo = RaycastInfo();
 
 	ClosestRayCallbackBullet rayCallback(LmToBullet(from), LmToBullet(direction));
