@@ -338,8 +338,14 @@ void MotorApi::Init() {
 }
 
 void MotorApi::MainLoop() {
+
 	OgreWrapper::OgreManager::Init("GAME DLL FAIL");
 	while (!_exit) {
+
+		if (_scnManager->GetCurrentScene() == nullptr) {
+			LogSystem::GetInstance()->Save(0, "No scene has been loaded. Exiting now");
+			break;
+		}
 
 		FmodWrapper::AudioManager::GetInstance()->Update(_scnManager->GetDelta());
 		OgreWrapper::OgreManager::GetInstance()->Render();

@@ -24,11 +24,11 @@ namespace LocoMotor {
 	public:
 		/// @brief Reads a lua file and builds the scene from that file
 		/// @param path The path to find the lua file
-		void LoadSceneFromFile(std::string path);
+		bool LoadSceneFromFile(std::string path);
 	private:
 		/// @brief Reads the lua script 
 		/// @param path The path to find the lua script
-		void ReadLuaScript(const std::string path);
+		int ReadLuaScript(const std::string path);
 		/// @brief Reports errors giving a status when reading lua
 		/// @param status 
 		void Report_errors(int status);

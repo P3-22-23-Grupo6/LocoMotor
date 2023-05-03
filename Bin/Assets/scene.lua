@@ -436,7 +436,7 @@ SkyboxMesh = {
 entities = { "coche", "mainCam", "raceManager",
             "lapsText", "positionText", "countdownText", "velocityText",
             "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain",
-            "Area02_RoadMain", "AreaadBorder", "Area02_Extra",
+            "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
             "Area01_RoadWalls", "Area02_RoadWalls", "Area03_RoadWalls",
