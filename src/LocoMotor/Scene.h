@@ -40,6 +40,7 @@ namespace LocoMotor {
 
 
 		GameObject* AddGameobject(std::string name);
+		void RemoveGameobject(std::string name);
 		//void AddObject(GameObject* obj);
 
 		GameObject* GetObjectByName(std::string name);

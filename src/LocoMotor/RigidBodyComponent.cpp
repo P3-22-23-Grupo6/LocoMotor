@@ -77,16 +77,44 @@ void LocoMotor::RigidBodyComponent::PreStart() {
 void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "mass") {
-			_mass = std::stof(params[i].second);
+			float num = 0.;
+			try {
+				num = std::stof(params[i].second);
+			}
+			catch (std::invalid_argument) {
+				num = 0.;
+			}
+			_mass = num;
 		}
 		else if (params[i].first == "damping") {
-			_damping = std::stof(params[i].second);
+			float num = 0.;
+			try {
+				num = std::stof(params[i].second);
+			}
+			catch (std::invalid_argument) {
+				num = 0.;
+			}
+			_damping = num;
 		}
 		else if (params[i].first == "angDamping") {
-			_angDamping = std::stof(params[i].second);
+			float num = 0.;
+			try {
+				num = std::stof(params[i].second);
+			}
+			catch (std::invalid_argument) {
+				num = 0.;
+			}
+			_angDamping = num;
 		}
 		else if (params[i].first == "gravity") {
-			_gravity = std::stoi(params[i].second);
+			float num = 0.;
+			try {
+				num = std::stof(params[i].second);
+			}
+			catch (std::invalid_argument) {
+				num = 0.;
+			}
+			_gravity = num;
 		}
 		else if (params[i].first == "usedAsRaycast") {
 			_raycast = true;

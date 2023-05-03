@@ -36,10 +36,24 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "posx" || params[i].first == "positionx") {
-			SetPosition(std::stod(params[i].second), posY);
+			double num = 0.;
+			try {
+				num = std::stod(params[i].second);
+			}
+			catch (std::invalid_argument) {
+				num = 0.;
+			}
+			SetPosition(num, posY);
 		}
 		else if (params[i].first == "posy" || params[i].first == "positiony") {
-			SetPosition(posX, std::stod(params[i].second));
+			double num = 0.;
+			try {
+				num = std::stod(params[i].second);
+			}
+			catch (std::invalid_argument) {
+				num = 0.;
+			}
+			SetPosition(posX, num);
 		}
 		else if (params[i].first == "pos" || params[i].first == "position") {
 			unsigned char currAxis = 0;
@@ -55,7 +69,7 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 					try {
 						value = std::stod(num);
 					}
-					catch (const char*) {
+					catch (std::invalid_argument) {
 						value = 0.f;
 					}
 					if (currAxis == 0) {
@@ -72,10 +86,54 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 			SetPosition(resultX, resultY);
 		}
 		else if (params[i].first == "sizex") {
-			SetSize(std::stod(params[i].second), sizeY);
+			double num = 0.;
+			try {
+				num = std::stod(params[i].second);
+			}
+			catch (std::invalid_argument) {
+				num = 0.;
+			}
+			SetSize(num, sizeY);
 		}
 		else if (params[i].first == "sizey") {
-			SetSize(sizeX, std::stod(params[i].second));
+			double num = 0.;
+			try {
+				num = std::stod(params[i].second);
+			}
+			catch (std::invalid_argument) {
+				num = 0.;
+			}
+			SetSize(sizeX, num);
+		}
+		else if (params[i].first == "size") {
+			unsigned char currAxis = 0;
+			std::string num = "";
+			double resultX = 0.;
+			double resultY = 0.;
+			for (const auto& c : params[i].second) {
+				if (c != ' ') {
+					num += c;
+				}
+				else {
+					float value = 0.f;
+					try {
+						value = std::stod(num);
+					}
+					catch (std::invalid_argument) {
+						value = 0.f;
+					}
+					if (currAxis == 0) {
+						resultX = value;
+					}
+					else if (currAxis == 1) {
+						resultY = value;
+					}
+					currAxis++;
+					if (currAxis == 2) break;
+					num = "";
+				}
+			}
+			SetSize(resultX, resultY);
 		}
 		else if (params[i].first == "topcolor") {
 			LMVector3 color = LMVector3::StringToVector(params[i].second);

@@ -30,7 +30,7 @@ namespace LocoMotor {
 		void readLuaScript(const std::string path);
 		void report_errors(int status);
 		luabridge::LuaRef getFromLua(std::string name);
-		void setParams(luabridge::LuaRef entity, GameObject* ent, Scene* s, std::string layer);
+		bool setParams(luabridge::LuaRef entity, GameObject* ent, Scene* s, std::string layer);
 		ScriptManager();
 		~ScriptManager();
 

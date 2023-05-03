@@ -1,4 +1,7 @@
 #include "LogSystem.h"
+#ifdef _DEBUG
+#include <iostream>
+#endif // _DEBUG
 using namespace LocoMotor;
 LogSystem* Singleton<LogSystem>::_instance = nullptr;
 
@@ -48,19 +51,24 @@ void LogSystem::Save(int type, std::string message) {
 	if (_file == nullptr)
 		fopen_s(&_file, "log.txt", "w+");
 
+	std::string strToLog = "";
 	if (type == 0) {
-		std::string errorStr = "Error: " + message + "\n";
-		fprintf(_file, errorStr.c_str());
+		strToLog = "Error: " + message + "\n";
+		fprintf(_file, strToLog.c_str());
 	}
 	else if (type == 1) {
-		std::string warnStr = "Warning: " + message + "\n";
-		fprintf(_file, warnStr.c_str());
+		strToLog = "Warning: " + message + "\n";
+		fprintf(_file, strToLog.c_str());
 	}
 
 	else if (type > 1) {
-		std::string warnStr = message + "\n";
-		fprintf(_file, warnStr.c_str());
+		strToLog = message + "\n";
+		fprintf(_file, strToLog.c_str());
 	}
+
+#ifdef _DEBUG
+	std::cout << strToLog << "\n";
+#endif // _DEBUG
 
 }
 
