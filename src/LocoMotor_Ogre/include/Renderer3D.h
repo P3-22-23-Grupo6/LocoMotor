@@ -17,6 +17,7 @@ namespace OgreWrapper {
 		Ogre::MovableObject* GetMovObj() override;
 		void SetMaterial(std::string mat);
 		Ogre::Mesh* GetMesh();
+		void SetVisible(bool visible);
 	private:
 		Ogre::Entity* _mesh;
 

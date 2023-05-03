@@ -38,7 +38,8 @@ OgreWrapper::RenderScene::~RenderScene() {
 }
 
 void OgreWrapper::RenderScene::Deactivate() {
-	_manager->destroyCamera("mainCam");
+	_manager->destroyAllCameras();
+	_manager->destroyAllStaticGeometry();
 }
 
 void OgreWrapper::RenderScene::Render() {
