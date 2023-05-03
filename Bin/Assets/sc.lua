@@ -1,5 +1,11 @@
 Button = {
-    UIImageLM = { interactive = ""},
+    UIImageLM = { 
+        interactive = "",
+        posx = ".4",
+        posy = ".5",
+        sizex = ".2",
+        sizey = ".1"
+    },
     SceneChangeButton = {}
 }
 
@@ -13,7 +19,7 @@ titleText = {
         font =  "BrunoAce",
         text = "G6",
         posx =  "0",
-        posy =  ".3",
+        posy =  ".2",
         align = "center",
         sizex = "0.3",
         sizey = "0.3",
