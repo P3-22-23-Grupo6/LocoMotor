@@ -22,7 +22,7 @@ namespace LocoMotor {
 		~MeshRenderer();
 
 		void Render();
-
+		/// @brief Initializes and attaches a renderer to a node in an Ogre scene.
 		void PreStart() override;
 		void Start(std::string name, std::string file, std::string mat, bool isStatic = false);
 		

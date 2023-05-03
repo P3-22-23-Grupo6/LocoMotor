@@ -23,7 +23,13 @@ namespace LocoMotor {
 
 		AudioSource();
 		~AudioSource();
+
+		/// @brief Initializes a new audio source component using the FmodWrapper library in C++.
 		void InitComponent() override;
+
+		/// @brief Initialize an audio source with various parameters passed in as a vector of pairs.
+		/// @param params A vector of pairs, where each pair contains a string representing a parameter nameand
+	    /// a string representing the parameter value.
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 
 		void Start() override;

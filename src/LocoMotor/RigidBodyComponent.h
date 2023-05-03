@@ -57,24 +57,36 @@ namespace LocoMotor {
 		/// @brief Freeze the rotation of the rigidbody , limit the motion of rotation in those axis
 		/// @param axis LMVector3 x,y,z axis , 0 means limit(stop motion) , 1 means no limit(allow motion)
 		void FreezeRotation(LMVector3 freezeAxis);
-		/// @brief 
-		/// @return 
+		/// @brief Checks if the rigid body component of a game object collides with another
+		/// @param other The parameter "other" is a pointer to a GameObject object, which is being checked for
+		/// collision with the current object's RigidBodyComponent.
+		/// @return Boolean value. It returns true if the rigid body component of the current game object
+		/// collides with the rigid body component of the other game object passed as a parameter, and false
+		/// otherwise.
 		bool checkCollision(GameObject* other);
-		/// @brief 
-		/// @return 
+		/// @brief Returns the rigid body component of a locomotor.
+		/// @return a pointer to a btRigidBody object, which is the physics body component of the LocoMotor.
 		btRigidBody* getBody();
 		/// @brief Convert the body to be a Trigger(No contact Response)
 		void beATrigger();
 		/// @brief Methods to return RaycastInfo
+		/// @param from The starting point of the raycast in 3D space.
+		/// @param to The "to" parameter is a 3D vector representing the end point of the raycast. It is the
+		/// point in space where the raycast endsand checks for collisions or intersections with objects in the
+		/// scene.
+		/// @return A boolean value indicating whether a raycast from the "from" point to the "to" point has hit
+		/// any objects in the physics simulation.
 		bool GetRaycastHit(LMVector3 from, LMVector3 to);
 		/// @brief Gets the raycast hit point
-		/// @param from Vector
-		/// @param to Vector
+		/// @param from The starting point of the raycast, represented as a 3D vector.
+		/// @param to The "to" parameter is the end point of the raycast, which is the point in 3D space where
+		/// the ray ends or terminates.
 		/// @return Returns the point in LmVector3
 		LMVector3 GetraycastHitPoint(LMVector3 from, LMVector3 to);
 		/// @brief Gets the raycast hit normal
-		/// @param from Vector
-		/// @param to Vector
+		/// @param from The starting point of the raycast, represented as a 3D vector.
+		/// @param to The "to" parameter is the end point of the raycast, which is the point in 3D space where
+		/// the ray ends or terminates.
 		/// @return Returns the normal in LMVector3
 		LMVector3 GethasRaycastHitNormal(LMVector3 from, LMVector3 to);
 		/// @brief Set the body to be a group of collision , if not set the group is 0
@@ -102,6 +114,9 @@ namespace LocoMotor {
 		/// @brief Gets/Sets the angular velocity of the body
 		/// @return Return a LMVector3 of turn velocity
 		LMVector3 GetAngularVelocity();
+		/// @brief Sets the angular velocity of a rigid body component using a given LMVector3 value.
+		/// @param newAngularVelocity Variable that represents the new angular velocity to be set for
+		/// the rigid body component.
 		void SetAngularVelocity(LMVector3 newAngularVelocity);
 		/// @brief Applies a torque impulse to the body
 		/// @param impulse the impulse to aplly

@@ -25,9 +25,7 @@ AudioListener::~AudioListener() {
 	delete _list;
 }
 
-/**
- * The function initializes the last position of an audio listener object.
- */
+
 void LocoMotor::AudioListener::Start() {
 	_lastPos = gameObject->GetTransform()->GetPosition();
 }
@@ -36,19 +34,11 @@ void LocoMotor::AudioListener::Init(std::vector<std::pair<std::string, std::stri
 	InitComponent();
 }
 
-/**
- * The function initializes a new instance of the FmodWrapper::AudioListener class.
- */
 void LocoMotor::AudioListener::InitComponent() {
 	_list = new FmodWrapper::AudioListener();
 }
 
-/**
- * The function updates the position and velocity of an audio listener object in the game engine.
- * @brief This function updates the position and velocity of an audio listener object in the game engine.
- * @param dt dt stands for delta time, which is the time elapsed between two consecutive frames in the
- * game. It is used to calculate the velocity of the game object.
- */
+
 void LocoMotor::AudioListener::Update(float dt) {
 
 	LMVector3 forwardVec = gameObject->GetTransform()->GetRotation().Forward() * -1;

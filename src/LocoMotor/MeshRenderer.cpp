@@ -26,9 +26,7 @@ LocoMotor::MeshRenderer::MeshRenderer()
 }
 
 
-/**
- * The function initializes and attaches a renderer to a node in an Ogre scene.
- */
+ 
 void MeshRenderer::PreStart() {
 
 	//_rend3D->SetMaterial(_mat); TEMPORAL!

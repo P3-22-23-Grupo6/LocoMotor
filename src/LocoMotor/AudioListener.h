@@ -23,6 +23,7 @@ namespace LocoMotor {
 		/// @brief Sets the initial position of the listener to the gameobject's
 		void Start() override;
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
+		/// @brief Initializes a new instance of the FmodWrapper::AudioListener class.
 		void InitComponent() override;
 		/// @brief Updates the listener's world attributes to be the same as the gameobject's
 		/// @param dt DeltaTime used to calculate the velocity
