@@ -21,9 +21,9 @@ AudioSource::AudioSource() {
 	_lastError = 0;
 	_src = nullptr;
 	_startPlay = "";
-	loops = 0;
-	loopStart = 0;
-	loopEnd = 0xffffffff;
+	_loops = 0;
+	_loopStart = 0;
+	_loopEnd = 0xffffffff;
 }
 
 /**
@@ -52,19 +52,19 @@ void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string
 			_src->AddSound(params[i].second.c_str());
 		}
 		else if (params[i].first == "loops") {
-			loops = std::stoi(params[i].second);
+			_loops = std::stoi(params[i].second);
 		}
 		else if (params[i].first == "loopStart") {
 			int a = std::stoi(params[i].second);
 			if (a < 0)
 				a = 0;
-			loopStart = a;
+			_loopStart = a;
 		}
 		else if (params[i].first == "loopEnd") {
 			int a = std::stoi(params[i].second);
 			if (a < 0)
 				a = 0;
-			loopEnd = a;
+			_loopEnd = a;
 		}
 		else if (params[i].first == "playonStart") {
 			_startPlay = params[i].second;
@@ -74,7 +74,7 @@ void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string
 
 void LocoMotor::AudioSource::Start() {
 	if (_startPlay != "")
-		Play(_startPlay.c_str(), loops, loopStart, loopEnd);
+		Play(_startPlay.c_str(), _loops, _loopStart, _loopEnd);
 }
 
 

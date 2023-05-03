@@ -22,7 +22,7 @@
     <ClCompile Include="..\..\src\LocoMotor\ParticleSystem.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\RigidBodyComponent.cpp">
+    <ClCompile Include="..\..\src\LocoMotor\RigidBody.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\AudioListener.cpp">
@@ -39,12 +39,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\ComponentsFactory.cpp">
       <Filter>Source Files\Components\Factories</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\src\pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp">
       <Filter>Source Files</Filter>
@@ -63,6 +57,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\UITextLM.cpp">
       <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\LocoMotor\src\dllmain.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,7 +81,7 @@
     <ClInclude Include="..\..\src\LocoMotor\ParticleSystem.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\RigidBodyComponent.h">
+    <ClInclude Include="..\..\src\LocoMotor\RigidBody.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\AudioListener.h">
@@ -101,12 +98,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\ComponentsFactory.h">
       <Filter>Header Files\Components\Factorias</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\include\framework.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\include\pch.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h">
       <Filter>Header Files</Filter>

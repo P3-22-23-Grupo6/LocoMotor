@@ -1,6 +1,0 @@
-﻿  LMSpline.cpp
-C:\Users\nacho\OneDrive\Documentos\Github\Proyectos3\JUEGO\Juego\Juego_de_autos\Motor\src\LocoMotor_Utils\LmVectorConverter.h(4,10): fatal  error C1083: No se puede abrir el archivo incluir: 'OgreVector.h': No such file or directory
-  LmVectorConverter.cpp
-C:\Users\nacho\OneDrive\Documentos\Github\Proyectos3\JUEGO\Juego\Juego_de_autos\Motor\src\LocoMotor_Utils\LmVectorConverter.h(4,10): fatal  error C1083: No se puede abrir el archivo incluir: 'OgreVector.h': No such file or directory
-  MeshStrider.cpp
-C:\Users\nacho\OneDrive\Documentos\Github\Proyectos3\JUEGO\Juego\Juego_de_autos\Motor\src\LocoMotor_Utils\MeshStrider.h(3,10): fatal  error C1083: No se puede abrir el archivo incluir: 'btBulletCollisionCommon.h': No such file or directory

@@ -20,7 +20,7 @@ namespace LocoMotor {
 		friend Singleton<SceneManager>;
 
 	public:
-		
+
 		//Crear escenas
 
 		Scene* CreateScene(std::string nombre);
@@ -35,10 +35,10 @@ namespace LocoMotor {
 
 
 		Scene* GetSceneByName(std::string name);
-		 
+
 		Scene* GetCurrentScene();
 
-		
+
 
 		void Update();
 		float GetDelta();

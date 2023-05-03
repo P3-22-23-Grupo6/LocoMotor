@@ -3,7 +3,7 @@
 #include "Transform.h"
 #include "LMSpline.h"
 #include <LMVector.h>
-#include "RigidBodyComponent.h"
+#include "RigidBody.h"
 #include "LmVectorConverter.h"
 #include "OgreMaterialManager.h"
 #include "OgreMaterial.h"
@@ -40,7 +40,7 @@ void LocoMotor::EnemyAI::Update(float dt)
 
 	LMVector3 upVector = myGbj->GetTransform()->GetRotation().Up();
 	upVector.Normalize();
-	RigidBodyComponent* rbComp = myGbj->GetComponent<RigidBodyComponent>();
+	RigidBody* rbComp = myGbj->GetComponent<RigidBody>();
 	double raycastDistance = 7;
 	upVector = upVector * raycastDistance;
 	to = from - upVector;

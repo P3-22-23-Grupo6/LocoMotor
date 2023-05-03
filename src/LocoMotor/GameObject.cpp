@@ -8,15 +8,15 @@
 #include "Node.h"
 //Borrar luego
 #include "SceneManager.h"
-#include "RigidBodyComponent.h"
+#include "RigidBody.h"
 #include "LmVectorConverter.h"
 
 using namespace LocoMotor;
 
 // Constructor
 GameObject::GameObject(OgreWrapper::Node* node) {
-	scene = nullptr;
-	transform = nullptr;
+	_scene = nullptr;
+	_transform = nullptr;
 	_renderer = nullptr;
 	_node = node;
 	_componentsByName = {};
@@ -43,9 +43,7 @@ void GameObject::Update(float dt) {
 	//InputManager* man = InputManager::GetInstance();
 
 
-	if (!movable)return;
-
-	RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
+	//RigidBodyComponent* rbComp = GetComponent<RigidBodyComponent>();
 }
 
 
@@ -70,7 +68,7 @@ void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair
 	comp->Init(params);
 	_componentsByName.insert({ name, comp });
 	if (name == "Transform") {
-		transform = dynamic_cast<Transform*>(comp);
+		_transform = dynamic_cast<Transform*>(comp);
 	}
 }
 
@@ -129,7 +127,7 @@ void LocoMotor::GameObject::OnCollisionStay(GameObject* other) {
  * the position of the GameObject's transform component to the new position.
  */
 void GameObject::SetPosition(LMVector3 pos) {
-	transform->SetPosition(pos);
+	_transform->SetPosition(pos);
 }
 
 /**
@@ -140,7 +138,7 @@ void GameObject::SetPosition(LMVector3 pos) {
  * component of a GameObject. This function is likely used to set the rotation of the GameObject in 3
  */
 void LocoMotor::GameObject::SetRotation(LMQuaternion rot) {
-	transform->SetRotation(rot);
+	_transform->SetRotation(rot);
 }
 
 
@@ -151,7 +149,7 @@ void LocoMotor::GameObject::SetRotation(LMQuaternion rot) {
  * of the transform component of the GameObject to the specified scale.
  */
 void GameObject::SetScale(LMVector3 sc) {
-	transform->SetSize(sc);
+	_transform->SetSize(sc);
 }
 
 
@@ -161,7 +159,7 @@ void GameObject::SetScale(LMVector3 sc) {
  * @return A pointer to the Transform component of the GameObject.
  */
 Transform* GameObject::GetTransform() {
-	return transform;
+	return _transform;
 }
 
 /**
@@ -195,7 +193,7 @@ void LocoMotor::GameObject::SetRenderer(OgreWrapper::Node* node) {
  * interact
  */
 void LocoMotor::GameObject::SetContext(Scene* scn) {
-	scene = scn;
+	_scene = scn;
 }
 
 /**
@@ -204,7 +202,7 @@ void LocoMotor::GameObject::SetContext(Scene* scn) {
  * @return A pointer to a Scene object.
  */
 Scene* LocoMotor::GameObject::GetScene() {
-	return scene;
+	return _scene;
 }
 
 /**
@@ -226,7 +224,7 @@ void GameObject::StartComp() {
  * @param newTrans A pointer to a Transform object that is being registered to the GameObject.
  */
 void LocoMotor::GameObject::RegisterTransform(Transform* newTrans) {
-	transform = newTrans;
+	_transform = newTrans;
 }
 
 

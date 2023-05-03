@@ -29,7 +29,7 @@ namespace LocoMotor {
 
 		/// @brief Initialize an audio source with various parameters passed in as a vector of pairs.
 		/// @param params A vector of pairs, where each pair contains a string representing a parameter nameand
-	    /// a string representing the parameter value.
+		/// a string representing the parameter value.
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 
 		void Start() override;
@@ -102,9 +102,9 @@ namespace LocoMotor {
 		FmodWrapper::AudioSource* _src;
 		unsigned short _lastError;
 		std::string _startPlay;
-		int loops;
-		unsigned int loopStart;
-		unsigned int loopEnd;
+		int _loops;
+		unsigned int _loopStart;
+		unsigned int _loopEnd;
 	};
 }
 

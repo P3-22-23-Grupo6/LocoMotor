@@ -25,13 +25,13 @@ namespace LocoMotor {
 	class LMVector3;
 	class LMQuaternion;
 	class MeshStrider;
-	class MOTOR_API RigidBodyComponent : public Component {
+	class MOTOR_API RigidBody : public Component {
 	public:
-		RigidBodyComponent();
+		RigidBody();
 		/// @brief Constructor
 		void Start(float mass);
 		/// @brief Destructor
-		virtual ~RigidBodyComponent();
+		virtual ~RigidBody();
 		/// @brief Add force to the body
 		/// @param force to add
 		void addForce(LMVector3 force);
@@ -104,7 +104,9 @@ namespace LocoMotor {
 		/// @brief Gets the linearvelocity of the body
 		/// @return Return a LMVector3 of linear velocity
 		LMVector3 GetLinearVelocity();
-		void SetLinearVelocity(LMVector3 newAngularVelocity);
+		/// @brief Sets the linear velocity of the body
+		/// @param newAngularVelocity 
+		void SetLinearVelocity(LMVector3 newLinearVelocity);
 		/// @brief Gets the total torque of the body
 		/// @return Return a LMVector3 of total torque
 		LMVector3 GetTotalTorque();
@@ -136,8 +138,8 @@ namespace LocoMotor {
 		bool _gravity;
 		MeshStrider* _ms;
 		bool _trigger = false;
-		int collisionGroup;
-		int collisionMask;
+		int _collisionGroup;
+		int _collisionMask;
 		bool _raycast = false;
 
 	};

@@ -47,7 +47,7 @@ namespace LocoMotor {
 		void Update(float dt)override;
 		/// @brief Sets the function is going to be called when the image is pressed if it's interactive
 		/// @param func is the function is going to be called
-		void CallOnClick(const std::function<void()> &func);
+		void CallOnClick(const std::function<void()>& func);
 		/// @brief Returns true if the mouse is on the bound of the image
 		bool MouseOnImage();
 		/// @brief Changes the image to render
@@ -71,11 +71,11 @@ namespace LocoMotor {
 		std::string _pressedImgName;
 
 		std::function<void()> _onClick;
-		double posX, posY;
+		double _posX, _posY;
 
 
-		double winHeight, winWidth;
-		double sizeX, sizeY;
+		double _winHeight, _winWidth;
+		double _sizeX, _sizeY;
 
 	};
 }

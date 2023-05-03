@@ -86,8 +86,8 @@ namespace LocoMotor {
 		std::string _uFont;
 		std::string _uTxtName;
 
-		double posX, posY;
-		double sizeX, sizeY;
+		double _posX, _posY;
+		double _sizeX, _sizeY;
 	};
 }
 #endif

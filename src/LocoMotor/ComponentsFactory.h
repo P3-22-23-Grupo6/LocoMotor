@@ -15,7 +15,7 @@ namespace LocoMotor {
 
 	typedef Component* (*CmpFactory) ();
 
-	class MOTOR_API ComponentsFactory : public Singleton<ComponentsFactory>{
+	class MOTOR_API ComponentsFactory : public Singleton<ComponentsFactory> {
 
 		friend Singleton<ComponentsFactory>;
 
@@ -23,10 +23,12 @@ namespace LocoMotor {
 		/// @brief Destructor
 		~ComponentsFactory();
 		/// @brief Register a FactoryComponent by a name
-		 void RegisterFactoryComponent(const std::string& name, CmpFactory fac);
+		void RegisterFactoryComponent(const std::string& name, CmpFactory fac);
 		/// @brief Create a Component
 		Component* CreateComponent(const std::string& name);
-
+		/// @brief Register the component to the factory
+		/// @tparam T The component Typek
+		/// @param name The name to save and uses when creates the component
 		template <typename T>
 		void RegisterComponent(std::string name) {
 			this->RegisterFactoryComponent(name, (CmpFactory) []() {

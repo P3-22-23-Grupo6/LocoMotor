@@ -4,7 +4,7 @@
 #include "RenderScene.h"
 #include "Node.h"
 #include "Renderer3D.h"
-#include "RigidBodyComponent.h"
+#include "RigidBody.h"
 #include "PhysicsManager.h"
 #include "MeshRenderer.h"
 #include "ParticleSystem.h"

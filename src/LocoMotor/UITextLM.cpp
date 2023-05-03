@@ -13,10 +13,10 @@ LocoMotor::UITextLM::UITextLM() {
 	_uTxt = nullptr;
 	_uFont = "";
 	_uTxtName = "";
-	posX = 0.;
-	posY = 0.;
-	sizeX = 0.;
-	sizeY = 0.;
+	_posX = 0.;
+	_posY = 0.;
+	_sizeX = 0.;
+	_sizeY = 0.;
 }
 
 LocoMotor::UITextLM::~UITextLM() {
@@ -43,7 +43,7 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 			catch (std::invalid_argument) {
 				num = 0.;
 			}
-			SetPosition(num, posY);
+			SetPosition(num, _posY);
 		}
 		else if (params[i].first == "posy" || params[i].first == "positiony") {
 			double num = 0.;
@@ -53,7 +53,7 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 			catch (std::invalid_argument) {
 				num = 0.;
 			}
-			SetPosition(posX, num);
+			SetPosition(_posX, num);
 		}
 		else if (params[i].first == "pos" || params[i].first == "position") {
 			unsigned char currAxis = 0;
@@ -93,7 +93,7 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 			catch (std::invalid_argument) {
 				num = 0.;
 			}
-			SetSize(num, sizeY);
+			SetSize(num, _sizeY);
 		}
 		else if (params[i].first == "sizey") {
 			double num = 0.;
@@ -103,7 +103,7 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 			catch (std::invalid_argument) {
 				num = 0.;
 			}
-			SetSize(sizeX, num);
+			SetSize(_sizeX, num);
 		}
 		else if (params[i].first == "size") {
 			unsigned char currAxis = 0;
@@ -162,14 +162,14 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 }
 
 void LocoMotor::UITextLM::SetPosition(double x, double y) {
-	posX = x;
-	posY = y;
+	_posX = x;
+	_posY = y;
 	_uTxt->SetPosition(x, y);
 }
 
 void LocoMotor::UITextLM::SetSize(double x, double y) {
-	sizeX = x;
-	sizeY = y;
+	_sizeX = x;
+	_sizeY = y;
 	SetTextHeight(y);
 	_uTxt->SetDimensions(x, y);
 }
@@ -209,9 +209,9 @@ void LocoMotor::UITextLM::SetBottomColor(double r, double g, double b) {
 }
 
 double LocoMotor::UITextLM::GetSizeX() {
-	return sizeX;
+	return _sizeX;
 }
 
 double LocoMotor::UITextLM::GetSizeY() {
-	return sizeY;
+	return _sizeY;
 }

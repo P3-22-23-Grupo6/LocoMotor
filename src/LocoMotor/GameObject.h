@@ -12,10 +12,6 @@
 #include <map>
 #include <unordered_map>
 
-//HITO 1 POC
-
-
-
 namespace OgreWrapper {
 	class Node;
 	class Renderer3D;
@@ -27,7 +23,7 @@ namespace LocoMotor {
 	class Scene;
 	class Transform;
 
-    class MOTOR_API GameObject {
+	class MOTOR_API GameObject {
 	public:
 		/// @brief Constructor
 		GameObject(OgreWrapper::Node* node);
@@ -42,7 +38,7 @@ namespace LocoMotor {
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
 		template<typename ...Ts>
-		inline Component* AddComponent(std::string name ,Ts&& ...params) {
+		inline Component* AddComponent(std::string name, Ts&& ...params) {
 			if (_componentsByName.count(name) > 0) {
 				return nullptr;
 			}
@@ -130,26 +126,21 @@ namespace LocoMotor {
 		/// @brief Sets the transform component of this gameobject
 		/// @param newTrans 
 		void RegisterTransform(Transform* newTrans);
-		//Pruebaval
-		inline void setMovable(bool b) {
-			movable = b;
-		}
 
 		bool physicsBasedMovement;
 	private:
 		std::unordered_map<std::string, Component*> _componentsByName;
-		Scene* scene;
+		Scene* _scene;
 
 
-		Transform* transform;
+		Transform* _transform;
 
-		//HITO 1 POC
+		//HITO 1 POCk
 		//PhysicsWrapper::BulletRigidBody* _rigidBody;
 		OgreWrapper::Renderer3D* _renderer;
 		OgreWrapper::Node* _node;
 
 		//Prueba
-		bool movable=false;
 		double tiltAmount;
 
 		LMVector3 localVelocity = LMVector3(0, 0, 0);

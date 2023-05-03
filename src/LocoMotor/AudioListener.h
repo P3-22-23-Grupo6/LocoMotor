@@ -19,9 +19,9 @@ namespace LocoMotor {
 	public:
 		AudioListener();
 		~AudioListener();
-
 		/// @brief Sets the initial position of the listener to the gameobject's
 		void Start() override;
+		/// @brief Inits the component with parameters from lua
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 		/// @brief Initializes a new instance of the FmodWrapper::AudioListener class.
 		void InitComponent() override;

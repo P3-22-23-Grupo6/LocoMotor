@@ -29,7 +29,7 @@ namespace LocoMotor {
 		void Update(float dt);
 		void Render();
 
-	
+
 		void DeActivate();
 
 		bool GetActiveStatus();
@@ -52,7 +52,7 @@ namespace LocoMotor {
 		void Destroy();
 
 	private:
-		
+
 		LM_Component::Camera* _currentCam;
 
 		OgreWrapper::Camera* _cam;
@@ -70,7 +70,7 @@ namespace LocoMotor {
 		OgreWrapper::Node* _node;
 
 		GameObject* camera_gObj;
-		GameObject* ship_gObj;
+
 		bool _toDestroy = false;
 	};
 }

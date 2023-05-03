@@ -18,7 +18,7 @@
 #include "LogSystem.h"
 
 #include "MeshRenderer.h"
-#include <RigidBodyComponent.h>
+#include <RigidBody.h>
 #include <ParticleSystem.h>
 #include <Camera.h>
 #include <EnemyAI.h>
@@ -117,7 +117,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	boost->AddComponent("MeshRenderer");
 	boost->GetComponent<MeshRenderer>()->Start("boost", "TurboTestMesh.mesh", "", true);
 	boost->AddComponent("RigidBodyComponent");
-	boost->GetComponent<RigidBodyComponent>()->Start(0);
+	boost->GetComponent<RigidBody>()->Start(0);
 	//boost->AddComponent("Boost");
 	Component* cmpBoost = boost->AddComponent("Boost");
 	//Track Main Road
@@ -126,7 +126,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	trackMain->AddComponent("MeshRenderer");
 	trackMain->GetComponent<MeshRenderer>()->Start("trackMain", "AllTrack.mesh", "", true);
 	trackMain->AddComponent("RigidBodyComponent");
-	trackMain->GetComponent<RigidBodyComponent>()->Start(0);
+	trackMain->GetComponent<RigidBody>()->Start(0);
 	//Temporary SkyBox
 	auto skyboxMesh = _mScene->AddGameobject("skyboxMesh");
 	skyboxMesh->AddComponent("Transform");
@@ -146,12 +146,11 @@ void MotorApi::RegisterGame(const char* gameName) {
 #pragma endregion
 
 	ship_gObj = _mScene->AddGameobject("ship");
-	ship_gObj->setMovable(true);
 	ship_gObj->AddComponent("Transform");
 	ship_gObj->AddComponent("ParticleSystem");
 
 	ship_gObj->AddComponent("RigidBodyComponent");
-	ship_gObj->GetComponent<RigidBodyComponent>()->Start(1);
+	ship_gObj->GetComponent<RigidBody>()->Start(1);
 
 	//ship_gObj->GetNode()->SetPosition(0, 1000.0f, 0);
 	ship_gObj->AddComponent("PlayerController");
@@ -270,7 +269,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 	_scnManager->StartScene(_mScene);
 
 	ship_gObj->SetPosition(LMVector3(0, 30, 0));
-	ship_gObj->GetComponent<RigidBodyComponent>()->SetFriction(0.f);
+	ship_gObj->GetComponent<RigidBody>()->SetFriction(0.f);
 	trackMain->SetPosition(LMVector3(0, 0, 0));
 	//firstArea->SetPosition(LMVector3(0, -10, 0));
 	boost->SetPosition(LMVector3(80, 0, -120));
@@ -295,10 +294,10 @@ void MotorApi::RegisterGame(const char* gameName) {
 	raceManager_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/mainTheme.mp3", -1, 17105, 214244);
 	raceManager_gObj->GetComponent<AudioSource>()->SetFreq("Assets/Sounds/mainTheme.mp3", 0.98f);
 	ship_gObj->GetComponent<AudioSource>()->Play("Assets/Sounds/engine.wav", -1);
-	trackMain->GetComponent<RigidBodyComponent>()->UseItAsRaycast();
+	trackMain->GetComponent<RigidBody>()->UseItAsRaycast();
 	//trackBorder->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
 	//Debug01->GetComponent<RigidBodyComponent>()->SetCollisionGroup(6);
-	boost->GetComponent<RigidBodyComponent>()->beATrigger();
+	boost->GetComponent<RigidBody>()->beATrigger();
 	//waterPlane->GetComponent<RigidBodyComponent>()->FreezePosition(LMVector3(1, 0, 1));
 
 
@@ -323,7 +322,7 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<Camera>("Camera");
 	cmpFac->RegisterComponent<MeshRenderer>("MeshRenderer");
 	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
-	cmpFac->RegisterComponent<RigidBodyComponent>("RigidBodyComponent");
+	cmpFac->RegisterComponent<RigidBody>("RigidBodyComponent");
 	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
 	cmpFac->RegisterComponent<Transform>("Transform");
 	cmpFac->RegisterComponent<UITextLM>("UITextLM");

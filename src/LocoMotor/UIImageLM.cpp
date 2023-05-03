@@ -11,10 +11,10 @@ const std::string UIImageLM::name = "UIImage";
 
 LocoMotor::UIImageLM::UIImageLM() {
 	_uimg = nullptr;
-	posX = 0.;
-	posY = 0.;
-	sizeX = 0.5;
-	sizeY = 0.5;
+	_posX = 0.;
+	_posY = 0.;
+	_sizeX = 0.5;
+	_sizeY = 0.5;
 	_ogMng = OgreWrapper::OgreManager::GetInstance();
 }
 
@@ -32,10 +32,10 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 	_uimg->Init(gameObject->GetScene()->GetSceneName());
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "posx" || params[i].first == "positionx") {
-			SetPosition(std::stod(params[i].second), posY);
+			SetPosition(std::stod(params[i].second), _posY);
 		}
 		else if (params[i].first == "posy" || params[i].first == "positiony") {
-			SetPosition(posX, std::stod(params[i].second));
+			SetPosition(_posX, std::stod(params[i].second));
 		}
 		else if (params[i].first == "pos" || params[i].first == "position") {
 			unsigned char currAxis = 0;
@@ -68,10 +68,10 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 			SetPosition(resultX, resultY);
 		}
 		else if (params[i].first == "sizex") {
-			SetSize(std::stod(params[i].second), sizeY);
+			SetSize(std::stod(params[i].second), _sizeY);
 		}
 		else if (params[i].first == "sizey") {
-			SetSize(sizeX, std::stod(params[i].second));
+			SetSize(_sizeX, std::stod(params[i].second));
 		}
 		else if (params[i].first == "size") {
 			unsigned char currAxis = 0;
@@ -113,14 +113,14 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 }
 
 void LocoMotor::UIImageLM::SetPosition(double x, double y) {
-	posX = x;
-	posY = y;
+	_posX = x;
+	_posY = y;
 	_uimg->SetPosition(x, y);
 }
 
 void LocoMotor::UIImageLM::SetSize(double x, double y) {
-	sizeX = x;
-	sizeY = y;
+	_sizeX = x;
+	_sizeY = y;
 	_uimg->SetDimensions(x, y);
 }
 
@@ -135,8 +135,8 @@ bool LocoMotor::UIImageLM::GetInteractive() {
 void LocoMotor::UIImageLM::Update(float dt) {
 
 	if (GetInteractive()) {
-		winHeight = _ogMng->GetWindowHeight();
-		winWidth = _ogMng->GetWindowWidth();
+		_winHeight = _ogMng->GetWindowHeight();
+		_winWidth = _ogMng->GetWindowWidth();
 		if (MouseOnImage()) {
 
 			if (LocoMotor::InputManager::GetInstance()->GetMouseButtonDown(1)) {
@@ -180,6 +180,6 @@ void LocoMotor::UIImageLM::SetPressedImage(std::string newimg) {
 bool LocoMotor::UIImageLM::MouseOnImage() {
 	std::pair<int, int> pos = LocoMotor::InputManager::GetInstance()->GetMousePos();
 
-	return (pos.first/winWidth > posX && pos.first/winWidth < posX + sizeX) &&
-		(pos.second/winHeight > posY && pos.second/winHeight < posY + sizeY);
+	return (pos.first/_winWidth > _posX && pos.first/_winWidth < _posX + _sizeX) &&
+		(pos.second/_winHeight > _posY && pos.second/_winHeight < _posY + _sizeY);
 }

@@ -64,7 +64,7 @@ namespace LocoMotor {
 		void SetPhysRotation(const LMQuaternion& newRotation);
 		void SetPhysEulerRotation(const LMVector3& newRotation);
 		void SetPhysScale(const LMVector3& newsize);
-		
+
 
 
 		OgreWrapper::Node* _gObjNode;

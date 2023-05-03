@@ -20,9 +20,10 @@ namespace LocoMotor {
 	public:
 		/// @brief Destructor
 		virtual ~Component() = default;
-
-		virtual void Init(std::vector<std::pair<std::string, std::string>>& params) {};
-		/// @brief Initialize the component
+		/// @brief Inits the component with parameters from lua
+		virtual void Init(std::vector<std::pair<std::string, std::string>>& params) {
+		};
+/// @brief Initialize the component
 		virtual void PreStart() {
 		}
 		/// @brief Initialize the component
@@ -57,17 +58,16 @@ namespace LocoMotor {
 		};
 
 		/// @brief Returns the gameobject this component is attached to
-		GameObject* GetContext ();
+		GameObject* GetContext();
 		/// @brief Set the component to a gameobject
 		void SetContext(GameObject* ent);
 		/// @brief Sets whether the component is active or not
 		void SetActive(bool active);
 		/// @brief Returns true if the component is active
 		bool isEnabled();
-		virtual void InitComponent(){ };
-		
-		//GameObject* GetGameobject();
-
+		/// @brief Inits the component
+		virtual void InitComponent() {
+		};
 		GameObject* gameObject;
 	protected:
 		bool enabled;

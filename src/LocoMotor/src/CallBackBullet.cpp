@@ -28,7 +28,7 @@ bool LMcontactProcessed(btManifoldPoint& cp, void* body0, void* body1) {
 
 	return true; //no importa su valor
 }
-	//Indica como debe actuar la fisica al salir una colision trigger
+//Indica como debe actuar la fisica al salir una colision trigger
 void LMcontactExit(btPersistentManifold* const& manifold) {
 	LocoMotor::GameObject* rb1 = static_cast<LocoMotor::GameObject*>(manifold->getBody0()->getUserPointer());
 	LocoMotor::GameObject* rb2 = static_cast<LocoMotor::GameObject*>(manifold->getBody1()->getUserPointer());

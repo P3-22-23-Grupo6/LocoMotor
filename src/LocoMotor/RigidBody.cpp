@@ -1,4 +1,4 @@
-#include "RigidBodyComponent.h"
+#include "RigidBody.h"
 #include "LMVector.h"
 #include "PhysicsManager.h"
 #include "GameObject.h"
@@ -11,7 +11,7 @@ using namespace PhysicsWrapper;
 using namespace LocoMotor;
 
 
-LocoMotor::RigidBodyComponent::RigidBodyComponent()
+LocoMotor::RigidBody::RigidBody()
 {
 	_mass = 0;
 	_damping = 0.9f;
@@ -22,13 +22,13 @@ LocoMotor::RigidBodyComponent::RigidBodyComponent()
 }
 
 
-void LocoMotor::RigidBodyComponent::Start(float mass)
+void LocoMotor::RigidBody::Start(float mass)
 {
 	_mass = mass;
 }
 
 
-LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
+LocoMotor::RigidBody::~RigidBody() {
 	delete _ms;
 	PhysicsManager::GetInstance()->RemoveRigidBodyFromWorld(_body);
 	if (_body && _body->getMotionState()) {
@@ -39,13 +39,13 @@ LocoMotor::RigidBodyComponent::~RigidBodyComponent() {
 }
 
 
-void LocoMotor::RigidBodyComponent::addForce(LMVector3 force)
+void LocoMotor::RigidBody::addForce(LMVector3 force)
 {
 	_body->applyCentralForce(LmToBullet(force));
 }
 
 
-void LocoMotor::RigidBodyComponent::PreStart() {
+void LocoMotor::RigidBody::PreStart() {
 	
 	RigidBodyInfo info;
 	info.mass = _mass;
@@ -74,7 +74,7 @@ void LocoMotor::RigidBodyComponent::PreStart() {
 
 
 
-void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std::string>>& params) {
+void LocoMotor::RigidBody::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "mass") {
 			float num = 0.;
@@ -124,7 +124,7 @@ void LocoMotor::RigidBodyComponent::Init(std::vector<std::pair<std::string, std:
 }
 
 
-void LocoMotor::RigidBodyComponent::PreUpdate(float dt) {
+void LocoMotor::RigidBody::PreUpdate(float dt) {
 
 	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
 	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
@@ -133,137 +133,137 @@ void LocoMotor::RigidBodyComponent::PreUpdate(float dt) {
 
 
 
-void LocoMotor::RigidBodyComponent::setRotation(LMQuaternion rot)
+void LocoMotor::RigidBody::setRotation(LMQuaternion rot)
 {
 	_body->getWorldTransform().setRotation(LmToBullet(rot));
 }
 
 
-void LocoMotor::RigidBodyComponent::setPosition(LMVector3 pos)
+void LocoMotor::RigidBody::setPosition(LMVector3 pos)
 {
 	_body->getWorldTransform().setOrigin(LmToBullet(pos));
 }
 
 
-void LocoMotor::RigidBodyComponent::useGravity(LMVector3 gravity) {
+void LocoMotor::RigidBody::useGravity(LMVector3 gravity) {
 
 	_body->setGravity(LmToBullet(gravity));
 }
 
 
-void LocoMotor::RigidBodyComponent::FreezePosition(LMVector3 freezeAxis) {
+void LocoMotor::RigidBody::FreezePosition(LMVector3 freezeAxis) {
 	_body->setLinearFactor(LmToBullet(freezeAxis));
 }
 
 
-void LocoMotor::RigidBodyComponent::FreezeRotation(LMVector3 freezeAxis) {
+void LocoMotor::RigidBody::FreezeRotation(LMVector3 freezeAxis) {
 	_body->setAngularFactor(LmToBullet(freezeAxis));
 }
 
 
-bool LocoMotor::RigidBodyComponent::checkCollision(GameObject* other) {
+bool LocoMotor::RigidBody::checkCollision(GameObject* other) {
 	if (other != nullptr) {
-		return _body->checkCollideWith(other->GetComponent<RigidBodyComponent>()->getBody());
+		return _body->checkCollideWith(other->GetComponent<RigidBody>()->getBody());
 	}
 	return false;
 }
 
 
-btRigidBody* LocoMotor::RigidBodyComponent::getBody() {
+btRigidBody* LocoMotor::RigidBody::getBody() {
 	return _body;
 }
 
-void LocoMotor::RigidBodyComponent::beATrigger()
+void LocoMotor::RigidBody::beATrigger()
 {
 	_body->setCollisionFlags(_body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 }
 
 
 
-bool LocoMotor::RigidBodyComponent::GetRaycastHit(LMVector3 from, LMVector3 to) {
+bool LocoMotor::RigidBody::GetRaycastHit(LMVector3 from, LMVector3 to) {
 	return PhysicsManager::GetInstance()->CreateRaycast(from,to).hasHit;
 }
 
 
-LMVector3 LocoMotor::RigidBodyComponent::GetraycastHitPoint(LMVector3 from, LMVector3 to) {
+LMVector3 LocoMotor::RigidBody::GetraycastHitPoint(LMVector3 from, LMVector3 to) {
 	return PhysicsManager::GetInstance()->CreateRaycast(from, to).hitPos;
 }
 
 
-LMVector3 LocoMotor::RigidBodyComponent::GethasRaycastHitNormal(LMVector3 from, LMVector3 to){
+LMVector3 LocoMotor::RigidBody::GethasRaycastHitNormal(LMVector3 from, LMVector3 to){
 	return PhysicsManager::GetInstance()->CreateRaycast(from, to).hitVNormal;
 }
 
 
-void LocoMotor::RigidBodyComponent::SetCollisionGroup(int group)
+void LocoMotor::RigidBody::SetCollisionGroup(int group)
 {
 	btBroadphaseProxy* proxy= _body->getBroadphaseProxy();
 	proxy->m_collisionFilterGroup = group;
 }
 
 
-int LocoMotor::RigidBodyComponent::GetCollisionGroup()
+int LocoMotor::RigidBody::GetCollisionGroup()
 {
 	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
 	return proxy->m_collisionFilterGroup;
 }
 
 
-void LocoMotor::RigidBodyComponent::SetCollisionMask(int mask)
+void LocoMotor::RigidBody::SetCollisionMask(int mask)
 {
 	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
 	proxy->m_collisionFilterMask = 1<<mask;
 }
 
 
-int LocoMotor::RigidBodyComponent::GetCollisionMask()
+int LocoMotor::RigidBody::GetCollisionMask()
 {
 	btBroadphaseProxy* proxy = _body->getBroadphaseProxy();
 	return proxy->m_collisionFilterMask;
 }
 
 
-LMVector3 LocoMotor::RigidBodyComponent::GetLinearVelocity() {
+LMVector3 LocoMotor::RigidBody::GetLinearVelocity() {
 	return BulletToLm(_body->getLinearVelocity()) ;
 }
-void LocoMotor::RigidBodyComponent::SetLinearVelocity(LMVector3 newLinearVelocity) {
+void LocoMotor::RigidBody::SetLinearVelocity(LMVector3 newLinearVelocity) {
 	_body->setLinearVelocity(LmToBullet(newLinearVelocity));
 }
 
 
-LMVector3 LocoMotor::RigidBodyComponent::GetTotalTorque() {
+LMVector3 LocoMotor::RigidBody::GetTotalTorque() {
 	return BulletToLm(_body->getTotalTorque());
 }
 
 
-LMVector3 LocoMotor::RigidBodyComponent::GetTurnVelocity() {
+LMVector3 LocoMotor::RigidBody::GetTurnVelocity() {
 	return BulletToLm(_body->getTurnVelocity());
 }
 
 
-LMVector3 LocoMotor::RigidBodyComponent::GetAngularVelocity() {
+LMVector3 LocoMotor::RigidBody::GetAngularVelocity() {
 	return BulletToLm(_body->getAngularVelocity());
 }
 
 
-void LocoMotor::RigidBodyComponent::SetAngularVelocity(LMVector3 newAngularVelocity) {
+void LocoMotor::RigidBody::SetAngularVelocity(LMVector3 newAngularVelocity) {
 	_body->setAngularVelocity(LmToBullet(newAngularVelocity));
 }
 
 
-void LocoMotor::RigidBodyComponent::ApplyTorqueImpulse(LMVector3 impulse) {
+void LocoMotor::RigidBody::ApplyTorqueImpulse(LMVector3 impulse) {
 	_body->applyTorqueImpulse(LmToBullet(impulse));
 }
 
 
-void LocoMotor::RigidBodyComponent::SetFriction(float fric) {
+void LocoMotor::RigidBody::SetFriction(float fric) {
 	_body->setFriction(fric);
 }
 
-void LocoMotor::RigidBodyComponent::UseItAsRaycast() {
+void LocoMotor::RigidBody::UseItAsRaycast() {
 	SetCollisionGroup(10);
 }
 
-void LocoMotor::RigidBodyComponent::SetActivationState(ActiveState newState) {
+void LocoMotor::RigidBody::SetActivationState(ActiveState newState) {
 	_body->setActivationState(newState);
 }

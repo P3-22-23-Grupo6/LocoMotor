@@ -14,7 +14,7 @@ using namespace LocoMotor;
  */
 LocoMotor::Camera::Camera()
 {
-	cam = nullptr;
+	_cam = nullptr;
 	_scene = nullptr;
 	_renderScn = nullptr;
 	_target = nullptr;
@@ -60,10 +60,10 @@ void LocoMotor::Camera::InitComponent() {
 	OgreWrapper::Node* _node = _renderScn->GetNode(gameObject->GetName());
 
 	//Crear camara
-	cam = _renderScn->CreateCamera(gameObject->GetName());
-	_scene->SetSceneCam(cam);
+	_cam = _renderScn->CreateCamera(gameObject->GetName());
+	_scene->SetSceneCam(_cam);
 	//Attachear al nodo del gameObject
-	_node->Attach(cam);
+	_node->Attach(_cam);
 	SetClippingPlane(1, 8000);
 
 	//SetNode al gameObject
@@ -90,14 +90,14 @@ void LocoMotor::Camera::SetTarget(GameObject* target, LMVector3 offset) {
 
 
 void LocoMotor::Camera::SetClippingPlane(int nearPlane, int farPlane) {
-	cam->SetClippingPlane(nearPlane, farPlane);
+	_cam->SetClippingPlane(nearPlane, farPlane);
 }
 
 
 void LocoMotor::Camera::SetFOV(float newFov) {
-	cam->SetFOV(newFov);
+	_cam->SetFOV(newFov);
 }
 
 void LocoMotor::Camera::SetViewportRatio(int viewportIndex, int modeIndex) {
-	cam->SetViewportRatio(viewportIndex, modeIndex);
+	_cam->SetViewportRatio(viewportIndex, modeIndex);
 }
