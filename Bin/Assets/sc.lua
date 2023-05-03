@@ -9,6 +9,25 @@ Button = {
     SceneChangeButton = {}
 }
 
+buttonText = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    UITextLM = {
+        font =  "BrunoAce",
+        text = "RACE",
+        posx =  "0",
+        posy =  ".525",
+        align = "center",
+        sizex = "0.05",
+        sizey = "0.05",
+        topcolor = ".2 .2 1",
+        bottomcolor = ".9 .9 1",
+    }
+}
+
 titleText = {
     Transform = {
         position = "0 0 0",
@@ -40,4 +59,4 @@ mainCam = {
 }
 
 entities = {"Button", "titleText", 
-    "mainCam"}
+    "mainCam", "buttonText"}
