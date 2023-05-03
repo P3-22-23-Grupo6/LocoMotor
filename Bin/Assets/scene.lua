@@ -263,6 +263,54 @@ do ---------------------   AREA04   ------------------------------
         }
     }
 end -------------------------------------------------------------------
+do ---------------------   AREA04   ------------------------------
+    Area01_RoadWalls = {
+        Transform = {
+            position = "0 -6 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        MeshRenderer = {
+            file =  "Area01_RoadWalls.mesh",
+            static = ""
+        },
+        RigidBodyComponent = {
+            mass = 0,
+            usedAsRaycast = ""
+        }
+    }
+    Area02_RoadWalls = {
+        Transform = {
+            position = "0 -6 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        MeshRenderer = {
+            file =  "Area02_RoadWalls.mesh",
+            static = ""
+        },
+        RigidBodyComponent = {
+            mass = 1,
+            friction = "0.0"
+        }
+    }
+    Area03_RoadWalls = {
+        Transform = {
+            position = "0 -6 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        MeshRenderer = {
+            file =  "Area03_RoadWalls.mesh",
+            static = ""
+        },
+        RigidBodyComponent = {
+            mass = 1,
+            friction = "0.0"
+        }
+    }
+end -------------------------------------------------------------------
+
 Main_Terrain = {
     Transform = {
         position = "0 -6 0",
@@ -302,5 +350,6 @@ entities = { "coche", "mainCam", "raceManager",
             "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
+            "Area01_RoadWalls", "Area02_RoadWalls", "Area03_RoadWalls",
             "Main_Terrain", "Main_Water", "SkyboxMesh"
         }
