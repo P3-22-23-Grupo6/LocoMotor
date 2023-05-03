@@ -9,7 +9,6 @@
 //Borrar luego
 #include "SceneManager.h"
 #include "RigidBodyComponent.h"
-#include "OpenSteer/SimpleVehicle.h"
 #include "LmVectorConverter.h"
 
 using namespace LocoMotor;

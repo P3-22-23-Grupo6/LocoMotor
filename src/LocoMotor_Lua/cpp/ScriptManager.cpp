@@ -10,6 +10,8 @@ extern "C" {
 
 #include <LuaBridge/LuaBridge.h>
 #include "GameObject.h"
+#include "Transform.h"
+#include "LogSystem.h"
 using namespace LocoMotor;
 
 //bool LocoMotor::ScriptManager::Init() {
@@ -59,7 +61,9 @@ void ScriptManager::LoadSceneFromFile(std::string path) {
         //Cargo las entidades 
         GameObject* ent = s->GetObjectByName(allEnts[i]);
         std::cout << "Loading entity: " << allEnts[i] << " Components: \n";
-        setParams(entity, ent, nullptr, "layer");
+        if (!setParams(entity, ent, nullptr, "layer")) {
+            s->RemoveGameobject(allEnts[i]);
+        }
     }
 
     SceneManager::GetInstance()->ChangeScene(path);
@@ -77,11 +81,17 @@ LocoMotor::ScriptManager::~ScriptManager()
 	//delete luaState;
 }
 
-void ScriptManager::setParams(luabridge::LuaRef entity, GameObject* ent, Scene* s, std::string layer)
+bool ScriptManager::setParams(luabridge::LuaRef entity, GameObject* ent, Scene* s, std::string layer)
 {
 
     lua_pushnil(entity);
+    if (entity.isNil()) {
+        LocoMotor::LogSystem::GetInstance()->Save(0, "LUA: Gameobject '" + ent->GetName() + "' has been declared but not defined");
+        return false;
+    }
     while (lua_next(entity, 0) != 0) {
+
+
         std::string compName = lua_tostring(entity, -2);
         std::cout << "       Loading component: " << compName << "\n";
         std::string key;
@@ -109,5 +119,7 @@ void ScriptManager::setParams(luabridge::LuaRef entity, GameObject* ent, Scene* 
         }
         lua_pop(entity, 1);
     }
-
+    if (ent->GetComponent<Transform>() == nullptr)
+        ent->AddComponent("Transform");
+    return true;
 }
