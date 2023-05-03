@@ -15,7 +15,7 @@ btVector3 LocoMotor::LmToBullet(const LMVector3& lmVector) {
 LMVector3 LocoMotor::OgreToLm(const Ogre::Vector3& ogreVector) {
 	return LMVector3(ogreVector.x, ogreVector.y, ogreVector.z);
 }
-// Converts an lmVector to an Ogre vector
+// Converts an lmVector to an Ogre vectork
 Ogre::Vector3 LocoMotor::LmToOgre(const LMVector3& lmVector) {
 	return Ogre::Vector3((float) lmVector.GetX(), (float) lmVector.GetY(), (float) lmVector.GetZ());
 }

@@ -10,7 +10,7 @@ namespace LocoMotor {
 	class LMQuaternion;
 
 	// VECTOR TRANSFORMATIONS BETWEEN LANGUAGES
-		/// @brief Converts a Bullet vector to lmVector
+	/// @brief Converts a Bullet vector to lmVector
 	LMVector3 BulletToLm(const btVector3& bulletVector);
 	/// @brief Converts an lmVector to Bullet vector
 	btVector3 LmToBullet(const LMVector3& lmVector);

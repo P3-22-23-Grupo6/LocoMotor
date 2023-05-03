@@ -15,7 +15,6 @@ namespace LocoMotor {
 	//Vector class to be used with LocoMotor
 	class MOTOR_API LMVector3 {
 
-
 	public:
 		// Default constructor initializes vector to (0, 0, 0)
 		/// @brief Create a new Vector3 with everything Set to 0
@@ -57,7 +56,6 @@ namespace LocoMotor {
 		// Div operators of vectors
 		LMVector3 operator/(const LMVector3& other) const;
 		LMVector3 operator/(const double& other) const;
-
 
 		// Dot product
 		///	@brief Get the Dot Product of two Vectors
@@ -107,27 +105,33 @@ namespace LocoMotor {
 		/// @param angle The angle to rotate (degrees)
 		LMVector3 Rotate(const LMVector3& axis, double angle);
 
-
 		// perpendicular
 		///	@brief Get the perpendicular vector from two Vectors
 		/// @param other The other Vector
 		LMVector3 Perpendicular(const LMVector3& other) const;
 
+		/// @brief 
+		/// @param from 
+		/// @param to 
+		/// @param timeStep 
+		/// @return 
 		LMVector3 Lerp(LMVector3 from, LMVector3 to, float timeStep);
 
+		/// @brief 
+		/// @return 
 		LMQuaternion AsRotToQuaternion() const;
 
+		/// @brief Converts a String to a vector
+		/// @param s String to convert
+		/// @return Vector3 converted
 		static LMVector3 StringToVector(std::string s);
 
 	private:
 		double _x = 0, _y = 0, _z = 0;
-
-
 	};
 
 	//Quaternion class to be used with LocoMotor
 	class MOTOR_API LMQuaternion {
-
 
 	public:
 		// Default constructor initializes quaternion to (1, 0, 0, 0)
@@ -161,10 +165,8 @@ namespace LocoMotor {
 		//Equal operators of quaternions
 		LMQuaternion operator=(const LMQuaternion& other);
 
-
 		// Add operators of quaternions
 		LMQuaternion operator+(const LMQuaternion& other) const;
-
 
 		// Sub operators of quaternions
 		LMQuaternion operator-(const LMQuaternion& other) const;
@@ -175,7 +177,6 @@ namespace LocoMotor {
 
 		// Div operators of quaternions
 		LMQuaternion operator/(double scalar) const;
-
 
 		// Conjugate
 		/// @brief Get the Conjugate of a Quaternion
@@ -212,17 +213,11 @@ namespace LocoMotor {
 		/// @brief Get the Forward Vector from a Quaternion
 		LMVector3 Forward() const;
 
+		/// @brief Returns the Quaternion to Euler vector3
 		LMVector3 ToEuler() const;
-
-
-	// QUATERNION TRANSFORMATIONS BETWEEN LANGUAGES
-		/// @brief Converts a Bullet quaternion to LMQuaternion
-
 	private:
 		double _w = 0, _x = 0, _y = 0, _z = 0;
-
-
 	};
 }
 
-#endif // !LM_VECTOR
+#endif 

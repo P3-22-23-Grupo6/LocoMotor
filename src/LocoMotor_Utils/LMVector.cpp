@@ -1,10 +1,8 @@
 #define _USE_MATH_DEFINES
 
 #include "LMVector.h"
-
 #include <cmath>
-//#include "btBulletDynamicsCommon.h"
-//Vector class to be used with LocoMotor
+
 using namespace LocoMotor;
 
 // Default constructor initializes vector to (0, 0, 0)
@@ -42,9 +40,6 @@ void LMVector3::SetY(double y) {
 void LMVector3::SetZ(double z) {
 	this->_z = z;
 }
-
-// Equal
-
 // Sum
 LMVector3 LMVector3::operator+(const LMVector3& other) const {
 	LMVector3 aux = LMVector3(
@@ -193,7 +188,7 @@ LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) {
 	LMVector3 cross = axis.Cross(*this);
 	LMVector3 dot = axis * axis.Dot(*this);
 	LMVector3 cross2 = axis.Cross(cross);
-	LMVector3 a = dot + cross * sin(angle * M_PI / 180. ) + cross2 * (1 - cos(angle * M_PI / 180.));
+	LMVector3 a = dot + cross * sin(angle * M_PI / 180.) + cross2 * (1 - cos(angle * M_PI / 180.));
 
 	this->_x = a.GetX();
 	this->_y = a.GetY();
@@ -378,7 +373,7 @@ void LMQuaternion::Normalize() {
 }
 
 //Rotate a quaternion
-LMQuaternion LMQuaternion::Rotate(const LMVector3& axis, double angle) const 	{
+LMQuaternion LMQuaternion::Rotate(const LMVector3& axis, double angle) const {
 	LMQuaternion q;
 	double halfAngle = (angle * (M_PI / 180.0)) / 2.0;
 	double sinHalfAngle = sin(halfAngle);

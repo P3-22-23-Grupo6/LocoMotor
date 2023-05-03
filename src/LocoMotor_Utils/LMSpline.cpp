@@ -7,7 +7,7 @@ using namespace LocoMotor;
 
 Spline::Spline(bool DebugMode) {
 	_spline = new Ogre::SimpleSpline;
-	isDebugActive = DebugMode;
+	_isDebugActive = DebugMode;
 }
 
 Spline::~Spline() {
@@ -41,5 +41,5 @@ void Spline::RecalcTangents() {
 }
 
 void Spline::SetDebug(bool debugMode) {
-	isDebugActive = debugMode;
+	_isDebugActive = debugMode;
 }

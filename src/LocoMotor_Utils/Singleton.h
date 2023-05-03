@@ -1,7 +1,6 @@
 #pragma once
 #ifndef LM_SINGLETON
 #define LM_SINGLETON
-//#include "CheckML.h"
 
 #include <utility>
 namespace LocoMotor {
@@ -39,11 +38,9 @@ namespace LocoMotor {
 			_instance = nullptr;
 		};
 
-
 	protected:
 		Singleton() = default;
 		virtual ~Singleton() = default;
-
 	private:
 		static T* _instance;
 	};
