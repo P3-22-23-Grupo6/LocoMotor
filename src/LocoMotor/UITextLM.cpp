@@ -113,6 +113,15 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 		else if (params[i].first == "fnt" || params[i].first == "font") {
 			SetFont(params[i].second);
 		}
+		else if (params[i].first == "align") {
+
+			if (params[i].second == "center")
+				AlignCenter();
+			else if (params[i].second == "left")
+				AlignLeft();
+			else if (params[i].second == "right")
+				AlignRight();
+		}
 	}
 }
 
