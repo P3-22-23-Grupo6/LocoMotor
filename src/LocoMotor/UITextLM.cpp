@@ -24,11 +24,16 @@ LocoMotor::UITextLM::~UITextLM() {
 }
 
 void LocoMotor::UITextLM::InitComponent() {
-	_uTxt = new OgreWrapper::UIText();
-	_uTxt->Init(gameObject->GetScene()->GetSceneName());
+	//_uTxt = new OgreWrapper::UIText();
+	//_uTxt->Init(gameObject->GetScene()->GetSceneName());
 }
 
 void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>& params) {
+
+	_uTxt = new OgreWrapper::UIText();
+	_uTxt->Init(gameObject->GetScene()->GetSceneName());
+
+
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "posx" || params[i].first == "positionx") {
 			SetPosition(std::stod(params[i].second), posY);
