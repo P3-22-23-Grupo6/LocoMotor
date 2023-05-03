@@ -26,9 +26,10 @@ namespace LocoMotor {
 		/// pairs represent the parameters passed to the Init() function.
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 
+
 		/// @brief Initializes a particle system component by creating a node, creating particles,
 		///	attaching them to the node of the game object, and setting the node to the game object.
-		void InitComponent() override;
+		void Start() override;
 
 		/// @brief updates the position of a particle system node based on the position of its associated
 		/// game object. 

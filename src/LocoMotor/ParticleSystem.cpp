@@ -32,10 +32,14 @@ void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::str
 			_filename = params[i].second;
 		}
 	}
+
+
 }
 
 
-void ParticleSystem::InitComponent() {
+
+
+void ParticleSystem::Start() {
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	//Crear nodo
 	_node = _renderScn->CreateNode("ParticleNode");

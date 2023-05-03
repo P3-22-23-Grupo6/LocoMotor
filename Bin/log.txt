@@ -1,2 +1,6 @@
+<<<<<<< Updated upstream
 Error: [LUA ERROR] Assets/sc.lua:14: '}' expected (to close '{' at line 5) near 'UITextLM'
 Error: No scene has been loaded. Exiting now
+=======
+Error: [LUA ERROR] Assets/scene.lua:24: '}' expected (to close '{' at line 2) near 'ParticleSystem'
+>>>>>>> Stashed changes

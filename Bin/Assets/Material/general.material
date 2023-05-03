@@ -106,7 +106,7 @@ material general/Flare
             colour_op modulate
 			texture_unit
 			{
-				texture jet_p.png
+				texture flare.png
                 rotate 180
 			}
 		}
