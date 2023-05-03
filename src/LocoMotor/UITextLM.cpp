@@ -24,8 +24,10 @@ LocoMotor::UITextLM::~UITextLM() {
 }
 
 void LocoMotor::UITextLM::InitComponent() {
-	//_uTxt = new OgreWrapper::UIText();
-	//_uTxt->Init(gameObject->GetScene()->GetSceneName());
+	if (_uTxt == nullptr) {
+		_uTxt = new OgreWrapper::UIText();
+		_uTxt->Init(gameObject->GetScene()->GetSceneName());
+	}
 }
 
 void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>& params) {
@@ -205,7 +207,7 @@ void LocoMotor::UITextLM::SetTopColor(double r, double g, double b) {
 }
 
 void LocoMotor::UITextLM::SetBottomColor(double r, double g, double b) {
-	_uTxt->SetBottomColor(r,g,b);
+	_uTxt->SetBottomColor(r, g, b);
 }
 
 double LocoMotor::UITextLM::GetSizeX() {

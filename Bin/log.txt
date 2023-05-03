@@ -1,1 +1,1 @@
-Error: LUA: Gameobject 'AreaadBorder' has been declared but not defined
+Error: No scene has been loaded. Exiting now
