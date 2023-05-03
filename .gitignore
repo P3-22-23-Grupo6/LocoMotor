@@ -11,7 +11,7 @@
 
 .vs/
 
-
+*.user
 *.obj
 *.tlog
 [Dd]ependecies/Ogre/[Bb]uild/
