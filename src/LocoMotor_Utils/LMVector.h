@@ -8,6 +8,8 @@
 #define MOTOR_API __declspec(dllimport)
 #endif
 
+#include <string>
+
 namespace LocoMotor {
 	class LMQuaternion;
 	//Vector class to be used with LocoMotor
@@ -115,6 +117,7 @@ namespace LocoMotor {
 
 		LMQuaternion AsRotToQuaternion() const;
 
+		static LMVector3 StringToVector(std::string s);
 
 	private:
 		double _x = 0, _y = 0, _z = 0;
