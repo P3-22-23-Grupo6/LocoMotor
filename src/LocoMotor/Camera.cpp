@@ -62,7 +62,6 @@ void LocoMotor::Camera::InitComponent() {
 	//Crear camara
 	cam = _renderScn->CreateCamera(gameObject->GetName());
 	_scene->SetSceneCam(cam);
-	
 	//Attachear al nodo del gameObject
 	_node->Attach(cam);
 	SetClippingPlane(1, 8000);

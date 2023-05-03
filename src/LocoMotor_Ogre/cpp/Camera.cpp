@@ -43,17 +43,17 @@ void OgreWrapper::Camera::SetFOV(float newFOV) {
 
 void OgreWrapper::Camera::SetViewportRatio(int viewportIndex, int modeIndex) {
 	if (modeIndex == 0) {
-		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->setDimensions(0.0f, 0.0f, 1.0f, 1.0f);
+		GetViewport()->setDimensions(0.0f, 0.0f, 1.0f, 1.0f);
 		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 	}
 	else if (modeIndex == 1) {
-		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->setDimensions(0.0f, 0.0f, 1.0f, 0.5f);
-		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->update();
+		GetViewport()->setDimensions(0.0f, 0.0f, 1.0f, 0.5f);
+		GetViewport()->update();
 		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 	}
 	else if (modeIndex == 2) {
-		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->setDimensions(0.0f, 0.5f, 1.0f, 0.5f);
-		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->update();
+		GetViewport()->setDimensions(0.0f, 0.5f, 1.0f, 0.5f);
+		GetViewport()->update();
 		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
 	}
 		
