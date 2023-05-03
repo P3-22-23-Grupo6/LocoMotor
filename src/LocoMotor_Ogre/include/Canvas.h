@@ -28,15 +28,6 @@ namespace OgreWrapper {
 	class UIElement;
 
 	class Canvas {
-
-		Ogre::Overlay* _canvas;
-		Ogre::OverlayContainer* _container;
-
-		std::vector<UIElement*> _uiElems;
-
-		static unsigned int _numOfCanvas;
-
-
 	public:
 		Canvas();
 		~Canvas();
@@ -49,6 +40,13 @@ namespace OgreWrapper {
 		static void SetSceneManager();
 
 		void addUIElement(UIElement* uiEl);
+	private:
+		Ogre::Overlay* _canvas;
+		Ogre::OverlayContainer* _container;
+
+		std::vector<UIElement*> _uiElems;
+
+		static unsigned int _numOfCanvas;
 
 	};
 

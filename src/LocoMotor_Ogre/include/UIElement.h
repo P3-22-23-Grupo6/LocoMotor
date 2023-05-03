@@ -44,9 +44,9 @@ namespace OgreWrapper {
 
 		static unsigned int _numOfUIElements;
 
-		const double defaultX = 0, defaultY = 0, defaultW = 0.5, defaultH = 0.5;
+		const double _defaultX = 0, _defaultY = 0, _defaultW = 0.5, _defaultH = 0.5;
 
-		bool _isInteractive=false;
+		bool _isInteractive = false;
 	};
 
 }

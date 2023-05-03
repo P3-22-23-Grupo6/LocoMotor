@@ -8,7 +8,7 @@ namespace Ogre {
 	class Quaternion;
 	class SceneNode;
 	class MovableObject;
-	}
+}
 
 namespace OgreWrapper {
 	class RenderEntity;

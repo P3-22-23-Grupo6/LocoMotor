@@ -7,30 +7,19 @@
 #define MOTOR_API __declspec(dllimport)
 #endif
 
-//#include "LMInputs.h"
-//#include <SDL_gamecontroller.h>
 #include <vector>
 #include <array>
 #include "Singleton.h"
 
-
-
 union SDL_Event;
 
 typedef struct _SDL_GameController SDL_GameController;
-//class SDL_Scancode;
-
 
 namespace LocoMotor {
 	enum LMScanCode;
 	class MOTOR_API InputManager : public Singleton<InputManager> {
 		friend Singleton<InputManager>;
 	public:
-
-	// Referencia a la instancia de InputManager, en caso de no existir, crea una
-		//static InputManager* Get();
-
-
 		enum Axis {
 			Horizontal, Vertical
 		};
@@ -73,10 +62,10 @@ namespace LocoMotor {
 
 
 		// GESTION DE EVENTOS
-		
+
 		/// @brief Devuelve true si hay un mando conectado
 		/// @return 
-		bool controllerConnected();
+		bool ControllerConnected();
 
 		// Registra todos los eventos relacionados con input en este frame, los recorre uno a uno
 		// Almacenandolos en sus respectivas variables

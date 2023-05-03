@@ -29,35 +29,22 @@ namespace OgreWrapper {
 
 	class RenderScene {
 	public:
-		/// <summary>
-		/// Creates a new Scene wrapping an Ogre::SceneManager object
-		/// Do not call this, use OgreManager::createScene instead
-		/// </summary>
-		/// <param name="scene">Ogre::SceneManager to wrap</param>
+		/// @brief Creates a new Scene wrapping an Ogre::SceneManager object Do not call this, use OgreManager::createScene instead
+		/// @param scene Ogre::SceneManager to wrap
 		RenderScene(Ogre::SceneManager* scene);
 
 		Ogre::SceneManager* GetMan() {
 			return _manager;
 		};
 
-		/*RenderScene(RenderScene&& r) {
-		};*/
 
-		/// <summary>
-		/// Destructor
-		/// </summary>
+		/// @brief Destructor
 		~RenderScene();
 
 		void Deactivate();
 
-		/// <summary>
-		/// Genera una escena de prueba
-		/// </summary>
-		void Prueba();
 
-		/// <summary>
-		/// Renders a frame from the active camera
-		/// </summary>
+		/// @brief Renders a frame from the active camera
 		void Render();
 
 		void SetSkybox();

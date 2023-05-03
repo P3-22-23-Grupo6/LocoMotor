@@ -33,8 +33,8 @@ bool OgreWrapper::UIElement::Init(const std::string& sceneName) {
 	_container->initialise();
 	_container->setMetricsMode(Ogre::GMM_RELATIVE);
 	//_container->setMaterialName(Ogre::MaterialManager::getSingleton().getDefaultMaterial()->getName());
-	_container->setPosition(defaultX, defaultY);
-	_container->setDimensions(defaultW, defaultH);
+	_container->setPosition(_defaultX, _defaultY);
+	_container->setDimensions(_defaultW, _defaultH);
 	OgreManager::GetInstance()->GetScene(sceneName)->GetCanvas()->addUIElement(this);
 	return false;
 }

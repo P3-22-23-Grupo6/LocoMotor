@@ -2,7 +2,6 @@
 #ifndef _SGTRS_H_
 #define _SGTRS_H
 
-
 #include <OgreMaterialManager.h>
 
 namespace Ogre {
@@ -10,8 +9,6 @@ namespace Ogre {
 		class ShaderGenerator;
 	}
 }
-
-
 namespace OgreWrapper {
 	class SGTechniqueResolverListener : public Ogre::MaterialManager::Listener {
 	public:

@@ -25,11 +25,6 @@ InputManager::InputManager() {
 	_mousePos.second = 0;
 }
 
-//InputManager* InputManager::Get() {
-//	if (InputManager::_instance == nullptr)  _instance = new InputManager();
-//	return _instance;
-//}
-
 
 // TECLADO
 bool InputManager::GetKeyDown(const LMScanCode& scanCode) {
@@ -101,7 +96,7 @@ float LocoMotor::InputManager::GetTriggerValue(const int& triggerIndex) {
 
 // MANEJO DE EVENTOS
 
-bool InputManager::controllerConnected() {
+bool InputManager::ControllerConnected() {
 	return _currentController != nullptr;
 }
 
@@ -122,7 +117,7 @@ bool InputManager::RegisterEvents() {
 
 	// ACTUALIZAR GIROSCOPIO EN CASO DE USARSE (variable "useGyroscope")
 	// Manejar el giroscopio en caso de querer utilizarlo y tener uno disponible
-	if (controllerConnected() && _useGyroscope) {
+	if (ControllerConnected() && _useGyroscope) {
 
 		for (int i = 0; i < 2; i++) {
 			const int nAxis = 2;
@@ -192,7 +187,7 @@ bool InputManager::RegisterEvents() {
 		//	//std::cout << "MOUSE " << "\n";
 		//}
 
-		
+
 
 		//std::cout << "joystickAxis_0 = " << joystickAxis[0] << "\n";
 		//std::cout << "joystickAxis_1 = " << joystickAxis[1] << "\n";
@@ -302,10 +297,10 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 				|| joystickValue < -_JOYSTICKDEADZONE_MIN) {
 
 				float absJoystickValue = fabsf(joystickValue);
-				int sign = (int) (joystickValue / absJoystickValue);
+				int sign = (int)(joystickValue / absJoystickValue);
 
 				// Convertir el valor en un valor entre 0 y 1
-				float normalizedValue = ((float) (absJoystickValue - _JOYSTICKDEADZONE_MIN)) / ((float) (_JOYSTICKDEADZONE_MAX - _JOYSTICKDEADZONE_MIN));
+				float normalizedValue = ((float)(absJoystickValue - _JOYSTICKDEADZONE_MIN)) / ((float)(_JOYSTICKDEADZONE_MAX - _JOYSTICKDEADZONE_MIN));
 
 				normalizedValue *= sign;
 
@@ -316,7 +311,7 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 			else
 				_joystickAxis[axis] = 0;
 		}
-		
+
 
 
 		//if (joystickValue_ != 0) {
@@ -330,7 +325,7 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 
 		Sint16 triggerValue = event.jaxis.value;
 
-		
+
 
 		int axis = event.jaxis.axis;
 		if (axis > 3) {
@@ -338,7 +333,7 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 			float auxValue = triggerValue + _TRIGGERSVALUE_MAX / 2;
 			if (axis == 0 || axis == 1)_triggersValue[axis] = auxValue / _TRIGGERSVALUE_MAX;
 		}
-		
+
 
 	}
 

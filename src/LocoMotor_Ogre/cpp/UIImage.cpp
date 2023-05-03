@@ -5,7 +5,7 @@
 #include "OgreMaterialManager.h"
 
 
-OgreWrapper::UIImage::UIImage(): UIElement() {
+OgreWrapper::UIImage::UIImage() : UIElement() {
 }
 
 void OgreWrapper::UIImage::ChangeImage(std::string nImage) {

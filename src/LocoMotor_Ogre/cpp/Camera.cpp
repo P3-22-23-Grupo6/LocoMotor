@@ -16,9 +16,9 @@ OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 	//_mCamera->setPolygonMode(Ogre::PM_WIREFRAME);
 	_mZOrder = Camera::_zOrder;
 	//Normal Camera
-	vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
+	_vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
 	Camera::_zOrder++;
-	vp->setBackgroundColour(Ogre::ColourValue(0.6f, 0.7f, 0.8f));
+	_vp->setBackgroundColour(Ogre::ColourValue(0.6f, 0.7f, 0.8f));
 }
 
 OgreWrapper::Camera::~Camera() {
@@ -26,7 +26,7 @@ OgreWrapper::Camera::~Camera() {
 }
 
 Ogre::Viewport* OgreWrapper::Camera::GetViewport() {
-	return vp;
+	return _vp;
 }
 
 Ogre::MovableObject* OgreWrapper::Camera::GetMovObj() {
@@ -38,25 +38,25 @@ void OgreWrapper::Camera::SetAspectRatio(Ogre::Real ratio) {
 }
 
 void OgreWrapper::Camera::SetFOV(float newFOV) {
-	_mCamera->setFOVy(Ogre::Radian(newFOV*3.14f/180));//Conversion Provisional, meter en LMVector o LMQuaternion
+	_mCamera->setFOVy(Ogre::Radian(newFOV * 3.14f / 180));//Conversion Provisional, meter en LMVector o LMQuaternion
 }
 
 void OgreWrapper::Camera::SetViewportRatio(int viewportIndex, int modeIndex) {
 	if (modeIndex == 0) {
 		GetViewport()->setDimensions(0.0f, 0.0f, 1.0f, 1.0f);
-		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+		SetAspectRatio(Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight()));
 	}
 	else if (modeIndex == 1) {
 		GetViewport()->setDimensions(0.0f, 0.0f, 1.0f, 0.5f);
 		GetViewport()->update();
-		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+		SetAspectRatio(Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight()));
 	}
 	else if (modeIndex == 2) {
 		GetViewport()->setDimensions(0.0f, 0.5f, 1.0f, 0.5f);
 		GetViewport()->update();
-		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+		SetAspectRatio(Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight()));
 	}
-		
+
 }
 
 void OgreWrapper::Camera::SetTracking(bool shouldTrack, Ogre::SceneNode* nodeToTrack, const Ogre::Vector3& offset) {
@@ -68,5 +68,5 @@ void OgreWrapper::Camera::SetClippingPlane(Ogre::Real nearDis, Ogre::Real farDis
 }
 
 void OgreWrapper::Camera::Render() {
-	vp->update();
+	_vp->update();
 }

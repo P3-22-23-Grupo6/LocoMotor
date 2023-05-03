@@ -46,9 +46,9 @@ void OgreWrapper::Node::SetDirection(float x, float y, float z) {
 }
 
 void OgreWrapper::Node::Attach(OgreWrapper::RenderEntity* obj) {
-	
+
 	_node->attachObject(obj->GetMovObj());
-	_ent.push_back (obj);
+	_ent.push_back(obj);
 }
 
 OgreWrapper::Node* OgreWrapper::Node::CreateChild(const std::string& name) {

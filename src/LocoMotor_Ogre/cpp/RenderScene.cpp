@@ -16,7 +16,6 @@
 #include <iostream>
 #include <Ogre.h>
 #include <OgreOverlaySystem.h>
-//#include <OgreOverlayPrerequisites.h>
 
 OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_manager = scene;
@@ -25,7 +24,6 @@ OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_canvas = new OgreWrapper::Canvas();
 	_canvas->Init(_manager);
 	_stGeom = _manager->createStaticGeometry("st");
-	//OverlayManager::getSingleton().createOverlayElement("Panel", "myNewPanel");
 }
 
 OgreWrapper::RenderScene::~RenderScene() {
@@ -39,12 +37,10 @@ OgreWrapper::RenderScene::~RenderScene() {
 
 void OgreWrapper::RenderScene::Deactivate() {
 	_manager->destroyAllCameras();
-	//_manager->destroyAllStaticGeometry();
 }
 
 void OgreWrapper::RenderScene::Render() {
 	_mainCam->GetViewport()->update();
-	// _canvas->Render();
 }
 
 void OgreWrapper::RenderScene::SetSkybox() {
@@ -159,22 +155,4 @@ OgreWrapper::ParticleHelper* OgreWrapper::RenderScene::CreateParticleHelper(std:
 	if (part != nullptr)
 		return new ParticleHelper(_manager->createParticleSystem(name, filename));
 	return nullptr;
-}
-
-void OgreWrapper::RenderScene::Prueba() {
-	//SET TEXTURE FILTERING A NONE
-	Ogre::MaterialManager& matMan = Ogre::MaterialManager::getSingleton();
-	matMan.setDefaultTextureFiltering(Ogre::TextureFilterOptions::TFO_BILINEAR);
-
-	OgreWrapper::Node* mLightNode = CreateNode("Luz");
-	OgreWrapper::Light* mLight = new Light(_manager->createLight(), Ogre::Light::LT_DIRECTIONAL);
-	mLightNode->Attach(mLight);
-	mLight->SetDiffuse(1, 1, 1);
-	mLightNode->SetDirection(-1, -1, -1);
-	//Road
-	//OgreWrapper::Node* mTrackNode = CreateNode("Track");
-	//OgreWrapper::Renderer3D* track = new Renderer3D(_manager->createEntity("map.mesh"));
-	//mTrackNode->Attach(track);
-	//mTrackNode->SetScale(0.7f, 0.7f, 0.7f);
-	//mTrackNode->Rotate(-90, 0, 25);
 }

@@ -6,7 +6,6 @@
 namespace Ogre {
 	class Camera;
 	class Viewport;
-	//typedef Vector3;
 }
 
 namespace OgreWrapper {
@@ -33,7 +32,7 @@ namespace OgreWrapper {
 		static int _zOrder;
 		int _mZOrder;
 		Ogre::Camera* _mCamera;
-		Ogre::Viewport* vp;
+		Ogre::Viewport* _vp;
 	};
 }
 #endif
