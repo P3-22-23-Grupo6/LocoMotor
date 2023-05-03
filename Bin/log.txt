@@ -1,6 +1,2 @@
-<<<<<<< Updated upstream
-Error: [LUA ERROR] Assets/sc.lua:14: '}' expected (to close '{' at line 5) near 'UITextLM'
-Error: No scene has been loaded. Exiting now
-=======
-Error: [LUA ERROR] Assets/scene.lua:24: '}' expected (to close '{' at line 2) near 'ParticleSystem'
->>>>>>> Stashed changes
+Error: Couldn't initialize ParticleSystem named 'exhaust' on file 'Racers/JetEngine2'
+Error: Couldn't initialize ParticleSystem named 'dust' on file 'Racers/Sparkler'

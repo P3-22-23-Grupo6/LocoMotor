@@ -1,4 +1,19 @@
 
+mainCam = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    Camera = 
+    { 
+        CameraMode = 0,
+        FOV = "60",
+        target = "coche" ,
+        main = ""
+    },
+    AudioListener = {}
+}
 coche = {
     Transform = {
         position = "0 15 0",
@@ -21,21 +36,6 @@ coche = {
         name = "exhaust",
         file = "Racers/JetEngine2"
     }
-}
-mainCam = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    Camera = 
-    { 
-        CameraMode = 0,
-        FOV = "60",
-        target = "coche" ,
-        main = ""
-    },
-    AudioListener = {}
 }
 raceManager = {
     Transform = {

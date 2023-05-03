@@ -71,7 +71,7 @@ void LocoMotor::Camera::InitComponent() {
 }
 
 
-void LocoMotor::Camera::Update(float dt) {
+void LocoMotor::Camera::PreUpdate(float dt) {
 
 	// Comprobar si hay asignado un target
 	if (_target != nullptr) {

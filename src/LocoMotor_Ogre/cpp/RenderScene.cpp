@@ -37,6 +37,7 @@ OgreWrapper::RenderScene::~RenderScene() {
 
 void OgreWrapper::RenderScene::Deactivate() {
 	_manager->destroyAllCameras();
+	_manager->destroyAllParticleSystems();
 }
 
 void OgreWrapper::RenderScene::Render() {

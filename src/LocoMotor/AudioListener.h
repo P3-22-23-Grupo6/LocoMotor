@@ -31,7 +31,6 @@ namespace LocoMotor {
 	private:
 		FmodWrapper::AudioListener* _list;
 		LMVector3 _lastPos;
-		LMVector3 _lastVel;
 	};
 };
 #endif // !LM_AUDIOLISTENER

@@ -36,7 +36,7 @@ namespace LocoMotor {
 		/// @param dt dt stands for delta time, which is the time elapsed since the last frame update. It is
 		/// used to ensure that the movement and updates in the game are consistent across different hardware
 		/// and frame rates.
-		void Update(float dt) override;
+		void PreUpdate(float dt) override;
 
 		/// @brief Set the target and offset for the camera of a LocoMotor object.
 		/// @param target A pointer to a GameObject that the camera will follow as its target.

@@ -16,7 +16,6 @@ using namespace LocoMotor;
 AudioListener::AudioListener() {
 	_list = nullptr;
 	_lastPos = LMVector3();
-	_lastVel = LMVector3();
 }
 /**
  * This is a destructor for the AudioListener class that deletes a pointer to a list.
@@ -44,7 +43,7 @@ void LocoMotor::AudioListener::Update(float dt) {
 	LMVector3 forwardVec = gameObject->GetTransform()->GetRotation().Forward() * -1;
 	LMVector3 upwardVec = gameObject->GetTransform()->GetRotation().Up();
 
-	LMVector3 vel = _lastVel + ((((gameObject->GetTransform()->GetPosition() - _lastPos) / (dt / 1000.f)) - _lastVel) * 0.8f);
+	LMVector3 vel = (gameObject->GetTransform()->GetPosition() - _lastPos) / (dt / 1000.f);
 
 #ifdef _DEBUG
 	unsigned short err = _list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));
@@ -60,7 +59,6 @@ void LocoMotor::AudioListener::Update(float dt) {
 	}
 
 	_lastPos = gameObject->GetTransform()->GetPosition();
-	_lastVel = vel;
 }
 
 
