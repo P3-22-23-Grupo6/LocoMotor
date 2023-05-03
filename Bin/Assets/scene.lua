@@ -66,6 +66,42 @@ do ---------------------   UI   ------------------------------
             bottomcolor = "1 1 1",
         }
     }
+    positionText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "3 rd",
+            posx =  "0.45",
+            posy =  ".9",
+            align = "right",
+            sizex = "0.1",
+            sizey = "0.1",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    countdownText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "Heavitas",
+            text = "GO!",
+            posx =  "0",
+            posy =  ".3",
+            align = "center",
+            sizex = "0.15",
+            sizey = "0.15",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
 end ----------------------------------------------------------
 do ---------------------   AREA01   ------------------------------
     Area01_RoadMain = {
@@ -369,7 +405,7 @@ SkyboxMesh = {
 }
 
 entities = { "coche", "mainCam", "raceManager",
-            "lapsText",
+            "lapsText", "positionText", "countdownText",
             "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain",
             "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
