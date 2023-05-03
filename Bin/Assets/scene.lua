@@ -39,6 +39,17 @@ raceManager = {
         rotation = "0 0 0",
         scale = "1 1 1"
     },
+    UITextLM = {
+        font =  "BrunoAce",
+        text = "0 fps",
+        posx =  "0.45",
+        posy =  ".05",
+        align = "right",
+        sizex = "0.05",
+        sizey = "0.05",
+        topcolor = "0 0 0",
+        bottomcolor = "0 0 0",
+    },
     RaceManager = {
         checkpoint0 =  "0 0 0",
         checkpoint1 =  "1 1 1",
@@ -98,6 +109,24 @@ do ---------------------   UI   ------------------------------
             align = "center",
             sizex = "0.15",
             sizey = "0.15",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    velocityText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "100 km/h",
+            posx =  "-0.45",
+            posy =  ".1",
+            align = "left",
+            sizex = "0.1",
+            sizey = "0.1",
             topcolor = "1 1 1",
             bottomcolor = "1 1 1",
         }
@@ -405,7 +434,7 @@ SkyboxMesh = {
 }
 
 entities = { "coche", "mainCam", "raceManager",
-            "lapsText", "positionText", "countdownText",
+            "lapsText", "positionText", "countdownText", "velocityText",
             "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain",
             "Area02_RoadMain", "AreaadBorder", "Area02_Extra",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",

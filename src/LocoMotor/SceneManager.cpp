@@ -156,7 +156,7 @@ void LocoMotor::SceneManager::Update() {
 		sc->Update(_deltaTime); 
 		sc->Render();
 	}
-	if (sc->ToDestroy()) {
+	if (sc!=nullptr && sc->ToDestroy()) {
 		sc->Destroy();
 	}
 }
