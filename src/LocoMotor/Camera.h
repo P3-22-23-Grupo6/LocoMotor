@@ -59,6 +59,7 @@ namespace LocoMotor {
 		/// through the camera lens. It is usually measured in degrees and determines how much of the scene
  
 		void SetFOV(float newFov);
+		void SetViewportRatio(int viewportIndex, int modeIndex);
 
 	private:
 		OgreWrapper::Camera* cam;

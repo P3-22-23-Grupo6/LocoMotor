@@ -10,24 +10,13 @@
 
 int OgreWrapper::Camera::_zOrder = 0;
 
-OgreWrapper::Camera::Camera(Ogre::Camera* camera, int cameraMode) {
+OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 	_mCamera = camera;
 	_mCamera->setAutoAspectRatio(true);
 	//_mCamera->setPolygonMode(Ogre::PM_WIREFRAME);
 	_mZOrder = Camera::_zOrder;
 	//Normal Camera
-	if(cameraMode == 0) 
-		vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
-	//Camera Left 2 Player Mode
-	else if (cameraMode == 1) {
-		vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, 0, 0.0f, 0.0f, 0.5f, 1.0f);
-		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
-	}	
-	//Camera Right 2 Player Mode
-	else if (cameraMode == 2) {
-		vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, 0, 0.0f, 0.0f, 0.5f, 1.0f);
-		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
-	}
+	vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
 	Camera::_zOrder++;
 	vp->setBackgroundColour(Ogre::ColourValue(0.6f, 0.7f, 0.8f));
 }
@@ -50,6 +39,24 @@ void OgreWrapper::Camera::SetAspectRatio(Ogre::Real ratio) {
 
 void OgreWrapper::Camera::SetFOV(float newFOV) {
 	_mCamera->setFOVy(Ogre::Radian(newFOV*3.14f/180));//Conversion Provisional, meter en LMVector o LMQuaternion
+}
+
+void OgreWrapper::Camera::SetViewportRatio(int viewportIndex, int modeIndex) {
+	if (modeIndex == 0) {
+		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->setDimensions(0.0f, 0.0f, 1.0f, 1.0f);
+		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+	}
+	else if (modeIndex == 1) {
+		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->setDimensions(0.0f, 0.0f, 1.0f, 0.5f);
+		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->update();
+		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+	}
+	else if (modeIndex == 2) {
+		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->setDimensions(0.0f, 0.5f, 1.0f, 0.5f);
+		OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->getViewport(viewportIndex)->update();
+		SetAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight()));
+	}
+		
 }
 
 void OgreWrapper::Camera::SetTracking(bool shouldTrack, Ogre::SceneNode* nodeToTrack, const Ogre::Vector3& offset) {

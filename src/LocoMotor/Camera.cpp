@@ -28,7 +28,15 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 {
 	InitComponent();
 	for (auto & param : params) {
-		if (param.first == "FOV" || param.first == "fov") {
+		if (param.first == "CameraMode") {
+			try {
+				int modeIndex = std::stof(param.second);
+				SetViewportRatio(1, modeIndex); //ViewportIndex = 1 TEMPORAL
+			}
+			catch (...) {
+			}
+		}
+		else if (param.first == "FOV" || param.first == "fov") {
 			try {
 				float fov = std::stof(param.second);
 				SetFOV(fov);
@@ -89,4 +97,8 @@ void LocoMotor::Camera::SetClippingPlane(int nearPlane, int farPlane) {
 
 void LocoMotor::Camera::SetFOV(float newFov) {
 	cam->SetFOV(newFov);
+}
+
+void LocoMotor::Camera::SetViewportRatio(int viewportIndex, int modeIndex) {
+	cam->SetViewportRatio(viewportIndex, modeIndex);
 }

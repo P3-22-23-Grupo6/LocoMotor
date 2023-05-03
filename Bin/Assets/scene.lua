@@ -26,6 +26,7 @@ mainCam = {
     },
     Camera = 
     { 
+        CameraMode = 2,
         FOV = "60",
         target = "coche" ,
         main = ""
