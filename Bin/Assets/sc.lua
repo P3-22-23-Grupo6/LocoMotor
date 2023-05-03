@@ -24,6 +24,28 @@ raceButton = {
     }
 }
 
+speedButton = {
+    UIImageLM = { 
+        interactive = "",
+        posx = ".15",
+        posy = ".5",
+        sizex = ".2",
+        sizey = ".1"
+    },
+
+    UITextLM = {
+        font =  "BrunoAce",
+        text = "100cc",
+        posx =  "-.25",
+        posy =  ".525",
+        align = "center",
+        sizex = "0.05",
+        sizey = "0.05",
+        topcolor = ".2 .2 1",
+        bottomcolor = ".9 .9 1"
+    }
+}
+
 carGraphic = {
     Transform = {
         position = "0 -10 -30",
@@ -79,5 +101,5 @@ mainCam = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "titleText", 
-    "mainCam", "carGraphic"}
+entities = {"ButtonManager", "raceButton", "speedButton",
+"titleText", "mainCam", "carGraphic"}
