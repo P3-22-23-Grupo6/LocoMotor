@@ -159,6 +159,18 @@ GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
 	return newObj;
 }
 
+void LocoMotor::Scene::RemoveGameobject(std::string name) {
+	if (_gameObjList.count(name) == 0) {
+	#ifdef DEBUG
+		std::cerr << "No existe un objeto con el nombre " << name << std::endl;
+	#endif // DEBUG
+		return;
+	}
+	delete _gameObjList[name];
+	_gameObjList.erase(name);
+	_renderScn->DestroyNode(name);
+}
+
 /**
  * The function returns a GameObject pointer by searching for its name in a Scene's list of
  * GameObjects.
