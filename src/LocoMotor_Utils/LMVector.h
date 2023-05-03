@@ -110,15 +110,8 @@ namespace LocoMotor {
 		/// @param other The other Vector
 		LMVector3 Perpendicular(const LMVector3& other) const;
 
-		/// @brief 
-		/// @param from 
-		/// @param to 
-		/// @param timeStep 
-		/// @return 
-		LMVector3 Lerp(LMVector3 from, LMVector3 to, float timeStep);
 
-		/// @brief 
-		/// @return 
+		/// @brief Convert a rotation vector to Quaternion
 		LMQuaternion AsRotToQuaternion() const;
 
 		/// @brief Converts a String to a vector
