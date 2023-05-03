@@ -51,11 +51,10 @@ raceManager = {
         bottomcolor = "0 0 0",
     },
     RaceManager = {
-        checkpoint0 =  "0 0 0",
-        checkpoint1 =  "1 1 1",
-        checkpoint2 =  "2 2 2",
-        checkpoint3 =  "3 3 3",
-        checkpoint4 =  "4 4 4"
+        checkpoint0 =  "2 1 -8",
+        checkpoint1 =  "2 1 -27",
+        checkpoint2 =  "2 1 -44",
+        checkpoint4 =  "2 1 -8"
     }
 }
 do ---------------------   UI   ------------------------------
@@ -435,6 +434,24 @@ SkyboxMesh = {
         static = ""
     }
 }
+EnemyCar = {
+    Transform = {
+        position = "0 15 0",
+        rotation = "0 0 0",
+        scale = "10 10 10"
+    },
+    MeshRenderer = {
+        file =  "EnemyCar.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav"
+    },
+    EnemyAI = {
+        enemySpeed = "20",
+        StartSeparation = "5"
+    },
+}
 
 entities = { "coche", "mainCam", "raceManager",
             "lapsText", "positionText", "countdownText", "velocityText",
@@ -443,5 +460,6 @@ entities = { "coche", "mainCam", "raceManager",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
             "Area01_RoadWalls", "Area02_RoadWalls", "Area03_RoadWalls",
-            "Main_Terrain", "Main_Water", "SkyboxMesh"
+            "Main_Terrain", "Main_Water", "SkyboxMesh",
+            "EnemyCar"
         }
