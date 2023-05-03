@@ -59,7 +59,6 @@ bool ScriptManager::LoadSceneFromFile(std::string path) {
 
 		//Cargo las entidades 
 		GameObject* ent = s->GetObjectByName(allEnts[i]);
-		std::cout << "Loading entity: " << allEnts[i] << " Components: \n";
 		if (!SetParams(entity, ent, nullptr, "layer")) {
 			s->RemoveGameobject(allEnts[i]);
 		}
@@ -92,7 +91,6 @@ bool ScriptManager::SetParams(luabridge::LuaRef entity, GameObject* ent, Scene* 
 
 
 		std::string compName = lua_tostring(entity, -2);
-		std::cout << "       Loading component: " << compName << "\n";
 		std::string key;
 
 		luabridge::LuaRef component = entity[compName];
@@ -113,9 +111,6 @@ bool ScriptManager::SetParams(luabridge::LuaRef entity, GameObject* ent, Scene* 
 
 
 		ent->AddComponent(compName, parameters);
-		for (auto& p : parameters) {
-			std::cout << "\t" << p.first << ": " << p.second << "\n";
-		}
 		lua_pop(entity, 1);
 	}
 	if (ent->GetComponent<Transform>() == nullptr)

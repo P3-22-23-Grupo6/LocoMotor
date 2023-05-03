@@ -67,8 +67,6 @@ void LocoMotor::RigidBody::PreStart() {
 	}
 	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
 	_body->setUserPointer(gameObject);
-	SetCollisionGroup(1);
-	SetCollisionMask(1);
 	if (_raycast) UseItAsRaycast();
 }
 

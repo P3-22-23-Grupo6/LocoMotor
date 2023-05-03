@@ -40,6 +40,7 @@ MotorApi::MotorApi() {
 void MotorApi::RegisterGame(const char* gameName) {
 	_gameName = gameName;
 	OgreWrapper::OgreManager::Init(gameName);
+	/*
 
 	Scene* _mScene = _scnManager->CreateScene("Escena");
 
@@ -301,6 +302,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 
 
 #pragma endregion
+*/
 }
 
 void MotorApi::Init() {
@@ -322,7 +324,6 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<MeshRenderer>("MeshRenderer");
 	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
 	cmpFac->RegisterComponent<RigidBody>("RigidBodyComponent");
-	//cmpFac->RegisterComponent<EnemyAI>("EnemyAI");s
 	cmpFac->RegisterComponent<Transform>("Transform");
 	cmpFac->RegisterComponent<UITextLM>("UITextLM");
 	cmpFac->RegisterComponent<UIImageLM>("UIImageLM");

@@ -1,7 +1,7 @@
 
 coche = {
     Transform = {
-        position = "0 60 0",
+        position = "0 15 0",
         rotation = "0 0 0",
         scale = "10 10 10"
     },
@@ -157,6 +157,9 @@ do ---------------------   AREA01   ------------------------------
         },
         MeshRenderer = {
             file =  "Area01_RoadBorder.mesh"
+        },
+        RigidBodyComponent = {
+            mass = 0,
         }
     }
 
@@ -362,7 +365,7 @@ do ---------------------   AREA04   ------------------------------
         },
         RigidBodyComponent = {
             mass = 0,
-            usedAsRaycast = ""
+            friction = "0.0"
         }
     }
     Area02_RoadWalls = {

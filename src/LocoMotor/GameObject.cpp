@@ -6,6 +6,7 @@
 #include "LMInputs.h"
 #include "Scene.h"
 #include "Node.h"
+#include "LogSystem.h"
 //Borrar luego
 #include "SceneManager.h"
 #include "RigidBody.h"
@@ -64,6 +65,10 @@ void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair
 		return;
 	}
 	Component* comp = ComponentsFactory::GetInstance()->CreateComponent(name);
+	if (comp == nullptr) {
+		LocoMotor::LogSystem::GetInstance()->Save(0, "Componente '" + name + "' no existe");
+		return;
+	}
 	comp->SetContext(this);
 	comp->Init(params);
 	_componentsByName.insert({ name, comp });
