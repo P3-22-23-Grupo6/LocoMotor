@@ -84,7 +84,7 @@ unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned 
 }
 
 unsigned short FmodWrapper::AudioSource::PlayOneShot(const char* fileName, const FMOD_VECTOR& position, const float volume) {
-	float randPtch = 0.8f + (float)(rand()) / ((float)(RAND_MAX / (1.1f - 0.8f)));
+	float randPtch = 0.8f + (float) (rand()) / ((float) (RAND_MAX / (1.1f - 0.8f)));
 	return PlayOneShot(fileName, position, volume, randPtch);
 }
 
@@ -235,7 +235,7 @@ void AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, const FMOD_V
 }
 
 void FmodWrapper::AudioSource::SetPositionAndVelocity(const FMOD_VECTOR& newPos, float delta) {
-	FMOD_VECTOR vel = FMOD_VECTOR(); 
+	FMOD_VECTOR vel = FMOD_VECTOR();
 	vel.x = (newPos.x - _posRemember->x) / delta;
 	vel.y = (newPos.y - _posRemember->y) / delta;
 	vel.z = (newPos.z - _posRemember->z) / delta;

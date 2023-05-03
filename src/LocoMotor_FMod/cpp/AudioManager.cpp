@@ -13,7 +13,8 @@ using namespace LocoMotor;
 
 AudioManager* Singleton<AudioManager>::_instance = nullptr;
 
-AudioManager::AudioManager() : AudioManager(24){ }
+AudioManager::AudioManager() : AudioManager(24) {
+}
 
 AudioManager::AudioManager(int numChannels) {
 	System_Create(&_sys);
@@ -106,7 +107,7 @@ std::list<AudioListener*>::iterator AudioManager::AddListener(AudioListener* cur
 	index = _listeners.size();
 	_listeners.push_back(curr);
 
-	_sys->set3DNumListeners((int)_listeners.size());
+	_sys->set3DNumListeners((int) _listeners.size());
 
 	std::list<AudioListener*>::iterator it = _listeners.end();
 	it--;
@@ -115,7 +116,7 @@ std::list<AudioListener*>::iterator AudioManager::AddListener(AudioListener* cur
 
 unsigned short FmodWrapper::AudioManager::RemoveListener(std::list<AudioListener*>::iterator listenerIt, size_t indexToRemove) {
 	auto it = _listeners.erase(listenerIt);
-	int nIndex = (int)indexToRemove;
+	int nIndex = (int) indexToRemove;
 
 	unsigned short err = 0;
 
@@ -124,13 +125,13 @@ unsigned short FmodWrapper::AudioManager::RemoveListener(std::list<AudioListener
 
 	#ifdef _DEBUG
 		if (err != 0) {
-			std::cout << "AUDIO: Trying to update listeners while removing number '" << indexToRemove << "' caused fmod exception: " << FMOD_ErrorString((FMOD_RESULT)err) << std::endl;
+			std::cout << "AUDIO: Trying to update listeners while removing number '" << indexToRemove << "' caused fmod exception: " << FMOD_ErrorString((FMOD_RESULT) err) << std::endl;
 		}
 	#endif // _DEBUG
 
 		nIndex++;
 	}
-	_sys->set3DNumListeners((int)_listeners.size());
+	_sys->set3DNumListeners((int) _listeners.size());
 	return err;
 }
 

@@ -23,20 +23,19 @@ unsigned short FmodWrapper::AudioListener::SetTransform(const FMOD_VECTOR& newPo
 	}
 	return err;
 #else
-	return _man->GetSystem()->set3DListenerAttributes((int)_fIndex, &newPos, &newVel, &forward, &up);
+	return _man->GetSystem()->set3DListenerAttributes((int) _fIndex, &newPos, &newVel, &forward, &up);
 #endif // _DEBUG
 }
 
-unsigned short FmodWrapper::AudioListener::ChangeIndex(int index)
-{
+unsigned short FmodWrapper::AudioListener::ChangeIndex(int index) {
 	FMOD_VECTOR newPos; FMOD_VECTOR newVel; FMOD_VECTOR forward; FMOD_VECTOR up;
 
-	unsigned short err = _man->GetSystem()->get3DListenerAttributes((int)_fIndex, &newPos, &newVel, &forward, &up);
+	unsigned short err = _man->GetSystem()->get3DListenerAttributes((int) _fIndex, &newPos, &newVel, &forward, &up);
 
 	if (err == 0)
 		err = _man->GetSystem()->set3DListenerAttributes(index, &newPos, &newVel, &forward, &up);
 
-	_fIndex = (size_t)index;
+	_fIndex = (size_t) index;
 
 	return err;
 }

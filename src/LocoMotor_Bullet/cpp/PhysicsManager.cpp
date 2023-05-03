@@ -14,7 +14,6 @@ PhysicsManager::PhysicsManager() {
 	_solver = new btSequentialImpulseConstraintSolver;
 	//Create Dynamic world
 	_dynamicWorld = new btDiscreteDynamicsWorld(_dispatcher, _overlappingPairCache, _solver, _collisionConfiguration);
-	
 	//Set default gravity
 	_dynamicWorld->setGravity(btVector3(0, -98, 0));
 }
@@ -38,7 +37,7 @@ PhysicsManager::~PhysicsManager() {
 }
 
 btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms) {
-	btCollisionShape* shape=nullptr;
+	btCollisionShape* shape = nullptr;
 	if (ms != nullptr) {
 		shape = new btBvhTriangleMeshShape(ms, true, true);
 	}
@@ -47,7 +46,7 @@ btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms
 			shape = new btCapsuleShapeZ(info.capsuleRadius, info.capsuleHeight);
 		else if (info.sphereSize <= 0.0)
 			shape = new btBoxShape(info.boxSize);
-		else if(info.sphereSize)
+		else if (info.sphereSize)
 			shape = new btSphereShape(info.sphereSize);
 	}
 	if (shape == nullptr)return nullptr;
