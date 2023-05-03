@@ -77,35 +77,13 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 		else if (params[i].first == "sizey") {
 			SetSize(sizeX, std::stod(params[i].second));
 		}
-		else if (params[i].first == "size") {
-			unsigned char currAxis = 0;
-			std::string num = "";
-			double resultX = 0.;
-			double resultY = 0.;
-			for (const auto& c : params[i].second) {
-				if (c != ' ') {
-					num += c;
-				}
-				else {
-					float value = 0.f;
-					try {
-						value = std::stod(num);
-					}
-					catch (const char*) {
-						value = 0.f;
-					}
-					if (currAxis == 0) {
-						resultX = value;
-					}
-					else if (currAxis == 1) {
-						resultY = value;
-					}
-					currAxis++;
-					if (currAxis == 2) break;
-					num = "";
-				}
-			}
-			SetSize(resultX, resultY);
+		else if (params[i].first == "topcolor") {
+			LMVector3 color = LMVector3::StringToVector(params[i].second);
+			SetTopColor(color.GetX(), color.GetY(), color.GetZ());
+		}
+		else if (params[i].first == "bottomcolor") {
+			LMVector3 color = LMVector3::StringToVector(params[i].second);
+			SetBottomColor(color.GetX(), color.GetY(), color.GetZ());
 		}
 		else if (params[i].first == "txt" || params[i].first == "text") {
 			ChangeText(params[i].second);
