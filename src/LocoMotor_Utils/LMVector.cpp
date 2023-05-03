@@ -206,12 +206,18 @@ LMVector3 LMVector3::Perpendicular(const LMVector3& other) const {
 LMQuaternion LMVector3::AsRotToQuaternion() const {
 	// Abbreviations for the various angular functions
 
-	double cr = cos(this->_x * 0.5);
-	double sr = sin(this->_x * 0.5);
-	double cp = cos(this->_y * 0.5);
-	double sp = sin(this->_y * 0.5);
-	double cy = cos(this->_z * 0.5);
-	double sy = sin(this->_z * 0.5);
+	// Degree to Radian
+	LMVector3 aux = * this;
+	aux = aux * (M_PI / 180);
+
+	double cr = cos(aux.GetX() * 0.5);
+	double sr = sin(aux.GetX() * 0.5);
+	double cp = cos(aux.GetY() * 0.5);
+	double sp = sin(aux.GetY() * 0.5);
+	double cy = cos(aux.GetZ() * 0.5);
+	double sy = sin(aux.GetZ() * 0.5);
+
+	
 
 	LMQuaternion q;
 	q.SetW(cr * cp * cy + sr * sp * sy);

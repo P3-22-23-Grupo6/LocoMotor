@@ -28,6 +28,17 @@ buttonText = {
     }
 }
 
+carGraphic = {
+    Transform = {
+        position = "0 -15 -30",
+        rotation = "0 180 0",
+        scale = "10 10 10"
+    },
+    MeshRenderer = {
+        file =  "BlueFalcon.mesh"
+    }
+}
+
 titleText = {
     Transform = {
         position = "0 0 0",
@@ -53,10 +64,24 @@ mainCam = {
         rotation = "0 0 0",
         scale = "1 1 1"
     },
-    Camera = {
+    Camera = 
+    { 
+        CameraMode = 0,
+        FOV = "60",
         main = ""
-    }
+    },
 }
 
+-- mainCam = {
+--     Transform = {
+--         position = "0 0 0",
+--         rotation = "0 0 0",
+--         scale = "1 1 1"
+--     },
+--     Camera = {
+--         main = ""
+--     }
+-- }
+
 entities = {"Button", "titleText", 
-    "mainCam", "buttonText"}
+    "mainCam", "buttonText", "carGraphic"}
