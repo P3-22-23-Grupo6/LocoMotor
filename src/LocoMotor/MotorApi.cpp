@@ -247,7 +247,7 @@ void MotorApi::RegisterGame(const char* gameName) {
 		enemy_gObj->SetPosition(LMVector3(-70 + i * 35, 3.0f, -80));
 
 		enemy_gObj->AddComponent("EnemyAI");
-		enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl, -70.f + i * 35.f);
+		//enemy_gObj->GetComponent<EnemyAI>()->Start(nuevaSpl, -70.f + i * 35.f);
 	}
 
 	std::vector<GameObject*> waypointBalls = std::vector<GameObject*>();
@@ -322,7 +322,7 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<MeshRenderer>("MeshRenderer");
 	cmpFac->RegisterComponent<ParticleSystem>("ParticleSystem");
 	cmpFac->RegisterComponent<RigidBody>("RigidBodyComponent");
-	cmpFac->RegisterComponent<EnemyAI>("EnemyAI");
+	//cmpFac->RegisterComponent<EnemyAI>("EnemyAI");s
 	cmpFac->RegisterComponent<Transform>("Transform");
 	cmpFac->RegisterComponent<UITextLM>("UITextLM");
 	cmpFac->RegisterComponent<UIImageLM>("UIImageLM");
