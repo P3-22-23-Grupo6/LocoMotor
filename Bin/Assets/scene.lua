@@ -32,6 +32,14 @@ mainCam = {
     },
     AudioListener = {}
 }
+raceManager = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    RaceManager = {}
+}
 do ---------------------   AREA01   ------------------------------
     Area01_RoadMain = {
         Transform = {
@@ -282,7 +290,7 @@ SkyboxMesh = {
     }
 }
 
-entities = { "coche", "mainCam", 
+entities = { "coche", "mainCam", "raceManager",
             "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain",
             "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
