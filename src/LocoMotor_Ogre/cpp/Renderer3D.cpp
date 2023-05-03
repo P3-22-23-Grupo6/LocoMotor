@@ -25,3 +25,7 @@ void OgreWrapper::Renderer3D::SetMaterial(std::string mat) {
 Ogre::Mesh* OgreWrapper::Renderer3D::GetMesh() {
 	return _mesh->getMesh().get();
 }
+
+void OgreWrapper::Renderer3D::SetVisible(bool visible) {
+	_mesh->setVisible(visible);
+}

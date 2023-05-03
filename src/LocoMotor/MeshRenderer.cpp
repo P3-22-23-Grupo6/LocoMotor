@@ -44,6 +44,7 @@ void LocoMotor::MeshRenderer::Start(std::string name, std::string file, std::str
 
 
 void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	bool visible = true;
 	for (int i = 0; i < params.size(); i++) {
 		
 		if (params[i].first == "file") {
@@ -55,6 +56,9 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 		else if (params[i].first == "static") {
 			_isStatic = true;
 		}
+		else if (params[i].first == "invisible") {
+			visible = false;
+		}
 	}
 
 	_rndScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
@@ -63,6 +67,8 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 	//_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
 	if (_rend3D != nullptr) {
 		_nod->Attach(_rend3D);
+		if (!visible)
+			_rend3D->SetVisible(false);
 	}
 	else {
 		LogSystem::GetInstance()->Save(0, "Couldn't load mesh of name '" + _name + "' with filename '" + _src);
