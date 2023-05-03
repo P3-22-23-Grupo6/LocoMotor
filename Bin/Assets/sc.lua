@@ -1,37 +1,33 @@
-Button = {
-    UIImageLM = { 
-        interactive = "",
-        posx = ".4",
-        posy = ".5",
-        sizex = ".2",
-        sizey = ".1"
-    },
+ButtonManager = {
     SceneChangeButton = {}
 }
 
-buttonText = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
+raceButton = {
+    UIImageLM = { 
+        interactive = "",
+        posx = ".15",
+        posy = ".7",
+        sizex = ".2",
+        sizey = ".1"
     },
+
     UITextLM = {
         font =  "BrunoAce",
         text = "RACE",
-        posx =  "0",
-        posy =  ".525",
+        posx =  "-.25",
+        posy =  ".725",
         align = "center",
         sizex = "0.05",
         sizey = "0.05",
         topcolor = ".2 .2 1",
-        bottomcolor = ".9 .9 1",
+        bottomcolor = ".9 .9 1"
     }
 }
 
 carGraphic = {
     Transform = {
-        position = "0 -15 -30",
-        rotation = "0 180 0",
+        position = "0 -10 -30",
+        rotation = "0 160 0",
         scale = "10 10 10"
     },
     MeshRenderer = {
@@ -48,7 +44,7 @@ titleText = {
     UITextLM = {
         font =  "BrunoAce",
         text = "G6",
-        posx =  "0",
+        posx =  ".25",
         posy =  ".2",
         align = "center",
         sizex = "0.3",
@@ -83,5 +79,5 @@ mainCam = {
 --     }
 -- }
 
-entities = {"Button", "titleText", 
-    "mainCam", "buttonText", "carGraphic"}
+entities = {"ButtonManager", "raceButton", "titleText", 
+    "mainCam", "carGraphic"}
