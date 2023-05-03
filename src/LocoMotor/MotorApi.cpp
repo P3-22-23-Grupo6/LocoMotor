@@ -21,7 +21,6 @@
 #include <RigidBody.h>
 #include <ParticleSystem.h>
 #include <Camera.h>
-#include <EnemyAI.h>
 #include "CallBackBullet.h"
 #include "LmVectorConverter.h"
 #include "UIImageLM.h"

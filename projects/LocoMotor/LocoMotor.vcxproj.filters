@@ -43,9 +43,6 @@
     <ClCompile Include="..\..\src\LocoMotor\MotorApi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\LocoMotor\EnemyAI.cpp">
-      <Filter>Source Files\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\LocoMotor\src\Transform.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -101,9 +98,6 @@
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\MotorApi.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\LocoMotor\EnemyAI.h">
-      <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\LocoMotor\include\Transform.h">
       <Filter>Header Files\Components</Filter>
