@@ -46,9 +46,9 @@ raceManager = {
     UITextLM = {
         font =  "BrunoAce",
         text = "0 fps",
-        posx =  "0.45",
-        posy =  ".05",
-        align = "right",
+        posx =  "0",
+        posy =  ".02",
+        align = "center",
         sizex = "0.05",
         sizey = "0.05",
         topcolor = "0 0 0",
@@ -128,80 +128,98 @@ raceManager = {
         checkpoint69 =  ""
     }
 }
--- do ---------------------   UI   ------------------------------
---     lapsText = {
---         Transform = {
---             position = "0 0 0",
---             rotation = "0 0 0",
---             scale = "1 1 1"
---         },
---         UITextLM = {
---             font =  "BrunoAce",
---             text = "0 / 3",
---             posx =  "-0.45",
---             posy =  ".9",
---             align = "left",
---             sizex = "0.1",
---             sizey = "0.1",
---             topcolor = "1 1 1",
---             bottomcolor = "1 1 1",
---         }
---     }
---     positionText = {
---         Transform = {
---             position = "0 0 0",
---             rotation = "0 0 0",
---             scale = "1 1 1"
---         },
---         UITextLM = {
---             font =  "BrunoAce",
---             text = "3 rd",
---             posx =  "0.45",
---             posy =  ".9",
---             align = "right",
---             sizex = "0.1",
---             sizey = "0.1",
---             topcolor = "1 1 1",
---             bottomcolor = "1 1 1",
---         }
---     }
---     countdownText = {
---         Transform = {
---             position = "0 0 0",
---             rotation = "0 0 0",
---             scale = "1 1 1"
---         },
---         UITextLM = {
---             font =  "Heavitas",
---             text = "GO!",
---             posx =  "0",
---             posy =  ".3",
---             align = "center",
---             sizex = "0.15",
---             sizey = "0.15",
---             topcolor = "1 1 1",
---             bottomcolor = "1 1 1",
---         }
---     }
---     velocityText = {
---         Transform = {
---             position = "0 0 0",
---             rotation = "0 0 0",
---             scale = "1 1 1"
---         },
---         UITextLM = {
---             font =  "BrunoAce",
---             text = "100 km/h",
---             posx =  "-0.45",
---             posy =  ".1",
---             align = "left",
---             sizex = "0.1",
---             sizey = "0.1",
---             topcolor = "1 1 1",
---             bottomcolor = "1 1 1",
---         }
---     }
--- end ----------------------------------------------------------
+do ---------------------   UI   ------------------------------
+    timerText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "00:00:000",
+            posx =  "0.45",
+            posy =  ".05",
+            align = "right",
+            sizex = "0.08",
+            sizey = "0.08",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    lapsText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "0 / 3",
+            posx =  "-0.45",
+            posy =  ".9",
+            align = "left",
+            sizex = "0.1",
+            sizey = "0.1",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    positionText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "3 rd",
+            posx =  "0.45",
+            posy =  ".9",
+            align = "right",
+            sizex = "0.1",
+            sizey = "0.1",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    countdownText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "Heavitas",
+            text = "GO!",
+            posx =  "0",
+            posy =  ".3",
+            align = "center",
+            sizex = "0.15",
+            sizey = "0.15",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    velocityText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "100 km/h",
+            posx =  "-0.45",
+            posy =  ".05",
+            align = "left",
+            sizex = "0.05",
+            sizey = "0.05",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+end ----------------------------------------------------------
 do ---------------------   AREA01   ------------------------------
     Area01_RoadMain = {
         Transform = {
@@ -572,7 +590,7 @@ EnemyCar = {
 }
 
 entities = { "coche", "mainCam", "raceManager",
-            "lapsText", "positionText", "countdownText", "velocityText",
+            "lapsText", "positionText", "countdownText", "velocityText", "timerText",
             "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain", "Area01_Boosts",
             "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra", "Area02_Boosts",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
