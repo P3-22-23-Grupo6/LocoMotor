@@ -362,6 +362,19 @@ material RackMaterial {
     }
 }
 
+material MenuBack {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture FinalMenuBack.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
+
 material UIPanel {
     technique {
         pass {
@@ -389,33 +402,6 @@ material LocomotorImg {
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0
-            }
-        }
-    }
-}
-
-material OgreImg {
-    technique {
-        pass {
-            lighting off
-            texture_unit {
-                texture OgreImg.png
-                tex_address_mode wrap
-                colour_op modulate
-                //mipmap_bias 2.0
-            }
-        }
-    }
-}
-
-material MenuBack {
-    technique {
-        pass {
-            lighting off
-            texture_unit {
-                texture MenuBack.png
-                tex_address_mode wrap
-                colour_op modulate
             }
         }
     }

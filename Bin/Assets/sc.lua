@@ -1,6 +1,16 @@
 ButtonManager = {
     SceneChangeButton = {}
 }
+
+locomotorImg = {
+    UIImageLM = { 
+        posx = "0",
+        posy = "0",
+        sizex = "1",
+        sizey = "1",
+        img = "MenuBack"
+    }
+}
 raceButton = {
     UIImageLM = { 
         interactive = "",
@@ -25,23 +35,14 @@ raceButton = {
 }
 
 
-locomotorImg = {
+
+menuBack = {
     UIImageLM = { 
         posx = ".75",
         posy = ".80",
         sizex = ".2",
         sizey = ".2",
         img = "LocomotorImg"
-    }
-}
-
-ogreImg = {
-    UIImageLM = { 
-        posx = ".75",
-        posy = ".725",
-        sizex = ".2",
-        sizey = ".1",
-        img = "OgreImg"
     }
 }
 
@@ -122,5 +123,5 @@ mainCam = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg", "ogreImg",
+entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg",
 "titleText", "mainCam", "carGraphic"}
