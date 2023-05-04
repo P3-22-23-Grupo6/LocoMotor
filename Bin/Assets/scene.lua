@@ -138,9 +138,9 @@ do ---------------------   UI   ------------------------------
         UITextLM = {
             font =  "BrunoAce",
             text = "00:00:000",
-            posx =  "0.45",
+            posx =  "0.15",
             posy =  ".05",
-            align = "right",
+            align = "left",
             sizex = "0.08",
             sizey = "0.08",
             topcolor = "1 1 1",
