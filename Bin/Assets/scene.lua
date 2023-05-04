@@ -21,7 +21,7 @@ coche = {
         scale = "10 10 10"
     },
     MeshRenderer = {
-        file =  "BlueFalcon.mesh"
+        file =  "Stinger.mesh"
     },
     AudioSource = {
         loops= -1,
