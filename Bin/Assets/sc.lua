@@ -27,7 +27,6 @@ raceButton = {
 
 locomotorImg = {
     UIImageLM = { 
-        interactive = "",
         posx = ".75",
         posy = ".80",
         sizex = ".2",
@@ -38,7 +37,6 @@ locomotorImg = {
 
 ogreImg = {
     UIImageLM = { 
-        interactive = "",
         posx = ".75",
         posy = ".725",
         sizex = ".2",
