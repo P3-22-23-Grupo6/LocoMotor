@@ -59,9 +59,6 @@ void OgreWrapper::Camera::SetViewportRatio(int viewportIndex, int modeIndex) {
 
 }
 
-void OgreWrapper::Camera::SetTracking(bool shouldTrack, Ogre::SceneNode* nodeToTrack, const Ogre::Vector3& offset) {
-}
-
 void OgreWrapper::Camera::SetClippingPlane(Ogre::Real nearDis, Ogre::Real farDis) {
 	_mCamera->setNearClipDistance(nearDis);
 	_mCamera->setFarClipDistance(farDis);

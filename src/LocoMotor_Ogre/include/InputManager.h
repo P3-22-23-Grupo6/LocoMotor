@@ -24,102 +24,107 @@ namespace LocoMotor {
 			Horizontal, Vertical
 		};
 
-		// METODOS PRINCIPALES PARA EL USO DE INPUT
 
-		// TECLADO
-		// Devuelve true solo el frame en el que se presiona la tecla
+		// KEYBOARD
+		/// @brief Returns true only in the frame that key is pressed
 		bool GetKeyDown(const LMScanCode& scanCode);
-		// Devuelve true siempre que la tecla este presionada
+		/// @brief Returns true when key is pressed
 		bool GetKey(const LMScanCode& scanCode);
-		// Devuelve true solo el frame en el que se deja de presionar la tecla
+		/// @brief Returns true when key is stop pressed
 		bool GetKeyUp(const LMScanCode& scanCode);
 
-		// RATON
-		// Devuelve true solo el frame en el que se presiona el boton del raton
+		// MOUSE
+		/// @brief Returns true only in the frame that mouse is pressed
 		bool GetMouseButtonDown(const int& buttonCode);
-		// Devuelve true siempre que el boton este presionado
+		/// @brief Returns true when mouse is pressed
 		bool GetMouseButton(const int& buttonCode);
-		// Devuelve true solo el frame en el que se deja de presionar el boton del raton
+		/// @brief Returns true when mouse is stop pressed
 		bool GetMouseButtonUp(const int& buttonCode);
-		// Devuelve la posicion actual del raton en la pantalla
+		/// @brief Returns the position of the mouse in screen
 		std::pair<int, int> GetMousePos();
 
-		// MANDO
+		// Controller
 
-		// Devuelve true solo el frame en el que se presiona el boton
+		/// @brief Returns true only in the frame that controller button is pressed
 		bool GetButtonDown(const int& buttonCode);
-		// Devuelve true siempre que el boton este presionado
+		/// @brief Returns true when controller button is pressed
 		bool GetButton(const int& buttonCode);
-		// Devuelve true solo el frame en el que se deja de presionar el boton
+		/// @brief Returns true when controller button is stop pressed
 		bool GetButtonUp(const int& buttonCode);
-		/// @brief Devuelve el valor de inclinacion del joystick
-		/// @param joystickIndex 0 -> joystick izq | 1 -> joystick der
+		/// @brief Returns the inclination value of the joystick
+		/// @param joystickIndex 0 -> left joystick | 1 ->right joystick
 		/// @param axis Horizontal o Vertical
-		/// @return 
 		float GetJoystickValue(const int& joystickIndex, const Axis& axis);
-
+		/// @brief Returns the inclination value of the joystick
+		/// @param triggerIndex 0 -> left trigger | 1 ->right trigger
 		float GetTriggerValue(const int& triggerIndex);
 
 
-		// GESTION DE EVENTOS
+		// EVENT MANAGER
 
-		/// @brief Devuelve true si hay un mando conectado
-		/// @return 
+		/// @brief Returns true when controller is connected
 		bool ControllerConnected();
 
-		// Registra todos los eventos relacionados con input en este frame, los recorre uno a uno
-		// Almacenandolos en sus respectivas variables
+		/// @brief Register all input related events and save it in the respective value
 		bool RegisterEvents();
 
-		// Gestion de eventos de teclado
+		/// @brief Manages keyboard events
 		void ManageKeyboardEvents(const SDL_Event& event);
-		// Gestion de eventos de mando
+		/// @brief Manages controller events
 		void ManageControllerEvents(const SDL_Event& event);
-		// Gestion de eventos de raton
+		/// @brief Manages mouse events
 		void ManageMouseEvents(const SDL_Event& event);
 
-		// Establece el mando conectado para su uso. Devuelve true si se puede utilizar
+		/// @brief Returns true if controller is ready to use
 		bool ControllerDeviceAdded(const int32_t& controller);
-		// Elimina el mando especificado
+		/// @brief Removes the controller
 		void ControllerDeviceRemoved(const int32_t& controller);
 
 		// Las teclas que hayan llamado a los eventos SDL_KEYDOWN y SDL_KEYUP en el frame anterior,
 		// Tienen las variables de Down/Up activas, solo queremos que esten activas un frame, por lo tanto
 		// la funcion de este metodo es resetear esas variables y ponerlas a False
+
+		/// @brief Resets the last frame keyboard inputs boolean
 		void ResetKeyboardInputs();
 		// Los botones que hayan llamado a los eventos SDL_MOUSEBUTTONDOWN y SDL_MOUSEBUTTONUP en el frame anterior,
 		// Tienen las variables de Down/Up activas, solo queremos que esten activas un frame, por lo tanto
 		// la funcion de este metodo es resetear esas variables y ponerlas a False
+
+		/// @brief Resets the last frame mouse inputs boolean
 		void ResetMouseInputs();
 		// Los botones que hayan llamado a los eventos SDL_CONTROLLERBUTTONDOWN y SDL_CONTROLLERBUTTONUP en el frame anterior,
 		// Tienen las variables de Down/Up activas, solo queremos que esten activas un frame, por lo tanto
 		// la funcion de este metodo es resetear esas variables y ponerlas a False
+
+		/// @brief Resets the last frame controller inputs boolean
 		void ResetControllerInputs();
 
 
 
-		// FUNCIONALIDADES DE MANDO EXTRA
+		// EXTRA CONTROLLER UTILITY
 
-		// Luz LED
+		/// @brief Sets the controller led in RGB
 		void SetControllerLedColor(int r, int g, int b);
 
-		// Vibracion
+		/// @brief Sets the controller rumble with a intensity and a duration in seconds
 		void RumbleController(const float& intensity, const float& durationInSec);
 
-		// Giroscopio
+		// Gyroscope
 
-		// Esta funcion comunica al manager que se quiere hacer uso del giroscopio cuando se conecte un mando
+		/// @brief Comunicate to the manager to active the gyroscope when controller is connected 
 		void ActivateGyroscopeWhenConnected();
-		// Esta funcion se encarga de comprobar si el mando conectado tiene giroscopio implementado y lo activa en caso de tenerlo
+		/// @brief Check is the controller supports gyroscope and activate it.
 		bool EnableControllerGyroscope();
-		// Esta funcion se encarga de desactivar la funcionalidad del giroscopio
+		/// @brief Desactivate the gyroscope
 		bool DisableControllerGyroscope();
-		// Devuelve el angulo actual normalizado del giroscopio del mando, significando
-		// 1 : 90 grados // -1 : -90 grados
+		/// @brief Returns the normalized angle of the gyroscope
+		/// @param axis 
+		/// @return 1 : 90 grados // -1 : -90 grados
 		float GetGyroscopeAngle(const Axis& axis = Horizontal);
-		// Devuelve la velocidad angular del giroscopio del mando
+		/// @brief Gets the angular speed of the gyroscope
+		/// @param axis 
 		float GetGyroscopeAngularSpeed(const Axis& axis = Horizontal);
-
+		/// @brief Resets the gyroscope
 		void ResetGyroscope();
 
 	private:

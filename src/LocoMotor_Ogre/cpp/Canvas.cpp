@@ -49,14 +49,8 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 	return false;
 }
 
-bool OgreWrapper::Canvas::Render() {
-	return false;
-}
 
-void OgreWrapper::Canvas::SetSceneManager() {
-}
-
-void OgreWrapper::Canvas::addUIElement(UIElement* uiEl) {
+void OgreWrapper::Canvas::AddUIElement(UIElement* uiEl) {
 	_container->addChild(uiEl->GetElement());
 	_uiElems.push_back(uiEl);
 }

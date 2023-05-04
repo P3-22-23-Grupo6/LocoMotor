@@ -33,14 +33,11 @@ namespace OgreWrapper {
 		/// @param viewportIndex nº of viewport
 		/// @param modeIndex -> 0 Normal Camera, 1=1º Cam PvP, 2= 2ª PvP
 		void SetViewportRatio(int viewportIndex, int modeIndex);
-
-		void SetTracking(bool shouldTrack, Ogre::SceneNode* nodeToTrack, const Ogre::Vector3& offset);//Test, no se utiliza
-		
 		/// @brief Changes the ClippingPlane, for optimization
 		/// @param nearDis nearest distance
 		/// @param farDis furthest distance
 		void SetClippingPlane(Ogre::Real nearDis, Ogre::Real farDis);
-		/// @brief Render
+		/// @brief Updates the camera
 		void Render();
 
 	private:

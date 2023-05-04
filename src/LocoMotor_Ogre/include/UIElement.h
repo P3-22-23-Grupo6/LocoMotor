@@ -20,8 +20,8 @@ namespace OgreWrapper {
 		UIElement();
 		virtual ~UIElement();
 
+		/// @brief Inits the uielement in the scene 
 		virtual bool Init(const std::string& sceneName);
-
 		/// @brief Sets the position of the entity on the UI
 		void SetPosition(double x, double y);
 		/// @brief Sets the size of the entity on the UI

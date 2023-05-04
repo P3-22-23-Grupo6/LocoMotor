@@ -32,14 +32,12 @@ namespace OgreWrapper {
 		Canvas();
 		~Canvas();
 
+		/// @brief Inits the canvas to the sceneManager
 		bool Init(Ogre::SceneManager* man);
+		/// @brief Deletes all uiElement and destroy the canvas
 		bool ShutDown();
-
-		bool Render();
-
-		static void SetSceneManager();
-
-		void addUIElement(UIElement* uiEl);
+		/// @brief Adds an uielemet to the canvas
+		void AddUIElement(UIElement* uiEl);
 	private:
 		Ogre::Overlay* _canvas;
 		Ogre::OverlayContainer* _container;
