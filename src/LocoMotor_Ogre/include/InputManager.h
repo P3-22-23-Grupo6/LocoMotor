@@ -24,51 +24,51 @@ namespace LocoMotor {
 			Horizontal, Vertical
 		};
 
-		// METODOS PRINCIPALES PARA EL USO DE INPUT
 
-		// TECLADO
-		// Devuelve true solo el frame en el que se presiona la tecla
+		// KEYBOARD
+		/// @brief Returns true only in the frame that key is pressed
 		bool GetKeyDown(const LMScanCode& scanCode);
-		// Devuelve true siempre que la tecla este presionada
+		/// @brief Returns true when key is pressed
 		bool GetKey(const LMScanCode& scanCode);
-		// Devuelve true solo el frame en el que se deja de presionar la tecla
+		/// @brief Returns true when key is stop pressed
 		bool GetKeyUp(const LMScanCode& scanCode);
 
-		// RATON
-		// Devuelve true solo el frame en el que se presiona el boton del raton
+		// MOUSE
+		/// @brief Returns true only in the frame that mouse is pressed
 		bool GetMouseButtonDown(const int& buttonCode);
-		// Devuelve true siempre que el boton este presionado
+		/// @brief Returns true when mouse is pressed
 		bool GetMouseButton(const int& buttonCode);
-		// Devuelve true solo el frame en el que se deja de presionar el boton del raton
+		/// @brief Returns true when mouse is stop pressed
 		bool GetMouseButtonUp(const int& buttonCode);
-		// Devuelve la posicion actual del raton en la pantalla
+		/// @brief Returns the position of the mouse in screen
 		std::pair<int, int> GetMousePos();
 
-		// MANDO
+		// Controller
 
-		// Devuelve true solo el frame en el que se presiona el boton
+		/// @brief Returns true only in the frame that controller button is pressed
 		bool GetButtonDown(const int& buttonCode);
-		// Devuelve true siempre que el boton este presionado
+		/// @brief Returns true when controller button is pressed
 		bool GetButton(const int& buttonCode);
-		// Devuelve true solo el frame en el que se deja de presionar el boton
+		/// @brief Returns true when controller button is stop pressed
 		bool GetButtonUp(const int& buttonCode);
-		/// @brief Devuelve el valor de inclinacion del joystick
-		/// @param joystickIndex 0 -> joystick izq | 1 -> joystick der
+		/// @brief Returns the inclination value of the joystick
+		/// @param joystickIndex 0 -> left joystick | 1 ->right joystick
 		/// @param axis Horizontal o Vertical
-		/// @return 
 		float GetJoystickValue(const int& joystickIndex, const Axis& axis);
-
+		/// @brief Returns the inclination value of the joystick
+		/// @param triggerIndex 0 -> left trigger | 1 ->right trigger
 		float GetTriggerValue(const int& triggerIndex);
 
 
-		// GESTION DE EVENTOS
+		// EVENT MANAGER
 
-		/// @brief Devuelve true si hay un mando conectado
-		/// @return 
+		/// @brief Returns true when controller is connected
 		bool ControllerConnected();
 
 		// Registra todos los eventos relacionados con input en este frame, los recorre uno a uno
 		// Almacenandolos en sus respectivas variables
+
+		/// @brief Register all input related events  
 		bool RegisterEvents();
 
 		// Gestion de eventos de teclado

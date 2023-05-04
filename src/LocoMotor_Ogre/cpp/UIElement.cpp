@@ -35,7 +35,7 @@ bool OgreWrapper::UIElement::Init(const std::string& sceneName) {
 	//_container->setMaterialName(Ogre::MaterialManager::getSingleton().getDefaultMaterial()->getName());
 	_container->setPosition(_defaultX, _defaultY);
 	_container->setDimensions(_defaultW, _defaultH);
-	OgreManager::GetInstance()->GetScene(sceneName)->GetCanvas()->addUIElement(this);
+	OgreManager::GetInstance()->GetScene(sceneName)->GetCanvas()->AddUIElement(this);
 	return false;
 }
 
