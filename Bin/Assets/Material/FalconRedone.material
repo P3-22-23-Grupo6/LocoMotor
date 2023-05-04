@@ -382,8 +382,9 @@ material LocomotorImg {
     technique {
         pass {
             lighting off
+            alpha_rejection greater 150
             texture_unit {
-                texture LocomotorImg.png
+                texture lmlog.png
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0
@@ -398,6 +399,21 @@ material OgreImg {
             lighting off
             texture_unit {
                 texture OgreImg.png
+                tex_address_mode wrap
+                colour_op modulate
+                //mipmap_bias 2.0
+            }
+        }
+    }
+}
+
+material G6Logo {
+    technique {
+        pass {
+            lighting off
+            alpha_rejection greater 150
+            texture_unit {
+                texture g6Img.png
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0

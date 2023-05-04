@@ -1,2 +1,0 @@
-Error: Couldn't initialize ParticleSystem named 'exhaust' on file 'Racers/JetEngine2'
-Error: Couldn't initialize ParticleSystem named 'dust' on file 'Racers/Sparkler'
