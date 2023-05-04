@@ -29,9 +29,6 @@ namespace LocoMotor {
 		GameObject(OgreWrapper::Node* node);
 		/// @brief Destructor
 		virtual ~GameObject();
-
-		/// @brief Update the GameObject and all its components before the rest of updates
-		void PreUpdate(float dt);
 		/// @brief Update the GameObject and all its components
 		void Update(float dt);
 

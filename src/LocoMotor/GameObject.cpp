@@ -21,17 +21,13 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 	physicsBasedMovement = true;
 }
 
-void LocoMotor::GameObject::PreUpdate(float dt)
-{
+void GameObject::Update(float dt) {
+
 	std::unordered_map<std::string, Component*>::iterator it;
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
 		if (it->second->isEnabled())
 			it->second->PreUpdate(dt);
 	}
-}
-
-void GameObject::Update(float dt) {
-	std::unordered_map<std::string, Component*>::iterator it;
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
 		if (it->second->isEnabled())
 			it->second->Update(dt);

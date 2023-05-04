@@ -49,10 +49,6 @@ void Scene::Update(float dt) {
 	//si no esta activa que no haga nada
 	if (!_isActiveScene) {
 		return;
-
-	}
-	for (auto& obj : _gameObjList) {
-		obj.second->PreUpdate(dt);
 	}
 	for (auto& obj : _gameObjList) {
 		obj.second->Update(dt);
