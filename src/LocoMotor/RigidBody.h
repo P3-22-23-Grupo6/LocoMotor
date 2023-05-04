@@ -141,6 +141,7 @@ namespace LocoMotor {
 		int _collisionGroup;
 		int _collisionMask;
 		bool _raycast = false;
+		bool _beATrigger = false;
 
 	};
 }

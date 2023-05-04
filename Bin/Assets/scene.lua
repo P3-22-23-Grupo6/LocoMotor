@@ -59,36 +59,36 @@ raceManager = {
         checkpoint1 =  "2 1 -27",
         checkpoint2 =  "2 1 -44",
         checkpoint3 =  "2 4 -75",
-        checkpoint4 =  "-0.7f, 10,-68",
-        checkpoint5 =  "-8.7f, 16,-78",
-        checkpoint6 =  "-21.75f, 16,-75",
-        checkpoint7 =  "-34.75f, 13,-71",
-        checkpoint8 =  "-40, 10,-63",
-        checkpoint9 =  "-41.75f, 4,-53",
-        checkpoint10 =  "-42, 1,-43",
-        checkpoint11 =  "-42.5f, -0.3f,-34",
-        checkpoint12 =  "-42.5f, -0.3f, -24",
-        checkpoint13 =  "-42.5f, -0.3f, -12.5f",
-        checkpoint14 =  "-42.5f, -0.3f, 0",
-        checkpoint15 =  "-42.5f, -0.3f, 11.2f",
-        checkpoint16 =  "-42.5f, -0.3f, 23",
-        checkpoint17 =  "-42.5f, 1.7f, 36.5f",
-        checkpoint18 =  "-43.3f, 4.2f, 47",
-        checkpoint19 =  "-50, 6.8f, 55.7f",
-        checkpoint20 =  "-60, 8, 57",
-        checkpoint21 =  "-69.8f, 8.8f, 53.6f",
-        checkpoint22 =  "-76, 10, 45",
-        checkpoint23 =  "-77, 10.8f, 34.7f",
-        checkpoint24 =  "-72.5f, 11.7f, -25",
-        checkpoint25 =  "-63.5f, 12, 20.3f",
-        checkpoint26 =  "-52.5f, 12.2f, 18",
-        checkpoint27 =  "-41.3f, 12.25f, 17",
-        checkpoint28 =  "-30.5f, 12.25f, 17",
-        checkpoint29 =  "-18.6f, 12.25f, 17",
-        checkpoint30 =  "-3.5f, 12.25f, 17",
-        checkpoint31 =  "-7.3f, 13.5f, 17",
-        checkpoint32 =  "21.21f, 10.1f, 17",
-        checkpoint33 =  "32f, 10.1f, 17",
+        checkpoint4 =  "-0.7f 9 -68",
+        checkpoint5 =  "-8.7f 16 -78",
+        checkpoint6 =  "-21.75f 16,-75",
+        checkpoint7 =  "-34.75f 13,-71",
+        checkpoint8 =  "-40 10,-63",
+        checkpoint9 =  "-41.75f 4,-53",
+        checkpoint10 =  "-42 1,-43",
+        checkpoint11 =  "-42.5f -0.3f,-34",
+        checkpoint12 =  "-42.5f -0.3f -24",
+        checkpoint13 =  "-42.5f -0.3f -12.5f",
+        checkpoint14 =  "-42.5f -0.3f 0",
+        checkpoint15 =  "-42.5f -0.3f 11.2f",
+        checkpoint16 =  "-42.5f -0.3f 23",
+        checkpoint17 =  "-42.5f 1.7f 36.5f",
+        checkpoint18 =  "-43.3f 4.2f 47",
+        checkpoint19 =  "-50 6.8f 55.7f",
+        checkpoint20 =  "-60 8 57",
+        checkpoint21 =  "-69.8f 8.8f 53.6f",
+        checkpoint22 =  "-76 10 45",
+        checkpoint23 =  "-77 10.8f 34.7f",
+        checkpoint24 =  "-72.5f 11.7f 25",
+        checkpoint25 =  "-63.5f 12 20.3f",
+        checkpoint26 =  "-52.5f 12.2f 18",
+        checkpoint27 =  "-41.3f 12.25f 17",
+        checkpoint28 =  "-30.5f 12.25f 17",
+        checkpoint29 =  "-18.6f 12.25f 17",
+        checkpoint30 =  "-3.5f 12.25f 17",
+        checkpoint31 =  "-7.3f 13.5f 17",
+        checkpoint32 =  "21.21f 10.1f 17",
+        checkpoint33 =  "32f 10.1f 17",
         checkpoint34 =  "2 1 -8",
         checkpoint35 =  "2 1 -8"
     }
@@ -231,6 +231,25 @@ do ---------------------   AREA01   ------------------------------
         MeshRenderer = {
             file =  "Area01_Extra.mesh",
             static = ""
+        }
+    }
+    Area01_Boosts = {
+        Transform = {
+            position = "0 -6 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        MeshRenderer = {
+            file =  "Area01_Boosts.mesh",
+            static = ""
+        },
+        RigidBodyComponent = {
+            mass = 0,
+            usedAsRaycast = "",
+            isTrigger = ""
+        },
+        Boost = {
+            thrust = 5000,
         }
     }
 
@@ -488,14 +507,14 @@ EnemyCar = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "20",
+        enemySpeed = "5",
         StartSeparation = "5"
     },
 }
 
 entities = { "coche", "mainCam", "raceManager",
             "lapsText", "positionText", "countdownText", "velocityText",
-            "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain",
+            "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain", "Area01_Boosts",
             "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",

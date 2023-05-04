@@ -61,6 +61,7 @@ void LocoMotor::RigidBody::PreStart() {
 			_body = PhysicsManager::GetInstance()->CreateRigidBody(info, _ms);
 			_body->setUserPointer(gameObject);
 			if (_raycast) UseItAsRaycast();
+			if (_beATrigger) beATrigger();
 			//delete ms;
 			return;
 		}	
@@ -68,6 +69,7 @@ void LocoMotor::RigidBody::PreStart() {
 	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
 	_body->setUserPointer(gameObject);
 	if (_raycast) UseItAsRaycast();
+	if (_beATrigger) beATrigger();
 }
 
 
@@ -116,6 +118,9 @@ void LocoMotor::RigidBody::Init(std::vector<std::pair<std::string, std::string>>
 		}
 		else if (params[i].first == "usedAsRaycast") {
 			_raycast = true;
+		}
+		else if (params[i].first == "isTrigger") {
+			_beATrigger = true;
 		}
 	}
 	
