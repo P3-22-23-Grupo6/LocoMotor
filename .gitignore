@@ -5,6 +5,7 @@
 [Bb]in/*.log
 [Bb]in/*.lib
 [Bb]in/*.exp
+[Bb]in/log.txt
 [Ll]ib/
 !Dependecies/FMod/core/lib/
 [Oo]bj/

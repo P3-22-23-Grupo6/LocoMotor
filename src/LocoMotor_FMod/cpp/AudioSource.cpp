@@ -37,7 +37,7 @@ unsigned short AudioSource::PlaySound(const char* fileName, int loops, unsigned 
 	FMOD::Sound* snd = _man->GetSound(fileName);
 	if (snd == nullptr) {
 	#ifdef _DEBUG
-		std::cout << "Sound " << fileName << " is not added to the manager, adding it now";
+		std::cout << "Sound " << fileName << " is not added to the manager, adding it now\n";
 	#endif // _DEBUG
 		AddSound(fileName);
 		snd = _man->GetSound(fileName);

@@ -27,13 +27,18 @@ GameObject::GameObject(OgreWrapper::Node* node) {
 	tiltAmount = 0.0f; //TEMPORAL
 }
 
-// Update the GameObject
-void GameObject::Update(float dt) {
+void LocoMotor::GameObject::PreUpdate(float dt)
+{
 	std::unordered_map<std::string, Component*>::iterator it;
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
 		if (it->second->isEnabled())
 			it->second->PreUpdate(dt);
 	}
+}
+
+// Update the GameObject
+void GameObject::Update(float dt) {
+	std::unordered_map<std::string, Component*>::iterator it;
 	for (it = _componentsByName.begin(); it != _componentsByName.end(); it++) {
 		if (it->second->isEnabled())
 			it->second->Update(dt);

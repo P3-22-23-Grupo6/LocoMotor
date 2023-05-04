@@ -65,6 +65,20 @@ OgreWrapper::RenderScene* OgreWrapper::OgreManager::GetScene(std::string name) {
 	return _scenes[name];
 }
 
+std::string OgreWrapper::OgreManager::GetError() {
+	switch (_err) {
+		case 0:
+			return "";
+		case 1:
+			return "Error while reading resources.cfg, make sure the file exists and has no syntax errors\n";
+		case 2:
+			return "Error while loading glsl or hlsl shaders";
+		case 3:
+			return "";
+	}
+	return std::string();
+}
+
 void OgreWrapper::OgreManager::Render() {
 	if (_activeScene == nullptr) return;
 	_activeScene->Render();
@@ -89,7 +103,13 @@ int OgreWrapper::OgreManager::GetWindowWidth() {
 
 void OgreWrapper::OgreManager::LoadResources() {
 	Ogre::ConfigFile cf;
-	cf.load("resources.cfg");
+	try {
+		cf.load("resources.cfg");
+	}
+	catch (...) {
+		_err = 1;
+		return;
+	}
 
 	Ogre::String sec_name, type_name, arch_name;
 	Ogre::ConfigFile::SettingsBySection_ seci = cf.getSettingsBySection();
@@ -117,9 +137,6 @@ void OgreWrapper::OgreManager::LoadResources() {
 	Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/materials", type_name, sec_name);
 
 	Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/GLSL", type_name, sec_name);
-
-	Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch_name + "/Fonts", "FileSystem", "DspaceOgre-fonts", true);
-	Ogre::ResourceGroupManager::getSingleton().initialiseResourceGroup("DspaceOgre-fonts");
 
 	Ogre::MaterialManager::getSingleton().setActiveScheme(Ogre::MaterialManager::DEFAULT_SCHEME_NAME);
 

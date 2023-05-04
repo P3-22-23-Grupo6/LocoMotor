@@ -3,6 +3,7 @@
 #define AUDIOMANAGER
 
 #include <unordered_map>
+#include <string>
 #include "Singleton.h"
 
 namespace FMOD {
@@ -71,7 +72,7 @@ namespace FmodWrapper {
 		FMOD::System* _sys = nullptr;
 		FMOD::ChannelGroup* _main = nullptr;
 
-		std::unordered_map<const char*, FMOD::Sound*> _soundLib;
+		std::unordered_map<std::string, FMOD::Sound*> _soundLib;
 
 		std::list<AudioListener*> _listeners;
 

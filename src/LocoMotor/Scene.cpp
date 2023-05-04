@@ -52,6 +52,9 @@ void Scene::Update(float dt) {
 
 	}
 	for (auto& obj : _gameObjList) {
+		obj.second->PreUpdate(dt);
+	}
+	for (auto& obj : _gameObjList) {
 		obj.second->Update(dt);
 	}
 }

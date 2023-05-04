@@ -18,8 +18,8 @@ LocoMotor::ParticleSystem::ParticleSystem()
 	_renderScn = nullptr;
 	_particleHelper = nullptr;
 
-	_filename = "Racers/JetEngine2";
-	_name = "smoke";
+	_filename = "";
+	_name = "";
 }
 
 
@@ -32,25 +32,23 @@ void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::str
 			_filename = params[i].second;
 		}
 	}
-
-
-}
-
-
-
-
-void ParticleSystem::Start() {
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	//Crear nodo
-	_node = _renderScn->CreateNode("ParticleNode");
+	_node = _renderScn->CreateNode(_name + "ParticleNode");
 	//Crear particulas
 	_particleHelper = _renderScn->CreateParticleHelper(_name + "ParticleHelper", _filename);
 	//Attachear al nodo del gameObject
 	if (_particleHelper != nullptr)
 		_renderScn->GetNode(gameObject->GetName())->Attach(_particleHelper);
 	else {
-		LocoMotor::LogSystem::GetInstance()->Save(0, "Couldn't initialize ParticleSystem named '" + _name + "' on file '" + _filename + "'");
+		LocoMotor::LogSystem::GetInstance()->Save(0, "Couldn't initialize ParticleSystem named '" + _name + "' with source '" + _filename + "'");
 	}
+}
+
+
+
+
+void ParticleSystem::Start() {
 	//SetNode al gameObject
 }
 
