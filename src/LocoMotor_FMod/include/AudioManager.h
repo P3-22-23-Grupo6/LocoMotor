@@ -60,6 +60,7 @@ namespace FmodWrapper {
 		/// @return The System in question
 		FMOD::System* GetSystem() const;
 
+		/// @brief Gets the sound using an id
 		FMOD::Sound* GetSound(const char* id);
 
 		/// @brief Get the fmod error corresponding to the param passed

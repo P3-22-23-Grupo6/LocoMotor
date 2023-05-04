@@ -1,5 +1,1 @@
-Error: [LUA ERROR] Assets/scene.lua:250: '}' expected (to close '{' at line 232) near 'AudioSource'
-Error: [LUA ERROR] Assets/scene.lua:250: '}' expected (to close '{' at line 232) near 'AudioSource'
-Error: [LUA ERROR] Assets/scene.lua:250: '}' expected (to close '{' at line 232) near 'AudioSource'
-Error: [LUA ERROR] Assets/scene.lua:250: '}' expected (to close '{' at line 232) near 'AudioSource'
-Error: [LUA ERROR] Assets/scene.lua:250: '}' expected (to close '{' at line 232) near 'AudioSource'
+Error: No scene has been loaded. Exiting now

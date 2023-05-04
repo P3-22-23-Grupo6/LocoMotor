@@ -12,7 +12,6 @@ namespace OgreWrapper {
 	class Renderer3D : public RenderEntity {
 	public:
 		Renderer3D(Ogre::Entity* rend);
-		Renderer3D(Ogre::StaticGeometry* rend);
 		~Renderer3D();
 		Ogre::MovableObject* GetMovObj() override;
 		/// @brief Sets the mesh material

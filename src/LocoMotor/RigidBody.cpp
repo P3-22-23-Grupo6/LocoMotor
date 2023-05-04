@@ -39,7 +39,7 @@ LocoMotor::RigidBody::~RigidBody() {
 }
 
 
-void LocoMotor::RigidBody::addForce(LMVector3 force)
+void LocoMotor::RigidBody::AddForce(LMVector3 force)
 {
 	_body->applyCentralForce(LmToBullet(force));
 }
@@ -61,7 +61,7 @@ void LocoMotor::RigidBody::PreStart() {
 			_body = PhysicsManager::GetInstance()->CreateRigidBody(info, _ms);
 			_body->setUserPointer(gameObject);
 			if (_raycast) UseItAsRaycast();
-			if (_beATrigger) beATrigger();
+			if (_beATrigger) BeATrigger();
 			//delete ms;
 			return;
 		}	
@@ -69,7 +69,7 @@ void LocoMotor::RigidBody::PreStart() {
 	_body = PhysicsManager::GetInstance()->CreateRigidBody(info);
 	_body->setUserPointer(gameObject);
 	if (_raycast) UseItAsRaycast();
-	if (_beATrigger) beATrigger();
+	if (_beATrigger) BeATrigger();
 }
 
 
@@ -136,19 +136,19 @@ void LocoMotor::RigidBody::PreUpdate(float dt) {
 
 
 
-void LocoMotor::RigidBody::setRotation(LMQuaternion rot)
+void LocoMotor::RigidBody::SetRotation(LMQuaternion rot)
 {
 	_body->getWorldTransform().setRotation(LmToBullet(rot));
 }
 
 
-void LocoMotor::RigidBody::setPosition(LMVector3 pos)
+void LocoMotor::RigidBody::SetPosition(LMVector3 pos)
 {
 	_body->getWorldTransform().setOrigin(LmToBullet(pos));
 }
 
 
-void LocoMotor::RigidBody::useGravity(LMVector3 gravity) {
+void LocoMotor::RigidBody::UseGravity(LMVector3 gravity) {
 
 	_body->setGravity(LmToBullet(gravity));
 }
@@ -164,19 +164,19 @@ void LocoMotor::RigidBody::FreezeRotation(LMVector3 freezeAxis) {
 }
 
 
-bool LocoMotor::RigidBody::checkCollision(GameObject* other) {
+bool LocoMotor::RigidBody::CheckCollision(GameObject* other) {
 	if (other != nullptr) {
-		return _body->checkCollideWith(other->GetComponent<RigidBody>()->getBody());
+		return _body->checkCollideWith(other->GetComponent<RigidBody>()->GetBody());
 	}
 	return false;
 }
 
 
-btRigidBody* LocoMotor::RigidBody::getBody() {
+btRigidBody* LocoMotor::RigidBody::GetBody() {
 	return _body;
 }
 
-void LocoMotor::RigidBody::beATrigger()
+void LocoMotor::RigidBody::BeATrigger()
 {
 	_body->setCollisionFlags(_body->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 }

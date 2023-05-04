@@ -13,24 +13,24 @@ void LocoMotor::Component::SetContext(GameObject* ent) {
 
 
 void LocoMotor::Component::SetActive(bool active) {
-	if (active && !enabled) {
-		enabled = active;
+	if (active && !_enabled) {
+		_enabled = active;
 		OnEnable();
 	}
-	else if (!active && enabled) {
-		enabled = active;
+	else if (!active && _enabled) {
+		_enabled = active;
 		OnDisable();
 	}
 }
 
 
 bool LocoMotor::Component::isEnabled() {
-	return enabled;
+	return _enabled;
 }
 
 
 LocoMotor::Component::Component()
 {
 	gameObject = nullptr;
-	enabled = true;
+	_enabled = true;
 }

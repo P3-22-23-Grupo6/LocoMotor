@@ -34,7 +34,7 @@ namespace LocoMotor {
 		virtual ~RigidBody();
 		/// @brief Add force to the body
 		/// @param force to add
-		void addForce(LMVector3 force);
+		void AddForce(LMVector3 force);
 		/// @brief 
 		void PreStart() override;
 		/// @brief 
@@ -44,13 +44,13 @@ namespace LocoMotor {
 		void PreUpdate(float dt) override;
 		/// @brief Sets the body rotation
 		/// @param rot Rotation to set
-		void setRotation(LMQuaternion rot);
+		void SetRotation(LMQuaternion rot);
 		/// @brief Sets the body rotation
 		/// @param rot Rotation to set
-		void setPosition(LMVector3 pos);
+		void SetPosition(LMVector3 pos);
 		/// @brief Enable/Disable the gravity force affected to this body
 		/// @param gravity 
-		void useGravity(LMVector3 gravity);
+		void UseGravity(LMVector3 gravity);
 		/// @brief Freeze the position of the rigidbody , limit the motion of position in those axis
 		/// @param axis LMVector3 x,y,z axis , 0 means limit(stop motion) , 1 means no limit(allow motion)
 		void FreezePosition(LMVector3 freezeAxis);
@@ -63,12 +63,12 @@ namespace LocoMotor {
 		/// @return Boolean value. It returns true if the rigid body component of the current game object
 		/// collides with the rigid body component of the other game object passed as a parameter, and false
 		/// otherwise.
-		bool checkCollision(GameObject* other);
+		bool CheckCollision(GameObject* other);
 		/// @brief Returns the rigid body component of a locomotor.
 		/// @return a pointer to a btRigidBody object, which is the physics body component of the LocoMotor.
-		btRigidBody* getBody();
+		btRigidBody* GetBody();
 		/// @brief Convert the body to be a Trigger(No contact Response)
-		void beATrigger();
+		void BeATrigger();
 		/// @brief Methods to return RaycastInfo
 		/// @param from The starting point of the raycast in 3D space.
 		/// @param to The "to" parameter is a 3D vector representing the end point of the raycast. It is the

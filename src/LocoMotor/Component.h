@@ -23,7 +23,7 @@ namespace LocoMotor {
 		/// @brief Inits the component with parameters from lua
 		virtual void Init(std::vector<std::pair<std::string, std::string>>& params) {
 		};
-/// @brief Initialize the component
+		/// @brief Initialize the component
 		virtual void PreStart() {
 		}
 		/// @brief Initialize the component
@@ -70,7 +70,7 @@ namespace LocoMotor {
 		};
 		GameObject* gameObject;
 	protected:
-		bool enabled;
+		bool _enabled;
 		/// @brief Constructor
 		Component();
 

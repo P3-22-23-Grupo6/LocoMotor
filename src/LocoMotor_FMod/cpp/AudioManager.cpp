@@ -31,13 +31,12 @@ AudioManager::AudioManager(int numChannels) {
 AudioManager::~AudioManager() {
 	for (auto& snd : _soundLib) {
 		snd.second->release();
-		//delete snd.second;
 	}
 	_main->release();
-	//delete _main;
+
 	_sys->close();
 	_sys->release();
-	//delete _sys;
+
 }
 
 unsigned short AudioManager::Update(float deltaTime) {

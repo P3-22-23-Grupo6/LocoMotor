@@ -26,7 +26,6 @@ void ScriptManager::Report_errors(int status) {
 	}
 
     LogSystem::GetInstance()->Save(0, "[LUA ERROR] " + (std::string)lua_tostring(_luaState, -1));
-    //std::cerr << "[LUA ERROR] " << lua_tostring(luaState, -1) << std::endl;
 
 	// remove error message from Lua state
 	lua_pop(_luaState, 1);

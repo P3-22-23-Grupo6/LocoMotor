@@ -304,7 +304,7 @@ void LocoMotor::Transform::SetLocalScale(const LMVector3& newSize) {
 void LocoMotor::Transform::SetPhysPosition(const LMVector3& newPosition) {
 	RigidBody* rb = gameObject->GetComponent<RigidBody>();
 	if (rb != nullptr) {
-		rb->setPosition(newPosition);
+		rb->SetPosition(newPosition);
 	}
 }
 
@@ -312,7 +312,7 @@ void LocoMotor::Transform::SetPhysPosition(const LMVector3& newPosition) {
 void LocoMotor::Transform::SetPhysRotation(const LMQuaternion& newRotation) {
 	RigidBody* rb = gameObject->GetComponent<RigidBody>();
 	if (rb != nullptr) {
-		rb->setRotation(newRotation);
+		rb->SetRotation(newRotation);
 	}
 }
 
@@ -320,7 +320,7 @@ void LocoMotor::Transform::SetPhysRotation(const LMQuaternion& newRotation) {
 void LocoMotor::Transform::SetPhysEulerRotation(const LMVector3& newRotation) {
 	RigidBody* rb = gameObject->GetComponent<RigidBody>();
 	if (rb != nullptr) {
-		rb->setRotation(newRotation.AsRotToQuaternion());
+		rb->SetRotation(newRotation.AsRotToQuaternion());
 	}
 }
 
