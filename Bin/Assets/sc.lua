@@ -8,19 +8,43 @@ raceButton = {
         posx = ".15",
         posy = ".7",
         sizex = ".2",
-        sizey = ".1"
+        sizey = ".1",
+        img = "UIPanel"
     },
 
     UITextLM = {
-        font =  "BrunoAce",
+        font =  "Heavitas",
         text = "RACE",
         posx =  "-.25",
         posy =  ".725",
         align = "center",
         sizex = "0.05",
         sizey = "0.05",
-        topcolor = ".2 .2 1",
-        bottomcolor = ".9 .9 1"
+        topcolor = "1 1 1",
+        bottomcolor = "1 1 1"
+    }
+}
+
+locomotorImg = {
+    UIImageLM = { 
+        interactive = "",
+        posx = ".75",
+        posy = ".85",
+        sizex = ".2",
+        sizey = ".1",
+        img = "LocomotorImg"
+    },
+
+    UITextLM = {
+        font =  "Heavitas",
+        text = "RACE",
+        posx =  "-.25",
+        posy =  ".725",
+        align = "center",
+        sizex = "0.05",
+        sizey = "0.05",
+        topcolor = "1 1 1",
+        bottomcolor = "1 1 1"
     }
 }
 
@@ -30,11 +54,12 @@ speedButton = {
         posx = ".15",
         posy = ".5",
         sizex = ".2",
-        sizey = ".1"
+        sizey = ".1",
+        img = "UIPanel"
     },
 
     UITextLM = {
-        font =  "BrunoAce",
+        font =  "Heavitas",
         text = "100cc",
         posx =  "-.25",
         posy =  ".525",
@@ -101,5 +126,5 @@ mainCam = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "speedButton",
+entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg",
 "titleText", "mainCam", "carGraphic"}
