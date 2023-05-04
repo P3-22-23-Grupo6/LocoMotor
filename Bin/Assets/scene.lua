@@ -580,7 +580,7 @@ SkyboxMesh = {
         static = ""
     }
 }
-EnemyCar = {
+EnemyCar01 = {
     Transform = {
         position = "0 35 0",
         rotation = "0 0 0",
@@ -594,8 +594,54 @@ EnemyCar = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "0.005",
-        StartSeparation = "5"
+        enemySpeed = "0.01",
+        StartSeparation = "50"
+    },
+    RigidBodyComponent = {
+        mass = 1,
+        friction = "0.0",
+        isTrigger = ""
+    }
+}
+EnemyCar02 = {
+    Transform = {
+        position = "0 35 0",
+        rotation = "0 0 0",
+        scale = "10 10 10"
+    },
+    MeshRenderer = {
+        file =  "BlueFalcon.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav"
+    },
+    EnemyAI = {
+        enemySpeed = "0.01",
+        StartSeparation = "0"
+    },
+    RigidBodyComponent = {
+        mass = 1,
+        friction = "0.0",
+        isTrigger = ""
+    }
+}
+EnemyCar03 = {
+    Transform = {
+        position = "0 35 0",
+        rotation = "0 0 0",
+        scale = "10 10 10"
+    },
+    MeshRenderer = {
+        file =  "BlueFalcon.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav"
+    },
+    EnemyAI = {
+        enemySpeed = "0.01",
+        StartSeparation = "-50"
     },
     RigidBodyComponent = {
         mass = 1,
@@ -612,5 +658,5 @@ entities = { "coche", "mainCam", "raceManager",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
             "Area01_RoadWalls", "Area02_RoadWalls", "Area03_RoadWalls",
             "Main_Terrain", "Main_Water", "SkyboxMesh",
-            "EnemyCar"
+            "EnemyCar01", "EnemyCar02", "EnemyCar03"
         }
