@@ -37,7 +37,7 @@ namespace LocoMotor {
 			delete _instance;
 			_instance = nullptr;
 		};
-
+			
 	protected:
 		Singleton() = default;
 		virtual ~Singleton() = default;
