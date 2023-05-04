@@ -1,2 +1,0 @@
-Error: [LUA ERROR] Assets/sc.lua:4: unexpected symbol near '*'
-Error: No scene has been loaded. Exiting now

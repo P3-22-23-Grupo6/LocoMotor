@@ -29,9 +29,9 @@ locomotorImg = {
     UIImageLM = { 
         interactive = "",
         posx = ".75",
-        posy = ".85",
+        posy = ".80",
         sizex = ".2",
-        sizey = ".1",
+        sizey = ".2",
         img = "LocomotorImg"
     }
 }
@@ -90,16 +90,12 @@ titleText = {
         rotation = "0 0 0",
         scale = "1 1 1"
     },
-    UITextLM = {
-        font =  "BrunoAce",
-        text = "G6",
-        posx =  ".25",
-        posy =  ".2",
-        align = "center",
-        sizex = "0.3",
-        sizey = "0.3",
-        topcolor = ".2 .2 1",
-        bottomcolor = ".9 .9 1",
+    UIImageLM = { 
+        posx = ".40",
+        posy = "-0.01",
+        sizex = "0.55",
+        sizey = "0.55",
+        img = "G6Logo"
     }
 }
 
