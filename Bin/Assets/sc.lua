@@ -1,5 +1,9 @@
 ButtonManager = {
-    SceneChangeButton = {}
+    SceneChangeButton = {},
+    AudioSource = {
+        vol = "0.2",
+        soundDimension = "2D"
+    }
 }
 
 locomotorImg = {
@@ -105,6 +109,12 @@ mainCam = {
         FOV = "60",
         main = ""
     },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/menuTheme.mp3",
+        soundDimension = "2D",
+        vol = "0.2"
+    }
 }
 
 -- mainCam = {

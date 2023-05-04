@@ -37,9 +37,6 @@ namespace OgreWrapper {
 		/// If the name doesn't exist, getScene returns nullptr.
 		OgreWrapper::RenderScene* GetScene(std::string name);
 
-		/// @brief returns an error message if there were any, or "" if not
-		std::string GetError();
-
 		/// @brief Renders a frame.
 		void Render();
 
@@ -69,8 +66,6 @@ namespace OgreWrapper {
 		Ogre::RTShader::ShaderGenerator* _mShaderGenerator;
 
 		Ogre::OverlaySystem* _ovrSys;
-
-		unsigned short _err;
 
 		/// @brief Creates a new OgreManager.
 		/// @param name The name for the window
