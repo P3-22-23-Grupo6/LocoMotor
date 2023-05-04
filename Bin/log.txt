@@ -1,4 +1,4 @@
-Error: [LUA ERROR] Assets/scene.lua:91: unexpected symbol near ','
-Error: [LUA ERROR] Assets/scene.lua:91: unexpected symbol near ','
-Error: [LUA ERROR] Assets/scene.lua:91: unexpected symbol near ','
-Error: [LUA ERROR] Assets/scene.lua:91: unexpected symbol near ','
+Error: LUA: Gameobject 'lapsText' has been declared but not defined
+Error: LUA: Gameobject 'positionText' has been declared but not defined
+Error: LUA: Gameobject 'countdownText' has been declared but not defined
+Error: LUA: Gameobject 'velocityText' has been declared but not defined
