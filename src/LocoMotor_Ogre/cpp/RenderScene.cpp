@@ -46,6 +46,7 @@ void OgreWrapper::RenderScene::Deactivate() {
 }
 
 void OgreWrapper::RenderScene::Render() {
+	if(_mainCam!=nullptr)
 	_mainCam->GetViewport()->update();
 }
 
