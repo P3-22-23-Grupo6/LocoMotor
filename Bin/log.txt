@@ -1,2 +1,2 @@
-Error: Couldn't initialize ParticleSystem named 'exhaust' on file 'Racers/JetEngine2'
-Error: Couldn't initialize ParticleSystem named 'dust' on file 'Racers/Sparkler'
+Error: [LUA ERROR] Assets/sc.lua:4: unexpected symbol near '*'
+Error: No scene has been loaded. Exiting now

@@ -1,22 +1,21 @@
 ButtonManager = {
     SceneChangeButton = {}
 }
-
 raceButton = {
     UIImageLM = { 
         interactive = "",
-        posx = ".15",
+        posx = "0",
         posy = ".7",
-        sizex = ".2",
-        sizey = ".1",
+        sizex = ".25",
+        sizey = ".15",
         img = "UIPanel"
     },
 
     UITextLM = {
         font =  "Heavitas",
         text = "RACE",
-        posx =  "-.25",
-        posy =  ".725",
+        posx =  "-.35",
+        posy =  ".75",
         align = "center",
         sizex = "0.05",
         sizey = "0.05",
@@ -24,6 +23,7 @@ raceButton = {
         bottomcolor = "1 1 1"
     }
 }
+
 
 locomotorImg = {
     UIImageLM = { 

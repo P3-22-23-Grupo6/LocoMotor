@@ -368,7 +368,8 @@ material UIPanel {
             lighting off
             alpha_rejection greater 150
             texture_unit {
-                texture Panel.png
+                texture PanelTest.png
+                filtering trilinear
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0
@@ -401,6 +402,19 @@ material OgreImg {
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0
+            }
+        }
+    }
+}
+
+material MenuBack {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture MenuBack.png
+                tex_address_mode wrap
+                colour_op modulate
             }
         }
     }
