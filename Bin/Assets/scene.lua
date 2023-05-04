@@ -293,6 +293,25 @@ do ---------------------   AREA02   ------------------------------
             static = ""
         }
     }
+    Area02_Boosts = {
+        Transform = {
+            position = "0 -6 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        MeshRenderer = {
+            file =  "Area02_Boosts.mesh",
+            static = ""
+        },
+        RigidBodyComponent = {
+            mass = 0,
+            usedAsRaycast = "",
+            isTrigger = ""
+        },
+        Boost = {
+            thrust = 5000,
+        }
+    }
 
 end -------------------------------------------------------------------
 do ---------------------   AREA03   ------------------------------
@@ -515,7 +534,7 @@ EnemyCar = {
 entities = { "coche", "mainCam", "raceManager",
             "lapsText", "positionText", "countdownText", "velocityText",
             "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain", "Area01_Boosts",
-            "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra",
+            "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra", "Area02_Boosts",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
             "Area01_RoadWalls", "Area02_RoadWalls", "Area03_RoadWalls",
