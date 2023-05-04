@@ -91,7 +91,7 @@ OgreWrapper::Renderer3D* LocoMotor::MeshRenderer::GetRenderer() {
 }
 
 void LocoMotor::MeshRenderer::Rotate(LMVector3 newRotation) {
-	_nod->Rotate(newRotation.GetX(), newRotation.GetY(), newRotation.GetZ());
+	_nod->Rotate((float) newRotation.GetX(), (float) newRotation.GetY(), (float) newRotation.GetZ());
 }
 
 

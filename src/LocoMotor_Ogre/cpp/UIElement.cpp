@@ -30,18 +30,18 @@ bool OgreWrapper::UIElement::Init(const std::string& sceneName) {
 	_container = static_cast<Ogre::OverlayContainer*>(_overlayMngr->createOverlayElement("Panel", "UIContainer" + std::to_string(_numOfUIElements)));
 	_container->initialise();
 	_container->setMetricsMode(Ogre::GMM_RELATIVE);
-	_container->setPosition(_defaultX, _defaultY);
-	_container->setDimensions(_defaultW, _defaultH);
+	_container->setPosition((float) _defaultX, (float)_defaultY);
+	_container->setDimensions((float) _defaultW, (float) _defaultH);
 	OgreManager::GetInstance()->GetScene(sceneName)->GetCanvas()->AddUIElement(this);
 	return false;
 }
 
 void OgreWrapper::UIElement::SetPosition(double x, double y) {
-	_container->setPosition(x, y);
+	_container->setPosition((float) x, (float) y);
 }
 
 void OgreWrapper::UIElement::SetDimensions(double w, double h) {
-	_container->setDimensions(w, h);
+	_container->setDimensions((float) w, (float) h);
 }
 
 void OgreWrapper::UIElement::Show() {

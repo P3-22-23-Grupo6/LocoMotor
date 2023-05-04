@@ -68,7 +68,7 @@ void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string
 		else if (params[i].first == "loops") {
 			int num = 1;
 			try {
-				num = std::stof(params[i].second);
+				num = std::stoi(params[i].second);
 			}
 			catch (...) {
 				num = 1;
@@ -78,7 +78,7 @@ void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string
 		else if (params[i].first == "loopStart") {
 			int num = 0;
 			try {
-				num = std::stof(params[i].second);
+				num = std::stoi(params[i].second);
 			}
 			catch (...) {
 				num = 0;
@@ -90,7 +90,7 @@ void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string
 		else if (params[i].first == "loopEnd") {
 			int num = 0;
 			try {
-				num = std::stof(params[i].second);
+				num = std::stoi(params[i].second);
 			}
 			catch (...) {
 				num = 0;
@@ -113,7 +113,11 @@ void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string
 	}
 }
 
+void LocoMotor::AudioSource::PreStart() {
+}
+
 void LocoMotor::AudioSource::Start() {
+	_src->SetPositionAndVelocity(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(LMVector3()));
 	if (_startPlay != "")
 		Play(_startPlay.c_str(), _loops, _loopStart, _loopEnd);
 }
@@ -123,7 +127,7 @@ void LocoMotor::AudioSource::Update(float dt) {
 #ifdef _DEBUG
 	if (_lastError != 0) {
 		std::cout << FmodWrapper::AudioManager::GetInstance()->GetError(_lastError) << std::endl;
-		_lastError == 0;
+		_lastError = 0;
 	}
 #endif // _DEBUG
 	_src->SetPositionAndVelocity(LmToFMod(gameObject->GetTransform()->GetPosition()), dt / 1000.f);

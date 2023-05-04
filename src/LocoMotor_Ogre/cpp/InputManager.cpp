@@ -283,7 +283,7 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 		int axis = event.jaxis.axis;
 		if (axis > 3) {
 			axis -= 4;
-			float auxValue = triggerValue + _TRIGGERSVALUE_MAX / 2;
+			float auxValue = triggerValue + _TRIGGERSVALUE_MAX / 2.f;
 			if (axis == 0 || axis == 1)_triggersValue[axis] = auxValue / _TRIGGERSVALUE_MAX;
 		}
 

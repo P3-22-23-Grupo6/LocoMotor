@@ -1,4 +1,3 @@
-
 mainCam = {
     Transform = {
         position = "0 0 0",
@@ -244,7 +243,7 @@ do ---------------------   AREA01   ------------------------------
             loopStart = "00200",
             loopEnd = "02700",
             soundDimension = "3D",
-            vol = "50"
+            vol = "0.5"
         }
     }
 

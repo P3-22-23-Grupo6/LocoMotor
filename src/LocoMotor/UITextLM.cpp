@@ -65,7 +65,7 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 					num += c;
 				}
 				else {
-					float value = 0.f;
+					double value = 0.f;
 					try {
 						value = std::stod(num);
 					}
@@ -115,12 +115,12 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 					num += c;
 				}
 				else {
-					float value = 0.f;
+					double value = 0.;
 					try {
 						value = std::stod(num);
 					}
 					catch (std::invalid_argument) {
-						value = 0.f;
+						value = 0.;
 					}
 					if (currAxis == 0) {
 						resultX = value;

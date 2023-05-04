@@ -55,9 +55,9 @@ void ParticleSystem::Start() {
 
 void ParticleSystem::Update(float dt) {
 	if (_node != nullptr) {
-		float x = gameObject->GetTransform()->GetPosition().GetX();
-		float y = gameObject->GetTransform()->GetPosition().GetY();
-		float z = gameObject->GetTransform()->GetPosition().GetZ();
+		float x = (float) gameObject->GetTransform()->GetPosition().GetX();
+		float y = (float) gameObject->GetTransform()->GetPosition().GetY();
+		float z = (float) gameObject->GetTransform()->GetPosition().GetZ();
 		_node->SetPosition(x, y, z);
 	}
 }

@@ -25,8 +25,9 @@ AudioListener::~AudioListener() {
 }
 
 
-void LocoMotor::AudioListener::Start() {
+void LocoMotor::AudioListener::PreStart() {
 	_lastPos = gameObject->GetTransform()->GetPosition();
+	_list->SetTransform(LmToFMod(_lastPos), LmToFMod(LMVector3()), LmToFMod(gameObject->GetTransform()->GetRotation().Forward()), LmToFMod(gameObject->GetTransform()->GetRotation().Up()));
 }
 
 void LocoMotor::AudioListener::Init(std::vector<std::pair<std::string, std::string>>& params) {

@@ -3,39 +3,33 @@ ButtonManager = {
 }
 
 locomotorImg = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0",
-        sizex = "1",
-        sizey = "1",
-        img = "MenuBack"
+    MeshRenderer = {
+        file = "SkyboxMesh.mesh"
     }
 }
+
 raceButton = {
     UIImageLM = { 
         interactive = "",
         posx = "0",
-        posy = ".7",
-        sizex = ".25",
-        sizey = ".15",
+        posy = ".55",
+        sizex = ".45",
+        sizey = ".3",
         img = "UIPanel",
         top = "20"
     },
-
     UITextLM = {
         font =  "Heavitas",
         text = "RACE",
-        posx =  "-.4",
-        posy =  ".665",
-        align = "center",
-        sizex = "0.07",
-        sizey = "0.07",
-        topcolor = "0.1 0.1 0.1",
-        bottomcolor = "0.1 0.1 0.1"
+        posx =  "-.45",
+        posy = ".625",
+        align = "left",
+        sizex = "0.45",
+        sizey = "0.15",
+        topcolor = ".2 .2 1",
+        bottomcolor = ".9 .9 1"
     }
 }
-
-
 
 menuBack = {
     UIImageLM = { 
@@ -51,21 +45,20 @@ menuBack = {
 speedButton = {
     UIImageLM = { 
         interactive = "",
-        posx = ".15",
-        posy = ".5",
-        sizex = ".2",
-        sizey = ".1",
+        posx = "0.0",
+        posy = "0.4",
+        sizex = "0.3",
+        sizey = "0.15",
         img = "UIPanel"
     },
-
     UITextLM = {
         font =  "Heavitas",
         text = "100cc",
-        posx =  "-.25",
-        posy =  ".525",
-        align = "center",
-        sizex = "0.05",
-        sizey = "0.05",
+        posx =  "-.45",
+        posy = "0.44",
+        align = "left",
+        sizex = "0.3",
+        sizey = "0.075",
         topcolor = ".2 .2 1",
         bottomcolor = ".9 .9 1"
     }

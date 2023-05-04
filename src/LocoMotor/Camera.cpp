@@ -30,7 +30,7 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 	for (auto & param : params) {
 		if (param.first == "CameraMode") {
 			try {
-				int modeIndex = std::stof(param.second);
+				int modeIndex = std::stoi(param.second);
 				SetViewportRatio(1, modeIndex); //ViewportIndex = 1 TEMPORAL
 			}
 			catch (...) {
@@ -90,7 +90,7 @@ void LocoMotor::Camera::SetTarget(GameObject* target, LMVector3 offset) {
 
 
 void LocoMotor::Camera::SetClippingPlane(int nearPlane, int farPlane) {
-	_cam->SetClippingPlane(nearPlane, farPlane);
+	_cam->SetClippingPlane((float) nearPlane, (float) farPlane);
 }
 
 

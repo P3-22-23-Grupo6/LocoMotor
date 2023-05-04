@@ -32,6 +32,7 @@ namespace LocoMotor {
 		/// a string representing the parameter value.
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
 
+		void PreStart() override;
 		void Start() override;
 
 		/// @brief Updates the source's position and velocity in the world

@@ -31,7 +31,7 @@ bool OgreWrapper::UIText::Init(const std::string& sceneName) {
 	_txtElem->setCaption(_uTxtName);
 	_txtElem->setCharHeight(0.25);
 	_txtElem->setPosition(0.5, 0);
-	_txtElem->setDimensions(_defaultW, _defaultH);
+	_txtElem->setDimensions((float)_defaultW, (float)_defaultH);
 	_txtElem->setColourBottom(Ogre::ColourValue::Black);
 	_txtElem->setColourTop(Ogre::ColourValue::Black);
 	_txtElem->setAlignment(Ogre::TextAreaOverlayElement::Alignment::Center);
@@ -65,13 +65,13 @@ void OgreWrapper::UIText::AlignRight() {
 }
 
 void OgreWrapper::UIText::SetTopColor(double r, double g, double b) {
-	_txtElem->setColourTop(Ogre::ColourValue(r, g, b));
+	_txtElem->setColourTop(Ogre::ColourValue((float) r, (float) g, (float) b));
 }
 
 void OgreWrapper::UIText::SetBottomColor(double r, double g, double b) {
-	_txtElem->setColourBottom(Ogre::ColourValue(r, g, b));
+	_txtElem->setColourBottom(Ogre::ColourValue((float) r, (float) g, (float) b));
 }
 
 void OgreWrapper::UIText::SetHeight(double height) {
-	_txtElem->setCharHeight(height);
+	_txtElem->setCharHeight((float) height);
 }

@@ -15,6 +15,8 @@ LocoMotor::UIImageLM::UIImageLM() {
 	_sizeX = 0.5;
 	_sizeY = 0.5;
 	_ogMng = OgreWrapper::OgreManager::GetInstance();
+	_winWidth = 0.;
+	_winHeight = 0.;
 }
 
 LocoMotor::UIImageLM::~UIImageLM() {
@@ -31,10 +33,24 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 	_uimg->Init(gameObject->GetScene()->GetSceneName());
 	for (int i = 0; i < params.size(); i++) {
 		if (params[i].first == "posx" || params[i].first == "positionx") {
-			SetPosition(std::stod(params[i].second), _posY);
+			double value = 0.;
+			try {
+				value = std::stod(params[i].second);
+			}
+			catch (...) {
+				value = 0.;
+			}
+			SetPosition(value, _posY);
 		}
 		else if (params[i].first == "posy" || params[i].first == "positiony") {
-			SetPosition(_posX, std::stod(params[i].second));
+			double value = 0.;
+			try {
+				value = std::stod(params[i].second);
+			}
+			catch (...) {
+				value = 0.;
+			}
+			SetPosition(_posX, value);
 		}
 		else if (params[i].first == "pos" || params[i].first == "position") {
 			unsigned char currAxis = 0;
@@ -46,12 +62,12 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 					num += c;
 				}
 				else {
-					float value = 0.f;
+					double value = 0.;
 					try {
 						value = std::stod(num);
 					}
-					catch (const char*) {
-						value = 0.f;
+					catch (...) {
+						value = 0.;
 					}
 					if (currAxis == 0) {
 						resultX = value;
@@ -82,12 +98,12 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 					num += c;
 				}
 				else {
-					float value = 0.f;
+					double value = 0.;
 					try {
 						value = std::stod(num);
 					}
-					catch (const char*) {
-						value = 0.f;
+					catch (...) {
+						value = 0.;
 					}
 					if (currAxis == 0) {
 						resultX = value;
@@ -104,12 +120,20 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 		}
 		else if (params[i].first == "img" || params[i].first == "image") {
 			ChangeImage(params[i].second);
+			SetImage(params[i].second);
 		}
 		else if (params[i].first == "interactive") {
 			SetInteractive(true);
 		}
 		else if (params[i].first == "top") {
-			SetTop(std::stod(params[i].second));
+			int value = 0;
+			try {
+				value = std::stoi(params[i].second);
+			}
+			catch (...) {
+				value = 0;
+			}
+			SetTop(value);
 		}
 	}
 }
@@ -150,7 +174,8 @@ void LocoMotor::UIImageLM::Update(float dt) {
 				ChangeImage(_onMouseImgName);
 			}
 		}
-		else ChangeImage(_imgName);
+		else 
+			ChangeImage(_imgName);
 	}
 
 }
