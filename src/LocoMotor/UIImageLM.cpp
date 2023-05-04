@@ -109,6 +109,9 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 		else if (params[i].first == "interactive") {
 			SetInteractive(true);
 		}
+		else if (params[i].first == "top") {
+			SetTop(std::stod(params[i].second));
+		}
 	}
 }
 
@@ -174,6 +177,10 @@ void LocoMotor::UIImageLM::SetOnMouseImage(std::string newimg) {
 
 void LocoMotor::UIImageLM::SetPressedImage(std::string newimg) {
 	_pressedImgName = newimg;
+}
+
+void LocoMotor::UIImageLM::SetTop(int topIndex) {
+	_uimg->SetTop(topIndex);
 }
 
 

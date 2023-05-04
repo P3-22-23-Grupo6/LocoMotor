@@ -19,3 +19,8 @@ bool OgreWrapper::UIImage::Init(const std::string& sceneName) {
 
 	return false;
 }
+
+void OgreWrapper::UIImage::SetTop(int topIndex) {
+	_container->_notifyZOrder(topIndex);
+}
+
