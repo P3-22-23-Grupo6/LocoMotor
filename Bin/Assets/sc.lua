@@ -79,6 +79,9 @@ carGraphic = {
     },
     MeshRenderer = {
         file =  "BlueFalcon.mesh"
+    },
+    Rotator = {
+        Speed = "0.05"
     }
 }
 
