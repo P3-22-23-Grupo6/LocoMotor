@@ -140,7 +140,7 @@ material AtlasMaterial {
     
     technique {
         pass {
-            polygon_mode wireframe
+            //polygon_mode wireframe
             //diffuse 0.8 0.8 0.8 1.0
             //specular 0.5 0.0 0 0 0
             lighting off
