@@ -18,19 +18,20 @@ raceButton = {
         posy = ".7",
         sizex = ".25",
         sizey = ".15",
-        img = "UIPanel"
+        img = "UIPanel",
+        top = "20"
     },
 
     UITextLM = {
         font =  "Heavitas",
         text = "RACE",
-        posx =  "-.35",
-        posy =  ".75",
+        posx =  "-.4",
+        posy =  ".665",
         align = "center",
-        sizex = "0.05",
-        sizey = "0.05",
-        topcolor = "1 1 1",
-        bottomcolor = "1 1 1"
+        sizex = "0.07",
+        sizey = "0.07",
+        topcolor = "0.1 0.1 0.1",
+        bottomcolor = "0.1 0.1 0.1"
     }
 }
 
@@ -42,7 +43,8 @@ menuBack = {
         posy = ".80",
         sizex = ".2",
         sizey = ".2",
-        img = "LocomotorImg"
+        img = "LocomotorImg",
+        top = "-1000"
     }
 }
 
