@@ -193,7 +193,10 @@ particle_system Racers/Sparkler{
 	quota			40
 	billboard_type	point
 
-    emitter Point{
+    emitter Box{
+        width 0.1
+        height 200
+        depth 0.1
         angle 5
 		emission_rate 10
         time_to_live    2
@@ -203,19 +206,61 @@ particle_system Racers/Sparkler{
         colour_range_start  0 0 0
         colour_range_end    1 1 1
 
-        position 200 30 -190
+        position 200 30 -240
     }
 
-        emitter Point{
-        angle 5
-		emission_rate 10
-        time_to_live    2
-        direction       0 90 0
-        velocity_min    50
+    emitter Box{
+    width 0.1
+    height 100
+    depth 0.1
+    angle 5
+    emission_rate 10
+    time_to_live    2
+    direction       0 90 0
+    velocity_min    50
+    velocity_max    100
+    colour_range_start  0 0 0
+    colour_range_end    1 1 1
+
+    position -60 30 -140
+    }
+}
+
+particle_system Racers/Confetti
+{
+	material 		general/Confetti
+    particle_width 	5
+	particle_height	5
+	cull_each		false
+	quota			600
+	billboard_type	oriented_self
+
+    emitter Box
+	{
+        width 250
+        height 170
+        depth 50
+		angle 6
+		emission_rate 60
+        time_to_live    3
+        direction       0 -90 0
+        velocity_min    10
         velocity_max    100
         colour_range_start  0 0 0
         colour_range_end    1 1 1
+        position 50 110 -170
+	}
 
-        position 190 30 -210
+    affector Scaler{
+        rate -1 -1
     }
+
+    affector Rotator
+    { // a.attributes
+        rotation_range_start 0
+        rotation_range_end 360
+        rotation_speed_range_start -60
+        rotation_speed_range_end 200
+    }
+
 }

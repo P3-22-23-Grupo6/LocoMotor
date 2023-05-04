@@ -183,8 +183,8 @@ do ---------------------   AREA01   ------------------------------
             usedAsRaycast = ""
         },
         ParticleSystem = {
-            name = "dust",
-            file = "Racers/Sparkler"
+            name = "confetti",
+            file = "Racers/Confetti"
         }
     }
 
@@ -198,6 +198,11 @@ do ---------------------   AREA01   ------------------------------
             file =  "Area01_RoadBorder.mesh",
             static = ""
         }
+        ,
+    ParticleSystem = {
+        name = "test2",
+        file = "Racers/Sparkler"
+    }
     }
 
     Area01_Vegetation = {

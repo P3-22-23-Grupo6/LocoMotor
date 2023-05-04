@@ -112,3 +112,24 @@ material general/Flare
 		}
 	}
 }
+
+
+material general/Confetti
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend add
+			depth_write off
+			diffuse vertexcolour
+            colour_op modulate
+            alpha_rejection greater 150
+			texture_unit
+			{
+				texture confetti.png
+			}
+		}
+	}
+}

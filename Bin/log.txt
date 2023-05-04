@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 Error: LUA: Gameobject 'lapsText' has been declared but not defined
 Error: LUA: Gameobject 'positionText' has been declared but not defined
 Error: LUA: Gameobject 'countdownText' has been declared but not defined
 Error: LUA: Gameobject 'velocityText' has been declared but not defined
+=======
+Error: Componente 'Rotator' no existe
+>>>>>>> Stashed changes
