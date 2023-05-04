@@ -21,7 +21,7 @@ coche = {
         scale = "10 10 10"
     },
     MeshRenderer = {
-        file =  "BlueFalcon.mesh"
+        file =  "Stinger.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -66,8 +66,8 @@ raceManager = {
         checkpoint0 = "2 1 -8",
         checkpoint1 = "2 1 -27",
         checkpoint2 = "2 1 -44",
-        checkpoint3 = "2 4 -75",
-        checkpoint4 = "-0 9 -68",
+        checkpoint3 = "2 4 -57",
+        checkpoint4 = "-1 9 -68",
         checkpoint5 = "-8 16 -78",
         checkpoint6 = "-21 16 -75",
         checkpoint7 = "-34 13 -71",
@@ -582,7 +582,7 @@ SkyboxMesh = {
 }
 EnemyCar = {
     Transform = {
-        position = "0 15 0",
+        position = "0 35 0",
         rotation = "0 0 0",
         scale = "10 10 10"
     },
@@ -594,12 +594,13 @@ EnemyCar = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "0.05",
+        enemySpeed = "0.005",
         StartSeparation = "5"
     },
     RigidBodyComponent = {
         mass = 1,
-        friction = "0.0"
+        friction = "0.0",
+        isTrigger = ""
     }
 }
 
