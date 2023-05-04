@@ -20,9 +20,9 @@ coche = {
         rotation = "0 0 0",
         scale = "10 10 10"
     },
-    MeshRenderer = {
-        file =  "BlueFalcon.mesh"
-    },
+    -- MeshRenderer = {
+    --     file =  "BlueFalcon.mesh"
+    -- },
     AudioSource = {
         loops= -1,
         playonStart = "Assets/Sounds/engine.wav"
@@ -61,80 +61,80 @@ raceManager = {
         checkpoint4 =  "2 1 -8"
     }
 }
-do ---------------------   UI   ------------------------------
-    lapsText = {
-        Transform = {
-            position = "0 0 0",
-            rotation = "0 0 0",
-            scale = "1 1 1"
-        },
-        UITextLM = {
-            font =  "BrunoAce",
-            text = "0 / 3",
-            posx =  "-0.45",
-            posy =  ".9",
-            align = "left",
-            sizex = "0.1",
-            sizey = "0.1",
-            topcolor = "1 1 1",
-            bottomcolor = "1 1 1",
-        }
-    }
-    positionText = {
-        Transform = {
-            position = "0 0 0",
-            rotation = "0 0 0",
-            scale = "1 1 1"
-        },
-        UITextLM = {
-            font =  "BrunoAce",
-            text = "3 rd",
-            posx =  "0.45",
-            posy =  ".9",
-            align = "right",
-            sizex = "0.1",
-            sizey = "0.1",
-            topcolor = "1 1 1",
-            bottomcolor = "1 1 1",
-        }
-    }
-    countdownText = {
-        Transform = {
-            position = "0 0 0",
-            rotation = "0 0 0",
-            scale = "1 1 1"
-        },
-        UITextLM = {
-            font =  "Heavitas",
-            text = "GO!",
-            posx =  "0",
-            posy =  ".3",
-            align = "center",
-            sizex = "0.15",
-            sizey = "0.15",
-            topcolor = "1 1 1",
-            bottomcolor = "1 1 1",
-        }
-    }
-    velocityText = {
-        Transform = {
-            position = "0 0 0",
-            rotation = "0 0 0",
-            scale = "1 1 1"
-        },
-        UITextLM = {
-            font =  "BrunoAce",
-            text = "100 km/h",
-            posx =  "-0.45",
-            posy =  ".1",
-            align = "left",
-            sizex = "0.1",
-            sizey = "0.1",
-            topcolor = "1 1 1",
-            bottomcolor = "1 1 1",
-        }
-    }
-end ----------------------------------------------------------
+-- do ---------------------   UI   ------------------------------
+--     lapsText = {
+--         Transform = {
+--             position = "0 0 0",
+--             rotation = "0 0 0",
+--             scale = "1 1 1"
+--         },
+--         UITextLM = {
+--             font =  "BrunoAce",
+--             text = "0 / 3",
+--             posx =  "-0.45",
+--             posy =  ".9",
+--             align = "left",
+--             sizex = "0.1",
+--             sizey = "0.1",
+--             topcolor = "1 1 1",
+--             bottomcolor = "1 1 1",
+--         }
+--     }
+--     positionText = {
+--         Transform = {
+--             position = "0 0 0",
+--             rotation = "0 0 0",
+--             scale = "1 1 1"
+--         },
+--         UITextLM = {
+--             font =  "BrunoAce",
+--             text = "3 rd",
+--             posx =  "0.45",
+--             posy =  ".9",
+--             align = "right",
+--             sizex = "0.1",
+--             sizey = "0.1",
+--             topcolor = "1 1 1",
+--             bottomcolor = "1 1 1",
+--         }
+--     }
+--     countdownText = {
+--         Transform = {
+--             position = "0 0 0",
+--             rotation = "0 0 0",
+--             scale = "1 1 1"
+--         },
+--         UITextLM = {
+--             font =  "Heavitas",
+--             text = "GO!",
+--             posx =  "0",
+--             posy =  ".3",
+--             align = "center",
+--             sizex = "0.15",
+--             sizey = "0.15",
+--             topcolor = "1 1 1",
+--             bottomcolor = "1 1 1",
+--         }
+--     }
+--     velocityText = {
+--         Transform = {
+--             position = "0 0 0",
+--             rotation = "0 0 0",
+--             scale = "1 1 1"
+--         },
+--         UITextLM = {
+--             font =  "BrunoAce",
+--             text = "100 km/h",
+--             posx =  "-0.45",
+--             posy =  ".1",
+--             align = "left",
+--             sizex = "0.1",
+--             sizey = "0.1",
+--             topcolor = "1 1 1",
+--             bottomcolor = "1 1 1",
+--         }
+--     }
+-- end ----------------------------------------------------------
 do ---------------------   AREA01   ------------------------------
     Area01_RoadMain = {
         Transform = {
