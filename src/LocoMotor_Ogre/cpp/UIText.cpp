@@ -1,5 +1,4 @@
 #include "UIText.h"
-
 #include "OgreOverlayManager.h"
 #include "OgreOverlaySystem.h"
 #include "OgreOverlay.h"
@@ -8,7 +7,6 @@
 #include "OgreTextAreaOverlayElement.h"
 #include "OgreFontManager.h"
 #include <iostream>
-//#include "OgreFont.h"
 
 
 OgreWrapper::UIText::UIText() : UIElement() {
@@ -34,9 +32,6 @@ bool OgreWrapper::UIText::Init(const std::string& sceneName) {
 	_txtElem->setCharHeight(0.25);
 	_txtElem->setPosition(0.5, 0);
 	_txtElem->setDimensions(_defaultW, _defaultH);
-	//_txtElem->setFontName(_uFont);
-
-	//_txtElem->setFontName(font.get()->getName());
 	_txtElem->setColourBottom(Ogre::ColourValue::Black);
 	_txtElem->setColourTop(Ogre::ColourValue::Black);
 	_txtElem->setAlignment(Ogre::TextAreaOverlayElement::Alignment::Center);

@@ -15,8 +15,11 @@ namespace OgreWrapper {
 		Renderer3D(Ogre::StaticGeometry* rend);
 		~Renderer3D();
 		Ogre::MovableObject* GetMovObj() override;
+		/// @brief Sets the mesh material
 		void SetMaterial(std::string mat);
+		/// @brief Gets the mesh 
 		Ogre::Mesh* GetMesh();
+		/// @brief Sets the mesh vibility
 		void SetVisible(bool visible);
 	private:
 		Ogre::Entity* _mesh;

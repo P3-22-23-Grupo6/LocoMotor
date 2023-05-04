@@ -14,8 +14,6 @@
 
 using namespace OgreWrapper;
 
-//Ogre::SceneManager* UIElement::_ogreScnManager = nullptr;
-
 unsigned int OgreWrapper::UIElement::_numOfUIElements = 0;
 
 OgreWrapper::UIElement::UIElement() {
@@ -32,7 +30,6 @@ bool OgreWrapper::UIElement::Init(const std::string& sceneName) {
 	_container = static_cast<Ogre::OverlayContainer*>(_overlayMngr->createOverlayElement("Panel", "UIContainer" + std::to_string(_numOfUIElements)));
 	_container->initialise();
 	_container->setMetricsMode(Ogre::GMM_RELATIVE);
-	//_container->setMaterialName(Ogre::MaterialManager::getSingleton().getDefaultMaterial()->getName());
 	_container->setPosition(_defaultX, _defaultY);
 	_container->setDimensions(_defaultW, _defaultH);
 	OgreManager::GetInstance()->GetScene(sceneName)->GetCanvas()->AddUIElement(this);

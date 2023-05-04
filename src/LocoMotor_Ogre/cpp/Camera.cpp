@@ -1,5 +1,4 @@
 #include "Camera.h"
-
 #include <OgreCamera.h>
 #include <OgreViewport.h>
 #include <OgreSceneNode.h>
@@ -13,7 +12,6 @@ int OgreWrapper::Camera::_zOrder = 0;
 OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 	_mCamera = camera;
 	_mCamera->setAutoAspectRatio(true);
-	//_mCamera->setPolygonMode(Ogre::PM_WIREFRAME);
 	_mZOrder = Camera::_zOrder;
 	//Normal Camera
 	_vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
@@ -22,7 +20,6 @@ OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 }
 
 OgreWrapper::Camera::~Camera() {
-	//int _zOrder;
 }
 
 Ogre::Viewport* OgreWrapper::Camera::GetViewport() {

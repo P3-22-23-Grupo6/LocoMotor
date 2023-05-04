@@ -8,14 +8,8 @@
 #include "OgreImage.h"
 #include "OgreRenderWindow.h"
 #include <OgreRoot.h>
-
-//TEMP
-#include <OgreTextAreaOverlayElement.h>
-#include <OgreFontManager.h>
-#include <iostream>
 #include "UIElement.h"
-#include "UIImage.h"
-#include "UIText.h"
+
 
 unsigned int OgreWrapper::Canvas::_numOfCanvas = 0;
 
@@ -31,21 +25,14 @@ OgreWrapper::Canvas::~Canvas() {
 
 bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 
-	std::cout << "\n\nCANVAS=====================================================================\n";
-
 	Ogre::OverlayManager* _aux = Ogre::OverlayManager::getSingletonPtr();
 
 	_canvas = _aux->create("MainOverlay" + _numOfCanvas);
 	_container = static_cast<Ogre::OverlayContainer*>(_aux->createOverlayElement("Panel", "Main" + _numOfCanvas));
 	_container->setPosition(0.0f, 0.0f);
 	_container->setDimensions(1.0f, 1.0f);
-
 	_canvas->add2D(_container);
-
 	_canvas->show();
-
-	std::cout << "===========================================================================\n\n";
-
 	return false;
 }
 

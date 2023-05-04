@@ -26,6 +26,11 @@ OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_stGeom = _manager->createStaticGeometry("st");
 }
 
+Ogre::SceneManager* OgreWrapper::RenderScene::GetMan() {
+	return _manager;
+}
+
+
 OgreWrapper::RenderScene::~RenderScene() {
 	delete _root;
 	delete _canvas;
@@ -45,14 +50,7 @@ void OgreWrapper::RenderScene::Render() {
 }
 
 void OgreWrapper::RenderScene::SetSkybox() {
-	//_manager->setSkyBox(true, "Racers/SkyBoxBlue", 300, true);
 	_manager->setSkyDome(true, "Racers/SkyBoxBlue", 5, 2);
-	//_manager->setSkyPlane(true, Ogre::Plane(Ogre::Vector3::UNIT_Z, -20), "Racers/SkyBoxBlue", 1, 1, true, 1.0, 100, 100);
-	
-	//Para NIEBLA
-	//Ogre::ColourValue fadeColour(0.8, 0.8, 1.0);
-	//_mainCam->GetViewport()->setBackgroundColour(fadeColour);
-	//_manager->setFog(Ogre::FOG_LINEAR, fadeColour, 0, 5000, 7000);
 }
 
 OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name) {
@@ -122,8 +120,6 @@ OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::str
 		ent = _manager->createEntity(mesh);
 	else 
 		return nullptr;
-	/*if (!_stGeom) {
-	}*/
 	_stGeom->addEntity(ent, Ogre::Vector3(meshNode->GetPosition_X(), 
 					   meshNode->GetPosition_Y(), 
 					   meshNode->GetPosition_Z()), 

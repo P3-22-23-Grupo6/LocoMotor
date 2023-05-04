@@ -50,7 +50,6 @@ namespace OgreWrapper {
 
 		/// @brief
 		/// Sets the active scene for the manager
-
 		/// @param s The scene to become active
 		void SetActiveScene(OgreWrapper::RenderScene* s);
 		/// @brief Returns the render window height
@@ -74,7 +73,6 @@ namespace OgreWrapper {
 		unsigned short _err;
 
 		/// @brief Creates a new OgreManager.
-
 		/// @param name The name for the window
 		OgreManager(std::string name);
 		~OgreManager();
@@ -89,7 +87,6 @@ namespace OgreWrapper {
 
 		/// @brief
 		/// Shuts down Ogre and releases all the memory related to it
-
 		void Shutdown();
 
 	};

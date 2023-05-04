@@ -140,9 +140,6 @@ bool InputManager::RegisterEvents() {
 
 			_gyroscopeValue[i] += thisData;
 
-			// DEBUG
-			//std::cout << "_gyroscopeVelocityValue = " << _gyroscopeVelocityValue[i] << "\n";
-			//std::cout << "_gyroscopeValue = " << _gyroscopeValue[i] << "\n";
 		}
 	}
 
@@ -168,31 +165,6 @@ bool InputManager::RegisterEvents() {
 		// Gestionar eventos del raton
 		ManageMouseEvents(event);
 
-		//if (event.type == SDL_JOYAXISMOTION)
-		//	std::cout << "SDL_CONTROLLERAXISMOTION" << "\n";
-
-		//if (event.type == SDL_MOUSEBUTTONDOWN) {
-		//	switch (event.button.button) {
-		//		case SDL_BUTTON_LEFT:
-		//			break;
-		//		case SDL_BUTTON_MIDDLE:
-		//			break;
-		//		case SDL_BUTTON_RIGHT:
-		//			break;
-		//		case SDL_BUTTON_X1:
-		//			break;
-		//		case SDL_BUTTON_X2:
-		//			break;
-		//	}
-		//	//std::cout << "MOUSE " << "\n";
-		//}
-
-
-
-		//std::cout << "joystickAxis_0 = " << joystickAxis[0] << "\n";
-		//std::cout << "joystickAxis_1 = " << joystickAxis[1] << "\n";
-		//std::cout << "joystickAxis_2 = " << joystickAxis[2] << "\n";
-		//std::cout << "joystickAxis_3 = " << joystickAxis[3] << "\n";
 	}
 	return false;
 }
@@ -270,27 +242,16 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 
 		Sint16 joystickValue = event.caxis.value;
 
-		//if (joystickValue_ < JOYSTICKDEADZONE_MIN)
-		//	joystickValue_ = 0;
-		//else if (joystickValue_ > JOYSTICKDEADZONE_MAX)
-		//	joystickValue_ = JOYSTICKDEADZONE_MAX;
-
-
-		//joystickValue = abs (joystickValue);
-
-		//joystickValue = -25000;
-
 		// Limitador maximo
 		if (joystickValue > _JOYSTICKDEADZONE_MAX)
 			joystickValue = _JOYSTICKDEADZONE_MAX;
 		else if (joystickValue < -_JOYSTICKDEADZONE_MAX)
 			joystickValue = -_JOYSTICKDEADZONE_MAX;
 
-		//joystickValue = 13000;
+
 
 
 		int axis = event.caxis.axis;
-		//std::cout << "axis = " << axis << "\n";
 		if (axis < 4) {
 			// Si se inclina el joystick lo suficiente, guardar su valor
 			if (joystickValue > _JOYSTICKDEADZONE_MIN
@@ -311,14 +272,6 @@ void InputManager::ManageControllerEvents(const SDL_Event& event) {
 			else
 				_joystickAxis[axis] = 0;
 		}
-
-
-
-		//if (joystickValue_ != 0) {
-
-		//	int axis = event.caxis.axis;
-		//	std::cout << "joistickValue = " << joistickValue << "\n";
-		//}
 
 	}
 	if (event.type == SDL_JOYAXISMOTION) {
@@ -378,13 +331,10 @@ bool InputManager::ControllerDeviceAdded(const int32_t& controllerAdded) {
 	if (_useGyroscope)
 		_useGyroscope = EnableControllerGyroscope();
 
-	//SDL_GameControllerEventState (SDL_ENABLE);
 	return true;
 }
 
 void InputManager::ControllerDeviceRemoved(const int32_t& controllerRemoved) {
-
-	//TODO: esto no parece acabado?????
 
 	_currentController = nullptr;
 
@@ -394,8 +344,6 @@ void InputManager::ControllerDeviceRemoved(const int32_t& controllerRemoved) {
 		controllerButton.isPressed = false;
 		controllerButton.up = false;
 	}
-
-	//SDL_GameControllerEventState (SDL_ENABLE);
 }
 
 
@@ -455,10 +403,8 @@ void InputManager::SetControllerLedColor(int r, int g, int b) {
 
 		if (SDL_GameControllerHasLED(_currentController))
 			SDL_GameControllerSetLED(_currentController, r, g, b);
-		//else
-			//std::cout << "[ERROR] Could not change LED color: currentController has not LED support";
 	}
-	//else std::cout << "[ERROR] Could not change LED color: currentController not assigned";
+
 }
 
 // Vibracion
@@ -537,12 +483,6 @@ float InputManager::GetGyroscopeAngle(const Axis& axis) {
 	float outputValue = 0;
 	if (gyroscopeIndex != -1)
 		outputValue = _gyroscopeValue[gyroscopeIndex] / _roundNumber;
-
-	// Limitar el valor maximo a 1
-	//if (outputValue > MAXGYROSCOPEVALUE)
-	//	outputValue = MAXGYROSCOPEVALUE;
-	//else if (outputValue < -MAXGYROSCOPEVALUE)
-	//	outputValue = -MAXGYROSCOPEVALUE;
 
 	return outputValue / _MAXGYROSCOPEVALUE;
 }
