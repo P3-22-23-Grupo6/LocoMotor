@@ -94,7 +94,18 @@ raceManager = {
         checkpoint36 =  "77.7f 9.41f -9.5f",
         checkpoint37 =  "90 8.3f -11.8f",
         checkpoint38 =  "105 7.6f -12.6f",
-        checkpoint39 =  "127 7.6f -12.6f"
+        checkpoint39 =  "127 7.6f -12.6f",
+        checkpoint40 =  "147 4.7f -12.6f",
+        checkpoint41 =  "161 0.7f -12.6f",
+        checkpoint42 =  "180 0.7f -12.6f",
+        checkpoint43 =  "200 0.7f -12.6f",
+        checkpoint44 =  "224 1.4f -12.6f",
+        checkpoint45 =  "236 7 -12.6f",
+        checkpoint46 =  "255.6f 13.5f -12.6f",
+        checkpoint47 =  "269 16.9f -12.6f",
+        checkpoint48 =  "286 18.64f -12.6f",
+        checkpoint49 =  "300 15.91f -12",
+        checkpoint50 =  " -12.6f",
     }
 }
 -- do ---------------------   UI   ------------------------------

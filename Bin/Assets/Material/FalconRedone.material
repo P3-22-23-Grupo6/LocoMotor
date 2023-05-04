@@ -350,7 +350,6 @@ material RackMaterial {
             lighting off
             alpha_rejection greater 3000
             filtering anisotropic
-            filtering none
             max_anisotropy 50
             texture_unit {
                 texture rack_t.png
@@ -366,6 +365,8 @@ material MenuBack {
     technique {
         pass {
             lighting off
+            cull_hardware none
+            cull_software none 
             texture_unit {
                 texture FinalMenuBack.png
                 tex_address_mode wrap
@@ -379,9 +380,10 @@ material UIPanel {
     technique {
         pass {
             lighting off
+            alpha_rejection greater 150
             texture_unit {
                 texture PanelTest.png
-                //filtering trilinear
+                filtering trilinear
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0
