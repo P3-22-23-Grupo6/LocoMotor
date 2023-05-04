@@ -2,7 +2,7 @@
 #include "GameObject.h"
 #include "btBulletDynamicsCommon.h"
 
-void LMcontactStart(btPersistentManifold* const& manifold) {
+void LocoMotor::LMcontactStart(btPersistentManifold* const& manifold) {
 		//Tomamos los dos rb guardados previamente en UserPointer
 	LocoMotor::GameObject* rb1 = static_cast<LocoMotor::GameObject*>(manifold->getBody0()->getUserPointer());
 	LocoMotor::GameObject* rb2 = static_cast<LocoMotor::GameObject*>(manifold->getBody1()->getUserPointer());
@@ -14,7 +14,7 @@ void LMcontactStart(btPersistentManifold* const& manifold) {
 		rb2->OnCollisionEnter(rb1);
 	}
 }
-bool LMcontactProcessed(btManifoldPoint& cp, void* body0, void* body1) {
+bool LocoMotor::LMcontactProcessed(btManifoldPoint& cp, void* body0, void* body1) {
 	btCollisionObject* colObj0 = static_cast<btCollisionObject*>(body0);
 	btCollisionObject* colObj1 = static_cast<btCollisionObject*>(body1);
 
@@ -29,7 +29,7 @@ bool LMcontactProcessed(btManifoldPoint& cp, void* body0, void* body1) {
 	return true; //no importa su valor
 }
 //Indica como debe actuar la fisica al salir una colision trigger
-void LMcontactExit(btPersistentManifold* const& manifold) {
+void LocoMotor::LMcontactExit(btPersistentManifold* const& manifold) {
 	LocoMotor::GameObject* rb1 = static_cast<LocoMotor::GameObject*>(manifold->getBody0()->getUserPointer());
 	LocoMotor::GameObject* rb2 = static_cast<LocoMotor::GameObject*>(manifold->getBody1()->getUserPointer());
 

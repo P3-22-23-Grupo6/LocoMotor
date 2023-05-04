@@ -25,11 +25,6 @@ namespace LocoMotor {
 		/// @brief Dont use it
 		/// @return please
 		MOTOR_API void MainLoop();
-
-		//template <typename T>
-		//MOTOR_API void RegisterComponent() {
-		//	ComponentsFactory::GetInstance()->RegisterComponent<T>();
-		//}
 	private:
 
 		std::string _gameName;
@@ -39,9 +34,7 @@ namespace LocoMotor {
 		std::string _startScene;
 		bool _exit;
 
-		//TEMPORAL
-		void Prueba(float a);
-		LocoMotor::GameObject* ship_gObj;
+		LocoMotor::GameObject* _ship_gObj;
 	};
 }
 #endif;

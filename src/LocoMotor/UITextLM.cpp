@@ -7,8 +7,6 @@
 
 using namespace LocoMotor;
 
-const std::string UITextLM::name = "UIText";
-
 LocoMotor::UITextLM::UITextLM() {
 	_uTxt = nullptr;
 	_uFont = "";

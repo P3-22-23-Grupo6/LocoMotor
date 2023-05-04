@@ -11,8 +11,6 @@
 #include <string>
 typedef uint32_t Uint32;
 
-//Unordered map de string(nombre de escena) y Scene(datos de esta)
-
 namespace LocoMotor {
 	class ComponentsFactory;
 	class Component;
@@ -61,10 +59,7 @@ namespace LocoMotor {
 		SceneManager();
 		~SceneManager();
 		std::map<std::string, Scene*> _sceneInfo;
-
-		//std::string _currScn;
 		Scene* _activeScene;
-
 		Uint32 _lastTime;
 		Uint32 _actTime;
 		float _deltaTime;

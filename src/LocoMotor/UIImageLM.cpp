@@ -7,7 +7,6 @@
 
 using namespace LocoMotor;
 
-const std::string UIImageLM::name = "UIImage";
 
 LocoMotor::UIImageLM::UIImageLM() {
 	_uimg = nullptr;

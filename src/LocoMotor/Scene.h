@@ -52,8 +52,6 @@ namespace LocoMotor {
 		/// @brief Removes the selected GameObject from the list
 		/// @param name The name of the Object to remove
 		void RemoveGameobject(std::string name);
-		//void AddObject(GameObject* obj);
-
 		/// @brief Returns a GameObject pointer by searching for its name in a Scene's list of GameObjects.
 		/// @param name Is a string parameter that represents the name of the GameObject that is being
 		/// searched for in the Scene's list of GameObjects.
@@ -91,7 +89,7 @@ namespace LocoMotor {
 
 		OgreWrapper::Node* _node;
 
-		GameObject* camera_gObj;
+		GameObject* _camera_gObj;
 
 		bool _toDestroy = false;
 	};

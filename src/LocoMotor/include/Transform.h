@@ -57,9 +57,6 @@ namespace LocoMotor {
 		/// @brief Sets the size of the LocoMotor object.
 		/// @param newSize The new size
 		void SetSize(const LMVector3& newSize);
-
-		//void LookAt(const LMVector3& position, const LMVector3& upward);
-
 		/// @brief Sets up a new upward direction for a LocoMotor object by calculating the rotation
 		/// needed to align the current upward direction with the new one.
 		/// @param newUpward A LMVector3 representing the new upward direction to set for the LocoMotor object.

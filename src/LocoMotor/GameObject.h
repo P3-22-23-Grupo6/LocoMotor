@@ -35,8 +35,6 @@ namespace LocoMotor {
 		/// @brief Update the GameObject and all its components
 		void Update(float dt);
 
-		//ogre renderer using ogremanager
-
 		/// @brief Add a component to the GameObject
 		/// @param T The type of the component to add
 		template<typename ...Ts>
@@ -52,10 +50,6 @@ namespace LocoMotor {
 
 				return comp;
 			}
-			//EJ.:
-			//ent->AddComponent<Camera>(10,0,0);
-
-			//bool comps[Camera::id] == true -> error
 		};
 
 		void AddComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params);
@@ -83,11 +77,6 @@ namespace LocoMotor {
 				it++;
 			}
 			return comp;
-			//if (_componentsByName.count(name) == 0) {
-			//	//Error: no component exists with that name
-			//	return nullptr;
-			//}
-			//return static_cast<T*>(_componentsByName.at(name));
 		}
 		/// @brief This method is automatically called the first frame this gameobject collides
 		/// with another gameobject
@@ -107,15 +96,8 @@ namespace LocoMotor {
 		void SetScale(LMVector3 sc);
 		/// @brief Returns the transform component of this gameobject
 		Transform* GetTransform();
-
+		/// @brief Gets the gameobject name
 		std::string GetName();
-
-		//HITO 1 POC
-
-		/// @brief Set the rigid body of the GameObject+
-		/// @param rb The rigid body to set
-		//void SetRigidBody(PhysicsWrapper::BulletRigidBody* rb);
-
 		/// @brief Set the renderer of the GameObject
 		/// @param renderer The renderer to set
 		void SetRenderer(OgreWrapper::Node* node);
@@ -133,19 +115,10 @@ namespace LocoMotor {
 	private:
 		std::unordered_map<std::string, Component*> _componentsByName;
 		Scene* _scene;
-
-
 		Transform* _transform;
-
-		//HITO 1 POCk
-		//PhysicsWrapper::BulletRigidBody* _rigidBody;
 		OgreWrapper::Renderer3D* _renderer;
 		OgreWrapper::Node* _node;
-
-		//Prueba
-		double tiltAmount;
-
-		LMVector3 localVelocity = LMVector3(0, 0, 0);
+		LMVector3 _localVelocity = LMVector3(0, 0, 0);
 		bool _destructed = false;
 	};
 }

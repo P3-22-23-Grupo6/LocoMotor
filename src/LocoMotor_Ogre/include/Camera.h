@@ -25,7 +25,6 @@ namespace OgreWrapper {
 		/// @brief Sets the Aspect Ratio to a new Viewport
 		/// @param ratio The new aspect ratio
 		void SetAspectRatio(Ogre::Real ratio);
-		
 		/// @brief Sets the FieldOfView of default Ogre Camera (in radian 1~1.6 aprox)
 		/// @param newFOV value of the FOV
 		void SetFOV(float newFOV);//Ogre::Radian radians);

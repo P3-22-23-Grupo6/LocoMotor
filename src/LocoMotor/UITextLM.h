@@ -16,11 +16,6 @@ namespace LocoMotor {
 	class MOTOR_API UITextLM : public Component {
 
 	public:
-		const static std::string name;
-		static std::string GetName() {
-			return "UIText";
-		};
-
 		UITextLM();
 		~UITextLM();
 		void InitComponent() override;
@@ -34,7 +29,6 @@ namespace LocoMotor {
 		/// @param x -> horizontal scale
 		/// @param y -> vertical scale
 		void SetSize(double x, double y);
-
 		/// @brief changes the text
 		/// @param newtext is the text is going to replace the previous one
 		void ChangeText(std::string newtxt);
@@ -43,28 +37,30 @@ namespace LocoMotor {
 		void SetTextHeight(double height);
 		/// @brief Sets the font the text will be using
 		/// @param nfont is the name of the file
-		void SetFont(std::string nfont);
-			/// @brief Places the text using the position as an anchor on the center
+		void SetFont(std::string nfont);	
 		/*
 											   |        <-----position/anchor
 										  Sample text
 
 		*/
+		/// @brief Places the text using the position as an anchor on the center
 		void AlignCenter();
 
-		/// @brief Places the text using the position as an anchor on the left
+		
 		/*
 										 |        <-----position/anchor
 										  Sample text
 
 		*/
+		/// @brief Places the text using the position as an anchor on the left
 		void AlignLeft();
-		/// @brief Places the text using the position as an anchor on the right
+		
 		/*
 													 |        <-----position/anchor
 										  Sample text
 
 		*/
+		/// @brief Places the text using the position as an anchor on the right
 		void AlignRight();
 
 		/// @brief Sets the color of the top of the text

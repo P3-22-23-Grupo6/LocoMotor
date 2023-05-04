@@ -18,11 +18,6 @@ namespace LocoMotor {
 	class MOTOR_API UIImageLM : public Component {
 
 	public:
-		const static std::string name;
-		static std::string GetName() {
-			return "UIImage";
-		};
-
 		UIImageLM();
 		~UIImageLM();
 		void InitComponent() override;
@@ -36,7 +31,6 @@ namespace LocoMotor {
 		/// @param x -> horizontal scale
 		/// @param y -> vertical scale
 		void SetSize(double x, double y);
-
 		/// @brief sets an image as an interactive entity
 		/// @param nteractive enables or disables the interaction of the image
 		void SetInteractive(bool interactive);
