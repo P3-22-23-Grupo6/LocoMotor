@@ -33,18 +33,17 @@ locomotorImg = {
         sizex = ".2",
         sizey = ".1",
         img = "LocomotorImg"
-    },
+    }
+}
 
-    UITextLM = {
-        font =  "Heavitas",
-        text = "RACE",
-        posx =  "-.25",
-        posy =  ".725",
-        align = "center",
-        sizex = "0.05",
-        sizey = "0.05",
-        topcolor = "1 1 1",
-        bottomcolor = "1 1 1"
+ogreImg = {
+    UIImageLM = { 
+        interactive = "",
+        posx = ".75",
+        posy = ".725",
+        sizex = ".2",
+        sizey = ".1",
+        img = "OgreImg"
     }
 }
 
@@ -129,5 +128,5 @@ mainCam = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg",
+entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg", "ogreImg",
 "titleText", "mainCam", "carGraphic"}
