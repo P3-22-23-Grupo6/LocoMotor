@@ -248,7 +248,12 @@ do ---------------------   AREA01   ------------------------------
             file = "Racers/Confetti"
         },
         AudioSource = {
-            
+            loops= -1,
+            playonStart = "Assets/Sounds/crowd.mp3",
+            loopStart = "00200",
+            loopEnd = "02700",
+            soundDimension = "3D",
+            vol = "50"
         }
     }
 
