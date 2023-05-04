@@ -30,6 +30,7 @@ void LocoMotor::RigidBody::Start(float mass)
 
 LocoMotor::RigidBody::~RigidBody() {
 	delete _ms;
+	if (_body == nullptr)return;
 	PhysicsManager::GetInstance()->RemoveRigidBodyFromWorld(_body);
 	if (_body && _body->getMotionState()) {
 		delete _body->getMotionState();
@@ -55,6 +56,8 @@ void LocoMotor::RigidBody::PreStart() {
 	info.capsuleHeight = 10;
 	info.capsuleRadius = 3;
 	if (_mass == 0) {
+		MeshRenderer* mR = gameObject->GetComponent<MeshRenderer>();
+		if (mR == nullptr)return;
 		OgreWrapper::Renderer3D* mesh = gameObject->GetComponent<MeshRenderer>()->GetRenderer();
 		if (mesh != nullptr) {
 			_ms = new MeshStrider(mesh->GetMesh());
@@ -129,6 +132,7 @@ void LocoMotor::RigidBody::Init(std::vector<std::pair<std::string, std::string>>
 
 void LocoMotor::RigidBody::PreUpdate(float dt) {
 
+	if (_body == nullptr)return;
 	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
 	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
 	//_body->clearForces(); // :TODO
