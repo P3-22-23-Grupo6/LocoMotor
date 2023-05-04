@@ -1,0 +1,4 @@
+Error: [LUA ERROR] Assets/scene.lua:91: unexpected symbol near ','
+Error: [LUA ERROR] Assets/scene.lua:91: unexpected symbol near ','
+Error: [LUA ERROR] Assets/scene.lua:91: unexpected symbol near ','
+Error: [LUA ERROR] Assets/scene.lua:91: unexpected symbol near ','
