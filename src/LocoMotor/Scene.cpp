@@ -146,11 +146,11 @@ GameObject* LocoMotor::Scene::GetObjectByName(std::string name) {
 
 
 GameObject* LocoMotor::Scene::GetCamera() {
-	return camera_gObj;
+	return _camera_gObj;
 }
 
 void LocoMotor::Scene::SetCamObj(GameObject* cam) {
-	camera_gObj = cam;
+	_camera_gObj = cam;
 }
 
 

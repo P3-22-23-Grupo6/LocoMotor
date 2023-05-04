@@ -263,7 +263,7 @@ LMVector3 LMVector3::StringToVector(std::string s) {
 	try {
 		value = std::stof(num);
 	}
-	catch (const char*) {
+	catch (...) {
 		value = 0.0f;
 	}
 	if (currAxis == 2)

@@ -1,1 +1,2 @@
+Error: [LUA ERROR] Assets/scene.lua:103: '}' expected (to close '{' at line 65) near 'checkpoint37'
 Error: No scene has been loaded. Exiting now
