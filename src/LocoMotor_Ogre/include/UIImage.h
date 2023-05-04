@@ -14,7 +14,8 @@ namespace OgreWrapper {
 		/// @brief Changes the image is going to appear
 		void ChangeImage(std::string nImage);
 		bool Init(const std::string& sceneName) override;
-		/// @brief 
+		/// @brief Sets the Top of the Image
+		/// @param topIndex layer Index
 		void SetTop(int topIndex);
 	};
 }
