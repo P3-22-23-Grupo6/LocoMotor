@@ -15,17 +15,32 @@ namespace OgreWrapper {
 
 		Camera(Ogre::Camera* camera);
 		~Camera();
-
+		/// @brief Gets the viewport of the camera
+		/// @return viewport
 		Ogre::Viewport* GetViewport();
+		/// @brief Gets the camera
+		/// @return camera
 		Ogre::MovableObject* GetMovObj() override;
-		//Cambia el Aspect Ratio para ajustarlo a un nuevo Viewport(pensado para el resize en multijugador, si lo hay jaja saludos)
+		
+		/// @brief Sets the Aspect Ratio to a new Viewport
+		/// @param ratio The new aspect ratio
 		void SetAspectRatio(Ogre::Real ratio);
-		//Cambia el FieldOfView de Ogre Camera por defecto(en radianes, de 1-1.6~aprox.)
+		
+		/// @brief Sets the FieldOfView of default Ogre Camera (in radian 1~1.6 aprox)
+		/// @param newFOV value of the FOV
 		void SetFOV(float newFOV);//Ogre::Radian radians);
-		void SetViewportRatio(int viewportIndex, int modeIndex);//0 Normal Camera, 1=1º Cam PvP, 2= 2ª PvP
+		/// @brief Sets the viewport ratio to a specific one
+		/// @param viewportIndex nº of viewport
+		/// @param modeIndex -> 0 Normal Camera, 1=1º Cam PvP, 2= 2ª PvP
+		void SetViewportRatio(int viewportIndex, int modeIndex);
+
 		void SetTracking(bool shouldTrack, Ogre::SceneNode* nodeToTrack, const Ogre::Vector3& offset);//Test, no se utiliza
-		//Cambia el Clipping Plane, para optimizacion
+		
+		/// @brief Changes the ClippingPlane, for optimization
+		/// @param nearDis nearest distance
+		/// @param farDis furthest distance
 		void SetClippingPlane(Ogre::Real nearDis, Ogre::Real farDis);
+		/// @brief Render
 		void Render();
 
 	private:
