@@ -15,7 +15,6 @@ namespace OgreWrapper {
 		void ChangeImage(std::string nImage);
 		bool Init(const std::string& sceneName) override;
 
-		void SetTop(int topIndex);
 	};
 }
 #endif

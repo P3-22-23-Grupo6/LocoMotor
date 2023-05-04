@@ -62,9 +62,6 @@ namespace LocoMotor {
 		/// @brief Sets the image is going to appear if the mouse is pressing it (in case it's interactive)
 		/// @param newimg is the image that will render when the mouse is pressing it
 		void SetPressedImage(std::string newimg);
-		/// @brief Sets the Top of the Image
-		/// @param topIndex layer Index
-		void SetTop(int topIndex);
 
 	protected:
 		OgreWrapper::UIImage* _uimg;
