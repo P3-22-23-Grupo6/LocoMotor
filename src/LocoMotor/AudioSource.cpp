@@ -69,6 +69,14 @@ void LocoMotor::AudioSource::Init(std::vector<std::pair<std::string, std::string
 		else if (params[i].first == "playonStart") {
 			_startPlay = params[i].second;
 		}
+		else if (params[i].first == "soundDimension") {
+			if (params[i].second == "2D")
+				Set2D();
+			else if (params[i].second == "3D")
+				Set3D();
+			else
+				Set3D();
+		}
 	}
 }
 

@@ -54,6 +54,14 @@ raceManager = {
         topcolor = "0 0 0",
         bottomcolor = "0 0 0",
     },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/mainTheme.mp3",
+        loopStart = "17105",
+        loopEnd = "214244",
+        soundDimension = "2D",
+        vol = "0.2"
+    },
     RaceManager = {
         checkpoint0 =  "2 1 -8",
         checkpoint1 =  "2 1 -27",
@@ -138,9 +146,9 @@ do ---------------------   UI   ------------------------------
         UITextLM = {
             font =  "BrunoAce",
             text = "00:00:000",
-            posx =  "0.15",
+            posx =  "0.45",
             posy =  ".05",
-            align = "left",
+            align = "right",
             sizex = "0.08",
             sizey = "0.08",
             topcolor = "1 1 1",
@@ -238,6 +246,9 @@ do ---------------------   AREA01   ------------------------------
         ParticleSystem = {
             name = "confetti",
             file = "Racers/Confetti"
+        },
+        AudioSource = {
+            
         }
     }
 
