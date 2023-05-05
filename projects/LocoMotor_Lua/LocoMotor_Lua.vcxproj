@@ -146,7 +146,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_MOTORDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Lua\include;$(SolutionDir)Dependecies\Lua\src;$(SolutionDir)Dependecies\LuaBridge\Source;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Utils\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Lua\include;$(SolutionDir)Dependecies\Lua\src;$(SolutionDir)Dependecies\LuaBridge\Source;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)src\LocoMotor_Utils\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -167,7 +167,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_MOTORDLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Lua\include;$(SolutionDir)Dependecies\Lua\src;$(SolutionDir)Dependecies\LuaBridge\Source;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)src\LocoMotor;$(SolutionDir)src\LocoMotor_Utils\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)src\LocoMotor_Lua\include;$(SolutionDir)Dependecies\Lua\src;$(SolutionDir)Dependecies\LuaBridge\Source;$(SolutionDir)src\LocoMotor\include;$(SolutionDir)src\LocoMotor_Utils\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

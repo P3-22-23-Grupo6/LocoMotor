@@ -9,3 +9,4 @@
     HLSL_SM4Support.hlsl 
     OgreUnifiedShader.h
     Carpeta RTShaderLib.
+  -La carpeta de Assets está en el Bin, poruqe la necesitamos para poder hacer debug.

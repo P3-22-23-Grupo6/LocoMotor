@@ -150,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_MOTORDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)src\LocoMotor_FMod\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\LocoMotor_Utils\include;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)src\LocoMotor_FMod\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,7 +169,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_MOTORDLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)src\LocoMotor_FMod\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)src\LocoMotor_Utils\include;$(SolutionDir)Dependecies\FMod\core\inc;$(SolutionDir)src\LocoMotor_FMod\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
