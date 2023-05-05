@@ -65,7 +65,6 @@ void LocoMotor::RigidBody::PreStart() {
 			_body->setUserPointer(gameObject);
 			if (_raycast) UseItAsRaycast();
 			if (_beATrigger) BeATrigger();
-			//delete ms;
 			return;
 		}	
 	}
@@ -135,7 +134,6 @@ void LocoMotor::RigidBody::PreUpdate(float dt) {
 	if (_body == nullptr)return;
 	gameObject->SetPosition(BulletToLm(_body->getWorldTransform().getOrigin()));
 	gameObject->SetRotation(BulletToLm(_body->getWorldTransform().getRotation()));
-	//_body->clearForces(); // :TODO
 }
 
 

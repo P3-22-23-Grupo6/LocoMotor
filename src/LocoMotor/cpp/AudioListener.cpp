@@ -10,16 +10,12 @@
 using namespace LocoMotor;
 
 
-/**
- * This is the constructor for the AudioListener class, which initializes its member variables.
- */
+
 AudioListener::AudioListener() {
 	_list = nullptr;
 	_lastPos = LMVector3();
 }
-/**
- * This is a destructor for the AudioListener class that deletes a pointer to a list.
- */
+
 AudioListener::~AudioListener() {
 	delete _list;
 }

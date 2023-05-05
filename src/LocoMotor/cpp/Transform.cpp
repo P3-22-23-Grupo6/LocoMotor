@@ -8,9 +8,7 @@
 #include "LmVectorConverter.h"
 
 
-/**
- * The constructor for the Transform class initializes its member variables.
- */
+
 LocoMotor::Transform::Transform() {
 	_position = LMVector3();
 	_direction = LMQuaternion();
@@ -32,7 +30,6 @@ void LocoMotor::Transform::InitComponent() {
 void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	gameObject->RegisterTransform(this);
 	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
-	//TODO: como coooo
 	for (const auto& pair : params) {
 		if (pair.first == "pos" || pair.first == "position") {
 			unsigned char currAxis = 0;
@@ -208,23 +205,12 @@ const LocoMotor::LMVector3& LocoMotor::Transform::GetSize() {
 void LocoMotor::Transform::SetSize(const LMVector3& newSize) {
 	SetLocalScale(newSize);
 	SetPhysScale(newSize);
-	/*
-	auto rb = gameObject->GetComponent<RigidBodyComponent>();
-	if (rb != nullptr) {
-		rb->sca(_direction);
-	}
-	*/
 }
 
 
 void LocoMotor::Transform::SetUpwards(const LMVector3& newUpward) {
 	double angle = GetRotation().Up().Angle(newUpward);
 	if (angle == 0.) return;
-
-
-	//LMVector3 axis = GetRotation().Up() * newUpward;
-	// Producto vectorial para hallar el vector perpendicular a otros dos vectores
-	// Despues pasar esto al LMVectoresque :TODO
 
 	LMVector3 v1 = GetRotation().Up();
 	LMVector3 v2 = newUpward;
@@ -241,11 +227,6 @@ void LocoMotor::Transform::SetForward(const LMVector3& newForward) {
 	double angle = GetRotation().Forward().Angle(newForward);
 	if (angle == 0.) return;
 
-
-	//LMVector3 axis = GetRotation().Up() * newUpward;
-	// Producto vectorial para hallar el vector perpendicular a otros dos vectores
-	// Despues pasar esto al LMVectoresque :TODO
-
 	LMVector3 v1 = GetRotation().Forward();
 	LMVector3 v2 = newForward;
 	LMVector3 axis = LMVector3(
@@ -260,7 +241,6 @@ void LocoMotor::Transform::SetForward(const LMVector3& newForward) {
 void LocoMotor::Transform::LookAt(const LMVector3& lookPos) {
 	LMVector3 newForward = lookPos - GetPosition();
 	SetForward(newForward);
-	//_gObjNode->LookAt(lookPos.GetX() * 10, lookPos.GetY() * 10, lookPos.GetZ() * 10);
 }
 
 

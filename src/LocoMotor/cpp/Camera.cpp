@@ -9,9 +9,7 @@
 
 using namespace LocoMotor;
 
-/**
- * This is the constructor for the LocoMotor Camera class, initializing its member variables.
- */
+
 LocoMotor::Camera::Camera()
 {
 	_cam = nullptr;
@@ -21,9 +19,7 @@ LocoMotor::Camera::Camera()
 	_offset = LMVector3(0, 0, 0);
 }
 
-/**
- * This function initializes a camera component for a game object in a scene using OgreWrapper.
- */
+
 void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& params)
 {
 	InitComponent();

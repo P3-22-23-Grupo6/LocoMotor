@@ -10,9 +10,6 @@
 
 using namespace LocoMotor;
 
-/**
- * This is the constructor for a particle system object in C++.
- */
 LocoMotor::ParticleSystem::ParticleSystem()
 {
 	_renderScn = nullptr;
@@ -49,7 +46,6 @@ void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::str
 
 
 void ParticleSystem::Start() {
-	//SetNode al gameObject
 }
 
 

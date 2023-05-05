@@ -6,14 +6,10 @@
 
 using namespace LocoMotor;
 
-/* Initializing the static member variable `_instance` of the `Singleton` template class with a null
-pointer value. This variable is used to store the single instance of the `SceneManager` class that
-is created and accessed through the `GetInstance()` method of the `Singleton` template class. */
+
 SceneManager* Singleton<SceneManager>::_instance = nullptr;
 
-/**
- * This is the constructor for the SceneManager class, initializing its member variables.
- */
+
 SceneManager::SceneManager() {
 	_activeScene = nullptr;
 	_actTime = 0;
@@ -21,9 +17,7 @@ SceneManager::SceneManager() {
 	_deltaTime = 0.1f;
 }
 
-/**
- * The destructor of the SceneManager class that deletes all scenes stored in a map.
- */
+
 SceneManager::~SceneManager() {
 	std::map<std::string, Scene*>::const_iterator it;
 	for (it = _sceneInfo.cbegin(); it != _sceneInfo.cend(); it = _sceneInfo.erase(it)) {
@@ -69,21 +63,14 @@ Scene* SceneManager::ChangeScene(std::string name) {
 
 			_activeScene->DeActivate();
 		}
-
-
 		StartScene(it->second);
 		renderMan->SetActiveScene(renderMan->GetScene(it->second->GetSceneName()));
 		_activeScene = it->second;
 		return it->second;
-		//return "Cambiada la escena";
-
-
 	}
 	else {
 		//Mensaje a logsystem
-
 		return nullptr;
-		//return "No existe la escena" + name;
 	}
 
 }

@@ -3,13 +3,12 @@
 #include "btBulletDynamicsCommon.h"
 
 void LocoMotor::LMcontactStart(btPersistentManifold* const& manifold) {
-		//Tomamos los dos rb guardados previamente en UserPointer
+	//Tomamos los dos rb guardados previamente en UserPointer
 	LocoMotor::GameObject* rb1 = static_cast<LocoMotor::GameObject*>(manifold->getBody0()->getUserPointer());
 	LocoMotor::GameObject* rb2 = static_cast<LocoMotor::GameObject*>(manifold->getBody1()->getUserPointer());
 
 	//Si existen
 	if (rb1 && rb2) {
-		//rb1->GetComponent<LocoMotor::RigidBodyComponent>()
 		rb1->OnCollisionEnter(rb2);
 		rb2->OnCollisionEnter(rb1);
 	}

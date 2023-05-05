@@ -61,7 +61,6 @@ OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene(std::string name
 		std::cerr << "ERROR: Ya hay una escena con el nombre \"" << name << "\". Elige otro nombre por favor\n";
 		return _scenes[name];
 	}
-
 	OgreWrapper::RenderScene* sc;
 	Ogre::SceneManager* sM = _root->createSceneManager();
 	sM->addRenderQueueListener(_ovrSys);
@@ -70,7 +69,6 @@ OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene(std::string name
 	if (_activeScene == nullptr) _activeScene = sc;
 	_mShaderGenerator->addSceneManager(sc->GetMan());
 	return sc;
-
 }
 
 OgreWrapper::RenderScene* OgreWrapper::OgreManager::GetScene(std::string name) {

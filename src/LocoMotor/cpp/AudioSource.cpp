@@ -13,10 +13,6 @@
 
 using namespace LocoMotor;
 
-/**
- * This is the constructor for the AudioSource class, which initializes the _lastError variable to 0
- * and sets the _src pointer to nullptr.
- */
 AudioSource::AudioSource() {
 	_lastError = 0;
 	_src = nullptr;
@@ -26,9 +22,6 @@ AudioSource::AudioSource() {
 	_loopEnd = 0xffffffff;
 }
 
-/**
- * This is a destructor for the AudioSource class that deletes the _src object.
- */
 AudioSource::~AudioSource() {
 	delete _src;
 }

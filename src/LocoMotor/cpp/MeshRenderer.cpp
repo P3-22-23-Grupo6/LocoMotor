@@ -10,9 +10,7 @@
 #include "LogSystem.h"
 using namespace LocoMotor;
 
-/**
- * This is a constructor for the MeshRenderer class that initializes its member variables.
- */
+
 LocoMotor::MeshRenderer::MeshRenderer()
 {
 	_gobj = nullptr;
@@ -29,11 +27,9 @@ LocoMotor::MeshRenderer::MeshRenderer()
  
 void MeshRenderer::PreStart() {
 
-	//_rend3D->SetMaterial(_mat); TEMPORAL!
-	//gameObject->SetRenderer(_rend3D);
 
 }
-//Hasta que haya lua
+
 void LocoMotor::MeshRenderer::Start(std::string name, std::string file, std::string mat, bool isStatic)
 {
 	
@@ -70,7 +66,6 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 	}
 
 	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _nod) : _rndScn->CreateRenderer(_src);
-	//_rend3D = _isStatic ? _rndScn->CreateRenderer(_src) : _rndScn->CreateRenderer(_src);
 	if (_rend3D != nullptr) {
 		_nod->Attach(_rend3D);
 		if (!visible)

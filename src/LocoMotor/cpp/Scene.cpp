@@ -12,12 +12,6 @@
 
 
 using namespace LocoMotor;
-/**
- * The Scene constructor creates a new scene and adds a camera game object with transform, camera, and
- * audio listener components.
- * @brief Scene constructor.
- * @param name is a string parameter that represents the name of the scene being created.
- */
 Scene::Scene(std::string name) {
 	_name = name;
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->CreateScene(_name);
