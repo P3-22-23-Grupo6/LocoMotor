@@ -68,5 +68,7 @@ namespace LocoMotor {
 
 		GameObject* _target;
 		LMVector3 _offset;
+
+		std::string target = "";
 	};
 }

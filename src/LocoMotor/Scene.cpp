@@ -136,7 +136,7 @@ void LocoMotor::Scene::RemoveGameobject(std::string name) {
 
 GameObject* LocoMotor::Scene::GetObjectByName(std::string name) {
 	if(_gameObjList.count(name) == 0)
-		return AddGameobject(name);
+		return nullptr;
 	return _gameObjList[name];
 }
 

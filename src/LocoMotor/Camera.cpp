@@ -44,7 +44,7 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 			catch (...) {}
 		}
 		else if (param.first == "target") {
-			SetTarget(gameObject->GetScene()->GetObjectByName(param.second), LMVector3(0, 15, 45));
+			target = param.second;
 		}
 		else if (param.first == "main") {
 			gameObject->GetScene()->SetCamObj(gameObject);
@@ -53,6 +53,9 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 	
 }
 void LocoMotor::Camera::InitComponent() {
+
+	if (gameObject->GetScene()->GetObjectByName(target) != nullptr)
+		SetTarget(gameObject->GetScene()->GetObjectByName(target), LMVector3(0, 15, 45));
 
 	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject
 	_scene = gameObject->GetScene();
