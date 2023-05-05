@@ -569,7 +569,7 @@ do ---------------------   AREA04   ------------------------------
             invisible = ""
         },
         RigidBodyComponent = {
-            mass = 1,
+            mass = 0,
             friction = "0.0"
         }
     }
@@ -583,10 +583,6 @@ do ---------------------   AREA04   ------------------------------
             file =  "Area03_RoadWalls.mesh",
             static = "",
             invisible = ""
-        },
-        RigidBodyComponent = {
-            mass = 1,
-            friction = "0.0"
         }
     }
 end -------------------------------------------------------------------
