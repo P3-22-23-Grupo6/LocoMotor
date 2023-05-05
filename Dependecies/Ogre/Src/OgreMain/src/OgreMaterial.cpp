@@ -285,7 +285,7 @@ namespace Ogre {
 
         // Insert won't replace if supported technique for this scheme/lod is
         // already there, which is what we want
-        mBestTechniquesBySchemeList[schemeIndex].emplace(t->getLodIndex(), t);
+        mBestTechniquesBySchemeList[schemeIndex].emplace(t->get LodIndex(), t);
 
     }
     //-----------------------------------------------------------------------------
