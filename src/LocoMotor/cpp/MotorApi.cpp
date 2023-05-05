@@ -37,7 +37,12 @@ MotorApi::MotorApi() {
 
 void MotorApi::RegisterGame(const char* gameName) {
 	_gameName = gameName;
-	OgreWrapper::OgreManager::Init(gameName);
+	OgreWrapper::OgreManager::Init();
+	std::string err = OgreWrapper::OgreManager::GetInstance()->Initialize(gameName);
+	if (err != "") {
+		LogSystem::GetInstance()->Save(0, err);
+		_exit = true;
+	}
 }
 
 void MotorApi::Init() {
@@ -65,7 +70,14 @@ void MotorApi::Init() {
 
 void MotorApi::MainLoop() {
 	//If Ogre Manager was not initialize by a Registergame() call, it will be initialized with the name GAME DLL FAIL
-	OgreWrapper::OgreManager::Init("GAME DLL FAIL");
+	if (OgreWrapper::OgreManager::GetInstance() == nullptr) {
+		OgreWrapper::OgreManager::Init();
+		std::string err = OgreWrapper::OgreManager::GetInstance()->Initialize("GAME DLL FAIL");
+		if (err != "") {
+			LogSystem::GetInstance()->Save(0, err);
+			_exit = true;
+		}
+	}
 
 	while (!_exit) {
 
