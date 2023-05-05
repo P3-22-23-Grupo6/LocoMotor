@@ -57,6 +57,7 @@ raceManager = {
         loops= -1,
         loopStart = "17105",
         loopEnd = "214244",
+        playonStart = "Assets/Sounds/mainTheme.mp3",
         soundDimension = "2D",
         vol = "0.4"
     },
