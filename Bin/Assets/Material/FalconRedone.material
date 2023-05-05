@@ -428,11 +428,9 @@ material AO_Decal {
     technique {
         pass {
             lighting off
-            alpha_rejection greater 150
-            filtering trilinear
+            scene_blend alpha_blend
             texture_unit {
                 texture AO_Decal.png
-                filtering trilinear
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0
