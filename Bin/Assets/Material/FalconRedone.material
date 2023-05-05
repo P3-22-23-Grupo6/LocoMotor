@@ -413,6 +413,7 @@ material UIPanel2 {
         pass {
             lighting off
             alpha_rejection greater 150
+            filtering trilinear
             texture_unit {
                 texture PanelTest2.png
                 filtering trilinear
@@ -423,7 +424,22 @@ material UIPanel2 {
         }
     }
 }
-
+material AO_Decal {
+    technique {
+        pass {
+            lighting off
+            alpha_rejection greater 150
+            filtering trilinear
+            texture_unit {
+                texture AO_Decal.png
+                filtering trilinear
+                tex_address_mode wrap
+                colour_op modulate
+                //mipmap_bias 2.0
+            }
+        }
+    }
+}
 material UIPanel3 {
     technique {
         pass {
@@ -445,9 +461,9 @@ material LocomotorImg {
     technique {
         pass {
             lighting off
-            alpha_rejection greater 150
+            scene_blend alpha_blend
             texture_unit {
-                texture lmlog.png
+                texture CroppedLogo.png
                 tex_address_mode wrap
                 colour_op modulate
                 //mipmap_bias 2.0

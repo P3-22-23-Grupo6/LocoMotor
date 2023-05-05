@@ -67,7 +67,26 @@ speedButton = {
         bottomcolor = ".9 .9 1"
     }
 }
-
+logoImg = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.725",
+        posy = "0.8",
+        sizex = "0.285",
+        sizey = "0.22",
+        img = "LocomotorImg"
+    }
+}
+aoDecal = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0",
+        posy = "0",
+        sizex = "1",
+        sizey = "1",
+        img = "AO_Decal"
+    }
+}
 carGraphic = {
     Transform = {
         position = "0 -10 -30",
@@ -124,4 +143,4 @@ mainCam = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg", "backMesh", "mainCam", "carGraphic"}
+entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg", "backMesh", "mainCam", "carGraphic", "logoImg"}
