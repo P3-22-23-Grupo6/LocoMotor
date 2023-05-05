@@ -29,6 +29,15 @@
       <Project>{72d80436-2b2e-4873-8aec-6c8123e81bab}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LM_Main.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\Bin\g6Img.ico" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
