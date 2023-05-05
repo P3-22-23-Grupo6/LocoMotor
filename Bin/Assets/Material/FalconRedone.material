@@ -462,6 +462,21 @@ material LocomotorImg {
             lighting off
             scene_blend alpha_blend
             texture_unit {
+                texture TituloFinal.png
+                tex_address_mode wrap
+                colour_op modulate
+                //mipmap_bias 2.0
+            }
+        }
+    }
+}
+
+material LogoImg {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
                 texture CroppedLogo.png
                 tex_address_mode wrap
                 colour_op modulate

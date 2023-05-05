@@ -78,6 +78,15 @@ logoImg = {
         posy = "0.8",
         sizex = "0.285",
         sizey = "0.22",
+        img = "LogoImg"
+    }
+}
+tituloImg = {
+    UIImageLM = { 
+        posx = "0.05",
+        posy = "0.05",
+        sizex = "0.4",
+        sizey = "0.3",
         img = "LocomotorImg"
     }
 }
@@ -149,4 +158,4 @@ audioHolder = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "speedButton", "skyboxMesh", "backMesh", "mainCam", "carGraphic", "logoImg", "aoDecal", "audioHolder"}
+entities = {"ButtonManager", "raceButton", "speedButton", "skyboxMesh", "backMesh", "mainCam", "carGraphic", "logoImg", "aoDecal", "audioHolder", "tituloImg"}
