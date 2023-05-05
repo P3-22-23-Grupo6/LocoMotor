@@ -40,7 +40,7 @@ menuBack = {
         posx = ".75",
         posy = ".80",
         sizex = ".2",
-        sizey = ".2",
+        sizey = ".15",
         img = "LocomotorImg",
         top = "-1000"
     }
@@ -114,8 +114,8 @@ backMesh = {
 
 mainCam = {
     Transform = {
-        position = "-150 100 100",
-        rotation = "15 -25 0",
+        position = "-250 -150 100",
+        rotation = "15 -30 0",
         scale = "1 1 1"
     },
     Camera = 
