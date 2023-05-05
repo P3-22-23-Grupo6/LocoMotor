@@ -45,9 +45,9 @@ bool ScriptManager::LoadSceneFromFile(std::string path) {
     if (ReadLuaScript(path) != 0) {
         return false;
     }
-    Scene* s = SceneManager::GetInstance()->GetSceneByName(path);
-    if (s == nullptr) {
-        s = _scMan->CreateScene(path);
+    Scene* scene = SceneManager::GetInstance()->GetSceneByName(path);
+    if (scene == nullptr) {
+        scene = _scMan->CreateScene(path);
     }
 
 	luabridge::LuaRef allEnts = GetFromLua("entities");
@@ -57,9 +57,12 @@ bool ScriptManager::LoadSceneFromFile(std::string path) {
 		luabridge::LuaRef entity = GetFromLua(allEnts[i]);
 
 		//Cargo las entidades 
-		GameObject* ent = s->GetObjectByName(allEnts[i]);
-		if (!SetParams(entity, ent, nullptr, "layer")) {
-			s->RemoveGameobject(allEnts[i]);
+		GameObject* gObj = scene->GetObjectByName(allEnts[i]);
+		if (gObj == nullptr) {
+			gObj = scene->AddGameobject(allEnts[i]);
+		}
+		if (!SetParams(entity, gObj, nullptr, "layer")) {
+			scene->RemoveGameobject(allEnts[i]);
 		}
 	}
 
@@ -87,16 +90,11 @@ bool ScriptManager::SetParams(luabridge::LuaRef entity, GameObject* ent, Scene* 
 		return false;
 	}
 	while (lua_next(entity, 0) != 0) {
-
-
 		std::string compName = lua_tostring(entity, -2);
 		std::string key;
 
 		luabridge::LuaRef component = entity[compName];
 		lua_pushnil(component);
-
-
-
 
 		std::vector<std::pair<std::string, std::string>> parameters;
 
