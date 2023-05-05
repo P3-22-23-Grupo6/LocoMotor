@@ -55,11 +55,10 @@ raceManager = {
     },
     AudioSource = {
         loops= -1,
-        playonStart = "Assets/Sounds/mainTheme.mp3",
         loopStart = "17105",
         loopEnd = "214244",
         soundDimension = "2D",
-        vol = "0.15"
+        vol = "0.4"
     },
     RaceManager = {
         checkpoint80 = "2 1 -5",
@@ -358,7 +357,8 @@ do ---------------------   AREA01   ------------------------------
             thrust = 5000,
         },
         AudioSource = {
-            loops= -1
+            loops= -1,
+            vol = "1.5"
         }
     }
 
