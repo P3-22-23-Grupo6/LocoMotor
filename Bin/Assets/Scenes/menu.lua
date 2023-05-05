@@ -126,12 +126,6 @@ mainCam = {
         CameraMode = 0,
         FOV = "40",
         main = ""
-    },
-    AudioSource = {
-        loops= -1,
-        playonStart = "Assets/Sounds/menuTheme.mp3",
-        soundDimension = "2D",
-        vol = "0.2"
     }
 }
 audioHolder = {

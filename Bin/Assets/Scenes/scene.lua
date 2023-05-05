@@ -59,7 +59,7 @@ raceManager = {
         loopStart = "17105",
         loopEnd = "214244",
         soundDimension = "2D",
-        vol = "0.2"
+        vol = "0.15"
     },
     RaceManager = {
         checkpoint80 = "2 1 -5",
