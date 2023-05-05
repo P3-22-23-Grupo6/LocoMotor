@@ -284,6 +284,7 @@ material SkyMat {
                 texture skyboxCubemap.png
                 tex_address_mode wrap
                 colour_op modulate
+                scroll_anim 0.005 0.0
             }
         }
     }
