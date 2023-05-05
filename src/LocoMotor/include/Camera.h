@@ -32,6 +32,9 @@ namespace LocoMotor {
 		/// @brief Inits the component
 		void InitComponent() override;
 
+		/// @brief Starts the component
+		void Start() override;
+
 		/// @brief Updates the position and rotation of a camera to follow a target object.
 		/// @param dt dt stands for delta time, which is the time elapsed since the last frame update. It is
 		/// used to ensure that the movement and updates in the game are consistent across different hardware

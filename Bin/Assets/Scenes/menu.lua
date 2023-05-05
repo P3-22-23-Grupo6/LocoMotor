@@ -79,7 +79,6 @@ logoImg = {
 }
 aoDecal = {
     UIImageLM = { 
-        interactive = "",
         posx = "0",
         posy = "0",
         sizex = "1",
@@ -143,4 +142,4 @@ mainCam = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg", "backMesh", "mainCam", "carGraphic", "logoImg"}
+entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg", "backMesh", "mainCam", "carGraphic", "logoImg", "aoDecal"}
