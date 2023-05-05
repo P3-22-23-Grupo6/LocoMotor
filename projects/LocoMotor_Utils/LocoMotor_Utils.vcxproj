@@ -18,6 +18,21 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\LocoMotor_Utils\include\CheckML.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\include\LMInputs.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\include\LMSpline.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\include\LMVector.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\include\LmVectorConverter.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\include\MeshStrider.h" />
+    <ClInclude Include="..\..\src\LocoMotor_Utils\include\Singleton.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\LocoMotor_Utils\cpp\LMSpline.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Utils\cpp\LMVector.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Utils\cpp\LmVectorConverter.cpp" />
+    <ClCompile Include="..\..\src\LocoMotor_Utils\cpp\MeshStrider.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -113,7 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;_MOTORDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,7 +143,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_MOTORDLL;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependecies\Ogre\Build\SDL2-2.24.1\include;$(SolutionDir)src\LocoMotor_Ogre\include;$(SolutionDir)src\LocoMotor_Utils\include;$(SolutionDir)Dependecies\Ogre\Src\OgreMain\include;$(SolutionDir)Dependecies\Bullet\Src\src;$(SolutionDir)Dependecies\Ogre\Build\include;$(SolutionDir)Dependecies\FMod\core\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -137,21 +152,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\src\LocoMotor_Utils\LMSpline.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Utils\LMVector.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Utils\LmVectorConverter.cpp" />
-    <ClCompile Include="..\..\src\LocoMotor_Utils\MeshStrider.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\src\LocoMotor_Utils\CheckML.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Utils\LMInputs.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Utils\LMSpline.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Utils\LMVector.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Utils\LmVectorConverter.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Utils\MeshStrider.h" />
-    <ClInclude Include="..\..\src\LocoMotor_Utils\Singleton.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
