@@ -62,6 +62,7 @@ raceManager = {
         vol = "0.2"
     },
     RaceManager = {
+        checkpoint80 = "2 1 -5",
         checkpoint0 = "2 1 -10",
         checkpoint1 = "2 1 -27",
         checkpoint2 = "2 1 -44",
@@ -123,7 +124,30 @@ raceManager = {
         checkpoint61 =  "338 -15 97",
         checkpoint62 =  "335 -12 106",
         checkpoint62 =  "328 -7 118",
-        checkpoint63 =  "319 -2 128"
+        checkpoint63 =  "319 -2 128",
+        checkpoint64 =  "25 -5 145",
+        checkpoint65 =  "228 7 160",
+        checkpoint66 =  "222 8 178",
+        checkpoint67 =  "227 8 192",
+        checkpoint68 =  "237 9 200",
+        checkpoint69 =  "250 10 203",
+        checkpoint70 =  "278 17 186",
+        checkpoint71 =  "285 18 167",
+        checkpoint72 =  "289 18 139",
+        checkpoint73 =  "285 17 107",
+        checkpoint74 =  "273 19 89",
+        checkpoint75 =  "254 17 77",
+        checkpoint76 =  "232 14 75",
+        checkpoint77 =  "209 10 75",
+        checkpoint78 =  "183 7 76",
+        checkpoint79 =  "187 5 76",
+        checkpoint80 =  "129 5 72",
+        checkpoint80 =  "99 8 60",
+        checkpoint80 =  "58 10 51",
+        checkpoint80 =  "45 12 51",
+        checkpoint80 =  "29 1 51",
+        checkpoint80 =  "7 1 45",
+        checkpoint80 =  "2 1 27"
     }
 }
 do ---------------------   UI   ------------------------------
