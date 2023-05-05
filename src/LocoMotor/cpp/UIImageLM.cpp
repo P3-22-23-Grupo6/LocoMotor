@@ -167,7 +167,8 @@ void LocoMotor::UIImageLM::Update(float dt) {
 
 			if (LocoMotor::InputManager::GetInstance()->GetMouseButtonDown(1)) {
 				ChangeImage(_pressedImgName);
-				_onClick();
+				if(_onClick != nullptr)
+				 _onClick();
 				
 			}
 			else {
