@@ -354,11 +354,11 @@ do ---------------------   AREA01   ------------------------------
             isTrigger = ""
         },
         Boost = {
-            thrust = 50000,
+            thrust = 20000,
         },
         AudioSource = {
             loops= -1,
-            vol = "1.5"
+            vol = "3"
         }
     }
 
@@ -418,7 +418,11 @@ do ---------------------   AREA02   ------------------------------
             isTrigger = ""
         },
         Boost = {
-            thrust = 5000,
+            thrust = 20000,
+        },
+        AudioSource = {
+            loops= -1,
+            vol = "3"
         }
     }
 
