@@ -25,6 +25,13 @@ namespace OgreWrapper {
 	class OgreManager : public LocoMotor::Singleton<OgreManager> {
 		friend LocoMotor::Singleton<OgreManager>;
 	public:
+		/// @brief Initializes the OgreManager singleton with a name for the new window
+		/// @param name Name for the window.
+		/// @return whether the initialize went well or not.
+		///	If the name is already taken, the scene with that name will be returned instead.
+		std::string Initialize(std::string name);
+
+
 		/// @brief Creates a scene, if you try to create a scene with an already used name, the method will return that scene instead.
 		/// @param name Name for the new scene.
 		/// @return The newly created scene.
@@ -69,7 +76,7 @@ namespace OgreWrapper {
 
 		/// @brief Creates a new OgreManager.
 		/// @param name The name for the window
-		OgreManager(std::string name);
+		OgreManager();
 		~OgreManager();
 
 		/// @brief Loads the resouces and initializes the RTShaderSytem

@@ -20,26 +20,41 @@ using namespace LocoMotor;
 
 OgreWrapper::OgreManager* Singleton<OgreWrapper::OgreManager>::_instance = nullptr;
 
-OgreWrapper::OgreManager::OgreManager(std::string name) {
-	_root = nullptr;
+OgreWrapper::OgreManager::OgreManager() {
 	_activeScene = nullptr;
 	_mShaderGenerator = nullptr;
-
 	_root = new Ogre::Root();
-	_root->showConfigDialog(nullptr);
-	_root->restoreConfig();
 	_ovrSys = new Ogre::OverlaySystem();
-	_root->initialise(false);
-
-
-	InitWindow(name);
-	LoadResources();
 }
 
 OgreWrapper::OgreManager::~OgreManager() {
 	Shutdown();
 }
 
+
+std::string OgreWrapper::OgreManager::Initialize(std::string name) {
+	try {
+		_root->showConfigDialog(nullptr);
+		_root->restoreConfig();
+		_root->initialise(false);
+	}
+	catch (...) {
+		return "Error while initializing internal ogre library";
+	}
+	try {
+		InitWindow(name);
+	}
+	catch (...) {
+		return "Error while initializing window";
+	}
+	try {
+		LoadResources();
+	}
+	catch (...) {
+		return "Error while loading resources: make sure all .fontdef, .material, .particle, etc have no duplicates/are correctly written";
+	}
+	return "";
+}
 
 OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene(std::string name) {
 	if (_scenes.count(name) > 0) {
