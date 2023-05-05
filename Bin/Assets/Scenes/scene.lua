@@ -59,7 +59,7 @@ raceManager = {
         loopEnd = "214244",
         playonStart = "Assets/Sounds/mainTheme.mp3",
         soundDimension = "2D",
-        vol = "0.4"
+        vol = "1"
     },
     RaceManager = {
         checkpoint80 = "2 1 -5",
@@ -640,7 +640,7 @@ EnemyCar01 = {
     },
     EnemyAI = {
         enemySpeed = "2",
-        StartSeparation = "10"
+        StartSeparation = "40"
     },
     RigidBodyComponent = {
         mass = 1,
@@ -663,7 +663,7 @@ EnemyCar02 = {
     },
     EnemyAI = {
         enemySpeed = "2",
-        StartSeparation = "0"
+        StartSeparation = "10"
     },
     RigidBodyComponent = {
         mass = 1,
@@ -678,7 +678,7 @@ EnemyCar03 = {
         scale = "10 10 10"
     },
     MeshRenderer = {
-        file =  "Stinger.mesh"
+        file =  "Colibri.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -686,7 +686,30 @@ EnemyCar03 = {
     },
     EnemyAI = {
         enemySpeed = "2",
-        StartSeparation = "-50"
+        StartSeparation = "-40"
+    },
+    RigidBodyComponent = {
+        mass = 1,
+        friction = "0.0",
+        isTrigger = ""
+    }
+}
+EnemyCar04 = {
+    Transform = {
+        position = "0 35 0",
+        rotation = "0 0 0",
+        scale = "10 10 10"
+    },
+    MeshRenderer = {
+        file =  "Colibri.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav"
+    },
+    EnemyAI = {
+        enemySpeed = "2",
+        StartSeparation = "-70"
     },
     RigidBodyComponent = {
         mass = 1,
@@ -704,5 +727,5 @@ entities = { "coche", "mainCam", "raceManager",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
             "Area01_RoadWalls", "Area02_RoadWalls", "Area03_RoadWalls",
             "Main_Terrain", "Main_Water", "SkyboxMesh",
-            "EnemyCar01", "EnemyCar02", "EnemyCar03"
+            "EnemyCar01", "EnemyCar02", "EnemyCar03", "EnemyCar04"
         }
