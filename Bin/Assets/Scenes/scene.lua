@@ -20,7 +20,7 @@ coche = {
         scale = "10 10 10"
     },
     MeshRenderer = {
-        file =  "Stinger.mesh"
+        file =  "BlueFalcon.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -600,6 +600,7 @@ SkyboxMesh = {
         static = ""
     }
 }
+do ---------------------   Enemy   ------------------------------
 EnemyCar01 = {
     Transform = {
         position = "0 35 0",
@@ -607,7 +608,7 @@ EnemyCar01 = {
         scale = "10 10 10"
     },
     MeshRenderer = {
-        file =  "BlueFalcon.mesh"
+        file =  "Stinger.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -630,7 +631,7 @@ EnemyCar02 = {
         scale = "10 10 10"
     },
     MeshRenderer = {
-        file =  "BlueFalcon.mesh"
+        file =  "Stinger.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -653,7 +654,7 @@ EnemyCar03 = {
         scale = "10 10 10"
     },
     MeshRenderer = {
-        file =  "BlueFalcon.mesh"
+        file =  "Stinger.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -669,6 +670,7 @@ EnemyCar03 = {
         isTrigger = ""
     }
 }
+end -------------------------------------------------------------------
 
 entities = { "coche", "mainCam", "raceManager",
             "lapsText", "positionText", "countdownText", "velocityText", "timerText",
