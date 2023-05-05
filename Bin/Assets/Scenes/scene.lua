@@ -160,13 +160,31 @@ do ---------------------   UI   ------------------------------
         UITextLM = {
             font =  "BrunoAce",
             text = "00:00:000",
-            posx =  "0.45",
-            posy =  ".05",
-            align = "right",
+            posx =  ".1",
+            posy =  ".15",
+            align = "left",
             sizex = "0.08",
             sizey = "0.08",
             topcolor = "1 1 1",
             bottomcolor = "1 1 1",
+        }
+    }
+    laptimerText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "00:00:000",
+            posx =  ".1",
+            posy =  ".05",
+            align = "left",
+            sizex = "0.08",
+            sizey = "0.08",
+            topcolor = "0.49 .88 .89",
+            bottomcolor = "0.49 .88 .89",
         }
     }
     lapsText = {
@@ -673,7 +691,7 @@ EnemyCar03 = {
 end -------------------------------------------------------------------
 
 entities = { "coche", "mainCam", "raceManager",
-            "lapsText", "positionText", "countdownText", "velocityText", "timerText",
+            "lapsText", "positionText", "countdownText", "velocityText", "timerText", "laptimerText",
             "Area01_RoadMain", "Area01_RoadBorder", "Area01_Vegetation", "Area01_Extra", "Area01_Terrain", "Area01_Boosts",
             "Area02_RoadMain", "Area02_RoadBorder", "Area02_Extra", "Area02_Boosts",
             "Area03_RoadMain", "Area03_RoadBorder", "Area03_Vegetation", "Area03_Extra", "Area03_Terrain",
