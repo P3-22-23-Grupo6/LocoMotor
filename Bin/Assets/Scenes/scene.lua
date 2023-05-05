@@ -640,8 +640,7 @@ EnemyCar01 = {
     },
     RigidBodyComponent = {
         mass = 1,
-        friction = "0.0",
-        isTrigger = ""
+        friction = "0.0"
     }
 }
 EnemyCar02 = {
@@ -663,8 +662,7 @@ EnemyCar02 = {
     },
     RigidBodyComponent = {
         mass = 1,
-        friction = "0.0",
-        isTrigger = ""
+        friction = "0.0"
     }
 }
 EnemyCar03 = {
@@ -686,8 +684,7 @@ EnemyCar03 = {
     },
     RigidBodyComponent = {
         mass = 1,
-        friction = "0.0",
-        isTrigger = ""
+        friction = "0.0"
     }
 }
 EnemyCar04 = {
@@ -709,8 +706,7 @@ EnemyCar04 = {
     },
     RigidBodyComponent = {
         mass = 1,
-        friction = "0.0",
-        isTrigger = ""
+        friction = "0.0"
     }
 }
 end -------------------------------------------------------------------
