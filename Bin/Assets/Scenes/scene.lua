@@ -354,7 +354,7 @@ do ---------------------   AREA01   ------------------------------
             isTrigger = ""
         },
         Boost = {
-            thrust = 5000,
+            thrust = 50000,
         },
         AudioSource = {
             loops= -1,
@@ -636,8 +636,8 @@ EnemyCar01 = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "0.01",
-        StartSeparation = "50"
+        enemySpeed = "2",
+        StartSeparation = "10"
     },
     RigidBodyComponent = {
         mass = 1,
@@ -659,7 +659,7 @@ EnemyCar02 = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "0.01",
+        enemySpeed = "2",
         StartSeparation = "0"
     },
     RigidBodyComponent = {
@@ -682,7 +682,7 @@ EnemyCar03 = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "0.01",
+        enemySpeed = "2",
         StartSeparation = "-50"
     },
     RigidBodyComponent = {
