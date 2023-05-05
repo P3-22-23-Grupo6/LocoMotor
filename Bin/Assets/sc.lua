@@ -82,31 +82,27 @@ carGraphic = {
     }
 }
 
-titleText = {
+backMesh = {
     Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
+        position = "0 -5 -10",
+        rotation = "0 180 0",
         scale = "1 1 1"
     },
-    UIImageLM = { 
-        posx = ".40",
-        posy = "-0.01",
-        sizex = "0.55",
-        sizey = "0.55",
-        img = "G6Logo"
+    MeshRenderer = {
+        file =  "MENU.mesh"
     }
 }
 
 mainCam = {
     Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
+        position = "-150 100 100",
+        rotation = "15 -25 0",
         scale = "1 1 1"
     },
     Camera = 
     { 
         CameraMode = 0,
-        FOV = "60",
+        FOV = "40",
         main = ""
     },
     AudioSource = {
@@ -128,5 +124,4 @@ mainCam = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg",
-"titleText", "mainCam", "carGraphic"}
+entities = {"ButtonManager", "raceButton", "speedButton", "locomotorImg", "backMesh", "mainCam", "carGraphic"}
