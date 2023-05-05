@@ -134,7 +134,16 @@ mainCam = {
         vol = "0.2"
     }
 }
-
+audioHolder = {
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/MenuMusic.mp3",
+        loopStart = "17105",
+        loopEnd = "214244",
+        soundDimension = "2D",
+        vol = "0.2"
+    },
+}
 -- mainCam = {
 --     Transform = {
 --         position = "0 0 0",
@@ -146,4 +155,4 @@ mainCam = {
 --     }
 -- }
 
-entities = {"ButtonManager", "raceButton", "speedButton", "skyboxMesh", "backMesh", "mainCam", "carGraphic", "logoImg", "aoDecal"}
+entities = {"ButtonManager", "raceButton", "speedButton", "skyboxMesh", "backMesh", "mainCam", "carGraphic", "logoImg", "aoDecal", "audioHolder"}
