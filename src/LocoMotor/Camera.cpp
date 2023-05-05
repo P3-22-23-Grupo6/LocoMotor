@@ -54,9 +54,6 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 }
 void LocoMotor::Camera::InitComponent() {
 
-	if (gameObject->GetScene()->GetObjectByName(target) != nullptr)
-		SetTarget(gameObject->GetScene()->GetObjectByName(target), LMVector3(0, 15, 45));
-
 	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject
 	_scene = gameObject->GetScene();
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
@@ -71,6 +68,12 @@ void LocoMotor::Camera::InitComponent() {
 
 	//SetNode al gameObject
 
+}
+
+void LocoMotor::Camera::Start() {
+	// Comprobar si hay asignado un target
+	if (gameObject->GetScene()->GetObjectByName(target) != nullptr)
+		SetTarget(gameObject->GetScene()->GetObjectByName(target), LMVector3(0, 15, 45));
 }
 
 
