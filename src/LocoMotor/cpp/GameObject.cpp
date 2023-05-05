@@ -32,6 +32,9 @@ void GameObject::Update(float dt) {
 		if (it->second->isEnabled())
 			it->second->Update(dt);
 	}
+	if (_transform->GetPosition().Magnitude() > DBL_MAX / 1.5) {
+		_transform->SetPosition(LMVector3());
+	}
 }
 
 void LocoMotor::GameObject::AddComponent(std::string name, std::vector<std::pair<std::string, std::string>>& params) {

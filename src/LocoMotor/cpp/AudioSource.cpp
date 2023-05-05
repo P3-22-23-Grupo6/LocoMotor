@@ -124,12 +124,10 @@ void LocoMotor::AudioSource::Start() {
 
 
 void LocoMotor::AudioSource::Update(float dt) {
-#ifdef _DEBUG
 	if (_lastError != 0) {
-		std::cout << FmodWrapper::AudioManager::GetInstance()->GetError(_lastError) << std::endl;
+		LogSystem::GetInstance()->Save(0, FmodWrapper::AudioManager::GetInstance()->GetError(_lastError));
 		_lastError = 0;
 	}
-#endif // _DEBUG
 	_src->SetPositionAndVelocity(LmToFMod(gameObject->GetTransform()->GetPosition()), dt / 1000.f);
 }
 

@@ -101,6 +101,10 @@ void LocoMotor::Camera::SetClippingPlane(int nearPlane, int farPlane) {
 
 
 void LocoMotor::Camera::SetFOV(float newFov) {
+	if (newFov < 0.1f)
+		newFov = 0.1f;
+	if (newFov > 180.f)
+		newFov = 180.f;
 	_cam->SetFOV(newFov);
 }
 

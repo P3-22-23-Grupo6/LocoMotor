@@ -46,14 +46,7 @@ void LocoMotor::AudioListener::Update(float dt) {
 
 	LMVector3 vel = (gameObject->GetTransform()->GetPosition() - _lastPos) / (dt / 1000.f);
 
-#ifdef _DEBUG
 	unsigned short err = _list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));
-	if (err > 0) {
-		std::cout << "AudioListener::Update(): " << FmodWrapper::AudioManager::GetInstance()->GetError(err) << std::endl;
-	}
-#else
-	unsigned short err = _list->SetTransform(LmToFMod(gameObject->GetTransform()->GetPosition()), LmToFMod(vel), LmToFMod(forwardVec), LmToFMod(upwardVec));
-#endif // _DEBUG
 
 	if (err > 0) {
 		LogSystem::GetInstance()->Save(0, "AudioListener::Update(): " + (std::string)FmodWrapper::AudioManager::GetInstance()->GetError(err));
