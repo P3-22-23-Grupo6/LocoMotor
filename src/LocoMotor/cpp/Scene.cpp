@@ -93,16 +93,6 @@ std::string Scene::GetSceneName() {
 
 void Scene::SetSceneCam(OgreWrapper::Camera* camera) {
 	_cam = camera;
-	
-	//OgreWrapper::RenderEntity* camObj = _cam;
-	//_nod = _renderScn->CreateNode("ScnNode");
-
-	// Acceder al RenderEntity de la camara
-	//OgreWrapper::RenderEntity* renderObj = (OgreWrapper::RenderEntity*) _cam;
-	//_nod->Attach(renderObj);
-	//mCamNode->Attach (cam2);
-	//_nod->Translate(0, 10, 20);
-	//_nod->LookAt(0, 0, -5);
 	_renderScn->SetActiveCamera(_cam);
 }
 
