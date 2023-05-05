@@ -23,8 +23,8 @@ OgreWrapper::OgreManager* Singleton<OgreWrapper::OgreManager>::_instance = nullp
 OgreWrapper::OgreManager::OgreManager() {
 	_activeScene = nullptr;
 	_mShaderGenerator = nullptr;
-	_root = new Ogre::Root();
-	_ovrSys = new Ogre::OverlaySystem();
+	_root = nullptr;
+	_ovrSys = nullptr;
 }
 
 OgreWrapper::OgreManager::~OgreManager() {
@@ -33,6 +33,13 @@ OgreWrapper::OgreManager::~OgreManager() {
 
 
 std::string OgreWrapper::OgreManager::Initialize(std::string name) {
+	try {
+		_root = new Ogre::Root();
+		_ovrSys = new Ogre::OverlaySystem();
+	}
+	catch (...) {
+		return "Error while constructing internal ogre library";
+	}
 	try {
 		_root->showConfigDialog(nullptr);
 		_root->restoreConfig();

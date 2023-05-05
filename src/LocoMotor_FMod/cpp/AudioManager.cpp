@@ -23,7 +23,7 @@ AudioManager::AudioManager(int numChannels) {
 
 	float vol;
 	_main->getVolume(&vol);
-	_sys->set3DSettings(1.2f, 10.f, 2.f);
+	_sys->set3DSettings(1.2f, 13.f, .2f);
 
 	_soundLib = std::unordered_map<std::string, FMOD::Sound*>();
 }
