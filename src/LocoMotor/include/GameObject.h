@@ -9,7 +9,6 @@
 #include "LMVector.h"
 #include "Component.h"
 #include "ComponentsFactory.h"
-#include <map>
 #include <unordered_map>
 
 namespace OgreWrapper {
@@ -108,15 +107,11 @@ namespace LocoMotor {
 		/// @param newTrans 
 		void RegisterTransform(Transform* newTrans);
 
-		bool physicsBasedMovement;
 	private:
 		std::unordered_map<std::string, Component*> _componentsByName;
 		Scene* _scene;
 		Transform* _transform;
-		OgreWrapper::Renderer3D* _renderer;
 		OgreWrapper::Node* _node;
-		LMVector3 _localVelocity = LMVector3(0, 0, 0);
-		bool _destructed = false;
 	};
 }
 

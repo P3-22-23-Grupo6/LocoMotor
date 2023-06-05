@@ -1,10 +1,6 @@
 #include "GameObject.h"
 #include "Transform.h"
 
-//HITO 1 POC
-#include "InputManager.h"
-#include "LMInputs.h"
-#include "Scene.h"
 #include "Node.h"
 #include "LogSystem.h"
 
@@ -14,11 +10,8 @@ using namespace LocoMotor;
 GameObject::GameObject(OgreWrapper::Node* node) {
 	_scene = nullptr;
 	_transform = nullptr;
-	_renderer = nullptr;
 	_node = node;
 	_componentsByName = {};
-
-	physicsBasedMovement = true;
 }
 
 void GameObject::Update(float dt) {
