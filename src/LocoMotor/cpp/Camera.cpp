@@ -62,8 +62,6 @@ void LocoMotor::Camera::InitComponent() {
 	_node->Attach(_cam);
 	SetClippingPlane(1, 15000);
 
-	//SetNode al gameObject
-
 }
 
 void LocoMotor::Camera::Start() {

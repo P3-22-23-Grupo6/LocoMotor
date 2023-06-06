@@ -1,17 +1,15 @@
 #include "GameObject.h"
 #include "Transform.h"
-
-#include "Node.h"
 #include "LogSystem.h"
 
 using namespace LocoMotor;
 
 // Constructor
-GameObject::GameObject(OgreWrapper::Node* node) {
+GameObject::GameObject(const std::string& name) {
 	_scene = nullptr;
 	_transform = nullptr;
-	_node = node;
 	_componentsByName = {};
+	_gobjName = name;
 }
 
 void GameObject::Update(float dt) {
@@ -91,14 +89,8 @@ Transform* GameObject::GetTransform() {
 }
 
 std::string LocoMotor::GameObject::GetName() {
-	return _node->GetName();
+	return _gobjName;
 }
-
-
-void LocoMotor::GameObject::SetRenderer(OgreWrapper::Node* node) {
-	_node = node;
-}
-
 
 void LocoMotor::GameObject::SetContext(Scene* scn) {
 	_scene = scn;

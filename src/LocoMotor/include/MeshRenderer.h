@@ -56,7 +56,7 @@ namespace LocoMotor {
 		std::string _mat;
 
 		OgreWrapper::RenderScene* _rndScn;
-		OgreWrapper::Node* _nod;
+		OgreWrapper::Node* _node;
 		bool _isStatic;
 
 

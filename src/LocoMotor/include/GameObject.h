@@ -11,12 +11,6 @@
 #include "ComponentsFactory.h"
 #include <unordered_map>
 
-namespace OgreWrapper {
-	class Node;
-	class Renderer3D;
-}
-
-
 namespace LocoMotor {
 
 	class Scene;
@@ -25,7 +19,7 @@ namespace LocoMotor {
 	class MOTOR_API GameObject {
 	public:
 		/// @brief Constructor
-		GameObject(OgreWrapper::Node* node);
+		GameObject(const std::string& name);
 		/// @brief Destructor
 		virtual ~GameObject();
 		/// @brief Update the GameObject and all its components
@@ -94,9 +88,6 @@ namespace LocoMotor {
 		Transform* GetTransform();
 		/// @brief Gets the gameobject name
 		std::string GetName();
-		/// @brief Set the renderer of the GameObject
-		/// @param renderer The renderer to set
-		void SetRenderer(OgreWrapper::Node* node);
 		/// @brief Sets the scene where the gameobject is
 		void SetContext(Scene* scn);
 		/// @brief Returns the scene where the gameobject is
@@ -111,7 +102,7 @@ namespace LocoMotor {
 		std::unordered_map<std::string, Component*> _componentsByName;
 		Scene* _scene;
 		Transform* _transform;
-		OgreWrapper::Node* _node;
+		std::string _gobjName;
 	};
 }
 

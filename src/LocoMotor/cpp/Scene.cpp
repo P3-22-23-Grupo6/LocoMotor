@@ -99,7 +99,7 @@ GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
 		return _gameObjList[name];	
 	}
 	OgreWrapper::Node* newNode = _renderScn->CreateNode(name);
-	GameObject* newObj = new GameObject(newNode);
+	GameObject* newObj = new GameObject(name);
 	newObj->SetContext(this);
 	_gameObjList.insert({ name, newObj });
 	return newObj;
