@@ -96,8 +96,10 @@ void OgreWrapper::RenderScene::DestroyNode(std::string name) {
 	if (_sceneStructure.count(name) == 0 || name == "Root") {
 		std::cerr << "No node with the name " << name << " found\n";
 	}
-	_root->DestroyChild(_sceneStructure[name]);
-	_sceneStructure.erase(name);
+	else {
+		_root->DestroyChild(_sceneStructure[name]);
+		_sceneStructure.erase(name);
+	}
 }
 
 OgreWrapper::Canvas* OgreWrapper::RenderScene::GetCanvas() {

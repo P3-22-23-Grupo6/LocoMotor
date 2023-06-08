@@ -29,7 +29,7 @@ void LocoMotor::Transform::InitComponent() {
 
 void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>& params) {
 	gameObject->RegisterTransform(this);
-	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
+	
 	for (const auto& pair : params) {
 		if (pair.first == "pos" || pair.first == "position") {
 			unsigned char currAxis = 0;
@@ -70,7 +70,8 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 			if (currAxis == 2) {
 				result.SetZ(value);
 			}
-			SetLocalPosition(result);
+			_position = result;
+		
 		}
 		else if (pair.first == "rot" || pair.first == "rotation") {
 			unsigned char currAxis = 0;
@@ -111,7 +112,9 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 			if (currAxis == 2) {
 				result.SetZ(value);
 			}
-			SetLocalEulerRotation(result);
+			_direction = result.AsRotToQuaternion();
+			_direction.Normalize();
+			_directionEuler = result;
 		}
 		else if (pair.first == "size" || pair.first == "scale") {
 			unsigned char currAxis = 0;
@@ -152,12 +155,16 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 			if (currAxis == 2) {
 				result.SetZ(value);
 			}
-			SetLocalScale(result);
+			_scale = result;
 		}
 	}
 }
 
 void LocoMotor::Transform::Start() {
+	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
+	SetLocalPosition(_position);
+	SetLocalEulerRotation(_directionEuler);
+	SetLocalScale(_scale);
 }
 
 void LocoMotor::Transform::Update(const float dt) {
@@ -253,6 +260,7 @@ void LocoMotor::Transform::LookAt(const LMVector3& lookPos, const LMVector3& up)
 
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
 	_position = newPosition;
+	if(_gObjNode!=nullptr)
 	_gObjNode->SetPosition((float)newPosition.GetX(), (float) newPosition.GetY(), (float) newPosition.GetZ());
 }
 
@@ -261,6 +269,7 @@ void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
 	_direction = newRotation;
 	_direction.Normalize();
 	Ogre::Quaternion a = LmToOgre(newRotation);
+	if (_gObjNode != nullptr)
 	_gObjNode->SetOrientation(a);
 	_directionEuler = _direction.ToEuler();
 }
@@ -270,6 +279,7 @@ void LocoMotor::Transform::SetLocalEulerRotation(const LMVector3& newRotation) {
 	_direction = newRotation.AsRotToQuaternion();
 	_direction.Normalize();
 	Ogre::Quaternion a = LmToOgre(newRotation.AsRotToQuaternion());
+	if (_gObjNode != nullptr)
 	_gObjNode->SetOrientation(a);
 	_directionEuler = newRotation;
 }
@@ -277,6 +287,7 @@ void LocoMotor::Transform::SetLocalEulerRotation(const LMVector3& newRotation) {
 
 void LocoMotor::Transform::SetLocalScale(const LMVector3& newSize) {
 	_scale = newSize;
+	if (_gObjNode != nullptr)
 	_gObjNode->SetScale((float)newSize.GetX(), (float)newSize.GetY(), (float)newSize.GetZ());
 }
 

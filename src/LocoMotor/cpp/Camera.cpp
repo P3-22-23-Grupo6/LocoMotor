@@ -54,7 +54,9 @@ void LocoMotor::Camera::InitComponent() {
 	_scene = gameObject->GetScene();
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	OgreWrapper::Node* _node = _renderScn->GetNode(gameObject->GetName());
-
+	if (_node == nullptr) {
+		_node = _renderScn->CreateNode(gameObject->GetName());
+	}
 	//Crear camara
 	_cam = _renderScn->CreateCamera(gameObject->GetName());
 	_scene->SetSceneCam(_cam);

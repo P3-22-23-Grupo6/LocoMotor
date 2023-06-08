@@ -35,8 +35,15 @@ void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::str
 	//Crear particulas
 	_particleHelper = _renderScn->CreateParticleHelper(_name + "ParticleHelper", _filename);
 	//Attachear al nodo del gameObject
-	if (_particleHelper != nullptr)
-		_renderScn->GetNode(gameObject->GetName())->Attach(_particleHelper);
+	if (_particleHelper != nullptr) {
+		OgreWrapper::Node* node = _renderScn->GetNode(gameObject->GetName());
+		if (node == nullptr) {
+			node = _renderScn->CreateNode(gameObject->GetName());
+		}
+		else {
+			node->Attach(_particleHelper);
+		}
+	}
 	else {
 		LocoMotor::LogSystem::GetInstance()->Save(0, "Couldn't initialize ParticleSystem named '" + _name + "' with source '" + _filename + "'");
 	}

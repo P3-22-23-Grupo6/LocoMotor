@@ -59,7 +59,9 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 
 	_rndScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	_node = _rndScn->GetNode(gameObject->GetName());
-
+	if (_node == nullptr) {
+		_node = _rndScn->CreateNode(gameObject->GetName());
+	}
 	if (_src == "") {
 		LogSystem::GetInstance()->Save(0, "No mesh added for MeshRenderer in gameObject '" + gameObject->GetName() + "'");
 		return;
