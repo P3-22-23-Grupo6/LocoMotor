@@ -268,9 +268,10 @@ void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
 void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
 	_direction = newRotation;
 	_direction.Normalize();
-	Ogre::Quaternion a = LmToOgre(newRotation);
-	if (_gObjNode != nullptr)
-	_gObjNode->SetOrientation(a);
+	if (_gObjNode != nullptr) {
+		Ogre::Quaternion a = LmToOgre(newRotation);
+		_gObjNode->SetOrientation(a);
+	}
 	_directionEuler = _direction.ToEuler();
 }
 
@@ -278,9 +279,12 @@ void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
 void LocoMotor::Transform::SetLocalEulerRotation(const LMVector3& newRotation) {
 	_direction = newRotation.AsRotToQuaternion();
 	_direction.Normalize();
-	Ogre::Quaternion a = LmToOgre(newRotation.AsRotToQuaternion());
-	if (_gObjNode != nullptr)
-	_gObjNode->SetOrientation(a);
+	
+	if (_gObjNode != nullptr) {
+		Ogre::Quaternion a = LmToOgre(newRotation.AsRotToQuaternion());
+		_gObjNode->SetOrientation(a);
+	}
+	
 	_directionEuler = newRotation;
 }
 

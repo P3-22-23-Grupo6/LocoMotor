@@ -39,6 +39,7 @@ void LocoMotor::ParticleSystem::Init(std::vector<std::pair<std::string, std::str
 		OgreWrapper::Node* node = _renderScn->GetNode(gameObject->GetName());
 		if (node == nullptr) {
 			node = _renderScn->CreateNode(gameObject->GetName());
+			node->Attach(_particleHelper);
 		}
 		else {
 			node->Attach(_particleHelper);
