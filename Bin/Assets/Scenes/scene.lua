@@ -36,6 +36,24 @@ coche = {
         file = "Racers/JetEngine2"
     }
 }
+projectile={
+    Transform = {
+        position = "40 15 -100",
+        rotation = "0 0 0",
+        scale = "10 10 10"
+    },
+    MeshRenderer = {
+        file =  "Colibri.mesh"
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        friction = "0.0",
+        isTrigger = ""
+    },
+    Projectile = {
+        
+    }
+}
 raceManager = {
     Transform = {
         position = "0 0 0",
@@ -719,5 +737,5 @@ entities = { "coche", "mainCam", "raceManager",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
             "Area01_RoadWalls", "Area02_RoadWalls", "Area03_RoadWalls",
             "Main_Terrain", "Main_Water", "SkyboxMesh",
-            "EnemyCar01", "EnemyCar02", "EnemyCar03", "EnemyCar04"
+            "EnemyCar01", "EnemyCar02", "EnemyCar03", "EnemyCar04", "projectile"
         }
