@@ -51,7 +51,7 @@ projectile={
         isTrigger = ""
     },
     Projectile = {
-        
+        speed = "0.04"
     }
 }
 raceManager = {
