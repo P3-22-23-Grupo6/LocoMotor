@@ -43,7 +43,7 @@ projectile={
         scale = "10 10 10"
     },
     MeshRenderer = {
-        file =  "Colibri.mesh"
+        file =  "projectile.mesh"
     },
     RigidBodyComponent = {
         mass = 0,
