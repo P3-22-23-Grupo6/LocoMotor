@@ -36,6 +36,71 @@ coche = {
         file = "Racers/JetEngine2"
     }
 }
+
+Area01_Oil = {
+    Transform = {
+        position = "0 25 200",
+        rotation = "0 0 0",
+        scale = "5 5 5"
+    },
+    MeshRenderer = {
+        file =  "Torus.001.mesh",
+        
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = "",
+        isTrigger = ""
+    },
+    OilBlind = {
+        slippedtime = 3,
+    },
+    
+}
+
+Area02_Oil = {
+    Transform = {
+        position = "50 25 200",
+        rotation = "0 0 0",
+        scale = "5 5 5"
+    },
+    MeshRenderer = {
+        file =  "Torus.001.mesh",
+        
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = "",
+        isTrigger = ""
+    },
+    OilBlind = {
+        slippedtime = 3,
+    },
+    
+}
+
+Area03_Oil = {
+    Transform = {
+        position = "-850 5 400",
+        rotation = "0 0 0",
+        scale = "5 5 5"
+    },
+    MeshRenderer = {
+        file =  "Torus.001.mesh",
+        
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = "",
+        isTrigger = ""
+    },
+    OilBlind = {
+        slippedtime = 3,
+    },
+    
+}
+
+
 raceManager = {
     Transform = {
         position = "0 0 0",
@@ -259,6 +324,17 @@ do ---------------------   UI   ------------------------------
             bottomcolor = "1 1 1",
         }
     }
+
+    oilstain = {
+        UIImageLM = { 
+            posx = "0",
+            posy = "0",
+            sizex = "1",
+            sizey = "1",
+            img = "StainClear"
+        }
+    }
+    
 end ----------------------------------------------------------
 do ---------------------   AREA01   ------------------------------
     Area01_RoadMain = {
@@ -719,5 +795,6 @@ entities = { "coche", "mainCam", "raceManager",
             "Area04_Vegetation", "Area04_Extra", "Area04_Terrain", "Area05_Extra",
             "Area01_RoadWalls", "Area02_RoadWalls", "Area03_RoadWalls",
             "Main_Terrain", "Main_Water", "SkyboxMesh",
-            "EnemyCar01", "EnemyCar02", "EnemyCar03", "EnemyCar04"
+            "EnemyCar01", "EnemyCar02", "EnemyCar03", "EnemyCar04",
+            "Area01_Oil", "oilstain", "Area02_Oil","Area03_Oil"
         }
