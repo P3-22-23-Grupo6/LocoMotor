@@ -47,8 +47,7 @@ projectile={
     },
     RigidBodyComponent = {
         mass = 0,
-        friction = "0.0",
-        isTrigger = ""
+        friction = "0.0"
     },
     Projectile = {
         speed = "0.04"
