@@ -38,9 +38,9 @@ coche = {
 }
 projectile={
     Transform = {
-        position = "40 15 -100",
+        position = "40 -15 -100",
         rotation = "0 0 0",
-        scale = "10 10 10"
+        scale = "4 4 4"
     },
     MeshRenderer = {
         file =  "projectile.mesh"
@@ -675,7 +675,7 @@ EnemyCar02 = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "2",
+        enemySpeed = "3",
         StartSeparation = "10"
     },
     RigidBodyComponent = {
@@ -697,7 +697,7 @@ EnemyCar03 = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "2",
+        enemySpeed = "3",
         StartSeparation = "-40"
     },
     RigidBodyComponent = {
@@ -719,7 +719,7 @@ EnemyCar04 = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "2",
+        enemySpeed = "1",
         StartSeparation = "-70"
     },
     RigidBodyComponent = {
