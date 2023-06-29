@@ -85,10 +85,6 @@ namespace LocoMotor {
 
 		std::unordered_map<std::string, GameObject*> _gameObjList;
 
-		OgreWrapper::Node* _nod;
-
-		OgreWrapper::Node* _node;
-
 		GameObject* _camera_gObj;
 
 		bool _toDestroy = false;

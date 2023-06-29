@@ -25,7 +25,7 @@ Scene::~Scene() {
 	}
 	_renderScn = nullptr;
 	_cam = nullptr;
-	_nod = nullptr;
+	
 }
 
 
