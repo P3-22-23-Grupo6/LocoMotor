@@ -71,6 +71,7 @@ namespace LocoMotor {
 
 		GameObject* _target;
 		LMVector3 _offset;
+		LMVector3 _initialOffset;//Offset with the Player
 
 		std::string target = "";
 	};

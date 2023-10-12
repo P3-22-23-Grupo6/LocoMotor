@@ -17,6 +17,7 @@ LocoMotor::Camera::Camera()
 	_renderScn = nullptr;
 	_target = nullptr;
 	_offset = LMVector3(0, 0, 0);
+	_initialOffset = LMVector3(0, 0, 0);
 }
 
 
@@ -42,6 +43,9 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 		else if (param.first == "target") {
 			target = param.second;
 		}
+		else if (param.first == "initialOffset") {
+			_initialOffset = LMVector3(0, 2, 6);
+		}
 		else if (param.first == "main") {
 			gameObject->GetScene()->SetCamObj(gameObject);
 		}
@@ -62,14 +66,14 @@ void LocoMotor::Camera::InitComponent() {
 	_scene->SetSceneCam(_cam);
 	//Attachear al nodo del gameObject
 	_node->Attach(_cam);
-	SetClippingPlane(1, 15000);
+	SetClippingPlane(1, 1500);
 
 }
 
 void LocoMotor::Camera::Start() {
 	// Comprobar si hay asignado un target
 	if (gameObject->GetScene()->GetObjectByName(target) != nullptr)
-		SetTarget(gameObject->GetScene()->GetObjectByName(target), LMVector3(0, 15, 45));
+		SetTarget(gameObject->GetScene()->GetObjectByName(target), _initialOffset);
 }
 
 
