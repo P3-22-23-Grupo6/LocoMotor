@@ -78,7 +78,6 @@ void MotorApi::MainLoop() {
 			_exit = true;
 		}
 	}
-
 	while (!_exit) {
 
 		if (_scnManager->GetCurrentScene() == nullptr) {

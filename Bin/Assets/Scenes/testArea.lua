@@ -31,10 +31,6 @@ coche = {
     RigidBodyComponent = {
         mass = 1,
         friction = "0.0"
-    },
-    ParticleSystem = {
-        name = "exhaust",
-        file = "Racers/JetEngine2"
     }
 }
 test_Plane00 = {
@@ -51,4 +47,32 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
-entities = { "coche", "mainCam", "test_Plane00"}
+gizmo_Axis = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Gizmo_Axis.mesh"
+    }
+}
+velocityText = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    UITextLM = {
+        font =  "BrunoAce",
+        text = "0 km/h",
+        posx =  "0.1",
+        posy =  "0.75",
+        align = "center",
+        sizex = "0.02",
+        sizey = "0.02",
+        topcolor = "1 0 0",
+        bottomcolor = "1 0 0",
+    }
+}
+entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis"}

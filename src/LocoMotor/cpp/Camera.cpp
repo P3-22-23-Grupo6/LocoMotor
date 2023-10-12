@@ -44,7 +44,7 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 			target = param.second;
 		}
 		else if (param.first == "initialOffset") {
-			_initialOffset = LMVector3(0, 2, 6);
+			_initialOffset = LMVector3(0, 1, 8);
 		}
 		else if (param.first == "main") {
 			gameObject->GetScene()->SetCamObj(gameObject);
