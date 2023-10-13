@@ -5,6 +5,7 @@
 #include <OgreGpuProgramManager.h>
 #include <OgreShaderGenerator.h>
 #include <OgreOverlaySystem.h>
+//#include <OgreTrays.h>
 //SDL includes
 #include <SDL.h>
 #include <SDL_video.h>
@@ -16,13 +17,14 @@
 #include "SGTechniqueResolverListener.h"
 #include "OgreManager.h"
 
+
 using namespace LocoMotor;
 
 OgreWrapper::OgreManager* Singleton<OgreWrapper::OgreManager>::_instance = nullptr;
 
 OgreWrapper::OgreManager::OgreManager() {
 	_activeScene = nullptr;
-	_mShaderGenerator = nullptr;
+	_mShaderGenerator = nullptr;		
 	_root = nullptr;
 	_ovrSys = nullptr;
 }

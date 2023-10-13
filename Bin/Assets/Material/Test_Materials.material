@@ -5,11 +5,11 @@ material m_Test00 {
         pass {
             lighting off
             texture_unit {
-                texture t_Test00.png
+                texture Floor_t.PNG
                 tex_address_mode wrap
                 colour_op modulate
-                filtering none
-                mipmap_bias 5
+                filtering bilinear
+                mipmap_bias 1
             }
         }
     }

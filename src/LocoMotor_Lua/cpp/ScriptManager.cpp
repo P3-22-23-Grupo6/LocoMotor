@@ -74,7 +74,7 @@ ScriptManager::ScriptManager() {
 	_luaState = luaL_newstate();
 	_scMan = SceneManager::GetInstance();
 	luaL_openlibs(_luaState);
-}
+}	
 
 LocoMotor::ScriptManager::~ScriptManager()
 {

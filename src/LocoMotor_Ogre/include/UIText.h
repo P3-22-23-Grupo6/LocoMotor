@@ -26,7 +26,7 @@ namespace OgreWrapper {
 		/// @param height is the size the text will have
 		void SetHeight(double height);
 
-		/// @brief Sets the font the text will be using
+		/// @brief Sets the ç the text will be using
 		/// @param nfont is the name of the file
 		bool SetFont(std::string nfont);
 

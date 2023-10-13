@@ -75,4 +75,22 @@ velocityText = {
         bottomcolor = "1 0 0",
     }
 }
-entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis"}
+consoleDebug = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    UITextLM = {
+        font =  "BBB",
+        text = "Debug Console",
+        posx = "0",
+        posy = "0.2",
+        sizex = ".3",
+        sizey = ".1",
+        align = "center",
+        topcolor = "0.95 0.95 0",
+        bottomcolor = "0.12 0.91 0",
+    }
+}
+entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug"}
