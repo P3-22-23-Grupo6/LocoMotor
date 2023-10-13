@@ -29,6 +29,7 @@ namespace OgreWrapper {
 		/// @brief Sets the ç the text will be using
 		/// @param nfont is the name of the file
 		bool SetFont(std::string nfont);
+		void SetType(std::string nType);
 
 		/*
 											   |        <-----position/anchor
@@ -69,6 +70,7 @@ namespace OgreWrapper {
 	protected:
 		Ogre::TextAreaOverlayElement* _txtElem;
 		std::string _uFont;
+		std::string _uType;
 		std::string _uTxtName;
 
 	};

@@ -29,6 +29,8 @@ namespace LocoMotor {
 		/// @param x -> horizontal scale
 		/// @param y -> vertical scale
 		void SetSize(double x, double y);
+		//
+		void SetType(std::string newType);
 		/// @brief changes the text
 		/// @param newtext is the text is going to replace the previous one
 		void ChangeText(std::string newtxt);

@@ -10,8 +10,9 @@
 
 
 OgreWrapper::UIText::UIText() : UIElement() {
-	_uFont = "";
+	_uFont = "BerlinSans32";
 	_uTxtName = "New Text";
+	_uType = "t";
 }
 
 OgreWrapper::UIText::~UIText() {
@@ -27,7 +28,6 @@ bool OgreWrapper::UIText::Init(const std::string& sceneName) {
 		  _overlayMngr->createOverlayElement("TextArea", "UITextElem" + std::to_string(_numOfUIElements)));
 
 	_txtElem->setMetricsMode(Ogre::GMM_RELATIVE);
-
 	_txtElem->setCaption(_uTxtName);
 	_txtElem->setCharHeight(0.25);
 	_txtElem->setPosition(0.5, 0);
@@ -35,8 +35,13 @@ bool OgreWrapper::UIText::Init(const std::string& sceneName) {
 	_txtElem->setColourBottom(Ogre::ColourValue::Black);
 	_txtElem->setColourTop(Ogre::ColourValue::Black);
 	_txtElem->setAlignment(Ogre::TextAreaOverlayElement::Alignment::Center);
+	
 	_container->addChild(_txtElem);
 
+	/*Ogre::FontPtr tempFont = _txtElem->getFont();
+	if (tempFont != nullptr) {
+		_txtElem->getFont()->setType(Ogre::FT_IMAGE);
+	}*/
 	return false;
 }
 
@@ -45,11 +50,20 @@ void OgreWrapper::UIText::ChangeText(std::string newtxt) {
 }
 
 bool OgreWrapper::UIText::SetFont(std::string nfont) {
-	if (Ogre::FontManager::getSingletonPtr()->getByName(nfont)) {
+	
+	auto a = Ogre::FontManager::getSingletonPtr();
+	if (a->getByName(nfont)) {
 		_txtElem->setFontName(nfont);
+		if(_uType[0] == 'i') _txtElem->getFont()->setType(Ogre::FT_IMAGE);
+		else _txtElem->getFont()->setType(Ogre::FT_TRUETYPE);
 		return true;
 	}
 	return false;
+}
+
+void OgreWrapper::UIText::SetType(std::string nfont) {
+	_uType = nfont;
+	//_txtElem->getFont()->setType(Ogre::FT_IMAGE);
 }
 
 void OgreWrapper::UIText::AlignCenter() {

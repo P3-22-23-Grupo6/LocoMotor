@@ -35,7 +35,10 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 
 
 	for (int i = 0; i < params.size(); i++) {
-		if (params[i].first == "posx" || params[i].first == "positionx") {
+		if (params[i].first == "tp" || params[i].first == "type") {
+			SetType(params[i].second);
+		}
+		else if (params[i].first == "posx" || params[i].first == "positionx") {
 			double num = 0.;
 			try {
 				num = std::stod(params[i].second);
@@ -158,6 +161,7 @@ void LocoMotor::UITextLM::Init(std::vector<std::pair<std::string, std::string>>&
 			else if (params[i].second == "right")
 				AlignRight();
 		}
+		//SetType("A");
 	}
 }
 
@@ -172,6 +176,10 @@ void LocoMotor::UITextLM::SetSize(double x, double y) {
 	_sizeY = y;
 	SetTextHeight(y);
 	_uTxt->SetDimensions(x, y);
+}
+
+void LocoMotor::UITextLM::SetType(std::string newType) {
+	_uTxt->SetType(newType);
 }
 
 void LocoMotor::UITextLM::ChangeText(std::string newtxt) {

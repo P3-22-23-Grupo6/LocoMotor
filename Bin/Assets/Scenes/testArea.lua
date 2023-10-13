@@ -64,7 +64,8 @@ velocityText = {
         scale = "1 1 1"
     },
     UITextLM = {
-        font =  "BrunoAce",
+        type = "t",
+        font = "BrunoAce",
         text = "0 km/h",
         posx =  "0.1",
         posy =  "0.75",
@@ -82,8 +83,9 @@ consoleDebug = {
         scale = "1 1 1"
     },
     UITextLM = {
-        font =  "BBB",
-        text = "Debug Console",
+        type = "image",
+        font = "BerlinSans",
+        text = "AFAFGEG",
         posx = "0",
         posy = "0.2",
         sizex = ".3",
