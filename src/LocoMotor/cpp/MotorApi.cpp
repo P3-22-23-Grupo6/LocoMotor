@@ -78,8 +78,10 @@ void MotorApi::MainLoop() {
 			_exit = true;
 		}
 	}
-	while (!_exit) {
+	float tetas = 0.0f;
 
+	while (!_exit) {
+		tetas++;
 		if (_scnManager->GetCurrentScene() == nullptr) {
 			LogSystem::GetInstance()->Save(0, "No scene has been loaded. Exiting now");
 			break;
@@ -93,6 +95,10 @@ void MotorApi::MainLoop() {
 			break;
 
 		_scnManager->Update();
+		//if (tetas < 2) {
+		//	//_scnManager->GetCurrentScene()->AddGameobject("TETAS");
+		//	std::cout << tetas << "\n";
+		//}
 	}
 
 	SceneManager::Clear();

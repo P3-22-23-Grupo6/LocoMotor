@@ -19,7 +19,7 @@ namespace LocoMotor {
 	class GameObject;
 	class MOTOR_API Scene {
 	public:
-
+		float tetas;
 		Scene(std::string name);
 		~Scene();
 		/// @brief Initializes components for all game objects in the scene and sets the scene as active.
@@ -49,6 +49,10 @@ namespace LocoMotor {
 		/// @param name A string representing the name of the GameObject to be added to the Scene.
 		/// @return the pointer of the new GameObject.
 		GameObject* AddGameobject(std::string name);
+		/// @brief Adds a new game object *during gameplay* to the scene or returns an existing one with the same name.
+		/// @param name A string representing the name of the GameObject to be added to the Scene.
+		/// @return the pointer of the new GameObject.
+		GameObject* AddGameobjectRuntime(std::string name);
 		/// @brief Removes the selected GameObject from the list
 		/// @param name The name of the Object to remove
 		void RemoveGameobject(std::string name);

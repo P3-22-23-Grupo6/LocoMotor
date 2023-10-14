@@ -15,7 +15,7 @@ using namespace LocoMotor;
 Scene::Scene(std::string name) {
 	_name = name;
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->CreateScene(_name);
-
+	tetas = 0.0f;
 }
 
 Scene::~Scene() {
@@ -34,18 +34,27 @@ void Scene::Start() {
 	for (auto& obj : _gameObjList) {
 		obj.second->StartComp();
 	}
-
+	tetas = 0.0f;
 	_isActiveScene = true;
 }
 
 
 void Scene::Update(float dt) {
+	tetas++;
 	//si no esta activa que no haga nada
 	if (!_isActiveScene) {
 		return;
 	}
 	for (auto& obj : _gameObjList) {
 		obj.second->Update(dt);
+	}
+	if (tetas < 2) {
+		GameObject* tetasObj = AddGameobject("TETAS");
+		tetasObj->AddComponent("Transform");
+		tetasObj->AddComponent("MeshRenderer");
+		tetasObj->SetScale(LMVector3(10, 10, 10));
+		tetasObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
+		std::cout << "TETAS: " << tetas << "\n";
 	}
 }
 
@@ -97,6 +106,18 @@ GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
 		std::cerr << "Ya existe un objeto con el nombre " << name << " se retornara" << std::endl;
 	#endif // DEBUG
 		return _gameObjList[name];	
+	}
+	GameObject* newObj = new GameObject(name);
+	newObj->SetContext(this);
+	_gameObjList.insert({ name, newObj });
+	return newObj;
+}
+GameObject* LocoMotor::Scene::AddGameobjectRuntime(std::string name) {
+	if (_gameObjList.count(name) > 0) {
+	#ifdef DEBUG
+		std::cerr << "Ya existe un objeto con el nombre " << name << " se retornara" << std::endl;
+	#endif // DEBUG
+		return _gameObjList[name];
 	}
 	GameObject* newObj = new GameObject(name);
 	newObj->SetContext(this);

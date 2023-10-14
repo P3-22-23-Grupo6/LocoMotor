@@ -47,16 +47,6 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
-gizmo_Axis = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "Gizmo_Axis.mesh"
-    }
-}
 velocityText = {
     Transform = {
         position = "0 0 0",
@@ -76,23 +66,5 @@ velocityText = {
         bottomcolor = "1 0 0",
     }
 }
-consoleDebug = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    UITextLM = {
-        type = "image",
-        font = "BerlinSans",
-        text = "AFAFGEG",
-        posx = "0",
-        posy = "0.2",
-        sizex = ".3",
-        sizey = ".1",
-        align = "center",
-        topcolor = "0.95 0.95 0",
-        bottomcolor = "0.12 0.91 0",
-    }
-}
+
 entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug"}
