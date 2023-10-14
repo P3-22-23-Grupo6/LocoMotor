@@ -48,6 +48,10 @@ namespace LocoMotor {
 		/// @return  a pointer to the currently active scene in the `LocoMotor` game engine's `SceneManager`.
 		Scene* GetCurrentScene();
 
+		/// @brief Adds an returns an object to the current Scene on runtime
+		/// @return  a pointer to the object created
+		/// @param name of object
+		GameObject* AddObjectRuntime(std::string objectName);
 
 		/// @brief updates and renders the active scene in the LocoMotor game engine's SceneManager class.
 		void Update();

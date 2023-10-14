@@ -15,12 +15,14 @@ using namespace LocoMotor;
 Scene::Scene(std::string name) {
 	_name = name;
 	_renderScn = OgreWrapper::OgreManager::GetInstance()->CreateScene(_name);
-	tetas = 0.0f;
 }
 
 Scene::~Scene() {
 	std::unordered_map<std::string, GameObject*>::const_iterator it;
 	for (it = _gameObjList.cbegin(); it != _gameObjList.end(); it = _gameObjList.erase(it)) {
+		delete it->second;
+	}
+	for (it = _gameObjBufferList.cbegin(); it != _gameObjBufferList.end(); it = _gameObjBufferList.erase(it)) {
 		delete it->second;
 	}
 	_renderScn = nullptr;
@@ -34,13 +36,11 @@ void Scene::Start() {
 	for (auto& obj : _gameObjList) {
 		obj.second->StartComp();
 	}
-	tetas = 0.0f;
 	_isActiveScene = true;
 }
 
 
 void Scene::Update(float dt) {
-	tetas++;
 	//si no esta activa que no haga nada
 	if (!_isActiveScene) {
 		return;
@@ -48,14 +48,11 @@ void Scene::Update(float dt) {
 	for (auto& obj : _gameObjList) {
 		obj.second->Update(dt);
 	}
-	if (tetas < 2) {
-		GameObject* tetasObj = AddGameobject("TETAS");
-		tetasObj->AddComponent("Transform");
-		tetasObj->AddComponent("MeshRenderer");
-		tetasObj->SetScale(LMVector3(10, 10, 10));
-		tetasObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
-		std::cout << "TETAS: " << tetas << "\n";
+	//End of loop, once all objects are Updated, add buffered objects
+	for (auto& obj : _gameObjBufferList) {
+		_gameObjList.insert(obj);
 	}
+	_gameObjBufferList.clear();
 }
 
 void Scene::Render() {
@@ -119,9 +116,15 @@ GameObject* LocoMotor::Scene::AddGameobjectRuntime(std::string name) {
 	#endif // DEBUG
 		return _gameObjList[name];
 	}
+	if (_gameObjBufferList.count(name) > 0) {
+	#ifdef DEBUG
+		std::cerr << "Ya existe un objeto con el nombre " << name << " se retornara" << std::endl;
+	#endif // DEBUG
+		return _gameObjBufferList[name];
+	}
 	GameObject* newObj = new GameObject(name);
 	newObj->SetContext(this);
-	_gameObjList.insert({ name, newObj });
+	_gameObjBufferList.insert({ name, newObj });
 	return newObj;
 }
 

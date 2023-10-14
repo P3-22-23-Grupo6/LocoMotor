@@ -95,6 +95,10 @@ Scene* LocoMotor::SceneManager::GetCurrentScene()
 {
 	return _activeScene;
 }
+GameObject* LocoMotor::SceneManager::AddObjectRuntime(std::string objectName)
+{
+	return _activeScene->AddGameobjectRuntime(objectName);
+}
 
 
 void LocoMotor::SceneManager::Update() {
@@ -102,7 +106,6 @@ void LocoMotor::SceneManager::Update() {
 	_actTime = SDL_GetTicks();
 	_deltaTime = (float)_actTime - (float)_lastTime;
 	_lastTime = _actTime;
-
 	if (_deltaTime <= 0) _deltaTime = 0.001f;
 
 	Scene* sc = _activeScene;

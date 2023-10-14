@@ -78,10 +78,10 @@ void MotorApi::MainLoop() {
 			_exit = true;
 		}
 	}
-	float tetas = 0.0f;
+	float counter = 0.0f;
 
 	while (!_exit) {
-		tetas++;
+		counter++;
 		if (_scnManager->GetCurrentScene() == nullptr) {
 			LogSystem::GetInstance()->Save(0, "No scene has been loaded. Exiting now");
 			break;
@@ -95,10 +95,13 @@ void MotorApi::MainLoop() {
 			break;
 
 		_scnManager->Update();
-		//if (tetas < 2) {
-		//	//_scnManager->GetCurrentScene()->AddGameobject("TETAS");
-		//	std::cout << tetas << "\n";
-		//}
+		if (counter < 2) {
+			GameObject* gizmoObj = _scnManager->AddObjectRuntime("GIZMO");
+			gizmoObj->AddComponent("Transform");
+			gizmoObj->AddComponent("MeshRenderer");
+			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
+			gizmoObj->GetTransform()->SetPosition(LMVector3(5,5,5));
+		}
 	}
 
 	SceneManager::Clear();

@@ -19,7 +19,6 @@ namespace LocoMotor {
 	class GameObject;
 	class MOTOR_API Scene {
 	public:
-		float tetas;
 		Scene(std::string name);
 		~Scene();
 		/// @brief Initializes components for all game objects in the scene and sets the scene as active.
@@ -88,6 +87,7 @@ namespace LocoMotor {
 		OgreWrapper::RenderScene* _renderScn;
 
 		std::unordered_map<std::string, GameObject*> _gameObjList;
+		std::unordered_map<std::string, GameObject*> _gameObjBufferList;
 
 		GameObject* _camera_gObj;
 
