@@ -18,7 +18,6 @@ namespace LocoMotor {
 		friend Singleton<SceneManager>;
 
 	public:
-
 		/// @brief Create a new scene.
 		/// @param name A string parameter that represents the name of the scene that is being
 		/// created.

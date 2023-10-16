@@ -24,6 +24,7 @@ LocoMotor::Transform::~Transform() {
 void LocoMotor::Transform::InitComponent() {
 	gameObject->RegisterTransform(this);
 	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
+	_gObjNode->CreateChild("A");
 }
 
 
