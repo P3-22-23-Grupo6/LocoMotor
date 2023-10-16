@@ -160,6 +160,14 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 	}
 }
 
+void LocoMotor::Transform::InitRuntime(LMVector3 initPos, LMVector3 initRot, LMVector3 initScale) {
+	gameObject->RegisterTransform(this);
+
+	_position = initPos;
+	_directionEuler = initRot;
+	_scale = initScale;
+}
+
 void LocoMotor::Transform::Start() {
 	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
 	SetLocalPosition(_position);

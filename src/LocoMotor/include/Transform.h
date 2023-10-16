@@ -29,6 +29,7 @@ namespace LocoMotor {
 		/// a string representing the value of that parameter.The function uses these parameters to initialize
 		/// the position, rotation, and scale of a transform component.
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
+		void InitRuntime(LMVector3 initPos = LMVector3(0, 0, 0), LMVector3 initRot = LMVector3(0, 0, 0), LMVector3 initScale = LMVector3(1, 1, 1));
 		void Start() override;
 		/// @brief Updates the source's position and velocity in the world
 		/// @param dt DeltaTime used to calculate the velocity by comparing last position

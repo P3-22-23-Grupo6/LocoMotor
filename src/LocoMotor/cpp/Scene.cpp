@@ -110,21 +110,15 @@ GameObject* LocoMotor::Scene::AddGameobject(std::string name) {
 	return newObj;
 }
 GameObject* LocoMotor::Scene::AddGameobjectRuntime(std::string name) {
-	if (_gameObjList.count(name) > 0) {
-	#ifdef DEBUG
-		std::cerr << "Ya existe un objeto con el nombre " << name << " se retornara" << std::endl;
-	#endif // DEBUG
-		return _gameObjList[name];
-	}
-	if (_gameObjBufferList.count(name) > 0) {
-	#ifdef DEBUG
-		std::cerr << "Ya existe un objeto con el nombre " << name << " se retornara" << std::endl;
-	#endif // DEBUG
-		return _gameObjBufferList[name];
-	}
+	//Return already existing gameObject
+	if (_gameObjList.count(name) > 0 ) return _gameObjList[name];
+	if (_gameObjBufferList.count(name) > 0) return _gameObjBufferList[name];
+	
+	//Create new Object, add to bufferList first
 	GameObject* newObj = new GameObject(name);
 	newObj->SetContext(this);
 	_gameObjBufferList.insert({ name, newObj });
+	
 	return newObj;
 }
 

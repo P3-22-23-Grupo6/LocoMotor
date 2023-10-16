@@ -99,6 +99,8 @@ void MotorApi::MainLoop() {
 			GameObject* gizmoObj = _scnManager->AddObjectRuntime("GIZMO");
 			gizmoObj->AddComponent("Transform");
 			gizmoObj->AddComponent("MeshRenderer");
+			gizmoObj->GetComponent<Transform>()->InitComponent();
+			gizmoObj->GetComponent<Transform>()->InitRuntime(LMVector3(0,5,0));
 			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
 			gizmoObj->GetTransform()->SetPosition(LMVector3(5,5,5));
 		}
