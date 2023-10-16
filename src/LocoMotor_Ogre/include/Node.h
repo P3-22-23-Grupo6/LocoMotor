@@ -105,6 +105,8 @@ namespace OgreWrapper {
 		/// @brief Sets the node orientation
 		void SetOrientation(Ogre::Quaternion& q);
 		/// @brief Creates a child in the node
+		void AddChild(OgreWrapper::Node* nodeToAdd);
+		/// @brief Creates a child in the node
 		Node* CreateChild(const std::string& name);
 		/// @brief Destroy the node child
 		void DestroyChild(OgreWrapper::Node* nod);

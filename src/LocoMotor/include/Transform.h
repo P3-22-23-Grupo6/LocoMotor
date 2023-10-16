@@ -77,6 +77,9 @@ namespace LocoMotor {
 		/// the world space.This is used to ensure that the object being transformed maintains a consistent
 		/// orientation, even if it is rotated.
 		void LookAt(const LMVector3& lookPos, const LMVector3& up);
+		/// @brief Sets the forward and upward vectors of a transform to look at a specified position with
+		void AddChild(OgreWrapper::Node* nodeToAdd);
+		OgreWrapper::Node* GetNode();
 
 	private:
 
@@ -116,10 +119,7 @@ namespace LocoMotor {
 		/// @param newsize 
 		void SetPhysScale(const LMVector3& newsize);
 
-
-
 		OgreWrapper::Node* _gObjNode;
-
 	};
 }
 

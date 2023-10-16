@@ -24,7 +24,6 @@ LocoMotor::Transform::~Transform() {
 void LocoMotor::Transform::InitComponent() {
 	gameObject->RegisterTransform(this);
 	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
-	_gObjNode->CreateChild("A");
 }
 
 
@@ -266,6 +265,14 @@ void LocoMotor::Transform::LookAt(const LMVector3& lookPos, const LMVector3& up)
 	SetForward(newForward);
 }
 
+void LocoMotor::Transform::AddChild(OgreWrapper::Node* nodeToAdd){
+	_gObjNode->AddChild(nodeToAdd);
+}
+
+OgreWrapper::Node* LocoMotor::Transform::GetNode() {
+	return _gObjNode;
+}
+
 
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
 	_position = newPosition;
@@ -331,5 +338,3 @@ void LocoMotor::Transform::SetPhysEulerRotation(const LMVector3& newRotation) {
 
 void LocoMotor::Transform::SetPhysScale(const LMVector3& newsize) {
 }
-
-

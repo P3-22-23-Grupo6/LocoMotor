@@ -51,6 +51,10 @@ void OgreWrapper::Node::Attach(OgreWrapper::RenderEntity* obj) {
 	_ent.push_back(obj);
 }
 
+void OgreWrapper::Node::AddChild(OgreWrapper::Node* nodeToAdd) {
+	//_node->addChild(nodeToAdd._node);
+}
+
 OgreWrapper::Node* OgreWrapper::Node::CreateChild(const std::string& name) {
 	Node* child = new Node(_node->createChildSceneNode(), name);
 	return child;

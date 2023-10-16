@@ -95,6 +95,13 @@ void MotorApi::MainLoop() {
 			break;
 
 		_scnManager->Update();
+
+		////Gizmo Parent for child Testing
+		//GameObject* gizmoParent = _scnManager->AddObjectRuntime("gizmoParent");
+		//gizmoParent->AddComponent("Transform");
+		//gizmoParent->GetComponent<Transform>()->InitRuntime();
+		//gizmoParent->GetTransform()->Start();
+
 		if (counter < 40) {
 			std::string gizmoName = "Gizmo" + std::to_string(counter);
 			GameObject* gizmoObj = _scnManager->AddObjectRuntime(gizmoName);
@@ -103,6 +110,7 @@ void MotorApi::MainLoop() {
 			gizmoObj->GetComponent<Transform>()->InitRuntime(LMVector3(0, counter * 0.25f, 0), LMVector3(0, 10 *counter, 0));
 			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
 			gizmoObj->GetTransform()->Start();
+			//gizmoParent->GetTransform()->AddChild(gizmoObj->GetTransform()->GetNode());
 		}
 	}
 	SceneManager::Clear();
