@@ -79,7 +79,11 @@ void MotorApi::MainLoop() {
 		}
 	}
 	float counter = 0.0f;
-
+	//Gizmo Parent for child Testing
+	GameObject* gizmoParent = _scnManager->AddObjectRuntime("gizmoParent");
+	gizmoParent->AddComponent("Transform");
+	gizmoParent->GetComponent<Transform>()->InitRuntime();
+	gizmoParent->GetTransform()->Start();
 	while (!_exit) {
 		counter++;
 		if (_scnManager->GetCurrentScene() == nullptr) {
@@ -96,22 +100,19 @@ void MotorApi::MainLoop() {
 
 		_scnManager->Update();
 
-		////Gizmo Parent for child Testing
-		//GameObject* gizmoParent = _scnManager->AddObjectRuntime("gizmoParent");
-		//gizmoParent->AddComponent("Transform");
-		//gizmoParent->GetComponent<Transform>()->InitRuntime();
-		//gizmoParent->GetTransform()->Start();
+		
 
 		if (counter < 40) {
-			std::string gizmoName = "Gizmo" + std::to_string(counter);
+			std::string gizmoName = "Gizmo" + std::to_string((int)counter);
 			GameObject* gizmoObj = _scnManager->AddObjectRuntime(gizmoName);
 			gizmoObj->AddComponent("Transform");
 			gizmoObj->AddComponent("MeshRenderer");
 			gizmoObj->GetComponent<Transform>()->InitRuntime(LMVector3(0, counter * 0.25f, 0), LMVector3(0, 10 *counter, 0));
 			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
 			gizmoObj->GetTransform()->Start();
-			//gizmoParent->GetTransform()->AddChild(gizmoObj->GetTransform()->GetNode());
+			gizmoParent->GetTransform()->AddChild(gizmoObj->GetTransform()->GetNode());
 		}
+		gizmoParent->GetTransform()->SetPosition(LMVector3(0,20,0));
 	}
 	SceneManager::Clear();
 	PhysicsManager::Clear();

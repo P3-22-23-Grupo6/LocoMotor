@@ -266,7 +266,10 @@ void LocoMotor::Transform::LookAt(const LMVector3& lookPos, const LMVector3& up)
 }
 
 void LocoMotor::Transform::AddChild(OgreWrapper::Node* nodeToAdd){
-	_gObjNode->AddChild(nodeToAdd);
+	if (OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName() )){
+		_gObjNode->AddChild(nodeToAdd);
+	}
+	
 }
 
 OgreWrapper::Node* LocoMotor::Transform::GetNode() {
