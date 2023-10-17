@@ -117,6 +117,7 @@ GameObject* LocoMotor::Scene::AddGameobjectRuntime(std::string name) {
 	//Create new Object, add to bufferList first
 	GameObject* newObj = new GameObject(name);
 	newObj->SetContext(this);
+	newObj->AddComponent("Transform");
 	_gameObjBufferList.insert({ name, newObj });
 	
 	return newObj;

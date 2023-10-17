@@ -34,12 +34,18 @@ namespace LocoMotor {
 		/// @brief Updates the source's position and velocity in the world
 		/// @param dt DeltaTime used to calculate the velocity by comparing last position
 		void Update(const float dt) override;
-		/// @brief  Returns the local position of the LocoMotor object.
+		/// @brief  Returns the World position of the LocoMotor object.
 		/// @return vector
 		const LMVector3& GetPosition();
-		/// @brief Sets the position of the LocoMotor object.
+		/// @brief  Returns the World position of the LocoMotor object.
+		/// @return vector
+		const LMVector3& GetLocalPosition();
+		/// @brief Sets the world position of the LocoMotor object.
 		/// @param newPosition The new position 
 		void SetPosition(const LMVector3& newPosition);
+		/// @brief Sets the local position of the LocoMotor object.
+		/// @param newLocalPosition The new local position 
+		void SetLocalPosition(const LMVector3& newLocalPosition);
 		/// @brief Returns the rotation of the LocoMotor object.
 		/// @return quaterinion
 		const LMQuaternion& GetRotation();
@@ -77,35 +83,27 @@ namespace LocoMotor {
 		/// the world space.This is used to ensure that the object being transformed maintains a consistent
 		/// orientation, even if it is rotated.
 		void LookAt(const LMVector3& lookPos, const LMVector3& up);
-		/// @brief Sets the forward and upward vectors of a transform to look at a specified position with
-		void AddChild(OgreWrapper::Node* nodeToAdd);
-		OgreWrapper::Node* GetNode();
+
+		//CHILDREN
+		Transform* parent;
+		std::vector<Transform*> childList;
+		/// @brief Adds a Transform as a child; it will inherit t/r/s from this transform
+		/// @param trToAdd transform to add as a child
+		/// @param resetLocal to set the child position same as parent(local = 0,0,0); false by default
+		void AddChild(Transform* trToAdd, bool resetLocal = false);
+		/// @brief Removes a child Transform
+		void RemoveChild(Transform* trToRemove);
+		//Sets a transform as a parent of this Transform
+		void SetParent(Transform* trParent);
 
 	private:
 
 		LMVector3 _position;
+		LMVector3 _localPosition;
 		LMVector3 _scale;
 		LMVector3 _directionEuler;
 		LMQuaternion _direction;
 
-		/// @brief Sets the local position of a transform.
-		/// @param newPosition newPosition is a constant reference to an LMVector3 object, which represents the
-		/// new local position that we want to set for the LocoMotor object.
-		void SetLocalPosition(const LMVector3& newPosition);
-		/// @brief Sets the local rotation of a LocoMotor object.
-		/// @param newRotation A LMQuaternion object representing the new rotation to be set for the LocoMotor's
-		/// Transform.
-		void SetLocalRotation(const LMQuaternion& newRotation);
-		/// @brief Sets the local Euler rotation of a LocoMotor object.
-		/// @param newRotation A LMVector3 object representing the new rotation to be set in local Euler angles. 
-		void SetLocalEulerRotation(const LMVector3& newRotation);
-		/// @brief Sets the local scale of a transform.
-		/// @param newSize Is a reference to an LMVector3 object, which represents the new scale of the
-		/// object.It contains three float values representing the new scale along the x, y, and z axes.
-		void SetLocalScale(const LMVector3& newSize);
-		/// @brief Sets the physical position of a game object with a rigid body component.
-		/// @param newPosition  A constant reference to an LMVector3 object representing the new physical
-		/// position to set for the LocoMotor object.
 		void SetPhysPosition(const LMVector3& newPosition);
 		/// @brief Sets the physical rotation of a game object with a rigid body component.
 		/// @param newRotation The new rotation that the function is setting for the physics object. It is of
