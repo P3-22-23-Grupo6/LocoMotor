@@ -60,6 +60,9 @@ namespace OgreWrapper {
 		int GetWindowHeight();
 		/// @brief Returns the render window width
 		int GetWindowWidth();
+
+		//Material Manipulation
+		void FadeMaterial(std::string materialName);
 	protected:
 		Ogre::Root* _root;
 		NativeWindowPair _mWindow;

@@ -32,7 +32,7 @@ namespace LocoMotor {
 		/// function loops through each pair and checks the key to determine which member variable of the
 		/// MeshRenderer class to set with the
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
-		void InitRuntime(std::string meshSource);
+		void InitRuntime(std::string meshSource, std::string materialName = "");
 
 		void InitComponent() override;
 

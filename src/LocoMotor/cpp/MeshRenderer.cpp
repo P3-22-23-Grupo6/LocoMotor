@@ -68,7 +68,10 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 	}
 
 	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _node) : _rndScn->CreateRenderer(_src);
-	if (_rend3D != nullptr) {
+	if (_mat != "") _rend3D->SetMaterial(_mat);
+	if (_rend3D != nullptr) 
+	{
+		//OgreWrapper::OgreManager::GetInstance()->FadeMaterial("FalconMat");
 		_node->Attach(_rend3D);
 		if (!visible)
 			_rend3D->SetVisible(false);
@@ -77,9 +80,10 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 		LogSystem::GetInstance()->Save(0, "Couldn't load mesh of name '" + _name + "' with filename '" + _src);
 	}
 }
-void LocoMotor::MeshRenderer::InitRuntime(std::string meshSource) {
+void LocoMotor::MeshRenderer::InitRuntime(std::string meshSource, std::string materialName) {
 	bool visible = true;
 	_src = meshSource;
+	_mat = materialName;
 
 	_rndScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	_node = _rndScn->GetNode(gameObject->GetName());
@@ -92,7 +96,8 @@ void LocoMotor::MeshRenderer::InitRuntime(std::string meshSource) {
 	}
 
 	_rend3D = _isStatic ? _rndScn->CreateStaticRenderer(_src, _node) : _rndScn->CreateRenderer(_src);
-	if (_rend3D != nullptr) {
+	if(materialName != "") _rend3D->SetMaterial(materialName);
+	if (_rend3D != nullptr ) {
 		_node->Attach(_rend3D);
 		if (!visible)
 			_rend3D->SetVisible(false);

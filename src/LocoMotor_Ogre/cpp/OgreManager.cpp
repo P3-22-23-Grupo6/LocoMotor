@@ -199,6 +199,10 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow(std::string n
 	return _mWindow;
 }
 
+void OgreWrapper::OgreManager::FadeMaterial(std::string materialName) {
+	//Ogre::MaterialPtr ptr = Ogre::MaterialManager::getSingleton().load("MaterialName", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+	//ptr->setDiffuse(Ogre::ColourValue(1,0,0,1));
+}
 
 void OgreWrapper::OgreManager::Shutdown() {
 
