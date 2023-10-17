@@ -85,7 +85,7 @@ namespace LocoMotor {
 		void LookAt(const LMVector3& lookPos, const LMVector3& up);
 
 		//CHILDREN
-		Transform* parent;
+		
 		std::vector<Transform*> childList;
 		/// @brief Adds a Transform as a child; it will inherit t/r/s from this transform
 		/// @param trToAdd transform to add as a child
@@ -95,6 +95,7 @@ namespace LocoMotor {
 		void RemoveChild(Transform* trToRemove);
 		//Sets a transform as a parent of this Transform
 		void SetParent(Transform* trParent);
+		const Transform* GetParent();
 
 	private:
 
@@ -103,7 +104,7 @@ namespace LocoMotor {
 		LMVector3 _scale;
 		LMVector3 _directionEuler;
 		LMQuaternion _direction;
-
+		Transform* parent;
 		void SetPhysPosition(const LMVector3& newPosition);
 		/// @brief Sets the physical rotation of a game object with a rigid body component.
 		/// @param newRotation The new rotation that the function is setting for the physics object. It is of

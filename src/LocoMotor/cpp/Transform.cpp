@@ -199,15 +199,14 @@ void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
 
 	//Sets Position of Rigidbody
 	SetPhysPosition(newPosition);
-
 	////Sets Position of everychild
 	if (childList.size() > 0) {
 		for (auto a : childList){
-			a->SetPosition(a->GetLocalPosition() + a->parent->GetPosition());
+			a->SetPosition(a->_localPosition + a->parent->GetPosition());
+			if(a->parent != nullptr) a->_localPosition = a->_position - a->parent->GetPosition();
 		}
 	}
 	//If has a Parent, recalculate LocalPosition
-	if(parent != nullptr) _localPosition = _position - parent->GetPosition();
 }
 
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newLocalPosition) {
@@ -325,44 +324,9 @@ void LocoMotor::Transform::SetParent(Transform* trParent) {
 	_localPosition = _position - parent->GetPosition();
 	std::cout << "\nObjecto: " << this->gameObject->GetName() << " tiene Local a: " << _localPosition.ToString()<<"\n";
 }
-//
-//void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
-//	_position = newPosition;
-//	if (_gObjNode != nullptr)
-//		_gObjNode->SetPosition((float) newPosition.GetX(), (float) newPosition.GetY(), (float) newPosition.GetZ());
-//}
-//
-//
-//void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
-//	_direction = newRotation;
-//	_direction.Normalize();
-//	if (_gObjNode != nullptr) {
-//		Ogre::Quaternion a = LmToOgre(newRotation);
-//		_gObjNode->SetOrientation(a);
-//	}
-//	_directionEuler = _direction.ToEuler();
-//}
-//
-//
-//void LocoMotor::Transform::SetLocalEulerRotation(const LMVector3& newRotation) {
-//	_direction = newRotation.AsRotToQuaternion();
-//	_direction.Normalize();
-//	
-//	if (_gObjNode != nullptr) {
-//		Ogre::Quaternion a = LmToOgre(newRotation.AsRotToQuaternion());
-//		_gObjNode->SetOrientation(a);
-//	}
-//	
-//	_directionEuler = newRotation;
-//}
-//
-//
-//void LocoMotor::Transform::SetLocalScale(const LMVector3& newSize) {
-//	_scale = newSize;
-//	if (_gObjNode != nullptr)
-//	_gObjNode->SetScale((float)newSize.GetX(), (float)newSize.GetY(), (float)newSize.GetZ());
-//}
-
+const LocoMotor::Transform* LocoMotor::Transform::GetParent() {
+	return parent;
+}
 
 void LocoMotor::Transform::SetPhysPosition(const LMVector3& newPosition) {
 	RigidBody* rb = gameObject->GetComponent<RigidBody>();

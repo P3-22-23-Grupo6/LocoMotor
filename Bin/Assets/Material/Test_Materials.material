@@ -20,6 +20,7 @@ material m_Falcon {
     technique {
         pass {
             lighting off
+            //polygon_mode wireframe
             texture_unit {
                 texture Falcon_Atlas_t.png
                 tex_address_mode wrap

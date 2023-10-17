@@ -102,17 +102,17 @@ void MotorApi::MainLoop() {
 
 		_scnManager->Update();
 
-		if (counter < 4) {
+		if (counter < 2) {
 			std::string gizmoName = "Gizmo" + std::to_string((int)counter);
 			GameObject* gizmoObj = _scnManager->AddObjectRuntime(gizmoName);
 			gizmoObj->AddComponent("Transform");
 			gizmoObj->AddComponent("MeshRenderer");
-			gizmoObj->GetComponent<Transform>()->InitRuntime(LMVector3(0, 1 + counter * 0.25f, 0), LMVector3(0, 60 * counter, 0));
+			gizmoObj->GetComponent<Transform>()->InitRuntime(LMVector3(0, 0, 0), LMVector3(0, 180, 0));
 			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
 			gizmoObj->GetTransform()->Start();
 			gizmoParent->GetTransform()->AddChild(gizmoObj->GetTransform());
 		}
-		gizmoParent->GetTransform()->SetPosition(LMVector3(4,counter * 0.005f,-4));
+		gizmoParent->GetTransform()->SetPosition(LMVector3(4,2,-4));
 	}
 	SceneManager::Clear();
 	PhysicsManager::Clear();

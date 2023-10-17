@@ -40,7 +40,8 @@ test_Plane00 = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "test_Plane00.mesh"
+        file =  "test_Plane00.mesh",
+        static = "true"
     },
     RigidBodyComponent = {
         mass = 0,

@@ -16,6 +16,9 @@ PhysicsManager::PhysicsManager() {
 	_dynamicWorld = new btDiscreteDynamicsWorld(_dispatcher, _overlappingPairCache, _solver, _collisionConfiguration);
 	//Set default gravity
 	_dynamicWorld->setGravity(btVector3(0, -98, 0));
+	//btIDebugDraw* a;
+	//a->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
+	//_dynamicWorld->setDebugDrawer(a);
 }
 
 PhysicsManager::~PhysicsManager() {
