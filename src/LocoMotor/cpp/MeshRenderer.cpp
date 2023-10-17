@@ -116,10 +116,9 @@ OgreWrapper::Renderer3D* LocoMotor::MeshRenderer::GetRenderer() {
 	return _rend3D;
 }
 
-void LocoMotor::MeshRenderer::Rotate(LMVector3 newRotation) {
-	_node->Rotate((float) newRotation.GetX(), (float) newRotation.GetY(), (float) newRotation.GetZ());
+void LocoMotor::MeshRenderer::ChangeMaterial(std::string newMaterial) {
+	_rend3D->SetMaterial(newMaterial);
 }
-
 
 MeshRenderer::~MeshRenderer() {
 

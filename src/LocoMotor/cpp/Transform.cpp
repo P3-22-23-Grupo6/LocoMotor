@@ -290,7 +290,6 @@ void LocoMotor::Transform::SetSize(const LMVector3& newSize) {
 	SetPhysScale(newSize);
 }
 
-
 void LocoMotor::Transform::SetUpwards(const LMVector3& newUpward) {
 	double angle = GetRotation().Up().Angle(newUpward);
 	if (angle == 0.) return;

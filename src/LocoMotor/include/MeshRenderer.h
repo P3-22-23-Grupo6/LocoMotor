@@ -40,11 +40,7 @@ namespace LocoMotor {
 		/// @return An object of type OgreWrapper::Renderer3D* is being returned.
 		OgreWrapper::Renderer3D* GetRenderer();
 
-		/// @brief Rotates a mesh renderer object using a given set of new rotation values.
-		/// @param newRotation newRotation is a LMVector3 object that represents the new rotation to be applied
-		/// to the MeshRenderer. It contains three float values representing the rotation around the x, y, and z
-		/// axes respectively.
-		void Rotate(LMVector3 newRotation);
+		void ChangeMaterial(std::string newMaterial);
 
 	private:
 
