@@ -49,15 +49,27 @@ namespace LocoMotor {
 		/// @brief Returns the rotation of the LocoMotor object.
 		/// @return quaterinion
 		const LMQuaternion& GetRotation();
+		/// @brief Returns the local rotation of the LocoMotor object.
+		/// @return quaterinion
+		const LMQuaternion& GetLocalRotation();
 		/// @brief Sets the rotation of the LocoMotor object.
 		/// @param newRotation The new rotation
 		void SetRotation(const LMQuaternion& newRotation);
+		/// @brief Sets the local rotation of the LocoMotor object (for children)
+		/// @param newRotation The new rotation of the child 
+		void SetLocalRotation(const LMQuaternion& newRotation);
 		/// @brief Returns the position of the LocoMotor object.
 		/// @return vector 
 		const LMVector3& GetEulerRotation();
+		/// @brief Returns the local position of the LocoMotor object.
+		/// @return vector 
+		const LMVector3& GetLocalEulerRotation();
 		/// @brief Sets the rotation of the LocoMotor object.
 		/// @param newRotation The new vector
 		void SetEulerRotation(const LMVector3& newRotation);
+		/// @brief Sets local rotation of the LocoMotor object.
+		/// @param newRotation The new vector
+		void SetLocalEulerRotation(const LMVector3& newRotation);
 		/// @brief Returns the size of the LocoMotor object.
 		/// @return vector
 		const LMVector3& GetSize();
@@ -102,8 +114,11 @@ namespace LocoMotor {
 		LMVector3 _position;
 		LMVector3 _localPosition;
 		LMVector3 _scale;
+		LMVector3 _localScale;
 		LMVector3 _directionEuler;
+		LMVector3 _localDirectionEuler;
 		LMQuaternion _direction;
+		LMQuaternion _localDirection;
 		Transform* parent;
 		void SetPhysPosition(const LMVector3& newPosition);
 		/// @brief Sets the physical rotation of a game object with a rigid body component.

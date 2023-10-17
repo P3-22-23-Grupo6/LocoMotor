@@ -32,7 +32,6 @@ void MeshRenderer::PreStart() {
 
 void LocoMotor::MeshRenderer::Start(std::string name, std::string file, std::string mat, bool isStatic)
 {
-	
 	_src = file;
 	_mat = mat;
 	_isStatic = isStatic;
@@ -48,6 +47,7 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 		}
 		else if (params[i].first == "mat") {
 			_mat = params[i].second;
+			_rend3D->SetMaterial(_mat);
 		}
 		else if (params[i].first == "static") {
 			_isStatic = true;

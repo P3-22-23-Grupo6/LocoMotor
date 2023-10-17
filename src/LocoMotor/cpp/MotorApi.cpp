@@ -108,7 +108,7 @@ void MotorApi::MainLoop() {
 			gizmoObj->AddComponent("Transform");
 			gizmoObj->AddComponent("MeshRenderer");
 			gizmoObj->GetComponent<Transform>()->InitRuntime(LMVector3(0, 0, 0), LMVector3(0, 180, 0));
-			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh", "FalconMat");
+			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
 			gizmoObj->GetTransform()->Start();
 			gizmoParent->GetTransform()->AddChild(gizmoObj->GetTransform());
 		}

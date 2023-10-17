@@ -203,18 +203,23 @@ void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
 	if (childList.size() > 0) {
 		for (auto a : childList){
 			a->SetPosition(a->_localPosition + a->parent->GetPosition());
+			//If has a Parent, recalculate LocalPosition j in case
 			if(a->parent != nullptr) a->_localPosition = a->_position - a->parent->GetPosition();
 		}
 	}
-	//If has a Parent, recalculate LocalPosition
 }
 
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newLocalPosition) {
+	_localPosition = newLocalPosition;
 }
 
 
 const LocoMotor::LMQuaternion& LocoMotor::Transform::GetRotation() {
 	return _direction;
+}
+
+const LocoMotor::LMQuaternion& LocoMotor::Transform::GetLocalRotation() {
+	return _localDirection;
 }
 
 
@@ -227,11 +232,25 @@ void LocoMotor::Transform::SetRotation(const LMQuaternion& newRotation) {
 	}
 	_directionEuler = _direction.ToEuler();
 	SetPhysRotation(newRotation);
+	//Set Rotation of EveryChild
+	if (childList.size() > 0) {
+		for (auto a : childList) {
+			a->SetRotation(a->_localDirection + a->parent->GetRotation());
+		}
+	}
+}
+
+void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
+	_localDirection = newRotation;
 }
 
 
 const LocoMotor::LMVector3& LocoMotor::Transform::GetEulerRotation() {
 	return _directionEuler;
+}
+
+const LocoMotor::LMVector3& LocoMotor::Transform::GetLocalEulerRotation() {
+	return _localDirectionEuler;
 }
 
 
@@ -252,6 +271,10 @@ void LocoMotor::Transform::SetEulerRotation(const LMVector3& newRotation) {
 			a->SetEulerRotation(newRotation + a->GetEulerRotation());
 		}
 	}
+}
+
+void LocoMotor::Transform::SetLocalEulerRotation(const LMVector3& newRotation) {
+	_localDirectionEuler = newRotation;
 }
 
 
@@ -322,6 +345,7 @@ void LocoMotor::Transform::RemoveChild(Transform* trToRemove) {
 void LocoMotor::Transform::SetParent(Transform* trParent) {
 	parent = trParent;
 	_localPosition = _position - parent->GetPosition();
+	_localDirection = _direction - parent->GetRotation();
 	std::cout << "\nObjecto: " << this->gameObject->GetName() << " tiene Local a: " << _localPosition.ToString()<<"\n";
 }
 const LocoMotor::Transform* LocoMotor::Transform::GetParent() {
