@@ -26,6 +26,9 @@ double LMVector3::GetY() const {
 double LMVector3::GetZ() const {
 	return _z;
 }
+std::string LMVector3::ToString() const {
+	return "(" + std::to_string((int)_x) + ","+ std::to_string((int) _y) + "," + std::to_string((int) _z) +")";
+}
 
 // Setter functions
 // Set the X value of the Vector

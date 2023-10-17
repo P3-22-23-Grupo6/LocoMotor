@@ -314,7 +314,6 @@ void LocoMotor::Transform::LookAt(const LMVector3& lookPos, const LMVector3& up)
 void LocoMotor::Transform::AddChild(Transform* trToAdd, bool resetLocal){
 	childList.push_back(trToAdd);
 	trToAdd->SetParent(this);
-	std::cout << "Added: "<<trToAdd->gameObject->GetName()<<" as a child";
 }
 
 void LocoMotor::Transform::RemoveChild(Transform* trToRemove) {
@@ -323,7 +322,8 @@ void LocoMotor::Transform::RemoveChild(Transform* trToRemove) {
 
 void LocoMotor::Transform::SetParent(Transform* trParent) {
 	parent = trParent;
-	_localPosition = _position - trParent->GetPosition();
+	_localPosition = _position - parent->GetPosition();
+	std::cout << "\nObjecto: " << this->gameObject->GetName() << " tiene Local a: " << _localPosition.ToString()<<"\n";
 }
 //
 //void LocoMotor::Transform::SetLocalPosition(const LMVector3& newPosition) {
