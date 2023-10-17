@@ -196,15 +196,18 @@ void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
 	if (_gObjNode != nullptr){
 		_gObjNode->SetPosition((float) newPosition.GetX(), (float) newPosition.GetY(), (float) newPosition.GetZ());
 	}
+
 	//Sets Position of Rigidbody
 	SetPhysPosition(newPosition);
+
 	////Sets Position of everychild
 	if (childList.size() > 0) {
 		for (auto a : childList){
 			a->SetPosition(a->GetLocalPosition() + a->parent->GetPosition());
 		}
 	}
-	//SetLocalPosition(newPosition);
+	//If has a Parent, recalculate LocalPosition
+	if(parent != nullptr) _localPosition = _position - parent->GetPosition();
 }
 
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newLocalPosition) {
