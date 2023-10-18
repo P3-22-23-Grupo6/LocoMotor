@@ -45,6 +45,18 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
+
+television = {
+    Transform = {
+        position = "0 5 -16",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Television.mesh",
+        static = "true"
+    }
+}
 velocityText = {
     Transform = {
         position = "0 0 0",
@@ -65,4 +77,4 @@ velocityText = {
     }
 }
 
-entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug"}
+entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "television"}

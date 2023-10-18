@@ -9,6 +9,7 @@ material m_Test00 {
                 tex_address_mode wrap
                 colour_op modulate
                 filtering bilinear
+                scroll_anim 0 0
                 mipmap_bias 1
             }
         }
@@ -21,6 +22,22 @@ material m_Billboards {
             alpha_rejection greater 60
             texture_unit {
                 texture RaceTextOverlays.png
+                filtering bilinear
+            }
+        }
+    }
+}
+material m_Viewport {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture RoomRender.png
+                filtering bilinear
+            }
+            texture_unit {
+                texture crtMask.png
+                colour_op modulate
                 filtering bilinear
             }
         }

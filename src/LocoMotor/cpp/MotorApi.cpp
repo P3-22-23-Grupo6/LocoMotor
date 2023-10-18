@@ -93,7 +93,7 @@ void MotorApi::MainLoop() {
 	gizmoBillboard->GetComponent<MeshRenderer>()->ChangeMaterial("m_BillboardsGizmos");
 	gizmoBillboard->GetTransform()->Start();
 	gizmoParent->GetTransform()->AddChild(gizmoBillboard->GetTransform());
-
+	//OgreWrapper::OgreManager::GetInstance()->FadeMaterial("m_Test00");
 	while (!_exit) {
 		counter++;
 		if (_scnManager->GetCurrentScene() == nullptr) {
@@ -103,6 +103,7 @@ void MotorApi::MainLoop() {
 
 		FmodWrapper::AudioManager::GetInstance()->Update(_scnManager->GetDelta());
 		OgreWrapper::OgreManager::GetInstance()->Render();
+		
 		PhysicsManager::GetInstance()->Update(_scnManager->GetDelta());
 
 		if (LocoMotor::InputManager::GetInstance()->RegisterEvents())
@@ -119,8 +120,10 @@ void MotorApi::MainLoop() {
 			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
 			gizmoObj->GetTransform()->Start();
 			gizmoParent->GetTransform()->AddChild(gizmoObj->GetTransform());
+			//OgreWrapper::OgreManager::GetInstance()->RenderToImage();
 		}
 		gizmoParent->GetTransform()->SetPosition(LMVector3(4,2,-4));
+
 	}
 	SceneManager::Clear();
 	PhysicsManager::Clear();

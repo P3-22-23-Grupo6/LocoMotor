@@ -5,6 +5,14 @@
 #include <OgreGpuProgramManager.h>
 #include <OgreShaderGenerator.h>
 #include <OgreOverlaySystem.h>
+#include <OgreTextureManager.h>
+#include <OgreTexture.h>
+#include <OgreTechnique.h>
+#include <OgreViewport.h>
+#include <OgrePass.h>
+#include <OgreRenderTexture.h>
+#include <OgrePrerequisites.h>
+#include <OgreHardwarePixelBuffer.h>
 //#include <OgreTrays.h>
 //SDL includes
 #include <SDL.h>
@@ -200,8 +208,43 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow(std::string n
 }
 
 void OgreWrapper::OgreManager::FadeMaterial(std::string materialName) {
-	//Ogre::MaterialPtr ptr = Ogre::MaterialManager::getSingleton().load("MaterialName", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
-	//ptr->setDiffuse(Ogre::ColourValue(1,0,0,1));
+	//Ogre::MaterialPtr ptr = Ogre::MaterialManager::getSingleton().getByName(materialName);
+	//if(tex != nullptr) ptr->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTexture(tex);
+}
+
+void OgreWrapper::OgreManager::RenderToImage() {
+	tex = Ogre::TextureManager::getSingleton().createManual(
+			"MainRenderTarget",
+			Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+			Ogre::TextureType::TEX_TYPE_2D,
+			800,
+			600,
+			0,
+			Ogre::PixelFormat::PF_R8G8B8,
+			Ogre::TextureUsage::TU_RENDERTARGET);
+
+	Ogre::RenderTexture* renderTexture = tex->getBuffer()->getRenderTarget();
+	renderTexture->addViewport(_activeScene->GetMainCamera()->GetOgreCamera());
+	int count = renderTexture->getNumViewports();
+
+	renderTexture->getViewport(0)->setClearEveryFrame(true);
+	renderTexture->getViewport(0)->setBackgroundColour(Ogre::ColourValue::Black);
+	renderTexture->getViewport(0)->setOverlaysEnabled(false);
+
+	renderTexture->update();
+	// Now save the contents
+	renderTexture->writeContentsToFile("./Assets/Material/RoomRender.png");
+	renderTexList.push_back(renderTexture);
+}
+
+void OgreWrapper::OgreManager::UpdateRenderTextures() {
+	//for (auto a : renderTexList){
+	//	a->getViewport(0)->setClearEveryFrame(true);
+	//	a->getViewport(0)->setBackgroundColour(Ogre::ColourValue::Black);
+	//	a->getViewport(0)->setOverlaysEnabled(false);
+	//	a->update();
+	//	//Ogre::MaterialManager::getSingleton().getByName("m_Viewport")->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTexture(tex);
+	//}
 }
 
 void OgreWrapper::OgreManager::Shutdown() {

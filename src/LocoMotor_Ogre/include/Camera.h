@@ -38,6 +38,7 @@ namespace OgreWrapper {
 		void SetClippingPlane(Ogre::Real nearDis, Ogre::Real farDis);
 		/// @brief Updates the camera
 		void Render();
+		Ogre::Camera* GetOgreCamera();
 
 	private:
 		static int _zOrder;

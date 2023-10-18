@@ -64,3 +64,8 @@ void OgreWrapper::Camera::SetClippingPlane(Ogre::Real nearDis, Ogre::Real farDis
 void OgreWrapper::Camera::Render() {
 	_vp->update();
 }
+
+Ogre::Camera* OgreWrapper::Camera::GetOgreCamera()
+{
+	return _mCamera;
+}

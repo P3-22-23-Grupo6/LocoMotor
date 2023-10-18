@@ -71,7 +71,7 @@ void LocoMotor::MeshRenderer::Init(std::vector<std::pair<std::string, std::strin
 	if (_mat != "") _rend3D->SetMaterial(_mat);
 	if (_rend3D != nullptr) 
 	{
-		//OgreWrapper::OgreManager::GetInstance()->FadeMaterial("FalconMat");
+		
 		_node->Attach(_rend3D);
 		if (!visible)
 			_rend3D->SetVisible(false);

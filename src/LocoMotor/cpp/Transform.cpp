@@ -166,7 +166,7 @@ void LocoMotor::Transform::InitRuntime(LMVector3 initPos, LMVector3 initRot, LMV
 
 	_position = initPos;
 	_localPosition = LMVector3();
-	_direction = LMQuaternion();
+	_direction = initRot.AsRotToQuaternion();
 	_localDirection = LMQuaternion();
 	_scale = initScale;
 	_localScale = LMVector3(1,1,1);
@@ -329,6 +329,7 @@ void LocoMotor::Transform::SetParent(Transform* trParent) {
 	_localPosition = _position - parent->GetPosition();
 	_localDirection = _direction - parent->GetRotation();
 	std::cout << "\nObjecto: " << this->gameObject->GetName() << " tiene Local a: " << _localPosition.ToString()<<"\n";
+	std::cout << "\nObjecto: " << this->gameObject->GetName() << " tiene Rotation Local a: " << _localDirection.ToString()<<"\n";
 }
 const LocoMotor::Transform* LocoMotor::Transform::GetParent() {
 	return parent;

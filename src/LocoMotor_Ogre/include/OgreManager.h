@@ -3,7 +3,7 @@
 
 #include <map>
 #include <OgreMaterialManager.h>
-
+#include "Camera.h"
 #include "Singleton.h"
 namespace Ogre {
 	class Root;
@@ -17,7 +17,7 @@ namespace Ogre {
 struct SDL_Window;
 namespace OgreWrapper {
 	class RenderScene;
-
+	class Camera;
 	struct NativeWindowPair {
 		Ogre::RenderWindow* render = nullptr;
 		SDL_Window* native = nullptr;
@@ -25,6 +25,7 @@ namespace OgreWrapper {
 	class OgreManager : public LocoMotor::Singleton<OgreManager> {
 		friend LocoMotor::Singleton<OgreManager>;
 	public:
+		Ogre::TexturePtr tex;
 		/// @brief Initializes the OgreManager singleton with a name for the new window
 		/// @param name Name for the window.
 		/// @return whether the initialize went well or not.
@@ -63,6 +64,8 @@ namespace OgreWrapper {
 
 		//Material Manipulation
 		void FadeMaterial(std::string materialName);
+		void RenderToImage();
+		void UpdateRenderTextures();
 	protected:
 		Ogre::Root* _root;
 		NativeWindowPair _mWindow;
@@ -93,7 +96,7 @@ namespace OgreWrapper {
 		/// @brief
 		/// Shuts down Ogre and releases all the memory related to it
 		void Shutdown();
-
+		std::list<Ogre::RenderTexture*> renderTexList;
 	};
 }
 #endif

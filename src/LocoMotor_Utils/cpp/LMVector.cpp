@@ -300,6 +300,9 @@ double LMQuaternion::GetY() const {
 double LMQuaternion::GetZ() const {
 	return _z;
 }
+std::string LMQuaternion::ToString() const {
+	return "(" + std::to_string((int) _x) + "," + std::to_string((int) _y) + "," + std::to_string((int) _z) + ")";
+}
 
 //Setter functions
 void LMQuaternion::SetW(double w) {

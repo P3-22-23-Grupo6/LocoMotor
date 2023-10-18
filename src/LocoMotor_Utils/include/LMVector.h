@@ -145,6 +145,7 @@ namespace LocoMotor {
 		double GetY() const;
 		/// @brief Get the Z value of the Quaternion
 		double GetZ() const;
+		std::string ToString() const;
 
 	//Setter functions
 		/// @brief Set the W value of the Quaternion
