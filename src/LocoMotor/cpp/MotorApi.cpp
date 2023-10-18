@@ -85,6 +85,14 @@ void MotorApi::MainLoop() {
 	gizmoParent->GetComponent<Transform>()->InitRuntime();
 	gizmoParent->GetComponent<MeshRenderer>()->InitRuntime("SphereDebug.mesh");
 	gizmoParent->GetTransform()->Start();
+	GameObject* gizmoBillboard = _scnManager->AddObjectRuntime("gizmoBillboard");
+	gizmoBillboard->AddComponent("Transform");
+	gizmoBillboard->AddComponent("MeshRenderer");
+	gizmoBillboard->GetComponent<Transform>()->InitRuntime(LMVector3(0, 2, 0));
+	gizmoBillboard->GetComponent<MeshRenderer>()->InitRuntime("BillboardRacers.mesh");
+	gizmoBillboard->GetComponent<MeshRenderer>()->ChangeMaterial("m_BillboardsGizmos");
+	gizmoBillboard->GetTransform()->Start();
+	gizmoParent->GetTransform()->AddChild(gizmoBillboard->GetTransform());
 
 	while (!_exit) {
 		counter++;

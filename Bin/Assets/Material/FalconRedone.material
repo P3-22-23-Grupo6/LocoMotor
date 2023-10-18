@@ -65,12 +65,6 @@ material EnemyMat {
                 colour_op modulate
                 
             }
-            /*texture_unit {
-                texture pattern_0013.png
-                tex_address_mode wrap
-                colour_op add
-                wave_xform scale sine 0.0 0.5 0.0 1.0
-            }*/
         }
     }
 }

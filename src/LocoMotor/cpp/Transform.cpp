@@ -116,7 +116,6 @@ void LocoMotor::Transform::Init(std::vector<std::pair<std::string, std::string>>
 			}
 			_direction = result.AsRotToQuaternion();
 			_direction.Normalize();
-			_directionEuler = result;
 		}
 		else if (pair.first == "size" || pair.first == "scale") {
 			unsigned char currAxis = 0;
@@ -167,14 +166,16 @@ void LocoMotor::Transform::InitRuntime(LMVector3 initPos, LMVector3 initRot, LMV
 
 	_position = initPos;
 	_localPosition = LMVector3();
-	_directionEuler = initRot;
+	_direction = LMQuaternion();
+	_localDirection = LMQuaternion();
 	_scale = initScale;
+	_localScale = LMVector3(1,1,1);
 }
 
 void LocoMotor::Transform::Start() {
 	_gObjNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->GetNode(gameObject->GetName());
 	SetPosition(_position);
-	SetEulerRotation(_directionEuler);
+	SetRotation(_direction);
 	SetSize(_scale);
 }
 
@@ -213,15 +214,21 @@ void LocoMotor::Transform::SetLocalPosition(const LMVector3& newLocalPosition) {
 	_localPosition = newLocalPosition;
 }
 
-
+//GETTERS
 const LocoMotor::LMQuaternion& LocoMotor::Transform::GetRotation() {
-	return _direction;
-}
-
+	return _direction;}
 const LocoMotor::LMQuaternion& LocoMotor::Transform::GetLocalRotation() {
-	return _localDirection;
+	return _localDirection;}
+const LocoMotor::LMVector3& LocoMotor::Transform::GetEulerRotation() {
+	return _direction.ToEuler();}
+const LocoMotor::LMVector3& LocoMotor::Transform::GetLocalEulerRotation() {
+	return _localDirection.ToEuler();
 }
 
+//SET ROTATIONS
+void LocoMotor::Transform::SetRotation(const LMVector3& newRotation) {
+	SetRotation(newRotation.AsRotToQuaternion());
+}
 
 void LocoMotor::Transform::SetRotation(const LMQuaternion& newRotation) {
 	_direction = newRotation;
@@ -230,58 +237,34 @@ void LocoMotor::Transform::SetRotation(const LMQuaternion& newRotation) {
 		Ogre::Quaternion a = LmToOgre(newRotation);
 		_gObjNode->SetOrientation(a);
 	}
-	_directionEuler = _direction.ToEuler();
 	SetPhysRotation(newRotation);
 	//Set Rotation of EveryChild
 	if (childList.size() > 0) {
 		for (auto a : childList) {
-			a->SetRotation(a->_localDirection + a->parent->GetRotation());
+			a->SetRotation(a->GetLocalRotation() + a->GetParent()->_direction);
 		}
 	}
+}
+
+void LocoMotor::Transform::SetLocalRotation(const LMVector3& newRotation) {
+	SetLocalRotation(newRotation.AsRotToQuaternion());
 }
 
 void LocoMotor::Transform::SetLocalRotation(const LMQuaternion& newRotation) {
 	_localDirection = newRotation;
-}
-
-
-const LocoMotor::LMVector3& LocoMotor::Transform::GetEulerRotation() {
-	return _directionEuler;
-}
-
-const LocoMotor::LMVector3& LocoMotor::Transform::GetLocalEulerRotation() {
-	return _localDirectionEuler;
-}
-
-
-void LocoMotor::Transform::SetEulerRotation(const LMVector3& newRotation) {
-	_direction = newRotation.AsRotToQuaternion();
-	_direction.Normalize();
-
+	_localDirection.Normalize();
 	if (_gObjNode != nullptr) {
-		Ogre::Quaternion a = LmToOgre(newRotation.AsRotToQuaternion());
+		Ogre::Quaternion a = LmToOgre(_localDirection);
 		_gObjNode->SetOrientation(a);
 	}
-
-	_directionEuler = newRotation;
-	SetPhysEulerRotation(newRotation);
-
-	if (childList.size() > 0) {
-		for (auto a : childList) {
-			a->SetEulerRotation(newRotation + a->GetEulerRotation());
-		}
-	}
+	SetPhysRotation(newRotation);
 }
 
-void LocoMotor::Transform::SetLocalEulerRotation(const LMVector3& newRotation) {
-	_localDirectionEuler = newRotation;
-}
 
 
 const LocoMotor::LMVector3& LocoMotor::Transform::GetSize() {
 	return _scale;
 }
-
 
 void LocoMotor::Transform::SetSize(const LMVector3& newSize) {
 	_scale = newSize;
