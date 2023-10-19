@@ -27,6 +27,7 @@ coche = {
     PlayerController = {},
     RigidBodyComponent = {
         mass = 1,
+        angDamping,
         friction = "0.0"
     }
 }
@@ -47,12 +48,12 @@ test_Plane00 = {
 }
 Test_Track_00 = {
     Transform = {
-        position = "0 -0.5 -5",
+        position = "0 0 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Test_Track_00.mesh",
+        file =  "test_track_01.mesh",
         static = "true"
     },
     RigidBodyComponent = {
