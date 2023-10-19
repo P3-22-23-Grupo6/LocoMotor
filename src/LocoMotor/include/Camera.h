@@ -67,10 +67,8 @@ namespace LocoMotor {
 	private:
 		OgreWrapper::Camera* _cam;
 		Scene* _scene;
-		OgreWrapper::RenderScene* _renderScn;
 
 		GameObject* _target;
-		LMVector3 _offset;
 		LMVector3 _initialOffset;//Offset with the Player
 
 		std::string target = "";

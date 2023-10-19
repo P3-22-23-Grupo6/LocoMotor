@@ -94,6 +94,7 @@ namespace LocoMotor {
 		/// the world space.This is used to ensure that the object being transformed maintains a consistent
 		/// orientation, even if it is rotated.
 		void LookAt(const LMVector3& lookPos, const LMVector3& up);
+		void RotateAround(const LMVector3& lookPos, const LMVector3& up);
 
 		//CHILDREN
 		

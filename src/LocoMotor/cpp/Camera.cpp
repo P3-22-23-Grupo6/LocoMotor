@@ -14,10 +14,8 @@ LocoMotor::Camera::Camera()
 {
 	_cam = nullptr;
 	_scene = nullptr;
-	_renderScn = nullptr;
 	_target = nullptr;
-	_offset = LMVector3(0, 0, 0);
-	_initialOffset = LMVector3(0, 0, 0);
+	_initialOffset = LMVector3();
 }
 
 
@@ -44,7 +42,7 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 			target = param.second;
 		}
 		else if (param.first == "initialOffset") {
-			_initialOffset = LMVector3(0, 1, 8);
+			_initialOffset = LMVector3(0, 2, 8);
 		}
 		else if (param.first == "main") {
 			gameObject->GetScene()->SetCamObj(gameObject);
@@ -56,7 +54,7 @@ void LocoMotor::Camera::InitComponent() {
 
 	// La referencia del nodo de esta camara deberia ser el mismo que el nodo del gameObject
 	_scene = gameObject->GetScene();
-	_renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
+	OgreWrapper::RenderScene* _renderScn = _renderScn = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName());
 	OgreWrapper::Node* _node = _renderScn->GetNode(gameObject->GetName());
 	if (_node == nullptr) {
 		_node = _renderScn->CreateNode(gameObject->GetName());
@@ -66,32 +64,40 @@ void LocoMotor::Camera::InitComponent() {
 	_scene->SetSceneCam(_cam);
 	//Attachear al nodo del gameObject
 	_node->Attach(_cam);
-	SetClippingPlane(1, 1500);
+	SetClippingPlane(1, 1000);
 
 }
 
 void LocoMotor::Camera::Start() {
 	// Comprobar si hay asignado un target
-	if (gameObject->GetScene()->GetObjectByName(target) != nullptr)
+	if (gameObject->GetScene()->GetObjectByName(target) != nullptr) {
 		SetTarget(gameObject->GetScene()->GetObjectByName(target), _initialOffset);
+	}
 }
 
 
 void LocoMotor::Camera::PreUpdate(float dt) {
 
 	// Comprobar si hay asignado un target
-	if (_target != nullptr) {
-		// Actualizar posicion para que siga al target
-		LMVector3 rotVec = _target->GetTransform()->GetRotation().Rotate(_offset);
-		gameObject->SetPosition(_target->GetTransform()->GetPosition() + rotVec);
-		gameObject->SetRotation(_target->GetTransform()->GetRotation());
-	}
+	if (_target == nullptr) return;
+
+	LMVector3 targetPos = _target->GetTransform()->GetPosition();
+	LMQuaternion targetRot = _target->GetTransform()->GetRotation();
+
+	LMVector3 offset = targetPos - gameObject->GetTransform()->GetPosition() + _initialOffset;
+	LMVector3 rotVec = targetRot.Rotate(offset);
+	rotVec.SetY(0); rotVec.SetZ(0);
+	rotVec.SetX(rotVec.GetX() * -1);
+	LMVector3 finalPos;
+	finalPos = finalPos.Lerp(gameObject->GetTransform()->GetPosition() , targetPos + offset + rotVec, dt / 100.0f * 0.8f);
+	gameObject->SetPosition(finalPos);
+	gameObject->SetRotation(targetRot);
 }
 
 
 void LocoMotor::Camera::SetTarget(GameObject* target, LMVector3 offset) {
 	_target = target;
-	_offset = offset;
+	offset = offset;
 }
 
 
