@@ -37,7 +37,7 @@ void LocoMotor::AudioListener::InitComponent() {
 
 void LocoMotor::AudioListener::Update(float dt) {
 
-	LMVector3 forwardVec = gameObject->GetTransform()->GetRotation().Forward() * -1;
+	LMVector3 forwardVec = gameObject->GetTransform()->GetRotation().Forward() * -1.0f;
 	LMVector3 upwardVec = gameObject->GetTransform()->GetRotation().Up();
 
 	LMVector3 vel = (gameObject->GetTransform()->GetPosition() - _lastPos) / (dt / 1000.f);

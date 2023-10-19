@@ -100,6 +100,13 @@ namespace LocoMotor {
 		/// @param axis The axis to measure by
 		double Angle(const LMVector3& other, const LMVector3& normal, const LMVector3& axis) const;
 
+		// Lerp
+		///	@brief Returns an interpolated value between to vectors
+		/// @param First vector
+		/// @param Final vector
+		/// @param Time step interpolation
+		LMVector3 Lerp(const LMVector3& initialValue, const LMVector3& finalValue, const float timeStep) const;
+
 		// rotate
 		///	@brief Rotate a Vector
 		/// @param axis The axis to rotate around

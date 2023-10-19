@@ -186,6 +186,14 @@ double LMVector3::Angle(const LMVector3& other, const LMVector3& normal, const L
 	return angle;
 }
 
+LMVector3 LocoMotor::LMVector3::Lerp(const LMVector3& initialValue, const LMVector3& finalValue, const float timeStep) const {
+	LMVector3 mDest;
+	mDest.SetX(initialValue.GetX() + (finalValue.GetX() - initialValue.GetX()) * timeStep);
+	mDest.SetY(initialValue.GetY() + (finalValue.GetY() - initialValue.GetY()) * timeStep);
+	mDest.SetZ(initialValue.GetZ() + (finalValue.GetZ() - initialValue.GetZ()) * timeStep);
+	return mDest;
+}
+
 // Rotate a vector around an axis in degrees
 LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) {
 	LMVector3 cross = axis.Cross(*this);

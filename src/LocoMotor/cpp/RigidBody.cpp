@@ -50,9 +50,9 @@ void LocoMotor::RigidBody::PreStart() {
 	
 	RigidBodyInfo info;
 	info.mass = _mass;
-	info.boxSize = LmToBullet(LMVector3(0,0,0));
+	info.boxSize = LmToBullet(LMVector3(1,1,1));
 	info.origin = LmToBullet(gameObject->GetTransform()->GetPosition());
-	info.sphereSize = 5;
+	info.sphereSize = 1;
 	info.capsuleHeight = 10;
 	info.capsuleRadius = 0.5f;
 	if (_mass == 0) {

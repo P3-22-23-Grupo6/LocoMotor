@@ -45,6 +45,7 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
+
 velocityText = {
     Transform = {
         position = "0 0 0",
@@ -65,4 +66,4 @@ velocityText = {
     }
 }
 
-entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug"}
+entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00"}

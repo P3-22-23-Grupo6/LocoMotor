@@ -15,7 +15,7 @@ PhysicsManager::PhysicsManager() {
 	//Create Dynamic world
 	_dynamicWorld = new btDiscreteDynamicsWorld(_dispatcher, _overlappingPairCache, _solver, _collisionConfiguration);
 	//Set default gravity
-	_dynamicWorld->setGravity(btVector3(0, -98, 0));
+	_dynamicWorld->setGravity(btVector3(0, -9.8f, 0));
 	//btIDebugDraw* a;
 	//a->setDebugMode(btIDebugDraw::DBG_DrawWireframe);
 	//_dynamicWorld->setDebugDrawer(a);
@@ -74,6 +74,7 @@ btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms
 	//add the body to the dynamics world;
 	_dynamicWorld->addRigidBody(rigidbody);
 	rigidbody->setDamping(0.7f, 0.7f);
+
 	if (isDynamic) {
 		rigidbody->setCcdMotionThreshold(0.0000001f);
 		rigidbody->setCcdSweptSphereRadius(0.5f);
