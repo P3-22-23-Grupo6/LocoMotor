@@ -53,7 +53,7 @@ void LocoMotor::RigidBody::PreStart() {
 	info.boxSize = LmToBullet(LMVector3(1,1,1));
 	info.origin = LmToBullet(gameObject->GetTransform()->GetPosition());
 	info.sphereSize = 1;
-	info.capsuleHeight = 10;
+	info.capsuleHeight = 1.0f;
 	info.capsuleRadius = 0.5f;
 	if (_mass == 0) {
 		MeshRenderer* mR = gameObject->GetComponent<MeshRenderer>();

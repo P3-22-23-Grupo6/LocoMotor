@@ -45,7 +45,21 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
-
+Test_Track_00 = {
+    Transform = {
+        position = "0 -0.5 -5",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Test_Track_00.mesh",
+        static = "true"
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = ""
+    }
+}
 velocityText = {
     Transform = {
         position = "0 0 0",
