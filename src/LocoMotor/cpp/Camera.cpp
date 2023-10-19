@@ -77,21 +77,29 @@ void LocoMotor::Camera::Start() {
 
 
 void LocoMotor::Camera::PreUpdate(float dt) {
-
+	
+	if (_target != nullptr) {
+		// Actualizar posicion para que siga al target
+		LMVector3 rotVec = _target->GetTransform()->GetRotation().Rotate(_initialOffset);
+		gameObject->SetPosition(_target->GetTransform()->GetPosition() + rotVec);
+		gameObject->SetRotation(_target->GetTransform()->GetRotation());
+	}
+	/*
 	// Comprobar si hay asignado un target
 	if (_target == nullptr) return;
 
 	LMVector3 targetPos = _target->GetTransform()->GetPosition();
 	LMQuaternion targetRot = _target->GetTransform()->GetRotation();
-
-	LMVector3 offset = targetPos - gameObject->GetTransform()->GetPosition() + _initialOffset;
-	LMVector3 rotVec = targetRot.Rotate(offset);
-	rotVec.SetY(0); rotVec.SetZ(0);
-	rotVec.SetX(rotVec.GetX() * -1);
+	LMVector3 rotVec = _target->GetTransform()->GetRotation().Rotate(_initialOffset);
+	
+	//Lerp Position
 	LMVector3 finalPos;
-	finalPos = finalPos.Lerp(gameObject->GetTransform()->GetPosition() , targetPos + offset + rotVec, dt / 100.0f * 0.8f);
+	finalPos = finalPos.Lerp(gameObject->GetTransform()->GetPosition() , targetPos + rotVec, dt / 100.0f * 2.0f);
 	gameObject->SetPosition(finalPos);
-	gameObject->SetRotation(targetRot);
+	//Slerp Rotation TODO SLERP IS NOT CORRECTLY IMPLEMENTED IN LMQUATERNION!!
+	LMQuaternion finalRot;
+	finalRot = finalRot.Slerp(gameObject->GetTransform()->GetRotation(), targetRot, dt / 100.0f * 2.0f);
+	gameObject->SetRotation(targetRot);*/
 }
 
 

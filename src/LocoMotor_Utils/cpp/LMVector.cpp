@@ -194,6 +194,7 @@ LMVector3 LocoMotor::LMVector3::Lerp(const LMVector3& initialValue, const LMVect
 	return mDest;
 }
 
+
 // Rotate a vector around an axis in degrees
 LMVector3 LMVector3::Rotate(const LMVector3& axis, double angle) {
 	LMVector3 cross = axis.Cross(*this);
@@ -336,6 +337,14 @@ LMQuaternion LMQuaternion::operator=(const LMQuaternion& other) {
 }
 
 
+LMQuaternion LocoMotor::LMQuaternion::Slerp(const LMQuaternion& initialValue, const LMQuaternion& finalValue, const float timeStep) const
+{
+	LMQuaternion mDest;
+	mDest.SetX(initialValue.GetX() + (finalValue.GetX() - initialValue.GetX()) * timeStep);
+	mDest.SetY(initialValue.GetY() + (finalValue.GetY() - initialValue.GetY()) * timeStep);
+	mDest.SetZ(initialValue.GetZ() + (finalValue.GetZ() - initialValue.GetZ()) * timeStep);
+	return mDest;
+}
 
 // Quaternion addition
 LMQuaternion LMQuaternion::operator+(const LMQuaternion& other) const {

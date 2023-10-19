@@ -106,6 +106,7 @@ namespace LocoMotor {
 		/// @param Final vector
 		/// @param Time step interpolation
 		LMVector3 Lerp(const LMVector3& initialValue, const LMVector3& finalValue, const float timeStep) const;
+		
 
 		// rotate
 		///	@brief Rotate a Vector
@@ -191,6 +192,13 @@ namespace LocoMotor {
 		// Normalize
 		/// @brief Normalize a Quaternion
 		void Normalize();
+
+		// Quaternion Slerp
+		///	@brief Returns an interpolated value between to quaternions
+		/// @param First quaternion
+		/// @param Final quaternion
+		/// @param Time step interpolation
+		LMQuaternion Slerp(const LMQuaternion& initialValue, const LMQuaternion& finalValue, const float timeStep) const;
 
 		// Rotate
 		/// @brief Rotate a Quaternion
