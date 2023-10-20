@@ -87,14 +87,6 @@ void MotorApi::MainLoop() {
 		}
 	}
 	float counter = 0.0f;
-
-	//Light Test
-	GameObject* lightMain = _scnManager->AddObjectRuntime("lightMain");
-	lightMain->AddComponent("Light");
-	lightMain->GetComponent<Transform>()->InitRuntime(LMVector3(0,20,0));
-	lightMain->GetTransform()->Start();
-	
-	GameObject* imageTrans = SceneManager::GetInstance()->GetInstance()->GetCurrentScene()->GetObjectByName("transImg");
 	//Gizmo Parent for child Testing
 	GameObject* gizmoParent = _scnManager->AddObjectRuntime("gizmoParent");
 	gizmoParent->AddComponent("MeshRenderer");
@@ -138,9 +130,6 @@ void MotorApi::MainLoop() {
 			//OgreWrapper::OgreManager::GetInstance()->RenderToImage();
 		}
 		gizmoParent->GetTransform()->SetPosition(LMVector3(4,2,-4));
-		LMVector3 newImgPos;
-		newImgPos = newImgPos.Lerp(LMVector3(0.5f, 0.0f, 0.0f), LMVector3(0, 0.0f, 0.0f), counter / 100.0f * 0.25f);
-		imageTrans->GetComponent<UIImageLM>()->SetPosition(newImgPos.GetX(), 0);
 	}
 	SceneManager::Clear();
 	PhysicsManager::Clear();

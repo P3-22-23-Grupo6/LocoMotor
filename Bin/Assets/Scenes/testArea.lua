@@ -16,9 +16,12 @@ mainCam = {
 }
 coche = {
     Transform = {
-        position = "0 5 0",
+        position = "0 10 0",
         rotation = "0 0 0",
         scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "BlueFalcon.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -27,8 +30,7 @@ coche = {
     PlayerController = {},
     RigidBodyComponent = {
         mass = 1,
-        angDamping,
-        friction = "0.0"
+        friction = "0.0",
     }
 }
 test_Plane00 = {
