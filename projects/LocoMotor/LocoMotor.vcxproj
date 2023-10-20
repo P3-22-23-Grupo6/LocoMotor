@@ -55,6 +55,7 @@
     <ClInclude Include="..\..\src\LocoMotor\include\Transform.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\UIImageLM.h" />
     <ClInclude Include="..\..\src\LocoMotor\include\UITextLM.h" />
+    <ClInclude Include="Light.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\LocoMotor\cpp\AudioListener.cpp" />
@@ -75,6 +76,7 @@
     <ClCompile Include="..\..\src\LocoMotor\cpp\Transform.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\cpp\UIImageLM.cpp" />
     <ClCompile Include="..\..\src\LocoMotor\cpp\UITextLM.cpp" />
+    <ClCompile Include="Light.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

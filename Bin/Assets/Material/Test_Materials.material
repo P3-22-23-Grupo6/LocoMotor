@@ -27,6 +27,20 @@ material m_Billboards {
         }
     }
 }
+
+material m_TransImg
+{
+	technique
+	{
+		pass
+		{
+            texture_unit {
+                texture Floor_t.PNG
+                tex_address_mode wrap
+            }
+		}
+	}
+}
 material m_Viewport {
     technique {
         pass {

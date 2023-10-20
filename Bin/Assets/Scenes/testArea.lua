@@ -80,5 +80,14 @@ velocityText = {
         bottomcolor = "1 0 0",
     }
 }
+transImg = {
+    UIImageLM = { 
+        posx = "1",
+        posy = "0",
+        sizex = "1",
+        sizey = "1",
+        img = "m_TransImg"
+    }
+}
 
-entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00"}
+entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00", "transImg"}

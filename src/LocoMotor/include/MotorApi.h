@@ -14,7 +14,6 @@ namespace LocoMotor {
 	class SceneManager;
 	class GameObject;
 
-
 	class MotorApi {
 	public:
 		MOTOR_API MotorApi();
