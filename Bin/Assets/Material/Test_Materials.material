@@ -41,9 +41,26 @@ material m_TransImg
 		}
 	}
 }
+material LayoutTemplate
+{
+	technique
+	{
+		pass
+		{
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture LayoutTemplate.png
+                tex_address_mode wrap
+                filtering bilinear
+            }
+		}
+	}
+}
 material m_Viewport {
     technique {
         pass {
+            
             lighting off
             texture_unit {
                 texture RoomRender.png

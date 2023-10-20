@@ -31,6 +31,10 @@ coche = {
     RigidBodyComponent = {
         mass = 1,
         friction = "0.0",
+    },
+    ParticleSystem = {
+        name = "exhaust",
+        file = "Racers/JetEngine2"
     }
 }
 test_Plane00 = {
@@ -84,11 +88,11 @@ velocityText = {
 }
 transImg = {
     UIImageLM = { 
-        posx = "1",
+        posx = "0",
         posy = "0",
         sizex = "1",
         sizey = "1",
-        img = "m_TransImg"
+        img = "LayoutTemplate"
     }
 }
 
