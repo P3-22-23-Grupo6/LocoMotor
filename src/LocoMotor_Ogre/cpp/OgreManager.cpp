@@ -5,6 +5,8 @@
 #include <OgreGpuProgramManager.h>
 #include <OgreShaderGenerator.h>
 #include <OgreOverlaySystem.h>
+#include <OgreDistanceLodStrategy.h>
+#include <OgreLodStrategy.h>
 #include <OgreTextureManager.h>
 #include <OgreTexture.h>
 #include <OgreTechnique.h>
@@ -204,6 +206,9 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow(std::string n
 	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
 	_mWindow.render = _root->createRenderWindow(name, w, h, false, &miscParams);
+	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(2);
+	Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(Ogre::TFO_ANISOTROPIC);
+	Ogre::MaterialManager::getSingleton().setDefaultAnisotropy(16);
 	return _mWindow;
 }
 
@@ -219,7 +224,8 @@ void OgreWrapper::OgreManager::RenderToImage() {
 			Ogre::TextureType::TEX_TYPE_2D,
 			800,
 			600,
-			0,
+			Ogre::MIP_UNLIMITED,
+			Ogre::HBU_CPU_TO_GPU,
 			Ogre::PixelFormat::PF_R8G8B8,
 			Ogre::TextureUsage::TU_RENDERTARGET);
 
