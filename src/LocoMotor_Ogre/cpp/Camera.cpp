@@ -17,6 +17,8 @@ OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 	_vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
 	Camera::_zOrder++;
 	_vp->setBackgroundColour(Ogre::ColourValue(0.6f, 0.7f, 0.8f));
+	_vp->setSkiesEnabled(true);
+	_vp->setShadowsEnabled(false);
 }
 
 OgreWrapper::Camera::~Camera() {

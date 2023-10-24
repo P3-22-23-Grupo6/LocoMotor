@@ -24,6 +24,7 @@ OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_canvas = new OgreWrapper::Canvas();
 	_canvas->Init(_manager);
 	_stGeom = _manager->createStaticGeometry("st");
+	SetSkybox();
 }
 
 Ogre::SceneManager* OgreWrapper::RenderScene::GetMan() {
@@ -51,7 +52,8 @@ void OgreWrapper::RenderScene::Render() {
 }
 
 void OgreWrapper::RenderScene::SetSkybox() {
-	_manager->setSkyDome(true, "Racers/SkyBoxBlue", 5, 2);
+	//_manager->setSkyBox(true, "SkyBoxBlue");
+	//6_manager->setFog(Ogre::FOG_EXP, Ogre::ColourValue(0.174509f, 0.182f, 0.2215f, 1), 0.002f, 300, 500);
 }
 
 OgreWrapper::Node* OgreWrapper::RenderScene::CreateNode(std::string name) {

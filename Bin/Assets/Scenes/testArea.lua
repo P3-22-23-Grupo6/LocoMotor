@@ -39,12 +39,12 @@ coche = {
 }
 test_Plane00 = {
     Transform = {
-        position = "0 0 0",
+        position = "0 0 20",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "test_Plane00.mesh",
+        file =  "TestToWapo.mesh",
         static = "true"
     },
     RigidBodyComponent = {
@@ -52,19 +52,15 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
-Test_Track_00 = {
+SkyboxMeshNew = {
     Transform = {
-        position = "0 0 0",
+        position = "0 0 20",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "testTrackCurve.mesh",
+        file =  "SkyboxMeshNew.001.mesh",
         static = "true"
-    },
-    RigidBodyComponent = {
-        mass = 0,
-        usedAsRaycast = ""
     }
 }
 velocityText = {
@@ -161,4 +157,4 @@ portrait02Img = {
     }
 }
 entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00", "counter01Img", "portrait01Img", "counter02Img", "portrait02Img", "counter01Text",
-"counter02Text"}
+"counter02Text", "SkyboxMeshNew"}
