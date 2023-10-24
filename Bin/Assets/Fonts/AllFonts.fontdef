@@ -12,6 +12,13 @@ BrunoAce
     size 32
     resolution 512
 }
+THEBOLDFONT
+{
+    type truetype
+    source THEBOLDFONT.ttf
+    size 32
+    resolution 512
+}
 Team
 {
     type truetype

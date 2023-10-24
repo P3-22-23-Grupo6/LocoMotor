@@ -41,6 +41,37 @@ material m_TransImg
 		}
 	}
 }
+material Counter_01
+{
+	technique
+	{
+		pass
+		{
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Counter_01.png
+                tex_address_mode wrap
+            }
+		}
+	}
+}
+material Portrait_01
+{
+	technique
+	{
+		pass
+		{
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Portrait_01.png
+                tex_address_mode wrap
+                filtering bilinear
+            }
+		}
+	}
+}
 material LayoutTemplate
 {
 	technique

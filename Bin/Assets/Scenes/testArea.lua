@@ -59,7 +59,7 @@ Test_Track_00 = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "test_track_01.mesh",
+        file =  "testTrackCurve.mesh",
         static = "true"
     },
     RigidBodyComponent = {
@@ -86,14 +86,79 @@ velocityText = {
         bottomcolor = "1 0 0",
     }
 }
-transImg = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0",
-        sizex = "1",
-        sizey = "1",
-        img = "LayoutTemplate"
+counter01Text = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    UITextLM = {
+        type = "t",
+        font = "THEBOLDFONT",
+        text = "1",
+        posx =  "-.4325",
+        posy =  "0.15",
+        align = "left",
+        sizex = "0.03",
+        sizey = "0.03",
+        topcolor = "1 1 1",
+        bottomcolor = "1 1 1",
     }
 }
-
-entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00", "transImg"}
+counter02Text = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    UITextLM = {
+        type = "t",
+        font = "THEBOLDFONT",
+        text = "2",
+        posx =  "-.4325",
+        posy =  "0.25",
+        align = "left",
+        sizex = "0.03",
+        sizey = "0.03",
+        topcolor = "1 1 1",
+        bottomcolor = "1 1 1",
+    }
+}
+counter01Img = {
+    UIImageLM = { 
+        posx = "0",
+        posy = "0.1",
+        sizex = "0.1",
+        sizey = "0.1",
+        img = "Counter_01"
+    }
+}
+portrait01Img = {
+    UIImageLM = { 
+        posx = "0",
+        posy = "0.1",
+        sizex = "0.1",
+        sizey = "0.1",
+        img = "Portrait_01"
+    }
+}
+counter02Img = {
+    UIImageLM = { 
+        posx = "0",
+        posy = "0.2",
+        sizex = "0.1",
+        sizey = "0.1",
+        img = "Counter_01"
+    }
+}
+portrait02Img = {
+    UIImageLM = { 
+        posx = "0",
+        posy = "0.2",
+        sizex = "0.1",
+        sizey = "0.1",
+        img = "Portrait_01"
+    }
+}
+entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00", "counter01Img", "portrait01Img", "counter02Img", "portrait02Img", "counter01Text",
+"counter02Text"}
