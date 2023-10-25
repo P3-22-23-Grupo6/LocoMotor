@@ -165,7 +165,7 @@ void LocoMotor::Transform::InitRuntime(LMVector3 initPos, LMVector3 initRot, LMV
 	gameObject->RegisterTransform(this);
 
 	_position = initPos;
-	_localPosition = LMVector3();
+	_localPosition = LMVector3(0,0,0);
 	_direction = initRot.AsRotToQuaternion();
 	_localDirection = LMQuaternion();
 	_scale = initScale;
@@ -195,23 +195,29 @@ void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
 	//Sets Position In World Coordinates
 	_position = newPosition;
 	if (_gObjNode != nullptr){
-		_gObjNode->SetPosition((float) newPosition.GetX(), (float) newPosition.GetY(), (float) newPosition.GetZ());
+		_gObjNode->SetPosition((float) _position.GetX(), (float) _position.GetY(), (float) _position.GetZ());
 	}
 
 	//Sets Position of Rigidbody
-	SetPhysPosition(newPosition);
+	SetPhysPosition(_position);
 	////Sets Position of everychild
 	if (childList.size() > 0) {
 		for (auto a : childList){
 			a->SetPosition(a->_localPosition + a->parent->GetPosition());
+			
 			//If has a Parent, recalculate LocalPosition j in case
-			if(a->parent != nullptr) a->_localPosition = a->_position - a->parent->GetPosition();
+			//if(a->parent != nullptr) a->_localPosition = a->_position - a->parent->GetPosition();
 		}
 	}
 }
 
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newLocalPosition) {
-	_localPosition = newLocalPosition;
+	_localPosition = newLocalPosition;	
+	LMVector3 totalPos = _position + _localPosition;
+	if (_gObjNode != nullptr) {
+		_gObjNode->SetPosition((float) totalPos.GetX(), (float) totalPos.GetY(), (float) totalPos.GetZ());
+	}
+	SetPhysPosition(totalPos);
 }
 
 //GETTERS

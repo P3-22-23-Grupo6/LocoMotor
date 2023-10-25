@@ -76,7 +76,7 @@ btRigidBody* PhysicsManager::CreateRigidBody(RigidBodyInfo info, MeshStrider* ms
 	rigidbody->setDamping(0.7f, 0.7f);
 
 	if (isDynamic) {
-		rigidbody->setCcdMotionThreshold(0.0000001f);
+		rigidbody->setCcdMotionThreshold(0.000000001f);//0.0000001f
 		rigidbody->setCcdSweptSphereRadius(0.5f);
 	}
 	return rigidbody;

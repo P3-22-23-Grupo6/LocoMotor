@@ -31,6 +31,7 @@ material m_Water {
     technique {
         pass {
             lighting off
+            fog_override true exp 0.3 0.74 0.83 0.006 150 600
             texture_unit {
                 texture water_t.png
                 filtering bilinear
@@ -131,11 +132,11 @@ material m_BillboardsGizmos {
     technique {
         pass {
             lighting off
-            alpha_rejection greater 60
+            scene_blend alpha_blend
             texture_unit {
                 scroll 0.5 0
                 texture RaceTextOverlays.png
-                filtering bilinear
+                mipmap_bias 0
             }
         }
     }
