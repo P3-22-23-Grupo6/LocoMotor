@@ -39,6 +39,18 @@ material m_Water {
         }
     }
 }
+material m_Waterfall {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture WaterFall01_t.png
+                filtering bilinear
+                scroll_anim 0 0.8
+            }
+        }
+    }
+}
 material m_Panels {
     technique {
         pass {

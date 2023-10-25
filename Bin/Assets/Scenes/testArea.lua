@@ -16,7 +16,7 @@ mainCam = {
 }
 coche = {
     Transform = {
-        position = "0 10 0",
+        position = "-30 40 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -171,7 +171,7 @@ SkyboxMeshNew = {
     Transform = {
         position = "0 0 20",
         rotation = "0 0 0",
-        scale = "1 1 1"
+        scale = "2 2 2"
     },
     MeshRenderer = {
         file =  "SkyboxMeshNew.001.mesh",
