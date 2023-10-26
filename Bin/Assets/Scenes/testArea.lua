@@ -104,13 +104,13 @@ raceManager = {
     RaceManager = {
         checkpoint0 = "0 2 -10",
         checkpoint1 = "0 2 -40",
-        checkpoint2 = "0 2 -80",
+        checkpoint2 = "0 4 -80",
         checkpoint3 = "0 6 -120",
-        checkpoint4 = "0 6 -160",
-        checkpoint5 = "0 6 -200",
-        checkpoint6 = "0 2 -240",
-        checkpoint7 = "0 2 -280",
-        checkpoint8 = "0 2 -320",
+        checkpoint4 = "0 8 -160",
+        checkpoint5 = "0 10 -200",
+        checkpoint6 = "0 12 -240",
+        checkpoint7 = "0 12 -280",
+        checkpoint8 = "0 12 -320",
         checkpoint9 = "0 2 -10"
     }
 }
@@ -218,5 +218,27 @@ portrait02Img = {
         top = "10"
     }
 }
+EnemyCar01 = {
+    Transform = {
+        position = "0 4 -10",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Stinger.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav"
+    },
+    EnemyAI = {
+        enemySpeed = "20",
+        StartSeparation = "0"
+    },
+    RigidBodyComponent = {
+        mass = 1,
+        friction = "0.0"
+    }
+}
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
-"counter02Text", "SkyboxMeshNew", "raceManager", "tube"}
+"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01"}
