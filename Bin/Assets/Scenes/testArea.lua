@@ -33,7 +33,7 @@ coche = {
         friction = "0.0",
     },
     ParticleSystem = {
-        name = "exhaust",
+        name = "exhaustDos",
         file = "Racers/JetEngine2"
     }
 }
@@ -103,14 +103,15 @@ raceManager = {
     },
     RaceManager = {
         checkpoint0 = "0 2 -10",
-        checkpoint1 = "0 2 -20",
-        checkpoint2 = "0 2 -30",
-        checkpoint3 = "0 2 -40",
-        checkpoint4 = "0 2 -50",
-        checkpoint5 = "0 2 -60",
-        checkpoint6 = "0 2 -70",
-        checkpoint7 = "0 2 -80",
-        checkpoint8 = "0 2 -90",
+        checkpoint1 = "0 2 -40",
+        checkpoint2 = "0 2 -80",
+        checkpoint3 = "0 6 -120",
+        checkpoint4 = "0 6 -160",
+        checkpoint5 = "0 6 -200",
+        checkpoint6 = "0 2 -240",
+        checkpoint7 = "0 2 -280",
+        checkpoint8 = "0 2 -320",
+        checkpoint9 = "0 2 -10"
     }
 }
 test_Plane00 = {
@@ -128,6 +129,7 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
+
 SkyboxMeshNew = {
     Transform = {
         position = "0 0 20",
@@ -232,5 +234,5 @@ portrait02Img = {
         img = "Portrait_01"
     }
 }
-entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00", "counter01Img", "portrait01Img", "counter02Img", "portrait02Img", "counter01Text",
-"counter02Text", "SkyboxMeshNew", "raceManager"}
+entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "counter01Img", "portrait01Img", "counter02Img", "portrait02Img", "counter01Text",
+"counter02Text", "SkyboxMeshNew", "raceManager", "tube"}
