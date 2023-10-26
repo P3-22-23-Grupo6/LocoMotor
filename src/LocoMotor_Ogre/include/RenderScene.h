@@ -75,6 +75,7 @@ namespace OgreWrapper {
 		Canvas* _canvas;
 		Ogre::OverlaySystem* _overlay;
 		Ogre::StaticGeometry* _stGeom;
+		int lastCamZOrder;
 	};
 }
 #endif

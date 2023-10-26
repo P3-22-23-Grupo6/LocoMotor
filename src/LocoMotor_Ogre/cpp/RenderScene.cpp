@@ -24,6 +24,7 @@ OgreWrapper::RenderScene::RenderScene(Ogre::SceneManager* scene) {
 	_canvas = new OgreWrapper::Canvas();
 	_canvas->Init(_manager);
 	_stGeom = _manager->createStaticGeometry("st");
+	lastCamZOrder = 0;
 	SetSkybox();
 }
 
@@ -139,7 +140,8 @@ OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::str
 }
 
 OgreWrapper::Camera* OgreWrapper::RenderScene::CreateCamera(std::string name) {
-	return new Camera(_manager->createCamera(name));
+	lastCamZOrder++;
+	return new Camera(_manager->createCamera(name), lastCamZOrder);
 }
 
 void OgreWrapper::RenderScene::SetActiveCamera(OgreWrapper::Camera* cam) {

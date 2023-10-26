@@ -13,7 +13,7 @@ namespace OgreWrapper {
 	class Camera : public RenderEntity {
 	public:
 
-		Camera(Ogre::Camera* camera);
+		Camera(Ogre::Camera* camera, int zOrder);
 		~Camera();
 		/// @brief Gets the viewport of the camera
 		/// @return viewport
@@ -31,7 +31,7 @@ namespace OgreWrapper {
 		/// @brief Sets the viewport ratio to a specific one
 		/// @param viewportIndex nº of viewport
 		/// @param modeIndex -> 0 Normal Camera, 1=1º Cam PvP, 2= 2ª PvP
-		void SetViewportRatio(int viewportIndex, int modeIndex);
+		void SetViewportRatio(int camerMode);
 		/// @brief Changes the ClippingPlane, for optimization
 		/// @param nearDis nearest distance
 		/// @param farDis furthest distance
@@ -41,8 +41,6 @@ namespace OgreWrapper {
 		Ogre::Camera* GetOgreCamera();
 
 	private:
-		static int _zOrder;
-		int _mZOrder;
 		Ogre::Camera* _mCamera;
 		Ogre::Viewport* _vp;
 	};

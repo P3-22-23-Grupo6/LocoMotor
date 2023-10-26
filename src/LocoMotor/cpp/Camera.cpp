@@ -16,6 +16,7 @@ LocoMotor::Camera::Camera()
 	_scene = nullptr;
 	_target = nullptr;
 	_initialOffset = LMVector3();
+	camerMode = 0;
 }
 
 
@@ -23,10 +24,10 @@ void LocoMotor::Camera::Init(std::vector<std::pair<std::string, std::string>>& p
 {
 	InitComponent();
 	for (auto & param : params) {
-		if (param.first == "CameraMode") {
+		if (param.first == "CameraMode") {//0: singlePlayer, 1: FirstPlayer, 2:SecondPlayer
 			try {
-				int modeIndex = std::stoi(param.second);
-				SetViewportRatio(1, modeIndex); //ViewportIndex = 1 TEMPORAL
+				camerMode = std::stoi(param.second);
+				SetViewportRatio(camerMode);
 			}
 			catch (...) {
 			}
@@ -122,6 +123,6 @@ void LocoMotor::Camera::SetFOV(float newFov) {
 	_cam->SetFOV(newFov);
 }
 
-void LocoMotor::Camera::SetViewportRatio(int viewportIndex, int modeIndex) {
-	_cam->SetViewportRatio(viewportIndex, modeIndex);
+void LocoMotor::Camera::SetViewportRatio(int camerMode) {
+	_cam->SetViewportRatio(camerMode);
 }

@@ -7,15 +7,12 @@
 #include <OgreRenderWindow.h>
 #include <OgreVector3.h>
 
-int OgreWrapper::Camera::_zOrder = 0;
-
-OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
+OgreWrapper::Camera::Camera(Ogre::Camera* camera, int zOrder) {
 	_mCamera = camera;
 	_mCamera->setAutoAspectRatio(true);
-	_mZOrder = Camera::_zOrder;
 	//Normal Camera
-	_vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, Camera::_zOrder);
-	Camera::_zOrder++;
+	_vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, zOrder);
+	if (zOrder > 1) _vp->setClearEveryFrame(false);
 	_vp->setBackgroundColour(Ogre::ColourValue(0.6f, 0.7f, 0.8f));
 	_vp->setSkiesEnabled(true);
 	_vp->setShadowsEnabled(false);
@@ -40,17 +37,17 @@ void OgreWrapper::Camera::SetFOV(float newFOV) {
 	_mCamera->setFOVy(Ogre::Radian(newFOV * 3.14f / 180));//Conversion Provisional, meter en LMVector o LMQuaternion
 }
 
-void OgreWrapper::Camera::SetViewportRatio(int viewportIndex, int modeIndex) {
-	if (modeIndex == 0) {
+void OgreWrapper::Camera::SetViewportRatio(int camerMode) {
+	if (camerMode == 0) {
 		GetViewport()->setDimensions(0.0f, 0.0f, 1.0f, 1.0f);
 		SetAspectRatio(Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight()));
 	}
-	else if (modeIndex == 1) {
+	else if (camerMode == 1) {
 		GetViewport()->setDimensions(0.0f, 0.0f, 1.0f, 0.5f);
 		GetViewport()->update();
 		SetAspectRatio(Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight()));
 	}
-	else if (modeIndex == 2) {
+	else if (camerMode == 2) {
 		GetViewport()->setDimensions(0.0f, 0.5f, 1.0f, 0.5f);
 		GetViewport()->update();
 		SetAspectRatio(Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight()));

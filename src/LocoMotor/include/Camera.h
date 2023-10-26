@@ -62,10 +62,11 @@ namespace LocoMotor {
 		/// set for the camera. FOV is the extent of the observable world that is seen at any given moment
 		/// through the camera lens. It is usually measured in degrees and determines how much of the scene
 		void SetFOV(float newFov);
-		void SetViewportRatio(int viewportIndex, int modeIndex);
+		void SetViewportRatio(int camerMode);
 
 	private:
 		OgreWrapper::Camera* _cam;
+		int camerMode;
 		Scene* _scene;
 
 		GameObject* _target;

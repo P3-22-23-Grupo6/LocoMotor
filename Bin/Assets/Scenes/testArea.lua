@@ -6,11 +6,11 @@ mainCam = {
     },
     Camera = 
     { 
-        CameraMode = 0,
         FOV = "60",
         target = "coche" ,
         main = "",
-        initialOffset = ""
+        initialOffset = "",
+        CameraMode = 1
     },
     AudioListener = {}
 }
@@ -28,7 +28,51 @@ coche = {
         playonStart = "Assets/Sounds/engine.wav",
         volume = 0.2
     },
-    PlayerController = {},
+    PlayerController = {
+        PlayerIndex = 0
+    },
+    RigidBodyComponent = {
+        mass = 1,
+        friction = "0.0",
+    },
+    ParticleSystem = {
+        name = "exhaust",
+        file = "Racers/JetEngine2"
+    }
+}
+secondCam = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    Camera = 
+    { 
+        FOV = "60",
+        target = "cocheDos" ,
+        main = "",
+        initialOffset = "",
+        CameraMode = 2
+    },
+    AudioListener = {}
+}
+cocheDos = {
+    Transform = {
+        position = "-30 40 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "BlueFalcon.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav",
+        volume = 0.2
+    },
+    PlayerController = {
+        PlayerIndex = 1
+    },
     RigidBodyComponent = {
         mass = 1,
         friction = "0.0",
@@ -271,5 +315,5 @@ portrait02Img = {
         img = "Portrait_01"
     }
 }
-entities = { "coche", "mainCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00", "counter01Img", "portrait01Img", "counter02Img", "portrait02Img", "counter01Text",
+entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "gizmo_Axis", "consoleDebug", "Test_Track_00", "counter01Img", "portrait01Img", "counter02Img", "portrait02Img", "counter01Text",
 "counter02Text", "SkyboxMeshNew", "raceManager"}
