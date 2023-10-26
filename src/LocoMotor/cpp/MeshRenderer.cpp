@@ -6,6 +6,7 @@
 #include "Scene.h"
 #include "GameObject.h"
 #include "LMVector.h"
+#include "LMVectorConverter.h"
 #include "Transform.h"
 #include "LogSystem.h"
 using namespace LocoMotor;
@@ -125,6 +126,12 @@ MeshRenderer::~MeshRenderer() {
 
 void MeshRenderer::Render() {
     
+}
+void MeshRenderer::ChangeTexOffset(std::string matName, float newX, float newY) {
+	OgreWrapper::OgreManager::GetInstance()->ChangeTexOffset(matName, newX, newY);
+}
+void MeshRenderer::CreateBillboard(LMVector3 billPos, std::string matName){
+	
 }
 
 

@@ -63,11 +63,13 @@ namespace OgreWrapper {
 		int GetWindowWidth();
 
 		//Material Manipulation
-		void FadeMaterial(std::string materialName);
+		void ChangeTexOffset(std::string materialName, float newX, float newY);
 		void RenderToImage();
 		void UpdateRenderTextures();
+		void CreateBillboard(Ogre::Vector3 billPos, std::string billMat);
 	protected:
 		Ogre::Root* _root;
+		Ogre::SceneManager* sM;
 		NativeWindowPair _mWindow;
 
 		std::map<std::string, OgreWrapper::RenderScene*> _scenes;

@@ -16,12 +16,9 @@ mainCam = {
 }
 coche = {
     Transform = {
-        position = "-30 40 0",
+        position = "-30 30 0",
         rotation = "0 0 0",
         scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "BlueFalcon.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -61,9 +58,6 @@ cocheDos = {
         position = "-30 40 0",
         rotation = "0 0 0",
         scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "BlueFalcon.mesh"
     },
     AudioSource = {
         loops= -1,

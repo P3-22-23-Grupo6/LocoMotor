@@ -21,6 +21,8 @@ namespace LocoMotor {
 		~MeshRenderer();
 
 		void Render();
+		void ChangeTexOffset(std::string matName, float newX, float newY);
+		void CreateBillboard(LMVector3 billPos, std::string matName);
 		/// @brief Initializes and attaches a renderer to a node in an Ogre scene.
 		void PreStart() override;
 

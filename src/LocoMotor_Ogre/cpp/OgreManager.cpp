@@ -15,6 +15,8 @@
 #include <OgreRenderTexture.h>
 #include <OgrePrerequisites.h>
 #include <OgreHardwarePixelBuffer.h>
+#include <OgreBillboard.h>
+#include <OgreBillboardSet.h>
 //#include <OgreTrays.h>
 //SDL includes
 #include <SDL.h>
@@ -81,7 +83,7 @@ OgreWrapper::RenderScene* OgreWrapper::OgreManager::CreateScene(std::string name
 		return _scenes[name];
 	}
 	OgreWrapper::RenderScene* sc;
-	Ogre::SceneManager* sM = _root->createSceneManager();
+	sM = _root->createSceneManager();
 	sM->addRenderQueueListener(_ovrSys);
 	sc = new OgreWrapper::RenderScene(sM);
 	_scenes.insert({ name, sc });
@@ -212,9 +214,10 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow(std::string n
 	return _mWindow;
 }
 
-void OgreWrapper::OgreManager::FadeMaterial(std::string materialName) {
-	//Ogre::MaterialPtr ptr = Ogre::MaterialManager::getSingleton().getByName(materialName);
-	//if(tex != nullptr) ptr->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTexture(tex);
+void OgreWrapper::OgreManager::ChangeTexOffset(std::string materialName, float newX, float newY) {
+	Ogre::MaterialPtr ptr = Ogre::MaterialManager::getSingleton().getByName(materialName);
+	if(ptr != nullptr) ptr->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureUScroll(newX);
+	if(ptr != nullptr) ptr->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureVScroll(newY);
 }
 
 void OgreWrapper::OgreManager::RenderToImage() {
@@ -251,6 +254,16 @@ void OgreWrapper::OgreManager::UpdateRenderTextures() {
 	//	a->update();
 	//	//Ogre::MaterialManager::getSingleton().getByName("m_Viewport")->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTexture(tex);
 	//}
+}
+
+void OgreWrapper::OgreManager::CreateBillboard(Ogre::Vector3 billPos, std::string billMat) {
+	//SceneNode* myNode = static_cast<SceneNode*>(mSceneMgr->getRootSceneNode()->createChild());
+	
+	Ogre::BillboardSet* mySet = sM->createBillboardSet("mySet");
+	mySet->setMaterialName(billMat);
+	Ogre::Billboard* myBillboard = mySet->createBillboard(billPos);
+
+	//myNode->addChild(mySet);
 }
 
 void OgreWrapper::OgreManager::Shutdown() {

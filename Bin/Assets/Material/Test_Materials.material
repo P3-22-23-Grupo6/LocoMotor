@@ -15,18 +15,6 @@ material m_Test00 {
         }
     }
 }
-material m_Billboards {
-    technique {
-        pass {
-            lighting off
-            alpha_rejection greater 60
-            texture_unit {
-                texture RaceTextOverlays.png
-                filtering bilinear
-            }
-        }
-    }
-}
 material m_Water {
     technique {
         pass {
@@ -140,15 +128,56 @@ material m_Viewport {
         }
     }
 }
-material m_BillboardsGizmos {
+//GIZMOS PLAYERS PORQUE NO SE INSTANCIAN ON RUNTIME COMO EN UNITY Y SON MATERIALES COMPARTIDOS
+//ME DA PALO CREARLO RUNTIME A PELO ASIQUE HAGO CUATRO GG EZ :)
+material m_RacerGizmo00 {
     technique {
         pass {
             lighting off
             scene_blend alpha_blend
+            depth_check off
+            texture_unit {
+                scroll 0 0
+                texture RaceTextOverlays.png
+            }
+        }
+    }
+}
+material m_RacerGizmo01 {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            depth_check off
             texture_unit {
                 scroll 0.5 0
                 texture RaceTextOverlays.png
-                mipmap_bias 0
+            }
+        }
+    }
+}
+material m_RacerGizmo02 {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            depth_check off
+            texture_unit {
+                scroll 0 0.5
+                texture RaceTextOverlays.png
+            }
+        }
+    }
+}
+material m_RacerGizmo03 {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            depth_check off
+            texture_unit {
+                scroll 0.5 0.5
+                texture RaceTextOverlays.png
             }
         }
     }

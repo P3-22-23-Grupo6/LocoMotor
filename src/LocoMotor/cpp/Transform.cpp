@@ -321,6 +321,11 @@ void LocoMotor::Transform::LookAt(const LMVector3& lookPos, const LMVector3& up)
 	SetForward(newForward);
 }
 
+void LocoMotor::Transform::AddBillboard(const LMVector3& billPos, const std::string billMat, const std::string billName) {
+	OgreWrapper::Node* billNewNode = OgreWrapper::OgreManager::GetInstance()->GetScene(gameObject->GetScene()->GetSceneName())->CreateNode(billName);
+	OgreWrapper::OgreManager::GetInstance()->CreateBillboard(LocoMotor::LmToOgre(billPos), billMat);
+}
+
 void LocoMotor::Transform::AddChild(Transform* trToAdd, bool resetLocal){
 	childList.push_back(trToAdd);
 	trToAdd->SetParent(this);
