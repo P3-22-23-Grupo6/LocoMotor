@@ -198,41 +198,25 @@ counter02Text = {
         bottomcolor = "1 1 1",
     }
 }
-counter01Img = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0.1",
-        sizex = "0.1",
-        sizey = "0.1",
-        img = "Counter_01"
-    }
-}
 portrait01Img = {
     UIImageLM = { 
         posx = "0",
         posy = "0.1",
         sizex = "0.1",
         sizey = "0.1",
-        img = "Portrait_01"
-    }
-}
-counter02Img = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0.2",
-        sizex = "0.1",
-        sizey = "0.1",
-        img = "Counter_01"
+        img = "Portrait_01",
+        top = "20"
     }
 }
 portrait02Img = {
     UIImageLM = { 
         posx = "0",
-        posy = "0.2",
+        posy = "0.4",
         sizex = "0.1",
         sizey = "0.1",
-        img = "Portrait_01"
+        img = "Portrait_02",
+        top = "10"
     }
 }
-entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "counter01Img", "portrait01Img", "counter02Img", "portrait02Img", "counter01Text",
+entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
 "counter02Text", "SkyboxMeshNew", "raceManager", "tube"}
