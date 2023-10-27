@@ -102,16 +102,10 @@ raceManager = {
         vol = "1"
     },
     RaceManager = {
-        checkpoint0 = "0 2 -10",
-        checkpoint1 = "0 2 -40",
-        checkpoint2 = "0 4 -80",
-        checkpoint3 = "0 6 -120",
-        checkpoint4 = "0 8 -160",
-        checkpoint5 = "0 10 -200",
-        checkpoint6 = "0 12 -240",
-        checkpoint7 = "0 12 -280",
-        checkpoint8 = "0 12 -320",
-        checkpoint9 = "0 2 -10"
+        checkpoint1 = "0 2 -22",
+        checkpoint2 = "-6 3 -50",
+        checkpoint3 = "-37 4 -126",
+        checkpoint4 = "-95 11 -201",
     }
 }
 test_Plane00 = {
@@ -136,7 +130,7 @@ Roads = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Roads.mesh",
+        file =  "RoadsExport.mesh",
         static = "true"
     },
     RigidBodyComponent = {
