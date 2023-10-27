@@ -224,6 +224,11 @@ material m_Falcon {
                 tex_address_mode wrap
                 colour_op modulate
             }
+            // texture_unit {
+            //     texture AO_Decal.png
+            //     tex_address_mode wrap
+            //     colour_op modulate
+            // }
         }
     }
 }

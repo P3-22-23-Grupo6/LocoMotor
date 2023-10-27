@@ -28,56 +28,53 @@ selectVehicleTitle = {
 carInfoPanel = {
     UIImageLM = { 
         posx = "0.02",
-        posy = "0.19",
-        sizex = "0.225",
-        sizey = "0.6",
+        posy = "0.1",
+        sizex = "0.25",
+        sizey = "0.7",
         img = "m_carInfoPanel"
     }
 }
 selectVehicleButton = {
     UIImageLM = { 
         interactive = "",
-        posx = "0.78",
-        posy = "0.8",
-        sizex = "0.19",
-        sizey = "0.12",
+        posx = "0.7",
+        posy = "0.77",
+        sizex = "0.3",
+        sizey = "0.22",
         img = "m_selectVehicleButton"
     }
 }
 goToIntroButton = {
     UIImageLM = { 
         interactive = "",
-        posx = "0.01",
-        posy = "0.87",
-        sizex = "0.12",
-        sizey = "0.1",
+        posx = "0.02",
+        posy = "0.8",
+        sizex = "0.22",
+        sizey = "0.16",
         img = "m_BackButton"
     }
 }
 logoImg = {
     UIImageLM = { 
         interactive = "",
-        posx = "0.87",
+        posx = "0.81",
         posy = "0.01",
-        sizex = "0.15",
-        sizey = "0.13",
+        sizex = "0.2",
+        sizey = "0.18",
         img = "LogoImg"
     }
 }
-
-falconPreview = {
-    Transform = {
-        position = "0 -11 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "BlueFalcon_Out.mesh"
-    },
-    Rotator = {
-        Speed = "-0.05"
+Portrait_Falcon = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.42",
+        posy = "0.12",
+        sizex = "0.45",
+        sizey = "0.75",
+        img = "Portrait_Falcon"
     }
 }
+
 MenuBackgroundMesh = {
     Transform = {
         position = "0 0 -10",
@@ -88,7 +85,6 @@ MenuBackgroundMesh = {
         file =  "MenuBackgroundMesh.mesh"
     }
 }
-
 
 mainCam = {
     Transform = {
@@ -124,4 +120,5 @@ mainCam = {
 --}
 
 
-entities = {"ButtonManager", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectVehicleButton", "skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder"}
+entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectVehicleButton", 
+"skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder", "Portrait_Falcon"}
