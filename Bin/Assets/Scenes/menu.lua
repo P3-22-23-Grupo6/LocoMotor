@@ -67,10 +67,10 @@ logoImg = {
 Portrait_Falcon = {
     UIImageLM = { 
         interactive = "",
-        posx = "0.42",
-        posy = "0.12",
-        sizex = "0.45",
-        sizey = "0.75",
+        posx = "0.32",
+        posy = "0.1",
+        sizex = "0.55",
+        sizey = "1",
         img = "Portrait_Falcon"
     }
 }
