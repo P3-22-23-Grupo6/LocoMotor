@@ -9,8 +9,10 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <ctime>
 typedef uint32_t Uint32;
 
+class ctime;
 namespace LocoMotor {
 	class ComponentsFactory;
 	class Component;
@@ -64,7 +66,7 @@ namespace LocoMotor {
 		std::map<std::string, Scene*> _sceneInfo;
 		Scene* _activeScene;
 		Uint32 _lastTime;
-		Uint32 _actTime;
+		float _actTime;
 		float _deltaTime;
 
 	};

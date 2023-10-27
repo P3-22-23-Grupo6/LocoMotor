@@ -33,8 +33,6 @@
 #include "UITextLM.h"
 #include "ScriptManager.h"
 #include "LMVector.h"
-#include "../../../projects/LocoMotor/Light.h"
-
 
 using namespace LocoMotor;
 using namespace PhysicsWrapper;
@@ -73,7 +71,6 @@ void MotorApi::Init() {
 	cmpFac->RegisterComponent<Transform>("Transform");
 	cmpFac->RegisterComponent<UITextLM>("UITextLM");
 	cmpFac->RegisterComponent<UIImageLM>("UIImageLM");
-	cmpFac->RegisterComponent<Light>("Light");
 }
 
 void MotorApi::MainLoop() {
@@ -102,7 +99,6 @@ void MotorApi::MainLoop() {
 	gizmoParent->GetTransform()->AddChild(gizmoBillboard->GetTransform());
 	//OgreWrapper::OgreManager::GetInstance()->FadeMaterial("m_Test00");
 	while (!_exit) {
-		counter++;
 		if (_scnManager->GetCurrentScene() == nullptr) {
 			LogSystem::GetInstance()->Save(0, "No scene has been loaded. Exiting now");
 			break;
@@ -117,19 +113,6 @@ void MotorApi::MainLoop() {
 			break;
 
 		_scnManager->Update();
-
-		if (counter < 2) {
-			std::string gizmoName = "Gizmo" + std::to_string((int)counter);
-			GameObject* gizmoObj = _scnManager->AddObjectRuntime(gizmoName);
-			gizmoObj->AddComponent("Transform");
-			gizmoObj->AddComponent("MeshRenderer");
-			gizmoObj->GetComponent<Transform>()->InitRuntime(LMVector3(0, 0, 0), LMVector3(0, 180, 0));
-			gizmoObj->GetComponent<MeshRenderer>()->InitRuntime("Gizmo_Axis.mesh");
-			gizmoObj->GetTransform()->Start();
-			gizmoParent->GetTransform()->AddChild(gizmoObj->GetTransform());
-			//OgreWrapper::OgreManager::GetInstance()->RenderToImage();
-		}
-		gizmoParent->GetTransform()->SetPosition(LMVector3(4,2,-4));
 	}
 	SceneManager::Clear();
 	PhysicsManager::Clear();

@@ -83,15 +83,15 @@ raceManager = {
         scale = "1 1 1"
     },
     UITextLM = {
-        font =  "BrunoAce",
+        font =  "THEBOLDFONT",
         text = "0 fps",
         posx =  "0",
         posy =  ".02",
         align = "center",
         sizex = "0.05",
         sizey = "0.05",
-        topcolor = "0 0 0",
-        bottomcolor = "0 0 0",
+        topcolor = "1 1 1",
+        bottomcolor = "1 1 1",
     },
     AudioSource = {
         loops= -1,
@@ -106,6 +106,12 @@ raceManager = {
         checkpoint2 = "-6 3 -50",
         checkpoint3 = "-37 4 -126",
         checkpoint4 = "-95 11 -201",
+        checkpoint5 = "-28 25 -260",
+        checkpoint6 = "-32 36 -306",
+        checkpoint7 = "-72 40 -332",
+        checkpoint8 = "-142 41 -321",
+        checkpoint9 = "-172 41 -227",
+        checkpoint10 = "-169 41 -230"
     }
 }
 test_Plane00 = {
@@ -241,13 +247,14 @@ EnemyCar01 = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "20",
-        StartSeparation = "0"
+        enemySpeed = "2",
+        StartSeparation = "1"
     },
     RigidBodyComponent = {
         mass = 1,
         friction = "0.0"
     }
 }
+
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
-"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "Roads"}
+"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads"}

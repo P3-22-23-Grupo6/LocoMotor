@@ -103,9 +103,8 @@ GameObject* LocoMotor::SceneManager::AddObjectRuntime(std::string objectName)
 
 void LocoMotor::SceneManager::Update() {
 
-	_actTime = SDL_GetTicks();
-	_deltaTime = (float)_actTime - (float)_lastTime;
-	_lastTime = _actTime;
+	_deltaTime = clock() - _lastTime;
+	_lastTime = clock();
 	if (_deltaTime <= 0) _deltaTime = 0.001f;
 
 	Scene* sc = _activeScene;
