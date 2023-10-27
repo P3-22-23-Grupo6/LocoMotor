@@ -44,12 +44,21 @@ selectVehicleButton = {
         img = "m_selectVehicleButton"
     }
 }
-
-logoImg = {
+goToIntroButton = {
     UIImageLM = { 
         interactive = "",
         posx = "0.01",
         posy = "0.87",
+        sizex = "0.12",
+        sizey = "0.1",
+        img = "m_BackButton"
+    }
+}
+logoImg = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.87",
+        posy = "0.01",
         sizex = "0.15",
         sizey = "0.13",
         img = "LogoImg"
@@ -115,4 +124,4 @@ mainCam = {
 --}
 
 
-entities = {"ButtonManager", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectVehicleButton", "skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder"}
+entities = {"ButtonManager", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectVehicleButton", "skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder"}

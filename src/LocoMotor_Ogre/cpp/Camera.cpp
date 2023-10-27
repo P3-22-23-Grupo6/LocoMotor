@@ -16,7 +16,6 @@ OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 	int zOrder = ogreMng->GetLastCamIndex(true);
 
 	_vp = ogreMng->GetRenderWindow()->addViewport(_mCamera, zOrder);
-	if (zOrder > 1) _vp->setClearEveryFrame(false);
 	_vp->setBackgroundColour(Ogre::ColourValue(0.6f, 0.7f, 0.8f));
 	_vp->setSkiesEnabled(true);
 	_vp->setShadowsEnabled(false);
@@ -55,6 +54,7 @@ void OgreWrapper::Camera::SetViewportRatio(int camerMode) {
 		GetViewport()->setDimensions(0.0f, 0.5f, 1.0f, 0.5f);
 		GetViewport()->update();
 		SetAspectRatio(Ogre::Real(_vp->getActualWidth()) / Ogre::Real(_vp->getActualHeight()));
+		_vp->setClearEveryFrame(false);
 	}
 
 }
