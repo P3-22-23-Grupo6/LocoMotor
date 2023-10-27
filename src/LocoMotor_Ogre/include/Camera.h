@@ -13,7 +13,7 @@ namespace OgreWrapper {
 	class Camera : public RenderEntity {
 	public:
 
-		Camera(Ogre::Camera* camera, int zOrder);
+		Camera(Ogre::Camera* camera);
 		~Camera();
 		/// @brief Gets the viewport of the camera
 		/// @return viewport

@@ -67,7 +67,12 @@ namespace OgreWrapper {
 		void RenderToImage();
 		void UpdateRenderTextures();
 		void CreateBillboard(Ogre::Vector3 billPos, std::string billMat);
+		/// @brief Adds one everytime a camera is Created(for different viewports)
+		/// @brief Es bastante enrevesado pero nadie va a tocarlo y funciona. en caso de tocamiento tejodes.png
+		/// @params shouldAdd if true, adds +1 to index(if creating camera; only calling from camera)
+		int GetLastCamIndex(bool shouldAdd = false);
 	protected:
+		int lastCamIndex;
 		Ogre::Root* _root;
 		Ogre::SceneManager* sM;
 		NativeWindowPair _mWindow;

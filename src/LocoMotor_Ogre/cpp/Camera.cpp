@@ -7,11 +7,15 @@
 #include <OgreRenderWindow.h>
 #include <OgreVector3.h>
 
-OgreWrapper::Camera::Camera(Ogre::Camera* camera, int zOrder) {
+OgreWrapper::Camera::Camera(Ogre::Camera* camera) {
 	_mCamera = camera;
 	_mCamera->setAutoAspectRatio(true);
+
 	//Normal Camera
-	_vp = OgreWrapper::OgreManager::GetInstance()->GetRenderWindow()->addViewport(_mCamera, zOrder);
+	OgreWrapper::OgreManager* ogreMng = OgreWrapper::OgreManager::GetInstance();
+	int zOrder = ogreMng->GetLastCamIndex(true);
+
+	_vp = ogreMng->GetRenderWindow()->addViewport(_mCamera, zOrder);
 	if (zOrder > 1) _vp->setClearEveryFrame(false);
 	_vp->setBackgroundColour(Ogre::ColourValue(0.6f, 0.7f, 0.8f));
 	_vp->setSkiesEnabled(true);

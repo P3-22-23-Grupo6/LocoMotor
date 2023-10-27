@@ -39,6 +39,7 @@ OgreWrapper::OgreManager::OgreManager() {
 	_mShaderGenerator = nullptr;		
 	_root = nullptr;
 	_ovrSys = nullptr;
+	lastCamIndex = 0;
 }
 
 OgreWrapper::OgreManager::~OgreManager() {
@@ -264,6 +265,14 @@ void OgreWrapper::OgreManager::CreateBillboard(Ogre::Vector3 billPos, std::strin
 	Ogre::Billboard* myBillboard = mySet->createBillboard(billPos);
 
 	//myNode->addChild(mySet);
+}
+
+int OgreWrapper::OgreManager::GetLastCamIndex(bool shouldAdd) {
+	if (shouldAdd) {
+			lastCamIndex++;
+			return lastCamIndex -1;
+	}
+	else return lastCamIndex;
 }
 
 void OgreWrapper::OgreManager::Shutdown() {

@@ -5,122 +5,6 @@ ButtonManager = {
         soundDimension = "2D"
     }
 }
-
-skyboxMesh = {
-    MeshRenderer = {
-        file = "SkyboxMeshNew.001.mesh"
-    },Transform = {
-        position = "0 0 0",
-        rotation = "0 180 0",
-        scale = "1 1 1"
-    }
-}
-menuBack = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0",
-        sizex = "1",
-        sizey = "1",
-        img = "m_MenuBackg",
-        top = "-100000"
-    }
-}
-selectVehicle = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0",
-        sizex = "0.16",
-        sizey = "0.05",
-        img = "m_selectVehicle"
-    }
-}
-
-raceButton = {
-    UIImageLM = { 
-        interactive = "",
-        posx = "0",
-        posy = ".55",
-        sizex = ".45",
-        sizey = ".3",
-        img = "UIPanel",
-    },
-    UITextLM = {
-        font =  "Heavitas",
-        text = "RACE",
-        posx =  "-.45",
-        posy = ".625",
-        align = "left",
-        sizex = "0.45",
-        sizey = "0.15",
-        topcolor = ".2 .2 1",
-        bottomcolor = ".9 .9 1"
-    }
-}
-
-speedButton = {
-    UIImageLM = { 
-        interactive = "",
-        posx = "0.0",
-        posy = "0.4",
-        sizex = "0.3",
-        sizey = "0.15",
-        img = "UIPanel"
-    },
-    UITextLM = {
-        font =  "Heavitas",
-        text = "100cc",
-        posx =  "-.45",
-        posy = "0.44",
-        align = "left",
-        sizex = "0.3",
-        sizey = "0.075",
-        topcolor = ".2 .2 1",
-        bottomcolor = ".9 .9 1"
-    }
-}
-logoImg = {
-    UIImageLM = { 
-        interactive = "",
-        posx = "0",
-        posy = "0.9",
-        sizex = "0.12",
-        sizey = "0.1",
-        img = "LogoImg"
-    }
-}
-tituloImg = {
-    UIImageLM = { 
-        posx = "0.05",
-        posy = "0.05",
-        sizex = "0.4",
-        sizey = "0.3",
-        img = "LocomotorImg"
-    }
-}
-backMesh = {
-    Transform = {
-        position = "0 -5 -10",
-        rotation = "0 180 0",
-        scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "MENU.mesh"
-    }
-}
-
-mainCam = {
-    Transform = {
-        position = "-250 -150 100",
-        rotation = "15 -30 0",
-        scale = "1 1 1"
-    },
-    Camera = 
-    { 
-        CameraMode = 0,
-        FOV = "40",
-        main = ""
-    }
-}
 audioHolder = {
     AudioSource = {
         loops= -1,
@@ -131,5 +15,104 @@ audioHolder = {
         vol = "0.2"
     },
 }
+-- UI PANELS
+selectVehicleTitle = {
+    UIImageLM = { 
+        posx = "0",
+        posy = "0",
+        sizex = "0.24",
+        sizey = "0.06",
+        img = "m_selectVehicleTitle"
+    }
+}
+carInfoPanel = {
+    UIImageLM = { 
+        posx = "0.02",
+        posy = "0.19",
+        sizex = "0.225",
+        sizey = "0.6",
+        img = "m_carInfoPanel"
+    }
+}
+selectVehicleButton = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.78",
+        posy = "0.8",
+        sizex = "0.19",
+        sizey = "0.12",
+        img = "m_selectVehicleButton"
+    }
+}
 
-entities = {"ButtonManager", "raceButton", "speedButton", "selectVehicle", "skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder"}
+logoImg = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.01",
+        posy = "0.87",
+        sizex = "0.15",
+        sizey = "0.13",
+        img = "LogoImg"
+    }
+}
+
+falconPreview = {
+    Transform = {
+        position = "0 -11 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "BlueFalcon_Out.mesh"
+    },
+    Rotator = {
+        Speed = "-0.05"
+    }
+}
+MenuBackgroundMesh = {
+    Transform = {
+        position = "0 0 -10",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "MenuBackgroundMesh.mesh"
+    }
+}
+
+
+mainCam = {
+    Transform = {
+        position = "0 -10 6",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    Camera = 
+    { 
+        CameraMode = 0,
+        FOV = "34",
+        main = ""
+    }
+}
+--skyboxMesh = {
+--    MeshRenderer = {
+--        file = "SkyboxMeshNew.001.mesh"
+--    },Transform = {
+--        position = "0 0 0",
+--        rotation = "0 180 0",
+--        scale = "1 1 1"
+--    }
+--}
+--backMesh = {
+--    Transform = {
+--        position = "0 -5 -10",
+--        rotation = "0 180 0",
+--        scale = "1 1 1"
+--    },
+--    MeshRenderer = {
+--        file =  "MENU.mesh"
+--    }
+--}
+
+
+entities = {"ButtonManager", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectVehicleButton", "skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder"}

@@ -140,8 +140,7 @@ OgreWrapper::Renderer3D* OgreWrapper::RenderScene::CreateStaticRenderer(std::str
 }
 
 OgreWrapper::Camera* OgreWrapper::RenderScene::CreateCamera(std::string name) {
-	lastCamZOrder++;
-	return new Camera(_manager->createCamera(name), lastCamZOrder);
+	return new Camera(_manager->createCamera(name));
 }
 
 void OgreWrapper::RenderScene::SetActiveCamera(OgreWrapper::Camera* cam) {

@@ -383,7 +383,7 @@ material RackMaterial {
     }
 }
 
-material MenuBack {
+material MenuBackImage {
     technique {
         pass {
             lighting off
@@ -484,13 +484,47 @@ material LogoImg {
         }
     }
 }
-material m_selectVehicle {
+material m_selectVehicleTitle {
     technique {
         pass {
             lighting off
             scene_blend alpha_blend
             texture_unit {
                 texture selectVehicleSpr.png
+                scale 1.02 1.02
+            }
+        }
+    }
+}
+material m_carInfoPanel {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture falconInfoPanel.png
+            }
+        }
+    }
+}
+material m_selectVehicleButton {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture SelectCar_00.png
+            }
+        }
+    }
+}
+material m_selectVehicleButtonSelected {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture SelectCar_01.png
             }
         }
     }
