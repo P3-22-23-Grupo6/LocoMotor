@@ -8,11 +8,30 @@ ButtonManager = {
 
 skyboxMesh = {
     MeshRenderer = {
-        file = "SkyboxMesh.mesh"
+        file = "SkyboxMeshNew.001.mesh"
     },Transform = {
         position = "0 0 0",
         rotation = "0 180 0",
         scale = "1 1 1"
+    }
+}
+menuBack = {
+    UIImageLM = { 
+        posx = "0",
+        posy = "0",
+        sizex = "1",
+        sizey = "1",
+        img = "m_MenuBackg",
+        top = "-100000"
+    }
+}
+selectVehicle = {
+    UIImageLM = { 
+        posx = "0",
+        posy = "0",
+        sizex = "0.16",
+        sizey = "0.05",
+        img = "m_selectVehicle"
     }
 }
 
@@ -24,7 +43,6 @@ raceButton = {
         sizex = ".45",
         sizey = ".3",
         img = "UIPanel",
-        top = "20"
     },
     UITextLM = {
         font =  "Heavitas",
@@ -36,17 +54,6 @@ raceButton = {
         sizey = "0.15",
         topcolor = ".2 .2 1",
         bottomcolor = ".9 .9 1"
-    }
-}
-
-menuBack = {
-    UIImageLM = { 
-        posx = ".75",
-        posy = ".80",
-        sizex = ".2",
-        sizey = ".15",
-        img = "LocomotorImg",
-        top = "-1000"
     }
 }
 
@@ -74,10 +81,10 @@ speedButton = {
 logoImg = {
     UIImageLM = { 
         interactive = "",
-        posx = "0.725",
-        posy = "0.8",
-        sizex = "0.285",
-        sizey = "0.22",
+        posx = "0",
+        posy = "0.9",
+        sizex = "0.12",
+        sizey = "0.1",
         img = "LogoImg"
     }
 }
@@ -90,29 +97,6 @@ tituloImg = {
         img = "LocomotorImg"
     }
 }
-aoDecal = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0",
-        sizex = "1",
-        sizey = "1",
-        img = "AO_Decal"
-    }
-}
-carGraphic = {
-    Transform = {
-        position = "0 -10 -30",
-        rotation = "0 160 0",
-        scale = "10 10 10"
-    },
-    MeshRenderer = {
-        file =  "BlueFalcon.mesh"
-    },
-    Rotator = {
-        Speed = "0.05"
-    }
-}
-
 backMesh = {
     Transform = {
         position = "0 -5 -10",
@@ -147,15 +131,5 @@ audioHolder = {
         vol = "0.2"
     },
 }
--- mainCam = {
---     Transform = {
---         position = "0 0 0",
---         rotation = "0 0 0",
---         scale = "1 1 1"
---     },
---     Camera = {
---         main = ""
---     }
--- }
 
-entities = {"ButtonManager", "raceButton", "speedButton", "skyboxMesh", "backMesh", "mainCam", "carGraphic", "logoImg", "aoDecal", "audioHolder", "tituloImg"}
+entities = {"ButtonManager", "raceButton", "speedButton", "selectVehicle", "skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder"}

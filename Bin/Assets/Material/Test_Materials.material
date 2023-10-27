@@ -27,6 +27,18 @@ material m_Water {
         }
     }
 }
+material m_MenuBackg {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture MenuBackg.png
+                scroll_anim 0.1 0.1
+                scale 0.12 0.19
+            }
+        }
+    }
+}
 material m_Waterfall {
     technique {
         pass {

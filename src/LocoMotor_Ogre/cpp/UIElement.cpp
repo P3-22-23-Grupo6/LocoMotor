@@ -41,7 +41,7 @@ void OgreWrapper::UIElement::SetPosition(double x, double y) {
 }
 
 void OgreWrapper::UIElement::SetDimensions(double w, double h) {
-	_container->setDimensions((float) w , (float) h * 2.0f);
+	_container->setDimensions((float) w , (float) h);
 }
 
 void OgreWrapper::UIElement::Show() {
