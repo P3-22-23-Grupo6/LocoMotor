@@ -129,6 +129,21 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
+Roads = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Roads.mesh",
+        static = "true"
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = ""
+    }
+}
 
 SkyboxMeshNew = {
     Transform = {
@@ -241,4 +256,4 @@ EnemyCar01 = {
     }
 }
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
-"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01"}
+"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "Roads"}
