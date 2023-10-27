@@ -127,7 +127,7 @@ unsigned short FmodWrapper::AudioManager::RemoveListener(std::list<AudioListener
 			std::cout << "AUDIO: Trying to update listeners while removing number '" << indexToRemove << "' caused fmod exception: " << FMOD_ErrorString((FMOD_RESULT) err) << std::endl;
 		}
 	#endif // _DEBUG
-
+		it++;
 		nIndex++;
 	}
 	_sys->set3DNumListeners((int) _listeners.size());
