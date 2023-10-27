@@ -100,7 +100,6 @@ GameObject* LocoMotor::SceneManager::AddObjectRuntime(std::string objectName)
 	return _activeScene->AddGameobjectRuntime(objectName);
 }
 
-
 void LocoMotor::SceneManager::Update() {
 
 	_deltaTime = clock() - _lastTime;
@@ -109,6 +108,7 @@ void LocoMotor::SceneManager::Update() {
 
 	Scene* sc = _activeScene;
 	if (_activeScene != nullptr) {
+
 		sc->Update(_deltaTime); 
 		sc->Render();
 	}
