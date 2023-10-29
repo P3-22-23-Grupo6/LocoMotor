@@ -81,7 +81,7 @@ mainCam = {
         main = ""
     }
 }
-arrowRightButton = {
+trackArrowRightButton = {
     UIImageLM = { 
         interactive = "",
         posx = "0.7",
@@ -91,7 +91,7 @@ arrowRightButton = {
         img = "ArrowRight00"
     }
 }
-arrowLeftButton = {
+trackArrowLeftButton = {
     UIImageLM = { 
         interactive = "",
         posx = "0.25",
@@ -115,5 +115,20 @@ trackMesh00 = {
         Speed = "0.05"
     }
 }
+trackMesh01 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Eagle.mesh",
+        static = "true",
+        invisible = "true"
+    },
+    Rotator = {
+        Speed = "0.05"
+    }
+}
 entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectTrackTitle", "selectTrackButton",
-"mainCam", "logoImg", "menuBack", "audioHolder", "arrowRightButton", "arrowLeftButton", "trackMesh00", "trackMesh01"}
+"mainCam", "logoImg", "menuBack", "audioHolder", "trackArrowLeftButton", "trackArrowRightButton", "trackMesh00", "trackMesh01"}

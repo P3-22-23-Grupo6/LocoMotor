@@ -120,6 +120,10 @@ void LocoMotor::MeshRenderer::ChangeMaterial(std::string newMaterial) {
 	_rend3D->SetMaterial(newMaterial);
 }
 
+void LocoMotor::MeshRenderer::SetVisible(bool value) {
+	_rend3D->SetVisible(value);
+}
+
 MeshRenderer::~MeshRenderer() {
 
 }

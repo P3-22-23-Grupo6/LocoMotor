@@ -43,7 +43,8 @@ namespace LocoMotor {
 		OgreWrapper::Renderer3D* GetRenderer();
 
 		void ChangeMaterial(std::string newMaterial);
-
+		/// @brief Sets the Mesh renderer visible/invisible
+		void SetVisible(bool value);
 	private:
 
 		OgreWrapper::Renderer3D* _rend3D = nullptr;
