@@ -1,14 +1,13 @@
 ﻿#include "SceneManager.h"
 #include <SDL.h>
 
+#include "ScriptManager.h"
 #include "ComponentsFactory.h"
 #include "OgreManager.h"
 
 using namespace LocoMotor;
 
-
 SceneManager* Singleton<SceneManager>::_instance = nullptr;
-
 
 SceneManager::SceneManager() {
 	_activeScene = nullptr;
@@ -17,7 +16,6 @@ SceneManager::SceneManager() {
 	_deltaTime = 0.1f;
 }
 
-
 SceneManager::~SceneManager() {
 	std::map<std::string, Scene*>::const_iterator it;
 	for (it = _sceneInfo.cbegin(); it != _sceneInfo.cend(); it = _sceneInfo.erase(it)) {
@@ -25,31 +23,16 @@ SceneManager::~SceneManager() {
 	}
 }
 
-
 Scene* SceneManager::CreateScene(std::string name) {
 	std::map<std::string, Scene*>::iterator it = _sceneInfo.find(name);
 	if (it == _sceneInfo.end()) {
-
 		Scene* newScene = new Scene(name);
-
-
 		_sceneInfo.insert({ name, newScene });
-
-		if (_activeScene == nullptr) {
-			_activeScene = newScene;
-		
-		}
-
+		if (_activeScene == nullptr) _activeScene = newScene;
 		return newScene;
 	}
-
-	else {
-
-
-		//si devuelve nullptr mandar mensaje al logSystem
+	else //si devuelve nullptr mandar mensaje al logSystem
 		return nullptr;
-	}
-
 }
 
 
@@ -75,21 +58,11 @@ Scene* SceneManager::ChangeScene(std::string name) {
 
 }
 
-
-
 Scene* SceneManager::GetSceneByName(std::string name) {
-
 	std::map<std::string, Scene*>::iterator it = _sceneInfo.find(name);
-	if (it != _sceneInfo.end()) {
-
-		return it->second;
-	}
-	else {
-		return nullptr;
-	}
-
+	if (it != _sceneInfo.end()) return it->second;
+	else return nullptr;
 }
-
 
 Scene* LocoMotor::SceneManager::GetCurrentScene()
 {
@@ -115,13 +88,12 @@ void LocoMotor::SceneManager::Update() {
 	if (sc!=nullptr && sc->ToDestroy()) {
 		sc->Destroy();
 	}
+	ScriptManager::GetInstance()->CheckChangeScene();
 }
-
 
 float LocoMotor::SceneManager::GetDelta() {
 	return _deltaTime;
 }
-
 
 void SceneManager::StartScene(Scene* scn) {
 	scn->Start();

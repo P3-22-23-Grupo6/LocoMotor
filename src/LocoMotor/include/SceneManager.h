@@ -16,6 +16,7 @@ class ctime;
 namespace LocoMotor {
 	class ComponentsFactory;
 	class Component;
+	class ScriptManager;
 	class MOTOR_API SceneManager : public Singleton<SceneManager> {
 		friend Singleton<SceneManager>;
 

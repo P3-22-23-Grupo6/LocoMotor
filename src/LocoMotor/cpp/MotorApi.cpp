@@ -83,20 +83,6 @@ void MotorApi::MainLoop() {
 			_exit = true;
 		}
 	}
-	float counter = 0.0f;
-	//Gizmo Parent for child Testing
-	GameObject* gizmoParent = _scnManager->AddObjectRuntime("gizmoParent");
-	gizmoParent->AddComponent("MeshRenderer");
-	gizmoParent->GetComponent<Transform>()->InitRuntime();
-	gizmoParent->GetComponent<MeshRenderer>()->InitRuntime("SphereDebug.mesh");
-	gizmoParent->GetTransform()->Start();
-	GameObject* gizmoBillboard = _scnManager->AddObjectRuntime("gizmoBillboard");
-	gizmoBillboard->AddComponent("Transform");
-	gizmoBillboard->AddComponent("MeshRenderer");
-	gizmoBillboard->GetComponent<Transform>()->InitRuntime(LMVector3(0, 2, 0));
-	gizmoBillboard->GetComponent<MeshRenderer>()->InitRuntime("BillboardRacers.mesh", "m_TransImg");
-	gizmoBillboard->GetTransform()->Start();
-	gizmoParent->GetTransform()->AddChild(gizmoBillboard->GetTransform());
 	//OgreWrapper::OgreManager::GetInstance()->FadeMaterial("m_Test00");
 	while (!_exit) {
 		if (_scnManager->GetCurrentScene() == nullptr) {

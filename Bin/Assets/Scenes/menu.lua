@@ -71,7 +71,8 @@ Portrait_Falcon = {
         posy = "0.1",
         sizex = "0.55",
         sizey = "1",
-        img = "Portrait_Falcon"
+        img = "Portrait_Falcon",
+        top = "-10000"
     }
 }
 
@@ -88,7 +89,7 @@ MenuBackgroundMesh = {
 
 mainCam = {
     Transform = {
-        position = "0 -10 6",
+        position = "0 0 6",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -97,6 +98,26 @@ mainCam = {
         CameraMode = 0,
         FOV = "34",
         main = ""
+    }
+}
+arrowRightButton = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.8",
+        posy = "0.6",
+        sizex = "0.09",
+        sizey = "0.13",
+        img = "ArrowRight00"
+    }
+}
+arrowLeftButton = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.3",
+        posy = "0.6",
+        sizex = "0.09",
+        sizey = "0.13",
+        img = "ArrowLeft00"
     }
 }
 --skyboxMesh = {
@@ -121,4 +142,4 @@ mainCam = {
 
 
 entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectVehicleButton", 
-"skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder", "Portrait_Falcon"}
+"skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder", "Portrait_Falcon", "arrowRightButton", "arrowLeftButton"}

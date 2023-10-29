@@ -42,10 +42,11 @@ int ScriptManager::ReadLuaScript(const std::string path) {
 }
 
 bool ScriptManager::LoadSceneFromFile(std::string path) {
+	bufferedScene = "NONE";
     if (ReadLuaScript(path) != 0) {
         return false;
     }
-    Scene* scene = SceneManager::GetInstance()->GetSceneByName(path);
+    Scene* scene =  SceneManager::GetInstance()->GetSceneByName(path);
     if (scene == nullptr) {
         scene = _scMan->CreateScene(path);
     }
@@ -65,14 +66,25 @@ bool ScriptManager::LoadSceneFromFile(std::string path) {
 			scene->RemoveGameobject(allEnts[i]);
 		}
 	}
-
     SceneManager::GetInstance()->ChangeScene(path);
+	
     return true;
+}
+
+void LocoMotor::ScriptManager::CheckChangeScene() {
+	if (bufferedScene == "NONE") return;
+	std::cout << "\nTHERE IS A BUFFERED SCENE; CHANGING NOW!";
+	LoadSceneFromFile(bufferedScene);
+}
+
+void LocoMotor::ScriptManager::TryChangeScene(std::string path) {
+	bufferedScene = path;
 }
 
 ScriptManager::ScriptManager() {
 	_luaState = luaL_newstate();
 	_scMan = SceneManager::GetInstance();
+	bufferedScene = "NONE";
 	luaL_openlibs(_luaState);
 }	
 

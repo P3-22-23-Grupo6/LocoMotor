@@ -202,8 +202,9 @@ void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
 	SetPhysPosition(_position);
 	////Sets Position of everychild
 	if (childList.size() > 0) {
-		for (auto a : childList){
-			a->SetPosition(a->_localPosition + a->parent->GetPosition());
+		for (auto &a : childList){
+			if (a->GetParent() == nullptr) continue;
+			a->SetPosition(a->_localPosition + a->GetParent()->GetPosition());
 			
 			//If has a Parent, recalculate LocalPosition j in case
 			//if(a->parent != nullptr) a->_localPosition = a->_position - a->parent->GetPosition();
@@ -245,11 +246,11 @@ void LocoMotor::Transform::SetRotation(const LMQuaternion& newRotation) {
 	}
 	SetPhysRotation(newRotation);
 	//Set Rotation of EveryChild
-	if (childList.size() > 0) {
-		for (auto a : childList) {
-			a->SetRotation(a->GetLocalRotation() + a->GetParent()->_direction);
-		}
-	}
+	//if (childList.size() > 0) {
+	//	for (auto a : childList) {
+	//		a->SetRotation(a->GetLocalRotation() + a->GetParent()->_direction);
+	//	}
+	//}
 }
 
 void LocoMotor::Transform::SetLocalRotation(const LMVector3& newRotation) {
@@ -342,7 +343,7 @@ void LocoMotor::Transform::SetParent(Transform* trParent) {
 	std::cout << "\nObjecto: " << this->gameObject->GetName() << " tiene Local a: " << _localPosition.ToString()<<"\n";
 	std::cout << "\nObjecto: " << this->gameObject->GetName() << " tiene Rotation Local a: " << _localDirection.ToString()<<"\n";
 }
-const LocoMotor::Transform* LocoMotor::Transform::GetParent() {
+LocoMotor::Transform* LocoMotor::Transform::GetParent() {
 	return parent;
 }
 

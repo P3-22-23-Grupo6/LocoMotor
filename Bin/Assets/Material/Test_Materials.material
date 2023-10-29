@@ -123,6 +123,70 @@ material Portrait_02
 		}
 	}
 }
+material ArrowLeft00
+{
+	technique
+	{
+		pass
+		{
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Arrow_L.png
+                tex_address_mode wrap
+                filtering bilinear
+            }
+		}
+	}
+}
+material ArrowLeft01
+{
+	technique
+	{
+		pass
+		{
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Arrow_L_Selected.png
+                tex_address_mode wrap
+                filtering bilinear
+            }
+		}
+	}
+}
+material ArrowRight00
+{
+	technique
+	{
+		pass
+		{
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Arrow_R.png
+                tex_address_mode wrap
+                filtering bilinear
+            }
+		}
+	}
+}
+material ArrowRight01
+{
+	technique
+	{
+		pass
+		{
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Arrow_R_Selected.png
+                tex_address_mode wrap
+                filtering bilinear
+            }
+		}
+	}
+}
 material LayoutTemplate
 {
 	technique

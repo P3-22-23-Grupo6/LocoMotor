@@ -32,8 +32,6 @@ namespace LocoMotor {
 
 		std::string _startScene;
 		bool _exit;
-
-		LocoMotor::GameObject* _ship_gObj;
 	};
 }
 #endif;

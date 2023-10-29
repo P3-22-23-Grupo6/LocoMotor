@@ -107,7 +107,7 @@ namespace LocoMotor {
 		void RemoveChild(Transform* trToRemove);
 		//Sets a transform as a parent of this Transform
 		void SetParent(Transform* trParent);
-		const Transform* GetParent();
+		Transform* GetParent();
 
 	private:
 

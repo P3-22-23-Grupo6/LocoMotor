@@ -25,6 +25,11 @@ namespace LocoMotor {
 		/// @brief Reads a lua file and builds the scene from that file
 		/// @param path The path to find the lua file
 		bool LoadSceneFromFile(std::string path);
+		
+		/// @brief Checks if theres a scene in buffer waiting to be changed
+		void CheckChangeScene();
+		void TryChangeScene(std::string path);
+
 	private:
 		/// @brief Reads the lua script 
 		/// @param path The path to find the lua script
@@ -40,6 +45,8 @@ namespace LocoMotor {
 		~ScriptManager();
 		lua_State* _luaState;
 		SceneManager* _scMan;
+		//@brief Scene waiting to be changed
+		std::string bufferedScene;
 
 	};
 }
