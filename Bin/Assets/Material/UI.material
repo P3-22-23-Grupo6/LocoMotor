@@ -79,7 +79,7 @@ material m_carInfoPanelEagle {
             lighting off
             scene_blend alpha_blend
             texture_unit {
-                texture falconInfoPanelEagle.png
+                texture eagleInfoPanelFalcon.png
             }
         }
     }

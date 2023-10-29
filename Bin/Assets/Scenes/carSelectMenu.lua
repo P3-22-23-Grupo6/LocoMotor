@@ -27,10 +27,10 @@ selectVehicleTitle = {
 }
 carInfoPanel = {
     UIImageLM = { 
-        posx = "0.02",
-        posy = "0.1",
-        sizex = "0.25",
-        sizey = "0.7",
+        posx = "0.0",
+        posy = "0.08",
+        sizex = "0.27",
+        sizey = "0.9",
         img = "m_carInfoPanelFalcon"
     }
 }
