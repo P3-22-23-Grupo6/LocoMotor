@@ -81,7 +81,29 @@ material m_carInfoPanelFalcon {
             lighting off
             scene_blend alpha_blend
             texture_unit {
-                texture falconInfoPanelFalcon.png
+                texture falconInfoPanel.png
+            }
+        }
+    }
+}
+material m_carInfoPanelEagle {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture eagleInfoPanel.png
+            }
+        }
+    }
+}
+material m_carInfoPanelFlamingo {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture flamingoInfoPanel.png
             }
         }
     }
@@ -97,17 +119,7 @@ material m_carInfoPanelGeneric {
         }
     }
 }
-material m_carInfoPanelEagle {
-    technique {
-        pass {
-            lighting off
-            scene_blend alpha_blend
-            texture_unit {
-                texture eagleInfoPanelFalcon.png
-            }
-        }
-    }
-}
+
 //BACK BUTTON Select Track
 material m_select {
     technique {

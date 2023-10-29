@@ -8,11 +8,11 @@ ButtonManager = {
 audioHolder = {
     AudioSource = {
         loops= -1,
-        playonStart = "Assets/Sounds/MenuMusic.mp3",
+        playonStart = "Assets/Sounds/carSelect.mp3",
         loopStart = "17105",
         loopEnd = "214244",
         soundDimension = "2D",
-        vol = "0.2"
+        vol = "0.7"
     },
 }
 -- UI PANELS
