@@ -122,7 +122,7 @@ trackMesh01 = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Eagle.mesh",
+        file =  "PreviewTrack00.mesh",
         static = "true",
         invisible = "true"
     },
