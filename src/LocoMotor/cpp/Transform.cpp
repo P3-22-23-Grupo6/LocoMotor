@@ -246,11 +246,11 @@ void LocoMotor::Transform::SetRotation(const LMQuaternion& newRotation) {
 	}
 	SetPhysRotation(newRotation);
 	//Set Rotation of EveryChild
-	//if (childList.size() > 0) {
-	//	for (auto a : childList) {
-	//		a->SetRotation(a->GetLocalRotation() + a->GetParent()->_direction);
-	//	}
-	//}
+	if (childList.size() > 0) {
+		for (auto a : childList) {
+			a->SetRotation(a->GetLocalRotation() + a->GetParent()->_direction);
+		}
+	}
 }
 
 void LocoMotor::Transform::SetLocalRotation(const LMVector3& newRotation) {

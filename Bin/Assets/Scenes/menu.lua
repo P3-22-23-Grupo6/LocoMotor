@@ -31,17 +31,27 @@ carInfoPanel = {
         posy = "0.1",
         sizex = "0.25",
         sizey = "0.7",
-        img = "m_carInfoPanel"
+        img = "m_carInfoPanelFalcon"
     }
 }
-selectVehicleButton = {
+selectPlayerOne = {
     UIImageLM = { 
         interactive = "",
-        posx = "0.7",
+        posx = "0.71",
+        posy = "0.62",
+        sizex = "0.3",
+        sizey = "0.22",
+        img = "m_PlayerOneSelect00"
+    }
+}
+selectPlayerTwo = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.65",
         posy = "0.77",
         sizex = "0.3",
         sizey = "0.22",
-        img = "m_selectVehicleButton"
+        img = "m_PlayerTwoSelect00"
     }
 }
 goToIntroButton = {
@@ -64,11 +74,10 @@ logoImg = {
         img = "LogoImg"
     }
 }
-Portrait_Falcon = {
+Vehicle_Portrait = {
     UIImageLM = { 
-        interactive = "",
-        posx = "0.32",
-        posy = "0.1",
+        posx = "0.3",
+        posy = "-0.05",
         sizex = "0.55",
         sizey = "1",
         img = "Portrait_Falcon",
@@ -104,8 +113,8 @@ arrowRightButton = {
     UIImageLM = { 
         interactive = "",
         posx = "0.8",
-        posy = "0.6",
-        sizex = "0.09",
+        posy = "0.4",
+        sizex = "0.08",
         sizey = "0.13",
         img = "ArrowRight00"
     }
@@ -114,8 +123,8 @@ arrowLeftButton = {
     UIImageLM = { 
         interactive = "",
         posx = "0.3",
-        posy = "0.6",
-        sizex = "0.09",
+        posy = "0.4",
+        sizex = "0.08",
         sizey = "0.13",
         img = "ArrowLeft00"
     }
@@ -141,5 +150,5 @@ arrowLeftButton = {
 --}
 
 
-entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectVehicleButton", 
-"skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder", "Portrait_Falcon", "arrowRightButton", "arrowLeftButton"}
+entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectPlayerTwo", "selectPlayerOne",
+"skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder", "Vehicle_Portrait", "arrowRightButton", "arrowLeftButton"}
