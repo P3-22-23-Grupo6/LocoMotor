@@ -49,6 +49,18 @@ material m_selectVehicleTitle {
         }
     }
 }
+material m_selectTrakTitle {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture selectTrackSpr.png
+                scale 1.02 1.02
+            }
+        }
+    }
+}
 //CAR INFO PANEL
 material m_carInfoPanelFalcon {
     technique {
