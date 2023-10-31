@@ -15,28 +15,21 @@ audioHolder = {
         vol = "0.2"
     },
 }
--- UI PANELS
-backgroundImg = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0",
-        sizex = "1",
-        sizey = "1",
-        img = "MenuBackImage",
-        top = "-10000"
-    }
-}
 mainCam = {
     Transform = {
-        position = "0 -10 6",
-        rotation = "0 0 0",
+        position = "0 3 20",
+        rotation = "15 -30 0",
         scale = "1 1 1"
     },
     Camera = 
     { 
         CameraMode = 0,
-        FOV = "34",
+        FOV = "50",
         main = ""
+    },
+    CameraPanner = 
+    { 
+        speed = "2"
     }
 }
 startButton = {
@@ -60,4 +53,14 @@ startButton = {
         bottomcolor = "1 1 1"
     }
 }
-entities = {"ButtonManager", "backgroundImg", "audioHolder", "mainCam", "startButton"}
+menuMeshScene = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "MenuMeshScene.mesh"
+    }
+}
+entities = {"ButtonManager", "audioHolder", "mainCam", "startButton", "menuMeshScene"}
