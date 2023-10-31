@@ -29,7 +29,7 @@ mainCam = {
     },
     CameraPanner = 
     { 
-        speed = "2"
+        speed = "0.4"
     }
 }
 startButton = {
