@@ -36,6 +36,19 @@ material Portrait_Eagle {
         }
     }
 }
+material Portrait_Pelican {
+    technique {
+        pass {
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Portrait_Pelican.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
 material Portrait_Generic {
     technique {
         pass {
@@ -43,6 +56,20 @@ material Portrait_Generic {
             scene_blend  alpha_blend
             texture_unit {
                 texture Portrait_Generic.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
+//TRACKS PORTRAIT
+material Portrait_TrackOne {
+    technique {
+        pass {
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Portrait_Track00.png
                 tex_address_mode wrap
                 colour_op modulate
             }
@@ -104,6 +131,17 @@ material m_carInfoPanelFlamingo {
             scene_blend alpha_blend
             texture_unit {
                 texture flamingoInfoPanel.png
+            }
+        }
+    }
+}
+material m_carInfoPanelPelican {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture pelicanInfoPanel.png
             }
         }
     }

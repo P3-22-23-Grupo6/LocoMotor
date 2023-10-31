@@ -29,7 +29,7 @@ selectTrackButton = {
     UIImageLM = { 
         interactive = "",
         posx = "0.71",
-        posy = "0.62",
+        posy = "0.76",
         sizex = "0.3",
         sizey = "0.22",
         img = "m_select"
@@ -84,7 +84,7 @@ mainCam = {
 trackArrowRightButton = {
     UIImageLM = { 
         interactive = "",
-        posx = "0.7",
+        posx = "0.55",
         posy = "0.4",
         sizex = "0.08",
         sizey = "0.13",
@@ -94,7 +94,7 @@ trackArrowRightButton = {
 trackArrowLeftButton = {
     UIImageLM = { 
         interactive = "",
-        posx = "0.25",
+        posx = "0",
         posy = "0.4",
         sizex = "0.08",
         sizey = "0.13",
@@ -103,7 +103,7 @@ trackArrowLeftButton = {
 }
 trackMesh00 = {
     Transform = {
-        position = "0 0 0",
+        position = "2 0 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -117,7 +117,7 @@ trackMesh00 = {
 }
 trackMesh01 = {
     Transform = {
-        position = "0 0 0",
+        position = "2 0 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -130,5 +130,14 @@ trackMesh01 = {
         Speed = "0.05"
     }
 }
+Portrait_TrackOne = {
+    UIImageLM = { 
+        posx = "0.06",
+        posy = "0.14",
+        sizex = "0.5",
+        sizey = "0.6",
+        img = "Portrait_TrackOne"
+    }
+}
 entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectTrackTitle", "selectTrackButton",
-"mainCam", "logoImg", "menuBack", "audioHolder", "trackArrowLeftButton", "trackArrowRightButton", "trackMesh00", "trackMesh01"}
+"mainCam", "logoImg", "menuBack", "audioHolder", "trackArrowLeftButton", "trackArrowRightButton", "trackMesh00", "trackMesh01", "Portrait_TrackOne"}

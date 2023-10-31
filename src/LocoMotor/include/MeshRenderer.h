@@ -58,8 +58,5 @@ namespace LocoMotor {
 		OgreWrapper::RenderScene* _rndScn;
 		OgreWrapper::Node* _node;
 		bool _isStatic;
-
-
-
 	};
 }
