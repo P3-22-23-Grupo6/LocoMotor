@@ -109,7 +109,8 @@ trackMesh00 = {
     },
     MeshRenderer = {
         file =  "BlueFalcon_Out.mesh",
-        static = "true"
+        static = "true",
+        invisible = "true"
     },
     Rotator = {
         Speed = "0.05"
@@ -123,14 +124,14 @@ trackMesh01 = {
     },
     MeshRenderer = {
         file =  "PreviewTrack00.mesh",
-        static = "true",
-        invisible = "true"
+        static = "true"
+        
     },
     Rotator = {
         Speed = "0.05"
     }
 }
-Portrait_TrackOne = {
+Portrait_Track = {
     UIImageLM = { 
         posx = "0.06",
         posy = "0.14",
@@ -140,4 +141,4 @@ Portrait_TrackOne = {
     }
 }
 entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectTrackTitle", "selectTrackButton",
-"mainCam", "logoImg", "menuBack", "audioHolder", "trackArrowLeftButton", "trackArrowRightButton", "trackMesh00", "trackMesh01", "Portrait_TrackOne"}
+"mainCam", "logoImg", "menuBack", "audioHolder", "trackArrowLeftButton", "trackArrowRightButton", "trackMesh00", "trackMesh01", "Portrait_Track"}
