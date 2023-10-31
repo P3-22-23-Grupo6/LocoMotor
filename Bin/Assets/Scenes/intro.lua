@@ -32,27 +32,6 @@ mainCam = {
         speed = "0.1"
     }
 }
-startButton = {
-    UIImageLM = { 
-        interactive = "",
-        posx = "0.5",
-        posy = "0.7",
-        sizex = "0.3",
-        sizey = "0.15",
-        img = "UIPanel"
-    },
-    UITextLM = {
-        font =  "THEBOLDFONT",
-        text = "Presiona un boton para comenzar",
-        posx =  "0",
-        posy = "0.7",
-        align = "center",
-        sizex = "0.03",
-        sizey = "0.03",
-        topcolor = "1 1 1",
-        bottomcolor = "1 1 1"
-    }
-}
 menuMeshScene = {
     Transform = {
         position = "0 0 0",
@@ -74,4 +53,34 @@ SkyboxMeshNew = {
         static = "true"
     }
 }
-entities = {"ButtonManager", "audioHolder", "mainCam", "startButton", "menuMeshScene", "SkyboxMeshNew"}
+OnePlayerButton = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.25",
+        posy = "0.7",
+        sizex = "0.26",
+        sizey = "0.17",
+        img = "m_OnePlayerButton00"
+    }
+}
+TwoPlayerButton = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.52",
+        posy = "0.7",
+        sizex = "0.26",
+        sizey = "0.17",
+        img = "m_TwoPlayerButton00"
+    }
+}
+selectText = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.4",
+        posy = "0.66",
+        sizex = "0.26",
+        sizey = "0.065",
+        img = "m_selectToStartText"
+    }
+}
+entities = {"ButtonManager", "audioHolder", "mainCam", "menuMeshScene", "SkyboxMeshNew", "OnePlayerButton", "TwoPlayerButton", "selectText"}

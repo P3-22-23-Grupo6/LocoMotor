@@ -218,6 +218,62 @@ material m_BackButtonSelected {
         }
     }
 }
+//NUMBER PLAYER BUTTON
+material m_OnePlayerButton00 {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture OnePlayerButton00.png
+            }
+        }
+    }
+}
+material m_OnePlayerButton01 {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture OnePlayerButton01.png
+            }
+        }
+    }
+}
+material m_selectToStartText {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture selectToStartText.png
+            }
+        }
+    }
+}
+material m_TwoPlayerButton00 {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture TwoPlayerButton00.png
+            }
+        }
+    }
+}
+material m_TwoPlayerButton01 {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture TwoPlayerButton01.png
+            }
+        }
+    }
+}
 //PLAYER SELECT BUTTON --------------------------------------
 material m_PlayerReady {
     technique {
