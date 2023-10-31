@@ -83,4 +83,14 @@ selectText = {
         img = "m_selectToStartText"
     }
 }
-entities = {"ButtonManager", "audioHolder", "mainCam", "menuMeshScene", "SkyboxMeshNew", "OnePlayerButton", "TwoPlayerButton", "selectText"}
+logoImg = {
+    UIImageLM = { 
+        interactive = "",
+        posx = "0.81",
+        posy = "0.01",
+        sizex = "0.2",
+        sizey = "0.18",
+        img = "LogoImg"
+    }
+}
+entities = {"logoImg", "ButtonManager", "audioHolder", "mainCam", "menuMeshScene", "SkyboxMeshNew", "OnePlayerButton", "TwoPlayerButton", "selectText"}

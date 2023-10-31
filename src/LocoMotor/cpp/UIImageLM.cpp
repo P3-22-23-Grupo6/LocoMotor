@@ -125,6 +125,9 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 		else if (params[i].first == "interactive") {
 			SetInteractive(true);
 		}
+		else if (params[i].first == "hide") {
+			_uimg->Hide();
+		}
 		else if (params[i].first == "top") {
 			int value = 0;
 			try {
