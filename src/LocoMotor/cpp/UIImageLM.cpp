@@ -152,6 +152,8 @@ void LocoMotor::UIImageLM::SetSize(double x, double y) {
 
 void LocoMotor::UIImageLM::SetInteractive(bool interactive) {
 	_uimg->SetInteractive(interactive);
+	if (interactive) _uimg->Show();
+	else _uimg->Hide();
 }
 
 bool LocoMotor::UIImageLM::GetInteractive() {
@@ -207,7 +209,6 @@ void LocoMotor::UIImageLM::SetPressedImage(std::string newimg) {
 void LocoMotor::UIImageLM::SetTop(int topIndex) {
 	_uimg->SetTop(topIndex);
 }
-
 
 bool LocoMotor::UIImageLM::MouseOnImage() {
 	std::pair<int, int> pos = LocoMotor::InputManager::GetInstance()->GetMousePos();

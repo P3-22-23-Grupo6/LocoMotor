@@ -252,6 +252,17 @@ material m_selectToStartText {
         }
     }
 }
+material m_BlankUI {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture Blank_UI.png
+            }
+        }
+    }
+}
 material m_TwoPlayerButton00 {
     technique {
         pass {
