@@ -17,8 +17,8 @@ audioHolder = {
 }
 mainCam = {
     Transform = {
-        position = "0 3 20",
-        rotation = "15 -30 0",
+        position = "15 0 0",
+        rotation = "20 30 0",
         scale = "1 1 1"
     },
     Camera = 
@@ -29,7 +29,7 @@ mainCam = {
     },
     CameraPanner = 
     { 
-        speed = "0.4"
+        speed = "0.1"
     }
 }
 startButton = {
@@ -63,4 +63,15 @@ menuMeshScene = {
         file =  "MenuMeshScene.mesh"
     }
 }
-entities = {"ButtonManager", "audioHolder", "mainCam", "startButton", "menuMeshScene"}
+SkyboxMeshNew = {
+    Transform = {
+        position = "0 0 20",
+        rotation = "0 0 0",
+        scale = "2 2 2"
+    },
+    MeshRenderer = {
+        file =  "SkyboxMeshNew.001.mesh",
+        static = "true"
+    }
+}
+entities = {"ButtonManager", "audioHolder", "mainCam", "startButton", "menuMeshScene", "SkyboxMeshNew"}
