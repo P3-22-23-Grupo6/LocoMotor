@@ -29,6 +29,7 @@ void LocoMotor::UIImageLM::InitComponent() {
 }
 
 void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>& params) {
+	//TODO: VISIBILITY E INTERACT ESTAN UN POCO LIADOS; SE PODRIA OPTIMIZAR, pero lo haceis vosotros yonokiero
 	_uimg = new OgreWrapper::UIImage();
 	_uimg->Init(gameObject->GetScene()->GetSceneName());
 	for (int i = 0; i < params.size(); i++) {
@@ -126,6 +127,11 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 			std::string value = (params[i].second);
 			if(value == "false") SetInteractive(false);
 			else SetInteractive(true);
+		}
+		else if (params[i].first == "visible") {
+			std::string value = (params[i].second);
+			if (value == "false") SetVisibility(false);
+			else SetVisibility(true);
 		}
 		else if (params[i].first == "top") {
 			int value = 0;

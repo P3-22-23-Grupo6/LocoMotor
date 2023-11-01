@@ -129,26 +129,80 @@ arrowLeftButton = {
         img = "ArrowLeft00"
     }
 }
---skyboxMesh = {
---    MeshRenderer = {
---        file = "SkyboxMeshNew.001.mesh"
---    },Transform = {
---        position = "0 0 0",
---        rotation = "0 180 0",
---        scale = "1 1 1"
---    }
---}
---backMesh = {
---    Transform = {
---        position = "0 -5 -10",
---        rotation = "0 180 0",
---        scale = "1 1 1"
---    },
---    MeshRenderer = {
---        file =  "MENU.mesh"
---    }
---}
+--TRACK SELECT
+selectTrackButton = {
+    UIImageLM = { 
+        interactive = "false",
+        posx = "0.71",
+        posy = "0.76",
+        sizex = "0.3",
+        sizey = "0.22",
+        img = "m_select"
+    }
+}
+trackArrowRightButton = {
+    UIImageLM = { 
+        interactive = "false",
+        posx = "0.55",
+        posy = "0.4",
+        sizex = "0.08",
+        sizey = "0.13",
+        img = "ArrowRight00"
+    }
+}
+trackArrowLeftButton = {
+    UIImageLM = { 
+        interactive = "false",
+        posx = "0",
+        posy = "0.4",
+        sizex = "0.08",
+        sizey = "0.13",
+        img = "ArrowLeft00"
+    }
+}
+trackMesh00 = {
+    Transform = {
+        position = "2 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "PreviewTrack00.mesh",
+        static = "true",
+        invisible = "true"
+    },
+    Rotator = {
+        Speed = "0.05"
+    }
+}
+trackMesh01 = {
+    Transform = {
+        position = "2 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "BlueFalcon_Out.mesh",
+        static = "true",
+        invisible = "true"
+        
+    },
+    Rotator = {
+        Speed = "0.05"
+    }
+}
+Portrait_Track = {
+    UIImageLM = { 
+        posx = "0.06",
+        posy = "0.14",
+        sizex = "0.5",
+        sizey = "0.6",
+        img = "Portrait_TrackOne",
+        visible = "false"
+    }
+}
 
 
 entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectPlayerTwo", "selectPlayerOne",
-"skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder", "Vehicle_Portrait", "arrowRightButton", "arrowLeftButton"}
+"skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder", "Vehicle_Portrait", "arrowRightButton", "arrowLeftButton",
+"selectTrackButton", "trackArrowLeftButton", "trackArrowRightButton", "trackMesh00", "trackMesh01", "Portrait_Track"}
