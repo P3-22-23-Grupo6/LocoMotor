@@ -85,10 +85,10 @@ void LocoMotor::SceneManager::Update() {
 		sc->Update(_deltaTime); 
 		sc->Render();
 	}
+	ScriptManager::GetInstance()->CheckChangeScene();
 	if (sc!=nullptr && sc->ToDestroy()) {
 		sc->Destroy();
 	}
-	ScriptManager::GetInstance()->CheckChangeScene();
 }
 
 float LocoMotor::SceneManager::GetDelta() {
