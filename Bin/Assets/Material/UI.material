@@ -49,6 +49,19 @@ material Portrait_Pelican {
         }
     }
 }
+material Portrait_Flamingo {
+    technique {
+        pass {
+            lighting off
+            scene_blend  alpha_blend
+            texture_unit {
+                texture Portrait_Flamingo.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
 material Portrait_Generic {
     technique {
         pass {
@@ -143,7 +156,7 @@ material m_carInfoPanelFlamingo {
             lighting off
             scene_blend alpha_blend
             texture_unit {
-                texture flamingoInfoPanel.png
+                texture m_carInfoPanelFlamingo.png
             }
         }
     }

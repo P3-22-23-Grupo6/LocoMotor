@@ -51,6 +51,9 @@ SkyboxMeshNew = {
     MeshRenderer = {
         file =  "SkyboxMeshNew.001.mesh",
         static = "true"
+    },
+    Rotator = {
+        Speed = "0.002"
     }
 }
 OnePlayerButton = {
