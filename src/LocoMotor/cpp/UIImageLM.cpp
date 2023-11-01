@@ -123,7 +123,9 @@ void LocoMotor::UIImageLM::Init(std::vector<std::pair<std::string, std::string>>
 			SetImage(params[i].second);
 		}
 		else if (params[i].first == "interactive") {
-			SetInteractive(true);
+			std::string value = (params[i].second);
+			if(value == "false") SetInteractive(false);
+			else SetInteractive(true);
 		}
 		else if (params[i].first == "top") {
 			int value = 0;
@@ -155,7 +157,10 @@ void LocoMotor::UIImageLM::SetInteractive(bool interactive) {
 	if (interactive) _uimg->Show();
 	else _uimg->Hide();
 }
-
+void LocoMotor::UIImageLM::SetVisibility(bool interactive) {
+	if (interactive) _uimg->Show();
+	else _uimg->Hide();
+}
 bool LocoMotor::UIImageLM::GetInteractive() {
 	return _uimg->GetInteractive();
 }

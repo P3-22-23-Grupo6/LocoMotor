@@ -34,6 +34,9 @@ namespace LocoMotor {
 		/// @brief sets an image as an interactive entity
 		/// @param nteractive enables or disables the interaction of the image
 		void SetInteractive(bool interactive);
+		/// @brief Only Changes visibility. Made for images that are not buttons
+		/// @param interactive 
+		void SetVisibility(bool interactive);
 		/// @brief Checks if the image is intractive or not
 		bool GetInteractive();
 		/// @brief If the image is interactive, check if the mouse is on, or pressing it
