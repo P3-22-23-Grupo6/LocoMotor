@@ -77,6 +77,10 @@ void LocoMotor::ScriptManager::CheckChangeScene() {
 	LoadSceneFromFile(bufferedScene);
 }
 
+std::string LocoMotor::ScriptManager::GetBufferedScene() {
+	return bufferedScene;
+}
+
 void LocoMotor::ScriptManager::TryChangeScene(std::string path) {
 	bufferedScene = path;
 }

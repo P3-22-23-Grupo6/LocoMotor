@@ -46,9 +46,9 @@ Scene* SceneManager::ChangeScene(std::string name) {
 
 			_activeScene->DeActivate();
 		}
-		StartScene(it->second);
 		renderMan->SetActiveScene(renderMan->GetScene(it->second->GetSceneName()));
 		_activeScene = it->second;
+		StartScene(it->second);
 		return it->second;
 	}
 	else {

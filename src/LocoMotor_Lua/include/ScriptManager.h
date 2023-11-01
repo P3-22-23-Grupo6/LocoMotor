@@ -28,6 +28,7 @@ namespace LocoMotor {
 		
 		/// @brief Checks if theres a scene in buffer waiting to be changed
 		void CheckChangeScene();
+		std::string GetBufferedScene();
 		void TryChangeScene(std::string path);
 
 	private:
