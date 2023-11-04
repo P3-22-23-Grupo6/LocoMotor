@@ -31,9 +31,6 @@ bool OgreWrapper::Canvas::Init(Ogre::SceneManager* man) {
 	_container = static_cast<Ogre::OverlayContainer*>(_aux->createOverlayElement("Panel", "Main" + _numOfCanvas));
 	_container->setPosition(0.0f, 0.0f);
 	_container->setDimensions(1.0f, 1.0f);
-	//Por si acaso
-	_container->setWidth(1.0f);
-	_container->setHeight(1.0f);
 
 	_canvas->add2D(_container);
 	_canvas->show();

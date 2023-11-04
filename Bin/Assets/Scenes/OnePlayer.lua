@@ -90,22 +90,6 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
-Roads = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "RoadsExport.mesh",
-        static = "true"
-    },
-    RigidBodyComponent = {
-        mass = 0,
-        usedAsRaycast = ""
-    }
-}
-
 SkyboxMeshNew = {
     Transform = {
         position = "0 0 20",
