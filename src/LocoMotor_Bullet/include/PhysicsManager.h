@@ -36,6 +36,7 @@ namespace PhysicsWrapper {
 		bool hasHit;
 		LocoMotor::LMVector3 hitPos;
 		LocoMotor::LMVector3 hitVNormal;
+		btRigidBody* hitObject;
 		RaycastInfo();
 	};
 
@@ -67,6 +68,7 @@ namespace PhysicsWrapper {
 		/// @param direction The direction to raycast
 		/// @return The information of the raycast
 		RaycastInfo CreateRaycast(LocoMotor::LMVector3 from, LocoMotor::LMVector3 direction);
+		LocoMotor::LMVector3 CalculateBarycentricCoordinates(RaycastInfo rayInf);
 
 	private:
 		//Configuration to create the physic world

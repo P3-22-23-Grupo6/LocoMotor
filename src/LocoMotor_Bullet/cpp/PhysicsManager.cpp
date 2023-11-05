@@ -2,6 +2,17 @@
 #include "MeshStrider.h"
 #include "LmVectorConverter.h"
 #include "RaycastCallBack.h"
+#include <btBulletDynamicsCommon.h>
+#include <iostream>
+#include <btBulletCollisionCommon.h>
+#include <LinearMath/btVector3.h>
+#include <BulletCollision/CollisionShapes/btTriangleShape.h>
+#include <BulletCollision/CollisionShapes/btCollisionShape.h>
+#include <BulletDynamics/Dynamics/btDynamicsWorld.h>
+#include <BulletDynamics/Dynamics/btRigidBody.h>
+#include <BulletCollision/CollisionDispatch/btCollisionObject.h>
+#include <BulletCollision/CollisionDispatch/btCollisionWorld.h>
+
 using namespace PhysicsWrapper;
 using namespace LocoMotor;
 PhysicsManager* Singleton<PhysicsManager>::_instance = nullptr;
@@ -114,7 +125,8 @@ RaycastInfo PhysicsWrapper::PhysicsManager::CreateRaycast(LMVector3 from, LMVect
 	RaycastInfo newRaycastInfo = RaycastInfo();
 
 	ClosestRayCallbackBullet rayCallback(LmToBullet(from), LmToBullet(direction));
-
+	newRaycastInfo.hitObject = (btRigidBody*) rayCallback.m_collisionObject;
+	newRaycastInfo.hitObject = (btRigidBody*) rayCallback.m_collisionObject;
 	PhysicsManager::GetInstance()->GetDynamicWorld()->rayTest(LmToBullet(from), LmToBullet(direction), rayCallback);
 	if (rayCallback.hasHit()) {
 		newRaycastInfo.hasHit = true;
@@ -124,9 +136,51 @@ RaycastInfo PhysicsWrapper::PhysicsManager::CreateRaycast(LMVector3 from, LMVect
 		newRaycastInfo.hitVNormal = LMVector3(rayCallback.m_hitNormalWorld.getX(),
 											  rayCallback.m_hitNormalWorld.getY(),
 											  rayCallback.m_hitNormalWorld.getZ());
+		/*if (newRaycastInfo.hitObject) {
+			if (newRaycastInfo.hitObject->getCollisionShape()->getShapeType() == TRIANGLE_SHAPE_PROXYTYPE)
+			{
+				btTriangleShape* triangleShape = static_cast<btTriangleShape*>(newRaycastInfo.hitObject->getCollisionShape());
+				// Get the triangle's vertices
+
+				btVector3 vertex0 = triangleShape->m_vertices1[newRaycastInfo.m_localShapeInfo.m_triangleIndex[0]];
+				btVector3 vertex1 = triangleShape->m_vertices1[newRaycastInfo.m_localShapeInfo.m_triangleIndex[1]];
+				btVector3 vertex2 = triangleShape->m_vertices1[newRaycastInfo.m_localShapeInfo.m_triangleIndex[2]];
+
+				// Now, you can use vertex0, vertex1, and vertex2 as the vertices of the hit triangle.
+			}
+
+		}*/
 	}
-	else newRaycastInfo.hasHit = false;
-	return newRaycastInfo;
+		else newRaycastInfo.hasHit = false;
+		return newRaycastInfo;
+}
+LocoMotor::LMVector3 PhysicsWrapper::PhysicsManager::CalculateBarycentricCoordinates(RaycastInfo rayInf)
+{
+	btVector3 vertex1;
+	btVector3 vertex2;
+	btVector3 vertex3;
+	btVector3 point;
+	btCollisionShape* colShape = rayInf.hitObject->getCollisionShape();
+
+	// Calculate the vectors from vertex1 to the other vertices
+	btVector3 v0 = vertex2 - vertex1;
+	btVector3 v1 = vertex3 - vertex1;
+	btVector3 v2 = point - vertex1;
+
+	// Calculate dot products
+	double dot00 = v0.dot(v0);
+	double dot01 = v0.dot(v1);
+	double dot02 = v0.dot(v2);
+	double dot11 = v1.dot(v1);
+	double dot12 = v1.dot(v2);
+
+	// Compute barycentric coordinates
+	double inv_denom = 1.0 / (dot00 * dot11 - dot01 * dot01);
+	double u = (dot11 * dot02 - dot01 * dot12) * inv_denom;
+	double v = (dot00 * dot12 - dot01 * dot02) * inv_denom;
+	double w = 1.0 - u - v;
+	LMVector3 returnVect = BulletToLm(btVector3(u, v, w));
+	return returnVect;
 }
 
 PhysicsWrapper::RigidBodyInfo::RigidBodyInfo() {

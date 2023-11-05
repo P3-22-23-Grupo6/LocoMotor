@@ -27,7 +27,7 @@ coche = {
     },
     PlayerController = {
         PlayerIndex = 0,
-        PlayerSpeed = 150
+        PlayerSpeed = 200
     },
     RigidBodyComponent = {
         mass = 1,
