@@ -4,6 +4,8 @@
 #include "OgreVector.h"
 #include "btBulletDynamicsCommon.h"
 #include "fmod_common.h"
+#include <glm/glm.hpp>
+#include <glm/vec3.hpp>
 
 namespace LocoMotor {
 	class LMVector3;
@@ -40,6 +42,7 @@ namespace LocoMotor {
 	btTransform LmToBullTransform(LMQuaternion LMQuaternion);
 	/// @brief Converts an lmVector and LMQuaternion to a Bullet Transform
 	btTransform LmToBullTransform(LMVector3 lmVector, LMQuaternion LMQuaternion);
+	
 }
 
 #endif // !_LMVECTOR_COMVERTER_

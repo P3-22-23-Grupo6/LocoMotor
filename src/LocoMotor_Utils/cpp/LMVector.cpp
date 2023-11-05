@@ -1,7 +1,10 @@
 #define _USE_MATH_DEFINES
 
 #include "LMVector.h"
+#include "LmVectorConverter.h"
 #include <cmath>
+
+
 
 using namespace LocoMotor;
 
@@ -188,10 +191,12 @@ double LMVector3::Angle(const LMVector3& other, const LMVector3& normal, const L
 
 LMVector3 LocoMotor::LMVector3::Lerp(const LMVector3& initialValue, const LMVector3& finalValue, const float timeStep) const {
 	LMVector3 mDest;
-	mDest.SetX(initialValue.GetX() + (finalValue.GetX() - initialValue.GetX()) * timeStep);
-	mDest.SetY(initialValue.GetY() + (finalValue.GetY() - initialValue.GetY()) * timeStep);
-	mDest.SetZ(initialValue.GetZ() + (finalValue.GetZ() - initialValue.GetZ()) * timeStep);
-	return mDest;
+	float t = std::max(0.0f, std::min(1.0f, timeStep));  // Ensure t is clamped between 0 and 1
+	float invT = 1.0f - t;
+	mDest.SetX(initialValue.GetX() * invT + finalValue.GetX() * t);
+	mDest.SetY(initialValue.GetY() * invT + finalValue.GetY() * t);
+	mDest.SetZ(initialValue.GetZ() * invT + finalValue.GetZ() * t);
+	return mDest;// mDest.GLMToLm(finalGLM);
 }
 
 
@@ -339,11 +344,36 @@ LMQuaternion LMQuaternion::operator=(const LMQuaternion& other) {
 
 LMQuaternion LocoMotor::LMQuaternion::Slerp(const LMQuaternion& initialValue, const LMQuaternion& finalValue, const float timeStep) const
 {
-	LMQuaternion mDest;
-	mDest.SetX(initialValue.GetX() + (finalValue.GetX() - initialValue.GetX()) * timeStep);
-	mDest.SetY(initialValue.GetY() + (finalValue.GetY() - initialValue.GetY()) * timeStep);
-	mDest.SetZ(initialValue.GetZ() + (finalValue.GetZ() - initialValue.GetZ()) * timeStep);
-	return mDest;
+	float t = std::max(0.0f, std::min(1.0f, timeStep));  // Ensure t is clamped between 0 and 1
+
+		// Ensure vectors are normalized
+	LMVector3 GeneralVect;
+	LMVector3 v0 = initialValue.ToEuler();
+	LMVector3 v1 = finalValue.ToEuler();
+	v0.Normalize();
+	v1.Normalize();
+
+	float dot = v0.Dot(v1);
+
+	// If the dot product is negative, the angle between vectors is greater than 90 degrees, so negate one of them.
+	if (dot < 0.0f) {
+		v1 = v1 * -1.0f;
+		dot = -dot;
+	}
+
+	if (dot > 0.9995f) {
+		// Linear interpolation for very small angles
+		LMVector3 firstRet = GeneralVect.Lerp(v0, v1, t);
+		return firstRet.AsRotToQuaternion();
+	}
+
+	float theta_0 = std::acos(dot);
+	float theta = theta_0 * t;
+
+	LMVector3 relative = v1 - v0 * dot;
+	relative.Normalize();
+	LMVector3 secondRet = v0 * std::cos(theta) + relative * std::sin(theta);
+	return secondRet.AsRotToQuaternion();
 }
 
 // Quaternion addition
@@ -452,4 +482,11 @@ LMVector3 LMQuaternion::ToEuler() const {
 	return angles;
 }
 
+glm::vec3 LMVector3::LmToGLM(const LMVector3 lmVector) const {
+	glm::vec3 myVector((float) lmVector.GetX(), (float) lmVector.GetY(), (float) lmVector.GetZ());
+	return glm::vec3();
+}
 
+LMVector3 LMVector3::GLMToLm(glm::vec3 glmVector) const {
+	return LMVector3(LMVector3(glmVector.x, glmVector.y, glmVector.z));
+}

@@ -9,6 +9,8 @@
 #endif
 
 #include <string>
+#include <glm/glm.hpp>
+#include <glm/vec3.hpp>
 
 namespace LocoMotor {
 	class LMQuaternion;
@@ -40,6 +42,11 @@ namespace LocoMotor {
 		void SetY(double y);
 		/// @brief Set the Z value of the Vector
 		void SetZ(double z);
+
+		/// @brief Converts a LMVector3 into a GLM Vector3(for math ops(lerp, clamp, etc.))
+		glm::vec3 LmToGLM(const LMVector3 lmVector) const;
+		/// @brief Converts a GLMVector3 into a LMVector3(for math ops(lerp, clamp, e.))
+		LMVector3 GLMToLm(const glm::vec3 glmVector) const;
 
 		// Equal operators of vectors
 

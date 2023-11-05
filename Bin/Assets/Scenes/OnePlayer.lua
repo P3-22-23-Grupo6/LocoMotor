@@ -26,7 +26,8 @@ coche = {
         volume = 0.2
     },
     PlayerController = {
-        PlayerIndex = 0
+        PlayerIndex = 0,
+        PlayerSpeed = 150
     },
     RigidBodyComponent = {
         mass = 1,
@@ -83,6 +84,17 @@ test_Plane00 = {
     },
     MeshRenderer = {
         file =  "TestToWapo.mesh",
+        static = "true"
+    }
+}
+test_Plane01 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "TestToWapoRoad.mesh",
         static = "true"
     },
     RigidBodyComponent = {
@@ -178,28 +190,28 @@ portrait02Img = {
         top = "10"
     }
 }
---EnemyCar01 = {
---    Transform = {
---        position = "0 4 -10",
---        rotation = "0 0 0",
---        scale = "1 1 1"
---    },
---    MeshRenderer = {
---        file =  "Stinger.mesh"
---    },
---    AudioSource = {
---        loops= -1,
---        playonStart = "Assets/Sounds/engine.wav"
---    },
---    EnemyAI = {
---        enemySpeed = "2",
---        StartSeparation = "1"
---    },
---    RigidBodyComponent = {
---        mass = 1,
---        friction = "0.0"
---    }
---}
+EnemyCar01 = {
+    Transform = {
+        position = "0 4 -10",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Stinger.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav"
+    },
+    EnemyAI = {
+        enemySpeed = "2",
+        StartSeparation = "1"
+    },
+    RigidBodyComponent = {
+        mass = 1,
+        friction = "0.0"
+    }
+}
 
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
-"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads"}
+"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "test_Plane01"}
