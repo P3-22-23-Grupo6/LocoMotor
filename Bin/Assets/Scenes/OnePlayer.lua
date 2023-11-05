@@ -209,7 +209,8 @@ EnemyCar01 = {
     },
     RigidBodyComponent = {
         mass = 1,
-        friction = "0.0"
+        friction = "0.0",
+        isTrigger = ""
     }
 }
 

@@ -1,6 +1,6 @@
 mainCam = {
     Transform = {
-        position = "-5 4 0",
+        position = "-144 10 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -10,13 +10,13 @@ mainCam = {
         target = "coche" ,
         main = "",
         initialOffset = "",
-        CameraMode = 1
+        CameraMode = 0
     },
     AudioListener = {}
 }
 coche = {
     Transform = {
-        position = "-5 4 0",
+        position = "-144 10 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -38,46 +38,6 @@ coche = {
         file = "Racers/JetEngine2"
     }
 }
-secondCam = {
-    Transform = {
-        position = "5 4 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    Camera = 
-    { 
-        FOV = "60",
-        target = "cocheDos" ,
-        main = "",
-        initialOffset = "",
-        CameraMode = 2
-    },
-    AudioListener = {}
-}
-cocheDos = {
-    Transform = {
-        position = "5 4 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    AudioSource = {
-        loops= -1,
-        playonStart = "Assets/Sounds/engine.wav",
-        volume = 0.2
-    },
-    PlayerController = {
-        PlayerIndex = 1,
-        PlayerSpeed = 200
-    },
-    RigidBodyComponent = {
-        mass = 1,
-        friction = "0.0",
-    },
-    ParticleSystem = {
-        name = "exhaust",
-        file = "Racers/JetEngine2"
-    }
-}
 raceManager = {
     Transform = {
         position = "0 0 0",
@@ -87,11 +47,11 @@ raceManager = {
     UITextLM = {
         font =  "THEBOLDFONT",
         text = "0 fps",
-        posx =  "0.4",
+        posx =  "0",
         posy =  ".02",
         align = "center",
-        sizex = "0.03",
-        sizey = "0.03",
+        sizex = "0.05",
+        sizey = "0.05",
         topcolor = "1 1 1",
         bottomcolor = "1 1 1",
     },
@@ -104,26 +64,23 @@ raceManager = {
         vol = "1"
     },
     RaceManager = {
-        checkpoint1 = "0 2 -22",
-        checkpoint2 = "-6 3 -50",
-        checkpoint3 = "-37 4 -126",
-        checkpoint4 = "-95 11 -201",
-        checkpoint5 = "-28 25 -260",
-        checkpoint6 = "-32 36 -306",
-        checkpoint7 = "-72 40 -332",
-        checkpoint8 = "-142 41 -321",
-        checkpoint9 = "-172 41 -227",
-        checkpoint10 = "-169 41 -230"
+        checkpoint1 = "-144.2309, 10.6283, 10.6283",
+        checkpoint2 = "-54.8094, 10.6283, -136.9770",
+        checkpoint3 = "59.2961, 10.6283, -136.9770",
+        checkpoint4 = "140.0414, 10.6283, 0.0000",
+        checkpoint5 = "59.2961, 10.628, 133.8742",
+        checkpoint6 = "-54.8094, 10.6283, 133.8742",
+        checkpoint7 = "-144.2309, 10.6283, 10.6283"
     }
 }
-test_Plane00 = {
+circleTrack = {
     Transform = {
         position = "0 0 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "TestToWapo.mesh",
+        file =  "CircleTrack.mesh",
         static = "true"
     },
     RigidBodyComponent = {
@@ -131,22 +88,6 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
-Roads = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "RoadsExport.mesh",
-        static = "true"
-    },
-    RigidBodyComponent = {
-        mass = 0,
-        usedAsRaycast = ""
-    }
-}
-
 SkyboxMeshNew = {
     Transform = {
         position = "0 0 20",
@@ -167,7 +108,7 @@ velocityText = {
     UITextLM = {
         type = "t",
         font = "BrunoAce",
-        text = "1/3",
+        text = "0 km/h",
         posx =  "0.1",
         posy =  "0.75",
         align = "center",
@@ -175,24 +116,6 @@ velocityText = {
         sizey = "0.02",
         topcolor = "1 0 0",
         bottomcolor = "1 0 0",
-    }
-}
-positionText = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    UITextLM = {
-        font =  "THEBOLDFONT",
-        text = "1/3",
-        posx =  "0",
-        posy =  ".02",
-        align = "center",
-        sizex = "0.05",
-        sizey = "0.05",
-        topcolor = "1 1 1",
-        bottomcolor = "1 1 1",
     }
 }
 counter01Text = {
@@ -255,12 +178,12 @@ portrait02Img = {
 }
 EnemyCar01 = {
     Transform = {
-        position = "0 4 -10",
-        rotation = "0 0 0",
+        position = "-144 20 0",
+        rotation = "0 180 0",
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Stinger.mesh"
+        file = "Pelican.mesh"
     },
     AudioSource = {
         loops= -1,
@@ -272,9 +195,10 @@ EnemyCar01 = {
     },
     RigidBodyComponent = {
         mass = 1,
-        friction = "0.0"
+        friction = "0.0",
+        isTrigger = ""
     }
 }
 
-entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
-"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText"}
+entities = { "coche", "cocheDos", "mainCam", "secondCam", "circleTrack", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
+"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "test_Plane01"}
