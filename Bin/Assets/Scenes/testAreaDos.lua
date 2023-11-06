@@ -64,16 +64,15 @@ raceManager = {
         vol = "1"
     },
     RaceManager = {
-        checkpoint1 = "0 2 -22",
-        checkpoint2 = "-6 3 -50",
-        checkpoint3 = "-37 4 -126",
-        checkpoint4 = "-95 11 -201",
-        checkpoint5 = "-28 25 -260",
-        checkpoint6 = "-32 36 -306",
-        checkpoint7 = "-72 40 -332",
-        checkpoint8 = "-142 41 -321",
-        checkpoint9 = "-172 41 -227",
-        checkpoint10 = "-169 41 -230"
+        checkpoint1 =  "0.74, 2.31, 0.0",
+        checkpoint2 =  "0.74, 2.31, -174.35",
+        checkpoint3 =  "0.74, 16.47, -312.35",
+        checkpoint4 =  "-21.32, 61.7, -451.19",
+        checkpoint5 =  "-104.3, 80.18, -478.76",
+        checkpoint6 =  "-186.03, 59.21, -451.19",
+        checkpoint7 =  "-209.79, 14.27, -366.47",
+        checkpoint8 =  "-214.15, -1.45, -254.12",
+        checkpoint9 =  "-214.15, -1.45, -116.62"
     }
 }
 test_Plane00 = {
@@ -217,14 +216,14 @@ EnemyCar01 = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Stinger.mesh"
+        file =  "Pelican.mesh"
     },
     AudioSource = {
         loops= -1,
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "2",
+        enemySpeed = "1",
         StartSeparation = "1"
     },
     RigidBodyComponent = {
