@@ -51,6 +51,7 @@ void Scene::Update(float dt) {
 	//End of loop, once all objects are Updated, add buffered objects
 	for (auto& obj : _gameObjBufferList) {
 		_gameObjList.insert(obj);
+		obj.second->StartComp();
 	}
 	_gameObjBufferList.clear();
 }

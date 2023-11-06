@@ -192,6 +192,7 @@ const LocoMotor::LMVector3& LocoMotor::Transform::GetLocalPosition() {
 }
 
 void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
+
 	//Sets Position In World Coordinates
 	_position = newPosition;
 	if (_gObjNode != nullptr){
@@ -204,7 +205,7 @@ void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
 	if (childList.size() > 0) {
 		for (auto &a : childList){
 			if (a->GetParent() == nullptr) continue;
-			a->SetPosition(a->_localPosition + a->GetParent()->GetPosition());
+			a->SetPosition((a->GetParent()->GetRotation() * a->_localPosition) + a->GetParent()->GetPosition());
 			
 			//If has a Parent, recalculate LocalPosition j in case
 			//if(a->parent != nullptr) a->_localPosition = a->_position - a->parent->GetPosition();
@@ -213,8 +214,10 @@ void LocoMotor::Transform::SetPosition(const LMVector3& newPosition) {
 }
 
 void LocoMotor::Transform::SetLocalPosition(const LMVector3& newLocalPosition) {
-	_localPosition = newLocalPosition;	
+	_localPosition = newLocalPosition;
 	LMVector3 totalPos = _position + _localPosition;
+	if (parent)
+		totalPos = parent->GetPosition() + (parent->GetRotation() * _localPosition);
 	if (_gObjNode != nullptr) {
 		_gObjNode->SetPosition((float) totalPos.GetX(), (float) totalPos.GetY(), (float) totalPos.GetZ());
 	}

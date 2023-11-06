@@ -5,6 +5,8 @@
 #include "ComponentsFactory.h"
 #include "OgreManager.h"
 
+#include "LogSystem.h"
+
 using namespace LocoMotor;
 
 SceneManager* Singleton<SceneManager>::_instance = nullptr;
@@ -31,8 +33,10 @@ Scene* SceneManager::CreateScene(std::string name) {
 		if (_activeScene == nullptr) _activeScene = newScene;
 		return newScene;
 	}
-	else //si devuelve nullptr mandar mensaje al logSystem
+	else {//si devuelve nullptr mandar mensaje al logSystem
+		LogSystem::GetInstance()->Save(0, "Couldn't find scene '" + name + "'");
 		return nullptr;
+	}
 }
 
 

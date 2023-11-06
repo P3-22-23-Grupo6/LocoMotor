@@ -183,6 +183,7 @@ namespace LocoMotor {
 
 		// Mul operators of quaternions
 		LMQuaternion operator*(const LMQuaternion& other) const;
+		LMVector3 operator*(const LMVector3& other) const;
 		LMQuaternion operator*(double scalar) const;
 
 		// Div operators of quaternions
