@@ -49,7 +49,7 @@ SkyboxMeshNew = {
         scale = "2 2 2"
     },
     MeshRenderer = {
-        file =  "SkyboxMeshNew.001.mesh",
+        file =  "SkyboxMesh.mesh",
         static = "true"
     },
     Rotator = {

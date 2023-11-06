@@ -19,7 +19,7 @@ material m_Water {
     technique {
         pass {
             lighting off
-            fog_override true exp 0.3 0.74 0.83 0.006 150 600
+            //fog_override true exp 0.3 0.74 0.83 0.006 150 600
             texture_unit {
                 texture water_t.png
                 filtering bilinear
@@ -226,7 +226,7 @@ material m_Skybox {
     technique {
         pass {
             lighting off
-            //fog_override true linear 0 0 0 0.002 3000 5000
+            fog_override true linear 0 0 0 0.002 3000 5000
             //polygon_mode wireframe
             texture_unit {
                 texture skyboxCubemap.png
@@ -256,11 +256,39 @@ material m_Atlas02 {
         pass {
             lighting off
             scene_blend  alpha_blend
+            depth_write off	
             texture_unit {
                 texture AtlasMain01_t.png
                 tex_address_mode wrap
                 colour_op modulate
                 mipmap_bias 0
+            }
+        }
+    }
+}
+material m_Impostors {
+    technique {
+        pass {
+            lighting off
+            scene_blend  alpha_blend
+            depth_write off	
+            texture_unit {
+                texture Impostors_01_t.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
+material m_LCD {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture LCD_Messages_Applied.png
+                tex_address_mode wrap
+                scroll_anim -0.2 0.0
+                colour_op modulate
             }
         }
     }
