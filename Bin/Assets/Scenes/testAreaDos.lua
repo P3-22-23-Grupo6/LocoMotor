@@ -6,19 +6,19 @@ mainCam = {
     },
     Camera = 
     { 
-        FOV = "60",
+        FOV = "55",
         target = "coche" ,
         main = "",
         initialOffset = "",
-        CameraMode = 1
+        CameraMode = 0
     },
     AudioListener = {}
 }
 coche = {
     Transform = {
-        position = "-5 4 0",
+        position = "-5 4 10",
         rotation = "0 0 0",
-        scale = "1 1 1"
+        scale = "0.5 0.5 0.5"
     },
     AudioSource = {
         loops= -1,
@@ -47,11 +47,11 @@ raceManager = {
     UITextLM = {
         font =  "THEBOLDFONT",
         text = "0 fps",
-        posx =  "0",
+        posx =  "0.4",
         posy =  ".02",
         align = "center",
-        sizex = "0.05",
-        sizey = "0.05",
+        sizex = "0.03",
+        sizey = "0.03",
         topcolor = "1 1 1",
         bottomcolor = "1 1 1",
     },
@@ -76,7 +76,7 @@ raceManager = {
         checkpoint10 = "-169 41 -230"
     }
 }
-Road00 = {
+test_Plane00 = {
     Transform = {
         position = "0 0 0",
         rotation = "0 0 0",
@@ -91,6 +91,22 @@ Road00 = {
         usedAsRaycast = ""
     }
 }
+Roads = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Terrain.mesh",
+        static = "true"
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = ""
+    }
+}
+
 SkyboxMeshNew = {
     Transform = {
         position = "0 0 20",
@@ -111,7 +127,7 @@ velocityText = {
     UITextLM = {
         type = "t",
         font = "BrunoAce",
-        text = "0 km/h",
+        text = "1/3",
         posx =  "0.1",
         posy =  "0.75",
         align = "center",
@@ -119,6 +135,24 @@ velocityText = {
         sizey = "0.02",
         topcolor = "1 0 0",
         bottomcolor = "1 0 0",
+    }
+}
+positionText = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    UITextLM = {
+        font =  "THEBOLDFONT",
+        text = "1/3",
+        posx =  "0",
+        posy =  ".02",
+        align = "center",
+        sizex = "0.05",
+        sizey = "0.05",
+        topcolor = "1 1 1",
+        bottomcolor = "1 1 1",
     }
 }
 counter01Text = {
@@ -198,11 +232,9 @@ EnemyCar01 = {
     },
     RigidBodyComponent = {
         mass = 1,
-        friction = "0.0",
-        isTrigger = ""
+        friction = "0.0"
     }
 }
 
-entities = {"mainCam", "coche", "raceManager", "EnemyCar01",
-            "Road00", "SkyboxMeshNew",
-            "velocityText", "counter01Text", "counter02Text", "portrait01Img", "portrait02Img",}
+entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
+"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText"}

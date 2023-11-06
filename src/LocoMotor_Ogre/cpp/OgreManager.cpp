@@ -209,7 +209,7 @@ OgreWrapper::NativeWindowPair OgreWrapper::OgreManager::InitWindow(std::string n
 	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
 	_mWindow.render = _root->createRenderWindow(name, w, h, false, &miscParams);
-	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(2);
+	Ogre::TextureManager::getSingleton().setDefaultNumMipmaps(0);
 	Ogre::MaterialManager::getSingleton().setDefaultTextureFiltering(Ogre::TFO_ANISOTROPIC);
 	Ogre::MaterialManager::getSingleton().setDefaultAnisotropy(16);
 	return _mWindow;
