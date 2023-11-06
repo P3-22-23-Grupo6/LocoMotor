@@ -1,0 +1,26 @@
+collection_name = "Waypoints"
+
+# Get the collection by name
+collection = bpy.data.collections.get(collection_name)
+
+if collection:
+    # Create a file for writing
+    file_path = "WaypointsNNNEW.txt"
+    with open(file_path, 'w') as file:
+        for obj in collection.objects:
+            # Get the world position of the object
+            positionX = -obj.location.x
+            positionX = str(round(positionX, 2))
+            positionY = obj.location.y
+            positionY = str(round(positionY, 2))
+            positionZ = obj.location.z
+            positionZ = str(round(positionZ, 2))
+            # Write the object name and position to the file
+            file.write(f"{positionX}, {positionZ}, {positionY}\n")
+
+    print(f"Object positions exported to {file_path}")
+else:
+    print(f"Collection '{collection_name}' not found")
+
+# Optionally, you can also close the Blender application when the script is done
+# bpy.ops.wm.quit_blender()
