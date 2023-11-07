@@ -64,15 +64,26 @@ raceManager = {
         vol = "1"
     },
     RaceManager = {
-        checkpoint1 =  "0.74, 2.31, 0.0",
-        checkpoint2 =  "0.74, 2.31, -174.35",
-        checkpoint3 =  "0.74, 16.47, -312.35",
-        checkpoint4 =  "-21.32, 61.7, -451.19",
-        checkpoint5 =  "-104.3, 80.18, -478.76",
-        checkpoint6 =  "-186.03, 59.21, -451.19",
-        checkpoint7 =  "-209.79, 14.27, -366.47",
-        checkpoint8 =  "-214.15, -1.45, -254.12",
-        checkpoint9 =  "-214.15, -1.45, -116.62"
+        checkpoint00 = "1.06, 1.75, -0.22",
+        checkpoint01 = "1.89, 4.78, -142.14",
+        checkpoint02 = "-0.97, 15.04, -275.17",
+        checkpoint03 = "-47.67, 66.74, -454.49",
+        checkpoint04 = "-168.6, 61.73, -452.73",
+        checkpoint05 = "-205.08, 25.07, -385.2",
+        checkpoint06 = "-210.47, 2.69, -272.89",
+        checkpoint07 = "-212.05, 0.66, -144.38",
+        checkpoint08 = "-215.97, 5.27, -20.68",
+        checkpoint09 = "-260.99, 20.91, 126.23",
+        --checkpoint10 = "-356.1, 34.23, 143.37",
+        --checkpoint11 = "-411.52, 39.04, 49.6",
+        --checkpoint12 = "-319.5, 42.54, -39.2",
+        --checkpoint13 = "-182.49, 42.19, -24.66",
+        --checkpoint14 = "-19.93, 52.37, -20.0",
+        --checkpoint15 = "160.56, 38.26, -19.46",
+        --checkpoint16 = "300.99, 37.44, -33.43",
+        --checkpoint17 = "501.4, 30.73, -144.07",
+        --checkpoint18 = "645.6, 21.0, -161.63",
+        --checkpoint19 = "1033.46, 12.69, -104.24"
     }
 }
 test_Plane00 = {
@@ -223,7 +234,7 @@ EnemyCar01 = {
         playonStart = "Assets/Sounds/engine.wav"
     },
     EnemyAI = {
-        enemySpeed = "1",
+        enemySpeed = "0.5",
         StartSeparation = "1"
     },
     RigidBodyComponent = {
