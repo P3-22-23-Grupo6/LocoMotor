@@ -370,10 +370,28 @@ do ---------------------   UI   ------------------------------
             posx =  "-0.48",
             posy =  ".93",
             align = "left",
-            sizex = "0.04",
-            sizey = "0.04",
+            sizex = "0.05",
+            sizey = "0.05",
             topcolor = "1 1 1",
             bottomcolor = "1 1 1",
+        }
+    }
+    velocityAddedText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "SPEEDONE",
+            text = "km/h",
+            posx =  "-0.385",
+            posy =  ".945",
+            align = "left",
+            sizex = "0.03",
+            sizey = "0.03",
+            topcolor = "1.0 0.0 0.265",
+            bottomcolor = "1.0 0.0 0.265",
         }
     }
 end ----------------------------------------------------------
@@ -454,4 +472,4 @@ entities = { "coche", "cocheDos", "mainCam", "secondCam", "velocityText", "conso
 "Terrain00", "Terrain01", "Terrain02", "Terrain03", "waterPlane",
 "turbo00", "wall00", "wall01", "NewWater", "UnderWater",
 "counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText", "Extras",
-"lapsText", "positionText", "countdownText", "velocityText", "timerText", "laptimerText",}
+"lapsText", "positionText", "countdownText", "velocityText", "velocityAddedText", "timerText", "laptimerText",}
