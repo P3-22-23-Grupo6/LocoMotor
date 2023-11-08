@@ -325,6 +325,17 @@ material m_Turbo {
         }
     }
 }
+material m_Bubbles {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture Bubbles_t.png
+                scroll_anim 0.0 1.0
+            }
+        }
+    }
+}
 material m_Sand {
     technique {
         pass {

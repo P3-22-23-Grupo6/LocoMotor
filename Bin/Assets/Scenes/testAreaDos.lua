@@ -216,6 +216,17 @@ SkyboxMeshNew = {
         static = "true"
     }
 }
+UnderWater = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "UnderWater.mesh",
+        static = "true"
+    }
+}
 --positionText = {
 --    Transform = {
 --        position = "0 0 0",
@@ -441,6 +452,6 @@ wall01 = {
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
 "Road00", "Road01", "Road02", "Road03", "Beach", 
 "Terrain00", "Terrain01", "Terrain02", "Terrain03", "waterPlane",
-"turbo00", "wall00", "wall01", "NewWater",
+"turbo00", "wall00", "wall01", "NewWater", "UnderWater",
 "counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText", "Extras",
 "lapsText", "positionText", "countdownText", "velocityText", "timerText", "laptimerText",}
