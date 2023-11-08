@@ -168,8 +168,14 @@ waterPlane = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "WaterPlane.mesh",
+        file =  "WaterPlaneDos.mesh",
         static = "true"
+    },
+    RigidBodyComponent = {
+        mass = 1,
+        friction = "0.0"
+    },
+    Water = {
     }
 }
 Terrain00 = {
@@ -227,103 +233,46 @@ SkyboxMeshNew = {
         static = "true"
     }
 }
-velocityText = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    UITextLM = {
-        type = "t",
-        font = "BrunoAce",
-        text = "1/3",
-        posx =  "0.1",
-        posy =  "0.75",
-        align = "center",
-        sizex = "0.02",
-        sizey = "0.02",
-        topcolor = "1 0 0",
-        bottomcolor = "1 0 0",
-    }
-}
-positionText = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    UITextLM = {
-        font =  "THEBOLDFONT",
-        text = "1/3",
-        posx =  "0",
-        posy =  ".02",
-        align = "center",
-        sizex = "0.05",
-        sizey = "0.05",
-        topcolor = "1 1 1",
-        bottomcolor = "1 1 1",
-    }
-}
-counter01Text = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    UITextLM = {
-        type = "t",
-        font = "THEBOLDFONT",
-        text = "1",
-        posx =  "-.4325",
-        posy =  "0.15",
-        align = "left",
-        sizex = "0.03",
-        sizey = "0.03",
-        topcolor = "1 1 1",
-        bottomcolor = "1 1 1",
-    }
-}
-counter02Text = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    UITextLM = {
-        type = "t",
-        font = "THEBOLDFONT",
-        text = "2",
-        posx =  "-.4325",
-        posy =  "0.25",
-        align = "left",
-        sizex = "0.03",
-        sizey = "0.03",
-        topcolor = "1 1 1",
-        bottomcolor = "1 1 1",
-    }
-}
---EnemyCar01 = {
+--positionText = {
 --    Transform = {
---        position = "0 4 -10",
+--        position = "0 0 0",
 --        rotation = "0 0 0",
 --        scale = "1 1 1"
 --    },
---    MeshRenderer = {
---        file =  "Pelican.mesh"
---    },
---    AudioSource = {
---        loops= -1,
---        playonStart = "Assets/Sounds/engine.wav"
---    },
---    EnemyAI = {
---        enemySpeed = "0.5",
---        StartSeparation = "1"
---    },
---    RigidBodyComponent = {
---        mass = 1,
---        friction = "0.0"
+--    UITextLM = {
+--        font =  "THEBOLDFONT",
+--        text = "1/3",
+--        posx =  "0",
+--        posy =  ".02",
+--        align = "center",
+--        sizex = "0.05",
+--        sizey = "0.05",
+--        topcolor = "1 1 1",
+--        bottomcolor = "1 1 1",
 --    }
 --}
+EnemyCar01 = {
+    Transform = {
+        position = "0 4 -10",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Pelican.mesh"
+    },
+    AudioSource = {
+        loops= -1,
+        playonStart = "Assets/Sounds/engine.wav"
+    },
+    EnemyAI = {
+        enemySpeed = "0.5",
+        StartSeparation = "1"
+    },
+    RigidBodyComponent = {
+        mass = 1,
+        friction = "0.0"
+    }
+}
 do ---------------------   UI   ------------------------------
     timerText = {
         Transform = {
@@ -397,24 +346,24 @@ do ---------------------   UI   ------------------------------
             bottomcolor = "1 1 1",
         }
     }
-    --countdownText = {
-    --    Transform = {
-    --        position = "0 0 0",
-    --        rotation = "0 0 0",
-    --        scale = "1 1 1"
-    --    },
-    --    UITextLM = {
-    --        font =  "Heavitas",
-    --        text = "GO!",
-    --        posx =  "0",
-    --        posy =  ".3",
-    --        align = "center",
-    --        sizex = "0.15",
-    --        sizey = "0.15",
-    --        topcolor = "1 1 1",
-    --        bottomcolor = "1 1 1",
-    --    }
-    --}
+    countdownText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "Heavitas",
+            text = "GO!",
+            posx =  "0",
+            posy =  ".3",
+            align = "center",
+            sizex = "0.15",
+            sizey = "0.15",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
     velocityText = {
         Transform = {
             position = "0 0 0",
@@ -457,41 +406,58 @@ turbo00 = {
         vol = "1"
     }
 }
-wall00 = {
+NewWater = {
     Transform = {
-        position = "0 -6 0",
+        position = "0 0 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Wall.00.mesh",
+        file =  "WaterPlaneDos.mesh",
         static = "",
         invisible = ""
     },
     RigidBodyComponent = {
         mass = 0,
-        friction = "0.0"
+        usedAsRaycast = "",
+        isTrigger = ""
     }
 }
-wall01 = {
-    Transform = {
-        position = "0 -6 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "Wall.01.mesh",
-        static = "",
-        invisible = ""
-    },
-    RigidBodyComponent = {
-        mass = 0,
-        friction = "0.0"
-    }
-}
+--wall00 = {
+--    Transform = {
+--        position = "0 -6 0",
+--        rotation = "0 0 0",
+--        scale = "1 1 1"
+--    },
+--    MeshRenderer = {
+--        file =  "Wall.00.mesh",
+--        static = "",
+--        invisible = ""
+--    },
+--    RigidBodyComponent = {
+--        mass = 0,
+--        friction = "0.0"
+--    }
+--}
+--wall01 = {
+--    Transform = {
+--        position = "0 -6 0",
+--        rotation = "0 0 0",
+--        scale = "1 1 1"
+--    },
+--    MeshRenderer = {
+--        file =  "Wall.01.mesh",
+--        static = "",
+--        invisible = ""
+--    },
+--    RigidBodyComponent = {
+--        mass = 0,
+--        friction = "0.0"
+--    }
+--}
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
 "Road00", "Road01", "Road02", "Road03", "Beach", 
 "Terrain00", "Terrain01", "Terrain02", "Terrain03", "waterPlane",
-"turbo00", "wall00", "wall01",
+"turbo00", "wall00", "wall01", "NewWater",
 "counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText", "Extras",
 "lapsText", "positionText", "countdownText", "velocityText", "timerText", "laptimerText",}
