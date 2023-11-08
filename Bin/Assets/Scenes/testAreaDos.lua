@@ -450,38 +450,38 @@ NewWater = {
     Water = {
     }
 }
---wall00 = {
---    Transform = {
---        position = "0 -6 0",
---        rotation = "0 0 0",
---        scale = "1 1 1"
---    },
---    MeshRenderer = {
---        file =  "Wall.00.mesh",
---        static = "",
---        invisible = ""
---    },
---    RigidBodyComponent = {
---        mass = 0,
---        friction = "0.0"
---    }
---}
---wall01 = {
---    Transform = {
---        position = "0 -6 0",
---        rotation = "0 0 0",
---        scale = "1 1 1"
---    },
---    MeshRenderer = {
---        file =  "Wall.01.mesh",
---        static = "",
---        invisible = ""
---    },
---    RigidBodyComponent = {
---        mass = 0,
---        friction = "0.0"
---    }
---}
+wall00 = {
+    Transform = {
+        position = "0 -6 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Wall.00.mesh",
+        static = "",
+        invisible = ""
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        friction = "0.0"
+    }
+}
+wall01 = {
+    Transform = {
+        position = "0 -6 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Wall.01.mesh",
+        static = "",
+        invisible = ""
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        friction = "0.0"
+    }
+}
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
 "Road00", "Road01", "Road02", "Road03", "Beach", 
 "Terrain00", "Terrain01", "Terrain02", "Terrain03", "waterPlane",
