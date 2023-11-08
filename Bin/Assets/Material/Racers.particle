@@ -137,8 +137,8 @@ particle_system Racers/JetEngine1
 particle_system Racers/JetEngine2
 {
 	material 		general/Flare
-	particle_width 	0.5
-	particle_height	0.5
+	particle_width 	0.45
+	particle_height	0.45
 	cull_each		false
 	quota			400
 
