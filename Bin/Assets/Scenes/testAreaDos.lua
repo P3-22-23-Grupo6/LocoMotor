@@ -27,7 +27,7 @@ coche = {
     },
     PlayerController = {
         PlayerIndex = 0,
-        PlayerSpeed = 140
+        PlayerSpeed = 170
     },
     RigidBodyComponent = {
         mass = 1,
@@ -86,14 +86,14 @@ raceManager = {
         --checkpoint19 = "1033.46, 12.69, -104.24"
     }
 }
-test_Plane00 = {
+Road00 = {
     Transform = {
         position = "0 0 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Main.mesh",
+        file =  "Road.00.mesh",
         static = "true"
     },
     RigidBodyComponent = {
@@ -101,7 +101,66 @@ test_Plane00 = {
         usedAsRaycast = ""
     }
 }
-
+Road01 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Road.01.mesh",
+        static = "true"
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = ""
+    }
+}
+Road02 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Road.02.mesh",
+        static = "true"
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = ""
+    }
+}
+Road03 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Road.03.mesh",
+        static = "true"
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = ""
+    }
+}
+Beach = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Beach.mesh",
+        static = "true"
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = ""
+    }
+}
 Roads = {
     Transform = {
         position = "0 0 0",
@@ -242,6 +301,117 @@ EnemyCar01 = {
         friction = "0.0"
     }
 }
-
-entities = { "coche", "cocheDos", "mainCam", "secondCam", "test_Plane00", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
-"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText", "Extras"}
+do ---------------------   UI   ------------------------------
+    timerText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "00:00:000",
+            posx =  ".1",
+            posy =  ".15",
+            align = "left",
+            sizex = "0.08",
+            sizey = "0.08",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    laptimerText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "00:00:000",
+            posx =  ".1",
+            posy =  ".05",
+            align = "left",
+            sizex = "0.08",
+            sizey = "0.08",
+            topcolor = "0.49 .88 .89",
+            bottomcolor = "0.49 .88 .89",
+        }
+    }
+    lapsText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "0 / 3",
+            posx =  "-0.45",
+            posy =  ".9",
+            align = "left",
+            sizex = "0.1",
+            sizey = "0.1",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    positionText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "3 rd",
+            posx =  "0.45",
+            posy =  ".9",
+            align = "right",
+            sizex = "0.1",
+            sizey = "0.1",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    countdownText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "Heavitas",
+            text = "GO!",
+            posx =  "0",
+            posy =  ".3",
+            align = "center",
+            sizex = "0.15",
+            sizey = "0.15",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+    velocityText = {
+        Transform = {
+            position = "0 0 0",
+            rotation = "0 0 0",
+            scale = "1 1 1"
+        },
+        UITextLM = {
+            font =  "BrunoAce",
+            text = "100 km/h",
+            posx =  "-0.45",
+            posy =  ".05",
+            align = "left",
+            sizex = "0.05",
+            sizey = "0.05",
+            topcolor = "1 1 1",
+            bottomcolor = "1 1 1",
+        }
+    }
+end ----------------------------------------------------------
+entities = { "coche", "cocheDos", "mainCam", "secondCam", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
+"Road00", "Road01", "Road02", "Road03", "Beach",
+"counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText", "Extras",
+"lapsText", "positionText", "countdownText", "velocityText", "timerText", "laptimerText",}

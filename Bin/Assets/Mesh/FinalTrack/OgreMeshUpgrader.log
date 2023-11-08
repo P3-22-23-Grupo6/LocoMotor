@@ -1,0 +1,27 @@
+10:12:06: LOD config summary:
+10:12:06:  - lodConfig.strategy=distance_box
+10:12:06:  - lodConfig.levels[0].distance=120
+10:12:06:  - lodConfig.levels[0].reductionMethod=VRM_PROPORTIONAL
+10:12:06:  - lodConfig.levels[0].reductionValue=0.5
+10:12:06:  - lodConfig.levels[0].manualMeshName=N/A
+10:12:06:  - lodConfig.levels[1].distance=240
+10:12:06:  - lodConfig.levels[1].reductionMethod=VRM_PROPORTIONAL
+10:12:06:  - lodConfig.levels[1].reductionValue=1
+10:12:06:  - lodConfig.levels[1].manualMeshName=N/A
+10:12:06: Generating LOD levels...
+10:12:06: Generating LOD levels... success
+10:12:06: MeshSerializer writing mesh data to stream C:\Users\jacob\OneDrive\Escritorio\Juego-De-Autos\Juego_de_autos\Motor\Bin\Assets\Mesh\FinalTrack\Road.02.mesh...
+10:12:06: File header written.
+10:12:06: Writing mesh data...
+10:12:06: Writing submesh...
+10:12:06: Exporting submesh texture aliases...
+10:12:06: Submesh texture aliases exported.
+10:12:06: Submesh exported.
+10:12:06: Exporting LOD information....
+10:12:06: LOD information exported.
+10:12:06: Exporting bounds information....
+10:12:06: Bounds information exported.
+10:12:06: Exporting submesh name table...
+10:12:06: Submesh name table exported.
+10:12:06: Mesh data exported.
+10:12:06: MeshSerializer export successful.
