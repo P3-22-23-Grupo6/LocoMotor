@@ -30,10 +30,6 @@ coche = {
     RigidBodyComponent = {
         mass = 1,
         friction = "0.0"
-    },
-    ParticleSystem = {
-        name = "exhaust",
-        file = "Racers/JetEngine2"
     }
 }
 raceManager = {

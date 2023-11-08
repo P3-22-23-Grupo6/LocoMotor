@@ -108,8 +108,8 @@ particle_system Racers/Fire
 particle_system Racers/JetEngine1
 {
 	material 		general/Flare
-	particle_width 	25
-	particle_height	25
+	particle_width 	35
+	particle_height	35
 	cull_each		false
 	quota			200
 	billboard_type	point
@@ -137,8 +137,8 @@ particle_system Racers/JetEngine1
 particle_system Racers/JetEngine2
 {
 	material 		general/Flare
-	particle_width 	0.3
-	particle_height	0.3
+	particle_width 	0.5
+	particle_height	0.5
 	cull_each		false
 	quota			400
 
@@ -155,7 +155,7 @@ particle_system Racers/JetEngine2
         velocity_max    10
         colour_range_start  0.5 0.8 0.8
         colour_range_end    0.3 0.8 0.9 
-		position 0.2 0.1 1
+		position 1.25 1.71 19.7
 	}
 
     	emitter Point
@@ -168,7 +168,7 @@ particle_system Racers/JetEngine2
         velocity_max    10
         colour_range_start  0.5 0.8 0.8
         colour_range_end    0.3 0.8 0.9 
-		position -0.2 0.1 1
+		position 0.69 1.71 19.7
 	}
 
 

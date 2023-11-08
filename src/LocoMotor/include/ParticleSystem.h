@@ -25,6 +25,7 @@ namespace LocoMotor {
 		/// @param params A vector of pairs, where each pair contains a string key and a string value. These
 		/// pairs represent the parameters passed to the Init() function.
 		void Init(std::vector<std::pair<std::string, std::string>>& params) override;
+		void InitRuntime(std::string fileName, std::string fileMat) ;
 
 
 		/// @brief Initializes a particle system component by creating a node, creating particles,
