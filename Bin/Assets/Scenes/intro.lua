@@ -17,14 +17,14 @@ audioHolder = {
 }
 mainCam = {
     Transform = {
-        position = "15 0 0",
-        rotation = "20 30 0",
+        position = "10 2 0",
+        rotation = "20 25 0",
         scale = "1 1 1"
     },
     Camera = 
     { 
         CameraMode = 0,
-        FOV = "50",
+        FOV = "60",
         main = ""
     },
     CameraPanner = 
@@ -39,7 +39,7 @@ menuMeshScene = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "MenuMeshScene.mesh"
+        file =  "MenuMeshFinal.mesh"
     }
 }
 SkyboxMeshNew = {
