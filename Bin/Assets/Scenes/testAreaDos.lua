@@ -161,23 +161,6 @@ Beach = {
         usedAsRaycast = ""
     }
 }
-waterPlane = {
-    Transform = {
-        position = "0 0 0",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "WaterPlaneDos.mesh",
-        static = "true"
-    },
-    RigidBodyComponent = {
-        mass = 1,
-        friction = "0.0"
-    },
-    Water = {
-    }
-}
 Terrain00 = {
     Transform = {
         position = "0 0 0",
@@ -413,14 +396,14 @@ NewWater = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "WaterPlaneDos.mesh",
-        static = "",
-        invisible = ""
+        file =  "WaterPlane.mesh",
+        static = ""
     },
     RigidBodyComponent = {
         mass = 0,
-        usedAsRaycast = "",
         isTrigger = ""
+    },
+    Water = {
     }
 }
 --wall00 = {
