@@ -161,18 +161,61 @@ Beach = {
         usedAsRaycast = ""
     }
 }
-Roads = {
+waterPlane = {
     Transform = {
         position = "0 0 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Terrain.mesh",
+        file =  "WaterPlane.mesh",
         static = "true"
     }
 }
-
+Terrain00 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Terrain.00.mesh",
+        static = "true"
+    }
+}
+Terrain01 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Terrain.01.mesh",
+        static = "true"
+    }
+}
+Terrain02 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Terrain.02.mesh",
+        static = "true"
+    }
+}
+Terrain03 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Terrain.03.mesh",
+        static = "true"
+    }
+}
 SkyboxMeshNew = {
     Transform = {
         position = "0 0 20",
@@ -412,6 +455,7 @@ do ---------------------   UI   ------------------------------
     }
 end ----------------------------------------------------------
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
-"Road00", "Road01", "Road02", "Road03", "Beach",
+"Road00", "Road01", "Road02", "Road03", "Beach", 
+"Terrain00", "Terrain01", "Terrain02", "Terrain03", "waterPlane",
 "counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText", "Extras",
 "lapsText", "positionText", "countdownText", "velocityText", "timerText", "laptimerText",}

@@ -227,7 +227,7 @@ material m_Skybox {
     technique {
         pass {
             lighting off
-            depth_func less
+            //depth_func greater_equal
             //fog_override true linear 0 0 0 0.002 3000 5000
             //polygon_mode wireframe
             texture_unit {
@@ -257,7 +257,8 @@ material m_Atlas02 {
     technique {
         pass {
             lighting off
-            scene_blend  alpha_blend
+            //scene_blend  alpha_blend
+            alpha_rejection greater_equal 128
             //polygon_mode wireframe
             //depth_write off	
             depth_func less
@@ -274,7 +275,7 @@ material m_Impostors {
     technique {
         pass {
             lighting off
-            scene_blend  alpha_blend
+            scene_blend alpha_blend
             depth_write off	
             texture_unit {
                 texture Impostors_01_t.png
