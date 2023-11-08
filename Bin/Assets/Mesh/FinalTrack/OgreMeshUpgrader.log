@@ -1,27 +1,27 @@
-11:55:26: LOD config summary:
-11:55:26:  - lodConfig.strategy=distance_box
-11:55:26:  - lodConfig.levels[0].distance=200
-11:55:26:  - lodConfig.levels[0].reductionMethod=VRM_PROPORTIONAL
-11:55:26:  - lodConfig.levels[0].reductionValue=0.6
-11:55:26:  - lodConfig.levels[0].manualMeshName=N/A
-11:55:26:  - lodConfig.levels[1].distance=400
-11:55:26:  - lodConfig.levels[1].reductionMethod=VRM_PROPORTIONAL
-11:55:26:  - lodConfig.levels[1].reductionValue=1.2
-11:55:26:  - lodConfig.levels[1].manualMeshName=N/A
-11:55:26: Generating LOD levels...
-11:55:26: Generating LOD levels... success
-11:55:26: MeshSerializer writing mesh data to stream C:\Users\jacob\OneDrive\Escritorio\Juego-De-Autos\Juego_de_autos\Motor\Bin\Assets\Mesh\FinalTrack\Turbo.00.mesh...
-11:55:26: File header written.
-11:55:26: Writing mesh data...
-11:55:26: Writing submesh...
-11:55:26: Exporting submesh texture aliases...
-11:55:26: Submesh texture aliases exported.
-11:55:26: Submesh exported.
-11:55:26: Exporting LOD information....
-11:55:26: LOD information exported.
-11:55:26: Exporting bounds information....
-11:55:26: Bounds information exported.
-11:55:26: Exporting submesh name table...
-11:55:26: Submesh name table exported.
-11:55:26: Mesh data exported.
-11:55:26: MeshSerializer export successful.
+13:37:54: LOD config summary:
+13:37:54:  - lodConfig.strategy=distance_box
+13:37:54:  - lodConfig.levels[0].distance=200
+13:37:54:  - lodConfig.levels[0].reductionMethod=VRM_PROPORTIONAL
+13:37:54:  - lodConfig.levels[0].reductionValue=0.6
+13:37:54:  - lodConfig.levels[0].manualMeshName=N/A
+13:37:54:  - lodConfig.levels[1].distance=400
+13:37:54:  - lodConfig.levels[1].reductionMethod=VRM_PROPORTIONAL
+13:37:54:  - lodConfig.levels[1].reductionValue=1.2
+13:37:54:  - lodConfig.levels[1].manualMeshName=N/A
+13:37:54: Generating LOD levels...
+13:37:54: Generating LOD levels... success
+13:37:54: MeshSerializer writing mesh data to stream C:\Users\jacob\OneDrive\Escritorio\Juego-De-Autos\Juego_de_autos\Motor\Bin\Assets\Mesh\FinalTrack\Beach.mesh...
+13:37:54: File header written.
+13:37:54: Writing mesh data...
+13:37:54: Writing submesh...
+13:37:54: Exporting submesh texture aliases...
+13:37:54: Submesh texture aliases exported.
+13:37:54: Submesh exported.
+13:37:54: Exporting LOD information....
+13:37:54: LOD information exported.
+13:37:54: Exporting bounds information....
+13:37:54: Bounds information exported.
+13:37:54: Exporting submesh name table...
+13:37:54: Submesh name table exported.
+13:37:54: Mesh data exported.
+13:37:54: MeshSerializer export successful.
