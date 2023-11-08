@@ -451,7 +451,7 @@ turbo00 = {
         isTrigger = ""
     },
     Boost = {
-        thrust = 20000,
+        thrust = 8000,
     },
     AudioSource = {
         vol = "1"

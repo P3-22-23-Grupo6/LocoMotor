@@ -29,7 +29,7 @@ mainCam = {
     },
     CameraPanner = 
     { 
-        speed = "0.1"
+        speed = "0.125"
     }
 }
 menuMeshScene = {
