@@ -102,6 +102,7 @@ raceManager = {
         checkpoint35 = "142.1, 30.34, 414.19",
         checkpoint36 = "0.66, 18.65, 175.81",
         checkpoint37 = "2.18, 5.68, 110.03",
+        checkpoint38 = "1.06, 1.75, -0.22",
     }
 }
 Road00 = {
@@ -384,14 +385,14 @@ do ---------------------   UI   ------------------------------
         },
         UITextLM = {
             font =  "SPEEDONE",
-            text = "100 km/h",
+            text = "0",
             posx =  "-0.48",
             posy =  ".93",
             align = "left",
             sizex = "0.05",
             sizey = "0.05",
-            topcolor = "1 1 1",
-            bottomcolor = "1 1 1",
+            topcolor = "1.0 0.0 0.265",
+            bottomcolor = "1.0 0.0 0.265",
         }
     }
     velocityAddedText = {
