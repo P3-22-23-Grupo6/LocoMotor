@@ -302,48 +302,28 @@ counter02Text = {
         bottomcolor = "1 1 1",
     }
 }
-portrait01Img = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0.1",
-        sizex = "0.1",
-        sizey = "0.1",
-        img = "Portrait_01",
-        top = "20"
-    }
-}
-portrait02Img = {
-    UIImageLM = { 
-        posx = "0",
-        posy = "0.4",
-        sizex = "0.1",
-        sizey = "0.1",
-        img = "Portrait_02",
-        top = "10"
-    }
-}
-EnemyCar01 = {
-    Transform = {
-        position = "0 4 -10",
-        rotation = "0 0 0",
-        scale = "1 1 1"
-    },
-    MeshRenderer = {
-        file =  "Pelican.mesh"
-    },
-    AudioSource = {
-        loops= -1,
-        playonStart = "Assets/Sounds/engine.wav"
-    },
-    EnemyAI = {
-        enemySpeed = "0.5",
-        StartSeparation = "1"
-    },
-    RigidBodyComponent = {
-        mass = 1,
-        friction = "0.0"
-    }
-}
+--EnemyCar01 = {
+--    Transform = {
+--        position = "0 4 -10",
+--        rotation = "0 0 0",
+--        scale = "1 1 1"
+--    },
+--    MeshRenderer = {
+--        file =  "Pelican.mesh"
+--    },
+--    AudioSource = {
+--        loops= -1,
+--        playonStart = "Assets/Sounds/engine.wav"
+--    },
+--    EnemyAI = {
+--        enemySpeed = "0.5",
+--        StartSeparation = "1"
+--    },
+--    RigidBodyComponent = {
+--        mass = 1,
+--        friction = "0.0"
+--    }
+--}
 do ---------------------   UI   ------------------------------
     timerText = {
         Transform = {
@@ -417,24 +397,24 @@ do ---------------------   UI   ------------------------------
             bottomcolor = "1 1 1",
         }
     }
-    countdownText = {
-        Transform = {
-            position = "0 0 0",
-            rotation = "0 0 0",
-            scale = "1 1 1"
-        },
-        UITextLM = {
-            font =  "Heavitas",
-            text = "GO!",
-            posx =  "0",
-            posy =  ".3",
-            align = "center",
-            sizex = "0.15",
-            sizey = "0.15",
-            topcolor = "1 1 1",
-            bottomcolor = "1 1 1",
-        }
-    }
+    --countdownText = {
+    --    Transform = {
+    --        position = "0 0 0",
+    --        rotation = "0 0 0",
+    --        scale = "1 1 1"
+    --    },
+    --    UITextLM = {
+    --        font =  "Heavitas",
+    --        text = "GO!",
+    --        posx =  "0",
+    --        posy =  ".3",
+    --        align = "center",
+    --        sizex = "0.15",
+    --        sizey = "0.15",
+    --        topcolor = "1 1 1",
+    --        bottomcolor = "1 1 1",
+    --    }
+    --}
     velocityText = {
         Transform = {
             position = "0 0 0",
