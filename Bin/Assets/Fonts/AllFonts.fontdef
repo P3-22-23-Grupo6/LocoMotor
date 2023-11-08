@@ -19,6 +19,27 @@ THEBOLDFONT
     size 32
     resolution 512
 }
+SPEEDONE
+{
+    type truetype
+    source SPEEDONE.ttf
+    size 32
+    resolution 512
+}
+SPEEDTWO
+{
+    type truetype
+    source SPEEDTWO.ttf
+    size 32
+    resolution 512
+}
+SPEEDTHREE
+{
+    type truetype
+    source SPEEDTHREE.ttf
+    size 32
+    resolution 512
+}
 Team
 {
     type truetype

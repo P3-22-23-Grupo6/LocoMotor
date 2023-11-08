@@ -332,7 +332,7 @@ material m_Bubbles {
             alpha_rejection greater_equal 128
             texture_unit {
                 texture Bubbles_t.png
-                scroll_anim 0.0 1.0
+                scroll_anim 0.0 -0.6
             }
         }
     }

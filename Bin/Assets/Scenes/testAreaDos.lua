@@ -47,11 +47,11 @@ raceManager = {
     UITextLM = {
         font =  "THEBOLDFONT",
         text = "0 fps",
-        posx =  "0.4",
-        posy =  ".02",
+        posx =  "0.46",
+        posy =  ".01",
         align = "center",
-        sizex = "0.03",
-        sizey = "0.03",
+        sizex = "0.02",
+        sizey = "0.02",
         topcolor = "1 1 1",
         bottomcolor = "1 1 1",
     },
@@ -275,13 +275,13 @@ do ---------------------   UI   ------------------------------
             scale = "1 1 1"
         },
         UITextLM = {
-            font =  "BrunoAce",
+            font =  "THEBOLDFONT",
             text = "00:00:000",
-            posx =  ".1",
-            posy =  ".15",
+            posx =  "-0.48",
+            posy =  ".08",
             align = "left",
-            sizex = "0.08",
-            sizey = "0.08",
+            sizex = "0.07",
+            sizey = "0.07",
             topcolor = "1 1 1",
             bottomcolor = "1 1 1",
         }
@@ -293,15 +293,15 @@ do ---------------------   UI   ------------------------------
             scale = "1 1 1"
         },
         UITextLM = {
-            font =  "BrunoAce",
+            font =  "THEBOLDFONT",
             text = "00:00:000",
-            posx =  ".1",
-            posy =  ".05",
+            posx =  "-0.48",
+            posy =  ".15",
             align = "left",
-            sizex = "0.08",
-            sizey = "0.08",
-            topcolor = "0.49 .88 .89",
-            bottomcolor = "0.49 .88 .89",
+            sizex = "0.047",
+            sizey = "0.047",
+            topcolor = "1.0 0.68 0.2",
+            bottomcolor = "1.0 0.68 0.2"
         }
     }
     lapsText = {
@@ -311,15 +311,15 @@ do ---------------------   UI   ------------------------------
             scale = "1 1 1"
         },
         UITextLM = {
-            font =  "BrunoAce",
-            text = "0 / 3",
-            posx =  "-0.45",
-            posy =  ".9",
+            font =  "THEBOLDFONT",
+            text = "0/3 RONDAS",
+            posx =  "-0.48",
+            posy =  "0.015",
             align = "left",
-            sizex = "0.1",
-            sizey = "0.1",
-            topcolor = "1 1 1",
-            bottomcolor = "1 1 1",
+            sizex = "0.036",
+            sizey = "0.036",
+            topcolor = "0.74 0.84 0.91",
+            bottomcolor = "0.74 0.84 0.91"
         }
     }
     positionText = {
@@ -329,13 +329,13 @@ do ---------------------   UI   ------------------------------
             scale = "1 1 1"
         },
         UITextLM = {
-            font =  "BrunoAce",
-            text = "3 rd",
-            posx =  "0.45",
-            posy =  ".9",
-            align = "right",
-            sizex = "0.1",
-            sizey = "0.1",
+            font =  "THEBOLDFONT",
+            text = "1 rd",
+            posx =  "0.0",
+            posy =  "0.02",
+            align = "center",
+            sizex = "0.065",
+            sizey = "0.065",
             topcolor = "1 1 1",
             bottomcolor = "1 1 1",
         }
@@ -347,7 +347,7 @@ do ---------------------   UI   ------------------------------
             scale = "1 1 1"
         },
         UITextLM = {
-            font =  "Heavitas",
+            font =  "THEBOLDFONT",
             text = "GO!",
             posx =  "0",
             posy =  ".3",
@@ -365,13 +365,13 @@ do ---------------------   UI   ------------------------------
             scale = "1 1 1"
         },
         UITextLM = {
-            font =  "BrunoAce",
+            font =  "SPEEDONE",
             text = "100 km/h",
-            posx =  "-0.45",
-            posy =  ".05",
+            posx =  "-0.48",
+            posy =  ".93",
             align = "left",
-            sizex = "0.05",
-            sizey = "0.05",
+            sizex = "0.04",
+            sizey = "0.04",
             topcolor = "1 1 1",
             bottomcolor = "1 1 1",
         }
