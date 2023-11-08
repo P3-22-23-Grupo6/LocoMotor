@@ -275,10 +275,25 @@ material m_Impostors {
     technique {
         pass {
             lighting off
+            alpha_rejection greater_equal 128
+            //scene_blend alpha_blend
+            //depth_write off	
+            texture_unit {
+                texture Impostors_01_t.png
+                tex_address_mode wrap
+                colour_op modulate
+            }
+        }
+    }
+}
+material m_Glass {
+    technique {
+        pass {
+            lighting off
             scene_blend alpha_blend
             depth_write off	
             texture_unit {
-                texture Impostors_01_t.png
+                texture TunnelGlass_t.png
                 tex_address_mode wrap
                 colour_op modulate
             }
@@ -299,4 +314,24 @@ material m_LCD {
     }
 }
 
-
+material m_Turbo {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture Turbo.png
+                scroll_anim 0.0 -1.0
+            }
+        }
+    }
+}
+material m_Sand {
+    technique {
+        pass {
+            lighting off
+            texture_unit {
+                texture sand_t.png
+            }
+        }
+    }
+}

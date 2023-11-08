@@ -434,8 +434,32 @@ do ---------------------   UI   ------------------------------
         }
     }
 end ----------------------------------------------------------
+turbo00 = {
+    Transform = {
+        position = "0 0 0",
+        rotation = "0 0 0",
+        scale = "1 1 1"
+    },
+    MeshRenderer = {
+        file =  "Turbo.00.mesh",
+        static = "",
+        invisible = ""
+    },
+    RigidBodyComponent = {
+        mass = 0,
+        usedAsRaycast = "",
+        isTrigger = ""
+    },
+    Boost = {
+        thrust = 20000,
+    },
+    AudioSource = {
+        vol = "1"
+    }
+}
 entities = { "coche", "cocheDos", "mainCam", "secondCam", "velocityText", "consoleDebug", "Test_Track_00", "portrait01Img", "portrait02Img", "counter01Text",
 "Road00", "Road01", "Road02", "Road03", "Beach", 
 "Terrain00", "Terrain01", "Terrain02", "Terrain03", "waterPlane",
+"turbo00",
 "counter02Text", "SkyboxMeshNew", "raceManager", "tube", "EnemyCar02", "EnemyCar01", "EnemyCar02", "EnemyCar03", "Roads", "positionText", "Extras",
 "lapsText", "positionText", "countdownText", "velocityText", "timerText", "laptimerText",}
