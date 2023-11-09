@@ -46,24 +46,24 @@ namespace LocoMotor {
 		// Controller
 
 		/// @brief Returns true only in the frame that controller button is pressed
-		bool GetButtonDown(const int& buttonCode);
+		bool GetButtonDown(int index, const int& buttonCode);
 		/// @brief Returns true when controller button is pressed
-		bool GetButton(const int& buttonCode);
+		bool GetButton(int index, const int& buttonCode);
 		/// @brief Returns true when controller button is stop pressed
-		bool GetButtonUp(const int& buttonCode);
+		bool GetButtonUp(int index, const int& buttonCode);
 		/// @brief Returns the inclination value of the joystick
 		/// @param joystickIndex 0 -> left joystick | 1 ->right joystick
 		/// @param axis Horizontal o Vertical
-		float GetJoystickValue(const int& joystickIndex, const Axis& axis);
+		float GetJoystickValue(int index, const int& joystickIndex, const Axis& axis);
 		/// @brief Returns the inclination value of the joystick
 		/// @param triggerIndex 0 -> left trigger | 1 ->right trigger
-		float GetTriggerValue(const int& triggerIndex);
+		float GetTriggerValue(int index, const int& triggerIndex);
 
 
 		// EVENT MANAGER
 
 		/// @brief Returns true when controller is connected
-		bool ControllerConnected();
+		bool ControllerConnected(int index);
 
 		/// @brief Register all input related events and save it in the respective value
 		bool RegisterEvents();
@@ -107,7 +107,7 @@ namespace LocoMotor {
 		void SetControllerLedColor(int r, int g, int b);
 
 		/// @brief Sets the controller rumble with a intensity and a duration in seconds
-		void RumbleController(const float& intensity, const float& durationInSec);
+		void RumbleController(int index, const float& intensity, const float& durationInSec);
 
 		// Gyroscope
 
@@ -140,11 +140,13 @@ namespace LocoMotor {
 		KeyState _keyboardKeys[512];
 
 		// Almacena el estado de todas las teclas en un mismo array ordenadas por el ScanCode de los botones del mando
-		KeyState _controllerButtons[21];
+		KeyState _controllerButtonsOne[21];
+		KeyState _controllerButtonsTwo[21];
 
 		KeyState _mouseButtons[6];
 
-		SDL_GameController* _currentController = nullptr;
+		SDL_GameController* _controllerOne = nullptr;
+		SDL_GameController* _controllerTwo = nullptr;
 
 		// Vector que almacena que teclas deben ser refrescadas despues de cada frame
 		std::vector<int> _keyboardInputs_ToReset;
@@ -159,12 +161,14 @@ namespace LocoMotor {
 		std::pair<int, int>_mousePos;
 
 		// Joysticks
-		float _joystickAxis[4]; // cuatro espacios : dos ejes en cada uno de los dos joysticks
+		float _joystickAxisOne[4]; // cuatro espacios : dos ejes en cada uno de los dos joysticks
+		float _joystickAxisTwo[4]; // cuatro espacios : dos ejes en cada uno de los dos joysticks
 		const int _JOYSTICKDEADZONE_MIN = 10000;
 		const int _JOYSTICKDEADZONE_MAX = 32000;
 
 		// Triggers
-		float _triggersValue[2];
+		float _triggersValueOne[2];
+		float _triggersValueTwo[2];
 		const int _TRIGGERSVALUE_MIN = 0;
 		const int _TRIGGERSVALUE_MAX = 64000;
 

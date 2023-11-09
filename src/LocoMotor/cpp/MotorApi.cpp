@@ -97,7 +97,6 @@ void MotorApi::MainLoop() {
 
 		if (LocoMotor::InputManager::GetInstance()->RegisterEvents())
 			break;
-
 		_scnManager->Update();
 	}
 	SceneManager::Clear();
