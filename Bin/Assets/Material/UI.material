@@ -354,3 +354,48 @@ material m_PlayerTwoSelect01 {
         }
     }
 }
+material m_100CC {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture Buttoncc100.png
+            }
+        }
+    }
+}
+//ODIO ESTO
+material m_100CCSelected {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture Buttoncc100_s.png
+            }
+        }
+    }
+}
+material m_200CC {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture Buttoncc200.png
+            }
+        }
+    }
+}
+material m_200CCSelected {
+    technique {
+        pass {
+            lighting off
+            scene_blend alpha_blend
+            texture_unit {
+                texture Buttoncc200_s.png
+            }
+        }
+    }
+}

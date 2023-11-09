@@ -23,7 +23,7 @@ coche = {
     AudioSource = {
         loops= -1,
         playonStart = "Assets/Sounds/engine.wav",
-        volume = 0.2
+        volume = 0.5
     },
     PlayerController = {
         PlayerIndex = 0,
@@ -457,7 +457,7 @@ wall00 = {
         scale = "1 1 1"
     },
     MeshRenderer = {
-        file =  "Wall.00.mesh",
+        file =  "Wall.001.mesh",
         static = "",
         invisible = ""
     },

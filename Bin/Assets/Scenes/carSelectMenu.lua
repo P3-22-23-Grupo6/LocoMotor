@@ -162,7 +162,7 @@ trackArrowLeftButton = {
 }
 trackMesh00 = {
     Transform = {
-        position = "2 0 0",
+        position = "2 0.7 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -177,7 +177,7 @@ trackMesh00 = {
 }
 trackMesh01 = {
     Transform = {
-        position = "2 0 0",
+        position = "2 0.7 0",
         rotation = "0 0 0",
         scale = "1 1 1"
     },
@@ -201,8 +201,17 @@ Portrait_Track = {
         visible = "false"
     }
 }
-
-
+selectSpeedButton = {
+    UIImageLM = { 
+        interactive = "false",
+        posx = "0.67",
+        posy = "0.44",
+        sizex = "0.3",
+        sizey = "0.11",
+        img = "m_100CC",
+        visible = "false"
+    }
+}
 entities = {"ButtonManager", "MenuDecalMesh", "goToIntroButton", "MenuBackgroundMesh", "falconPreview", "selectVehicleTitle", "carInfoPanel", "selectPlayerTwo", "selectPlayerOne",
 "skyboxMesh", "backMesh", "mainCam", "logoImg", "menuBack", "audioHolder", "Vehicle_Portrait", "arrowRightButton", "arrowLeftButton",
-"selectTrackButton", "trackArrowLeftButton", "trackArrowRightButton", "trackMesh00", "trackMesh01", "Portrait_Track"}
+"selectTrackButton", "trackArrowLeftButton", "trackArrowRightButton", "trackMesh00", "trackMesh01", "Portrait_Track", "selectSpeedButton"}
