@@ -99,6 +99,9 @@ namespace LocoMotor {
 
 		/// @brief Set the source to play sounds globally, with no regard of its position
 		void Set2D();
+
+		/// @brief Set the source to play sounds globally, with no regard of its position
+		void LoadSound(const char* fileName);
 	private:
 		FmodWrapper::AudioSource* _src;
 		unsigned short _lastError;

@@ -189,3 +189,7 @@ void LocoMotor::AudioSource::Set3D() {
 void LocoMotor::AudioSource::Set2D() {
 	_src->SetMode2D();
 }
+
+void LocoMotor::AudioSource::LoadSound(const char* fileName) {
+	_src->AddSound(fileName);
+}
